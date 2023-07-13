@@ -1,2 +1,2 @@
 # loryblu-ios
-Repositorio do Time de iOS - LoryBlu
+Repository team iOS - App LoryBlu
