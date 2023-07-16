@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		336046502A634D1300961472 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3360464F2A634D1300961472 /* CustomTextField.swift */; };
+		336046532A63557600961472 /* LoryBluFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336046522A63557600961472 /* LoryBluFonts.swift */; };
+		336046672A63585D00961472 /* Inter-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 336046552A63585D00961472 /* Inter-Bold.otf */; };
+		336046682A63585D00961472 /* Inter-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 336046562A63585D00961472 /* Inter-Regular.otf */; };
+		3360466A2A63585D00961472 /* Inter-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 336046582A63585D00961472 /* Inter-Medium.otf */; };
 		8CFB359E2A6059BD008BF633 /* LorybluApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB359D2A6059BD008BF633 /* LorybluApp.swift */; };
 		8CFB35A02A6059BD008BF633 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB359F2A6059BD008BF633 /* ContentView.swift */; };
 		8CFB35A22A6059BF008BF633 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CFB35A12A6059BF008BF633 /* Assets.xcassets */; };
@@ -14,6 +19,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3360464F2A634D1300961472 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		336046522A63557600961472 /* LoryBluFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoryBluFonts.swift; sourceTree = "<group>"; };
+		336046552A63585D00961472 /* Inter-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Bold.otf"; sourceTree = "<group>"; };
+		336046562A63585D00961472 /* Inter-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Regular.otf"; sourceTree = "<group>"; };
+		336046582A63585D00961472 /* Inter-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Medium.otf"; sourceTree = "<group>"; };
+		336046792A63597200961472 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = LoryBlu/Info.plist; sourceTree = "<group>"; };
 		8CFB359A2A6059BD008BF633 /* LoryBlu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoryBlu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CFB359D2A6059BD008BF633 /* LorybluApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LorybluApp.swift; sourceTree = "<group>"; };
 		8CFB359F2A6059BD008BF633 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -32,9 +43,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		336046512A63552C00961472 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				336046522A63557600961472 /* LoryBluFonts.swift */,
+				336046542A63585D00961472 /* inter-fonts */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		336046542A63585D00961472 /* inter-fonts */ = {
+			isa = PBXGroup;
+			children = (
+				336046552A63585D00961472 /* Inter-Bold.otf */,
+				336046562A63585D00961472 /* Inter-Regular.otf */,
+				336046582A63585D00961472 /* Inter-Medium.otf */,
+			);
+			path = "inter-fonts";
+			sourceTree = "<group>";
+		};
 		8CFB35912A6059BD008BF633 = {
 			isa = PBXGroup;
 			children = (
+				336046792A63597200961472 /* Info.plist */,
 				8CFB359C2A6059BD008BF633 /* loryblu */,
 				8CFB359B2A6059BD008BF633 /* Products */,
 			);
@@ -51,7 +82,9 @@
 		8CFB359C2A6059BD008BF633 /* loryblu */ = {
 			isa = PBXGroup;
 			children = (
+				336046512A63552C00961472 /* Fonts */,
 				8CFB359D2A6059BD008BF633 /* LorybluApp.swift */,
+				3360464F2A634D1300961472 /* CustomTextField.swift */,
 				8CFB359F2A6059BD008BF633 /* ContentView.swift */,
 				8CFB35A12A6059BF008BF633 /* Assets.xcassets */,
 				8CFB35A32A6059BF008BF633 /* Preview Content */,
@@ -127,7 +160,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				8CFB35A52A6059BF008BF633 /* Preview Assets.xcassets in Resources */,
+				3360466A2A63585D00961472 /* Inter-Medium.otf in Resources */,
+				336046682A63585D00961472 /* Inter-Regular.otf in Resources */,
 				8CFB35A22A6059BF008BF633 /* Assets.xcassets in Resources */,
+				336046672A63585D00961472 /* Inter-Bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -159,8 +195,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				336046532A63557600961472 /* LoryBluFonts.swift in Sources */,
 				8CFB35A02A6059BD008BF633 /* ContentView.swift in Sources */,
 				8CFB359E2A6059BD008BF633 /* LorybluApp.swift in Sources */,
+				336046502A634D1300961472 /* CustomTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,6 +330,8 @@
 				DEVELOPMENT_TEAM = 5AN4GAV8W4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LoryBlu/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -321,6 +361,8 @@
 				DEVELOPMENT_TEAM = 5AN4GAV8W4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LoryBlu/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
