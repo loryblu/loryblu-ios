@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8CE03E392A6360BE0024919C /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE03E382A6360BE0024919C /* Color.swift */; };
+		8CE03E3C2A6363630024919C /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE03E3B2A6363630024919C /* Icon.swift */; };
 		8CFB359E2A6059BD008BF633 /* LorybluApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB359D2A6059BD008BF633 /* LorybluApp.swift */; };
 		8CFB35A02A6059BD008BF633 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB359F2A6059BD008BF633 /* ContentView.swift */; };
 		8CFB35A22A6059BF008BF633 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CFB35A12A6059BF008BF633 /* Assets.xcassets */; };
@@ -14,6 +16,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8CE03E382A6360BE0024919C /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		8CE03E3B2A6363630024919C /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
 		8CFB359A2A6059BD008BF633 /* LoryBlu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoryBlu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CFB359D2A6059BD008BF633 /* LorybluApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LorybluApp.swift; sourceTree = "<group>"; };
 		8CFB359F2A6059BD008BF633 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -32,6 +36,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8CE03E3A2A6360DD0024919C /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				8CE03E382A6360BE0024919C /* Color.swift */,
+				8CE03E3B2A6363630024919C /* Icon.swift */,
+			);
+			path = Style;
+			sourceTree = "<group>";
+		};
 		8CFB35912A6059BD008BF633 = {
 			isa = PBXGroup;
 			children = (
@@ -53,6 +66,7 @@
 			children = (
 				8CFB359D2A6059BD008BF633 /* LorybluApp.swift */,
 				8CFB359F2A6059BD008BF633 /* ContentView.swift */,
+				8CE03E3A2A6360DD0024919C /* Style */,
 				8CFB35A12A6059BF008BF633 /* Assets.xcassets */,
 				8CFB35A32A6059BF008BF633 /* Preview Content */,
 			);
@@ -161,6 +175,8 @@
 			files = (
 				8CFB35A02A6059BD008BF633 /* ContentView.swift in Sources */,
 				8CFB359E2A6059BD008BF633 /* LorybluApp.swift in Sources */,
+				8CE03E3C2A6363630024919C /* Icon.swift in Sources */,
+				8CE03E392A6360BE0024919C /* Color.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
