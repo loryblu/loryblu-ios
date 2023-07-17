@@ -7,6 +7,11 @@
 
 import SwiftUI
 
+func nada() -> Void {
+    return
+}
+
+
 struct ContentView: View {
     var body: some View {
         VStack {
