@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct CustonTextField: View {
+struct CustomTextField: View {
     enum TexfieldType {
         case common
         case password
@@ -16,7 +16,7 @@ struct CustonTextField: View {
     let title: String
 
     @Binding var text: String
-    @Binding var isHide: Bool
+    @Binding var IsHidden: Bool
     @State var textFiledState: TextFieldState
 
     var body: some View {
@@ -32,14 +32,14 @@ struct CustonTextField: View {
                 case .common:
                     TextField(title, text: $text)
                 case .password:
-                    if isHide {
+                    if IsHidden {
                         SecureField(title, text: $text)
                         passwordButton
-                            .accentColor(.black)
+                            .accentColor(Style.ColorPalette.text)
                     } else {
                         TextField(title, text: $text)
                         passwordButton
-                            .accentColor(.black)
+                            .accentColor(Style.ColorPalette.text)
                     }
                 }
             }
@@ -57,36 +57,38 @@ struct CustonTextField: View {
 
     var passwordButton: some View {
         Button {
-            isHide.toggle()
+            IsHidden.toggle()
         } label: {
             secretIcon
         }
     }
 
     var secretIcon: some View {
-        if isHide {
+        if IsHidden {
             return Icon.eyeClose.image
         }
         return Icon.eyeOpen.image
     }
 }
 
-struct CustonTextField_Previews: PreviewProvider {
+struct CustomTextField_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            CustonTextField(style: .common,
-                            icon: Icon.lock,
-                            title: "User",
-                            text: .constant("Email"),
-                            isHide: .constant(true),
-                            textFiledState: .alert)
+            CustomTextField(
+                style: .common,
+                icon: Icon.lock,
+                title: "User",
+                text: .constant("Email"),
+                IsHidden: .constant(true),
+                textFiledState: .alert)
 
-            CustonTextField(style: .password,
-                            icon: Icon.lock,
-                            title: "User",
-                            text: .constant("12345"),
-                            isHide: .constant(false),
-                            textFiledState: .active)
+            CustomTextField(
+                style: .password,
+                icon: Icon.lock,
+                title: "User",
+                text: .constant("12345"),
+                IsHidden: .constant(false),
+                textFiledState: .active)
         }
     }
 }
