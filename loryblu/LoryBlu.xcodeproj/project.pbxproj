@@ -33,6 +33,7 @@
 		330A377C2A660D4C00C9DCE7 /* Inter-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Regular.otf"; sourceTree = "<group>"; };
 		330A377D2A660D4C00C9DCE7 /* Inter-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Medium.otf"; sourceTree = "<group>"; };
 		330A37812A660D8000C9DCE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = LoryBlu/Info.plist; sourceTree = "<group>"; };
+		3392F86D2A675C930094131A /* CustonTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustonTextField.swift; sourceTree = "<group>"; };
 		41931EBD2A6470B4008F13F8 /* ContentButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentButtons.swift; sourceTree = "<group>"; };
 		41ED6ADF2A707A750075FD98 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		41ED6AE32A7088C00075FD98 /* ExternalLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalLogin.swift; sourceTree = "<group>"; };
@@ -271,6 +272,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3392F86E2A675C930094131A /* CustonTextField.swift in Sources */,
 				330A37772A660C2D00C9DCE7 /* Typography.swift in Sources */,
 				8CFB35A02A6059BD008BF633 /* ContentView.swift in Sources */,
 				41931EBE2A6470B4008F13F8 /* ContentButtons.swift in Sources */,
