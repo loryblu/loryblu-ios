@@ -3,20 +3,10 @@ import SwiftUI
 struct IconLabel: View {
     var title: String
     var type: TypeIcon
-    var icon: Icon?
 
     enum TypeIcon {
         case check
         case wrong
-
-        var iconImage: String {
-            switch self {
-            case .check:
-                return Icon.check.rawValue
-            case .wrong:
-                return Icon.close.rawValue
-            }
-        }
     }
 
     @Binding var text: String
@@ -24,32 +14,42 @@ struct IconLabel: View {
 
     var body: some View {
             HStack {
-                if let icon = icon {
-                    icon.image
-                        .frame(width: 12)
-                }
-
-                switch type {
-                case .check:
-                    Image(Icon.check.rawValue)
+                Label {
                     Text(text)
-                        .foregroundColor(Style.ColorPalette.text)
-                case .wrong:
-                    Image(Icon.close.rawValue)
-                    Text(text)
-                        .foregroundColor(Style.ColorPalette.error)
+                        .foregroundColor(textColor)
+                } icon: {
+                    icon
+                        .resizable().frame(width: 12, height: 12)
                 }
-
-//                Image(Icon.check.rawValue)
-//                Text(text)
-//                    .font(Style.Typography.bodyLittleSmall)
-//                    .foregroundColor(Style.ColorPalette.text)
             }
+    }
+
+    private var icon: Image {
+        switch type {
+        case .check:
+            return Icon.check.image
+        case .wrong:
+            return Icon.close.image
+        }
+    }
+
+    private var textColor: Color {
+        switch type {
+        case .check:
+            return Style.ColorPalette.text
+        case .wrong:
+            return Style.ColorPalette.error
+        }
     }
 }
 
 struct IconLabel_Previews: PreviewProvider {
     static var previews: some View {
-        IconLabel(title: "Pelo menos uma letra maiúscula", type: .check, text: .constant("Pelo menos uma letra maiúscula"), checking: .constant(false))
+        IconLabel(
+            title: "Pelo menos uma letra maiúscula",
+            type: .check,
+            text: .constant("Pelo menos uma letra maiúscula"),
+            checking: .constant(false)
+        )
     }
 }

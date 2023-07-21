@@ -8,23 +8,22 @@
 import Foundation
 import SwiftUI
 
-
-struct Buttons: View{
-    init(title: String, style: ButtonStyle = .primary, action: @escaping () -> Void){
+struct Buttons: View {
+    init(title: String, style: ButtonStyle = .primary, action: @escaping () -> Void) {
         self.title = title
         self.style = style
         self.action =  action
     }
-   
-    enum ButtonStyle{
+
+    enum ButtonStyle {
         case primary
         case second
     }
     var title: String
     var style: ButtonStyle
     let action: () -> Void
-    var body: some View{
-        Button(title){
+    var body: some View {
+        Button(title) {
            action()
         }
             .textCase(.uppercase)
@@ -36,13 +35,7 @@ struct Buttons: View{
             .cornerRadius(10)
             .overlay(
             RoundedRectangle(cornerRadius: 10)
-                .inset(by:-1)
+                .inset(by: -1)
                 .stroke((style == .primary) ? .white :  Style.ColorPalette.buttonPrimary))
-        
     }
-            
-        }
-    
-
-
-
+}
