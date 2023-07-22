@@ -9,14 +9,12 @@ struct IconLabel: View {
         case wrong
     }
 
-    @Binding var text: String
-    @Binding var checking: Bool
-
     var body: some View {
             HStack {
                 Label {
-                    Text(text)
+                    Text(title)
                         .foregroundColor(textColor)
+                        .font(Style.Typography.bodyLittleSmall)
                 } icon: {
                     icon
                         .resizable().frame(width: 12, height: 12)
@@ -47,9 +45,7 @@ struct IconLabel_Previews: PreviewProvider {
     static var previews: some View {
         IconLabel(
             title: "Pelo menos uma letra maiúscula",
-            type: .check,
-            text: .constant("Pelo menos uma letra maiúscula"),
-            checking: .constant(false)
+            type: .check
         )
     }
 }
