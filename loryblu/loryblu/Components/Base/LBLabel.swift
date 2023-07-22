@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct IconLabel: View {
+struct LBLabel: View {
     var title: String
     var type: TypeIcon
 
@@ -14,7 +14,7 @@ struct IconLabel: View {
                 Label {
                     Text(title)
                         .foregroundColor(textColor)
-                        .font(Style.Typography.bodyLittleSmall)
+                        .font(LBFont.bodyLittleSmall)
                 } icon: {
                     icon
                         .resizable().frame(width: 12, height: 12)
@@ -25,25 +25,25 @@ struct IconLabel: View {
     private var icon: Image {
         switch type {
         case .check:
-            return Icon.check.image
+            return LBIcon.check.image
         case .wrong:
-            return Icon.close.image
+            return LBIcon.close.image
         }
     }
 
     private var textColor: Color {
         switch type {
         case .check:
-            return Style.ColorPalette.text
+            return LBColor.text
         case .wrong:
-            return Style.ColorPalette.error
+            return LBColor.error
         }
     }
 }
 
 struct IconLabel_Previews: PreviewProvider {
     static var previews: some View {
-        IconLabel(
+        LBLabel(
             title: "Pelo menos uma letra maiúscula",
             type: .check
         )

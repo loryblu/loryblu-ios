@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct CustomTextField: View {
+struct LBTextField: View {
     enum TexfieldType {
         case common
         case password
@@ -12,7 +12,7 @@ struct CustomTextField: View {
     }
 
     let style: TexfieldType
-    let icon: Icon?
+    let icon: LBIcon?
     let title: String
 
     @Binding var text: String
@@ -35,24 +35,23 @@ struct CustomTextField: View {
                     if isHidden {
                         SecureField(title, text: $text)
                         passwordButton
-                            .accentColor(Style.ColorPalette.text)
+                            .accentColor(LBColor.text)
                     } else {
                         TextField(title, text: $text)
                         passwordButton
-                            .accentColor(Style.ColorPalette.text)
+                            .accentColor(LBColor.text)
                     }
                 }
             }
             .padding()
-            .foregroundColor(Style.ColorPalette.placeholder)
-            .font(Style.Typography.bodySmall)
+            .foregroundColor(LBColor.placeholder)
+            .font(LBFont.bodySmall)
         }
-        .background(Style.ColorPalette.textfield)
+        .background(LBColor.textfield)
         .frame(height: 48)
         .cornerRadius(8)
-        .border(Style.ColorPalette.error,
+        .border(LBColor.error,
                 width: textFiledState.rawValue)
-        .padding()
     }
 
     var passwordButton: some View {
@@ -65,30 +64,32 @@ struct CustomTextField: View {
 
     var secretIcon: some View {
         if isHidden {
-            return Icon.eyeClose.image
+            return LBIcon.eyeClose.image
         }
-        return Icon.eyeOpen.image
+        return LBIcon.eyeOpen.image
     }
 }
 
 struct CustomTextField_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            CustomTextField(
+            LBTextField(
                 style: .common,
-                icon: Icon.lock,
+                icon: LBIcon.lock,
                 title: "User",
                 text: .constant("Email"),
                 isHidden: .constant(true),
-                textFiledState: .alert)
+                textFiledState: .alert
+            )
 
-            CustomTextField(
+            LBTextField(
                 style: .password,
-                icon: Icon.lock,
+                icon: LBIcon.lock,
                 title: "User",
                 text: .constant("12345"),
                 isHidden: .constant(false),
-                textFiledState: .active)
+                textFiledState: .active
+            )
         }
     }
 }

@@ -1,5 +1,5 @@
 //
-//  ContentButtons.swift
+//  LBButton.swift
 //  LoryBlu
 //
 //  Created by Paulo Pinheiro on 7/16/23.
@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct Buttons: View {
+struct LBButton: View {
     init(title: String, style: ButtonStyle = .primary, action: @escaping () -> Void) {
         self.title = title
         self.style = style
@@ -27,15 +27,15 @@ struct Buttons: View {
            action()
         }
             .textCase(.uppercase)
-            .font(Font.custom("Inter", size: 16) .weight(.bold))
+            .font(LBFont.button)
             .multilineTextAlignment(.center)
-            .foregroundColor( ((style == .primary) ? .white : Style.ColorPalette.buttonPrimary))
+            .foregroundColor( ((style == .primary) ? .white : LBColor.buttonPrimary))
             .frame(maxWidth: .infinity, maxHeight: 44, alignment: .center)
-            .background((style == .primary) ? Style.ColorPalette.buttonPrimary : .white)
+            .background((style == .primary) ? LBColor.buttonPrimary : .white)
             .cornerRadius(10)
             .overlay(
             RoundedRectangle(cornerRadius: 10)
                 .inset(by: -1)
-                .stroke((style == .primary) ? .white :  Style.ColorPalette.buttonPrimary))
+                .stroke((style == .primary) ? .white :  LBColor.buttonPrimary))
     }
 }

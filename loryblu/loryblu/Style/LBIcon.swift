@@ -1,6 +1,6 @@
 import SwiftUI
 
-enum Icon: String {
+enum LBIcon: String {
     case cake
     case check
     case close

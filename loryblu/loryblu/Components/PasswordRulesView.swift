@@ -17,18 +17,17 @@ struct PasswordRulesView: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text(LBStrings.Rules.title)
-                .foregroundColor(Style.ColorPalette.text)
-                .font(Style.Typography.bodyLittleSmall)
-            IconLabel(title: LBStrings.Rules.rule1, type: check(rule: containsSize))
-            IconLabel(title: LBStrings.Rules.rule2, type: check(rule: containsUppercase))
-            IconLabel(title: LBStrings.Rules.rule3, type: check(rule: containsLowercase))
-            IconLabel(title: LBStrings.Rules.rule4, type: check(rule: containsNumber))
-            IconLabel(title: LBStrings.Rules.rule5, type: check(rule: containsSpecial))
+                .foregroundColor(LBColor.text)
+                .font(LBFont.bodyLittleSmall)
+            LBLabel(title: LBStrings.Rules.rule1, type: check(rule: containsSize))
+            LBLabel(title: LBStrings.Rules.rule2, type: check(rule: containsUppercase))
+            LBLabel(title: LBStrings.Rules.rule3, type: check(rule: containsLowercase))
+            LBLabel(title: LBStrings.Rules.rule4, type: check(rule: containsNumber))
+            LBLabel(title: LBStrings.Rules.rule5, type: check(rule: containsSpecial))
         }
-
     }
 
-    private func check(rule: Bool) -> IconLabel.TypeIcon {
+    private func check(rule: Bool) -> LBLabel.TypeIcon {
         if rule {
             return .check
         }
