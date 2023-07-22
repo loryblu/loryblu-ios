@@ -1,0 +1,20 @@
+// General
+"send" = "Enviar";
+"next" = "Proximo";
+"hello" = "Hello Word!!";
+
+// ====================  Rules Password  =========================
+
+"rule_title" = "A senha deve conter:";
+"rule1" = "Pelo menos 8 caracteres";
+"rule2" = "Pelo menos uma letra maiúscula";
+"rule3" = "Letra minúsculas";
+"rule4" = "Pelo menos um número";
+"rule5" = "Pelo menos um caractere especial: ! @ # $ % & *";
+
+// ===========================================================
+//                   CUSTOM COMPONENTS
+// ===========================================================
+
+// 
+
