@@ -7,14 +7,65 @@
 
 import SwiftUI
 
-struct icon: View {
+struct PasswordRulesView: View {
+    let containsSize: Bool
+    let containsUppercase: Bool
+    let containsLowercase: Bool
+    let containsNumber: Bool
+    let containsSpecial: Bool
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(alignment: .leading) {
+            Text(LBStrings.Rules.title)
+                .foregroundColor(Style.ColorPalette.text)
+                .font(Style.Typography.bodyLittleSmall)
+            IconLabel(title: LBStrings.Rules.rule1, type: check(rule: containsSize))
+            IconLabel(title: LBStrings.Rules.rule2, type: check(rule: containsUppercase))
+            IconLabel(title: LBStrings.Rules.rule3, type: check(rule: containsLowercase))
+            IconLabel(title: LBStrings.Rules.rule4, type: check(rule: containsNumber))
+            IconLabel(title: LBStrings.Rules.rule5, type: check(rule: containsSpecial))
+        }
+
+    }
+
+    private func check(rule: Bool) -> IconLabel.TypeIcon {
+        if rule {
+            return .check
+        }
+        return .wrong
     }
 }
 
-struct icon_Previews: PreviewProvider {
+struct PasswordRulesView_Previews: PreviewProvider {
     static var previews: some View {
-        icon()
+        PasswordRulesView(
+            containsSize: false,
+            containsUppercase: true,
+            containsLowercase: false,
+            containsNumber: false,
+            containsSpecial: true)
+    }
+}
+
+enum LBStrings {
+
+}
+
+extension LBStrings {
+    enum General {
+        static let next = LocalizedStringKey("next")
+        static let send = LocalizedStringKey("send")
+        static let hello = LocalizedStringKey("hello")
+    }
+}
+
+extension LBStrings {
+    enum Rules {
+        static let title = String(localized: "rule_title")
+        static let rule1 = String(localized: "rule1")
+        static let rule2 = String(localized: "rule2")
+        static let rule3 = String(localized: "rule3")
+        static let rule4 = String(localized: "rule4")
+        static let rule5 = String(localized: "rule5")
     }
 }

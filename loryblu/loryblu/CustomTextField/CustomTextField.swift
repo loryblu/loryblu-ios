@@ -16,7 +16,7 @@ struct CustomTextField: View {
     let title: String
 
     @Binding var text: String
-    @Binding var IsHidden: Bool
+    @Binding var isHidden: Bool
     @State var textFiledState: TextFieldState
 
     var body: some View {
@@ -32,7 +32,7 @@ struct CustomTextField: View {
                 case .common:
                     TextField(title, text: $text)
                 case .password:
-                    if IsHidden {
+                    if isHidden {
                         SecureField(title, text: $text)
                         passwordButton
                             .accentColor(Style.ColorPalette.text)
@@ -57,14 +57,14 @@ struct CustomTextField: View {
 
     var passwordButton: some View {
         Button {
-            IsHidden.toggle()
+            isHidden.toggle()
         } label: {
             secretIcon
         }
     }
 
     var secretIcon: some View {
-        if IsHidden {
+        if isHidden {
             return Icon.eyeClose.image
         }
         return Icon.eyeOpen.image
@@ -79,7 +79,7 @@ struct CustomTextField_Previews: PreviewProvider {
                 icon: Icon.lock,
                 title: "User",
                 text: .constant("Email"),
-                IsHidden: .constant(true),
+                isHidden: .constant(true),
                 textFiledState: .alert)
 
             CustomTextField(
@@ -87,7 +87,7 @@ struct CustomTextField_Previews: PreviewProvider {
                 icon: Icon.lock,
                 title: "User",
                 text: .constant("12345"),
-                IsHidden: .constant(false),
+                isHidden: .constant(false),
                 textFiledState: .active)
         }
     }
