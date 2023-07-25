@@ -8,8 +8,23 @@
 import SwiftUI
 
 struct ExternalLogin: View {
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack{
+            Button {
+            } label: {
+                Image("google")
+            }
+            .padding(.trailing, 48.0)
+            
+            Button {
+                    
+            } label: {
+                Image("facebook")
+
+            }
+            
+        }
     }
 }
 

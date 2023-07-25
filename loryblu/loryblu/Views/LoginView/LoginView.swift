@@ -44,10 +44,34 @@ struct LoginView: View {
                 Toggle("Agree", isOn: $rememberMe).padding(.trailing, 18.0).labelsHidden()
                 Text("Lembrar").font(Style.Typography.subtitle).multilineTextAlignment(.trailing).padding(.trailing, 24)
             }
-            .frame(maxWidth: .infinity, alignment: .trailing)
+            .frame(maxWidth: .infinity, alignment: .trailing).padding(.top,13)
             
             Buttons(title: "entrar", action: sendLogin).padding(.horizontal, 24)
                 .padding(.top, 51)
+            
+            LabelledDivider(label:  "ou").padding(.top, 30.0)
+            
+            HStack{
+                
+                Button("Esqueceu sua senha?"){}.font(Style.Typography.bodySmall).foregroundColor(.black).multilineTextAlignment(.trailing).background(
+                    Color.black
+                    .frame(height: 1)
+                        .offset(y: 14)
+                        
+                )
+            }
+            .frame(maxWidth: .infinity, alignment: .trailing)
+            .padding(.trailing, 24)
+            
+            ExternalLogin()
+                .padding(.top, 53.0)
+            
+            HStack{
+                
+                Button("Não tem uma conta?"){}.font(Style.Typography.caption).foregroundColor(Style.ColorPalette.placeholder).multilineTextAlignment(.trailing).padding(.trailing, 8)
+                
+                Button("Registrar agora"){}.font(Style.Typography.caption).foregroundColor(Style.ColorPalette.buttonPrimary).multilineTextAlignment(.trailing)
+            }.padding(.top, 32.0)
         }
         
     }
