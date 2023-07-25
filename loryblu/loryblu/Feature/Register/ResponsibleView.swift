@@ -82,10 +82,10 @@ struct ResponsibleView: View {
 struct ResponsibleView_Previews: PreviewProvider {
     static var previews: some View {
         ResponsibleView(
-            name: LBStrings.Register.name,
-            email: LBStrings.General.email,
-            password: LBStrings.General.password,
-            confirmPassword: LBStrings.Register.confirmPassword,
+            name: "",
+            email: "",
+            password: "",
+            confirmPassword: "",
             isHiddenPassword: false,
             isHiddenRepeat: false
         )

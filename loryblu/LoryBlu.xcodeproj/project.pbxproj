@@ -18,6 +18,7 @@
 		8C57341B2A6B4F5F0052B955 /* LBStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C57341A2A6B4F5F0052B955 /* LBStrings.swift */; };
 		8C5734202A6B6F6B0052B955 /* LBTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C57341F2A6B6F6B0052B955 /* LBTextField.swift */; };
 		8C5734262A6C39AF0052B955 /* ResponsibleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C5734252A6C39AF0052B955 /* ResponsibleView.swift */; };
+		8C7C64B32A6F4CE1002361A9 /* ValidadeRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7C64B22A6F4CE1002361A9 /* ValidadeRules.swift */; };
 		8CE03E392A6360BE0024919C /* LBColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE03E382A6360BE0024919C /* LBColor.swift */; };
 		8CE03E3C2A6363630024919C /* LBIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE03E3B2A6363630024919C /* LBIcon.swift */; };
 		8CFB359E2A6059BD008BF633 /* LorybluApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB359D2A6059BD008BF633 /* LorybluApp.swift */; };
@@ -39,6 +40,7 @@
 		8C57341A2A6B4F5F0052B955 /* LBStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBStrings.swift; sourceTree = "<group>"; };
 		8C57341F2A6B6F6B0052B955 /* LBTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LBTextField.swift; sourceTree = "<group>"; };
 		8C5734252A6C39AF0052B955 /* ResponsibleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponsibleView.swift; sourceTree = "<group>"; };
+		8C7C64B22A6F4CE1002361A9 /* ValidadeRules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidadeRules.swift; sourceTree = "<group>"; };
 		8CE03E382A6360BE0024919C /* LBColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBColor.swift; sourceTree = "<group>"; };
 		8CE03E3B2A6363630024919C /* LBIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBIcon.swift; sourceTree = "<group>"; };
 		8CFB359A2A6059BD008BF633 /* LoryBlu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoryBlu.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				8C5734252A6C39AF0052B955 /* ResponsibleView.swift */,
+				8C7C64B22A6F4CE1002361A9 /* ValidadeRules.swift */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 				8C5734172A6B3B2D0052B955 /* PasswordRulesView.swift in Sources */,
 				8C5734202A6B6F6B0052B955 /* LBTextField.swift in Sources */,
 				8CFB359E2A6059BD008BF633 /* LorybluApp.swift in Sources */,
+				8C7C64B32A6F4CE1002361A9 /* ValidadeRules.swift in Sources */,
 				8CE03E3C2A6363630024919C /* LBIcon.swift in Sources */,
 				8C27B8542A68C19400F72214 /* LBLabel.swift in Sources */,
 				8C57341B2A6B4F5F0052B955 /* LBStrings.swift in Sources */,
