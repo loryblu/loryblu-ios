@@ -52,7 +52,7 @@ struct CustomTextField: View {
         .cornerRadius(8)
         .border(Style.ColorPalette.error,
                 width: textFiledState.rawValue)
-        .padding()
+        //.padding()
     }
 
     var passwordButton: some View {
