@@ -1,22 +1,11 @@
 import SwiftUI
 
 struct NewPasswordScreen: View {
-    enum PasswordRequirements: String {
-        case containsSize = "Pelo menos 8 caracteres"
-        case containsUppercase = "Pelo menos uma letra maiúscula"
-        case containsLowercase = "Letras minúsculas"
-        case containsNumber = "Números"
-        case containsSpecial = "Pelo menos um caractere especial: ! @ # $ % *"
-
-        var requirements: String {
-            String(self.rawValue)
-        }
-
-    }
-    @Binding var userEmail: String
-    @Binding var isHidden: Bool
-    @State var passwordRequirements: PasswordRequirements
-    var body: some View {
+    @State var check: CheckdeRules = CheckdeRules()
+    @State var newPassword: String = ""
+    @State var repeatNewPassword: String = ""
+    @State var isHidden: Bool = false
+     var body: some View {
         VStack {
             Image("logo")
                 .frame(width: 187, height: 47)
@@ -30,64 +19,63 @@ struct NewPasswordScreen: View {
             CustomTextField(style: .password,
                             icon: Icon.lock,
                             title: "Nova senha",
-                            text: $userEmail,
+                            text: $newPassword,
                             isHidden: $isHidden,
                             textFiledState: .active)
-            VStack {
-                HStack(spacing: 5) {
-                    Image("close")
-                    Text(PasswordRequirements.containsSize.requirements)
-                        .font(Style.Typography.caption)
-                        .foregroundColor(Style.ColorPalette.error)
-                       Spacer()
-                }
-                HStack(spacing: 5) {
-                    Image("close")
-                    Text(PasswordRequirements.containsUppercase.requirements)
-                        .font(Style.Typography.caption)
-                        .foregroundColor(Style.ColorPalette.error)
-                       Spacer()
-                }
-                HStack(spacing: 5) {
-                    Image("close")
-                    Text(PasswordRequirements.containsLowercase.requirements)
-                        .font(Style.Typography.caption)
-                        .foregroundColor(Style.ColorPalette.error)
-                       Spacer()
-                }
-                HStack(spacing: 5) {
-                    Image("close")
-                    Text(PasswordRequirements.containsNumber.requirements)
-                        .font(Style.Typography.caption)
-                        .foregroundColor(Style.ColorPalette.error)
-                       Spacer()
-                }
-                HStack(spacing: 5) {
-                    Image("close")
-                    Text(PasswordRequirements.containsSpecial.requirements)
-                        .font(Style.Typography.caption)
-                        .foregroundColor(Style.ColorPalette.error)
-                       Spacer()
-                }
 
+            VStack(alignment: .leading) {
+                HStack {
+                    CheckRulesView(type: checkRules(check.checkNumber(newPassword)),
+                                   requirement: .containsSize)
+                    Spacer()
+                  }
+                .padding(.leading)
+                HStack {
+                    CheckRulesView(type: checkRules(check.checkNumber(newPassword)),
+                                   requirement: .containsUppercase)
+                    Spacer()
+                }
+                .padding(.leading)
+                HStack {
+                    CheckRulesView(type: checkRules(check.checkLowercase(newPassword)),
+                                   requirement: .containsLowercase)
+                    Spacer()
+                }
+                .padding(.leading)
+                HStack {
+                    CheckRulesView(type: checkRules(check.checkNumber(newPassword)),
+                                   requirement: .containsNumber)
+                    Spacer()
+                }
+                .padding(.leading)
+                HStack {
+                    CheckRulesView(type: checkRules(check.checkSpecial(newPassword)),
+                                   requirement: .containsSpecial)
+                    Spacer()
+                }
+                .padding(.leading)
             }
-            .padding()
+
             CustomTextField(style: .password,
                             icon: Icon.lock,
                             title: "Repetir senha",
-                            text: $userEmail,
+                            text: $repeatNewPassword,
                             isHidden: $isHidden,
                             textFiledState: .active)
+        }
+    }
+
+    private func checkRules(_ rule: Bool) -> CheckRulesView.TypeCheck {
+        if rule {
+            return .check
+        } else {
+            return .close
         }
     }
 }
 
 struct NewPasswordScreen_Previews: PreviewProvider {
     static var previews: some View {
-        NewPasswordScreen(
-            userEmail: .constant(""),
-            isHidden: .constant(false),
-            passwordRequirements: .containsLowercase)
-
+        NewPasswordScreen()
     }
 }
