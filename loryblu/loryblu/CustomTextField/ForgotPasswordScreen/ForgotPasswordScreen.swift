@@ -38,8 +38,9 @@ struct ForgotPasswordScreen: View {
                         }
                     }
                     .padding(.horizontal)
-                    .navigationDestination(isPresented: $model.isValid, destination: NewPasswordScreen())
-
+                    .navigationDestination(isPresented: $model.isValid) {
+                        NewPasswordScreen()
+                    }
                     HStack {
                         Spacer()
 
@@ -64,6 +65,6 @@ struct ForgotPasswordScreen: View {
 
 struct ForgotPasswordScreen_Previews: PreviewProvider {
     static var previews: some View {
-        ForgotPasswordScreen(fecthEmail: ForgotPasswordScreen.FechtEmail.error)
+        ForgotPasswordScreen(fecthEmail: ForgotPasswordScreen.FechtEmail.error).environmentObject(ForgotPasswordModel())
     }
 }
