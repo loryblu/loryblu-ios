@@ -49,10 +49,11 @@ struct CustomTextField: View {
         }
         .background(Style.ColorPalette.textfield)
         .frame(height: 48)
-        .cornerRadius(8)
-        .border(Style.ColorPalette.error,
-                width: textFiledState.rawValue)
-        //.padding()
+        .overlay(
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(Style.ColorPalette.error, lineWidth: textFiledState.rawValue)
+                )
+        
     }
 
     var passwordButton: some View {
