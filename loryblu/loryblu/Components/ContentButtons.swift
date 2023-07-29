@@ -23,10 +23,8 @@ struct Buttons: View {
     var style: ButtonStyle
     let action: () -> Void
     var body: some View {
-        Button(title) {
-           action()
-            
-        }
+        Button(action: action){
+            Text(title)
             .textCase(.uppercase)
             .font(Font.custom("Inter", size: 16) .weight(.bold))
             .multilineTextAlignment(.center)
@@ -38,6 +36,7 @@ struct Buttons: View {
             RoundedRectangle(cornerRadius: 10)
                 .inset(by: -1)
                 .stroke((style == .primary) ? .white :  Style.ColorPalette.buttonPrimary))
-            
+            .buttonStyle(PlainButtonStyle())
+        }
     }
 }
