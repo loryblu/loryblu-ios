@@ -17,7 +17,7 @@ struct CustomTextField: View {
 
     @Binding var text: String
     @Binding var isHidden: Bool
-    @State var textFiledState: TextFieldState
+    let textFiledState: TextFieldState
 
     var body: some View {
 
@@ -49,10 +49,9 @@ struct CustomTextField: View {
         }
         .background(Style.ColorPalette.textfield)
         .frame(height: 48)
-        .overlay(
-                    RoundedRectangle(cornerRadius: 8)
-                        .stroke(Style.ColorPalette.error, lineWidth: textFiledState.rawValue)
-                )
+        .cornerRadius(8)
+        .border(Style.ColorPalette.error,
+                width: textFiledState.rawValue)
         
     }
 

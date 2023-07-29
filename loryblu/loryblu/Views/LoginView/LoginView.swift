@@ -30,11 +30,12 @@ struct LoginView: View {
     
     @State var email: String = ""
     @State var password: String = ""
-    @State var isEmailValid: Bool = true
+    @State private var isEmailValid: Bool = true
     @State var isPasswordValid: Bool = true
     @State private var rememberMe = false
-    
+    @State private var isPasswordHidden: Bool = true
    
+
     
     func tryLogin(){
         if self.emailValidator(email) {
@@ -64,18 +65,19 @@ struct LoginView: View {
                     style: .common,
                     icon: Icon.mail,
                     title: "Email",
-                    text:$email,
+                    text :$email,
                     isHidden: .constant(true),
                     textFiledState: !isEmailValid ? .alert : .active)
                 .textInputAutocapitalization(.never)
+                
                 
                 CustomTextField(
                     style: .password,
                     icon: Icon.lock,
                     title: "Senha",
                     text:$password,
-                    isHidden: .constant(false),
-                    textFiledState: .active)
+                   isHidden: $isPasswordHidden,
+                    textFiledState: .alert)
                 
                 .textInputAutocapitalization(.never)
                 
