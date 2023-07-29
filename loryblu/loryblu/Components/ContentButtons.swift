@@ -25,6 +25,7 @@ struct Buttons: View {
     var body: some View {
         Button(title) {
            action()
+            
         }
             .textCase(.uppercase)
             .font(Font.custom("Inter", size: 16) .weight(.bold))
@@ -37,5 +38,6 @@ struct Buttons: View {
             RoundedRectangle(cornerRadius: 10)
                 .inset(by: -1)
                 .stroke((style == .primary) ? .white :  Style.ColorPalette.buttonPrimary))
+            
     }
 }

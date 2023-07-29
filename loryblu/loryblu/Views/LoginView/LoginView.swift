@@ -9,20 +9,49 @@ import SwiftUI
 
 struct LoginView: View {
     
-    let emailPredicate = NSPredicate(format: "SELF MATCHES %@", "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}" )
     
-    let passwordPredicate = NSPredicate(format: "SELF MATCHES %@", "ˆ(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z].{8,}$")
+    func emailValidator(_ email: String) -> Bool {
+        if email.count > 100 {
+            return false
+        }
+        let emailFormat = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailFormat)
+        return emailPredicate.evaluate(with: email)
+    }
+    
+    func passwordValidator(_ senha: String) -> Bool {
+        
+        let passwordFormat = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[$@$!%*#?&])[A-Za-z\\d$@$!%*#?&]{8,}$"
+        let passwordPredicate = NSPredicate(format:"SELF MATCHES %@", passwordFormat)
+        return passwordPredicate.evaluate(with: senha)
+    }
+
+    
     
     @State var email: String = ""
     @State var password: String = ""
-    
+    @State var isEmailValid: Bool = true
+    @State var isPasswordValid: Bool = true
     @State private var rememberMe = false
     
+   
     
-    
-    func sendLogin(){
-        //your logic here
+    func tryLogin(){
+        if self.emailValidator(email) {
+                            isEmailValid = true
+                        } else {
+                            isEmailValid = false
+                           
+                        }
+        if self.passwordValidator(password){
+            isPasswordValid = true
+        } else {
+            isPasswordValid = false
+            
+        }
     }
+    
+    
     var body: some View {
         VStack{
             Image("loryblu_logo")
@@ -37,7 +66,8 @@ struct LoginView: View {
                     title: "Email",
                     text:$email,
                     isHidden: .constant(true),
-                    textFiledState: .active)
+                    textFiledState: !isEmailValid ? .alert : .active)
+                .textInputAutocapitalization(.never)
                 
                 CustomTextField(
                     style: .password,
@@ -47,11 +77,17 @@ struct LoginView: View {
                     isHidden: .constant(false),
                     textFiledState: .active)
                 
+                .textInputAutocapitalization(.never)
+                
             }
             
             VStack{
-                if emailPredicate.evaluate(with: email) && !email.isEmpty {
-                    Text("Email inválido")}
+              
+                if !isEmailValid {
+                    Text("* Email inválido").font(Style.Typography.caption).foregroundColor(.red)}
+                
+                if !isPasswordValid {
+                    Text("* Senha inválida").font(Style.Typography.caption).foregroundColor(.red)}
                 
                 HStack{
                     
@@ -62,7 +98,7 @@ struct LoginView: View {
             .frame(maxWidth: .infinity, maxHeight: 77, alignment: .trailing)
             
             
-            Buttons(title: "entrar", action: sendLogin).padding(.horizontal, 24)
+            Buttons(title: "entrar", action: tryLogin).padding(.horizontal, 24)
                 .padding(.top, 51)
             
             LabelledDivider(label:  "ou").padding(.top, 30.0)
