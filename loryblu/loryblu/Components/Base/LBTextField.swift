@@ -6,7 +6,7 @@ struct LBTextField: View {
         case password
     }
 
-    enum TextFieldState: CGFloat {
+    enum TextFieldState: CGFloat, Equatable {
         case active = 0
         case alert = 2
     }
@@ -17,7 +17,7 @@ struct LBTextField: View {
 
     @Binding var text: String
     @Binding var isHidden: Bool
-    @State var textFiledState: TextFieldState
+    let textFiledState: TextFieldState
 
     var body: some View {
 

@@ -26,6 +26,9 @@
 "register_gender_woman" = "Menina";
 "register_button" = "cadastrar";
 "register_agree_privacy" = "Eu concordo com a política de privacidade";
+"textError_name" = "*Campo obrigatório";
+"textError_email" = "*E-mail inválido";
+"textError_confirmPassword" = "*As senhas devem ser idênticas";
 
 // ====================  Set Password  =========================
 

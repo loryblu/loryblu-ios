@@ -44,6 +44,9 @@ extension LBStrings {
         static let woman = String(localized: "register_gender_woman")
         static let buttonRegister = String(localized: "register_button")
         static let agree = String(localized: "register_agree_privacy")
+        static let errorName = String(localized: "textError_name")
+        static let errorEmail = String(localized: "textError_email")
+        static let errorPassord = String(localized: "textError_confirmPassword")
     }
 }
 

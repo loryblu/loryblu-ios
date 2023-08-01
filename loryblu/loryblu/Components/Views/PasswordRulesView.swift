@@ -8,11 +8,27 @@
 import SwiftUI
 
 struct PasswordRulesView: View {
-    let containsSize: Bool
-    let containsUppercase: Bool
-    let containsLowercase: Bool
-    let containsNumber: Bool
-    let containsSpecial: Bool
+    let password: String
+
+    private var containsSize: Bool {
+        ValidateRules.validateSize(password: password)
+    }
+
+    private var containsUppercase: Bool {
+        ValidateRules.validateUppercase(password: password)
+    }
+
+    private var containsLowercase: Bool {
+        ValidateRules.validateLowercase(password: password)
+    }
+
+    private var containsNumber: Bool {
+        ValidateRules.validateNumber(password: password)
+    }
+
+    private var containsSpecial: Bool {
+        ValidateRules.validateSpecial(password: password)
+    }
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -37,11 +53,6 @@ struct PasswordRulesView: View {
 
 struct PasswordRulesView_Previews: PreviewProvider {
     static var previews: some View {
-        PasswordRulesView(
-            containsSize: false,
-            containsUppercase: true,
-            containsLowercase: false,
-            containsNumber: false,
-            containsSpecial: true)
+        PasswordRulesView(password: "Scp12%jdhj")
     }
 }
