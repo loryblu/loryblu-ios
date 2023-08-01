@@ -8,10 +8,8 @@
 import SwiftUI
 
 struct ResponsibleView: View {
-    @State var name: String = ""
-    @State var email: String = ""
-    @State var password: String = ""
-    @State var confirmPassword: String = ""
+    @ObservedObject var viewModel: ResponsibleViewModel = ResponsibleViewModel()
+    @FocusState private var focusedField: ResponsibleViewModel.FocusedField?
     @State var isHiddenPassword: Bool = false
     @State var isHiddenRepeat: Bool = false
 
@@ -31,63 +29,102 @@ struct ResponsibleView: View {
                     .padding(.bottom, 32)
             }
 
-            VStack(spacing: 16) {
-                LBTextField(
-                    style: .common,
-                    icon: LBIcon.user,
-                    title: LBStrings.Register.name,
-                    text: $name,
-                    isHidden: .constant(false),
-                    textFiledState: .active
-                )
+            form
 
-                LBTextField(
-                    style: .common,
-                    icon: LBIcon.mail,
-                    title: LBStrings.General.email,
-                    text: $email,
-                    isHidden: .constant(false),
-                    textFiledState: .active
-                )
+        }
+        .padding(.top, -40)
+        .onChange(of: viewModel.errorField) { newValue in
+            if newValue != .none {
+                focusedField = newValue
+            }
+        }
+    }
 
-                LBTextField(
-                    style: .password,
-                    icon: LBIcon.lock,
-                    title: LBStrings.General.password,
-                    text: $password,
-                    isHidden: $isHiddenPassword,
-                    textFiledState: .active
-                )
+    var form: some View {
+        VStack(spacing: 16) {
+            LBTextField(
+                style: .common,
+                icon: LBIcon.user,
+                title: LBStrings.Register.name,
+                text: $viewModel.name,
+                isHidden: .constant(false),
+                textFiledState: viewModel.errorField == .name ? .alert : .active
+            )
+            .focused($focusedField, equals: .name)
+            .onChange(of: viewModel.name) { _ in
+                viewModel.clearError()
+            }
 
-                LBTextField(
-                    style: .password,
-                    icon: LBIcon.lock,
-                    title: LBStrings.Register.confirmPassword,
-                    text: $confirmPassword,
-                    isHidden: $isHiddenRepeat,
-                    textFiledState: .active
-                )
+            LBTextField(
+                style: .common,
+                icon: LBIcon.mail,
+                title: LBStrings.General.email,
+                text: $viewModel.email,
+                isHidden: .constant(false),
+                textFiledState: viewModel.errorField == .email ? .alert : .active
+            )
+            .focused($focusedField, equals: .email)
+            .onChange(of: viewModel.email) { _ in
+                viewModel.clearError()
+            }
 
-                LBButton(title: LBStrings.General.next) {
-                    print("Proxima Tela")
-                }.padding(.top, 40)
+            LBTextField(
+                style: .password,
+                icon: LBIcon.lock,
+                title: LBStrings.General.password,
+                text: $viewModel.password,
+                isHidden: $isHiddenPassword,
+                textFiledState: viewModel.errorField == .password ? .alert : .active
+            )
+            .focused($focusedField, equals: .password)
+            .onChange(of: viewModel.password) { _ in
+                viewModel.clearError()
+            }
 
-            }.padding([.leading, .trailing], 24)
+            if let focusedField = self.focusedField, focusedField == .password {
+                HStack {
+                    PasswordRulesView(password: viewModel.password)
+                    Spacer()
+                }
+            }
 
-        }.padding(.top, -40)
+            LBTextField(
+                style: .password,
+                icon: LBIcon.lock,
+                title: LBStrings.Register.confirmPassword,
+                text: $viewModel.confirmPassword,
+                isHidden: $isHiddenRepeat,
+                textFiledState: viewModel.errorField == .confirmPassword ? .alert : .active
+            )
+            .focused($focusedField, equals: .confirmPassword)
+            .onChange(of: viewModel.confirmPassword) { _ in
+                viewModel.clearError()
+            }
 
+            if viewModel.hasError {
+                HStack {
+                    Spacer()
+                    Text(viewModel.textError)
+                        .foregroundColor(LBColor.error)
+                        .font(LBFont.caption)
+                        .multilineTextAlignment(.trailing)
+                }
+            }
+
+            LBButton(title: LBStrings.General.next) {
+                self.viewModel.showError()
+                print("Abrir Cadastro da Criança")
+            }
+            .padding(.top, 40)
+
+        }.padding([.leading, .trailing], 24)
     }
 }
 
 struct ResponsibleView_Previews: PreviewProvider {
     static var previews: some View {
         ResponsibleView(
-            name: "",
-            email: "",
-            password: "",
-            confirmPassword: "",
-            isHiddenPassword: false,
-            isHiddenRepeat: false
+            viewModel: ResponsibleViewModel()
         )
     }
 }
