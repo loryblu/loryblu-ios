@@ -6,8 +6,7 @@ struct ForgotPasswordScreen: View {
         case error
     }
     @EnvironmentObject var model: ForgotPasswordModel
-    @State var userEmail: String = ""
-    @State var isHidden: Bool = false
+    @State var userEmail: String = "Abc"
     @State var fecthEmail: FechtEmail
 
     var body: some View {
@@ -26,7 +25,6 @@ struct ForgotPasswordScreen: View {
                                 icon: Icon.mail,
                                 title: "Email",
                                 text: $userEmail,
-                                isHidden: $isHidden,
                                 textFiledState: .active)
                 VStack {
                      Buttons(title: "Enviar") {

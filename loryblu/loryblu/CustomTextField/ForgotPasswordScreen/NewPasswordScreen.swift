@@ -4,7 +4,6 @@ struct NewPasswordScreen: View {
     @State var check: CheckdeRules = CheckdeRules()
     @State var newPassword: String = ""
     @State var repeatNewPassword: String = ""
-    @State var isHidden: Bool = false
      var body: some View {
         VStack {
             Image("logo")
@@ -14,16 +13,19 @@ struct NewPasswordScreen: View {
                 .font(Style.Typography.head6)
                 .padding(24)
             Text("Redefina sua senha aqui")
-                .font(Style.Typography.subtitle)
+                .font(Style.Typography.bodySmall)
 
             CustomTextField(style: .password,
                             icon: Icon.lock,
                             title: "Nova senha",
                             text: $newPassword,
-                            isHidden: $isHidden,
                             textFiledState: .active)
 
             VStack(alignment: .leading) {
+                Text("A senha deve conter:")
+                    .font(Style.Typography.bodyLittleSmall)
+                    .foregroundColor(Style.ColorPalette.text)
+                    .padding(.horizontal, 12)
                 HStack {
                     CheckRulesView(type: checkRules(check.checkNumber(newPassword)),
                                    requirement: .containsSize)
@@ -55,13 +57,22 @@ struct NewPasswordScreen: View {
                 }
                 .padding(.leading)
             }
+            .padding(.horizontal)
 
             CustomTextField(style: .password,
                             icon: Icon.lock,
                             title: "Repetir senha",
                             text: $repeatNewPassword,
-                            isHidden: $isHidden,
                             textFiledState: .active)
+
+            Text("Voce será deslogado de todos os dispositivos e precisará logar com a nova senha")
+                .font(Style.Typography.bodyLittleSmall)
+                .foregroundColor(Style.ColorPalette.text)
+                .padding(.horizontal)
+            Buttons(title: "REDEFINIR SENHA") {
+                // receber função dp backend
+            }
+            .padding()
         }
     }
 

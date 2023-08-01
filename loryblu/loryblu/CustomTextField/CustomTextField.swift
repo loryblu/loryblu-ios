@@ -16,7 +16,7 @@ struct CustomTextField: View {
     let title: String
 
     @Binding var text: String
-    @Binding var isHidden: Bool
+    @State var isHidden: Bool = false
     @State var textFiledState: TextFieldState
 
     var body: some View {
@@ -50,8 +50,10 @@ struct CustomTextField: View {
         .background(Style.ColorPalette.textfield)
         .frame(height: 48)
         .cornerRadius(8)
-        .border(Style.ColorPalette.error,
-                width: textFiledState.rawValue)
+        .overlay(content: {
+            RoundedRectangle(cornerRadius: 8)
+                .stroke(Style.ColorPalette.error, lineWidth: textFiledState.rawValue)
+        })
         .padding()
     }
 
@@ -79,7 +81,6 @@ struct CustomTextField_Previews: PreviewProvider {
                 icon: Icon.lock,
                 title: "User",
                 text: .constant("Email"),
-                isHidden: .constant(true),
                 textFiledState: .alert)
 
             CustomTextField(
@@ -87,7 +88,6 @@ struct CustomTextField_Previews: PreviewProvider {
                 icon: Icon.lock,
                 title: "User",
                 text: .constant("12345"),
-                isHidden: .constant(false),
                 textFiledState: .active)
         }
     }
