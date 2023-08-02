@@ -1,7 +1,10 @@
-// General
+// ==================== General ====================
+
 "send" = "Enviar";
 "next" = "Proximo";
 "hello" = "Hello Word!!";
+"email" = "E-mail";
+"password" = "Senha";
 
 // ====================  Rules Password  =========================
 
@@ -12,9 +15,28 @@
 "rule4" = "Pelo menos um número";
 "rule5" = "Pelo menos um caractere especial: ! @ # $ % & *";
 
-// ===========================================================
-//                   CUSTOM COMPONENTS
-// ===========================================================
+// ==================== Register =========================
 
-// 
+"register_responsible" = "Cadastro do responsável";
+"register_child" = "Cadastro da criança";
+"register_name" = "Nome";
+"register_confirm_password" = "Confirmar senha";
+"register_birthday" = "Data de nascimento";
+"register_gender_man" = "Menino";
+"register_gender_woman" = "Menina";
+"register_button" = "cadastrar";
+"register_agree_privacy" = "Eu concordo com a política de privacidade";
+"textError_name" = "*Campo obrigatório";
+"textError_email" = "*E-mail inválido";
+"textError_confirmPassword" = "*As senhas devem ser idênticas";
+
+// ====================  Set Password  =========================
+
+"setPassword_forget" = "Esqueceu a senha?";
+"setPassword_create" = "Criar nova senha";
+"setPassword_reset" = "Redefina sua senha aqui";
+"setPassword_error" = "Não foi possivel encontrar seu e-mail";
+"setPassword_success" = "E-mail enviado com sucesso";
+"setPassword_alert" = "Você será deslogado de todos os dispositivos e precisará logar com a nova senha";
+"setPassword_button_reset" = "redefinir senha";
 

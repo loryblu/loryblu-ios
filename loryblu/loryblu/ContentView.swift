@@ -8,7 +8,7 @@ struct ContentView: View {
                 .imageScale(.large)
                 .foregroundColor(.accentColor)
             Text(LBStrings.General.hello)
-                .font(Style.Typography.head2)
+                .font(LBFont.head2)
         }
         .padding()
     }
