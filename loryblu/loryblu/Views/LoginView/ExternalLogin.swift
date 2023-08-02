@@ -13,14 +13,14 @@ struct ExternalLogin: View {
         HStack{
             Button {
             } label: {
-                Image("google")
+                Icon.google.image
             }
             .padding(.trailing, 48.0)
             
             Button {
                     
             } label: {
-                Image("facebook")
+                Icon.facebook.image
 
             }
             
