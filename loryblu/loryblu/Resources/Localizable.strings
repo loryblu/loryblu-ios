@@ -1,4 +1,5 @@
-// General
+// ==================== General ====================
+
 "send" = "Enviar";
 "next" = "Proximo";
 "hello" = "Hello Word!!";

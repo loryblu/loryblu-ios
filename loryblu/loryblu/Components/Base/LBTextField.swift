@@ -17,11 +17,7 @@ struct LBTextField: View {
 
     @Binding var text: String
     @Binding var isHidden: Bool
-<<<<<<<< HEAD:loryblu/loryblu/Components/Base/LBTextField.swift
     let textFiledState: TextFieldState
-========
-    @State var textFiledState: TextFieldState
->>>>>>>> develop:loryblu/loryblu/Components/CustomTextField.swift
 
     var body: some View {
 
@@ -68,11 +64,7 @@ struct LBTextField: View {
 
     var secretIcon: some View {
         if isHidden {
-<<<<<<<< HEAD:loryblu/loryblu/Components/Base/LBTextField.swift
             return LBIcon.eyeClose.image
-========
-            return Icon.eyeClose.image
->>>>>>>> develop:loryblu/loryblu/Components/CustomTextField.swift
         }
         return LBIcon.eyeOpen.image
     }
@@ -87,12 +79,8 @@ struct CustomTextField_Previews: PreviewProvider {
                 title: "User",
                 text: .constant("Email"),
                 isHidden: .constant(true),
-<<<<<<<< HEAD:loryblu/loryblu/Components/Base/LBTextField.swift
                 textFiledState: .alert
             )
-========
-                textFiledState: .alert)
->>>>>>>> develop:loryblu/loryblu/Components/CustomTextField.swift
 
             LBTextField(
                 style: .password,
@@ -100,12 +88,8 @@ struct CustomTextField_Previews: PreviewProvider {
                 title: "User",
                 text: .constant("12345"),
                 isHidden: .constant(false),
-<<<<<<<< HEAD:loryblu/loryblu/Components/Base/LBTextField.swift
                 textFiledState: .active
             )
-========
-                textFiledState: .active)
->>>>>>>> develop:loryblu/loryblu/Components/CustomTextField.swift
         }
     }
 }
