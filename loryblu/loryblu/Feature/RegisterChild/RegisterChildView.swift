@@ -10,6 +10,7 @@ import SwiftUI
 struct RegisterChildView: View {
     @State var name: String = ""
     @State var birthDay: String = ""
+    @State var agreePrivacy: Bool = false
 
     var body: some View {
         VStack {
@@ -72,6 +73,13 @@ struct RegisterChildView: View {
 
             HStack {
                 Spacer()
+                Button {
+
+                } label: {
+                    LBIcon.noAgree.image
+                        .frame(width: 12, height: 12)
+                }
+
                 Text(LBStrings.Register.agree)
                     .foregroundColor(LBColor.text)
                     .font(LBFont.caption)

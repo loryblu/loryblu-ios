@@ -4,7 +4,7 @@ import SwiftUI
 struct LorybluApp: App {
     var body: some Scene {
         WindowGroup {
-            ResponsibleView()
+            ContentView()
         }
     }
 }

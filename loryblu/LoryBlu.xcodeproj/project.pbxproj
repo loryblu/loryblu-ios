@@ -144,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				8C5734222A6C21710052B955 /* Register */,
+				8C2535362A7898F30096738B /* RegisterChild */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -153,7 +154,6 @@
 			children = (
 				8C5734252A6C39AF0052B955 /* ResponsibleView.swift */,
 				8C2535312A7714DD0096738B /* ResponsibleViewModel.swift */,
-				8C2535362A7898F30096738B /* RegisterChild */,
 			);
 			path = Register;
 			sourceTree = "<group>";
