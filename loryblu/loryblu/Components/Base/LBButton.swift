@@ -23,9 +23,8 @@ struct LBButton: View {
     var style: ButtonStyle
     let action: () -> Void
     var body: some View {
-        Button(title) {
-           action()
-        }
+        Button(action: action){
+            Text(title)
             .textCase(.uppercase)
             .font(LBFont.button)
             .multilineTextAlignment(.center)
