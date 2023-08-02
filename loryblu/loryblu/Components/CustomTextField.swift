@@ -17,7 +17,7 @@ struct CustomTextField: View {
 
     @Binding var text: String
     @Binding var isHidden: Bool
-    @State var textFiledState: TextFieldState
+    let textFiledState: TextFieldState
 
     var body: some View {
 
@@ -52,7 +52,7 @@ struct CustomTextField: View {
         .cornerRadius(8)
         .border(Style.ColorPalette.error,
                 width: textFiledState.rawValue)
-        .padding()
+        
     }
 
     var passwordButton: some View {

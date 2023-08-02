@@ -12,6 +12,8 @@
 		330A377F2A660D4C00C9DCE7 /* Inter-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 330A377C2A660D4C00C9DCE7 /* Inter-Regular.otf */; };
 		330A37802A660D4C00C9DCE7 /* Inter-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 330A377D2A660D4C00C9DCE7 /* Inter-Medium.otf */; };
 		41931EBE2A6470B4008F13F8 /* ContentButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41931EBD2A6470B4008F13F8 /* ContentButtons.swift */; };
+		41ED6AE02A707A750075FD98 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ED6ADF2A707A750075FD98 /* LoginView.swift */; };
+		41ED6AE42A7088C00075FD98 /* ExternalLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ED6AE32A7088C00075FD98 /* ExternalLogin.swift */; };
 		8C27B8542A68C19400F72214 /* IconLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C27B8532A68C19400F72214 /* IconLabel.swift */; };
 		8C5734172A6B3B2D0052B955 /* PasswordRulesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C5734162A6B3B2D0052B955 /* PasswordRulesView.swift */; };
 		8C5734192A6B3EAE0052B955 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8C5734182A6B3EAE0052B955 /* Localizable.strings */; };
@@ -32,6 +34,8 @@
 		330A377D2A660D4C00C9DCE7 /* Inter-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Medium.otf"; sourceTree = "<group>"; };
 		330A37812A660D8000C9DCE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = LoryBlu/Info.plist; sourceTree = "<group>"; };
 		41931EBD2A6470B4008F13F8 /* ContentButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentButtons.swift; sourceTree = "<group>"; };
+		41ED6ADF2A707A750075FD98 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		41ED6AE32A7088C00075FD98 /* ExternalLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalLogin.swift; sourceTree = "<group>"; };
 		8C27B8532A68C19400F72214 /* IconLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconLabel.swift; sourceTree = "<group>"; };
 		8C5734162A6B3B2D0052B955 /* PasswordRulesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordRulesView.swift; sourceTree = "<group>"; };
 		8C5734182A6B3EAE0052B955 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -84,6 +88,23 @@
 			path = "inter-fonts";
 			sourceTree = "<group>";
 		};
+		41ED6ADD2A707A530075FD98 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				41ED6ADE2A707A620075FD98 /* LoginView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		41ED6ADE2A707A620075FD98 /* LoginView */ = {
+			isa = PBXGroup;
+			children = (
+				41ED6ADF2A707A750075FD98 /* LoginView.swift */,
+				41ED6AE32A7088C00075FD98 /* ExternalLogin.swift */,
+			);
+			path = LoginView;
+			sourceTree = "<group>";
+		};
 		8C27B8382A68BEF200F72214 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -134,6 +155,7 @@
 		8CFB359C2A6059BD008BF633 /* loryblu */ = {
 			isa = PBXGroup;
 			children = (
+				41ED6ADD2A707A530075FD98 /* Views */,
 				8CE03E3A2A6360DD0024919C /* Style */,
 				8C27B8382A68BEF200F72214 /* Components */,
 				8CFB359D2A6059BD008BF633 /* LorybluApp.swift */,
@@ -253,10 +275,12 @@
 				8CFB35A02A6059BD008BF633 /* ContentView.swift in Sources */,
 				41931EBE2A6470B4008F13F8 /* ContentButtons.swift in Sources */,
 				8C5734172A6B3B2D0052B955 /* PasswordRulesView.swift in Sources */,
+				41ED6AE42A7088C00075FD98 /* ExternalLogin.swift in Sources */,
 				8C5734202A6B6F6B0052B955 /* CustomTextField.swift in Sources */,
 				8CFB359E2A6059BD008BF633 /* LorybluApp.swift in Sources */,
 				8CE03E3C2A6363630024919C /* Icon.swift in Sources */,
 				8C27B8542A68C19400F72214 /* IconLabel.swift in Sources */,
+				41ED6AE02A707A750075FD98 /* LoginView.swift in Sources */,
 				8C57341B2A6B4F5F0052B955 /* LBStrings.swift in Sources */,
 				8CE03E392A6360BE0024919C /* Color.swift in Sources */,
 			);
