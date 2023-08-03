@@ -19,6 +19,7 @@ struct LBButton: View {
         case primary
         case second
     }
+
     var title: String
     var style: ButtonStyle
     let action: () -> Void

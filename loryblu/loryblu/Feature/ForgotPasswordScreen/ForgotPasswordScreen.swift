@@ -14,48 +14,52 @@ struct ForgotPasswordScreen: View {
             VStack {
                 Image("logo")
                     .frame(width: 187, height: 47)
-                    .padding(40)
-                Text("Esqueceu a senha?")
-                    .font(Style.Typography.head6)
-                    .padding(24)
-                Text("Redefina sua senha aqui")
-                    .font(Style.Typography.subtitle)
+                    .padding(.bottom, 40)
 
-                CustomTextField(style: .common,
-                                icon: Icon.mail,
+                Text("Esqueceu a senha?")
+                    .font(LBFont.head6)
+                    .padding(.bottom, 24)
+
+                Text("Redefina sua senha aqui")
+                    .font(LBFont.subtitle)
+                    .padding(.bottom, 56)
+
+                LBTextField(style: .common,
+                            icon: LBIcon.mail,
                                 title: "Email",
                                 text: $userEmail,
                                 textFiledState: .active)
-                VStack {
-                     Buttons(title: "Enviar") {
-                        model.login(user: userEmail)
-                        if model.isValid {
-                            fecthEmail = .success
-                        } else {
-                            fecthEmail = .error
-                        }
-                    }
-                    .padding(.horizontal)
-                    .navigationDestination(isPresented: $model.isValid) {
-                        NewPasswordScreen()
-                    }
-                    HStack {
-                        Spacer()
+                .padding(.bottom, 39)
 
-                        switch fecthEmail {
-                        case .success:
-                            Text("E-mail enviado com sucesso")
-                                .font(Style.Typography.caption)
-                                .padding()
-                        case .error:
-                        Text("Não foi possível encontrar seu email")
-                            .font(Style.Typography.caption)
-                            .foregroundColor(Style.ColorPalette.error)
+                LBButton(title: "Enviar") {
+                    model.login(user: userEmail)
+                    if model.isValid {
+                        fecthEmail = .success
+                    } else {
+                        fecthEmail = .error
+                    }
+                }
+                .padding(.bottom, 10)
+                .navigationDestination(isPresented: $model.isValid) {
+                    NewPasswordScreen()
+                }
+
+                HStack {
+                    Spacer()
+                    switch fecthEmail {
+                    case .success:
+                        Text("E-mail enviado com sucesso")
+                            .font(LBFont.caption)
                             .padding()
-                        }
+                    case .error:
+                    Text("Não foi possível encontrar seu email")
+                        .font(LBFont.caption)
+                        .foregroundColor(LBColor.error)
+                        .padding()
                     }
                 }
             }
+            .padding(.horizontal, 24)
         }
 
     }

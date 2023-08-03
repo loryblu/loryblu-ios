@@ -6,5 +6,6 @@ enum LBColor {
     static let error = Color("error")
     static let placeholder = Color("placeholder")
     static let text = Color("text")
+    static let title = Color("title")
     static let textfield = Color("textfield")
 }

@@ -41,7 +41,6 @@ struct RegisterChildView: View {
                 icon: LBIcon.user,
                 title: LBStrings.Register.name,
                 text: $name,
-                isHidden: .constant(false),
                 textFiledState: .active
             )
 
@@ -50,7 +49,6 @@ struct RegisterChildView: View {
                 icon: LBIcon.cake,
                 title: LBStrings.Register.birthDay,
                 text: $birthDay,
-                isHidden: .constant(false),
                 textFiledState: .active
             )
 
