@@ -57,7 +57,7 @@ struct LoginView: View {
                 LBTextField(
                     style: .common,
                     icon: LBIcon.mail,
-                    title: "Email",
+                    title: LBStrings.Login.email,
                     text: $email,
                     textFiledState: !isEmailValid ? .alert : .active)
                 .textInputAutocapitalization(.never)
@@ -65,7 +65,7 @@ struct LoginView: View {
                 LBTextField(
                     style: .password,
                     icon: LBIcon.lock,
-                    title: "Senha",
+                    title: LBStrings.Login.password,
                     text: $password,
                     textFiledState: isPasswordValid ? .active : .alert)
                 .textInputAutocapitalization(.never)
@@ -74,37 +74,37 @@ struct LoginView: View {
             VStack {
 
                 if !isEmailValid {
-                    Text("* Email inválido").font(LBFont.caption).foregroundColor(.red)}
+                    Text(LBStrings.Login.emailNotExists).font(LBFont.caption).foregroundColor(.red)}
 
                 if !isPasswordValid {
-                    Text("* Senha inválida").font(LBFont.caption).foregroundColor(.red)}
+                    Text(LBStrings.Login.requiredField).font(LBFont.caption).foregroundColor(.red)}
 
                 HStack {
-                    Toggle("Agree", isOn: $rememberMe)
+                    Toggle("Remember", isOn: $rememberMe)
                         .padding(.trailing, 18.0)
                         .labelsHidden()
                         .tint(LBColor.buttonPrimary)
 
-                    Text("Lembrar")
+                    Text(LBStrings.Login.remeber)
                         .font(LBFont.subtitle)
                         .multilineTextAlignment(.trailing)
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: 77, alignment: .trailing)
 
-            LBButton(title: "entrar", action: tryLogin)
+            LBButton(title: LBStrings.Login.enter, action: tryLogin)
                 .padding(.top, 51)
 
             HStack {
                 VStack { Divider().background(LBColor.text) }.padding(20)
-                Text("ou").foregroundColor(LBColor.text)
+                Text(LBStrings.Login.or).foregroundColor(LBColor.text)
                 VStack { Divider().background(LBColor.text) }.padding(20)
                     }
             .padding(.top, 30.0)
 
             HStack {
 
-                Button("Esqueceu sua senha?") {
+                Button(LBStrings.Login.forgotPassword) {
 
                 }
                 .font(LBFont.bodySmall)
@@ -123,7 +123,7 @@ struct LoginView: View {
 
             HStack {
 
-                Button("Não tem uma conta?") {
+                Button(LBStrings.Login.dontHaveAccount) {
 
                 }
                 .font(LBFont.caption)
@@ -131,7 +131,7 @@ struct LoginView: View {
                 .multilineTextAlignment(.trailing)
                 .padding(.trailing, 8)
 
-                Button("Registrar agora") {
+                Button(LBStrings.Login.registerNow) {
 
                 }
                 .font(LBFont.caption)
