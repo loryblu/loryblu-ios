@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LoginView: View {
-
+    
     func emailValidator(_ email: String) -> Bool {
         if email.count > 100 {
             return false
@@ -17,7 +17,7 @@ struct LoginView: View {
         let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailFormat)
         return emailPredicate.evaluate(with: email)
     }
-
+    
     func passwordValidator(_ senha: String) -> Bool {
         let passwordFormat = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[$@$!%*#?&])[A-Za-z\\d$@$!%*#?&]{8,}$"
         let passwordPredicate = NSPredicate(format: "SELF MATCHES %@", passwordFormat)
