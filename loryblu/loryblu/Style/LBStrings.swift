@@ -61,3 +61,17 @@ extension LBStrings {
         static let buttonReset = String(localized: "setPassword_button_reset")
     }
 }
+
+
+extension LBStrings {
+    enum LoginPage {
+        static let email = String(localized: "login_email")
+        static let password = String(localized: "login_password")
+        static let emailNotExists = String(localized: "login_required_field")
+        static let enter = String(localized: "login_enter" )
+        static let or = String(localized: "login_or_divider")
+        static let forgotPassword = String(localized: "login_forgot_password" )
+        static let dontHaveAccount = String(localized: "login_dont_have_an_account")
+        static let registerNow = String(localized: "login_register_now")
+    }
+}
