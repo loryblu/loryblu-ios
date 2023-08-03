@@ -2,11 +2,11 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        
+
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
+            LBIcon.loryblu.image
+//                .imageScale(.large)
+//                .foregroundColor(.accentColor)
             Text(LBStrings.General.hello)
                 .font(LBFont.head2)
         }

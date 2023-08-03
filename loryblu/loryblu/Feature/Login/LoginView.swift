@@ -14,13 +14,13 @@ struct LoginView: View {
             return false
         }
         let emailFormat = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailFormat)
+        let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailFormat)
         return emailPredicate.evaluate(with: email)
     }
     
     func passwordValidator(_ senha: String) -> Bool {
         let passwordFormat = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[$@$!%*#?&])[A-Za-z\\d$@$!%*#?&]{8,}$"
-        let passwordPredicate = NSPredicate(format:"SELF MATCHES %@", passwordFormat)
+        let passwordPredicate = NSPredicate(format: "SELF MATCHES %@", passwordFormat)
         return passwordPredicate.evaluate(with: senha)
     }
 
@@ -30,91 +30,114 @@ struct LoginView: View {
     @State var isPasswordValid: Bool = true
     @State private var rememberMe = false
     @State private var isPasswordHidden: Bool = true
-   
-    func tryLogin(){
+
+    func tryLogin() {
         if self.emailValidator(email) {
-                            isEmailValid = true
-                        } else {
-                            isEmailValid = false
-                        }
-        if self.passwordValidator(password){
+            isEmailValid = true
+        } else {
+            isEmailValid = false
+        }
+        if self.passwordValidator(password) {
             isPasswordValid = true
         } else {
             isPasswordValid = false
         }
     }
-    
+
     var body: some View {
-        VStack{
-            Icon.logo.image
+        VStack {
+            LBIcon.logo.image
                 .resizable()
                 .frame(width: 187, height: 47)
                 .padding(.bottom, 40)
             Text("Login")
-                .font(Style.Typography.head6)
+                .font(LBFont.head6)
                 .padding(.bottom, 32)
-            VStack{
-                CustomTextField(
+            VStack {
+                LBTextField(
                     style: .common,
-                    icon: Icon.mail,
+                    icon: LBIcon.mail,
                     title: "Email",
-                    text :$email,
-                    isHidden: .constant(true),
+                    text: $email,
                     textFiledState: !isEmailValid ? .alert : .active)
                 .textInputAutocapitalization(.never)
-                
-                CustomTextField(
+
+                LBTextField(
                     style: .password,
-                    icon: Icon.lock,
+                    icon: LBIcon.lock,
                     title: "Senha",
-                    text:$password,
-                   isHidden: $isPasswordHidden,
+                    text: $password,
                     textFiledState: isPasswordValid ? .active : .alert)
                 .textInputAutocapitalization(.never)
             }
-            
-            VStack{
-              
+
+            VStack {
+
                 if !isEmailValid {
-                    Text("* Email inválido").font(Style.Typography.caption).foregroundColor(.red)}
-                
+                    Text("* Email inválido").font(LBFont.caption).foregroundColor(.red)}
+
                 if !isPasswordValid {
-                    Text("* Senha inválida").font(Style.Typography.caption).foregroundColor(.red)}
-                
-                HStack{
-                    Toggle("Agree", isOn: $rememberMe).padding(.trailing, 18.0).labelsHidden()
-                    Text("Lembrar").font(Style.Typography.subtitle).multilineTextAlignment(.trailing)
+                    Text("* Senha inválida").font(LBFont.caption).foregroundColor(.red)}
+
+                HStack {
+                    Toggle("Agree", isOn: $rememberMe)
+                        .padding(.trailing, 18.0)
+                        .labelsHidden()
+                        .tint(LBColor.buttonPrimary)
+
+                    Text("Lembrar")
+                        .font(LBFont.subtitle)
+                        .multilineTextAlignment(.trailing)
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: 77, alignment: .trailing)
-            
-            Buttons(title: "entrar", action: tryLogin)
+
+            LBButton(title: "entrar", action: tryLogin)
                 .padding(.top, 51)
-            
+
             HStack {
-                VStack { Divider().background(Style.ColorPalette.text) }.padding(20)
-                Text("ou").foregroundColor(Style.ColorPalette.text)
-                VStack { Divider().background(Style.ColorPalette.text) }.padding(20)
+                VStack { Divider().background(LBColor.text) }.padding(20)
+                Text("ou").foregroundColor(LBColor.text)
+                VStack { Divider().background(LBColor.text) }.padding(20)
                     }
             .padding(.top, 30.0)
-            
-            HStack{
-                
-                Button("Esqueceu sua senha?"){}.font(Style.Typography.bodySmall).foregroundColor(.black).multilineTextAlignment(.trailing).background(
-                    Style.ColorPalette.text
+
+            HStack {
+
+                Button("Esqueceu sua senha?") {
+
+                }
+                .font(LBFont.bodySmall)
+                .foregroundColor(.black)
+                .multilineTextAlignment(.trailing)
+                .background(
+                    LBColor.text
                     .frame(height: 1)
-                        .offset(y: 14))
+                    .offset(y: 14)
+                )
             }
             .frame(maxWidth: .infinity, alignment: .trailing)
-            
+
             ExternalLogin()
                 .padding(.top, 53.0)
-            
-            HStack{
-                
-                Button("Não tem uma conta?"){}.font(Style.Typography.caption).foregroundColor(Style.ColorPalette.placeholder).multilineTextAlignment(.trailing).padding(.trailing, 8)
-                
-                Button("Registrar agora"){}.font(Style.Typography.caption).foregroundColor(Style.ColorPalette.buttonPrimary).multilineTextAlignment(.trailing)
+
+            HStack {
+
+                Button("Não tem uma conta?") {
+
+                }
+                .font(LBFont.caption)
+                .foregroundColor(LBColor.placeholder)
+                .multilineTextAlignment(.trailing)
+                .padding(.trailing, 8)
+
+                Button("Registrar agora") {
+
+                }
+                .font(LBFont.caption)
+                .foregroundColor(LBColor.buttonPrimary)
+                .multilineTextAlignment(.trailing)
+
             }.padding(.top, 32.0)
         }
         .padding(24)

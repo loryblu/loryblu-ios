@@ -16,7 +16,7 @@ struct LBTextField: View {
     let title: String
 
     @Binding var text: String
-    @Binding var isHidden: Bool
+    @State var isHidden: Bool = true
     let textFiledState: TextFieldState
 
     var body: some View {
@@ -50,8 +50,10 @@ struct LBTextField: View {
         .background(LBColor.textfield)
         .frame(height: 48)
         .cornerRadius(8)
-        .border(LBColor.error,
-                width: textFiledState.rawValue)
+        .overlay(content: {
+            RoundedRectangle(cornerRadius: 8)
+            .stroke(LBColor.error, lineWidth: textFiledState.rawValue)
+        })
     }
 
     var passwordButton: some View {
@@ -78,7 +80,6 @@ struct CustomTextField_Previews: PreviewProvider {
                 icon: LBIcon.lock,
                 title: "User",
                 text: .constant("Email"),
-                isHidden: .constant(true),
                 textFiledState: .alert
             )
 
@@ -87,7 +88,6 @@ struct CustomTextField_Previews: PreviewProvider {
                 icon: LBIcon.lock,
                 title: "User",
                 text: .constant("12345"),
-                isHidden: .constant(false),
                 textFiledState: .active
             )
         }

@@ -31,7 +31,7 @@ struct PasswordRulesView: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 10) {
             Text(LBStrings.Rules.title)
                 .foregroundColor(LBColor.text)
                 .font(LBFont.bodyLittleSmall)

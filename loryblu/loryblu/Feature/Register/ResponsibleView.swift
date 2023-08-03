@@ -47,7 +47,6 @@ struct ResponsibleView: View {
                 icon: LBIcon.user,
                 title: LBStrings.Register.name,
                 text: $viewModel.name,
-                isHidden: .constant(false),
                 textFiledState: viewModel.errorField == .name ? .alert : .active
             )
             .focused($focusedField, equals: .name)
@@ -60,7 +59,6 @@ struct ResponsibleView: View {
                 icon: LBIcon.mail,
                 title: LBStrings.General.email,
                 text: $viewModel.email,
-                isHidden: .constant(false),
                 textFiledState: viewModel.errorField == .email ? .alert : .active
             )
             .focused($focusedField, equals: .email)
@@ -73,7 +71,6 @@ struct ResponsibleView: View {
                 icon: LBIcon.lock,
                 title: LBStrings.General.password,
                 text: $viewModel.password,
-                isHidden: $isHiddenPassword,
                 textFiledState: viewModel.errorField == .password ? .alert : .active
             )
             .focused($focusedField, equals: .password)
@@ -93,7 +90,6 @@ struct ResponsibleView: View {
                 icon: LBIcon.lock,
                 title: LBStrings.Register.confirmPassword,
                 text: $viewModel.confirmPassword,
-                isHidden: $isHiddenRepeat,
                 textFiledState: viewModel.errorField == .confirmPassword ? .alert : .active
             )
             .focused($focusedField, equals: .confirmPassword)
