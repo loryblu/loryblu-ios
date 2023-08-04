@@ -1,15 +1,6 @@
 import SwiftUI
 
 struct LoginView: View {
-    func emailValidator(_ email: String) -> Bool {
-        if email.count > 100 {
-            return false
-        }
-        let emailFormat = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailFormat)
-        return emailPredicate.evaluate(with: email)
-    }
-
     @State var email: String = ""
     @State var password: String = ""
     @State private var isEmailValid: Bool = true
@@ -19,7 +10,7 @@ struct LoginView: View {
     @State private var textError = ""
 
     func tryLogin() {
-        if !self.emailValidator(email) {
+        if !ValidateRules.validate(email: email) {
             isEmailValid = false
             isPasswordNotEmpty = true
             textError =  LBStrings.Login.emailNotExists
@@ -31,7 +22,7 @@ struct LoginView: View {
             textError = ""
             isPasswordNotEmpty = true
         }
-        if !password.isEmpty && self.emailValidator(email) {
+        if !password.isEmpty && ValidateRules.validate(email: email) {
             textError = ""
             isPasswordNotEmpty = true
             isEmailValid = true
