@@ -1,14 +1,6 @@
-//
-//  LoginView.swift
-//  LoryBlu
-//
-//  Created by Paulo Pinheiro on 7/25/23.
-//
-
 import SwiftUI
 
 struct LoginView: View {
-    
     func emailValidator(_ email: String) -> Bool {
         if email.count > 100 {
             return false
@@ -17,30 +9,32 @@ struct LoginView: View {
         let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailFormat)
         return emailPredicate.evaluate(with: email)
     }
-    
-    func passwordValidator(_ senha: String) -> Bool {
-        let passwordFormat = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[$@$!%*#?&])[A-Za-z\\d$@$!%*#?&]{8,}$"
-        let passwordPredicate = NSPredicate(format: "SELF MATCHES %@", passwordFormat)
-        return passwordPredicate.evaluate(with: senha)
-    }
 
     @State var email: String = ""
     @State var password: String = ""
     @State private var isEmailValid: Bool = true
-    @State var isPasswordValid: Bool = true
+    @State var isPasswordNotEmpty: Bool = true
     @State private var rememberMe = false
     @State private var isPasswordHidden: Bool = true
+    @State private var textError = ""
 
     func tryLogin() {
-        if self.emailValidator(email) {
-            isEmailValid = true
-        } else {
+        if !self.emailValidator(email) {
             isEmailValid = false
+            isPasswordNotEmpty = true
+            textError =  LBStrings.Login.emailNotExists
+        } else if password.isEmpty {
+            textError = LBStrings.Login.requiredField
+            isEmailValid = true
+            isPasswordNotEmpty = false
+        } else if !password.isEmpty {
+            textError = ""
+            isPasswordNotEmpty = true
         }
-        if self.passwordValidator(password) {
-            isPasswordValid = true
-        } else {
-            isPasswordValid = false
+        if !password.isEmpty && self.emailValidator(email) {
+            textError = ""
+            isPasswordNotEmpty = true
+            isEmailValid = true
         }
     }
 
@@ -59,7 +53,7 @@ struct LoginView: View {
                     icon: LBIcon.mail,
                     title: LBStrings.Login.email,
                     text: $email,
-                    textFiledState: !isEmailValid ? .alert : .active)
+                    textFiledState: isEmailValid ? .active : .alert)
                 .textInputAutocapitalization(.never)
 
                 LBTextField(
@@ -67,18 +61,15 @@ struct LoginView: View {
                     icon: LBIcon.lock,
                     title: LBStrings.Login.password,
                     text: $password,
-                    textFiledState: isPasswordValid ? .active : .alert)
+                    textFiledState: isPasswordNotEmpty ? .active : .alert)
                 .textInputAutocapitalization(.never)
             }
 
             VStack {
 
-                if !isEmailValid {
-                    Text(LBStrings.Login.emailNotExists).font(LBFont.caption).foregroundColor(.red)}
-
-                if !isPasswordValid {
-                    Text(LBStrings.Login.requiredField).font(LBFont.caption).foregroundColor(.red)}
-
+                Text(textError)
+                    .font(LBFont.caption).foregroundColor(LBColor.error)
+            
                 HStack {
                     Toggle("Remember", isOn: $rememberMe)
                         .padding(.trailing, 18.0)
