@@ -34,10 +34,11 @@ struct LoginView: View {
             LBIcon.logo.image
                 .resizable()
                 .frame(width: 187, height: 47)
-                .padding(.bottom, 40)
+                .padding(.bottom, 30)
+                .padding(.top, 30)
             Text("Login")
                 .font(LBFont.head6)
-                .padding(.bottom, 32)
+                .padding(.bottom, 22)
             VStack {
                 LBTextField(
                     style: .common,
