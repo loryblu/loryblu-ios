@@ -59,9 +59,9 @@ struct LoginView: View {
 
             VStack {
 
-                Text(textError)
-                    .font(LBFont.caption).foregroundColor(LBColor.error)
-            
+                    Text(textError)
+                        .font(LBFont.caption)
+                        .foregroundColor(LBColor.error)
                 HStack {
                     Toggle("Remember", isOn: $rememberMe)
                         .padding(.trailing, 18.0)
@@ -75,12 +75,12 @@ struct LoginView: View {
             }
             .frame(maxWidth: .infinity, maxHeight: 77, alignment: .trailing)
 
-            LBButton(title: LBStrings.Login.enter, action: tryLogin)
+            LBButton(title: LBStrings.Login.enter ,action: tryLogin)
                 .padding(.top, 51)
 
             HStack {
                 VStack { Divider().background(LBColor.text) }.padding(20)
-                Text(LBStrings.Login.or).foregroundColor(LBColor.text)
+                Text(LBStrings.Login.orDivider).foregroundColor(LBColor.text)
                 VStack { Divider().background(LBColor.text) }.padding(20)
                     }
             .padding(.top, 30.0)

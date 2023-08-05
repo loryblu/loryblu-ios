@@ -70,7 +70,7 @@ extension LBStrings {
         static let emailNotExists = String(localized: "login_email_not_exists")
         static let requiredField = String(localized: "login_required_field")
         static let enter = String(localized: "login_enter" )
-        static let or = String(localized: "login_or_divider")
+        static let orDivider = String(localized: "login_or_divider")
         static let forgotPassword = String(localized: "login_forgot_password" )
         static let dontHaveAccount = String(localized: "login_dont_have_an_account")
         static let registerNow = String(localized: "login_register_now")
