@@ -1,46 +1,31 @@
-//
-//  LoginView.swift
-//  LoryBlu
-//
-//  Created by Paulo Pinheiro on 7/25/23.
-//
-
 import SwiftUI
 
 struct LoginView: View {
-    
-    func emailValidator(_ email: String) -> Bool {
-        if email.count > 100 {
-            return false
-        }
-        let emailFormat = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailFormat)
-        return emailPredicate.evaluate(with: email)
-    }
-    
-    func passwordValidator(_ senha: String) -> Bool {
-        let passwordFormat = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[$@$!%*#?&])[A-Za-z\\d$@$!%*#?&]{8,}$"
-        let passwordPredicate = NSPredicate(format: "SELF MATCHES %@", passwordFormat)
-        return passwordPredicate.evaluate(with: senha)
-    }
-
     @State var email: String = ""
     @State var password: String = ""
     @State private var isEmailValid: Bool = true
-    @State var isPasswordValid: Bool = true
+    @State var isPasswordNotEmpty: Bool = true
     @State private var rememberMe = false
     @State private var isPasswordHidden: Bool = true
+    @State private var textError = ""
 
     func tryLogin() {
-        if self.emailValidator(email) {
-            isEmailValid = true
-        } else {
+        if !ValidateRules.validate(email: email) {
             isEmailValid = false
+            isPasswordNotEmpty = true
+            textError =  LBStrings.Login.emailNotExists
+        } else if password.isEmpty {
+            textError = LBStrings.Login.requiredField
+            isEmailValid = true
+            isPasswordNotEmpty = false
+        } else if !password.isEmpty {
+            textError = ""
+            isPasswordNotEmpty = true
         }
-        if self.passwordValidator(password) {
-            isPasswordValid = true
-        } else {
-            isPasswordValid = false
+        if !password.isEmpty && ValidateRules.validate(email: email) {
+            textError = ""
+            isPasswordNotEmpty = true
+            isEmailValid = true
         }
     }
 
@@ -49,62 +34,60 @@ struct LoginView: View {
             LBIcon.logo.image
                 .resizable()
                 .frame(width: 187, height: 47)
-                .padding(.bottom, 40)
+                .padding(.bottom, 30)
+                .padding(.top, 30)
             Text("Login")
                 .font(LBFont.head6)
-                .padding(.bottom, 32)
+                .padding(.bottom, 22)
             VStack {
                 LBTextField(
                     style: .common,
                     icon: LBIcon.mail,
-                    title: "Email",
+                    title: LBStrings.Login.email,
                     text: $email,
-                    textFiledState: !isEmailValid ? .alert : .active)
+                    textFiledState: isEmailValid ? .active : .alert)
                 .textInputAutocapitalization(.never)
 
                 LBTextField(
                     style: .password,
                     icon: LBIcon.lock,
-                    title: "Senha",
+                    title: LBStrings.Login.password,
                     text: $password,
-                    textFiledState: isPasswordValid ? .active : .alert)
+                    textFiledState: isPasswordNotEmpty ? .active : .alert)
                 .textInputAutocapitalization(.never)
             }
 
             VStack {
 
-                if !isEmailValid {
-                    Text("* Email inválido").font(LBFont.caption).foregroundColor(.red)}
-
-                if !isPasswordValid {
-                    Text("* Senha inválida").font(LBFont.caption).foregroundColor(.red)}
-
+                    Text(textError)
+                        .font(LBFont.caption)
+                        .foregroundColor(LBColor.error)
                 HStack {
-                    Toggle("Agree", isOn: $rememberMe)
+                    Toggle("Remember", isOn: $rememberMe)
                         .padding(.trailing, 18.0)
                         .labelsHidden()
                         .tint(LBColor.buttonPrimary)
 
-                    Text("Lembrar")
+                    Text(LBStrings.Login.remeber)
                         .font(LBFont.subtitle)
                         .multilineTextAlignment(.trailing)
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: 77, alignment: .trailing)
 
-            LBButton(title: "entrar", action: tryLogin)
+            LBButton(title: LBStrings.Login.enter ,action: tryLogin)
                 .padding(.top, 51)
 
             HStack {
                 VStack { Divider().background(LBColor.text) }.padding(20)
-                Text("ou").foregroundColor(LBColor.text)
+                Text(LBStrings.Login.orDivider).foregroundColor(LBColor.text)
                 VStack { Divider().background(LBColor.text) }.padding(20)
                     }
             .padding(.top, 30.0)
 
             HStack {
 
-                Button("Esqueceu sua senha?") {
+                Button(LBStrings.Login.forgotPassword) {
 
                 }
                 .font(LBFont.bodySmall)
@@ -123,7 +106,7 @@ struct LoginView: View {
 
             HStack {
 
-                Button("Não tem uma conta?") {
+                Button(LBStrings.Login.dontHaveAccount) {
 
                 }
                 .font(LBFont.caption)
@@ -131,7 +114,7 @@ struct LoginView: View {
                 .multilineTextAlignment(.trailing)
                 .padding(.trailing, 8)
 
-                Button("Registrar agora") {
+                Button(LBStrings.Login.registerNow) {
 
                 }
                 .font(LBFont.caption)

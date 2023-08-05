@@ -53,14 +53,14 @@ struct RegisterChildView: View {
             )
 
             HStack(spacing: 15) {
-                LBButton(title: LBStrings.Register.man, style: .second) {
+                LBButton(title: LBStrings.Register.man, style: .primaryActivated) {
                     HStack {
                         Image(LBIcon.woman.rawValue)
                         Text(LBStrings.Register.man)
                     }
                 }
 
-                LBButton(title: LBStrings.Register.woman, style: .second) {
+                LBButton(title: LBStrings.Register.woman, style: .primaryActivated) {
                     HStack {
                         Image(LBIcon.woman.rawValue)
                         Text(LBStrings.Register.woman)

@@ -1,23 +1,17 @@
-//
-//  LBButton.swift
-//  LoryBlu
-//
-//  Created by Paulo Pinheiro on 7/16/23.
-//
 
 import Foundation
 import SwiftUI
 
 struct LBButton: View {
-    init(title: String, style: ButtonStyle = .primary, action: @escaping () -> Void) {
+    init(title: String, style: ButtonStyle = .primaryActivated, action: @escaping () -> Void) {
         self.title = title
         self.style = style
         self.action =  action
     }
 
     enum ButtonStyle {
-        case primary
-        case second
+        case primaryActivated
+        case primaryOff
     }
 
     var title: String
@@ -29,14 +23,14 @@ struct LBButton: View {
                 .textCase(.uppercase)
                 .font(LBFont.button)
                 .multilineTextAlignment(.center)
-                .foregroundColor( ((style == .primary) ? .white : LBColor.buttonPrimary))
+                .foregroundColor( ((style == .primaryActivated) ? .white : LBColor.buttonPrimary))
                 .frame(maxWidth: .infinity, maxHeight: 44, alignment: .center)
-                .background((style == .primary) ? LBColor.buttonPrimary : .white)
+                .background((style == .primaryActivated) ? LBColor.buttonPrimary : LBColor.grayLight)
                 .cornerRadius(10)
                 .overlay(
                     RoundedRectangle(cornerRadius: 10)
                         .inset(by: -1)
-                        .stroke((style == .primary) ? .white :  LBColor.buttonPrimary))
+                        .stroke((style == .primaryActivated) ? .white :  LBColor.grayLight))
         }
     }
 }
