@@ -7,6 +7,8 @@ class ForgotPasswordModel: ObservableObject {
         func login(user: String) {
             if user == "Abc" {
                 isValid = true
+            } else {
+                isValid = false
             }
         }
 }
