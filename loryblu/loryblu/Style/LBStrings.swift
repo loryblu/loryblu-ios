@@ -62,7 +62,6 @@ extension LBStrings {
     }
 }
 
-
 extension LBStrings {
     enum Login {
         static let email = String(localized: "login_email")

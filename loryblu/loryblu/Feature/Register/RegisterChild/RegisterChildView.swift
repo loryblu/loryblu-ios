@@ -54,17 +54,10 @@ struct RegisterChildView: View {
 
             HStack(spacing: 15) {
                 LBButton(title: LBStrings.Register.man, style: .primaryActivated) {
-                    HStack {
-                        Image(LBIcon.woman.rawValue)
-                        Text(LBStrings.Register.man)
-                    }
+
                 }
 
-                LBButton(title: LBStrings.Register.woman, style: .primaryActivated) {
-                    HStack {
-                        Image(LBIcon.woman.rawValue)
-                        Text(LBStrings.Register.woman)
-                    }
+                LBButton(title: LBStrings.Register.woman, style: .primaryOff) {
 
                 }
             }
@@ -84,7 +77,7 @@ struct RegisterChildView: View {
                     .multilineTextAlignment(.trailing)
             }
 
-            LBButton(title: LBStrings.Register.buttonRegister) {
+            LBButton(title: LBStrings.Register.buttonRegister, style: .primaryOff) {
                 // self.viewModel.showError()
                 print("Cadastro Concluido")
             }

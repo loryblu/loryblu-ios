@@ -63,7 +63,7 @@ struct LoginView: View {
                         .font(LBFont.caption)
                         .foregroundColor(LBColor.error)
                 HStack {
-                    Toggle("Remember", isOn: $rememberMe)
+                    Toggle("", isOn: $rememberMe)
                         .padding(.trailing, 18.0)
                         .labelsHidden()
                         .tint(LBColor.buttonPrimary)
@@ -75,18 +75,27 @@ struct LoginView: View {
             }
             .frame(maxWidth: .infinity, maxHeight: 77, alignment: .trailing)
 
-            LBButton(title: LBStrings.Login.enter ,action: tryLogin)
+            LBButton(title: LBStrings.Login.enter, action: tryLogin)
                 .padding(.top, 51)
 
             HStack {
-                VStack { Divider().background(LBColor.text) }.padding(20)
-                Text(LBStrings.Login.orDivider).foregroundColor(LBColor.text)
-                VStack { Divider().background(LBColor.text) }.padding(20)
-                    }
+                VStack {
+                    Divider()
+                    .background(LBColor.text)
+
+                }.padding(20)
+
+                Text(LBStrings.Login.orDivider)
+                    .foregroundColor(LBColor.text)
+
+                VStack {
+                    Divider()
+                    .background(LBColor.text)
+                }.padding(20)
+            }
             .padding(.top, 30.0)
 
             HStack {
-
                 Button(LBStrings.Login.forgotPassword) {
 
                 }
@@ -105,7 +114,6 @@ struct LoginView: View {
                 .padding(.top, 53.0)
 
             HStack {
-
                 Button(LBStrings.Login.dontHaveAccount) {
 
                 }

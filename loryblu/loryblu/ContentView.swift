@@ -5,8 +5,6 @@ struct ContentView: View {
 
         VStack {
             LBIcon.loryblu.image
-//                .imageScale(.large)
-//                .foregroundColor(.accentColor)
             Text(LBStrings.General.hello)
                 .font(LBFont.head2)
         }

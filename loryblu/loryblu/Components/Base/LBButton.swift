@@ -1,4 +1,3 @@
-
 import Foundation
 import SwiftUI
 
@@ -17,6 +16,7 @@ struct LBButton: View {
     var title: String
     var style: ButtonStyle
     let action: () -> Void
+
     var body: some View {
         Button(action: action) {
             Text(title)
