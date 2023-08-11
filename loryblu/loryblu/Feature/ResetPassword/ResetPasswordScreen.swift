@@ -1,12 +1,12 @@
 import SwiftUI
 
-struct ForgotPasswordScreen: View {
+struct ResetPasswordScreen: View {
     enum FechtEmail {
         case success
         case error
         case idle
     }
-    @EnvironmentObject var model: ForgotPasswordModel
+    @EnvironmentObject var model: ResetPasswordModel
     @State var userEmail: String = ""
     @State var fecthEmail: FechtEmail
 
@@ -68,6 +68,6 @@ struct ForgotPasswordScreen: View {
 
 struct ForgotPasswordScreen_Previews: PreviewProvider {
     static var previews: some View {
-        ForgotPasswordScreen(fecthEmail: ForgotPasswordScreen.FechtEmail.idle).environmentObject(ForgotPasswordModel())
+        ResetPasswordScreen(fecthEmail: ResetPasswordScreen.FechtEmail.idle).environmentObject(ResetPasswordModel())
     }
 }
