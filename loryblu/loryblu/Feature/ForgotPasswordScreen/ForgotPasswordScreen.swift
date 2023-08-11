@@ -4,34 +4,35 @@ struct ForgotPasswordScreen: View {
     enum FechtEmail {
         case success
         case error
+        case idle
     }
     @EnvironmentObject var model: ForgotPasswordModel
-    @State var userEmail: String = "Abc"
+    @State var userEmail: String = ""
     @State var fecthEmail: FechtEmail
 
     var body: some View {
         NavigationStack {
             VStack {
-                Image("logo")
+                LBIcon.logo.image
                     .frame(width: 187, height: 47)
                     .padding(.bottom, 40)
 
-                Text("Esqueceu a senha?")
+                Text(LBStrings.SetPassword.forget)
                     .font(LBFont.head6)
                     .padding(.bottom, 24)
 
-                Text("Redefina sua senha aqui")
+                Text(LBStrings.SetPassword.reset)
                     .font(LBFont.subtitle)
                     .padding(.bottom, 56)
 
                 LBTextField(style: .common,
                             icon: LBIcon.mail,
-                                title: "Email",
+                            title: LBStrings.General.email,
                                 text: $userEmail,
                                 textFiledState: .active)
                 .padding(.bottom, 39)
 
-                LBButton(title: "Enviar") {
+                LBButton(title: LBStrings.General.send) {
                     model.login(user: userEmail)
                     if model.isValid {
                         fecthEmail = .success
@@ -40,24 +41,24 @@ struct ForgotPasswordScreen: View {
                     }
                 }
                 .padding(.bottom, 10)
-                .navigationDestination(isPresented: $model.isValid) {
-                    NewPasswordScreen()
-                }
 
-                HStack {
-                    Spacer()
-                    switch fecthEmail {
-                    case .success:
-                        Text("E-mail enviado com sucesso")
+                    HStack {
+                        Spacer()
+                        switch fecthEmail {
+                        case .success:
+                            Text(LBStrings.SetPassword.success)
+                                .font(LBFont.caption)
+                                .padding()
+                        case .error:
+                            Text(LBStrings.SetPassword.error)
                             .font(LBFont.caption)
+                            .foregroundColor(LBColor.error)
                             .padding()
-                    case .error:
-                    Text("Não foi possível encontrar seu email")
-                        .font(LBFont.caption)
-                        .foregroundColor(LBColor.error)
-                        .padding()
+                        case .idle:
+                            Text("")
+                            .padding()
+                        }
                     }
-                }
             }
             .padding(.horizontal, 24)
         }
@@ -67,6 +68,6 @@ struct ForgotPasswordScreen: View {
 
 struct ForgotPasswordScreen_Previews: PreviewProvider {
     static var previews: some View {
-        ForgotPasswordScreen(fecthEmail: ForgotPasswordScreen.FechtEmail.error).environmentObject(ForgotPasswordModel())
+        ForgotPasswordScreen(fecthEmail: ForgotPasswordScreen.FechtEmail.idle).environmentObject(ForgotPasswordModel())
     }
 }

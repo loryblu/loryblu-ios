@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct NewPasswordScreen: View {
-    //    @State var check: CheckdeRules = CheckdeRules()
     @State var newPassword: String = ""
     @State var repeatNewPassword: String = ""
     var body: some View {
@@ -9,16 +8,16 @@ struct NewPasswordScreen: View {
             LBIcon.logo.image
                 .frame(width: 187, height: 47)
                 .padding(40)
-            Text("Criar nova senha")
+            Text(LBStrings.SetPassword.create)
                 .font(LBFont.head6)
                 .padding(24)
-            Text("Redefina sua senha aqui")
+            Text(LBStrings.SetPassword.reset)
                 .font(LBFont.bodySmall)
                 .padding(.bottom, 56)
 
             LBTextField(style: .password,
                         icon: .lock,
-                        title: "Nova senha",
+                        title: LBStrings.SetPassword.newPassword,
                         text: $newPassword,
                         textFiledState: .active)
             .padding(.bottom, 12)
@@ -30,7 +29,7 @@ struct NewPasswordScreen: View {
 
             LBTextField(style: .password,
                         icon: .lock,
-                        title: "Repetir senha",
+                        title: LBStrings.SetPassword.repeatPassword,
                         text: $repeatNewPassword,
                         textFiledState: .active)
             .padding(.bottom, 32)
@@ -40,8 +39,8 @@ struct NewPasswordScreen: View {
                 .foregroundColor(LBColor.text)
                 .padding(.bottom, 40)
 
-            LBButton(title: "REDEFINIR SENHA") {
-                // receber função dp backend
+            LBButton(title: LBStrings.SetPassword.buttonReset) {
+                // receber função do backend
             }
 
         }
