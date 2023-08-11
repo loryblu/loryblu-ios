@@ -1,8 +1,9 @@
 import SwiftUI
 
 enum LBIcon: String {
-    case agree
     case cake
+    case circle
+    case circleFill = "circle_fill"
     case check
     case close
     case eyeClose = "eye_close"
@@ -14,7 +15,6 @@ enum LBIcon: String {
     case loryblu
     case mail
     case man
-    case noAgree = "no_agree"
     case search
     case user
     case woman
