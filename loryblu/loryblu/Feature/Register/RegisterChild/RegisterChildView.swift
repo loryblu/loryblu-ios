@@ -64,12 +64,7 @@ struct RegisterChildView: View {
 
             HStack {
                 Spacer()
-                Button {
-
-                } label: {
-                    LBIcon.noAgree.image
-                        .frame(width: 12, height: 12)
-                }
+                LBToggle(isActived: $agreePrivacy)
 
                 Text(LBStrings.Register.agree)
                     .foregroundColor(LBColor.text)
