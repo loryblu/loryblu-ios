@@ -9,4 +9,5 @@ enum LBColor {
     static let text = Color("text")
     static let title = Color("title")
     static let textfield = Color("textfield")
+    static let darkBlue = Color("darkBlue")
 }

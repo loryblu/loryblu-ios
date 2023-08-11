@@ -62,7 +62,6 @@ extension LBStrings {
     }
 }
 
-
 extension LBStrings {
     enum Login {
         static let email = String(localized: "login_email")
@@ -75,5 +74,12 @@ extension LBStrings {
         static let dontHaveAccount = String(localized: "login_dont_have_an_account")
         static let registerNow = String(localized: "login_register_now")
         static let remeber = String(localized: "login_remember")
+    }
+}
+
+extension LBStrings {
+    enum GendrerButton {
+        static let boy = String(localized: "boy")
+        static let girl = String(localized: "girl")
     }
 }
