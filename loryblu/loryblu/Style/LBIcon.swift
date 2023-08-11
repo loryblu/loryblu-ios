@@ -14,10 +14,12 @@ enum LBIcon: String {
     case loryblu
     case mail
     case man
+    case mangray
     case noAgree = "no_agree"
     case search
     case user
     case woman
+    case womangray
 
     var image: Image {
         Image(self.rawValue)
