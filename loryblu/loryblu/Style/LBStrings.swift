@@ -78,7 +78,7 @@ extension LBStrings {
 }
 
 extension LBStrings {
-    enum GendrerButton {
+    enum GenderButton {
         static let boy = String(localized: "boy")
         static let girl = String(localized: "girl")
     }

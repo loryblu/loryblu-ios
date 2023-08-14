@@ -19,7 +19,7 @@ struct LBGenderButton: View {
         Button(action: action) {
             HStack {
             gender == .male ? (isActive ? LBIcon.man.image : LBIcon.mangray.image) : (isActive ? LBIcon.woman.image : LBIcon.womangray.image)
-                Text( gender == .male ? LBStrings.GendrerButton.boy : LBStrings.GendrerButton.girl)
+                Text( gender == .male ? LBStrings.GenderButton.boy : LBStrings.GenderButton.girl)
                     .font(LBFont.bodySmall)
                     .fontWeight(.bold)
             }
