@@ -39,6 +39,8 @@
 "setPassword_success" = "E-mail enviado com sucesso";
 "setPassword_alert" = "Você será deslogado de todos os dispositivos e precisará logar com a nova senha";
 "setPassword_button_reset" = "redefinir senha";
+"setPassword_new_password" = "Nova senha";
+"setPassword_repeat_password" = "Repetir senha";
 
 // ====================  Login  =========================
 

@@ -59,6 +59,8 @@ extension LBStrings {
         static let success = String(localized: "setPassword_success")
         static let alert = String(localized: "setPassword_alert" )
         static let buttonReset = String(localized: "setPassword_button_reset")
+        static let newPassword = String(localized: "setPassword_new_password")
+        static let repeatPassword = String(localized: "setPassword_repeat_password")
     }
 }
 
