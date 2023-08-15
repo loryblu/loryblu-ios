@@ -78,3 +78,10 @@ extension LBStrings {
         static let remeber = String(localized: "login_remember")
     }
 }
+
+extension LBStrings {
+    enum GenderButton {
+        static let boy = String(localized: "boy")
+        static let girl = String(localized: "girl")
+    }
+}
