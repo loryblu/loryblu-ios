@@ -55,3 +55,7 @@
 "login_register_now" = "Registrar agora";
 "login_remember" = "Lembrar";
 
+// ====================  Gender Button  =========================
+
+"boy" = "Menino";
+"girl" = "Menina";
