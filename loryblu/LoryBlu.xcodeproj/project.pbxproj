@@ -22,8 +22,8 @@
 		8C7C64B32A6F4CE1002361A9 /* ValidateRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7C64B22A6F4CE1002361A9 /* ValidateRules.swift */; };
 		8C9CBCFB2A7ACF46001DBD35 /* ExternalLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9CBCF92A7ACF46001DBD35 /* ExternalLogin.swift */; };
 		8C9CBCFC2A7ACF46001DBD35 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9CBCFA2A7ACF46001DBD35 /* LoginView.swift */; };
-		8C9CBD082A7ACF6F001DBD35 /* ForgotPasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9CBD022A7ACF6F001DBD35 /* ForgotPasswordModel.swift */; };
-		8C9CBD092A7ACF6F001DBD35 /* ForgotPasswordScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9CBD032A7ACF6F001DBD35 /* ForgotPasswordScreen.swift */; };
+		8C9CBD082A7ACF6F001DBD35 /* ResetPasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9CBD022A7ACF6F001DBD35 /* ResetPasswordModel.swift */; };
+		8C9CBD092A7ACF6F001DBD35 /* ResetPasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9CBD032A7ACF6F001DBD35 /* ResetPasswordModel.swift */; };
 		8C9CBD0A2A7ACF6F001DBD35 /* NewPasswordScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9CBD042A7ACF6F001DBD35 /* NewPasswordScreen.swift */; };
 		8C9CBD0D2A7AE97B001DBD35 /* RegisterChildView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9CBD0C2A7AE97B001DBD35 /* RegisterChildView.swift */; };
 		8C9CBD102A7AEC24001DBD35 /* PasswordRulesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9CBD0F2A7AEC24001DBD35 /* PasswordRulesView.swift */; };
@@ -52,8 +52,8 @@
 		8C7C64B22A6F4CE1002361A9 /* ValidateRules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateRules.swift; sourceTree = "<group>"; };
 		8C9CBCF92A7ACF46001DBD35 /* ExternalLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExternalLogin.swift; sourceTree = "<group>"; };
 		8C9CBCFA2A7ACF46001DBD35 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		8C9CBD022A7ACF6F001DBD35 /* ForgotPasswordModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordModel.swift; sourceTree = "<group>"; };
-		8C9CBD032A7ACF6F001DBD35 /* ForgotPasswordScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordScreen.swift; sourceTree = "<group>"; };
+		8C9CBD022A7ACF6F001DBD35 /* ResetPasswordModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordModel.swift; sourceTree = "<group>"; };
+		8C9CBD032A7ACF6F001DBD35 /* ResetPasswordModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordModel.swift; sourceTree = "<group>"; };
 		8C9CBD042A7ACF6F001DBD35 /* NewPasswordScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPasswordScreen.swift; sourceTree = "<group>"; };
 		8C9CBD0C2A7AE97B001DBD35 /* RegisterChildView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterChildView.swift; sourceTree = "<group>"; };
 		8C9CBD0F2A7AEC24001DBD35 /* PasswordRulesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordRulesView.swift; sourceTree = "<group>"; };
@@ -168,11 +168,12 @@
 		8C9CBCFF2A7ACF6F001DBD35 /* ForgotPasswordScreen */ = {
 			isa = PBXGroup;
 			children = (
-				8C9CBD022A7ACF6F001DBD35 /* ForgotPasswordModel.swift */,
-				8C9CBD032A7ACF6F001DBD35 /* ForgotPasswordScreen.swift */,
+				8C9CBD022A7ACF6F001DBD35 /* ResetPasswordModel.swift */,
+				8C9CBD032A7ACF6F001DBD35 /* ResetPasswordModel.swift */,
 				8C9CBD042A7ACF6F001DBD35 /* NewPasswordScreen.swift */,
 			);
-			path = ForgotPasswordScreen;
+			name = ForgotPasswordScreen;
+			path = ResetPassword;
 			sourceTree = "<group>";
 		};
 		8C9CBD0B2A7AE97B001DBD35 /* RegisterChild */ = {
@@ -352,12 +353,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				330A37772A660C2D00C9DCE7 /* LBFont.swift in Sources */,
-				8C9CBD092A7ACF6F001DBD35 /* ForgotPasswordScreen.swift in Sources */,
+				8C9CBD092A7ACF6F001DBD35 /* ResetPasswordModel.swift in Sources */,
 				8CFB35A02A6059BD008BF633 /* ContentView.swift in Sources */,
 				41931EBE2A6470B4008F13F8 /* LBButton.swift in Sources */,
 				8C9CBCFC2A7ACF46001DBD35 /* LoginView.swift in Sources */,
 				8C5734262A6C39AF0052B955 /* ResponsibleView.swift in Sources */,
-				8C9CBD082A7ACF6F001DBD35 /* ForgotPasswordModel.swift in Sources */,
+				8C9CBD082A7ACF6F001DBD35 /* ResetPasswordModel.swift in Sources */,
 				8C9CBCFB2A7ACF46001DBD35 /* ExternalLogin.swift in Sources */,
 				8C9CBD0A2A7ACF6F001DBD35 /* NewPasswordScreen.swift in Sources */,
 				8C9CBD0D2A7AE97B001DBD35 /* RegisterChildView.swift in Sources */,
