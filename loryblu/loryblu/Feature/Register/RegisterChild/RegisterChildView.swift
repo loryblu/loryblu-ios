@@ -11,6 +11,7 @@ struct RegisterChildView: View {
     @State var name: String = ""
     @State var birthDay: String = ""
     @State var agreePrivacy: Bool = false
+    @State var isSelected: Bool = true
 
     var body: some View {
         VStack {
@@ -53,11 +54,11 @@ struct RegisterChildView: View {
             )
 
             HStack(spacing: 15) {
-                LBButton(title: LBStrings.Register.man, style: .primaryActivated) {
+                LBGenderButton(gendrer: .male, isActive: isSelected) {
 
                 }
 
-                LBButton(title: LBStrings.Register.woman, style: .primaryOff) {
+                LBGenderButton(gendrer: .female) {
 
                 }
             }
@@ -78,7 +79,7 @@ struct RegisterChildView: View {
             }
             .padding(.top, 40)
 
-        }.padding([.leading, .trailing], 24)
+        }.padding([.leading, .trailing], 26)
     }
 
 }
