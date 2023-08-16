@@ -2,9 +2,9 @@ import SwiftUI
 import Foundation
 
 struct LBGenderButton: View {
-    init (gendrer: Gender, isActive: Bool = false, action: @escaping () -> Void ) {
+    init (gender: Gender, isActive: Bool = false, action: @escaping () -> Void ) {
         self.action = action
-        self.gender = gendrer
+        self.gender = gender
         self.isActive = isActive
     }
 
@@ -18,7 +18,11 @@ struct LBGenderButton: View {
     var body: some View {
         Button(action: action) {
             HStack {
-                gender == .male ? (isActive ? LBIcon.man.image : LBIcon.mangray.image) : (isActive ? LBIcon.woman.image : LBIcon.womangray.image)
+                gender == .male ? (
+                    isActive ? LBIcon.man.image : LBIcon.mangray.image
+                ) : (
+                    isActive ? LBIcon.woman.image : LBIcon.womangray.image
+                )
                 Text( gender == .male ? LBStrings.GenderButton.boy : LBStrings.GenderButton.girl)
                     .font(LBFont.bodySmall)
                     .fontWeight(.bold)
@@ -38,12 +42,12 @@ struct LBGenderButton_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
             HStack {
-                LBGenderButton(gendrer: .male, isActive: true) {}
-                LBGenderButton(gendrer: .male) {}
+                LBGenderButton(gender: .male, isActive: true) {}
+                LBGenderButton(gender: .male) {}
             }
             HStack {
-                LBGenderButton(gendrer: .female, isActive: true) {}
-                LBGenderButton(gendrer: .female) {}
+                LBGenderButton(gender: .female, isActive: true) {}
+                LBGenderButton(gender: .female) {}
             }
         }
     }
