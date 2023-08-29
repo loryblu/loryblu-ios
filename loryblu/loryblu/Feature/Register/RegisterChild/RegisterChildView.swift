@@ -37,51 +37,56 @@ struct RegisterChildView: View {
 
     var form: some View {
         VStack(spacing: 18) {
-            LBTextField(
-                style: .common,
-                icon: LBIcon.user,
-                title: LBStrings.Register.name,
-                text: $name,
-                textFiledState: .active
-            )
+            VStack(spacing: 16) {
+                LBTextField(
+                    style: .common,
+                    icon: LBIcon.user,
+                    title: LBStrings.Register.name,
+                    text: $name,
+                    textFiledState: .active
+                )
 
-            LBTextField(
-                style: .common,
-                icon: LBIcon.cake,
-                title: LBStrings.Register.birthDay,
-                text: $birthDay,
-                textFiledState: .active
-            )
+                LBTextField(
+                    style: .common,
+                    icon: LBIcon.cake,
+                    title: LBStrings.Register.birthDay,
+                    text: $birthDay,
+                    textFiledState: .active
+                )
 
-            HStack(spacing: 15) {
-                LBGenderButton(gender: .male, isActive: gender == .male) {
-                    gender = .male
+                DatePickerTextField()
+
+                HStack(spacing: 15) {
+                    LBGenderButton(gender: .male, isActive: gender == .male) {
+                        gender = .male
+                    }
+
+                    LBGenderButton(gender: .female, isActive: gender == .female) {
+                        gender = .female
+                    }
                 }
 
-                LBGenderButton(gender: .female, isActive: gender == .female) {
-                    gender = .female
+                HStack {
+                    Spacer()
+                    LBToggle(isActived: $agreePrivacy)
+
+                    Text(LBStrings.Register.agree)
+                        .foregroundColor(LBColor.text)
+                        .font(LBFont.caption)
+                        .multilineTextAlignment(.trailing)
                 }
-            }
 
-            HStack {
-                Spacer()
-                LBToggle(isActived: $agreePrivacy)
+                LBButton(title: LBStrings.Register.buttonRegister, style: .primaryOff) {
+                    // self.viewModel.showError()
+                    print("Cadastro Concluido")
+                }
+                .padding(.top, 40)
 
-                Text(LBStrings.Register.agree)
-                    .foregroundColor(LBColor.text)
-                    .font(LBFont.caption)
-                    .multilineTextAlignment(.trailing)
-            }
+            }.padding([.leading, .trailing], 26)
+        }
 
-            LBButton(title: LBStrings.Register.buttonRegister, style: .primaryOff) {
-                // self.viewModel.showError()
-                print("Cadastro Concluido")
-            }
-            .padding(.top, 40)
-
-        }.padding([.leading, .trailing], 26)
     }
-
+    
 }
 
 struct RegisterChildView_Previews: PreviewProvider {
