@@ -23,6 +23,9 @@ class ResponsibleViewModel: ObservableObject {
             hasError = true
             textError = LBStrings.Register.errorEmail
             errorField = .email
+        } else if password.isEmpty {
+            hasError = true
+            errorField = .password
         } else if confirmPassword != password {
             hasError = true
             textError = LBStrings.Register.errorPassord
@@ -38,4 +41,17 @@ class ResponsibleViewModel: ObservableObject {
         errorField = .none
     }
 
+    func showContinue() -> Bool {
+        if !email.isEmpty && !password.isEmpty && !confirmPassword.isEmpty {
+            return true
+        } else {
+            return false
+        }
+    }
+
+    func saveRegister(_ user: Register) {
+        name = user.name ?? ""
+        email = user.email ?? ""
+        password = user.password ?? ""
+    }
 }

@@ -50,7 +50,6 @@ struct DatePickerTextField: View {
                     displayedComponents: .date)
                     .padding(.horizontal)
                     .frame(width: 333)
-                    .datePickerStyle(.wheel)
                     .labelsHidden()
 
             }

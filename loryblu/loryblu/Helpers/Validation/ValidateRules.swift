@@ -11,7 +11,7 @@ import SwiftUI
 enum ValidateRules {
 
     static func validateName(_ name: String) -> Bool {
-        !name.isEmpty && name.count >= 3
+        !name.isEmpty && name.count >= 5
     }
 
     static func validate(email: String) -> Bool {

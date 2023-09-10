@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct RegisterChildView: View {
+    @ObservedObject var viewModel: RegisterChildViewModel = RegisterChildViewModel()
     @State var name: String = ""
     @State var birthDay: String = ""
     @State var agreePrivacy: Bool = false
     @State var gender: LBGenderButton.Gender?
+    var child: Register?
 
     var body: some View {
         VStack {
@@ -54,8 +56,6 @@ struct RegisterChildView: View {
                     textFiledState: .active
                 )
 
-                DatePickerTextField()
-
                 HStack(spacing: 15) {
                     LBGenderButton(gender: .male, isActive: gender == .male) {
                         gender = .male
@@ -76,17 +76,27 @@ struct RegisterChildView: View {
                         .multilineTextAlignment(.trailing)
                 }
 
-                LBButton(title: LBStrings.Register.buttonRegister, style: .primaryOff) {
-                    // self.viewModel.showError()
-                    print("Cadastro Concluido")
+                LBButton(
+                    title: LBStrings.Register.buttonRegister,
+                    style: !agreePrivacy ? .primaryOff : .primaryActivated
+                ) {
+
+                    if ValidateRules.validateName(name) && !self.birthDay.isEmpty {
+                        let childUser = Register(name: "", email: "", password: "", nameChild: name, dateBirth: birthDay, gender: .female)
+                        self.viewModel.save(childUser)
+                        print("==>>Cadastro Concluido")
+                    } else {
+                        print("Errroooooooo")
+                    }
                 }
+                .disabled(!agreePrivacy)
                 .padding(.top, 40)
 
             }.padding([.leading, .trailing], 26)
         }
 
     }
-    
+
 }
 
 struct RegisterChildView_Previews: PreviewProvider {

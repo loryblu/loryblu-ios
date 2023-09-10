@@ -12,25 +12,33 @@ struct ResponsibleView: View {
     @FocusState private var focusedField: ResponsibleViewModel.FocusedField?
     @State var isHiddenPassword: Bool = false
     @State var isHiddenRepeat: Bool = false
+    @State var showNext: Bool = false
+    var registerFull: Register?
 
     var body: some View {
-        VStack {
+        NavigationStack {
             VStack {
-                Image(LBIcon.logo.rawValue).resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 187, height: 47)
-                    .clipped()
-                    .padding(.bottom, 40)
+                VStack {
 
-                Text(LBStrings.Register.responsible)
-                    .font(LBFont.head6)
-                    .foregroundColor(LBColor.text)
-                    .frame(width: 242, alignment: .topLeading)
-                    .padding(.bottom, 32)
+                    Image(LBIcon.logo.rawValue).resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 187, height: 47)
+                        .clipped()
+                        .padding(.bottom, 40)
+
+                    Text(LBStrings.Register.responsible)
+                        .font(LBFont.head6)
+                        .foregroundColor(LBColor.text)
+                        .frame(width: 242, alignment: .topLeading)
+                        .padding(.bottom, 32)
+                }
+
+                form
+
             }
-
-            form
-
+            .navigationDestination(isPresented: $showNext) {
+                RegisterChildView()
+            }
         }
         .padding(.top, -40)
         .onChange(of: viewModel.errorField) { newValue in
@@ -109,11 +117,21 @@ struct ResponsibleView: View {
 
             LBButton(title: LBStrings.General.next) {
                 self.viewModel.showError()
+                guard let user = registerFull else { return }
+                self.viewModel.saveRegister(user)
                 print("Abrir Cadastro da Criança")
+                self.showContinueRegister()
             }
             .padding(.top, 40)
-
         }.padding([.leading, .trailing], 24)
+    }
+
+    private func showContinueRegister() {
+        if self.viewModel.showContinue() {
+            self.showNext = true
+        } else {
+            self.showNext = false
+        }
     }
 }
 
@@ -124,3 +142,5 @@ struct ResponsibleView_Previews: PreviewProvider {
         )
     }
 }
+
+// comm/opt/seta esquerda
