@@ -4,6 +4,7 @@ struct LBTextField: View {
     enum TexfieldType {
         case common
         case password
+        case date
     }
 
     enum TextFieldState: CGFloat, Equatable {
@@ -17,6 +18,8 @@ struct LBTextField: View {
 
     @Binding var text: String
     @State var isHidden: Bool = true
+    @State var presented: Bool = false
+    @State var date: Date?
     let textFiledState: TextFieldState
 
     var body: some View {
@@ -41,6 +44,13 @@ struct LBTextField: View {
                         passwordButton
                             .accentColor(LBColor.text)
                     }
+                case .date:
+                    TextField(title, text: $text, onEditingChanged: { value in
+                        presented = value
+                    })
+                        .onChange(of: text, perform: { _ in
+                            date = CalendarSheet.dateFormatter.date(from: text)
+                        })
                 }
             }
             .padding()
@@ -74,6 +84,9 @@ struct LBTextField: View {
 
 struct CustomTextField_Previews: PreviewProvider {
     static var previews: some View {
+        @State var presented = true
+        @State var value = ""
+
         VStack {
             LBTextField(
                 style: .common,
@@ -90,6 +103,13 @@ struct CustomTextField_Previews: PreviewProvider {
                 text: .constant("12345"),
                 textFiledState: .active
             )
+
+            LBTextField(style: .date,
+                        icon: LBIcon.cake,
+                        title: "Data de Aniversário",
+                        text: .constant(""),
+                        textFiledState: .active)
         }
+        .calendarSheet(presented: $presented, value: $value)
     }
 }
