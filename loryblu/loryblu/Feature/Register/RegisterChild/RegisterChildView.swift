@@ -81,7 +81,6 @@ struct RegisterChildView: View {
             .padding(.top, 40)
 
         }.padding([.leading, .trailing], 24)
-            .calendarSheet(presented: $presented, value: $birthDay)
     }
 
 }

@@ -45,12 +45,7 @@ struct LBTextField: View {
                             .accentColor(LBColor.text)
                     }
                 case .date:
-                    TextField(title, text: $text, onEditingChanged: { value in
-                        presented = value
-                    })
-                         .onChange(of: text, perform: { _ in
-                            date = Formatter.dateFormatter.date(from: text)
-                        })
+                DatePickerTextField(placeholder: title, date: $date)
                 }
             }
             .padding()
@@ -111,6 +106,5 @@ struct CustomTextField_Previews: PreviewProvider {
                         text: .constant(""),
                         textFiledState: .active)
         }
-        .calendarSheet(presented: $presented, value: $value)
     }
 }
