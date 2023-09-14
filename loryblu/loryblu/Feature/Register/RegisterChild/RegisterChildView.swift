@@ -11,6 +11,8 @@ struct RegisterChildView: View {
     @State var name: String = ""
     @State var birthDay: String = ""
     @State var agreePrivacy: Bool = false
+    @State var presented: Bool = false
+    @State var date: Date?
 
     var body: some View {
         VStack {
@@ -45,7 +47,7 @@ struct RegisterChildView: View {
             )
 
             LBTextField(
-                style: .common,
+                style: .date,
                 icon: LBIcon.cake,
                 title: LBStrings.Register.birthDay,
                 text: $birthDay,
@@ -79,6 +81,7 @@ struct RegisterChildView: View {
             .padding(.top, 40)
 
         }.padding([.leading, .trailing], 24)
+            .calendarSheet(presented: $presented, value: $birthDay)
     }
 
 }

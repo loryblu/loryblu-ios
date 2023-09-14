@@ -4,11 +4,6 @@ struct CalendarSheet: ViewModifier {
     @Binding var presented: Bool
     @Binding var value: String
     @State private var calendarDate = Date()
-    static let dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MM/dd/yyyy"
-        return formatter
-    }()
 
     func body(content: Content) -> some View {
         ZStack {
@@ -32,7 +27,7 @@ struct CalendarSheet: ViewModifier {
         .animation(.default, value: presented)
         .ignoresSafeArea()
         .onChange(of: calendarDate, perform: { _ in
-            value = CalendarSheet.dateFormatter.string(from: calendarDate)
+            value = Formatter.dateFormatter.string(from: calendarDate)
         })
     }
 }

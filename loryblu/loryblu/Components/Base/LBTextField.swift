@@ -48,8 +48,8 @@ struct LBTextField: View {
                     TextField(title, text: $text, onEditingChanged: { value in
                         presented = value
                     })
-                        .onChange(of: text, perform: { _ in
-                            date = CalendarSheet.dateFormatter.date(from: text)
+                         .onChange(of: text, perform: { _ in
+                            date = Formatter.dateFormatter.date(from: text)
                         })
                 }
             }
@@ -84,6 +84,7 @@ struct LBTextField: View {
 
 struct CustomTextField_Previews: PreviewProvider {
     static var previews: some View {
+        @State var date: Date?
         @State var presented = true
         @State var value = ""
 
