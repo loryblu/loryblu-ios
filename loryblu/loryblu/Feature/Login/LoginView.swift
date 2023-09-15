@@ -63,10 +63,7 @@ struct LoginView: View {
                         .font(LBFont.caption)
                         .foregroundColor(LBColor.error)
                 HStack {
-                    Toggle("", isOn: $rememberMe)
-                        .padding(.trailing, 18.0)
-                        .labelsHidden()
-                        .tint(LBColor.buttonPrimary)
+                    LBToggle(isActived: .constant(false))
 
                     Text(LBStrings.Login.remeber)
                         .font(LBFont.subtitle)
