@@ -4,8 +4,7 @@ import SwiftUI
 struct LorybluApp: App {
     var body: some Scene {
         WindowGroup {
-            //ContentView()
-            RegisterChildView()
+            ContentView()
         }
     }
 }
