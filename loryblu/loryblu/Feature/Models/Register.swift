@@ -22,16 +22,6 @@ struct Register: Encodable, Decodable {
     var nameChild: String?
     var dateBirth: String?
     var gender: Gender?
-
-//    init(name: String, email: String, password: String, nameChild: String, dateBirth: String, gender: Gender) {
-//        self.name = name
-//        self.email = email
-//        self.password = password
-//        self.nameChild = nameChild
-//        self.dateBirth = dateBirth
-//        self.gender = gender
-//    }
-
 }
 
 #if DEBUG
@@ -54,4 +44,3 @@ extension Register {
     }
 }
 #endif
-// swiftlint: enable function_parameter_count

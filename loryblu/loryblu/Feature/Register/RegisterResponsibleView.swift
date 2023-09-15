@@ -1,25 +1,16 @@
-//
-//  ResponsibleView.swift
-//  LoryBlu
-//
-//  Created by Suh on 22/07/23.
-//
-
 import SwiftUI
 
-struct ResponsibleView: View {
-    @ObservedObject var viewModel: ResponsibleViewModel = ResponsibleViewModel()
-    @FocusState private var focusedField: ResponsibleViewModel.FocusedField?
+struct RegisterResponsibleView: View {
+    @ObservedObject var viewModel: RegisterResponsibleViewModel = RegisterResponsibleViewModel()
+    @FocusState private var focusedField: RegisterResponsibleViewModel.FocusedField?
     @State var isHiddenPassword: Bool = false
     @State var isHiddenRepeat: Bool = false
     @State var showNext: Bool = false
-    var registerFull: Register?
 
     var body: some View {
         NavigationStack {
             VStack {
                 VStack {
-
                     Image(LBIcon.logo.rawValue).resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 187, height: 47)
@@ -32,12 +23,10 @@ struct ResponsibleView: View {
                         .frame(width: 242, alignment: .topLeading)
                         .padding(.bottom, 32)
                 }
-
                 form
-
             }
             .navigationDestination(isPresented: $showNext) {
-                RegisterChildView()
+                RegisterChildView(viewModel: viewModel.makeRegisterChildViewModel())
             }
         }
         .padding(.top, -40)
@@ -117,9 +106,6 @@ struct ResponsibleView: View {
 
             LBButton(title: LBStrings.General.next) {
                 self.viewModel.showError()
-                guard let user = registerFull else { return }
-                self.viewModel.saveRegister(user)
-                print("Abrir Cadastro da Criança")
                 self.showContinueRegister()
             }
             .padding(.top, 40)
@@ -133,14 +119,13 @@ struct ResponsibleView: View {
             self.showNext = false
         }
     }
+
 }
 
 struct ResponsibleView_Previews: PreviewProvider {
     static var previews: some View {
-        ResponsibleView(
-            viewModel: ResponsibleViewModel()
+        RegisterResponsibleView(
+            viewModel: RegisterResponsibleViewModel()
         )
     }
 }
-
-// comm/opt/seta esquerda

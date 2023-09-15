@@ -8,11 +8,8 @@
 import SwiftUI
 
 struct RegisterChildView: View {
-    @ObservedObject var viewModel: RegisterChildViewModel = RegisterChildViewModel()
-    @State var name: String = ""
-    @State var birthDay: String = ""
+    @ObservedObject var viewModel: RegisterChildViewModel
     @State var agreePrivacy: Bool = false
-    @State var gender: LBGenderButton.Gender?
     var child: Register?
 
     var body: some View {
@@ -34,7 +31,6 @@ struct RegisterChildView: View {
             form
 
         }.padding(.top, -40)
-
     }
 
     var form: some View {
@@ -44,7 +40,7 @@ struct RegisterChildView: View {
                     style: .common,
                     icon: LBIcon.user,
                     title: LBStrings.Register.name,
-                    text: $name,
+                    text: $viewModel.nameChild,
                     textFiledState: .active
                 )
 
@@ -52,17 +48,17 @@ struct RegisterChildView: View {
                     style: .common,
                     icon: LBIcon.cake,
                     title: LBStrings.Register.birthDay,
-                    text: $birthDay,
+                    text: $viewModel.birthDay,
                     textFiledState: .active
                 )
 
                 HStack(spacing: 15) {
-                    LBGenderButton(gender: .male, isActive: gender == .male) {
-                        gender = .male
+                    LBGenderButton(gender: .male, isActive: viewModel.gender == .male) {
+                        viewModel.gender = .male
                     }
 
-                    LBGenderButton(gender: .female, isActive: gender == .female) {
-                        gender = .female
+                    LBGenderButton(gender: .female, isActive: viewModel.gender == .female) {
+                        viewModel.gender = .female
                     }
                 }
 
@@ -81,26 +77,23 @@ struct RegisterChildView: View {
                     style: !agreePrivacy ? .primaryOff : .primaryActivated
                 ) {
 
-                    if ValidateRules.validateName(name) && !self.birthDay.isEmpty {
-                        let childUser = Register(name: "", email: "", password: "", nameChild: name, dateBirth: birthDay, gender: .female)
-                        self.viewModel.save(childUser)
-                        print("==>>Cadastro Concluido")
+                    if ValidateRules.validateName(viewModel.nameChild) && !self.viewModel.birthDay.isEmpty {
+                        self.viewModel.saveRegister()
                     } else {
-                        print("Errroooooooo")
                     }
+
                 }
                 .disabled(!agreePrivacy)
                 .padding(.top, 40)
 
             }.padding([.leading, .trailing], 26)
         }
-
     }
 
 }
 
 struct RegisterChildView_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterChildView()
+        RegisterChildView(viewModel: RegisterChildViewModel(user: Register()))
     }
 }

@@ -1,25 +1,22 @@
-//
-//  RegisterChildViewModel.swift
-//  LoryBlu
-//
-//  Created by Suh on 04/09/23.
-//
-
 import Foundation
 
 class RegisterChildViewModel: ObservableObject {
-//    let user: Register?
-//
-//    init(user: Register) {
-//        self.user = user
-//    }
+    @Published var nameChild: String = ""
+    @Published var birthDay: String = ""
+    @Published var gender: LBGenderButton.Gender?
+    private(set) var user: Register
 
-    func loadUser() {
-
+    init(user: Register) {
+        self.user = user
     }
 
-    func save(_ user: Register) {
-        print(user)
+    func saveRegister() {
+        user.nameChild = nameChild
+        user.dateBirth = birthDay
+        if gender == .male {
+            user.gender = .male
+        } else if gender == .female {
+            user.gender = .female
+        }
     }
-
 }

@@ -4,15 +4,19 @@ import SwiftUI
 import Combine
 
 class ChildData: ObservableObject {
-    @Published var users: [Register] = []
+    @Published var user: Register
+
+    init(users: Register) {
+        self.user = users
+    }
 
     func addUser(
-        name: String,
-        email: String,
-        password: String,
-        nameChild: String,
-        dateBirth: String,
-        gender: String
+        name: String?,
+        email: String?,
+        password: String?,
+        nameChild: String?,
+        dateBirth: String?,
+        gender: String?
     ) {
         let user = Register(
             name: name,
@@ -20,10 +24,11 @@ class ChildData: ObservableObject {
             password: password,
             nameChild: nameChild,
             dateBirth: dateBirth,
-            gender: .male
+            gender: .female
         )
 
-        users.append(user)
+        self.user = user
+//        users.append(user)
     }
 
 }
