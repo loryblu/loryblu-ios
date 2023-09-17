@@ -17,7 +17,9 @@
 		41931EBE2A6470B4008F13F8 /* LBButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41931EBD2A6470B4008F13F8 /* LBButton.swift */; };
 		41BE77FD2A85A12300534ADA /* LBGenderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BE77FC2A85A12300534ADA /* LBGenderButton.swift */; };
 		8C21B3482AA6C374002EF4BD /* RegisterChildViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C21B3472AA6C374002EF4BD /* RegisterChildViewModel.swift */; };
-		8C21B34C2AAE3381002EF4BD /* DatePickerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C21B34B2AAE3381002EF4BD /* DatePickerTextField.swift */; };
+		8C21B34D2AB3FCCE002EF4BD /* ResetPasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334D0AB22A8AF93D003881ED /* ResetPasswordModel.swift */; };
+		8C21B34E2AB3FDCB002EF4BD /* NewPasswordScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334D0AB42A8AF93D003881ED /* NewPasswordScreen.swift */; };
+		8C21B34F2AB3FE25002EF4BD /* ResetPasswordScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334D0AB32A8AF93D003881ED /* ResetPasswordScreen.swift */; };
 		8C2535322A7714DD0096738B /* RegisterResponsibleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2535312A7714DD0096738B /* RegisterResponsibleViewModel.swift */; };
 		8C27B8542A68C19400F72214 /* LBLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C27B8532A68C19400F72214 /* LBLabel.swift */; };
 		8C57341B2A6B4F5F0052B955 /* LBStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C57341A2A6B4F5F0052B955 /* LBStrings.swift */; };
@@ -29,12 +31,6 @@
 		8C7C64B32A6F4CE1002361A9 /* ValidateRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7C64B22A6F4CE1002361A9 /* ValidateRules.swift */; };
 		8C9CBCFB2A7ACF46001DBD35 /* ExternalLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9CBCF92A7ACF46001DBD35 /* ExternalLogin.swift */; };
 		8C9CBCFC2A7ACF46001DBD35 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9CBCFA2A7ACF46001DBD35 /* LoginView.swift */; };
-<<<<<<< HEAD
-		8C9CBD082A7ACF6F001DBD35 /* ResetPasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9CBD022A7ACF6F001DBD35 /* ResetPasswordModel.swift */; };
-		8C9CBD092A7ACF6F001DBD35 /* ResetPasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9CBD032A7ACF6F001DBD35 /* ResetPasswordModel.swift */; };
-		8C9CBD0A2A7ACF6F001DBD35 /* NewPasswordScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9CBD042A7ACF6F001DBD35 /* NewPasswordScreen.swift */; };
-=======
->>>>>>> develop
 		8C9CBD0D2A7AE97B001DBD35 /* RegisterChildView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9CBD0C2A7AE97B001DBD35 /* RegisterChildView.swift */; };
 		8C9CBD102A7AEC24001DBD35 /* PasswordRulesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9CBD0F2A7AEC24001DBD35 /* PasswordRulesView.swift */; };
 		8CE03E392A6360BE0024919C /* LBColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE03E382A6360BE0024919C /* LBColor.swift */; };
@@ -57,7 +53,6 @@
 		41931EBD2A6470B4008F13F8 /* LBButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBButton.swift; sourceTree = "<group>"; };
 		41BE77FC2A85A12300534ADA /* LBGenderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBGenderButton.swift; sourceTree = "<group>"; };
 		8C21B3472AA6C374002EF4BD /* RegisterChildViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterChildViewModel.swift; sourceTree = "<group>"; };
-		8C21B34B2AAE3381002EF4BD /* DatePickerTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DatePickerTextField.swift; path = loryblu/Components/DatePickerTextField.swift; sourceTree = SOURCE_ROOT; };
 		8C2535312A7714DD0096738B /* RegisterResponsibleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterResponsibleViewModel.swift; sourceTree = "<group>"; };
 		8C27B8532A68C19400F72214 /* LBLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBLabel.swift; sourceTree = "<group>"; };
 		8C57341A2A6B4F5F0052B955 /* LBStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBStrings.swift; sourceTree = "<group>"; };
@@ -163,6 +158,9 @@
 		8C57341E2A6B6EB70052B955 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
+				8C9CBD032A7ACF6F001DBD35 /* ResetPasswordModel.swift */,
+				8C9CBD022A7ACF6F001DBD35 /* ResetPasswordModel.swift */,
+				8C9CBD042A7ACF6F001DBD35 /* NewPasswordScreen.swift */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -173,8 +171,8 @@
 <<<<<<< HEAD
 				8C669C422AA011650028B436 /* Models */,
 =======
-				334D0AB12A8AF93D003881ED /* ResetPassword */,
 >>>>>>> develop
+				334D0AB12A8AF93D003881ED /* ResetPassword */,
 				8C9CBCF82A7ACF46001DBD35 /* Login */,
 				8C5734222A6C21710052B955 /* Register */,
 			);
@@ -208,20 +206,6 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
-		8C9CBCFF2A7ACF6F001DBD35 /* ForgotPasswordScreen */ = {
-			isa = PBXGroup;
-			children = (
-				8C9CBD022A7ACF6F001DBD35 /* ResetPasswordModel.swift */,
-				8C9CBD032A7ACF6F001DBD35 /* ResetPasswordModel.swift */,
-				8C9CBD042A7ACF6F001DBD35 /* NewPasswordScreen.swift */,
-			);
-			name = ForgotPasswordScreen;
-			path = ResetPassword;
-			sourceTree = "<group>";
-		};
-=======
->>>>>>> develop
 		8C9CBD0B2A7AE97B001DBD35 /* RegisterChild */ = {
 			isa = PBXGroup;
 			children = (
@@ -243,7 +227,6 @@
 			isa = PBXGroup;
 			children = (
 				41931EBD2A6470B4008F13F8 /* LBButton.swift */,
-				8C21B34B2AAE3381002EF4BD /* DatePickerTextField.swift */,
 				41BE77FC2A85A12300534ADA /* LBGenderButton.swift */,
 				8C57341F2A6B6F6B0052B955 /* LBTextField.swift */,
 				8C5DFC8E2A85AE13002739D9 /* LBToggle.swift */,
@@ -404,24 +387,21 @@
 				330A37772A660C2D00C9DCE7 /* LBFont.swift in Sources */,
 <<<<<<< HEAD
 				8C21B3482AA6C374002EF4BD /* RegisterChildViewModel.swift in Sources */,
-				8C9CBD092A7ACF6F001DBD35 /* ResetPasswordModel.swift in Sources */,
-=======
->>>>>>> develop
 				8CFB35A02A6059BD008BF633 /* ContentView.swift in Sources */,
 				41931EBE2A6470B4008F13F8 /* LBButton.swift in Sources */,
-				8C21B34C2AAE3381002EF4BD /* DatePickerTextField.swift in Sources */,
 				8C9CBCFC2A7ACF46001DBD35 /* LoginView.swift in Sources */,
-<<<<<<< HEAD
 				8C5734262A6C39AF0052B955 /* RegisterResponsibleView.swift in Sources */,
-				8C9CBD082A7ACF6F001DBD35 /* ResetPasswordModel.swift in Sources */,
-=======
-				8C5734262A6C39AF0052B955 /* ResponsibleView.swift in Sources */,
->>>>>>> develop
 				8C9CBCFB2A7ACF46001DBD35 /* ExternalLogin.swift in Sources */,
+				8C21B34E2AB3FDCB002EF4BD /* NewPasswordScreen.swift in Sources */,
 				8C9CBD0D2A7AE97B001DBD35 /* RegisterChildView.swift in Sources */,
-<<<<<<< HEAD
 				8C669C412AA011480028B436 /* Register.swift in Sources */,
 =======
+				8CFB35A02A6059BD008BF633 /* ContentView.swift in Sources */,
+				41931EBE2A6470B4008F13F8 /* LBButton.swift in Sources */,
+				8C9CBCFC2A7ACF46001DBD35 /* LoginView.swift in Sources */,
+				8C5734262A6C39AF0052B955 /* ResponsibleView.swift in Sources */,
+				8C9CBCFB2A7ACF46001DBD35 /* ExternalLogin.swift in Sources */,
+				8C9CBD0D2A7AE97B001DBD35 /* RegisterChildView.swift in Sources */,
 				334D0AB52A8AF93D003881ED /* ResetPasswordModel.swift in Sources */,
 >>>>>>> develop
 				8C5734202A6B6F6B0052B955 /* LBTextField.swift in Sources */,
@@ -439,8 +419,10 @@
 >>>>>>> develop
 				8C27B8542A68C19400F72214 /* LBLabel.swift in Sources */,
 				8C5DFC8F2A85AE13002739D9 /* LBToggle.swift in Sources */,
+				8C21B34F2AB3FE25002EF4BD /* ResetPasswordScreen.swift in Sources */,
 				8C57341B2A6B4F5F0052B955 /* LBStrings.swift in Sources */,
 				8CE03E392A6360BE0024919C /* LBColor.swift in Sources */,
+				8C21B34D2AB3FCCE002EF4BD /* ResetPasswordModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
