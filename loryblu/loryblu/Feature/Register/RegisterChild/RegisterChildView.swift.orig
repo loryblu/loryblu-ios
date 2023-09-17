@@ -10,9 +10,12 @@ import SwiftUI
 struct RegisterChildView: View {
     @ObservedObject var viewModel: RegisterChildViewModel
     @State var agreePrivacy: Bool = false
+<<<<<<< HEAD
     @State var presented: Bool = false
     @State var date: Date?
+=======
     var child: Register?
+>>>>>>> develop
 
     var body: some View {
         VStack {
@@ -46,13 +49,23 @@ struct RegisterChildView: View {
                     textFiledState: .active
                 )
 
+<<<<<<< HEAD
+            LBTextField(
+                style: .date,
+                icon: LBIcon.cake,
+                title: LBStrings.Register.birthDay,
+                text: $birthDay,
+                textFiledState: .active
+            )
+=======
                 LBTextField(
-                    style: .date,
+                    style: .common,
                     icon: LBIcon.cake,
                     title: LBStrings.Register.birthDay,
                     text: $viewModel.birthDay,
                     textFiledState: .active
                 )
+>>>>>>> develop
 
                 HStack(spacing: 15) {
                     LBGenderButton(gender: .male, isActive: viewModel.gender == .male) {
