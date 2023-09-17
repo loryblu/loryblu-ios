@@ -19,7 +19,7 @@
 
 "register_responsible" = "Cadastro do responsável";
 "register_child" = "Cadastro da criança";
-"register_name" = "Nome";
+"register_name" = "Nome Completo";
 "register_confirm_password" = "Confirmar senha";
 "register_birthday" = "Data de nascimento";
 "register_gender_man" = "Menino";

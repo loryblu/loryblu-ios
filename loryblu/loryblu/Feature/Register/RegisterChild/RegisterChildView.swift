@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct RegisterChildView: View {
-    @State var name: String = ""
-    @State var birthDay: String = ""
+    @ObservedObject var viewModel: RegisterChildViewModel
     @State var agreePrivacy: Bool = false
+    var child: Register?
 
     var body: some View {
         VStack {
@@ -31,60 +31,69 @@ struct RegisterChildView: View {
             form
 
         }.padding(.top, -40)
-
     }
 
     var form: some View {
         VStack(spacing: 18) {
-            LBTextField(
-                style: .common,
-                icon: LBIcon.user,
-                title: LBStrings.Register.name,
-                text: $name,
-                textFiledState: .active
-            )
+            VStack(spacing: 16) {
+                LBTextField(
+                    style: .common,
+                    icon: LBIcon.user,
+                    title: LBStrings.Register.name,
+                    text: $viewModel.nameChild,
+                    textFiledState: .active
+                )
 
-            LBTextField(
-                style: .common,
-                icon: LBIcon.cake,
-                title: LBStrings.Register.birthDay,
-                text: $birthDay,
-                textFiledState: .active
-            )
+                LBTextField(
+                    style: .common,
+                    icon: LBIcon.cake,
+                    title: LBStrings.Register.birthDay,
+                    text: $viewModel.birthDay,
+                    textFiledState: .active
+                )
 
-            HStack(spacing: 15) {
-                LBButton(title: LBStrings.Register.man, style: .primaryActivated) {
+                HStack(spacing: 15) {
+                    LBGenderButton(gender: .male, isActive: viewModel.gender == .male) {
+                        viewModel.gender = .male
+                    }
 
+                    LBGenderButton(gender: .female, isActive: viewModel.gender == .female) {
+                        viewModel.gender = .female
+                    }
                 }
 
-                LBButton(title: LBStrings.Register.woman, style: .primaryOff) {
+                HStack {
+                    Spacer()
+                    LBToggle(isActived: $agreePrivacy)
+
+                    Text(LBStrings.Register.agree)
+                        .foregroundColor(LBColor.text)
+                        .font(LBFont.caption)
+                        .multilineTextAlignment(.trailing)
+                }
+
+                LBButton(
+                    title: LBStrings.Register.buttonRegister,
+                    style: !agreePrivacy ? .primaryOff : .primaryActivated
+                ) {
+
+                    if ValidateRules.validateName(viewModel.nameChild) && !self.viewModel.birthDay.isEmpty {
+                        self.viewModel.saveRegister()
+                    } else {
+                    }
 
                 }
-            }
+                .disabled(!agreePrivacy)
+                .padding(.top, 40)
 
-            HStack {
-                Spacer()
-                LBToggle(isActived: $agreePrivacy)
-
-                Text(LBStrings.Register.agree)
-                    .foregroundColor(LBColor.text)
-                    .font(LBFont.caption)
-                    .multilineTextAlignment(.trailing)
-            }
-
-            LBButton(title: LBStrings.Register.buttonRegister, style: .primaryOff) {
-                // self.viewModel.showError()
-                print("Cadastro Concluido")
-            }
-            .padding(.top, 40)
-
-        }.padding([.leading, .trailing], 24)
+            }.padding([.leading, .trailing], 26)
+        }
     }
 
 }
 
 struct RegisterChildView_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterChildView()
+        RegisterChildView(viewModel: RegisterChildViewModel(user: Register()))
     }
 }

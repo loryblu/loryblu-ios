@@ -1,6 +1,6 @@
 import Foundation
 
-class ResponsibleViewModel: ObservableObject {
+class RegisterResponsibleViewModel: ObservableObject {
 
     enum FocusedField: Equatable {
         case none, name, email, password, confirmPassword
@@ -14,6 +14,13 @@ class ResponsibleViewModel: ObservableObject {
     @Published var hasError: Bool = false
     @Published var errorField: FocusedField = .none
 
+    var user = Register()
+
+    func makeRegisterChildViewModel() -> RegisterChildViewModel {
+        saveRegister()
+        return RegisterChildViewModel(user: user)
+    }
+
     func showError() {
         if !ValidateRules.validateName(name) {
             hasError = true
@@ -23,6 +30,9 @@ class ResponsibleViewModel: ObservableObject {
             hasError = true
             textError = LBStrings.Register.errorEmail
             errorField = .email
+        } else if password.isEmpty {
+            hasError = true
+            errorField = .password
         } else if confirmPassword != password {
             hasError = true
             textError = LBStrings.Register.errorPassord
@@ -38,4 +48,17 @@ class ResponsibleViewModel: ObservableObject {
         errorField = .none
     }
 
+    func showContinue() -> Bool {
+        if !email.isEmpty && !password.isEmpty && !confirmPassword.isEmpty {
+            return true
+        } else {
+            return false
+        }
+    }
+
+    func saveRegister() {
+        user.name = name
+        user.email = email
+        user.password = password
+    }
 }

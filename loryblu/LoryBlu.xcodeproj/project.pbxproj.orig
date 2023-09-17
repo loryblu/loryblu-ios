@@ -64,6 +64,12 @@
 		8C7C64B22A6F4CE1002361A9 /* ValidateRules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateRules.swift; sourceTree = "<group>"; };
 		8C9CBCF92A7ACF46001DBD35 /* ExternalLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExternalLogin.swift; sourceTree = "<group>"; };
 		8C9CBCFA2A7ACF46001DBD35 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+<<<<<<< HEAD
+		8C9CBD022A7ACF6F001DBD35 /* ResetPasswordModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordModel.swift; sourceTree = "<group>"; };
+		8C9CBD032A7ACF6F001DBD35 /* ResetPasswordModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordModel.swift; sourceTree = "<group>"; };
+		8C9CBD042A7ACF6F001DBD35 /* NewPasswordScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPasswordScreen.swift; sourceTree = "<group>"; };
+=======
+>>>>>>> develop
 		8C9CBD0C2A7AE97B001DBD35 /* RegisterChildView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterChildView.swift; sourceTree = "<group>"; };
 		8C9CBD0F2A7AEC24001DBD35 /* PasswordRulesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordRulesView.swift; sourceTree = "<group>"; };
 		8CE03E382A6360BE0024919C /* LBColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBColor.swift; sourceTree = "<group>"; };
@@ -162,7 +168,10 @@
 		8C5734212A6C21490052B955 /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				8C669C422AA011650028B436 /* Models */,
+=======
+>>>>>>> develop
 				334D0AB12A8AF93D003881ED /* ResetPassword */,
 				8C9CBCF82A7ACF46001DBD35 /* Login */,
 				8C5734222A6C21710052B955 /* Register */,
@@ -376,15 +385,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				330A37772A660C2D00C9DCE7 /* LBFont.swift in Sources */,
+<<<<<<< HEAD
 				8C21B3482AA6C374002EF4BD /* RegisterChildViewModel.swift in Sources */,
 				8CFB35A02A6059BD008BF633 /* ContentView.swift in Sources */,
 				41931EBE2A6470B4008F13F8 /* LBButton.swift in Sources */,
 				8C9CBCFC2A7ACF46001DBD35 /* LoginView.swift in Sources */,
 				8C5734262A6C39AF0052B955 /* RegisterResponsibleView.swift in Sources */,
 				8C9CBCFB2A7ACF46001DBD35 /* ExternalLogin.swift in Sources */,
+				8C21B34E2AB3FDCB002EF4BD /* NewPasswordScreen.swift in Sources */,
 				8C9CBD0D2A7AE97B001DBD35 /* RegisterChildView.swift in Sources */,
 				8C669C412AA011480028B436 /* Register.swift in Sources */,
-                334D0AB52A8AF93D003881ED /* ResetPasswordModel.swift in Sources */,
+=======
+				8CFB35A02A6059BD008BF633 /* ContentView.swift in Sources */,
+				41931EBE2A6470B4008F13F8 /* LBButton.swift in Sources */,
+				8C9CBCFC2A7ACF46001DBD35 /* LoginView.swift in Sources */,
+				8C5734262A6C39AF0052B955 /* ResponsibleView.swift in Sources */,
+				8C9CBCFB2A7ACF46001DBD35 /* ExternalLogin.swift in Sources */,
+				8C9CBD0D2A7AE97B001DBD35 /* RegisterChildView.swift in Sources */,
+				334D0AB52A8AF93D003881ED /* ResetPasswordModel.swift in Sources */,
+>>>>>>> develop
 				8C5734202A6B6F6B0052B955 /* LBTextField.swift in Sources */,
 				334D0AB62A8AF93D003881ED /* ResetPasswordScreen.swift in Sources */,
 				8C9CBD102A7AEC24001DBD35 /* PasswordRulesView.swift in Sources */,
@@ -392,8 +411,12 @@
 				41BE77FD2A85A12300534ADA /* LBGenderButton.swift in Sources */,
 				8C7C64B32A6F4CE1002361A9 /* ValidateRules.swift in Sources */,
 				8CE03E3C2A6363630024919C /* LBIcon.swift in Sources */,
+<<<<<<< HEAD
 				8C2535322A7714DD0096738B /* RegisterResponsibleViewModel.swift in Sources */,
-                334D0AB72A8AF93D003881ED /* NewPasswordScreen.swift in Sources */,
+=======
+				334D0AB72A8AF93D003881ED /* NewPasswordScreen.swift in Sources */,
+				8C2535322A7714DD0096738B /* ResponsibleViewModel.swift in Sources */,
+>>>>>>> develop
 				8C27B8542A68C19400F72214 /* LBLabel.swift in Sources */,
 				8C5DFC8F2A85AE13002739D9 /* LBToggle.swift in Sources */,
 				8C21B34F2AB3FE25002EF4BD /* ResetPasswordScreen.swift in Sources */,

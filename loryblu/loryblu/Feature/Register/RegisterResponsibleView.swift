@@ -1,36 +1,33 @@
-//
-//  ResponsibleView.swift
-//  LoryBlu
-//
-//  Created by Suh on 22/07/23.
-//
-
 import SwiftUI
 
-struct ResponsibleView: View {
-    @ObservedObject var viewModel: ResponsibleViewModel = ResponsibleViewModel()
-    @FocusState private var focusedField: ResponsibleViewModel.FocusedField?
+struct RegisterResponsibleView: View {
+    @ObservedObject var viewModel: RegisterResponsibleViewModel = RegisterResponsibleViewModel()
+    @FocusState private var focusedField: RegisterResponsibleViewModel.FocusedField?
     @State var isHiddenPassword: Bool = false
     @State var isHiddenRepeat: Bool = false
+    @State var showNext: Bool = false
 
     var body: some View {
-        VStack {
+        NavigationStack {
             VStack {
-                Image(LBIcon.logo.rawValue).resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 187, height: 47)
-                    .clipped()
-                    .padding(.bottom, 40)
+                VStack {
+                    Image(LBIcon.logo.rawValue).resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 187, height: 47)
+                        .clipped()
+                        .padding(.bottom, 40)
 
-                Text(LBStrings.Register.responsible)
-                    .font(LBFont.head6)
-                    .foregroundColor(LBColor.text)
-                    .frame(width: 242, alignment: .topLeading)
-                    .padding(.bottom, 32)
+                    Text(LBStrings.Register.responsible)
+                        .font(LBFont.head6)
+                        .foregroundColor(LBColor.text)
+                        .frame(width: 242, alignment: .topLeading)
+                        .padding(.bottom, 32)
+                }
+                form
             }
-
-            form
-
+            .navigationDestination(isPresented: $showNext) {
+                RegisterChildView(viewModel: viewModel.makeRegisterChildViewModel())
+            }
         }
         .padding(.top, -40)
         .onChange(of: viewModel.errorField) { newValue in
@@ -109,18 +106,26 @@ struct ResponsibleView: View {
 
             LBButton(title: LBStrings.General.next) {
                 self.viewModel.showError()
-                print("Abrir Cadastro da Criança")
+                self.showContinueRegister()
             }
             .padding(.top, 40)
-
         }.padding([.leading, .trailing], 24)
     }
+
+    private func showContinueRegister() {
+        if self.viewModel.showContinue() {
+            self.showNext = true
+        } else {
+            self.showNext = false
+        }
+    }
+
 }
 
 struct ResponsibleView_Previews: PreviewProvider {
     static var previews: some View {
-        ResponsibleView(
-            viewModel: ResponsibleViewModel()
+        RegisterResponsibleView(
+            viewModel: RegisterResponsibleViewModel()
         )
     }
 }
