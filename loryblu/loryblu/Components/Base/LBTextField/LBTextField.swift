@@ -45,7 +45,7 @@ struct LBTextField: View {
                             .accentColor(LBColor.text)
                     }
                 case .date:
-                DatePickerTextField(placeholder: title, date: $date)
+                LBDatePickerTextField(placeholder: title, date: $date)
                 }
             }
             .padding()

@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 
-struct DatePickerTextField: UIViewRepresentable {
+struct LBDatePickerTextField: UIViewRepresentable {
     private let textField = UITextField()
     private let datePicker = UIDatePicker()
     private let helper = Helper()
@@ -16,6 +16,7 @@ struct DatePickerTextField: UIViewRepresentable {
 
         textField.placeholder = placeholder
         textField.inputView = datePicker
+  
 
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
