@@ -11,7 +11,9 @@ import SwiftUI
 enum ValidateRules {
 
     static func validateName(_ name: String) -> Bool {
-        !name.isEmpty && name.count >= 3
+        let nameRegex = "[A-Z][a-z]* [A-Za-z]{3,}"
+        let namePredicate = NSPredicate(format: "SELF MATCHES %@", nameRegex)
+        return namePredicate.evaluate(with: name)
     }
 
     static func validate(email: String) -> Bool {
