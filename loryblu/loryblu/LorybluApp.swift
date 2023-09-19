@@ -4,9 +4,8 @@ import SwiftUI
 struct LorybluApp: App {
     var body: some Scene {
         WindowGroup {
-            //ContentView()
-            RegisterChildView(viewModel: RegisterChildViewModel(user: Register()))
-            // fazer animação e navegacao para login.
+            ContentView()
+             //fazer animação e navegacao para login.
         }
     }
 }
