@@ -19,6 +19,7 @@ extension LBStrings {
         static let hello = String(localized: "hello")
         static let email = String(localized: "email")
         static let password = String(localized: "password")
+        static let confirm = String(localized: "confirm")
     }
 }
 

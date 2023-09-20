@@ -5,6 +5,7 @@
 "hello" = "Seja Bem Vindo!! 💙 ";
 "email" = "E-mail";
 "password" = "Senha";
+"confirm" = "Confirmar";
 
 // ====================  Rules Password  =========================
 

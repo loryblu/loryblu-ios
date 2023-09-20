@@ -10,18 +10,18 @@ struct LBDatePickerTextField: UIViewRepresentable {
     @Binding public var date: Date?
 
     func makeUIView(context: Context) -> UITextField {
+        datePicker.minimumDate = Calendar.current.date(byAdding: .year, value: -10, to: Date())
         datePicker.datePickerMode = .date
         datePicker.preferredDatePickerStyle = .wheels
         datePicker.addTarget(self.helper, action: #selector(self.helper.dateValueChanged), for: .valueChanged)
 
         textField.placeholder = placeholder
         textField.inputView = datePicker
-  
 
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let doneButton = UIBarButtonItem(title: LBStrings.General.send,
+        let doneButton = UIBarButtonItem(title: LBStrings.General.confirm,
                                          style: .plain,
                                          target: helper,
                                          action: #selector(helper.doneButtonTapped))
