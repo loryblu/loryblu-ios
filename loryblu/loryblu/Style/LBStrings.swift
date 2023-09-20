@@ -19,6 +19,7 @@ extension LBStrings {
         static let hello = String(localized: "hello")
         static let email = String(localized: "email")
         static let password = String(localized: "password")
+        static let vazia = String(localized: "string_vazia")
     }
 }
 
@@ -46,7 +47,10 @@ extension LBStrings {
         static let agree = String(localized: "register_agree_privacy")
         static let errorName = String(localized: "textError_name")
         static let errorEmail = String(localized: "textError_email")
-        static let errorPassord = String(localized: "textError_confirmPassword")
+        static let errorPassword = String(localized: "textError_confirm_password")
+        static let errorBirthDay = String(localized: "textError_birthday")
+        static let errorGender = String(localized: "textError_gender")
+        static let errorAgree = String(localized: "textError_agree")
     }
 }
 

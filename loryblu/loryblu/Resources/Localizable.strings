@@ -5,6 +5,7 @@
 "hello" = "Seja Bem Vindo!! 💙 ";
 "email" = "E-mail";
 "password" = "Senha";
+"string_vazia" = "";
 
 // ====================  Rules Password  =========================
 
@@ -26,9 +27,12 @@
 "register_gender_woman" = "Menina";
 "register_button" = "cadastrar";
 "register_agree_privacy" = "Eu concordo com a política de privacidade";
-"textError_name" = "*Campo obrigatório";
+"textError_name" = "*Nome Inválido";
 "textError_email" = "*E-mail inválido";
-"textError_confirmPassword" = "*As senhas devem ser idênticas";
+"textError_confirm_password" = "*As senhas devem ser idênticas";
+"textError_birthday" = "*Selecione uma data";
+"textError_gender" = "*Selecione um botão";
+"textError_agree" = "*Aceite a politica de privacidade.";
 
 // ====================  Set Password  =========================
 

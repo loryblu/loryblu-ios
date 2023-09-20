@@ -22,6 +22,7 @@ struct Register: Encodable, Decodable {
     var nameChild: String?
     var dateBirth: String?
     var gender: Gender?
+    var recoveryToken: String?
 }
 
 #if DEBUG

@@ -27,8 +27,10 @@ struct RegisterResponsibleView: View {
             }
             .navigationDestination(isPresented: $showNext) {
                 RegisterChildView(viewModel: viewModel.makeRegisterChildViewModel())
+                    .toolbarRole(.editor)
             }
         }
+        .navigationTitle(LBStrings.General.vazia)
         .padding(.top, -40)
         .onChange(of: viewModel.errorField) { newValue in
             if newValue != .none {
@@ -107,13 +109,14 @@ struct RegisterResponsibleView: View {
             LBButton(title: LBStrings.General.next) {
                 self.viewModel.showError()
                 self.showContinueRegister()
+
             }
             .padding(.top, 40)
         }.padding([.leading, .trailing], 24)
     }
 
     private func showContinueRegister() {
-        if self.viewModel.showContinue() {
+        if self.viewModel.showNextScreen() {
             self.showNext = true
         } else {
             self.showNext = false
