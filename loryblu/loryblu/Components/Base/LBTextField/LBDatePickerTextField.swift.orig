@@ -21,12 +21,19 @@ struct LBDatePickerTextField: UIViewRepresentable {
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+<<<<<<< HEAD
         let doneButton = UIBarButtonItem(
-            title: LBStrings.General.confirm,
+            title: LBStrings.General.send,
             style: .plain,
             target: helper,
             action: #selector(helper.doneButtonTapped)
         )
+=======
+        let doneButton = UIBarButtonItem(title: LBStrings.General.confirm,
+                                         style: .plain,
+                                         target: helper,
+                                         action: #selector(helper.doneButtonTapped))
+>>>>>>> develop
 
         toolbar.setItems([flexibleSpace, doneButton], animated: true)
         textField.inputAccessoryView = toolbar
