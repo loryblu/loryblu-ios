@@ -19,7 +19,7 @@ extension LBStrings {
         static let hello = String(localized: "hello")
         static let email = String(localized: "email")
         static let password = String(localized: "password")
-        static let vazia = String(localized: "string_vazia")
+        static let empty = String(localized: "empty")
     }
 }
 

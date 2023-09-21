@@ -1,10 +1,10 @@
 import UIKit
 
-struct Register: Encodable, Decodable {
+struct Register: Encodable {
 
-    enum Gender: String, Encodable, Decodable {
-        case female
-        case male
+    enum Gender: String, Encodable {
+        case female = "FEMALE"
+        case male = "MALE"
     }
 
     enum CodingKeys: String, CodingKey {
@@ -22,7 +22,18 @@ struct Register: Encodable, Decodable {
     var nameChild: String?
     var dateBirth: String?
     var gender: Gender?
-    var recoveryToken: String?
+    var agreePrivacy: Bool?
+
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(self.name, forKey: .name)
+        try container.encodeIfPresent(self.email, forKey: .email)
+        try container.encodeIfPresent(self.password, forKey: .password)
+        try container.encodeIfPresent(self.nameChild, forKey: .nameChild)
+        try container.encodeIfPresent(self.dateBirth, forKey: .dateBirth)
+        try container.encodeIfPresent(self.gender?.rawValue, forKey: .gender)
+    }
+
 }
 
 #if DEBUG
@@ -33,7 +44,8 @@ extension Register {
         password: String = "123Lori$",
         nameChild: String = "Eduardo Luiz",
         dateBirth: String = "10-08-2018",
-        gender: Gender.RawValue = "Masculino"
+        gender: Gender.RawValue = "Masculino",
+        agreePrivacy: Bool = true
     ) -> Register {
         Register(
             name: name,
@@ -41,7 +53,9 @@ extension Register {
             password: password,
             nameChild: name,
             dateBirth: dateBirth,
-            gender: .female)
+            gender: .male,
+            agreePrivacy: true
+        )
     }
 }
 #endif

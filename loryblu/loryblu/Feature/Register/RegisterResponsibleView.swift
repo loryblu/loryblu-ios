@@ -30,8 +30,8 @@ struct RegisterResponsibleView: View {
                     .toolbarRole(.editor)
             }
         }
-        .navigationTitle(LBStrings.General.vazia)
-        .padding(.top, -40)
+        .navigationTitle(LBStrings.General.empty)
+        .padding(.bottom, 40)
         .onChange(of: viewModel.errorField) { newValue in
             if newValue != .none {
                 focusedField = newValue
@@ -111,7 +111,7 @@ struct RegisterResponsibleView: View {
                 self.showContinueRegister()
 
             }
-            .padding(.top, 40)
+            .padding(.top, 45)
         }.padding([.leading, .trailing], 24)
     }
 

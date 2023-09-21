@@ -5,7 +5,7 @@
 "hello" = "Seja Bem Vindo!! 💙 ";
 "email" = "E-mail";
 "password" = "Senha";
-"string_vazia" = "";
+"empty" = "";
 
 // ====================  Rules Password  =========================
 

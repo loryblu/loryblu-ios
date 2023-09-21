@@ -45,6 +45,7 @@ class RegisterChildViewModel: ObservableObject {
     func saveRegister() {
         user.nameChild = nameChild
         user.dateBirth = birthDay
+        user.agreePrivacy = agreePrivacy
         if gender == .male {
             user.gender = .male
         } else if gender == .female {
@@ -52,5 +53,9 @@ class RegisterChildViewModel: ObservableObject {
         }
 
         print(user)
+    }
+
+    func validadeData() -> Bool {
+        ValidateRules.validateName(nameChild) && birthDay != nil && agreePrivacy
     }
 }

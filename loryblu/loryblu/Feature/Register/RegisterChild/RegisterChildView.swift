@@ -35,10 +35,10 @@ struct RegisterChildView: View {
                 form
 
             }
-            .navigationTitle(LBStrings.General.vazia)
+            .navigationTitle(LBStrings.General.empty)
             .padding(.top, -40)
             .navigationDestination(isPresented: $goToLogin) {
-                LoginView()
+                LoginView()  // fluxo pra tela de conclusão
                     .toolbarRole(.editor)
             }
         }
@@ -111,20 +111,24 @@ struct RegisterChildView: View {
                     style: !viewModel.agreePrivacy ? .primaryOff : .primaryActivated
                 ) {
                     self.viewModel.showError()
+                    self.confirmRegister()
 //                    self.viewModel.loadUser()
-                    self.viewModel.saveRegister()
 
-//                    if ValidateRules.validateName(viewModel.nameChild) && !self.viewModel.birthDay.isEmpty {
-//                        self.viewModel.saveRegister()
-//                    } else {
-//                        // messege error
-//                    }
-//                    self.goToLogin = true
                 }
                 .disabled(!viewModel.agreePrivacy)
                 .padding(.top, 40)
 
             }.padding([.leading, .trailing], 26)
+        }
+    }
+
+    private func confirmRegister() {
+        if self.viewModel.validadeData() {
+            self.viewModel.saveRegister()
+            self.goToLogin = true
+        } else {
+            self.goToLogin = false
+            self.viewModel.showError()
         }
     }
 

@@ -16,15 +16,16 @@ struct LBDatePickerTextField: UIViewRepresentable {
 
         textField.placeholder = placeholder
         textField.inputView = datePicker
-  
 
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let doneButton = UIBarButtonItem(title: LBStrings.General.send,
-                                         style: .plain,
-                                         target: helper,
-                                         action: #selector(helper.doneButtonTapped))
+        let doneButton = UIBarButtonItem(
+            title: LBStrings.General.send,
+            style: .plain,
+            target: helper,
+            action: #selector(helper.doneButtonTapped)
+        )
 
         toolbar.setItems([flexibleSpace, doneButton], animated: true)
         textField.inputAccessoryView = toolbar
