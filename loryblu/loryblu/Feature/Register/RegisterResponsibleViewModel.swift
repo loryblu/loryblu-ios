@@ -35,7 +35,7 @@ class RegisterResponsibleViewModel: ObservableObject {
             errorField = .password
         } else if confirmPassword != password {
             hasError = true
-            textError = LBStrings.Register.errorPassord
+            textError = LBStrings.Register.errorPassword
             errorField = .confirmPassword
         } else {
             clearError()
@@ -48,8 +48,8 @@ class RegisterResponsibleViewModel: ObservableObject {
         errorField = .none
     }
 
-    func showContinue() -> Bool {
-        if !email.isEmpty && !password.isEmpty && !confirmPassword.isEmpty {
+    func showNextScreen() -> Bool {
+        if !email.isEmpty && !password.isEmpty && validatePassword() {
             return true
         } else {
             return false
@@ -60,5 +60,9 @@ class RegisterResponsibleViewModel: ObservableObject {
         user.name = name
         user.email = email
         user.password = password
+    }
+
+    private func validatePassword() -> Bool {
+        confirmPassword == password && ValidateRules.validateName(name)
     }
 }

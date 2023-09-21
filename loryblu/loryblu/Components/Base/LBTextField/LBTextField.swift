@@ -51,6 +51,11 @@ struct LBTextField: View {
             .padding()
             .foregroundColor(LBColor.placeholder)
             .font(LBFont.bodySmall)
+            .onChange(of: date) { newValue in
+                if let newValue {
+                    self.text = Formatter.dateFormatter.string(from: newValue)
+                }
+            }
         }
         .background(LBColor.textfield)
         .frame(height: 48)

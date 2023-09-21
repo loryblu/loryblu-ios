@@ -8,7 +8,6 @@ struct ContentView: View {
             Text(LBStrings.General.hello)
                 .font(LBFont.head2)
         }
-        .padding()
     }
 }
 
