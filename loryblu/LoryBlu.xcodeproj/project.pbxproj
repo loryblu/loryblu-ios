@@ -179,7 +179,6 @@
 		8C3120E52ABA83EC00D580BD /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				8C3120F22ABB3E1700D580BD /* MyCardService.swift */,
 				8C3120EB2ABB3D8B00D580BD /* Network.swift */,
 				8C3120E62ABB3D8B00D580BD /* NetworkError.swift */,
 				8C3120EA2ABB3D8B00D580BD /* Request.swift */,
@@ -240,6 +239,7 @@
 				8C9CBD0C2A7AE97B001DBD35 /* RegisterChildView.swift */,
 				8C21B3472AA6C374002EF4BD /* RegisterChildViewModel.swift */,
 				8C3120F42ABD249600D580BD /* WebView.swift */,
+				8C3120F22ABB3E1700D580BD /* MyCardService.swift */,
 			);
 			path = RegisterChild;
 			sourceTree = "<group>";
