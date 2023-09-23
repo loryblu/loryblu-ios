@@ -5,7 +5,7 @@ struct LoginView: View {
     @State var password: String = ""
     @State private var isEmailValid: Bool = true
     @State var isPasswordNotEmpty: Bool = true
-    @State private var rememberMe = false
+    @State private var rememberMe: Bool = false
     @State private var isPasswordHidden: Bool = true
     @State private var textError = ""
 
@@ -36,10 +36,11 @@ struct LoginView: View {
                 .frame(width: 187, height: 47)
                 .padding(.bottom, 30)
                 .padding(.top, 30)
-            Text("Login")
+            Text(LBStrings.Login.title)
                 .font(LBFont.head6)
                 .padding(.bottom, 22)
-            VStack {
+
+            VStack(spacing: 16) {
                 LBTextField(
                     style: .common,
                     icon: LBIcon.mail,
@@ -57,20 +58,20 @@ struct LoginView: View {
                 .textInputAutocapitalization(.never)
             }
 
-            VStack {
+            VStack(alignment: .trailing) {
+                Text(textError)
+                    .font(LBFont.caption)
+                    .foregroundColor(LBColor.error)
+                    .frame(maxWidth: .infinity, alignment: .trailing)
 
-                    Text(textError)
-                        .font(LBFont.caption)
-                        .foregroundColor(LBColor.error)
                 HStack {
-                    LBToggle(isActived: .constant(false))
-
+                    LBToggle(isActived: $rememberMe)
+                    // Metodo pra deixar a senha salva
                     Text(LBStrings.Login.remeber)
-                        .font(LBFont.subtitle)
+                        .font(LBFont.caption)
                         .multilineTextAlignment(.trailing)
                 }
-            }
-            .frame(maxWidth: .infinity, maxHeight: 77, alignment: .trailing)
+            }.padding(.top, 10)
 
             LBButton(title: LBStrings.Login.enter, action: tryLogin)
                 .padding(.top, 51)
@@ -90,20 +91,18 @@ struct LoginView: View {
                     .background(LBColor.text)
                 }.padding(20)
             }
-            .padding(.top, 30.0)
+            .padding(.top, 28)
 
             HStack {
-                Button(LBStrings.Login.forgotPassword) {
-
+                Button {
+                    //Chamar a tela de Esqueceu a Senha
+                } label: {
+                    Text(LBStrings.Login.forgotPassword)
+                        .font(LBFont.bodySmall)
+                        .underline()
+                        .foregroundColor(.black)
+                        .multilineTextAlignment(.trailing)
                 }
-                .font(LBFont.bodySmall)
-                .foregroundColor(.black)
-                .multilineTextAlignment(.trailing)
-                .background(
-                    LBColor.text
-                    .frame(height: 1)
-                    .offset(y: 14)
-                )
             }
             .frame(maxWidth: .infinity, alignment: .trailing)
 
@@ -111,16 +110,14 @@ struct LoginView: View {
                 .padding(.top, 53.0)
 
             HStack {
-                Button(LBStrings.Login.dontHaveAccount) {
-
-                }
-                .font(LBFont.caption)
-                .foregroundColor(LBColor.placeholder)
-                .multilineTextAlignment(.trailing)
-                .padding(.trailing, 8)
+                Text(LBStrings.Login.dontHaveAccount)
+                    .font(LBFont.caption)
+                    .foregroundColor(LBColor.placeholder)
+                    .multilineTextAlignment(.trailing)
+                    .padding(.trailing, 8)
 
                 Button(LBStrings.Login.registerNow) {
-
+                    // Chamar tela de Cadastro
                 }
                 .font(LBFont.caption)
                 .foregroundColor(LBColor.buttonPrimary)

@@ -27,13 +27,15 @@
 "register_gender_man" = "Menino";
 "register_gender_woman" = "Menina";
 "register_button" = "cadastrar";
-"register_agree_privacy" = "Eu concordo com a política de privacidade";
+"register_agree_privacy" = "Eu concordo com a";
+"register_link_agree" = "política de privacidade";
+"register_link_navigationTitle" = "Política de Privacidade";
 "textError_name" = "*Nome Inválido";
 "textError_email" = "*E-mail inválido";
 "textError_confirm_password" = "*As senhas devem ser idênticas";
 "textError_birthday" = "*Selecione uma data";
 "textError_gender" = "*Selecione um botão";
-"textError_agree" = "*Aceite a politica de privacidade.";
+"textError_agree" = "*Aceite a política de privacidade.";
 
 // ====================  Set Password  =========================
 
@@ -59,6 +61,7 @@
 "login_dont_have_an_account" = "Não tem uma conta ?";
 "login_register_now" = "Registrar agora";
 "login_remember" = "Lembrar";
+"login_title" = "Login";
 
 // ====================  Gender Button  =========================
 

@@ -34,18 +34,22 @@ struct LBTextField: View {
                 switch style {
                 case .common:
                     TextField(title, text: $text)
+                        .foregroundColor(LBColor.text)
                 case .password:
                     if isHidden {
                         SecureField(title, text: $text)
+                            .foregroundColor(LBColor.text)
                         passwordButton
                             .accentColor(LBColor.text)
                     } else {
                         TextField(title, text: $text)
+                            .foregroundColor(LBColor.text)
                         passwordButton
                             .accentColor(LBColor.text)
                     }
                 case .date:
                 LBDatePickerTextField(placeholder: title, date: $date)
+                        .foregroundColor(LBColor.text)
                 }
             }
             .padding()
