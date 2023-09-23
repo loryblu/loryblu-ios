@@ -32,7 +32,7 @@ struct RegisterChildView: View {
                         .foregroundColor(LBColor.text)
                         .frame(width: 194, alignment: .topLeading)
                         .padding(.bottom, 32)
-                }
+                }.padding(.top, -87)
 
                 form
 
@@ -42,6 +42,7 @@ struct RegisterChildView: View {
             .navigationDestination(isPresented: $goToLogin) {
                 LoginView()  // fluxo pra tela de conclusão
                     .toolbarRole(.editor)
+                    .navigationBarBackButtonHidden(true)
             }
         }
 
@@ -83,6 +84,7 @@ struct RegisterChildView: View {
                         viewModel.gender = .female
                     }
                 }
+                .padding(.top, 2)
                 .focused($focusedField, equals: .gender)
                 .onChange(of: viewModel.gender) { _ in
                     viewModel.clearError()
@@ -130,7 +132,7 @@ struct RegisterChildView: View {
 
                 }
                 .disabled(!viewModel.agreePrivacy)
-                .padding(.top, 40)
+                .padding(.top, 43)
 
             }.padding([.leading, .trailing], 26)
         }

@@ -73,6 +73,7 @@ extension LBStrings {
 
 extension LBStrings {
     enum Login {
+        static let title = String(localized: "login_title")
         static let email = String(localized: "login_email")
         static let password = String(localized: "login_password")
         static let emailNotExists = String(localized: "login_email_not_exists")

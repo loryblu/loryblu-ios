@@ -12,6 +12,7 @@ struct LBDatePickerTextField: UIViewRepresentable {
     func makeUIView(context: Context) -> UITextField {
         datePicker.minimumDate = Calendar.current.date(byAdding: .year, value: -10, to: Date())
         datePicker.datePickerMode = .date
+        datePicker.locale = Locale(identifier: "pt")
         datePicker.preferredDatePickerStyle = .wheels
         datePicker.addTarget(self.helper, action: #selector(self.helper.dateValueChanged), for: .valueChanged)
 

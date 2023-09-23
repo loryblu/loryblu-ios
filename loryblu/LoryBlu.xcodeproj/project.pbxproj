@@ -228,8 +228,8 @@
 		8C9CBCF82A7ACF46001DBD35 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				8C9CBCF92A7ACF46001DBD35 /* ExternalLogin.swift */,
 				8C9CBCFA2A7ACF46001DBD35 /* LoginView.swift */,
+				8C9CBCF92A7ACF46001DBD35 /* ExternalLogin.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";

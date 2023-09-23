@@ -24,7 +24,8 @@ struct LBButton: View {
                 .font(LBFont.button)
                 .multilineTextAlignment(.center)
                 .foregroundColor( ((style == .primaryActivated) ? .white : LBColor.buttonPrimary))
-                .frame(maxWidth: .infinity, maxHeight: 44, alignment: .center)
+                .frame(height: 44)
+                .frame(maxWidth: .infinity)
                 .background((style == .primaryActivated) ? LBColor.buttonPrimary : LBColor.grayLight)
                 .cornerRadius(10)
                 .overlay(
