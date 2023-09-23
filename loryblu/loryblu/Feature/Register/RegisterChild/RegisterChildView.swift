@@ -32,7 +32,7 @@ struct RegisterChildView: View {
                         .foregroundColor(LBColor.text)
                         .frame(width: 194, alignment: .topLeading)
                         .padding(.bottom, 32)
-                }.padding(.top, -87)
+                }
 
                 form
 
