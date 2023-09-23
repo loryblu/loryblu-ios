@@ -2,7 +2,6 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-
         VStack {
             LBIcon.loryblu.image
             Text(LBStrings.General.hello)

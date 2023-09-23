@@ -37,21 +37,23 @@ extension LBStrings {
 
 extension LBStrings {
     enum Register {
-        static let responsible = String(localized: "register_responsible")
-        static let child = String(localized: "register_child")
-        static let name = String(localized: "register_name")
-        static let confirmPassword = String(localized: "register_confirm_password")
-        static let birthDay = String(localized: "register_birthday" )
-        static let man = String(localized: "register_gender_man")
-        static let woman = String(localized: "register_gender_woman")
-        static let buttonRegister = String(localized: "register_button")
         static let agree = String(localized: "register_agree_privacy")
+        static let birthDay = String(localized: "register_birthday")
+        static let buttonRegister = String(localized: "register_button")
+        static let child = String(localized: "register_child")
+        static let confirmPassword = String(localized: "register_confirm_password")
         static let errorName = String(localized: "textError_name")
         static let errorEmail = String(localized: "textError_email")
         static let errorPassword = String(localized: "textError_confirm_password")
         static let errorBirthDay = String(localized: "textError_birthday")
         static let errorGender = String(localized: "textError_gender")
         static let errorAgree = String(localized: "textError_agree")
+        static let linkAgree = String(localized: "register_link_agree")
+        static let man = String(localized: "register_gender_man")
+        static let name = String(localized: "register_name")
+        static let titleLink = String(localized: "register_link_navigationTitle")
+        static let responsible = String(localized: "register_responsible")
+        static let woman = String(localized: "register_gender_woman")
     }
 }
 

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import WebKit
 
 struct RegisterChildView: View {
     @ObservedObject var viewModel: RegisterChildViewModel
@@ -14,6 +15,7 @@ struct RegisterChildView: View {
     @State var date: Date?
     var child: Register?
     @State var goToLogin: Bool = false
+    @State private var isPresentWebView = false
 
     var body: some View {
         NavigationStack {
@@ -89,11 +91,23 @@ struct RegisterChildView: View {
                 HStack {
                     Spacer()
                     LBToggle(isActived: $viewModel.agreePrivacy)
-
                     Text(LBStrings.Register.agree)
                         .foregroundColor(LBColor.text)
                         .font(LBFont.caption)
                         .multilineTextAlignment(.trailing)
+
+                    NavigationLink {
+                        WebView(url: URL(string: Server.politicURL)!)
+                            .navigationTitle(LBStrings.Register.titleLink)
+
+                    } label: {
+                        Text(LBStrings.Register.linkAgree)
+                            .foregroundColor(LBColor.text)
+                            .font(LBFont.caption)
+                            .underline()
+                            .multilineTextAlignment(.trailing)
+                    }
+
                 }
 
                 if viewModel.hasError {
