@@ -5,7 +5,8 @@ struct LorybluApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+//           ContentView()
+            ResetPasswordScreen(fecthEmail: ResetPasswordScreen.FechtEmail.idle).environmentObject(ResetPasswordModel())
              // fazer animação e navegacao para login.
         }
     }

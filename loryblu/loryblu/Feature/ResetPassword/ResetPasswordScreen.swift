@@ -7,7 +7,7 @@ struct ResetPasswordScreen: View {
         case idle
     }
     @EnvironmentObject var model: ResetPasswordModel
-    @State var userEmail: String = ""
+    @State var userEmail: String = "rodrigoeduardosilv@gmail.com"
     @State var fecthEmail: FechtEmail
 
     var body: some View {

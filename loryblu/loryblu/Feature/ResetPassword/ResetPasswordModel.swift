@@ -3,12 +3,14 @@ import SwiftUI
 
 class ResetPasswordModel: ObservableObject {
     @Published var isValid: Bool = false
-
+    var service = RecoveryPasswordService()
     func login(user: String) {
-        if user == "Abc" {
-            isValid = true
-        } else {
-            isValid = false
+        service.recoveryPassword(with: user) { sucess in
+            if let message = sucess?.message {
+                self.isValid = true
+            } else {
+                self.isValid = false
+            }
         }
     }
 }
