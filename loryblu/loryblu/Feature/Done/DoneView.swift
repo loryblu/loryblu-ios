@@ -31,7 +31,7 @@ struct DoneView: View {
                 Spacer()
 
                 VStack(spacing: spacing) {
-                    Text("Cadastro efetuado com sucesso!")
+                    Text(LBStrings.General.done)
                         .font(LBFont.head6)
                         .foregroundStyle(LBColor.text)
 
