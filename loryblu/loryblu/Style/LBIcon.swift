@@ -6,6 +6,8 @@ enum LBIcon: String {
     case circleFill = "circle_fill"
     case check
     case close
+    case close2
+    case done
     case eyeClose = "eye_close"
     case eyeOpen = "eye_open"
     case facebook
