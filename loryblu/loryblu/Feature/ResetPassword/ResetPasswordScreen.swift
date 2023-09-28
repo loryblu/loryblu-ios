@@ -1,14 +1,15 @@
 import SwiftUI
 
+enum FechtEmail {
+    case success
+    case error
+    case idle
+}
+
 struct ResetPasswordScreen: View {
-    enum FechtEmail {
-        case success
-        case error
-        case idle
-    }
+
     @EnvironmentObject var model: ResetPasswordModel
     @State var userEmail: String = "rodrigoeduardosilv@gmail.com"
-    @State var fecthEmail: FechtEmail
 
     var body: some View {
         NavigationStack {
@@ -33,18 +34,14 @@ struct ResetPasswordScreen: View {
                 .padding(.bottom, 39)
 
                 LBButton(title: LBStrings.General.send) {
-                    model.login(user: userEmail)
-                    if model.isValid {
-                        fecthEmail = .success
-                    } else {
-                        fecthEmail = .error
-                    }
+                    model.login(email: userEmail)
+
                 }
                 .padding(.bottom, 10)
 
                     HStack {
                         Spacer()
-                        switch fecthEmail {
+                        switch model.fecht {
                         case .success:
                             Text(LBStrings.SetPassword.success)
                                 .font(LBFont.caption)
@@ -68,6 +65,6 @@ struct ResetPasswordScreen: View {
 
 struct ForgotPasswordScreen_Previews: PreviewProvider {
     static var previews: some View {
-        ResetPasswordScreen(fecthEmail: ResetPasswordScreen.FechtEmail.idle).environmentObject(ResetPasswordModel())
+        ResetPasswordScreen().environmentObject(ResetPasswordModel())
     }
 }
