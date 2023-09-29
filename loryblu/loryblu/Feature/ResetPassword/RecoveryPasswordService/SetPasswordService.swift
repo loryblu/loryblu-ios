@@ -1,6 +1,5 @@
 import Foundation
 
-
 class SetPasswordService {
 
     private let network: Network
@@ -9,13 +8,13 @@ class SetPasswordService {
         self.network = network
     }
 
-    func setPassword(with password: String,token: String, onComplete: @escaping(Bool) -> Void) {
+    func setPassword(with password: String, token: String, onComplete: @escaping(Bool) -> Void) {
         let header: [String: String] = ["Content-Type": "application/json"]
         let request = RequestModel(baseURL: Server.baseURL,
                                    path: Server.setPasswordURL,
                                    method: .put,
                                    header: header,
-                                   body: ["email": "\(password)","recoveryToken": "\(token)"])
+                                   body: ["email": "\(password)", "recoveryToken": "\(token)"])
 
             network.request(request: request, returning: RecoveryData.self) { result  in
                 switch result {
@@ -31,5 +30,4 @@ class SetPasswordService {
                 }
             }
     }
-    
 }

@@ -1,6 +1,12 @@
 import Foundation
 import SwiftUI
 
+enum FechtEmail {
+    case success
+    case error
+    case idle
+}
+
 class ResetPasswordModel: ObservableObject {
     @Published var fecht: FechtEmail = .idle
     var service = RecoveryService(network: Network.shared)

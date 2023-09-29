@@ -1,8 +1,9 @@
 import SwiftUI
 
 struct NewPasswordScreen: View {
+    @EnvironmentObject var model: NewPasswordModel
     @State var newPassword: String = ""
-    @State var repeatNewPassword: String = ""
+    @State var confirmNewPassword: String = ""
     var body: some View {
         VStack {
             LBIcon.logo.image
@@ -18,7 +19,7 @@ struct NewPasswordScreen: View {
             LBTextField(style: .password,
                         icon: .lock,
                         title: LBStrings.SetPassword.newPassword,
-                        text: $newPassword,
+                        text: $model.password,
                         textFiledState: .active)
             .padding(.bottom, 12)
 
@@ -30,17 +31,31 @@ struct NewPasswordScreen: View {
             LBTextField(style: .password,
                         icon: .lock,
                         title: LBStrings.SetPassword.repeatPassword,
-                        text: $repeatNewPassword,
+                        text: $model.confirmPassword,
                         textFiledState: .active)
-            .padding(.bottom, 32)
+            .padding(.bottom, 10)
 
-            Text(LBStrings.SetPassword.alert)
-                .font(LBFont.bodyLittleSmall)
-                .foregroundColor(LBColor.text)
-                .padding(.bottom, 40)
+            VStack(spacing: 5) {
+
+                if model.isEqual == true {
+                    Text("")
+                    .padding()
+                } else {
+                    Text(LBStrings.SetPassword.passwordMustbeEqual)
+                        .font(LBFont.caption)
+                        .foregroundColor(LBColor.error)
+                        .padding(.bottom)
+                }
+                  Text(LBStrings.SetPassword.alert)
+                    .font(LBFont.bodyLittleSmall)
+                    .foregroundColor(LBColor.text)
+                .padding(.bottom)
+            }
 
             LBButton(title: LBStrings.SetPassword.buttonReset) {
                 // receber função do backend
+                model.showError()
+                print(model.isEqual)
             }
 
         }
@@ -51,6 +66,6 @@ struct NewPasswordScreen: View {
 
 struct NewPasswordScreen_Previews: PreviewProvider {
     static var previews: some View {
-        NewPasswordScreen()
+        NewPasswordScreen().environmentObject(NewPasswordModel())
     }
 }

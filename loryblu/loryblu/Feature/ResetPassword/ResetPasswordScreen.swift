@@ -1,10 +1,6 @@
 import SwiftUI
 
-enum FechtEmail {
-    case success
-    case error
-    case idle
-}
+
 
 struct ResetPasswordScreen: View {
 
