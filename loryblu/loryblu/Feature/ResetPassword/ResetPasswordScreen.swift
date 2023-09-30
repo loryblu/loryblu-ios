@@ -30,7 +30,7 @@ struct ResetPasswordScreen: View {
                 .padding(.bottom, 39)
 
                 LBButton(title: LBStrings.General.send) {
-                    model.login(email: userEmail)
+                    model.recoveryPassowrd(with: userEmail)
 
                 }
                 .padding(.bottom, 10)

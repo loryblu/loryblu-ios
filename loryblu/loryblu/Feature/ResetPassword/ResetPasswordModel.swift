@@ -11,7 +11,7 @@ class ResetPasswordModel: ObservableObject {
     @Published var fecht: FechtEmail = .idle
     var service = RecoveryService(network: Network.shared)
 
-    func login(email: String) {
+    func recoveryPassowrd(with email: String) {
         service.recoveryPassword(with: email) { isValid in
             DispatchQueue.main.async {
                 print("retorno \(isValid)")
