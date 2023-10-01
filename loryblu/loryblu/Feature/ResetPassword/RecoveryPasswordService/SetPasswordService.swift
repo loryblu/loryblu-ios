@@ -8,7 +8,7 @@ class SetPasswordService {
         self.network = network
     }
 
-    func setPassword(with password: String, token: String, onComplete: @escaping(Bool) -> Void) {
+    func setPassword(password: String, token: String, onComplete: @escaping(Bool) -> Void) {
         let header: [String: String] = ["Content-Type": "application/json"]
         let request = RequestModel(baseURL: Server.baseURL,
                                    path: Server.setPasswordURL,

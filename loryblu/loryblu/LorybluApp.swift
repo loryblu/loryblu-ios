@@ -2,14 +2,18 @@ import SwiftUI
 
 @main
 struct LorybluApp: App {
-
-    var body: some Scene {
+    let link = DeepLinkHandler()
+    var isGetURL: Bool
+     var body: some Scene {
         WindowGroup {
-          ContentView()
-                .onOpenURL { url in
-                    let router = url.absoluteString
-                    print(router.URLDecoder)
-                }
+            NavigationStack {
+
+                ContentView()
+
+            }.onOpenURL { url in
+                let link = DeepLinkHandler()
+                let view = link.makeNewPasswordScreen(with: url.absoluteString)
+            }
         }
     }
 }

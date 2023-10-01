@@ -1,7 +1,13 @@
 import SwiftUI
 
+struct SetPassword {
+    var password: String
+    var recoveryToken: String
+}
+
 struct NewPasswordScreen: View {
     @EnvironmentObject var model: NewPasswordModel
+    @State var token: SetPassword
     @State var newPassword: String = ""
     @State var confirmNewPassword: String = ""
     var body: some View {
@@ -55,7 +61,11 @@ struct NewPasswordScreen: View {
             LBButton(title: LBStrings.SetPassword.buttonReset) {
                 // receber função do backend
                 model.showError()
-                print(model.isEqual)
+                if model.isEqual {
+                    token.password = model.confirmPassword
+                    model.setPassword(setPassword: token)
+                }
+
             }
 
         }
@@ -66,6 +76,7 @@ struct NewPasswordScreen: View {
 
 struct NewPasswordScreen_Previews: PreviewProvider {
     static var previews: some View {
-        NewPasswordScreen().environmentObject(NewPasswordModel())
+        @State var setPassword: SetPassword = SetPassword(password: "NewPassword", recoveryToken: "token")
+        NewPasswordScreen(token: setPassword).environmentObject(NewPasswordModel())
     }
 }
