@@ -16,6 +16,7 @@
 		334D0AB52A8AF93D003881ED /* ResetPasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334D0AB22A8AF93D003881ED /* ResetPasswordModel.swift */; };
 		334D0AB62A8AF93D003881ED /* ResetPasswordScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334D0AB32A8AF93D003881ED /* ResetPasswordScreen.swift */; };
 		334D0AB72A8AF93D003881ED /* NewPasswordScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334D0AB42A8AF93D003881ED /* NewPasswordScreen.swift */; };
+		33549B0A2ACB92E700CF989F /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33549B092ACB92E700CF989F /* AppData.swift */; };
 		3376667D2ABFD115007010E1 /* URLDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3376667C2ABFD115007010E1 /* URLDecoder.swift */; };
 		33AAFCF02AC5120500039063 /* SetPasswordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AAFCEF2AC5120500039063 /* SetPasswordService.swift */; };
 		33AAFCF22AC649C200039063 /* NewPasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AAFCF12AC649C200039063 /* NewPasswordModel.swift */; };
@@ -64,6 +65,7 @@
 		334D0AB22A8AF93D003881ED /* ResetPasswordModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordModel.swift; sourceTree = "<group>"; };
 		334D0AB32A8AF93D003881ED /* ResetPasswordScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordScreen.swift; sourceTree = "<group>"; };
 		334D0AB42A8AF93D003881ED /* NewPasswordScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPasswordScreen.swift; sourceTree = "<group>"; };
+		33549B092ACB92E700CF989F /* AppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
 		3376667C2ABFD115007010E1 /* URLDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLDecoder.swift; sourceTree = "<group>"; };
 		33AAFCEF2AC5120500039063 /* SetPasswordService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetPasswordService.swift; sourceTree = "<group>"; };
 		33AAFCF12AC649C200039063 /* NewPasswordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPasswordModel.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				33BA2DE52AC9BE3D009704FD /* DeepLinkHandler.swift */,
+				33549B092ACB92E700CF989F /* AppData.swift */,
 			);
 			path = Handlers;
 			sourceTree = "<group>";
@@ -476,6 +479,7 @@
 				8CFB359E2A6059BD008BF633 /* LorybluApp.swift in Sources */,
 				41BE77FD2A85A12300534ADA /* LBGenderButton.swift in Sources */,
 				8C7C64B32A6F4CE1002361A9 /* ValidateRules.swift in Sources */,
+				33549B0A2ACB92E700CF989F /* AppData.swift in Sources */,
 				8CE03E3C2A6363630024919C /* LBIcon.swift in Sources */,
 				3329F01F2AB3CB3000915FA3 /* LBDatePickerTextField.swift in Sources */,
 				334D0AB72A8AF93D003881ED /* NewPasswordScreen.swift in Sources */,

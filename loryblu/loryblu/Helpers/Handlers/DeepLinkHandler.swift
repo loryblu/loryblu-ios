@@ -4,11 +4,12 @@ class DeepLinkHandler {
 
     @Published var setPassword: SetPassword = SetPassword(password: "", recoveryToken: "")
 
-    func makeNewPasswordScreen(with url: String) -> NewPasswordScreen {
-        let loryURl = URLComponents(string: url.URLDecoder)
+    func handleDeepLink(with url: URL, appData: AppData) {
+        if url.scheme = 
+        let loryURl = URLComponents(string: (url.absoluteString).URLDecoder)
         let token = getToken(url: loryURl?.queryItems)
         setPassword.recoveryToken = token
-        return NewPasswordScreen(token: setPassword)
+        return
     }
 
     func getToken(url: [URLQueryItem]?) -> String {
