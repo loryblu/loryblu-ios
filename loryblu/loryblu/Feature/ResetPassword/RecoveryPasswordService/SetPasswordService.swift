@@ -14,12 +14,12 @@ class SetPasswordService {
                                    path: Server.setPasswordURL,
                                    method: .put,
                                    header: header,
-                                   body: ["email": "\(password)", "recoveryToken": "\(token)"])
+                                   body: ["password":"\(password)", "recoveryToken":"\(token)"])
 
             network.request(request: request, returning: RecoveryData.self) { result  in
                 switch result {
                 case .failure(let error):
-                    print(error)
+                    print("falha no servidor: \(error)")
                     onComplete(false)
                 case .success(let message):
                     guard let message = message else {

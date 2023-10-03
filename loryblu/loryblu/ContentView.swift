@@ -1,17 +1,24 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var appData: AppData
     var body: some View {
-        VStack {
-            LBIcon.loryblu.image
-            Text(LBStrings.General.hello)
-                .font(LBFont.head2)
+        if appData.isTokenReceived {
+            NewPasswordScreen(model: NewPasswordModel(), appData: appData)
+        } else {
+            VStack {
+                LBIcon.loryblu.image
+                Text(LBStrings.General.hello)
+                    .font(LBFont.head2)
+            }
         }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
+        @StateObject var appData: AppData = .init()
         ContentView()
+            .environmentObject(appData)
     }
 }

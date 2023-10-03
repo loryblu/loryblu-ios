@@ -1,15 +1,8 @@
 import SwiftUI
 
-struct SetPassword {
-    var password: String
-    var recoveryToken: String
-}
-
 struct NewPasswordScreen: View {
-    @EnvironmentObject var model: NewPasswordModel
-    @State var token: SetPassword
-    @State var newPassword: String = ""
-    @State var confirmNewPassword: String = ""
+    @ObservedObject var model: NewPasswordModel
+    @State var appData: AppData
     var body: some View {
         VStack {
             LBIcon.logo.image
@@ -30,7 +23,7 @@ struct NewPasswordScreen: View {
             .padding(.bottom, 12)
 
             HStack {
-                PasswordRulesView(password: newPassword)
+                PasswordRulesView(password: model.password)
                 Spacer()
             }.padding(.bottom, 16)
 
@@ -62,8 +55,7 @@ struct NewPasswordScreen: View {
                 // receber função do backend
                 model.showError()
                 if model.isEqual {
-                    token.password = model.confirmPassword
-                    model.setPassword(setPassword: token)
+                    model.setPassword(newPassword: model.confirmPassword, token: appData.token)
                 }
 
             }
@@ -76,7 +68,7 @@ struct NewPasswordScreen: View {
 
 struct NewPasswordScreen_Previews: PreviewProvider {
     static var previews: some View {
-        @State var setPassword: SetPassword = SetPassword(password: "NewPassword", recoveryToken: "token")
-        NewPasswordScreen(token: setPassword).environmentObject(NewPasswordModel())
+        @StateObject var appData: AppData = .init()
+           NewPasswordScreen(model: NewPasswordModel(), appData: appData)
     }
 }

@@ -6,15 +6,14 @@ class NewPasswordModel: ObservableObject {
     @Published var isEqual: Bool = true
     var service = SetPasswordService(network: Network.shared)
 
-    func setPassword(setPassword: SetPassword) {
+    func setPassword(newPassword: String, token: String) {
 
-        service.setPassword(password: setPassword.password, token: setPassword.recoveryToken) { success in
+        service.setPassword(password: newPassword, token: token) { success in
             DispatchQueue.main.async {
                 print("retorno \(success)")
 
             }
         }
-
     }
 
     func showError() {
