@@ -1,5 +1,6 @@
 import Foundation
 
+
 class SetPasswordService {
 
     private let network: Network
@@ -14,8 +15,7 @@ class SetPasswordService {
                                    path: Server.setPasswordURL,
                                    method: .put,
                                    header: header,
-                                   body: ["password":"\(password)", "recoveryToken":"\(token)"])
-
+                                   body: ["password": "\(password)", "recoveryToken": "\(token)"])
             network.request(request: request, returning: RecoveryData.self) { result  in
                 switch result {
                 case .failure(let error):

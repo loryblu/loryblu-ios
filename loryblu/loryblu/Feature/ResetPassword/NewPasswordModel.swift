@@ -14,6 +14,8 @@ class NewPasswordModel: ObservableObject {
 
             }
         }
+
+
     }
 
     func showError() {

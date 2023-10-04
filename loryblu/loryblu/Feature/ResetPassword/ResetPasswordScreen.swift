@@ -1,7 +1,5 @@
 import SwiftUI
 
-
-
 struct ResetPasswordScreen: View {
 
     @EnvironmentObject var model: ResetPasswordModel

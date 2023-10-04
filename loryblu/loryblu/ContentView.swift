@@ -6,6 +6,7 @@ struct ContentView: View {
         if appData.isTokenReceived {
             NewPasswordScreen(model: NewPasswordModel(), appData: appData)
         } else {
+//            ResetPasswordScreen().environmentObject(ResetPasswordModel())
             VStack {
                 LBIcon.loryblu.image
                 Text(LBStrings.General.hello)
