@@ -28,7 +28,9 @@ struct ResetPasswordScreen: View {
                 .padding(.bottom, 39)
 
                 LBButton(title: LBStrings.General.send) {
-                    model.recoveryPassowrd(with: userEmail)
+                    Task {
+                       await model.recoveryPassowrd(with: userEmail)
+                    }
 
                 }
                 .padding(.bottom, 10)

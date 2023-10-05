@@ -55,7 +55,10 @@ struct NewPasswordScreen: View {
                 // receber função do backend
                 model.showError()
                 if model.isEqual {
-                    model.setPassword(newPassword: model.confirmPassword, token: appData.token)
+                    Task {
+                        await model.setPassword(newPassword: model.confirmPassword, token: appData.token)
+                    }
+
                 }
 
             }
