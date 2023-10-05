@@ -54,8 +54,8 @@ struct DoneView: View {
 
 }
 
-#Preview {
-    DoneView {
-        print("Apertei o botão de fechar")
-    }
-}
+//#Preview {
+//    DoneView {
+//        print("Apertei o botão de fechar")
+//    }
+//}

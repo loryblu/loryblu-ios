@@ -1,6 +1,6 @@
 import UIKit
 
-struct Register: Encodable {
+struct UserRegister: Encodable {
 
     enum Gender: String, Encodable {
         case female = "FEMALE"
@@ -33,11 +33,10 @@ struct Register: Encodable {
         try container.encodeIfPresent(self.dateBirth, forKey: .dateBirth)
         try container.encodeIfPresent(self.gender?.rawValue, forKey: .gender)
     }
-
 }
 
 #if DEBUG
-extension Register {
+extension UserRegister {
     static func fixture(
         name: String = "Maria da Silva",
         email: String = "mariasilva@gmail.com",
@@ -46,8 +45,8 @@ extension Register {
         dateBirth: String = "10-08-2018",
         gender: Gender.RawValue = "Masculino",
         agreePrivacy: Bool = true
-    ) -> Register {
-        Register(
+    ) -> UserRegister {
+        UserRegister(
             name: name,
             email: email,
             password: password,

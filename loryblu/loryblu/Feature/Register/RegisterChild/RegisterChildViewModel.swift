@@ -11,10 +11,10 @@ class RegisterChildViewModel: ObservableObject {
     @Published var textError: String = ""
     @Published var hasError: Bool = false
     @Published var errorField: FocusedField = .none
-    private(set) var user: Register
-    var service = Service()
+    private(set) var user: UserRegister
+    //var service = Service()
 
-    init(user: Register) {
+    init(user: UserRegister) {
         self.user = user
     }
 

@@ -13,7 +13,7 @@ struct RegisterChildView: View {
     @FocusState private var focusedField: RegisterChildViewModel.FocusedField?
     @State var presented: Bool = false
     @State var date: Date?
-    var child: Register?
+    var child: UserRegister?
     @State var showDone: Bool = false
     @State private var isPresentWebView = false
 
@@ -153,6 +153,6 @@ struct RegisterChildView: View {
 
 struct RegisterChildView_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterChildView(viewModel: RegisterChildViewModel(user: Register()))
+        RegisterChildView(viewModel: RegisterChildViewModel(user: UserRegister()))
     }
 }
