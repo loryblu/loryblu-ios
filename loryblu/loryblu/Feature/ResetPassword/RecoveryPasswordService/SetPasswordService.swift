@@ -1,6 +1,5 @@
 import Foundation
 
-
 class SetPasswordService {
 
     private let network: Network

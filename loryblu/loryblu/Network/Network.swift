@@ -41,7 +41,7 @@ class Network {
             var urlRequest = URLRequest(url: url)
             urlRequest.httpMethod = request.method.rawValue
 
-            if request.method == .post {
+            if request.method == .post || request.method == .put {
                 do {
                     let credentialsData = try JSONSerialization.data(
                         withJSONObject: request.body as Any, options: .prettyPrinted)
