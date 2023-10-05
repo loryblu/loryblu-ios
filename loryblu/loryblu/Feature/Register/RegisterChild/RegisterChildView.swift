@@ -9,7 +9,7 @@ import SwiftUI
 import WebKit
 
 struct RegisterChildView: View {
-    @ObservedObject var viewModel: RegisterChildViewModel
+    @StateObject var viewModel: RegisterChildViewModel
     @FocusState private var focusedField: RegisterChildViewModel.FocusedField?
     @State var presented: Bool = false
     @State var date: Date?
@@ -140,12 +140,12 @@ struct RegisterChildView: View {
     }
 
     private func confirmRegister() {
-        if self.viewModel.validadeData() {
-            self.viewModel.saveRegister()
-            self.showDone = true
+        if viewModel.validadeData() {
+            viewModel.saveRegister()
+            showDone = true
         } else {
-            self.showDone = false
-            self.viewModel.showError()
+            showDone = false
+            viewModel.showError()
         }
     }
 

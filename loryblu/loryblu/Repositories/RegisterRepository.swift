@@ -1,10 +1,3 @@
-//
-//  RegisterRepository.swift
-//  LoryBlu
-//
-//  Created by dede.exe on 03/10/23.
-//
-
 import Foundation
 
 class RegisterRepository {
@@ -26,7 +19,7 @@ class RegisterRepository {
             .with(addHeaderName: "Content-Type", value: "application/json")
             .build()
 
-        let response = await try network.request(request: request, returning: ResponseMessage.self)
+        let response = try await network.request(request: request, returning: ResponseMessage.self)
 
         return response
     }

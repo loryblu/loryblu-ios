@@ -5,7 +5,8 @@ struct LorybluApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            //ContentView()
+            RegisterResponsibleView()
              // fazer animação e navegacao para login.
         }
     }

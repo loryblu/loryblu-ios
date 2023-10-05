@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct RegisterResponsibleView: View {
-    @ObservedObject var viewModel: RegisterResponsibleViewModel = RegisterResponsibleViewModel()
+    @StateObject var viewModel: RegisterResponsibleViewModel = RegisterResponsibleViewModel()
     @FocusState private var focusedField: RegisterResponsibleViewModel.FocusedField?
     @State var isHiddenPassword: Bool = false
     @State var isHiddenRepeat: Bool = false

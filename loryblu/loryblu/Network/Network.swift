@@ -36,16 +36,19 @@ class Network {
 
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = request.method.rawValue
+        urlRequest.httpBody = request.body
+        
+//        if request.method == .post || request.method == .put {
+//            do {
+//                let credentialsData = try JSONSerialization.data(
+//                    withJSONObject: request.body as Any, options: .prettyPrinted)
+//                urlRequest.httpBody = credentialsData
+//            } catch {
+//                throw NetworkError.authenticationError
+//            }
+//        }
 
-        if request.method == .post || request.method == .put {
-            do {
-                let credentialsData = try JSONSerialization.data(
-                    withJSONObject: request.body as Any, options: .prettyPrinted)
-                urlRequest.httpBody = credentialsData
-            } catch {
-                throw NetworkError.authenticationError
-            }
-        }
+
 
         let header: [String: String] = [
             "Accept": "*/*",

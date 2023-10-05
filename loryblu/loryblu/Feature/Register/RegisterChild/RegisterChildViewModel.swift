@@ -4,6 +4,7 @@ class RegisterChildViewModel: ObservableObject {
     enum FocusedField: Equatable {
         case none, nameChild, birthDay, gender
     }
+
     @Published var nameChild: String = ""
     @Published var birthDay: String = ""
     @Published var gender: LBGenderButton.Gender?
@@ -11,8 +12,10 @@ class RegisterChildViewModel: ObservableObject {
     @Published var textError: String = ""
     @Published var hasError: Bool = false
     @Published var errorField: FocusedField = .none
+    @Published var registerSuccess: Bool = false
+
     private(set) var user: UserRegister
-    //var service = Service()
+    private var repository = RegisterRepository()
 
     init(user: UserRegister) {
         self.user = user
@@ -50,6 +53,15 @@ class RegisterChildViewModel: ObservableObject {
             user.gender = .male
         } else if gender == .female {
             user.gender = .female
+        }
+
+        Task {
+            do {
+                _ = try await repository.register(user: user)
+                self.registerSuccess = true
+            } catch {
+                print(error.localizedDescription)
+            }
         }
 
         print(user)
