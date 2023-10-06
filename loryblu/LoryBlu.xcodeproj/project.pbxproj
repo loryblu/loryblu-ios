@@ -50,6 +50,7 @@
 		91361A1D2ACCBE1900700E36 /* RegisterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91361A1C2ACCBE1900700E36 /* RegisterRepository.swift */; };
 		91361A212ACCC6E700700E36 /* JSONParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91361A202ACCC6E700700E36 /* JSONParse.swift */; };
 		91361A262ACEF06B00700E36 /* ResponseMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91361A252ACEF06B00700E36 /* ResponseMessage.swift */; };
+		91A7CC182ACF9F8500109300 /* LBDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A7CC172ACF9F8500109300 /* LBDatePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +97,7 @@
 		91361A1C2ACCBE1900700E36 /* RegisterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRepository.swift; sourceTree = "<group>"; };
 		91361A202ACCC6E700700E36 /* JSONParse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParse.swift; sourceTree = "<group>"; };
 		91361A252ACEF06B00700E36 /* ResponseMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseMessage.swift; sourceTree = "<group>"; };
+		91A7CC172ACF9F8500109300 /* LBDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBDatePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +144,7 @@
 				33FC28602AB29446004400BC /* Formatter.swift */,
 				3329F01E2AB3CB3000915FA3 /* LBDatePickerTextField.swift */,
 				8C57341F2A6B6F6B0052B955 /* LBTextField.swift */,
+				91A7CC172ACF9F8500109300 /* LBDatePicker.swift */,
 			);
 			path = LBTextField;
 			sourceTree = "<group>";
@@ -217,10 +220,9 @@
 		8C5734222A6C21710052B955 /* Register */ = {
 			isa = PBXGroup;
 			children = (
-				8C5734252A6C39AF0052B955 /* RegisterResponsibleView.swift */,
-				8C2535312A7714DD0096738B /* RegisterResponsibleViewModel.swift */,
+				91A7CC162ACF971800109300 /* Responsible */,
+				8C9CBD0B2A7AE97B001DBD35 /* Child */,
 				8C3120F42ABD249600D580BD /* WebView.swift */,
-				8C9CBD0B2A7AE97B001DBD35 /* RegisterChild */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -243,13 +245,13 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
-		8C9CBD0B2A7AE97B001DBD35 /* RegisterChild */ = {
+		8C9CBD0B2A7AE97B001DBD35 /* Child */ = {
 			isa = PBXGroup;
 			children = (
 				8C9CBD0C2A7AE97B001DBD35 /* RegisterChildView.swift */,
 				8C21B3472AA6C374002EF4BD /* RegisterChildViewModel.swift */,
 			);
-			path = RegisterChild;
+			path = Child;
 			sourceTree = "<group>";
 		};
 		8C9CBD0E2A7AEBEE001DBD35 /* View */ = {
@@ -349,6 +351,15 @@
 				91361A202ACCC6E700700E36 /* JSONParse.swift */,
 			);
 			path = JSON;
+			sourceTree = "<group>";
+		};
+		91A7CC162ACF971800109300 /* Responsible */ = {
+			isa = PBXGroup;
+			children = (
+				8C5734252A6C39AF0052B955 /* RegisterResponsibleView.swift */,
+				8C2535312A7714DD0096738B /* RegisterResponsibleViewModel.swift */,
+			);
+			path = Responsible;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -472,6 +483,7 @@
 				8CFB359E2A6059BD008BF633 /* LorybluApp.swift in Sources */,
 				41BE77FD2A85A12300534ADA /* LBGenderButton.swift in Sources */,
 				8C7C64B32A6F4CE1002361A9 /* ValidateRules.swift in Sources */,
+				91A7CC182ACF9F8500109300 /* LBDatePicker.swift in Sources */,
 				8CE03E3C2A6363630024919C /* LBIcon.swift in Sources */,
 				3329F01F2AB3CB3000915FA3 /* LBDatePickerTextField.swift in Sources */,
 				334D0AB72A8AF93D003881ED /* NewPasswordScreen.swift in Sources */,

@@ -37,22 +37,10 @@ class Network {
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = request.method.rawValue
         urlRequest.httpBody = request.body
-        
-//        if request.method == .post || request.method == .put {
-//            do {
-//                let credentialsData = try JSONSerialization.data(
-//                    withJSONObject: request.body as Any, options: .prettyPrinted)
-//                urlRequest.httpBody = credentialsData
-//            } catch {
-//                throw NetworkError.authenticationError
-//            }
-//        }
-
-
 
         let header: [String: String] = [
             "Accept": "*/*",
-            "User-Agent": "Thunder Client (https://www.thunderclient.com)",
+            "User-Agent": "Loryblu-iOS",
             "Content-Type": "application/json"
         ]
 
@@ -60,38 +48,17 @@ class Network {
             urlRequest.setValue(value, forHTTPHeaderField: key)
         }
 
-        let resultData = try await withCheckedThrowingContinuation { continuation in
-            let datatask = session.dataTask(with: urlRequest) { data, response, error in
-                if let error = error {
-                    print(error.localizedDescription)
-                    continuation.resume(with: .success(data))
-                    return
-                }
+        let (data, response) =  try await session.data(for: urlRequest)
 
-                guard let response = response as? HTTPURLResponse else {
-                    _ = NSError(domain: "Response fail", code: 499, userInfo: nil)
-                    continuation.resume(with: .failure(NetworkError.notFound))
-                    return
-                }
-
-                guard response.statusCode >= 200 && response.statusCode < 300 else {
-                    _ = NSError(domain: "Unexpected fail", code: response.statusCode, userInfo: nil)
-                    continuation.resume(with: .failure(NetworkError.notFound))
-                    return
-                }
-
-                guard let data = data else {
-                    _ = NSError(domain: "No Data", code: 499, userInfo: nil)
-                    continuation.resume(with: .failure(NetworkError.invalidURL))
-                    return
-                }
-
-                continuation.resume(with: .success(data))
-            }
-            datatask.resume()
+        guard let response = response as? HTTPURLResponse else {
+            throw NSError(domain: "Response fail", code: 499, userInfo: nil)
         }
 
-        return resultData
+        guard response.statusCode >= 200 && response.statusCode < 300 else {
+            throw NSError(domain: "Unexpected fail", code: response.statusCode, userInfo: ["error": data])
+        }
+
+        return data
     }
 
     func request<T: Decodable>(request: Request, returning type: T.Type) async throws -> T {
@@ -100,9 +67,9 @@ class Network {
         }
 
         do {
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            let object = try decoder.decode(type, from: data)
+            guard let object = JSONParser.parseObject(type, from: data) else {
+                throw NetworkError.parseError
+            }
             return object
         } catch {
             throw NetworkError.parseError

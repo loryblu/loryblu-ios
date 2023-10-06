@@ -7,8 +7,10 @@ struct ResetPasswordScreen: View {
         case idle
     }
     @EnvironmentObject var model: ResetPasswordModel
+    @Environment(\.dismiss) var dismiss
     @State var userEmail: String = ""
     @State var fecthEmail: FechtEmail
+    @State var showLastView = false
 
     var body: some View {
         NavigationStack {
@@ -33,12 +35,13 @@ struct ResetPasswordScreen: View {
                 .padding(.bottom, 39)
 
                 LBButton(title: LBStrings.General.send) {
-                    model.login(user: userEmail)
-                    if model.isValid {
-                        fecthEmail = .success
-                    } else {
-                        fecthEmail = .error
-                    }
+//                    model.login(user: userEmail)
+//                    if model.isValid {
+//                        fecthEmail = .success
+//                    } else {
+//                        fecthEmail = .error
+//                    }
+                    showLastView.toggle()
                 }
                 .padding(.bottom, 10)
 
@@ -61,6 +64,11 @@ struct ResetPasswordScreen: View {
                     }
             }
             .padding(.horizontal, 24)
+            .fullScreenCover(isPresented: $showLastView) {
+                DoneView {
+                    dismiss()
+                }
+            }
         }
 
     }

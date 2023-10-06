@@ -8,27 +8,25 @@ struct RegisterResponsibleView: View {
     @State var showNext: Bool = false
 
     var body: some View {
-        NavigationStack {
+        VStack {
             VStack {
-                VStack {
-                    Image(LBIcon.logo.rawValue).resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 187, height: 47)
-                        .clipped()
-                        .padding(.bottom, 40)
+                Image(LBIcon.logo.rawValue).resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 187, height: 47)
+                    .clipped()
+                    .padding(.bottom, 40)
 
-                    Text(LBStrings.Register.responsible)
-                        .font(LBFont.head6)
-                        .foregroundColor(LBColor.text)
-                        .frame(width: 242, alignment: .topLeading)
-                        .padding(.bottom, 32)
-                }
-                form
+                Text(LBStrings.Register.responsible)
+                    .font(LBFont.head6)
+                    .foregroundColor(LBColor.text)
+                    .frame(width: 242, alignment: .topLeading)
+                    .padding(.bottom, 32)
             }
-            .navigationDestination(isPresented: $showNext) {
-                RegisterChildView(viewModel: viewModel.makeRegisterChildViewModel())
-                    .toolbarRole(.editor)
-            }
+            form
+        }
+        .navigationDestination(isPresented: $showNext) {
+            RegisterChildView(viewModel: viewModel.makeRegisterChildViewModel())
+                .toolbarRole(.editor)
         }
         .navigationTitle(LBStrings.General.empty)
         .padding(.bottom, 40)

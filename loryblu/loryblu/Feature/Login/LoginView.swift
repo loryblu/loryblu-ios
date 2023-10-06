@@ -8,6 +8,7 @@ struct LoginView: View {
     @State private var rememberMe: Bool = false
     @State private var isPasswordHidden: Bool = true
     @State private var textError = ""
+    @State private var showForgetPassword: Bool = false
 
     func tryLogin() {
         if !ValidateRules.validate(email: email) {
