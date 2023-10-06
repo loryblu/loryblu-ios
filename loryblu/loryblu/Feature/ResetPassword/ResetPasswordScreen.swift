@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ResetPasswordScreen: View {
 
-    @EnvironmentObject var model: ResetPasswordModel
+    @ObservedObject var model: ResetPasswordModel = ResetPasswordModel()
     @State var userEmail: String = "rodrigoeduardosilv@gmail.com"
 
     var body: some View {
@@ -61,6 +61,6 @@ struct ResetPasswordScreen: View {
 
 struct ForgotPasswordScreen_Previews: PreviewProvider {
     static var previews: some View {
-        ResetPasswordScreen().environmentObject(ResetPasswordModel())
+        ResetPasswordScreen(model: ResetPasswordModel())
     }
 }

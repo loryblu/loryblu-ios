@@ -45,6 +45,7 @@
 		8C9CBCFC2A7ACF46001DBD35 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9CBCFA2A7ACF46001DBD35 /* LoginView.swift */; };
 		8C9CBD0D2A7AE97B001DBD35 /* RegisterChildView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9CBD0C2A7AE97B001DBD35 /* RegisterChildView.swift */; };
 		8C9CBD102A7AEC24001DBD35 /* PasswordRulesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9CBD0F2A7AEC24001DBD35 /* PasswordRulesView.swift */; };
+		8CE004892AC1C6680037F792 /* DoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE004882AC1C6680037F792 /* DoneView.swift */; };
 		8CE03E392A6360BE0024919C /* LBColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE03E382A6360BE0024919C /* LBColor.swift */; };
 		8CE03E3C2A6363630024919C /* LBIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE03E3B2A6363630024919C /* LBIcon.swift */; };
 		8CFB359E2A6059BD008BF633 /* LorybluApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB359D2A6059BD008BF633 /* LorybluApp.swift */; };
@@ -91,6 +92,7 @@
 		8C9CBCFA2A7ACF46001DBD35 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		8C9CBD0C2A7AE97B001DBD35 /* RegisterChildView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterChildView.swift; sourceTree = "<group>"; };
 		8C9CBD0F2A7AEC24001DBD35 /* PasswordRulesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordRulesView.swift; sourceTree = "<group>"; };
+		8CE004882AC1C6680037F792 /* DoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneView.swift; sourceTree = "<group>"; };
 		8CE03E382A6360BE0024919C /* LBColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBColor.swift; sourceTree = "<group>"; };
 		8CE03E3B2A6363630024919C /* LBIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBIcon.swift; sourceTree = "<group>"; };
 		8CFB359A2A6059BD008BF633 /* LoryBlu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoryBlu.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -236,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				8C669C422AA011650028B436 /* Models */,
+				8CE004872AC1C5D00037F792 /* Done */,
 				334D0AB12A8AF93D003881ED /* ResetPassword */,
 				8C9CBCF82A7ACF46001DBD35 /* Login */,
 				8C5734222A6C21710052B955 /* Register */,
@@ -248,6 +251,7 @@
 			children = (
 				8C5734252A6C39AF0052B955 /* RegisterResponsibleView.swift */,
 				8C2535312A7714DD0096738B /* RegisterResponsibleViewModel.swift */,
+				8C3120F42ABD249600D580BD /* WebView.swift */,
 				8C9CBD0B2A7AE97B001DBD35 /* RegisterChild */,
 			);
 			path = Register;
@@ -298,6 +302,14 @@
 				8C27B8532A68C19400F72214 /* LBLabel.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		8CE004872AC1C5D00037F792 /* Done */ = {
+			isa = PBXGroup;
+			children = (
+				8CE004882AC1C6680037F792 /* DoneView.swift */,
+			);
+			path = Done;
 			sourceTree = "<group>";
 		};
 		8CE03E3A2A6360DD0024919C /* Style */ = {
@@ -450,6 +462,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CE004892AC1C6680037F792 /* DoneView.swift in Sources */,
 				330A37772A660C2D00C9DCE7 /* LBFont.swift in Sources */,
 				8C3120EC2ABB3D8B00D580BD /* NetworkError.swift in Sources */,
 				8C3120EF2ABB3D8B00D580BD /* Server.swift in Sources */,

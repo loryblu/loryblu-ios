@@ -14,7 +14,7 @@ struct RegisterChildView: View {
     @State var presented: Bool = false
     @State var date: Date?
     var child: Register?
-    @State var goToLogin: Bool = false
+    @State var showDone: Bool = false
     @State private var isPresentWebView = false
 
     var body: some View {
@@ -39,13 +39,14 @@ struct RegisterChildView: View {
             }
             .navigationTitle(LBStrings.General.empty)
             .padding(.top, -40)
-            .navigationDestination(isPresented: $goToLogin) {
-                LoginView()  // fluxo pra tela de conclusão
+            .navigationDestination(isPresented: $showDone) {
+                DoneView(message: LBStrings.General.done, onClose: {
+
+                })
                     .toolbarRole(.editor)
                     .navigationBarBackButtonHidden(true)
             }
-        }
-
+        }.foregroundStyle(LBColor.background)
     }
 
     var form: some View {
@@ -141,9 +142,9 @@ struct RegisterChildView: View {
     private func confirmRegister() {
         if self.viewModel.validadeData() {
             self.viewModel.saveRegister()
-            self.goToLogin = true
+            self.showDone = true
         } else {
-            self.goToLogin = false
+            self.showDone = false
             self.viewModel.showError()
         }
     }
