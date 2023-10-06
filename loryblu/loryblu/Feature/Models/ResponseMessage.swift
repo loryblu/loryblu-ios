@@ -5,17 +5,9 @@ struct ResponseMessage: Decodable {
     var error: String?
     var statusCode: Int?
 
-    var isError: Bool {
-        guard let statusCode = statusCode else {
-            return false
-        }
-
-        return (200...299).contains(statusCode)
-    }
-
     var isSuccess: Bool {
         guard let statusCode = statusCode else {
-            return false
+            return true
         }
 
         return (200...299).contains(statusCode)
