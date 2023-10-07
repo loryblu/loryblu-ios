@@ -66,7 +66,6 @@ class RegisterChildViewModel: ObservableObject {
             do {
                 let result = try await repository.register(user: user)
                 registerSuccess = true
-                NSLog("Foi")
             } catch {
                 print(error.localizedDescription)
             }

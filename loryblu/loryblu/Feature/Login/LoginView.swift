@@ -8,7 +8,10 @@ struct LoginView: View {
     @State private var rememberMe: Bool = false
     @State private var isPasswordHidden: Bool = true
     @State private var textError = ""
+
     @State private var showResetPassword: Bool = false
+    @State private var showRegister: Bool = false
+    @State private var path = NavigationPath()
 
     func tryLogin() {
         if !ValidateRules.validate(email: email) {
@@ -31,7 +34,7 @@ struct LoginView: View {
     }
 
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $path) {
             VStack {
                 LBIcon.logo.image
                     .resizable()
@@ -81,7 +84,7 @@ struct LoginView: View {
                 HStack {
                     VStack {
                         Divider()
-                        .background(LBColor.text)
+                            .background(LBColor.text)
 
                     }.padding(20)
 
@@ -90,7 +93,7 @@ struct LoginView: View {
 
                     VStack {
                         Divider()
-                        .background(LBColor.text)
+                            .background(LBColor.text)
                     }.padding(20)
                 }
                 .padding(.top, 28)
@@ -105,9 +108,7 @@ struct LoginView: View {
                             .foregroundColor(.black)
                             .multilineTextAlignment(.trailing)
                     }
-                    .navigationDestination(isPresented: $showResetPassword) {
-                        ResetPasswordScreen(model: ResetPasswordModel())
-                    }
+
                 }
                 .frame(maxWidth: .infinity, alignment: .trailing)
 
@@ -122,7 +123,7 @@ struct LoginView: View {
                         .padding(.trailing, 8)
 
                     Button(LBStrings.Login.registerNow) {
-                        // Chamar tela de Cadastro
+                        showRegister.toggle()
                     }
                     .font(LBFont.caption)
                     .foregroundColor(LBColor.buttonPrimary)
@@ -131,7 +132,13 @@ struct LoginView: View {
                 }.padding(.top, 32.0)
             }
             .padding(24)
-         }
+            .navigationDestination(isPresented: $showRegister) {
+                RegisterResponsibleView(path: $path)
+            }
+            .navigationDestination(isPresented: $showResetPassword) {
+                ResetPasswordScreen(model: ResetPasswordModel())
+            }
+        }
     }
 }
 
