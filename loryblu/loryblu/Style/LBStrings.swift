@@ -70,6 +70,7 @@ extension LBStrings {
         static let newPassword = String(localized: "setPassword_new_password")
         static let repeatPassword = String(localized: "setPassword_repeat_password")
         static let passwordMustbeEqual = String(localized: "setPassword_must_be_equal")
+        static let successChangePassword = String(localized: "success_change_password")
     }
 }
 

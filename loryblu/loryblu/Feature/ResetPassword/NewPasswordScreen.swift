@@ -2,6 +2,7 @@ import SwiftUI
 
 struct NewPasswordScreen: View {
     @ObservedObject var model: NewPasswordModel
+    @Environment(\.dismiss) var dismiss
     @State var appData: AppData
     var body: some View {
         VStack {
@@ -58,14 +59,15 @@ struct NewPasswordScreen: View {
                     Task {
                         await model.setPassword(newPassword: model.confirmPassword, token: appData.token)
                     }
-
                 }
-
             }
-
         }
         .padding(.horizontal, 24)
-
+        .fullScreenCover(isPresented: $model.goToLogin) {
+            DoneView(message: LBStrings.SetPassword.successChangePassword) {
+                dismiss()
+            }
+        }
     }
 }
 

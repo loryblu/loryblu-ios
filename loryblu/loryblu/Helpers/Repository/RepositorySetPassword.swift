@@ -11,7 +11,8 @@ class RepositorySetPassword {
         self.network = network
     }
 
-    func setPassword(password: String, token: String) async -> Bool {
+    func setPassword(password: String, token: String) async -> RecoveryData {
+        var data = RecoveryData()
         let header: [String: String] = ["Content-Type": "application/json"]
         let request = RequestModel(baseURL: Server.baseURL,
                                    path: Server.setPasswordURL,
@@ -19,10 +20,10 @@ class RepositorySetPassword {
                                    header: header,
                                    body: ["password": "\(password)", "recoveryToken": "\(token)"])
         do {
-            _ = try await network.request(request: request, returning: RecoveryData.self)
-            return true
+            data = try await network.request(request: request, returning: RecoveryData.self)
+            return data
         } catch {
-            return false
+            return data
         }
     }
 
