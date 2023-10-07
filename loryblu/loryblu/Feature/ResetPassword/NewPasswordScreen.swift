@@ -73,9 +73,7 @@ struct NewPasswordScreen: View {
                 DoneView(message: LBStrings.SetPassword.failureChangePassword) {
                     dismiss()
                 }
-
             }
-
         }
     }
 }

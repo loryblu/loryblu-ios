@@ -10,8 +10,11 @@ struct LoginView: View {
     @State private var textError = ""
 
     @State private var showResetPassword: Bool = false
-    @State private var showRegister: Bool = false
-    @State private var path = NavigationPath()
+
+    @State private var showResponsibleRegister: Bool = false
+    @State private var showChildRegister: Bool = false
+
+    let repository = AuthenticationRepository()
 
     func tryLogin() {
         if !ValidateRules.validate(email: email) {
@@ -34,110 +37,111 @@ struct LoginView: View {
     }
 
     var body: some View {
-        NavigationStack(path: $path) {
-            VStack {
-                LBIcon.logo.image
-                    .resizable()
-                    .frame(width: 187, height: 47)
-                    .padding(.bottom, 30)
-                    .padding(.top, 30)
-                Text(LBStrings.Login.title)
-                    .font(LBFont.head6)
-                    .padding(.bottom, 22)
+        VStack {
+            LBIcon.logo.image
+                .resizable()
+                .frame(width: 187, height: 47)
+                .padding(.bottom, 30)
+                .padding(.top, 30)
+            Text(LBStrings.Login.title)
+                .font(LBFont.head6)
+                .padding(.bottom, 22)
 
-                VStack(spacing: 16) {
-                    LBTextField(
-                        style: .common,
-                        icon: LBIcon.mail,
-                        title: LBStrings.Login.email,
-                        text: $email,
-                        textFiledState: isEmailValid ? .active : .alert)
-                    .textInputAutocapitalization(.never)
+            VStack(spacing: 16) {
+                LBTextField(
+                    style: .common,
+                    icon: LBIcon.mail,
+                    title: LBStrings.Login.email,
+                    text: $email,
+                    textFiledState: isEmailValid ? .active : .alert)
+                .textInputAutocapitalization(.never)
 
-                    LBTextField(
-                        style: .password,
-                        icon: LBIcon.lock,
-                        title: LBStrings.Login.password,
-                        text: $password,
-                        textFiledState: isPasswordNotEmpty ? .active : .alert)
-                    .textInputAutocapitalization(.never)
-                }
+                LBTextField(
+                    style: .password,
+                    icon: LBIcon.lock,
+                    title: LBStrings.Login.password,
+                    text: $password,
+                    textFiledState: isPasswordNotEmpty ? .active : .alert)
+                .textInputAutocapitalization(.never)
+            }
 
-                VStack(alignment: .trailing) {
-                    Text(textError)
-                        .font(LBFont.caption)
-                        .foregroundColor(LBColor.error)
-                        .frame(maxWidth: .infinity, alignment: .trailing)
-
-                    HStack {
-                        LBToggle(isActived: $rememberMe)
-                        // Metodo pra deixar a senha salva
-                        Text(LBStrings.Login.remeber)
-                            .font(LBFont.caption)
-                            .multilineTextAlignment(.trailing)
-                    }
-                }.padding(.top, 10)
-
-                LBButton(title: LBStrings.Login.enter, action: tryLogin)
-                    .padding(.top, 51)
-
-                HStack {
-                    VStack {
-                        Divider()
-                            .background(LBColor.text)
-
-                    }.padding(20)
-
-                    Text(LBStrings.Login.orDivider)
-                        .foregroundColor(LBColor.text)
-
-                    VStack {
-                        Divider()
-                            .background(LBColor.text)
-                    }.padding(20)
-                }
-                .padding(.top, 28)
-
-                HStack {
-                    Button {
-                        showResetPassword.toggle()
-                    } label: {
-                        Text(LBStrings.Login.forgotPassword)
-                            .font(LBFont.bodySmall)
-                            .underline()
-                            .foregroundColor(.black)
-                            .multilineTextAlignment(.trailing)
-                    }
-
-                }
-                .frame(maxWidth: .infinity, alignment: .trailing)
-
-                ExternalLogin()
-                    .padding(.top, 53.0)
-
-                HStack {
-                    Text(LBStrings.Login.dontHaveAccount)
-                        .font(LBFont.caption)
-                        .foregroundColor(LBColor.placeholder)
-                        .multilineTextAlignment(.trailing)
-                        .padding(.trailing, 8)
-
-                    Button(LBStrings.Login.registerNow) {
-                        showRegister.toggle()
-                    }
+            VStack(alignment: .trailing) {
+                Text(textError)
                     .font(LBFont.caption)
-                    .foregroundColor(LBColor.buttonPrimary)
-                    .multilineTextAlignment(.trailing)
+                    .foregroundColor(LBColor.error)
+                    .frame(maxWidth: .infinity, alignment: .trailing)
 
-                }.padding(.top, 32.0)
+                HStack {
+                    LBToggle(isActived: $rememberMe)
+                    // Metodo pra deixar a senha salva
+                    Text(LBStrings.Login.remeber)
+                        .font(LBFont.caption)
+                        .multilineTextAlignment(.trailing)
+                }
+            }.padding(.top, 10)
+
+            LBButton(title: LBStrings.Login.enter, action: tryLogin)
+                .padding(.top, 51)
+
+            HStack {
+                VStack {
+                    Divider()
+                        .background(LBColor.text)
+
+                }.padding(20)
+
+                Text(LBStrings.Login.orDivider)
+                    .foregroundColor(LBColor.text)
+
+                VStack {
+                    Divider()
+                        .background(LBColor.text)
+                }.padding(20)
             }
-            .padding(24)
-            .navigationDestination(isPresented: $showRegister) {
-                RegisterResponsibleView(path: $path)
+            .padding(.top, 28)
+
+            HStack {
+                Button {
+                    showResetPassword.toggle()
+                } label: {
+                    Text(LBStrings.Login.forgotPassword)
+                        .font(LBFont.bodySmall)
+                        .underline()
+                        .foregroundColor(.black)
+                        .multilineTextAlignment(.trailing)
+                }
+
             }
-            .navigationDestination(isPresented: $showResetPassword) {
-                ResetPasswordScreen(model: ResetPasswordModel())
-            }
+            .frame(maxWidth: .infinity, alignment: .trailing)
+
+            ExternalLogin()
+                .padding(.top, 53.0)
+
+            HStack {
+                Text(LBStrings.Login.dontHaveAccount)
+                    .font(LBFont.caption)
+                    .foregroundColor(LBColor.placeholder)
+                    .multilineTextAlignment(.trailing)
+                    .padding(.trailing, 8)
+
+                Button(LBStrings.Login.registerNow) {
+                    showResponsibleRegister.toggle()
+                }
+                .font(LBFont.caption)
+                .foregroundColor(LBColor.buttonPrimary)
+                .multilineTextAlignment(.trailing)
+
+            }.padding(.top, 32.0)
+        }
+        .padding(24)
+        .navigationDestination(isPresented: $showResponsibleRegister) {
+            RegisterResponsibleView(
+                showResponsibleRegister: $showResponsibleRegister,
+                showChildRegister: $showChildRegister
+            )
+        }
+        .navigationDestination(isPresented: $showResetPassword) {
+            ResetPasswordScreen(model: ResetPasswordModel())
         }
     }
 }

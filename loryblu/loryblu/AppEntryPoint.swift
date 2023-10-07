@@ -2,7 +2,6 @@ import SwiftUI
 
 struct AppEntryPoint: View {
     @EnvironmentObject var appData: AppData
-    @State var path = NavigationPath()
 
     var body: some View {
         NavigationStack {
