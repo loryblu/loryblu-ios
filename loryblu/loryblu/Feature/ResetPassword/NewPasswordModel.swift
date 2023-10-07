@@ -1,5 +1,6 @@
 import Foundation
 
+@MainActor
 class NewPasswordModel: ObservableObject {
     @Published var password: String = ""
     @Published var confirmPassword: String = ""

@@ -22,7 +22,6 @@ class RegisterChildViewModel: ObservableObject {
 
     private var repository = RegisterRepository()
 
-
     init(user: UserRegister) {
         self.user = user
     }
@@ -51,6 +50,7 @@ class RegisterChildViewModel: ObservableObject {
         errorField = .none
     }
 
+    @MainActor
     func saveRegister() {
         guard let birthDate = birthDate, let gender = gender else {
             showError()

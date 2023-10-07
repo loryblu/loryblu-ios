@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct DoneView: View {
-    @State var message: String
+    let message: String
     var onClose: () -> Void
-    @State var goToLogin: Bool = false
+
+    @Environment(\.dismiss) var dismiss
+
     private let spacing = 50.0
 
     var body: some View {
@@ -30,7 +32,7 @@ struct DoneView: View {
 
                 Button {
                     onClose()
-                    //dismiss()
+                    dismiss()
                 } label: {
                     Image(LBIcon.close2.rawValue)
                         .resizable()
@@ -40,11 +42,6 @@ struct DoneView: View {
             .padding()
         }
         .navigationTitle(LBStrings.General.empty)
-        .navigationDestination(isPresented: $goToLogin) {
-            LoginView()
-                .toolbarRole(.editor)
-                .navigationBarBackButtonHidden(true)
-        }
     }
 
 }

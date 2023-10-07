@@ -6,7 +6,7 @@ struct LorybluApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                ContentView()
+                LoginView()
                     .environmentObject(appData)
                     .onOpenURL { url in
                         let deepLinkHandler = DeepLinkHandler()

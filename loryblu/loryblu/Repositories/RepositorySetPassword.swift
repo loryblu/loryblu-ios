@@ -1,9 +1,5 @@
 import Foundation
 
-struct RecoveryData: Codable {
-    var message: String?
-}
-
 class RepositorySetPassword {
     private let network: Network
 
@@ -11,16 +7,19 @@ class RepositorySetPassword {
         self.network = network
     }
 
-    func setPassword(password: String, token: String) async -> RecoveryData {
-        var data = RecoveryData()
+    func setPassword(password: String, token: String) async -> ResponseMessage {
+        var data = ResponseMessage()
         let header: [String: String] = ["Content-Type": "application/json"]
-        let request = RequestModel(baseURL: Server.baseURL,
-                                   path: Endpoint.defineNewPassword,
-                                   method: .put,
-                                   header: header,
-                                   body: JSONParser.parseData(from: ["password": "\(password)", "recoveryToken": "\(token)"]))
+        let request = RequestModel(
+                        baseURL: Server.baseURL,
+                        path: Endpoint.defineNewPassword,
+                        method: .put,
+                        header: header,
+                        body: JSONParser.parseData(
+                            from: ["password": "\(password)", "recoveryToken": "\(token)"])
+                    )
         do {
-            data = try await network.request(request: request, returning: RecoveryData.self)
+            data = try await network.request(request: request, returning: ResponseMessage.self)
             return data
         } catch {
             return data
@@ -29,14 +28,16 @@ class RepositorySetPassword {
 
     func recoveryPassword(with email: String) async -> Bool {
         let header: [String: String] = ["Content-Type": "application/json"]
-        let request = RequestModel(baseURL: Server.baseURL,
-                                   path: Endpoint.passwordRecovery,
-                                   method: .post,
-                                   header: header,
-                                   body: JSONParser.parseData(from: ["email": "\(email)"]))
+        let request = RequestModel(
+                        baseURL: Server.baseURL,
+                        path: Endpoint.passwordRecovery,
+                        method: .post,
+                        header: header,
+                        body: JSONParser.parseData(from: ["email": "\(email)"])
+                    )
 
         do {
-            _ = try await network.request(request: request, returning: RecoveryData.self)
+            _ = try await network.request(request: request, returning: ResponseMessage.self)
             return true
         } catch {
             return false
