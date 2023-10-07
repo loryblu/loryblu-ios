@@ -30,7 +30,7 @@ struct DoneView: View {
 
                 Button {
                     onClose()
-                    dismiss()
+                    //dismiss()
                 } label: {
                     Image(LBIcon.close2.rawValue)
                         .resizable()

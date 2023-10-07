@@ -18,7 +18,7 @@ class RepositorySetPassword {
                                    path: Endpoint.defineNewPassword,
                                    method: .put,
                                    header: header,
-                                   body: ["password": "\(password)", "recoveryToken": "\(token)"])
+                                   body: JSONParser.parseData(from: ["password": "\(password)", "recoveryToken": "\(token)"]))
         do {
             data = try await network.request(request: request, returning: RecoveryData.self)
             return data
@@ -33,7 +33,7 @@ class RepositorySetPassword {
                                    path: Endpoint.passwordRecovery,
                                    method: .post,
                                    header: header,
-                                   body: ["email": "\(email)"])
+                                   body: JSONParser.parseData(from: ["email": "\(email)"]))
 
         do {
             _ = try await network.request(request: request, returning: RecoveryData.self)

@@ -39,7 +39,7 @@ struct RegisterChildView: View {
         .navigationTitle(LBStrings.General.empty)
         .padding(.top, -40)
         .fullScreenCover(isPresented: $viewModel.registerSuccess) {
-            DoneView {
+            DoneView(message: "MEssage") {
 
             }
             .toolbarRole(.editor)

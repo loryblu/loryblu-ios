@@ -54,11 +54,6 @@ struct ResetPasswordScreen: View {
                     }
             }
             .padding(.horizontal, 24)
-            .fullScreenCover(isPresented: $showLastView) {
-                DoneView {
-                    dismiss()
-                }
-            }
         }
 
     }
