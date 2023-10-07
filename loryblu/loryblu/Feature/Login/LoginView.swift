@@ -1,8 +1,8 @@
 import SwiftUI
 
 struct LoginView: View {
-    @State var email: String = ""
-    @State var password: String = ""
+    //@State var email: String = ""
+    //@State var password: String = ""
     @State private var isEmailValid: Bool = true
     @State var isPasswordNotEmpty: Bool = true
     @State private var rememberMe: Bool = false
@@ -14,26 +14,28 @@ struct LoginView: View {
     @State private var showResponsibleRegister: Bool = false
     @State private var showChildRegister: Bool = false
 
-    let repository = AuthenticationRepository()
+    @StateObject var model = LoginModel()
 
-    func tryLogin() {
-        if !ValidateRules.validate(email: email) {
+    @MainActor func tryLogin() {
+        if !ValidateRules.validate(email: model.email) {
             isEmailValid = false
             isPasswordNotEmpty = true
             textError =  LBStrings.Login.emailNotExists
-        } else if password.isEmpty {
+        } else if model.password.isEmpty {
             textError = LBStrings.Login.requiredField
             isEmailValid = true
             isPasswordNotEmpty = false
-        } else if !password.isEmpty {
+        } else if !model.password.isEmpty {
             textError = ""
             isPasswordNotEmpty = true
         }
-        if !password.isEmpty && ValidateRules.validate(email: email) {
+        if !model.password.isEmpty && ValidateRules.validate(email: model.email) {
             textError = ""
             isPasswordNotEmpty = true
             isEmailValid = true
         }
+
+        model.authenticate()
     }
 
     var body: some View {
@@ -52,7 +54,7 @@ struct LoginView: View {
                     style: .common,
                     icon: LBIcon.mail,
                     title: LBStrings.Login.email,
-                    text: $email,
+                    text: $model.email,
                     textFiledState: isEmailValid ? .active : .alert)
                 .textInputAutocapitalization(.never)
 
@@ -60,7 +62,7 @@ struct LoginView: View {
                     style: .password,
                     icon: LBIcon.lock,
                     title: LBStrings.Login.password,
-                    text: $password,
+                    text: $model.password,
                     textFiledState: isPasswordNotEmpty ? .active : .alert)
                 .textInputAutocapitalization(.never)
             }
@@ -79,6 +81,12 @@ struct LoginView: View {
                         .multilineTextAlignment(.trailing)
                 }
             }.padding(.top, 10)
+
+            if model.status == .fail {
+                Text("Login falhou. 😰")
+            } else if model.status == .success {
+                Text("Deu bom hein...... ☺️")
+            }
 
             LBButton(title: LBStrings.Login.enter, action: tryLogin)
                 .padding(.top, 51)
