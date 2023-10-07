@@ -58,6 +58,7 @@
 		91A7CC182ACF9F8500109300 /* LBDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A7CC172ACF9F8500109300 /* LBDatePicker.swift */; };
 		91B4AC252AD0F61B003A7FE5 /* JSONParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B4AC242AD0F61B003A7FE5 /* JSONParse.swift */; };
 		91B4AC282AD114D3003A7FE5 /* NavigationPathExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B4AC272AD114D3003A7FE5 /* NavigationPathExtension.swift */; };
+		91B4AC442AD19CFA003A7FE5 /* AppEntryPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B4AC432AD19CFA003A7FE5 /* AppEntryPoint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -113,6 +114,7 @@
 		91A7CC172ACF9F8500109300 /* LBDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBDatePicker.swift; sourceTree = "<group>"; };
 		91B4AC242AD0F61B003A7FE5 /* JSONParse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONParse.swift; sourceTree = "<group>"; };
 		91B4AC272AD114D3003A7FE5 /* NavigationPathExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationPathExtension.swift; sourceTree = "<group>"; };
+		91B4AC432AD19CFA003A7FE5 /* AppEntryPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEntryPoint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -359,6 +361,7 @@
 				8C3120E52ABA83EC00D580BD /* Network */,
 				330A37782A660D1A00C9DCE7 /* Resources */,
 				8CFB359F2A6059BD008BF633 /* ContentView.swift */,
+				91B4AC432AD19CFA003A7FE5 /* AppEntryPoint.swift */,
 				8CFB359D2A6059BD008BF633 /* LorybluApp.swift */,
 				330A37812A660D8000C9DCE7 /* Info.plist */,
 				8CFB35A12A6059BF008BF633 /* Assets.xcassets */,
@@ -522,6 +525,7 @@
 				8C3120F52ABD249600D580BD /* WebView.swift in Sources */,
 				33D0F90E2AD0EE3700EE54DF /* Endpoints.swift in Sources */,
 				8C9CBCFB2A7ACF46001DBD35 /* ExternalLogin.swift in Sources */,
+				91B4AC442AD19CFA003A7FE5 /* AppEntryPoint.swift in Sources */,
 				33FC28612AB29446004400BC /* Formatter.swift in Sources */,
 				8C9CBD0D2A7AE97B001DBD35 /* RegisterChildView.swift in Sources */,
 				8C669C412AA011480028B436 /* UserRegister.swift in Sources */,
