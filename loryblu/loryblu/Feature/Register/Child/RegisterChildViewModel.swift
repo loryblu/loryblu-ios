@@ -4,17 +4,25 @@ class RegisterChildViewModel: ObservableObject {
     enum FocusedField: Equatable {
         case none, nameChild, birthDay, gender
     }
+
     @Published var nameChild: String = ""
-    @Published var birthDay: String = ""
     @Published var gender: LBGenderButton.Gender?
     @Published var agreePrivacy: Bool = false
     @Published var textError: String = ""
     @Published var hasError: Bool = false
     @Published var errorField: FocusedField = .none
-    private(set) var user: Register
-    //var service = Service()
+    @Published var registerSuccess: Bool = false
+    @Published var birthDate: Date?
 
-    init(user: Register) {
+    private(set) var user: UserRegister
+
+    var isValid: Bool {
+        ValidateRules.validateName(nameChild) && birthDate != nil && agreePrivacy
+    }
+
+    private var repository = RegisterRepository()
+
+    init(user: UserRegister) {
         self.user = user
     }
 
@@ -23,7 +31,7 @@ class RegisterChildViewModel: ObservableObject {
             hasError = true
             textError = LBStrings.Register.errorName
             errorField = .nameChild
-        } else if birthDay.isEmpty {
+        } else if birthDate == nil {
             hasError = true
             textError = LBStrings.Register.errorBirthDay
             errorField = .birthDay
@@ -42,20 +50,27 @@ class RegisterChildViewModel: ObservableObject {
         errorField = .none
     }
 
+    @MainActor
     func saveRegister() {
+        guard let birthDate = birthDate, let gender = gender else {
+            showError()
+            return
+        }
+
         user.nameChild = nameChild
-        user.dateBirth = birthDay
+        user.dateBirth = Formatter.yearMonthDay.string(from: birthDate)
         user.agreePrivacy = agreePrivacy
-        if gender == .male {
-            user.gender = .male
-        } else if gender == .female {
-            user.gender = .female
+        user.gender = gender == .male ? .male : .female
+
+        Task {
+            do {
+                let result = try await repository.register(user: user)
+                registerSuccess = true
+            } catch {
+                print(error.localizedDescription)
+            }
         }
 
         print(user)
-    }
-
-    func validadeData() -> Bool {
-        ValidateRules.validateName(nameChild) && birthDay != nil && agreePrivacy
     }
 }

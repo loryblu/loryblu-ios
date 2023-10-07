@@ -9,44 +9,45 @@ import SwiftUI
 import WebKit
 
 struct RegisterChildView: View {
-    @ObservedObject var viewModel: RegisterChildViewModel
+    @StateObject var viewModel: RegisterChildViewModel
     @FocusState private var focusedField: RegisterChildViewModel.FocusedField?
     @State var presented: Bool = false
     @State var date: Date?
-    var child: Register?
+    var child: UserRegister?
     @State var showDone: Bool = false
     @State private var isPresentWebView = false
 
+    @Binding var path: NavigationPath
+
     var body: some View {
-        NavigationStack {
+        VStack {
             VStack {
-                VStack {
-                    Image(LBIcon.logo.rawValue).resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 187, height: 47)
-                        .clipped()
-                        .padding(.bottom, 40)
+                Image(LBIcon.logo.rawValue).resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 187, height: 47)
+                    .clipped()
+                    .padding(.bottom, 40)
 
-                    Text(LBStrings.Register.child)
-                        .font(LBFont.head6)
-                        .foregroundColor(LBColor.text)
-                        .frame(width: 194, alignment: .topLeading)
-                        .padding(.bottom, 32)
-                }
-
-                form
-
+                Text(LBStrings.Register.child)
+                    .font(LBFont.head6)
+                    .foregroundColor(LBColor.text)
+                    .frame(width: 194, alignment: .topLeading)
+                    .padding(.bottom, 32)
             }
-            .navigationTitle(LBStrings.General.empty)
-            .padding(.top, -40)
-            .navigationDestination(isPresented: $showDone) {
-                DoneView(message: LBStrings.General.done, onClose: {
 
-                })
-                    .toolbarRole(.editor)
-                    .navigationBarBackButtonHidden(true)
+            form
+
+        }
+        .navigationTitle(LBStrings.General.empty)
+        .padding(.top, -40)
+        .fullScreenCover(isPresented: $viewModel.registerSuccess) {
+            DoneView(message: LBStrings.Register.registerFinishedSuccess) {
+                path.popToRoot()
             }
-        }.foregroundStyle(LBColor.background)
+            .toolbarRole(.editor)
+            .navigationBarBackButtonHidden(true)
+        }
+        .foregroundStyle(LBColor.background)
     }
 
     var form: some View {
@@ -64,15 +65,14 @@ struct RegisterChildView: View {
                     viewModel.clearError()
                 }
 
-                LBTextField(
-                    style: .date,
-                    icon: LBIcon.cake,
+                LBDatePicker(
+                    icon: .cake,
                     title: LBStrings.Register.birthDay,
-                    text: $viewModel.birthDay,
-                    textFiledState: viewModel.errorField == .birthDay ? .alert : .active
+                    date: $viewModel.birthDate,
+                    state: viewModel.errorField == .birthDay ? .alert : .active
                 )
                 .focused($focusedField, equals: .birthDay)
-                .onChange(of: viewModel.birthDay) { _ in
+                .onChange(of: viewModel.birthDate) { _ in
                     viewModel.clearError()
                 }
 
@@ -129,8 +129,6 @@ struct RegisterChildView: View {
                 ) {
                     self.viewModel.showError()
                     self.confirmRegister()
-//                    self.viewModel.loadUser()
-
                 }
                 .disabled(!viewModel.agreePrivacy)
                 .padding(.top, 43)
@@ -140,12 +138,12 @@ struct RegisterChildView: View {
     }
 
     private func confirmRegister() {
-        if self.viewModel.validadeData() {
-            self.viewModel.saveRegister()
-            self.showDone = true
+        if viewModel.isValid {
+            viewModel.saveRegister()
+            showDone = true
         } else {
-            self.showDone = false
-            self.viewModel.showError()
+            showDone = false
+            viewModel.showError()
         }
     }
 
@@ -153,6 +151,6 @@ struct RegisterChildView: View {
 
 struct RegisterChildView_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterChildView(viewModel: RegisterChildViewModel(user: Register()))
+        RegisterChildView(viewModel: RegisterChildViewModel(user: UserRegister()), path: .constant(NavigationPath()))
     }
 }

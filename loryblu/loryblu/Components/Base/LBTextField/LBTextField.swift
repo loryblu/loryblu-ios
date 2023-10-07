@@ -4,7 +4,6 @@ struct LBTextField: View {
     enum TexfieldType {
         case common
         case password
-        case date
     }
 
     enum TextFieldState: CGFloat, Equatable {
@@ -47,9 +46,6 @@ struct LBTextField: View {
                         passwordButton
                             .accentColor(LBColor.text)
                     }
-                case .date:
-                LBDatePickerTextField(placeholder: title, date: $date)
-                        .foregroundColor(LBColor.text)
                 }
             }
             .padding()
@@ -108,12 +104,6 @@ struct CustomTextField_Previews: PreviewProvider {
                 text: .constant("12345"),
                 textFiledState: .active
             )
-
-            LBTextField(style: .date,
-                        icon: LBIcon.cake,
-                        title: "Data de Aniversário",
-                        text: .constant(""),
-                        textFiledState: .active)
         }
     }
 }

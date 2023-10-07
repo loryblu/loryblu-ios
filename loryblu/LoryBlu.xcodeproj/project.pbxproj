@@ -40,7 +40,7 @@
 		8C5734262A6C39AF0052B955 /* RegisterResponsibleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C5734252A6C39AF0052B955 /* RegisterResponsibleView.swift */; };
 		8C5DFC8B2A7B2CB9002739D9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8C5DFC8A2A7B2CB8002739D9 /* Localizable.strings */; };
 		8C5DFC8F2A85AE13002739D9 /* LBToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C5DFC8E2A85AE13002739D9 /* LBToggle.swift */; };
-		8C669C412AA011480028B436 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C669C402AA011480028B436 /* Register.swift */; };
+		8C669C412AA011480028B436 /* UserRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C669C402AA011480028B436 /* UserRegister.swift */; };
 		8C7C64B32A6F4CE1002361A9 /* ValidateRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7C64B22A6F4CE1002361A9 /* ValidateRules.swift */; };
 		8C9CBCFB2A7ACF46001DBD35 /* ExternalLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9CBCF92A7ACF46001DBD35 /* ExternalLogin.swift */; };
 		8C9CBCFC2A7ACF46001DBD35 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9CBCFA2A7ACF46001DBD35 /* LoginView.swift */; };
@@ -53,6 +53,11 @@
 		8CFB35A02A6059BD008BF633 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB359F2A6059BD008BF633 /* ContentView.swift */; };
 		8CFB35A22A6059BF008BF633 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CFB35A12A6059BF008BF633 /* Assets.xcassets */; };
 		8CFB35A52A6059BF008BF633 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CFB35A42A6059BF008BF633 /* Preview Assets.xcassets */; };
+		91361A1D2ACCBE1900700E36 /* RegisterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91361A1C2ACCBE1900700E36 /* RegisterRepository.swift */; };
+		91361A262ACEF06B00700E36 /* ResponseMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91361A252ACEF06B00700E36 /* ResponseMessage.swift */; };
+		91A7CC182ACF9F8500109300 /* LBDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A7CC172ACF9F8500109300 /* LBDatePicker.swift */; };
+		91B4AC252AD0F61B003A7FE5 /* JSONParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B4AC242AD0F61B003A7FE5 /* JSONParse.swift */; };
+		91B4AC282AD114D3003A7FE5 /* NavigationPathExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B4AC272AD114D3003A7FE5 /* NavigationPathExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,7 +93,7 @@
 		8C5734252A6C39AF0052B955 /* RegisterResponsibleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterResponsibleView.swift; sourceTree = "<group>"; };
 		8C5DFC8A2A7B2CB8002739D9 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		8C5DFC8E2A85AE13002739D9 /* LBToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBToggle.swift; sourceTree = "<group>"; };
-		8C669C402AA011480028B436 /* Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
+		8C669C402AA011480028B436 /* UserRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRegister.swift; sourceTree = "<group>"; };
 		8C7C64B22A6F4CE1002361A9 /* ValidateRules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateRules.swift; sourceTree = "<group>"; };
 		8C9CBCF92A7ACF46001DBD35 /* ExternalLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExternalLogin.swift; sourceTree = "<group>"; };
 		8C9CBCFA2A7ACF46001DBD35 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -102,6 +107,12 @@
 		8CFB359F2A6059BD008BF633 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8CFB35A12A6059BF008BF633 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8CFB35A42A6059BF008BF633 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		91361A1C2ACCBE1900700E36 /* RegisterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRepository.swift; sourceTree = "<group>"; };
+		91361A202ACCC6E700700E36 /* JSONParse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParse.swift; sourceTree = "<group>"; };
+		91361A252ACEF06B00700E36 /* ResponseMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseMessage.swift; sourceTree = "<group>"; };
+		91A7CC172ACF9F8500109300 /* LBDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBDatePicker.swift; sourceTree = "<group>"; };
+		91B4AC242AD0F61B003A7FE5 /* JSONParse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONParse.swift; sourceTree = "<group>"; };
+		91B4AC272AD114D3003A7FE5 /* NavigationPathExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationPathExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +159,7 @@
 				33FC28602AB29446004400BC /* Formatter.swift */,
 				3329F01E2AB3CB3000915FA3 /* LBDatePickerTextField.swift */,
 				8C57341F2A6B6F6B0052B955 /* LBTextField.swift */,
+				91A7CC172ACF9F8500109300 /* LBDatePicker.swift */,
 			);
 			path = LBTextField;
 			sourceTree = "<group>";
@@ -172,14 +184,6 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
-		337666812ABFDF8C007010E1 /* Repository */ = {
-			isa = PBXGroup;
-			children = (
-				33B2ABFB2ACE587A004CF7DF /* RepositorySetPassword.swift */,
-			);
-			path = Repository;
-			sourceTree = "<group>";
-		};
 		33BA2DE72AC9E120009704FD /* Handlers */ = {
 			isa = PBXGroup;
 			children = (
@@ -192,7 +196,7 @@
 		8C2535342A788C9E0096738B /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				337666812ABFDF8C007010E1 /* Repository */,
+				91B4AC232AD0F61B003A7FE5 /* JSON */,
 				33BA2DE72AC9E120009704FD /* Handlers */,
 				3376667E2ABFD11F007010E1 /* Extension */,
 				8C2535352A788D530096738B /* Validation */,
@@ -233,6 +237,7 @@
 		8C57341E2A6B6EB70052B955 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
+				91361A202ACCC6E700700E36 /* JSONParse.swift */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -252,10 +257,9 @@
 		8C5734222A6C21710052B955 /* Register */ = {
 			isa = PBXGroup;
 			children = (
-				8C5734252A6C39AF0052B955 /* RegisterResponsibleView.swift */,
-				8C2535312A7714DD0096738B /* RegisterResponsibleViewModel.swift */,
+				91A7CC162ACF971800109300 /* Responsible */,
+				8C9CBD0B2A7AE97B001DBD35 /* Child */,
 				8C3120F42ABD249600D580BD /* WebView.swift */,
-				8C9CBD0B2A7AE97B001DBD35 /* RegisterChild */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -263,7 +267,8 @@
 		8C669C422AA011650028B436 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				8C669C402AA011480028B436 /* Register.swift */,
+				8C669C402AA011480028B436 /* UserRegister.swift */,
+				91361A252ACEF06B00700E36 /* ResponseMessage.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -277,13 +282,13 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
-		8C9CBD0B2A7AE97B001DBD35 /* RegisterChild */ = {
+		8C9CBD0B2A7AE97B001DBD35 /* Child */ = {
 			isa = PBXGroup;
 			children = (
 				8C9CBD0C2A7AE97B001DBD35 /* RegisterChildView.swift */,
 				8C21B3472AA6C374002EF4BD /* RegisterChildViewModel.swift */,
 			);
-			path = RegisterChild;
+			path = Child;
 			sourceTree = "<group>";
 		};
 		8C9CBD0E2A7AEBEE001DBD35 /* View */ = {
@@ -345,6 +350,8 @@
 		8CFB359C2A6059BD008BF633 /* loryblu */ = {
 			isa = PBXGroup;
 			children = (
+				91B4AC262AD114BD003A7FE5 /* Extensions */,
+				91361A1B2ACCBDE400700E36 /* Repositories */,
 				8C2535342A788C9E0096738B /* Helpers */,
 				8CE03E3A2A6360DD0024919C /* Style */,
 				8C27B8382A68BEF200F72214 /* Components */,
@@ -366,6 +373,40 @@
 				8CFB35A42A6059BF008BF633 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		91361A1B2ACCBDE400700E36 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				33B2ABFB2ACE587A004CF7DF /* RepositorySetPassword.swift */,
+				91361A1C2ACCBE1900700E36 /* RegisterRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		91A7CC162ACF971800109300 /* Responsible */ = {
+			isa = PBXGroup;
+			children = (
+				8C5734252A6C39AF0052B955 /* RegisterResponsibleView.swift */,
+				8C2535312A7714DD0096738B /* RegisterResponsibleViewModel.swift */,
+			);
+			path = Responsible;
+			sourceTree = "<group>";
+		};
+		91B4AC232AD0F61B003A7FE5 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				91B4AC242AD0F61B003A7FE5 /* JSONParse.swift */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
+		91B4AC262AD114BD003A7FE5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				91B4AC272AD114D3003A7FE5 /* NavigationPathExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -464,6 +505,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91B4AC282AD114D3003A7FE5 /* NavigationPathExtension.swift in Sources */,
 				8CE004892AC1C6680037F792 /* DoneView.swift in Sources */,
 				330A37772A660C2D00C9DCE7 /* LBFont.swift in Sources */,
 				8C3120EC2ABB3D8B00D580BD /* NetworkError.swift in Sources */,
@@ -482,8 +524,10 @@
 				8C9CBCFB2A7ACF46001DBD35 /* ExternalLogin.swift in Sources */,
 				33FC28612AB29446004400BC /* Formatter.swift in Sources */,
 				8C9CBD0D2A7AE97B001DBD35 /* RegisterChildView.swift in Sources */,
-				8C669C412AA011480028B436 /* Register.swift in Sources */,
+				8C669C412AA011480028B436 /* UserRegister.swift in Sources */,
+				91361A262ACEF06B00700E36 /* ResponseMessage.swift in Sources */,
 				334D0AB52A8AF93D003881ED /* ResetPasswordModel.swift in Sources */,
+				91B4AC252AD0F61B003A7FE5 /* JSONParse.swift in Sources */,
 				8C5734202A6B6F6B0052B955 /* LBTextField.swift in Sources */,
 				334D0AB62A8AF93D003881ED /* ResetPasswordScreen.swift in Sources */,
 				33B2ABFC2ACE587A004CF7DF /* RepositorySetPassword.swift in Sources */,
@@ -493,6 +537,7 @@
 				41BE77FD2A85A12300534ADA /* LBGenderButton.swift in Sources */,
 				8C7C64B32A6F4CE1002361A9 /* ValidateRules.swift in Sources */,
 				33549B0A2ACB92E700CF989F /* AppData.swift in Sources */,
+				91A7CC182ACF9F8500109300 /* LBDatePicker.swift in Sources */,
 				8CE03E3C2A6363630024919C /* LBIcon.swift in Sources */,
 				3329F01F2AB3CB3000915FA3 /* LBDatePickerTextField.swift in Sources */,
 				334D0AB72A8AF93D003881ED /* NewPasswordScreen.swift in Sources */,
@@ -501,6 +546,7 @@
 				8C5DFC8F2A85AE13002739D9 /* LBToggle.swift in Sources */,
 				8C21B34F2AB3FE25002EF4BD /* ResetPasswordScreen.swift in Sources */,
 				8C57341B2A6B4F5F0052B955 /* LBStrings.swift in Sources */,
+				91361A1D2ACCBE1900700E36 /* RegisterRepository.swift in Sources */,
 				8CE03E392A6360BE0024919C /* LBColor.swift in Sources */,
 				8C21B34D2AB3FCCE002EF4BD /* ResetPasswordModel.swift in Sources */,
 				3376667D2ABFD115007010E1 /* URLDecoder.swift in Sources */,

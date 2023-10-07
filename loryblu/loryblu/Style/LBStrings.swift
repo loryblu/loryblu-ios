@@ -15,7 +15,6 @@ enum LBStrings {
 extension LBStrings {
     enum General {
         static let confirm = String(localized: "confirm")
-        static let done = String(localized: "done_text")
         static let email = String(localized: "email")
         static let empty = String(localized: "empty")
         static let hello = String(localized: "hello")
@@ -53,6 +52,7 @@ extension LBStrings {
         static let man = String(localized: "register_gender_man")
         static let name = String(localized: "register_name")
         static let titleLink = String(localized: "register_link_navigationTitle")
+        static let registerFinishedSuccess = String(localized: "register_finished_success")
         static let responsible = String(localized: "register_responsible")
         static let woman = String(localized: "register_gender_woman")
     }

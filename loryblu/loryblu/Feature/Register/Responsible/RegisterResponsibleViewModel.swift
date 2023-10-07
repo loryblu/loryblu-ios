@@ -14,7 +14,7 @@ class RegisterResponsibleViewModel: ObservableObject {
     @Published var hasError: Bool = false
     @Published var errorField: FocusedField = .none
 
-    var user = Register()
+    var user = UserRegister()
 
     func makeRegisterChildViewModel() -> RegisterChildViewModel {
         saveRegister()

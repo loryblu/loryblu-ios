@@ -7,7 +7,6 @@
 "password" = "Senha";
 "confirm" = "Confirmar";
 "empty" = "";
-"done_text" = "Cadastro efetuado com sucesso!";
 
 // ====================  Rules Password  =========================
 
@@ -31,12 +30,14 @@
 "register_agree_privacy" = "Eu concordo com a";
 "register_link_agree" = "política de privacidade";
 "register_link_navigationTitle" = "Política de Privacidade";
+"register_finished_success" = "Cadastro efetuado com sucesso!";
 "textError_name" = "*Nome Inválido";
 "textError_email" = "*E-mail inválido";
 "textError_confirm_password" = "*As senhas devem ser idênticas";
 "textError_birthday" = "*Selecione uma data";
 "textError_gender" = "*Selecione um botão";
 "textError_agree" = "*Aceite a política de privacidade.";
+
 
 // ====================  Set Password  =========================
 
