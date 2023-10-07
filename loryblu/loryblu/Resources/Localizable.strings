@@ -49,6 +49,8 @@
 "setPassword_button_reset" = "redefinir senha";
 "setPassword_new_password" = "Nova senha";
 "setPassword_repeat_password" = "Repetir senha";
+"setPassword_must_be_equal" = "As senhas devem ser idênticas";
+"success_change_password" = "Redefinição de senha concluída com sucesso";
 
 // ====================  Login  =========================
 

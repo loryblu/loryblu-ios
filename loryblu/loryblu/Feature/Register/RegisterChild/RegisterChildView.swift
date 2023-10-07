@@ -40,8 +40,8 @@ struct RegisterChildView: View {
             .navigationTitle(LBStrings.General.empty)
             .padding(.top, -40)
             .navigationDestination(isPresented: $showDone) {
-                DoneView(onClose: {
-                    //
+                DoneView(message: LBStrings.General.done, onClose: {
+
                 })
                     .toolbarRole(.editor)
                     .navigationBarBackButtonHidden(true)

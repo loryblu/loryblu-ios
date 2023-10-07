@@ -12,7 +12,7 @@ class RegisterChildViewModel: ObservableObject {
     @Published var hasError: Bool = false
     @Published var errorField: FocusedField = .none
     private(set) var user: Register
-    var service = Service()
+    //var service = Service()
 
     init(user: Register) {
         self.user = user

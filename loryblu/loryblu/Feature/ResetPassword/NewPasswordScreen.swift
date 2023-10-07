@@ -1,8 +1,9 @@
 import SwiftUI
 
 struct NewPasswordScreen: View {
-    @State var newPassword: String = ""
-    @State var repeatNewPassword: String = ""
+    @ObservedObject var model: NewPasswordModel
+    @Environment(\.dismiss) var dismiss
+    @State var appData: AppData
     var body: some View {
         VStack {
             LBIcon.logo.image
@@ -18,39 +19,61 @@ struct NewPasswordScreen: View {
             LBTextField(style: .password,
                         icon: .lock,
                         title: LBStrings.SetPassword.newPassword,
-                        text: $newPassword,
+                        text: $model.password,
                         textFiledState: .active)
             .padding(.bottom, 12)
 
             HStack {
-                PasswordRulesView(password: newPassword)
+                PasswordRulesView(password: model.password)
                 Spacer()
             }.padding(.bottom, 16)
 
             LBTextField(style: .password,
                         icon: .lock,
                         title: LBStrings.SetPassword.repeatPassword,
-                        text: $repeatNewPassword,
+                        text: $model.confirmPassword,
                         textFiledState: .active)
-            .padding(.bottom, 32)
+            .padding(.bottom, 10)
 
-            Text(LBStrings.SetPassword.alert)
-                .font(LBFont.bodyLittleSmall)
-                .foregroundColor(LBColor.text)
-                .padding(.bottom, 40)
+            VStack(spacing: 5) {
+
+                if model.isEqual == true {
+                    Text("")
+                    .padding()
+                } else {
+                    Text(LBStrings.SetPassword.passwordMustbeEqual)
+                        .font(LBFont.caption)
+                        .foregroundColor(LBColor.error)
+                        .padding(.bottom)
+                }
+                  Text(LBStrings.SetPassword.alert)
+                    .font(LBFont.bodyLittleSmall)
+                    .foregroundColor(LBColor.text)
+                .padding(.bottom)
+            }
 
             LBButton(title: LBStrings.SetPassword.buttonReset) {
                 // receber função do backend
+                model.showError()
+                if model.isEqual {
+                    Task {
+                        await model.setPassword(newPassword: model.confirmPassword, token: appData.token)
+                    }
+                }
             }
-
         }
         .padding(.horizontal, 24)
-
+        .fullScreenCover(isPresented: $model.goToLogin) {
+            DoneView(message: LBStrings.SetPassword.successChangePassword) {
+                dismiss()
+            }
+        }
     }
 }
 
 struct NewPasswordScreen_Previews: PreviewProvider {
     static var previews: some View {
-        NewPasswordScreen()
+        @StateObject var appData: AppData = .init()
+           NewPasswordScreen(model: NewPasswordModel(), appData: appData)
     }
 }

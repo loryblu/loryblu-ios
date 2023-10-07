@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct DoneView: View {
+    @State var message: String
     var onClose: () -> Void
     @State var goToLogin: Bool = false
-
     private let spacing = 50.0
 
     var body: some View {
@@ -31,7 +31,7 @@ struct DoneView: View {
                 Spacer()
 
                 VStack(spacing: spacing) {
-                    Text(LBStrings.General.done)
+                    Text(message)
                         .font(LBFont.head6)
                         .foregroundStyle(LBColor.text)
 
@@ -53,9 +53,10 @@ struct DoneView: View {
     }
 
 }
-
-#Preview {
-    DoneView {
-        print("Apertei o botão de fechar")
+struct DoneView_Previews: PreviewProvider {
+    static var previews: some View {
+        DoneView(message: LBStrings.General.done) {
+            print("Apertei o botão de fechar")
+        }
     }
 }
