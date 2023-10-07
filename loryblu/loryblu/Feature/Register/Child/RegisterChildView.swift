@@ -17,7 +17,8 @@ struct RegisterChildView: View {
     @State var showDone: Bool = false
     @State private var isPresentWebView = false
 
-    @Binding var path: NavigationPath
+    @Binding var showResponsibleRegister: Bool
+    @Binding var showChildRegister: Bool
 
     var body: some View {
         VStack {
@@ -42,7 +43,8 @@ struct RegisterChildView: View {
         .padding(.top, -40)
         .fullScreenCover(isPresented: $viewModel.registerSuccess) {
             DoneView(message: LBStrings.Register.registerFinishedSuccess) {
-                path.popToRoot()
+                showResponsibleRegister = false
+                showChildRegister = false
             }
             .toolbarRole(.editor)
             .navigationBarBackButtonHidden(true)
@@ -127,8 +129,8 @@ struct RegisterChildView: View {
                     title: LBStrings.Register.buttonRegister,
                     style: !viewModel.agreePrivacy ? .primaryOff : .primaryActivated
                 ) {
-                    self.viewModel.showError()
-                    self.confirmRegister()
+                     self.viewModel.showError()
+                     self.confirmRegister()
                 }
                 .disabled(!viewModel.agreePrivacy)
                 .padding(.top, 43)
@@ -151,6 +153,6 @@ struct RegisterChildView: View {
 
 struct RegisterChildView_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterChildView(viewModel: RegisterChildViewModel(user: UserRegister()), path: .constant(NavigationPath()))
+        RegisterChildView(viewModel: RegisterChildViewModel(user: UserRegister()), showResponsibleRegister: .constant(false), showChildRegister: .constant(false))
     }
 }

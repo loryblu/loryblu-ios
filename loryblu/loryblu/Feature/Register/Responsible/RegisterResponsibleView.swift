@@ -6,7 +6,9 @@ struct RegisterResponsibleView: View {
     @State var isHiddenPassword: Bool = false
     @State var isHiddenRepeat: Bool = false
     @State var showNext: Bool = false
-    @Binding var path: NavigationPath
+
+    @Binding var showResponsibleRegister: Bool
+    @Binding var showChildRegister: Bool
 
     var body: some View {
         VStack {
@@ -26,8 +28,12 @@ struct RegisterResponsibleView: View {
             form
         }
         .navigationDestination(isPresented: $showNext) {
-            RegisterChildView(viewModel: viewModel.makeRegisterChildViewModel(), path: $path)
-                .toolbarRole(.editor)
+            RegisterChildView(
+                viewModel: viewModel.makeRegisterChildViewModel(),
+                showResponsibleRegister: $showResponsibleRegister,
+                showChildRegister: $showChildRegister
+            )
+            .toolbarRole(.editor)
         }
         .navigationTitle(LBStrings.General.empty)
         .padding(.bottom, 40)
@@ -127,7 +133,9 @@ struct RegisterResponsibleView: View {
 struct ResponsibleView_Previews: PreviewProvider {
     static var previews: some View {
         RegisterResponsibleView(
-            viewModel: RegisterResponsibleViewModel(), path: .constant(NavigationPath())
+            viewModel: RegisterResponsibleViewModel(),
+            showResponsibleRegister: .constant(false),
+            showChildRegister: .constant(false)
         )
     }
 }
