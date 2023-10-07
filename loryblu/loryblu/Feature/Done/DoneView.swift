@@ -8,19 +8,25 @@
 import SwiftUI
 
 struct DoneView: View {
-    @Environment(\.dismiss) var dismiss
+    @State var message: String
     var onClose: () -> Void
-
-    init(onClose: @escaping () -> Void ) {
-        self.onClose = onClose
-    }
-
+    @State var goToLogin: Bool = false
     private let spacing = 50.0
 
     var body: some View {
         VStack {
             HStack {
                 Spacer()
+
+                VStack(spacing: spacing) {
+                    Text(message)
+                        .font(LBFont.head6)
+                        .foregroundStyle(LBColor.text)
+
+                    Image(LBIcon.done.rawValue)
+                        .resizable(resizingMode: .stretch)
+                        .frame(width: 150, height: 150)
+                }.padding(.top, -spacing)
 
                 Button {
                     onClose()
@@ -31,27 +37,21 @@ struct DoneView: View {
                         .frame(width: 22, height: 22)
                 }.padding(.trailing, 12)
             }
-
-            Spacer()
-
-            VStack(spacing: spacing) {
-                Text(LBStrings.General.done)
-                    .font(LBFont.head6)
-                    .foregroundStyle(LBColor.text)
-
-                Image(LBIcon.done.rawValue)
-                    .resizable(resizingMode: .stretch)
-                    .frame(width: 150, height: 150)
-            }.padding(.top, -spacing)
-
-            Spacer()
+            .padding()
         }
-        .padding()
+        .navigationTitle(LBStrings.General.empty)
+        .navigationDestination(isPresented: $goToLogin) {
+            LoginView()
+                .toolbarRole(.editor)
+                .navigationBarBackButtonHidden(true)
+        }
+    }
+
+}
+struct DoneView_Previews: PreviewProvider {
+    static var previews: some View {
+        DoneView(message: LBStrings.General.done) {
+            print("Apertei o botão de fechar")
+        }
     }
 }
-
-// #Preview {
-//    DoneView {
-//        print("Apertei o botão de fechar")
-//    }
-// }

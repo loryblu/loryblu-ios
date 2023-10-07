@@ -1,14 +1,23 @@
 import Foundation
 import SwiftUI
 
-class ResetPasswordModel: ObservableObject {
-    @Published var isValid: Bool = false
+enum FechtEmail {
+    case success
+    case error
+    case idle
+}
 
-    func login(user: String) {
-        if user == "Abc" {
-            isValid = true
-        } else {
-            isValid = false
+class ResetPasswordModel: ObservableObject {
+    @Published var fecht: FechtEmail = .idle
+    var service = RepositorySetPassword(network: Network.shared)
+
+    func recoveryPassowrd(with email: String) async {
+        let isValid = await service.recoveryPassword(with: email)
+        switch isValid {
+        case true :
+            self.fecht = .success
+        case false:
+            self.fecht = .error
         }
     }
 }
