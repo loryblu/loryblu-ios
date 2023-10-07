@@ -3,7 +3,7 @@ import SwiftUI
 struct ResetPasswordScreen: View {
 
     @ObservedObject var model: ResetPasswordModel = ResetPasswordModel()
-    @State var userEmail: String = "rodrigoeduardosilv@gmail.com"
+    @State var userEmail: String = ""
 
     var body: some View {
         NavigationStack {
