@@ -8,7 +8,7 @@ class NewPasswordModel: ObservableObject {
     var service = RepositorySetPassword(network: Network.shared)
 
     func setPassword(newPassword: String, token: String) async {
-        var result = await service.setPassword(password: newPassword, token: token)
+        let result = await service.setPassword(password: newPassword, token: token)
         if result.message == "Senha redefinida com sucesso!" {
             goToLogin.toggle()
         }

@@ -15,7 +15,7 @@ class RepositorySetPassword {
         var data = RecoveryData()
         let header: [String: String] = ["Content-Type": "application/json"]
         let request = RequestModel(baseURL: Server.baseURL,
-                                   path: Server.setPasswordURL,
+                                   path: Server.defineNewPassword,
                                    method: .put,
                                    header: header,
                                    body: ["password": "\(password)", "recoveryToken": "\(token)"])
@@ -30,7 +30,7 @@ class RepositorySetPassword {
     func recoveryPassword(with email: String) async -> Bool {
         let header: [String: String] = ["Content-Type": "application/json"]
         let request = RequestModel(baseURL: Server.baseURL,
-                                   path: Server.recoveryPasswordURL,
+                                   path: Server.passwordRecovery,
                                    method: .post,
                                    header: header,
                                    body: ["email": "\(email)"])
