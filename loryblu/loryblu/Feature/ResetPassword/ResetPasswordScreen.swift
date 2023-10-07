@@ -26,7 +26,7 @@ struct ResetPasswordScreen: View {
                                 text: $userEmail,
                                 textFiledState: .active)
                 .padding(.bottom, 39)
-
+                .textInputAutocapitalization(.never)
                 LBButton(title: LBStrings.General.send) {
                     Task {
                        await model.recoveryPassowrd(with: userEmail)
