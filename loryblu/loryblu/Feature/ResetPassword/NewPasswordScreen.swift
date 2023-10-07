@@ -64,8 +64,15 @@ struct NewPasswordScreen: View {
         }
         .padding(.horizontal, 24)
         .fullScreenCover(isPresented: $model.goToLogin) {
-            DoneView(message: LBStrings.SetPassword.successChangePassword) {
-                dismiss()
+            switch model.state {
+            case .success:
+                DoneView(message: LBStrings.SetPassword.successChangePassword) {
+                    dismiss()
+                }
+            case .failure:
+                DoneView(message: LBStrings.SetPassword.failureChangePassoword) {
+                    dismiss()
+                }
             }
         }
     }

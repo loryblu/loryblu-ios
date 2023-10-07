@@ -51,6 +51,7 @@
 "setPassword_repeat_password" = "Repetir senha";
 "setPassword_must_be_equal" = "As senhas devem ser idênticas";
 "success_change_password" = "Redefinição de senha concluída com sucesso";
+"failure_change_password" = "Token expirado, ou inválido.";
 
 // ====================  Login  =========================
 

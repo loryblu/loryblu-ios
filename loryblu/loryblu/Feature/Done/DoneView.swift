@@ -26,6 +26,12 @@ struct DoneView: View {
                             .resizable()
                             .frame(width: 22, height: 22)
                     }.padding(.trailing, 12)
+                        .navigationTitle(LBStrings.General.empty)
+                        .navigationDestination(isPresented: $goToLogin) {
+                            LoginView()
+                                .toolbarRole(.editor)
+                                .navigationBarBackButtonHidden(true)
+                        }
                 }
 
                 Spacer()
@@ -44,12 +50,7 @@ struct DoneView: View {
             }
             .padding()
         }
-        .navigationTitle(LBStrings.General.empty)
-        .navigationDestination(isPresented: $goToLogin) {
-            LoginView()
-                .toolbarRole(.editor)
-                .navigationBarBackButtonHidden(true)
-        }
+
     }
 
 }
