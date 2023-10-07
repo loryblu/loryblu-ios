@@ -50,7 +50,7 @@ struct DoneView: View {
 }
 struct DoneView_Previews: PreviewProvider {
     static var previews: some View {
-        DoneView(message: LBStrings.General.done) {
+        DoneView(message: LBStrings.Register.registerFinishedSuccess) {
             print("Apertei o botão de fechar")
         }
     }
