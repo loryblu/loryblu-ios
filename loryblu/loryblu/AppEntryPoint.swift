@@ -17,3 +17,24 @@ struct AppEntryPoint: View {
         }
     }
 }
+
+
+//recebo 
+//{
+//    "statucode": "error.404 "
+//    "mensage": "Email existe."
+//}
+//
+//enum TypeError: String {
+//   case error404 = "Email já existe"
+//   case error303 = "Email invalido"
+//}
+//
+//enum TypeCode: String {
+//    case e404 = "error.404"
+//    case e303 = "error.303"
+//}
+//
+//var typecode = TypeCode.self
+//
+//if typecode {

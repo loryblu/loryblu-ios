@@ -7,7 +7,7 @@ struct ContentView: View {
             NewPasswordScreen(model: NewPasswordModel(), appData: appData)
         } else {
             VStack {
-                LBIcon.loryblu.image
+                LBIcon.logoFull.image
                 Text(LBStrings.General.hello)
                     .font(LBFont.head2)
             }

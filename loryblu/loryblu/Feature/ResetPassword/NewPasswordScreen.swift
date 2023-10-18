@@ -6,7 +6,7 @@ struct NewPasswordScreen: View {
     @State var appData: AppData
     var body: some View {
         VStack {
-            LBIcon.logo.image
+            LBIcon.logoName.image
                 .frame(width: 187, height: 47)
                 .padding(40)
             Text(LBStrings.SetPassword.create)

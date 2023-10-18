@@ -13,7 +13,7 @@ struct RegisterResponsibleView: View {
     var body: some View {
         VStack {
             VStack {
-                Image(LBIcon.logo.rawValue).resizable()
+                Image(LBIcon.logoName.rawValue).resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 187, height: 47)
                     .clipped()
