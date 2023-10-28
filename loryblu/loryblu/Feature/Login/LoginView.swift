@@ -40,7 +40,7 @@ struct LoginView: View {
 
     var body: some View {
         VStack {
-            LBIcon.logo.image
+            LBIcon.logoName.image
                 .resizable()
                 .frame(width: 187, height: 47)
                 .padding(.bottom, 30)

@@ -8,7 +8,7 @@ struct ResetPasswordScreen: View {
     var body: some View {
         NavigationStack {
             VStack {
-                LBIcon.logo.image
+                LBIcon.logoName.image
                     .frame(width: 187, height: 47)
                     .padding(.bottom, 40)
 
