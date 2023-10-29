@@ -1,26 +1,61 @@
 import SwiftUI
 
 enum LBIcon: String {
+    case bath
     case cake
+    case calendar
+    case calendarShadow = "calendar_shadow"
+    case check
     case circle
     case circleFill = "circle_fill"
-    case check
     case close
     case close2
+    case dailyList = "daily_list"
+    case dailyRotine = "daily-rotine"
+    case dailyStudy = "daily-study"
+    case dental
+    case dinner
     case done
+    case evining
     case eyeClose = "eye_close"
     case eyeOpen = "eye_open"
     case facebook
+    case fairy
+    case fairyShodow = "fairy_shodow"
+    case game
     case google
+    case headLori = "head_lori"
+    case headMenu = "head_menu"
+    case language
     case lock
-    case logo
-    case loryblu
+    case logoAnimal = "logo_animal"
+    case logoFull = "logo_full"
+    case logoLetter = "logo_letter"
+    case logoName = "logo_name"
+    case lunch
     case mail
     case man
     case mangray
+    case meditation
+    case moon
+    case morning
+    case music
     case noAgree = "no_agree"
+    case play
+    case reading
+    case reinforcement
+    case school
     case search
+    case speechTherapy = "speech_therapy"
+    case sport
+    case study
+    case sun
+    case therapy
+    case tvgame
+    case tvgameShadow = "tvgame_shadow"
     case user
+    case watchtv
+    case water
     case woman
     case womangray
 
@@ -28,3 +63,5 @@ enum LBIcon: String {
         Image(self.rawValue)
     }
 }
+
+
