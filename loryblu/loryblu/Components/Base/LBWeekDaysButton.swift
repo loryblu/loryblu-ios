@@ -7,7 +7,7 @@ struct LBWeekDaysButton: View {
                 .frame(height: 45)
             HStack(spacing: 20) {
                 DaysButton(text: "D") {
-
+                    print("OK")
                 }
                 DaysButton(text: "S") {
 
@@ -43,7 +43,8 @@ struct DaysButton: View {
                 .frame(width: 30, height: 30)
                 .foregroundColor(isSet ? LBColor.buttonGenderEnable : LBColor.backgroundCards)
                 .onTapGesture {
-                       isSet.toggle()
+                    isSet.toggle()
+                    action()
                 }
                 Text(text)
                 .font(LBFont.head6)
