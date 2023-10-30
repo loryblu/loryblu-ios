@@ -1,31 +1,53 @@
-//
-//  LBWeekDaysButton.swift
-//  LoryBlu
-//
-//  Created by Rodrigo Eduardo Silva on 28/10/23.
-//
-
 import SwiftUI
-
 struct LBWeekDaysButton: View {
     var body: some View {
-        let weekDay = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"]
         ZStack {
-            GeometryReader { geometry in
-                let shape = RoundedRectangle(cornerRadius: 12)
-                shape.fill().foregroundColor(.blue)
-
-            }
+            RoundedRectangle(cornerRadius: 12)
+                .fill(LBColor.backgroundCards)
+                .frame(height: 45)
             HStack(spacing: 20) {
-                ForEach(weekDay, id: \.self) {
-                    Button($0.prefix(1)) {
+                DaysButton(text: "D") {
 
-                    }
-                    .font(LBFont.button)
-                    .foregroundColor(LBColor.background)
-                    .background(LBColor.buttonPrimary)
                 }
+                DaysButton(text: "S") {
+
+                }
+                DaysButton(text: "T") {
+
+                }
+                DaysButton(text: "Q") {
+
+                }
+                DaysButton(text: "Q") {
+
+                }
+                DaysButton(text: "S") {
+
+                }
+                DaysButton(text: "S") {
+
+                }
+
             }
+        }
+    }
+}
+
+struct DaysButton: View {
+    @State var isSet: Bool = false
+    @State var text: String
+    var action: () -> Void
+    var body: some View {
+        ZStack {
+            Circle()
+                .frame(width: 30, height: 30)
+                .foregroundColor(isSet ? LBColor.buttonGenderEnable : LBColor.backgroundCards)
+                .onTapGesture {
+                       isSet.toggle()
+                }
+                Text(text)
+                .font(LBFont.head6)
+                .foregroundColor(isSet ? LBColor.backgroundCards : LBColor.buttonGenderEnable)
         }
 
     }
