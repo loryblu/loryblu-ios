@@ -11,8 +11,8 @@ enum LBIcon: String {
     case close
     case close2
     case dailyList = "daily_list"
-    case dailyRotine = "daily-rotine"
-    case dailyStudy = "daily-study"
+    case dailyRotine = "daily_rotine"
+    case dailyStudy = "daily_study"
     case dental
     case dinner
     case done
@@ -63,5 +63,3 @@ enum LBIcon: String {
         Image(self.rawValue)
     }
 }
-
-

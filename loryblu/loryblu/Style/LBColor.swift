@@ -7,7 +7,11 @@ enum LBColor {
     static let grayLight = Color("grayLight")
     static let placeholder = Color("placeholder")
     static let text = Color("text")
-    static let title = Color("title")
     static let textfield = Color("textfield")
     static let buttonGenderEnable = Color("darkBlue")
+    static let backgroundImagetrails = Color("background_image_trails")
+    static let borderImagetrails = Color("border_image_trails")
+    static let backgroundImageLogbook = Color("background_image_logbook")
+    static let borderImageLogbook = Color("border_image_logbook")
+    static let borderSelectLogbook = Color("border_select_logbook")
 }
