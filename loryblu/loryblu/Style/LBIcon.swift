@@ -37,7 +37,7 @@ enum LBIcon: String {
     case mail
     case man
     case mangray
-    case meditation
+    case therapy
     case moon
     case morning
     case music
