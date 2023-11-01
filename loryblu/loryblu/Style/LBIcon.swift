@@ -53,6 +53,7 @@ enum LBIcon: String {
     case sport
     case study
     case sun
+    case therapy
     case tvgame
     case tvgameShadow = "tvgame_shadow"
     case user
@@ -65,3 +66,5 @@ enum LBIcon: String {
         Image(self.rawValue)
     }
 }
+
+

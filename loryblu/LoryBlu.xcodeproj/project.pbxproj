@@ -12,6 +12,7 @@
 		330A377F2A660D4C00C9DCE7 /* Inter-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 330A377C2A660D4C00C9DCE7 /* Inter-Regular.otf */; };
 		330A37802A660D4C00C9DCE7 /* Inter-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 330A377D2A660D4C00C9DCE7 /* Inter-Medium.otf */; };
 		3329F01F2AB3CB3000915FA3 /* LBDatePickerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3329F01E2AB3CB3000915FA3 /* LBDatePickerTextField.swift */; };
+		333B740F2AED9CBE003A5EBD /* LBWeekDaysButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333B740E2AED9CBE003A5EBD /* LBWeekDaysButton.swift */; };
 		334D0AB52A8AF93D003881ED /* ResetPasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334D0AB22A8AF93D003881ED /* ResetPasswordModel.swift */; };
 		334D0AB62A8AF93D003881ED /* ResetPasswordScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334D0AB32A8AF93D003881ED /* ResetPasswordScreen.swift */; };
 		334D0AB72A8AF93D003881ED /* NewPasswordScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334D0AB42A8AF93D003881ED /* NewPasswordScreen.swift */; };
@@ -71,6 +72,7 @@
 		330A377D2A660D4C00C9DCE7 /* Inter-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Medium.otf"; sourceTree = "<group>"; };
 		330A37812A660D8000C9DCE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3329F01E2AB3CB3000915FA3 /* LBDatePickerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBDatePickerTextField.swift; sourceTree = "<group>"; };
+		333B740E2AED9CBE003A5EBD /* LBWeekDaysButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBWeekDaysButton.swift; sourceTree = "<group>"; };
 		334D0AB22A8AF93D003881ED /* ResetPasswordModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordModel.swift; sourceTree = "<group>"; };
 		334D0AB32A8AF93D003881ED /* ResetPasswordScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordScreen.swift; sourceTree = "<group>"; };
 		334D0AB42A8AF93D003881ED /* NewPasswordScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPasswordScreen.swift; sourceTree = "<group>"; };
@@ -318,6 +320,7 @@
 			children = (
 				41931EBD2A6470B4008F13F8 /* LBButton.swift */,
 				41BE77FC2A85A12300534ADA /* LBGenderButton.swift */,
+				333B740E2AED9CBE003A5EBD /* LBWeekDaysButton.swift */,
 				3329F0202AB3D1F300915FA3 /* LBTextField */,
 				8C5DFC8E2A85AE13002739D9 /* LBToggle.swift */,
 				8C27B8532A68C19400F72214 /* LBLabel.swift */,
@@ -566,6 +569,7 @@
 				8C27B8542A68C19400F72214 /* LBLabel.swift in Sources */,
 				8C5DFC8F2A85AE13002739D9 /* LBToggle.swift in Sources */,
 				8C57341B2A6B4F5F0052B955 /* LBStrings.swift in Sources */,
+				333B740F2AED9CBE003A5EBD /* LBWeekDaysButton.swift in Sources */,
 				91361A1D2ACCBE1900700E36 /* RegisterRepository.swift in Sources */,
 				8CE03E392A6360BE0024919C /* LBColor.swift in Sources */,
 				3376667D2ABFD115007010E1 /* URLDecoder.swift in Sources */,
@@ -701,7 +705,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"loryblu/Preview Content\"";
-				DEVELOPMENT_TEAM = 5AN4GAV8W4;
+				DEVELOPMENT_TEAM = L83QN8FS8U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LoryBlu/Info.plist;
@@ -713,6 +717,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -734,7 +739,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"loryblu/Preview Content\"";
-				DEVELOPMENT_TEAM = 5AN4GAV8W4;
+				DEVELOPMENT_TEAM = L83QN8FS8U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LoryBlu/Info.plist;
@@ -746,6 +751,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
