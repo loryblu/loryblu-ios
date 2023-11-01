@@ -2,6 +2,7 @@ import SwiftUI
 
 enum LBIcon: String {
     case bath
+    case brushTeeth = "brush_teeth"
     case cake
     case calendar
     case calendarShadow = "calendar_shadow"
@@ -41,16 +42,17 @@ enum LBIcon: String {
     case morning
     case music
     case noAgree = "no_agree"
+    case psychologist
     case play
     case reading
     case reinforcement
     case school
     case search
+    case snack
     case speechTherapy = "speech_therapy"
     case sport
     case study
     case sun
-    case therapy
     case tvgame
     case tvgameShadow = "tvgame_shadow"
     case user

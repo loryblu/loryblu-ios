@@ -73,4 +73,48 @@
 "boy" = "Menino";
 "girl" = "Menina";
 
+// ==================== Home =========================
 
+"hello_title" = "Olá,";
+"locbook" = "Diário de Bordo";
+"trail_history" = "Trilha de Histórias";
+"trail_games" = "Trilha de Jogos";
+
+// ==================== Locbook =========================
+
+"locbook_title" = "Diário de Bordo";
+"locbook_button" = "Cadastrar Tarefas";
+"action_title" = "Selecione uma ação:";
+"action_study" = "LoryEstudioso";
+"action_rotine" = "LoryRotina";
+"task_title" = "Selecione uma tarefa:";
+"checklist_shift_title" = "Selecione o turno e a frequência da rotina";
+"checklist_shift" = "Selecione um turno:";
+"checklist_frequency_title" = "Selecione uma frequência:";
+"checklist_frequency" = "Você pode selecionar mais de um dia.";
+
+// ==================== imagems =========================
+
+"bathTime" = "Hora do Banho";
+"brushTeeth" = "Escovar os Dentes";
+"breakfast" = "Café da Manhã";
+"lunch" = "Almoço";
+"snack" = "Hora do Lanche";
+"dinner" = "Jantar";
+"water" = "Beber água";
+"play" = "Hora de Brincar";
+"watchtv" = "TV Liberada";
+"tvgame" = "Hora do lanche";
+"school" = "Escola";
+"reinforcement" = "Reforço Escolar";
+"languages" = "Idiomas";
+"sport" = "Esporte";
+"reading" = "Hora da Leitura";
+"music" = "Musicoterapia";
+"psychologist" = "Psicólogo";
+"speechTherapist" = "Fonoaudiologo";
+"pedagogue" = "Pedagoga";
+"occupationalTherapist" = "Terapia Ocupacional";
+"morning" = "Manhã";
+"afternoon" = "Tarde";
+"night" = "Noite";
