@@ -1,7 +1,7 @@
 import SwiftUI
 
 enum LBIcon: String {
-    case bath
+    case bathTime = "bath_time"
     case brushTeeth = "brush_teeth"
     case cake
     case calendar

@@ -97,3 +97,44 @@ extension LBStrings {
         static let girl = String(localized: "girl")
     }
 }
+
+extension LBStrings {
+    enum Locbook {
+        static let title = String(localized: "locbook_title")
+        static let button = String(localized: "locbook_button")
+        static let actionTitle = String(localized: "locbook_action_title")
+        static let taskTitle = String(localized: "locbook_task_title")
+        static let checklistTitle = String(localized: "locbook_checklist_title")
+        static let shiftTitle = String(localized: "locbook_checklist_shift")
+        static let frequencTitle = String(localized: "locbook_checklist_frequency_title")
+        static let frequencyText = String(localized: "locbook_checklist_frequency")
+
+        enum NameImage {
+            static let loryStudy = String(localized: "image_action_study")
+            static let loryRotine = String(localized: "image_action_rotine")
+            static let bathTime = String(localized: "image_bathTime")
+            static let brushTeeth = String(localized: "image_brushTeeth")
+            static let breakfast = String(localized: "image_breakfast")
+            static let lunch = String(localized: "image_lunch")
+            static let snack = String(localized: "image_snack")
+            static let dinner = String(localized: "image_dinner")
+            static let water = String(localized: "image_water")
+            static let play = String(localized: "image_play")
+            static let watchTv = String(localized: "image_watchtv")
+            static let tvgame = String(localized: "image_tvgame")
+            static let school = String(localized: "image_school")
+            static let reinforcement = String(localized: "image_reinforcement")
+            static let languages = String(localized: "image_languages")
+            static let sport = String(localized: "image_sport")
+            static let reading = String(localized: "image_reading")
+            static let music = String(localized: "image_music")
+            static let psychologist = String(localized: "image_psychologist")
+            static let speechTherapist = String(localized: "image_speech_therapist")
+            static let pedagogue = String(localized: "image_pedagogue")
+            static let therapist = String(localized: "image_occupational_therapist")
+            static let morning = String(localized: "iamge_morning")
+            static let afternoon = String(localized: "image_afternoon")
+            static let night = String(localized: "image_night")
+        }
+    }
+}
