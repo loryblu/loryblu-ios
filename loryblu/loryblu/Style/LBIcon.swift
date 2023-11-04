@@ -12,8 +12,6 @@ enum LBIcon: String {
 >>>>>>> 82a2bb3 (Add texts the label the imagems in LBStrings.)
     case brushTeeth = "brush_teeth"
     case cake
-    case calendar
-    case calendarShadow = "calendar_shadow"
     case check
     case circle
     case circleFill = "circle_fill"
@@ -36,6 +34,8 @@ enum LBIcon: String {
     case headLori = "head_lori"
     case headMenu = "head_menu"
     case language
+    case locbook
+    case locbookShadow = "locbook_shadow"
     case lock
     case logoAnimal = "logo_animal"
     case logoFull = "logo_full"
