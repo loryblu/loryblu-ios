@@ -45,6 +45,10 @@ enum LBIcon: String {
     case mail
     case man
     case mangray
+<<<<<<< HEAD
+=======
+    case therapy
+>>>>>>> 8d76472 (change names image)
     case moon
     case morning
     case music
