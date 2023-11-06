@@ -25,6 +25,7 @@ struct LocbookRegisterView: View {
                 style: .primaryActivated) {
                     //
                 }
+                .frame(width: 220)
                 .padding(.top, 82)
         }
         .padding(.init(top: 15, leading: 26, bottom: 50, trailing: 26))
