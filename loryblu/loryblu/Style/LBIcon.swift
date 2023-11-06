@@ -2,10 +2,14 @@ import SwiftUI
 
 enum LBIcon: String {
 <<<<<<< HEAD
+<<<<<<< HEAD
     case bathTime = "bath_time"
 =======
     case bath
 >>>>>>> dd7c4cd (Add localizable names image and text screens)
+=======
+    case bathTime = "bath_time"
+>>>>>>> 82a2bb3 (Add texts the label the imagems in LBStrings.)
     case brushTeeth = "brush_teeth"
     case cake
     case calendar

@@ -89,12 +89,16 @@
 "locbook_title" = "Diário de Bordo";
 "locbook_button" = "Cadastrar Tarefas";
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 82a2bb3 (Add texts the label the imagems in LBStrings.)
 "locbook_action_title" = "Selecione uma ação:";
 "locbook_task_title" = "Selecione uma tarefa:";
 "locbook_checklist_title" = "Selecione o turno e a frequência da rotina";
 "locbook_checklist_shift" = "Selecione um turno:";
 "locbook_checklist_frequency_title" = "Selecione uma frequência:";
 "locbook_checklist_frequency" = "Você pode selecionar mais de um dia.";
+<<<<<<< HEAD
 
 // ==================== imagems =========================
 
@@ -162,3 +166,33 @@
 "afternoon" = "Tarde";
 "night" = "Noite";
 >>>>>>> dd7c4cd (Add localizable names image and text screens)
+=======
+
+// ==================== imagems =========================
+
+"image_action_study" = "LoryEstudioso";
+"image_action_rotine" = "LoryRotina";
+"image_bathTime" = "Hora do Banho";
+"image_brushTeeth" = "Escovar os Dentes";
+"image_breakfast" = "Café da Manhã";
+"image_lunch" = "Almoço";
+"image_snack" = "Hora do Lanche";
+"image_dinner" = "Jantar";
+"image_water" = "Beber Água";
+"image_play" = "Hora de Brincar";
+"image_watchtv" = "TV Liberada";
+"image_tvgame" = "Vídeo Game Liberado";
+"image_school" = "Escola";
+"image_reinforcement" = "Reforço Escolar";
+"image_languages" = "Idiomas";
+"image_sport" = "Esporte";
+"image_reading" = "Hora da Leitura";
+"image_music" = "Musicoterapia";
+"image_psychologist" = "Psicólogo";
+"image_speech_therapist" = "Fonoaudiologo";
+"image_pedagogue" = "Pedagoga";
+"image_occupational_therapist" = "Terapia Ocupacional";
+"image_morning" = "Manhã";
+"image_afternoon" = "Tarde";
+"image_night" = "Noite";
+>>>>>>> 82a2bb3 (Add texts the label the imagems in LBStrings.)

@@ -132,7 +132,11 @@ extension LBStrings {
             static let speechTherapist = String(localized: "image_speech_therapist")
             static let pedagogue = String(localized: "image_pedagogue")
             static let therapist = String(localized: "image_occupational_therapist")
+<<<<<<< HEAD
             static let morning = String(localized: "image_morning")
+=======
+            static let morning = String(localized: "iamge_morning")
+>>>>>>> 82a2bb3 (Add texts the label the imagems in LBStrings.)
             static let afternoon = String(localized: "image_afternoon")
             static let night = String(localized: "image_night")
         }
