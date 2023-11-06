@@ -1,7 +1,11 @@
 import SwiftUI
 
 enum LBIcon: String {
+<<<<<<< HEAD
     case bathTime = "bath_time"
+=======
+    case bath
+>>>>>>> dd7c4cd (Add localizable names image and text screens)
     case brushTeeth = "brush_teeth"
     case cake
     case calendar
@@ -52,7 +56,6 @@ enum LBIcon: String {
     case sport
     case study
     case sun
-    case therapy
     case tvgame
     case tvgameShadow = "tvgame_shadow"
     case user
