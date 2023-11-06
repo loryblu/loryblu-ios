@@ -37,7 +37,6 @@ enum LBIcon: String {
     case mail
     case man
     case mangray
-    case therapy
     case moon
     case morning
     case music
@@ -53,6 +52,7 @@ enum LBIcon: String {
     case sport
     case study
     case sun
+    case therapy
     case tvgame
     case tvgameShadow = "tvgame_shadow"
     case user
