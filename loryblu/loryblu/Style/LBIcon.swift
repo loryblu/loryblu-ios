@@ -65,5 +65,3 @@ enum LBIcon: String {
         Image(self.rawValue)
     }
 }
-
-

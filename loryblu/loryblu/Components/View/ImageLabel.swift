@@ -47,5 +47,9 @@ struct ImageLabel: View {
 }
 
 #Preview {
+<<<<<<< HEAD
     ImageLabel(image: LBIcon.dailyRotine.rawValue, name: LBStrings.Locbook.NameImage.therapist, backImage: LBColor.backgroundImagetrails, borderColor: LBColor.borderImagetrails, font: LBFont.titleAction)
+=======
+    ImageLabel(image: LBIcon.dailyRotine.rawValue, name: "Diario de Bordo", backImage: LBColor.backgroundImagetrails, borderColor: LBColor.borderImagetrails, font: LBFont.titleAction)
+>>>>>>> 795885b (Create component imageLabel.)
 }

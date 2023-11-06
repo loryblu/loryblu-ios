@@ -73,6 +73,7 @@
 "boy" = "Menino";
 "girl" = "Menina";
 
+<<<<<<< HEAD
 // ==================== Home =========================
 
 "hello_title" = "Olá,";
@@ -118,3 +119,6 @@
 "image_morning" = "Manhã";
 "image_afternoon" = "Tarde";
 "image_night" = "Noite";
+=======
+
+>>>>>>> 795885b (Create component imageLabel.)
