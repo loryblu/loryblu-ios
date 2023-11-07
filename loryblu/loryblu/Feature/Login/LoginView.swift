@@ -1,8 +1,8 @@
 import SwiftUI
 
 struct LoginView: View {
-    //@State var email: String = ""
-    //@State var password: String = ""
+//    @State var email: String = ""
+//    @State var password: String = ""
     @State private var isEmailValid: Bool = true
     @State var isPasswordNotEmpty: Bool = true
     @State private var rememberMe: Bool = false
@@ -88,7 +88,11 @@ struct LoginView: View {
                 Text("Deu bom hein...... ☺️")
             }
 
-            LBButton(title: LBStrings.Login.enter, action: tryLogin)
+            LBButton(
+                title: LBStrings.Login.enter,
+                action: {
+                self.tryLogin()
+            })
                 .padding(.top, 51)
 
             HStack {
@@ -124,6 +128,7 @@ struct LoginView: View {
 
             ExternalLogin()
                 .padding(.top, 53.0)
+                .padding(.bottom, 24)
 
             HStack {
                 Text(LBStrings.Login.dontHaveAccount)
@@ -139,7 +144,7 @@ struct LoginView: View {
                 .foregroundColor(LBColor.buttonPrimary)
                 .multilineTextAlignment(.trailing)
 
-            }.padding(.top, 32.0)
+            }.padding(.bottom, 32.0)
         }
         .padding(24)
         .navigationDestination(isPresented: $showResponsibleRegister) {

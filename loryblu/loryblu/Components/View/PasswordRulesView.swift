@@ -4,7 +4,7 @@
 //
 //  Created by Suh on 21/07/23.
 //
-//(https://loryblu-homologation.onrender.com/) recuperacao de senha
+
 import SwiftUI
 
 struct PasswordRulesView: View {

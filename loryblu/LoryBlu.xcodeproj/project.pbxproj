@@ -26,10 +26,10 @@
 		41931EBE2A6470B4008F13F8 /* LBButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41931EBD2A6470B4008F13F8 /* LBButton.swift */; };
 		41BE77FD2A85A12300534ADA /* LBGenderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BE77FC2A85A12300534ADA /* LBGenderButton.swift */; };
 		8C21B3482AA6C374002EF4BD /* RegisterChildViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C21B3472AA6C374002EF4BD /* RegisterChildViewModel.swift */; };
-		8C21B34D2AB3FCCE002EF4BD /* ResetPasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334D0AB22A8AF93D003881ED /* ResetPasswordModel.swift */; };
-		8C21B34F2AB3FE25002EF4BD /* ResetPasswordScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334D0AB32A8AF93D003881ED /* ResetPasswordScreen.swift */; };
+		8C225AB12AE703B100E43B2C /* ImageLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C225AB02AE703B100E43B2C /* ImageLabel.swift */; };
 		8C2535322A7714DD0096738B /* RegisterResponsibleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2535312A7714DD0096738B /* RegisterResponsibleViewModel.swift */; };
 		8C27B8542A68C19400F72214 /* LBLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C27B8532A68C19400F72214 /* LBLabel.swift */; };
+		8C2A68482AF2CB1D00B74295 /* teste.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2A68472AF2CB1D00B74295 /* teste.swift */; };
 		8C3120EC2ABB3D8B00D580BD /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3120E62ABB3D8B00D580BD /* NetworkError.swift */; };
 		8C3120ED2ABB3D8B00D580BD /* RequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3120E72ABB3D8B00D580BD /* RequestModel.swift */; };
 		8C3120EF2ABB3D8B00D580BD /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3120E92ABB3D8B00D580BD /* Server.swift */; };
@@ -86,8 +86,10 @@
 		41931EBD2A6470B4008F13F8 /* LBButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBButton.swift; sourceTree = "<group>"; };
 		41BE77FC2A85A12300534ADA /* LBGenderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBGenderButton.swift; sourceTree = "<group>"; };
 		8C21B3472AA6C374002EF4BD /* RegisterChildViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterChildViewModel.swift; sourceTree = "<group>"; };
+		8C225AB02AE703B100E43B2C /* ImageLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLabel.swift; sourceTree = "<group>"; };
 		8C2535312A7714DD0096738B /* RegisterResponsibleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterResponsibleViewModel.swift; sourceTree = "<group>"; };
 		8C27B8532A68C19400F72214 /* LBLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBLabel.swift; sourceTree = "<group>"; };
+		8C2A68472AF2CB1D00B74295 /* teste.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = teste.swift; sourceTree = "<group>"; };
 		8C3120E62ABB3D8B00D580BD /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		8C3120E72ABB3D8B00D580BD /* RequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestModel.swift; sourceTree = "<group>"; };
 		8C3120E92ABB3D8B00D580BD /* Server.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
@@ -306,6 +308,8 @@
 		8C9CBD0E2A7AEBEE001DBD35 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8C225AB02AE703B100E43B2C /* ImageLabel.swift */,
+				8C2A68472AF2CB1D00B74295 /* teste.swift */,
 				8C9CBD0F2A7AEC24001DBD35 /* PasswordRulesView.swift */,
 			);
 			path = View;
@@ -316,6 +320,7 @@
 			children = (
 				41931EBD2A6470B4008F13F8 /* LBButton.swift */,
 				41BE77FC2A85A12300534ADA /* LBGenderButton.swift */,
+				333B740E2AED9CBE003A5EBD /* LBWeekDaysButton.swift */,
 				3329F0202AB3D1F300915FA3 /* LBTextField */,
 				8C5DFC8E2A85AE13002739D9 /* LBToggle.swift */,
 				8C27B8532A68C19400F72214 /* LBLabel.swift */,
@@ -453,7 +458,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					8CFB35992A6059BD008BF633 = {
 						CreatedOnToolsVersion = 14.3.1;
@@ -497,7 +502,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		8CFB35AB2A606A9B008BF633 /* Run Script - SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			files = (
 			);
 			inputFileListPaths = (
@@ -509,7 +514,7 @@
 			);
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
@@ -525,6 +530,7 @@
 				330A37772A660C2D00C9DCE7 /* LBFont.swift in Sources */,
 				8C3120EC2ABB3D8B00D580BD /* NetworkError.swift in Sources */,
 				8C3120EF2ABB3D8B00D580BD /* Server.swift in Sources */,
+				8C2A68482AF2CB1D00B74295 /* teste.swift in Sources */,
 				8C21B3482AA6C374002EF4BD /* RegisterChildViewModel.swift in Sources */,
 				33BA2DE62AC9BE3D009704FD /* DeepLinkHandler.swift in Sources */,
 				8C3120ED2ABB3D8B00D580BD /* RequestModel.swift in Sources */,
@@ -537,6 +543,7 @@
 				8C3120F52ABD249600D580BD /* WebView.swift in Sources */,
 				33D0F90E2AD0EE3700EE54DF /* Endpoints.swift in Sources */,
 				8C9CBCFB2A7ACF46001DBD35 /* ExternalLogin.swift in Sources */,
+				8C225AB12AE703B100E43B2C /* ImageLabel.swift in Sources */,
 				91B4AC442AD19CFA003A7FE5 /* AppEntryPoint.swift in Sources */,
 				33FC28612AB29446004400BC /* Formatter.swift in Sources */,
 				911B843C2AD1C0B200F59DD2 /* AuthenticationRepository.swift in Sources */,
@@ -562,12 +569,10 @@
 				8C2535322A7714DD0096738B /* RegisterResponsibleViewModel.swift in Sources */,
 				8C27B8542A68C19400F72214 /* LBLabel.swift in Sources */,
 				8C5DFC8F2A85AE13002739D9 /* LBToggle.swift in Sources */,
-				8C21B34F2AB3FE25002EF4BD /* ResetPasswordScreen.swift in Sources */,
 				8C57341B2A6B4F5F0052B955 /* LBStrings.swift in Sources */,
 				333B740F2AED9CBE003A5EBD /* LBWeekDaysButton.swift in Sources */,
 				91361A1D2ACCBE1900700E36 /* RegisterRepository.swift in Sources */,
 				8CE03E392A6360BE0024919C /* LBColor.swift in Sources */,
-				8C21B34D2AB3FCCE002EF4BD /* ResetPasswordModel.swift in Sources */,
 				3376667D2ABFD115007010E1 /* URLDecoder.swift in Sources */,
 				911B843E2AD1C19D00F59DD2 /* Authentication.swift in Sources */,
 			);
@@ -612,6 +617,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -673,6 +679,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

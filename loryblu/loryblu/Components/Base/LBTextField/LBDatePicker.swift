@@ -55,4 +55,3 @@ struct LBDatePicker_Previews: PreviewProvider {
         }
     }
 }
-

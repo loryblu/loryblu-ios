@@ -53,7 +53,6 @@ var body: some SwiftUI.View {
                 .datePickerStyle(.wheel)
                 .labelsHidden()
 
-
         }
     }
 }
