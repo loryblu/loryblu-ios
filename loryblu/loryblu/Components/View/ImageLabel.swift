@@ -11,7 +11,7 @@ struct ImageLabel: View {
     let image: String
     let name: String
     let backImage: Color
-    let borderColor: Color
+    let borderImage: Color
     let font: Font
 
     var body: some View {
@@ -34,18 +34,18 @@ struct ImageLabel: View {
                 .font(font)
                 .foregroundStyle(LBColor.background)
                 .frame(maxWidth: .infinity, minHeight: 45)
-                .background(borderColor)
+                .background(borderImage)
 
         }
         .background(backImage)
         .cornerRadius(12)
         .overlay(RoundedRectangle(cornerRadius: 12)
             .inset(by: 2)
-            .stroke(borderColor, lineWidth: 4)
+            .stroke(borderImage, lineWidth: 4)
         )
     }
 }
 
 #Preview {
-    ImageLabel(image: LBIcon.dailyRotine.rawValue, name: LBStrings.Locbook.NameImage.therapist, backImage: LBColor.backgroundImagetrails, borderColor: LBColor.borderImagetrails, font: LBFont.titleAction)
+    ImageLabel(image: LBIcon.dailyRotine.rawValue, name: LBStrings.Locbook.NameImage.therapist, backImage: LBColor.backgroundImagetrails, borderImage: LBColor.borderImagetrails, font: LBFont.titleAction)
 }
