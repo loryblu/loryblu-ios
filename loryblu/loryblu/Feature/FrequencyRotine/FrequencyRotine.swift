@@ -16,6 +16,7 @@ struct FrequencyRotine: View {
     @State var morningSet: Bool = true
     @State var afternoonSet: Bool = false
     @State var nightSet: Bool = false
+    @State var period: Period = .mornig
     var body: some View {
 
         VStack(alignment: .center, spacing: 15) {
@@ -53,31 +54,57 @@ struct FrequencyRotine: View {
         HStack(alignment: .center, spacing: 12) {
             ImageLabel(image: LBIcon.sun.rawValue,
                        name: LBStrings.FrequencyRotine.morning,
-                       backImage: LBColor.backgroundCards,
-                       borderImage: LBColor.borderImageLogbook,
+                       backImage: morningSet ? LBColor.backgroundCards : LBColor.grayLight,
+                       borderImage: morningSet ? LBColor.borderSelectLogbook : LBColor.placeholder,
                        font: LBFont.titleAction)
             .frame(width: 102)
+            .onTapGesture {
+                period = .mornig
+                buttonSelect()
+            }
 
             ImageLabel(image: LBIcon.evining.rawValue,
                        name: LBStrings.FrequencyRotine.afternoon,
-                       backImage: LBColor.backgroundCards,
-                       borderImage: LBColor.borderImageLogbook,
+                       backImage: afternoonSet ? LBColor.backgroundCards : LBColor.grayLight,
+                       borderImage: afternoonSet ? LBColor.borderSelectLogbook : LBColor.placeholder,
                        font: LBFont.titleAction)
             .frame(width: 102)
+            .onTapGesture {
+                period = .afternoon
+                buttonSelect()
+            }
 
             ImageLabel(image: LBIcon.moon.rawValue,
-                       name: LBStrings.FrequencyRotine.morning,
-                       backImage: LBColor.backgroundCards,
-                       borderImage: LBColor.borderImageLogbook,
+                       name: LBStrings.FrequencyRotine.night,
+                       backImage: nightSet ? LBColor.backgroundCards : LBColor.grayLight,
+                       borderImage: nightSet ? LBColor.borderSelectLogbook : LBColor.placeholder,
                        font: LBFont.titleAction)
             .frame(width: 102)
+            .onTapGesture {
+                period = .night
+                buttonSelect()
+            }
 
         }
         .frame(height: 110)
     }
 
     func buttonSelect() {
-
+        if period == .mornig {
+            morningSet = true
+            afternoonSet = false
+            nightSet = false
+        }
+        if period == .afternoon {
+            morningSet = false
+            afternoonSet = true
+            nightSet = false
+        }
+        if period == .night {
+            morningSet = false
+            afternoonSet = false
+            nightSet = true
+        }
     }
 }
 
