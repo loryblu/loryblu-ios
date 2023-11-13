@@ -1,4 +1,5 @@
 import SwiftUI
+
 enum Period: Equatable {
     case mornig
     case afternoon
@@ -17,8 +18,8 @@ struct FrequencyRotine: View {
     @State var afternoonSet: Bool = false
     @State var nightSet: Bool = false
     @State var period: Period = .mornig
+    
     var body: some View {
-
         VStack(alignment: .center, spacing: 15) {
 
             Text(LBStrings.FrequencyRotine.title)
