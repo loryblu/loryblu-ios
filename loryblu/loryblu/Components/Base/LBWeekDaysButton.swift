@@ -1,5 +1,12 @@
 import SwiftUI
 struct LBWeekDaysButton: View {
+    @Binding var sunday: Bool
+    @Binding var monday: Bool
+    @Binding var tuesday: Bool
+    @Binding var wednesday: Bool
+    @Binding var thurday: Bool
+    @Binding var friday: Bool
+    @Binding var satuday: Bool
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 12)
@@ -7,25 +14,25 @@ struct LBWeekDaysButton: View {
                 .frame(height: 45)
             HStack(spacing: 20) {
                 DaysButton(text: "D") {
-                    print("OK")
+                    sunday.toggle()
                 }
                 DaysButton(text: "S") {
-
+                    monday.toggle()
                 }
                 DaysButton(text: "T") {
-
+                    tuesday.toggle()
                 }
                 DaysButton(text: "Q") {
-
+                    wednesday.toggle()
                 }
                 DaysButton(text: "Q") {
-
+                    thurday.toggle()
                 }
                 DaysButton(text: "S") {
-
+                    friday.toggle()
                 }
                 DaysButton(text: "S") {
-
+                    satuday.toggle()
                 }
 
             }
@@ -56,6 +63,12 @@ struct DaysButton: View {
 
 struct LBWeekDaysButton_Previews: PreviewProvider {
     static var previews: some View {
-        LBWeekDaysButton()
+        LBWeekDaysButton(sunday: .constant(true),
+                         monday: .constant(true),
+                         tuesday: .constant(true),
+                         wednesday: .constant(true),
+                         thurday: .constant(true),
+                         friday: .constant(true),
+                         satuday: .constant(true))
     }
 }
