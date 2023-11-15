@@ -5,6 +5,7 @@ struct LBWeekDaysButton: View {
             RoundedRectangle(cornerRadius: 12)
                 .fill(LBColor.backgroundCards)
                 .frame(height: 45)
+            
             HStack(spacing: 20) {
                 DaysButton(text: "D") {
                     print("OK")
@@ -54,8 +55,6 @@ struct DaysButton: View {
     }
 }
 
-struct LBWeekDaysButton_Previews: PreviewProvider {
-    static var previews: some View {
-        LBWeekDaysButton()
-    }
+#Preview {
+    LBWeekDaysButton()
 }

@@ -108,6 +108,8 @@ extension LBStrings {
         static let shiftTitle = String(localized: "locbook_checklist_shift")
         static let frequencTitle = String(localized: "locbook_checklist_frequency_title")
         static let frequencyText = String(localized: "locbook_checklist_frequency")
+        static let titleRotine = String(localized: "locbook_title_rotine")
+        static let titleStudy = String(localized: "locbook_title_study")
 
         enum NameImage {
             static let loryStudy = String(localized: "image_action_study")

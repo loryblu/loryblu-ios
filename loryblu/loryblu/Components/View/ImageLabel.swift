@@ -1,10 +1,3 @@
-//
-//  ImageLabel.swift
-//  LoryBlu
-//
-//  Created by Suh on 23/10/23.
-//
-
 import SwiftUI
 
 struct ImageLabel: View {
