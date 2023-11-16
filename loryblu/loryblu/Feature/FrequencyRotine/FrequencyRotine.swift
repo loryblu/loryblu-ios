@@ -24,12 +24,12 @@ struct FrequencyRotine: View {
 
             Text(LBStrings.FrequencyRotine.title)
                 .font(LBFont.titleAction)
-                .foregroundStyle(LBColor.borderSelectLogbook)
+                .foregroundStyle(LBColor.titlePrimary)
                 .padding(30)
 
             Text(LBStrings.FrequencyRotine.frequncySubtitle)
                 .font(LBFont.buttonSmall)
-                .foregroundStyle(LBColor.borderSelectLogbook)
+                .foregroundStyle(LBColor.titlePrimary)
                 .padding(.init(top: 56, leading: 0, bottom: 0, trailing: 0))
 
             frequecyAction
@@ -56,7 +56,7 @@ struct FrequencyRotine: View {
             ImageLabel(image: LBIcon.sun.rawValue,
                        name: LBStrings.FrequencyRotine.morning,
                        backImage: morningSet ? LBColor.backgroundCards : LBColor.grayLight,
-                       borderImage: morningSet ? LBColor.borderSelectLogbook : LBColor.placeholder,
+                       borderImage: morningSet ? LBColor.titlePrimary : LBColor.placeholder,
                        font: LBFont.titleAction)
             .frame(width: 102)
             .onTapGesture {
@@ -67,7 +67,7 @@ struct FrequencyRotine: View {
             ImageLabel(image: LBIcon.evining.rawValue,
                        name: LBStrings.FrequencyRotine.afternoon,
                        backImage: afternoonSet ? LBColor.backgroundCards : LBColor.grayLight,
-                       borderImage: afternoonSet ? LBColor.borderSelectLogbook : LBColor.placeholder,
+                       borderImage: afternoonSet ? LBColor.titlePrimary : LBColor.placeholder,
                        font: LBFont.titleAction)
             .frame(width: 102)
             .onTapGesture {
@@ -78,7 +78,7 @@ struct FrequencyRotine: View {
             ImageLabel(image: LBIcon.moon.rawValue,
                        name: LBStrings.FrequencyRotine.night,
                        backImage: nightSet ? LBColor.backgroundCards : LBColor.grayLight,
-                       borderImage: nightSet ? LBColor.borderSelectLogbook : LBColor.placeholder,
+                       borderImage: nightSet ? LBColor.titlePrimary : LBColor.placeholder,
                        font: LBFont.titleAction)
             .frame(width: 102)
             .onTapGesture {

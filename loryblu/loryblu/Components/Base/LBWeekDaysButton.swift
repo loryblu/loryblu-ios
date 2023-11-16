@@ -1,4 +1,5 @@
 import SwiftUI
+
 struct LBWeekDaysButton: View {
     @Binding var sunday: Bool
     @Binding var monday: Bool
@@ -12,6 +13,7 @@ struct LBWeekDaysButton: View {
             RoundedRectangle(cornerRadius: 12)
                 .fill(LBColor.backgroundCards)
                 .frame(height: 45)
+            
             HStack(spacing: 20) {
                 DaysButton(text: "D") {
                     sunday.toggle()

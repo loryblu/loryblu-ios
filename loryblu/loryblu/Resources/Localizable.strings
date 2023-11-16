@@ -86,6 +86,8 @@
 "locbook_button" = "Cadastrar Tarefas";
 "locbook_action_title" = "Selecione uma ação:";
 "locbook_task_title" = "Selecione uma tarefa:";
+"locbook_title_rotine" = "LoryRotina";
+"locbook_title_study" = "LoryEstudioso";
 "locbook_checklist_title" = "Selecione o turno e a frequência da rotina";
 "locbook_checklist_shift" = "Selecione um turno:";
 "locbook_checklist_frequency_title" = "Selecione uma frequência:";

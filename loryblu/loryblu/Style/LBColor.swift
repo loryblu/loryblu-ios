@@ -14,5 +14,5 @@ enum LBColor {
     static let borderImagetrails = Color("border_image_trails")
     static let backgroundImageLogbook = Color("background_image_logbook")
     static let borderImageLogbook = Color("border_image_logbook")
-    static let borderSelectLogbook = Color("border_select_logbook")
+    static let titlePrimary = Color("title_primary")
 }
