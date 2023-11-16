@@ -120,3 +120,11 @@
 "image_morning" = "Manhã";
 "image_afternoon" = "Tarde";
 "image_night" = "Noite";
+
+// ==================== FrequencyRotine =========================
+
+"frequency_title" = "Selecione o turno e a frequência da rotina";
+"frequency_subtitle" = "Selecione um turno: ";
+"morning" = "Manhã";
+"afternoon" = "Tarde";
+"night" = "Noite";

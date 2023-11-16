@@ -1,3 +1,10 @@
+//
+//  LocbookActionsView.swift
+//  LoryBlu
+//
+//  Created by Suh on 06/11/23.
+//
+
 import SwiftUI
 
 struct LocbookActionsView: View {
@@ -23,6 +30,7 @@ struct LocbookActionsView: View {
                 .padding(.top, 15)
         }
         .padding(.init(top: 15, leading: 24, bottom: 50, trailing: 24))
+
     }
 
     var actions: some View {
@@ -32,6 +40,7 @@ struct LocbookActionsView: View {
 
                 ImageLabel(image: LBIcon.dailyRotine.rawValue, name: Localizable.NameImage.loryRotine, backImage: LBColor.backgroundCards, borderImage: LBColor.borderImageLogbook, font: LBFont.titleAction)
                     .opacity(0.6)
+
             }
             .frame(width: 324, height: 218)
         }
