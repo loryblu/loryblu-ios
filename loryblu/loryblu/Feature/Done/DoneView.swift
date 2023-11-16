@@ -17,31 +17,33 @@ struct DoneView: View {
 
     var body: some View {
         VStack {
-            HStack {
-                Spacer()
-
-                VStack(spacing: spacing) {
+                VStack(alignment: .center) {
+                    HStack {
+                        Spacer()
+                        Button {
+                            onClose()
+                            dismiss()
+                        } label: {
+                            Image(LBIcon.close2.rawValue)
+                                .resizable()
+                                .frame(width: 22, height: 22)
+                        }
+                        .padding(.bottom ,142)
+                    }
                     Text(message)
                         .font(LBFont.head6)
                         .foregroundStyle(LBColor.text)
+                        .padding(.bottom, 52)
 
                     Image(LBIcon.done.rawValue)
                         .resizable(resizingMode: .stretch)
-                        .frame(width: 150, height: 150)
-                }.padding(.top, -spacing)
-
-                Button {
-                    onClose()
-                    dismiss()
-                } label: {
-                    Image(LBIcon.close2.rawValue)
-                        .resizable()
-                        .frame(width: 22, height: 22)
-                }.padding(.trailing, 12)
-            }
-            .padding()
+                        .frame(width: 118, height: 111)
+                        .padding(.bottom ,344)
+                }
         }
+        .padding()
         .navigationTitle(LBStrings.General.empty)
+
     }
 
 }
