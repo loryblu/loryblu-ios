@@ -6,17 +6,17 @@ struct LBfloatingButton: View {
     var action: () -> Void
     var body: some View {
         Button(action: action) {
-            HStack(alignment: .center) {
+            HStack(spacing: 0) {
                 if let icon = icon {
                     icon.image
                         .frame(width: 24)
-                        .padding(.leading ,8)
                 }
                 Text(text)
                     .font(LBFont.button)
                     .frame(height: 48)
                     .frame(minWidth: 155,alignment: .center)
             }
+            .padding(.horizontal,12)
             .background(LBColor.backgroundImagetrails)
             .foregroundColor(LBColor.background)
             .cornerRadius(48)
@@ -28,7 +28,7 @@ struct LBfloatingButton: View {
 
 #Preview {
     VStack {
-        LBfloatingButton(text: "NOVA TAREFA", icon: LBIcon.plus) {
+        LBfloatingButton(text:"NOVA TAREFA", icon: LBIcon.plus) {
             print("Ok")
         }
     }
