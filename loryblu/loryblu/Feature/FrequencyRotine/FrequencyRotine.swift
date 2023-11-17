@@ -24,16 +24,21 @@ struct FrequencyRotine: View {
         VStack(alignment: .center, spacing: 15) {
             HStack(spacing: 20) {
                 Text("<")
+
                 Text(title)
                     .font(LBFont.titleAction)
                     .foregroundStyle(LBColor.titlePrimary)
                 Spacer()
+
                 Image(LBIcon.close2.rawValue)
+                    .resizable()
+                    .frame(width: 18, height: 18)
                }
             LBIcon.progression3.image
                 .resizable()
                 .scaledToFit()
                 .frame(maxWidth: .infinity,minHeight: 40)
+                .padding(.bottom,39)
 
             HStack {
                 Text(LBStrings.FrequencyRotine.workPeriod)
@@ -43,6 +48,7 @@ struct FrequencyRotine: View {
             }
 
             frequecyAction
+                .padding(.bottom,36)
 
             VStack(spacing:8) {
                 HStack {
@@ -57,7 +63,7 @@ struct FrequencyRotine: View {
                     .foregroundStyle(LBColor.titlePrimary)
                     Spacer()
                 }
-            }
+            }.padding(.bottom,10)
 
             LBWeekDaysButton(sunday: $sunday,
                              monday: $monday,
@@ -71,7 +77,7 @@ struct FrequencyRotine: View {
             LBButton(title: LBStrings.General.confirm) {
                 print("ok")
             }
-        }
+        }.padding(24)
     }
 
     var frequecyAction: some View {
@@ -88,7 +94,7 @@ struct FrequencyRotine: View {
 
             ImageLabel(image: LBIcon.evining.rawValue,
                        name: LBStrings.FrequencyRotine.afternoon,
-                       backImage: afternoonSet ? LBColor.backgroundCards : LBColor.grayLight,
+                       backImage: afternoonSet ? LBColor.borderImageLogbook : LBColor.grayLight,
                        borderImage: afternoonSet ? LBColor.titlePrimary : LBColor.placeholder,
                        font: LBFont.titleAction)
              .onTapGesture {
@@ -98,7 +104,7 @@ struct FrequencyRotine: View {
 
             ImageLabel(image: LBIcon.moon.rawValue,
                        name: LBStrings.FrequencyRotine.night,
-                       backImage: nightSet ? LBColor.backgroundCards : LBColor.grayLight,
+                       backImage: nightSet ? LBColor.text : LBColor.grayLight,
                        borderImage: nightSet ? LBColor.titlePrimary : LBColor.placeholder,
                        font: LBFont.titleAction)
             .onTapGesture {
@@ -107,7 +113,7 @@ struct FrequencyRotine: View {
             }
 
         }
-        .frame(height: 110)
+        .frame(height: 112)
     }
 
     func buttonSelect() {
