@@ -36,9 +36,9 @@ struct LocbookActionsView: View {
     var actions: some View {
         VStack(spacing: 24) {
             Group {
-                ImageLabel(image: "study_lory", name: Localizable.NameImage.loryStudy, backImage: LBColor.backgroundCards, font: LBFont.titleAction)
+                ImageLabel(image: "study_lory", name: Localizable.NameImage.loryStudy, backImage: LBColor.backgroundCards, font: LBFont.titleAction, segment: .locbook)
 
-                ImageLabel(image: LBIcon.dailyRotine.rawValue, name: Localizable.NameImage.loryRotine, backImage: LBColor.backgroundCards, font: LBFont.titleAction)
+                ImageLabel(image: LBIcon.dailyRotine.rawValue, name: Localizable.NameImage.loryRotine, backImage: LBColor.backgroundCards, font: LBFont.titleAction, segment: .locbook)
                     .opacity(0.6)
 
             }

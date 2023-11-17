@@ -1,11 +1,16 @@
 import SwiftUI
 
+enum Segment {
+    case home
+    case locbook
+}
+
 struct ImageLabel: View {
     let image: String
     let name: String
     let backImage: Color
-//    let borderImage: Color
     let font: Font
+    let segment: Segment
 
     var body: some View {
         VStack {
@@ -27,7 +32,8 @@ struct ImageLabel: View {
                 .font(font)
                 .foregroundStyle(LBColor.background)
                 .frame(maxWidth: .infinity, minHeight: 45)
-                .background(LBColor.backgroundCardsText)
+                .background(
+                    segment == .home ? LBColor.borderImagetrails : LBColor.backgroundCardsText)
 
         }
         .background(backImage)
@@ -40,5 +46,5 @@ struct ImageLabel: View {
 }
 
 #Preview {
-    ImageLabel(image: LBIcon.dailyRotine.rawValue, name: LBStrings.Locbook.NameImage.therapist, backImage: LBColor.backgroundImagetrails, font: LBFont.titleAction)
+    ImageLabel(image: LBIcon.dailyRotine.rawValue, name: LBStrings.Locbook.NameImage.therapist, backImage: LBColor.backgroundImagetrails, font: LBFont.titleAction, segment: .home)
 }

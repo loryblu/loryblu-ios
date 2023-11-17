@@ -45,7 +45,7 @@ struct LocbookTasksView: View {
                         image: LBIcon.bathTime.rawValue,
                         name: LBStrings.Locbook.NameImage.loryRotine,
                         backImage: LBColor.backgroundCards,
-                        font: LBFont.titleTask
+                        font: LBFont.titleTask, segment: .locbook
                     )
                     .frame(maxWidth: .infinity, minHeight: 155)
 

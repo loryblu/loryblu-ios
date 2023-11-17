@@ -62,7 +62,7 @@ struct FrequencyRotine: View {
                 image: LBIcon.sun.rawValue,
                 name: LBStrings.FrequencyRotine.morning,
                 backImage: morningSet ? LBColor.backgroundCards : LBColor.grayLight,
-                font: LBFont.titleAction
+                font: LBFont.titleAction, segment: .locbook
             )
             .frame(width: 102)
             .onTapGesture {
@@ -74,7 +74,7 @@ struct FrequencyRotine: View {
                 image: LBIcon.evining.rawValue,
                 name: LBStrings.FrequencyRotine.afternoon,
                 backImage: afternoonSet ? LBColor.backgroundCards : LBColor.grayLight,
-                font: LBFont.titleAction
+                font: LBFont.titleAction, segment: .locbook
             )
             .frame(width: 102)
             .onTapGesture {
@@ -86,7 +86,7 @@ struct FrequencyRotine: View {
                 image: LBIcon.moon.rawValue,
                 name: LBStrings.FrequencyRotine.night,
                 backImage: nightSet ? LBColor.backgroundCards : LBColor.grayLight,
-                font: LBFont.titleAction
+                font: LBFont.titleAction, segment: .locbook
             )
             .frame(width: 102)
             .onTapGesture {
