@@ -19,4 +19,5 @@ enum LBFont {
     static let button = Font.custom("Inter-Bold", size: 16)
     static let buttonLarge = Font.custom("Inter-Bold", size: 18)
     static let caption = Font.custom("Inter-Bold", size: 12)
+    static let caption1 = Font.custom("Inter-Regular", size: 12)
 }

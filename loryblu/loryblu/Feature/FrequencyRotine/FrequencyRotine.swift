@@ -18,21 +18,46 @@ struct FrequencyRotine: View {
     @State var afternoonSet: Bool = false
     @State var nightSet: Bool = false
     @State var period: Period = .mornig
-    
+    @Binding var title: String
+
     var body: some View {
         VStack(alignment: .center, spacing: 15) {
+            HStack(spacing: 20) {
+                Text("<")
+                Text(title)
+                    .font(LBFont.titleAction)
+                    .foregroundStyle(LBColor.titlePrimary)
+                Spacer()
+                Image(LBIcon.close2.rawValue)
+               }
+            LBIcon.progression3.image
+                .resizable()
+                .scaledToFit()
+                .frame(maxWidth: .infinity,minHeight: 40)
 
-            Text(LBStrings.FrequencyRotine.title)
-                .font(LBFont.titleAction)
+            HStack {
+                Text(LBStrings.FrequencyRotine.workPeriod)
+                    .font(LBFont.buttonSmall)
                 .foregroundStyle(LBColor.titlePrimary)
-                .padding(30)
-
-            Text(LBStrings.FrequencyRotine.frequncySubtitle)
-                .font(LBFont.buttonSmall)
-                .foregroundStyle(LBColor.titlePrimary)
-                .padding(.init(top: 56, leading: 0, bottom: 0, trailing: 0))
+                Spacer()
+            }
 
             frequecyAction
+
+            VStack(spacing:8) {
+                HStack {
+                    Text(LBStrings.FrequencyRotine.frequencyRotine)
+                        .font(LBFont.buttonSmall)
+                        .foregroundStyle(LBColor.titlePrimary)
+                    Spacer()
+                }
+                HStack {
+                    Text(LBStrings.FrequencyRotine.frequencyDays)
+                        .font(LBFont.caption1)
+                    .foregroundStyle(LBColor.titlePrimary)
+                    Spacer()
+                }
+            }
 
             LBWeekDaysButton(sunday: $sunday,
                              monday: $monday,
@@ -41,13 +66,11 @@ struct FrequencyRotine: View {
                              thurday: $thurday,
                              friday: $friday,
                              satuday: $satuday)
-            .padding()
             Spacer()
 
             LBButton(title: LBStrings.General.confirm) {
                 print("ok")
             }
-            .padding(80)
         }
     }
 
@@ -58,7 +81,6 @@ struct FrequencyRotine: View {
                        backImage: morningSet ? LBColor.backgroundCards : LBColor.grayLight,
                        borderImage: morningSet ? LBColor.titlePrimary : LBColor.placeholder,
                        font: LBFont.titleAction)
-            .frame(width: 102)
             .onTapGesture {
                 period = .mornig
                 buttonSelect()
@@ -69,8 +91,7 @@ struct FrequencyRotine: View {
                        backImage: afternoonSet ? LBColor.backgroundCards : LBColor.grayLight,
                        borderImage: afternoonSet ? LBColor.titlePrimary : LBColor.placeholder,
                        font: LBFont.titleAction)
-            .frame(width: 102)
-            .onTapGesture {
+             .onTapGesture {
                 period = .afternoon
                 buttonSelect()
             }
@@ -80,7 +101,6 @@ struct FrequencyRotine: View {
                        backImage: nightSet ? LBColor.backgroundCards : LBColor.grayLight,
                        borderImage: nightSet ? LBColor.titlePrimary : LBColor.placeholder,
                        font: LBFont.titleAction)
-            .frame(width: 102)
             .onTapGesture {
                 period = .night
                 buttonSelect()
@@ -116,5 +136,6 @@ struct FrequencyRotine: View {
                     wednesday: false,
                     thurday: true,
                     friday: false,
-                    satuday: true)
+                    satuday: true, title: .constant(LBStrings.Locbook.titleStudy
+))
 }
