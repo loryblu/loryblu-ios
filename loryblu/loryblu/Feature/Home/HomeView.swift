@@ -32,13 +32,13 @@ struct HomeView: View {
         ScrollView(.vertical, showsIndicators: true) {
             VStack(spacing: 24) {
                 Group {
-                    ImageLabel(image: LBIcon.locbook.rawValue, name: LBStrings.Locbook.NameImage.loryRotine, backImage: LBColor.backgroundImagetrails, borderImage: LBColor.borderImagetrails, font: LBFont.titleAction)
+                    ImageLabel(image: LBIcon.locbook.rawValue, name: LBStrings.Locbook.NameImage.loryRotine, backImage: LBColor.backgroundImagetrails, font: LBFont.titleAction)
 
 
-                    ImageLabel(image: LBIcon.fairyShodow.rawValue, name: LBStrings.Locbook.NameImage.loryRotine, backImage: LBColor.backgroundImagetrails, borderImage: LBColor.grayLight, font: LBFont.titleAction)
+                    ImageLabel(image: LBIcon.fairyShodow.rawValue, name: LBStrings.Locbook.NameImage.loryRotine, backImage: LBColor.backgroundImagetrails, font: LBFont.titleAction)
                         .opacity(0.5)
 
-                    ImageLabel(image: LBIcon.tvgameShadow.rawValue, name: LBStrings.Locbook.NameImage.loryRotine, backImage: LBColor.backgroundImagetrails, borderImage: LBColor.grayLight, font: LBFont.titleAction)
+                    ImageLabel(image: LBIcon.tvgameShadow.rawValue, name: LBStrings.Locbook.NameImage.loryRotine, backImage: LBColor.backgroundImagetrails, font: LBFont.titleAction)
                         .opacity(0.5)
                 }
                 .frame(width: 312, height: 218)

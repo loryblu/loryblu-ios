@@ -34,14 +34,17 @@ struct FrequencyRotine: View {
 
             frequecyAction
 
-            LBWeekDaysButton(sunday: $sunday,
-                             monday: $monday,
-                             tuesday: $tuesday,
-                             wednesday: $wednesday,
-                             thurday: $thurday,
-                             friday: $friday,
-                             satuday: $satuday)
+            LBWeekDaysButton(
+                sunday: $sunday,
+                monday: $monday,
+                tuesday: $tuesday,
+                wednesday: $wednesday,
+                thurday: $thurday,
+                friday: $friday,
+                satuday: $satuday
+            )
             .padding()
+
             Spacer()
 
             LBButton(title: LBStrings.General.confirm) {
@@ -52,34 +55,39 @@ struct FrequencyRotine: View {
     }
 
     var frequecyAction: some View {
+
         HStack(alignment: .center, spacing: 12) {
-            ImageLabel(image: LBIcon.sun.rawValue,
-                       name: LBStrings.FrequencyRotine.morning,
-                       backImage: morningSet ? LBColor.backgroundCards : LBColor.grayLight,
-                       borderImage: morningSet ? LBColor.titlePrimary : LBColor.placeholder,
-                       font: LBFont.titleAction)
+
+            ImageLabel(
+                image: LBIcon.sun.rawValue,
+                name: LBStrings.FrequencyRotine.morning,
+                backImage: morningSet ? LBColor.backgroundCards : LBColor.grayLight,
+                font: LBFont.titleAction
+            )
             .frame(width: 102)
             .onTapGesture {
                 period = .mornig
                 buttonSelect()
             }
 
-            ImageLabel(image: LBIcon.evining.rawValue,
-                       name: LBStrings.FrequencyRotine.afternoon,
-                       backImage: afternoonSet ? LBColor.backgroundCards : LBColor.grayLight,
-                       borderImage: afternoonSet ? LBColor.titlePrimary : LBColor.placeholder,
-                       font: LBFont.titleAction)
+            ImageLabel(
+                image: LBIcon.evining.rawValue,
+                name: LBStrings.FrequencyRotine.afternoon,
+                backImage: afternoonSet ? LBColor.backgroundCards : LBColor.grayLight,
+                font: LBFont.titleAction
+            )
             .frame(width: 102)
             .onTapGesture {
                 period = .afternoon
                 buttonSelect()
             }
 
-            ImageLabel(image: LBIcon.moon.rawValue,
-                       name: LBStrings.FrequencyRotine.night,
-                       backImage: nightSet ? LBColor.backgroundCards : LBColor.grayLight,
-                       borderImage: nightSet ? LBColor.titlePrimary : LBColor.placeholder,
-                       font: LBFont.titleAction)
+            ImageLabel(
+                image: LBIcon.moon.rawValue,
+                name: LBStrings.FrequencyRotine.night,
+                backImage: nightSet ? LBColor.backgroundCards : LBColor.grayLight,
+                font: LBFont.titleAction
+            )
             .frame(width: 102)
             .onTapGesture {
                 period = .night

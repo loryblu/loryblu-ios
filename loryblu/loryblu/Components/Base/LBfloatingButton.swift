@@ -7,14 +7,16 @@ struct LBfloatingButton: View {
     var body: some View {
         Button(action: action) {
             HStack(spacing: 0) {
-                if let icon = icon {
-                    icon.image
-                        .frame(width: 24)
-                }
                 Text(text)
                     .font(LBFont.button)
                     .frame(height: 48)
                     .frame(minWidth: 155,alignment: .center)
+
+                if let icon = icon {
+                    icon.image
+                        .frame(width: 24)
+                }
+
             }
             .padding(.horizontal,12)
             .background(LBColor.backgroundImagetrails)

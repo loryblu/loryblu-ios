@@ -11,23 +11,37 @@ struct LocbookRegisterView: View {
     var body: some View {
         VStack(alignment: .center){
 
-            Text(LBStrings.Locbook.title)
-                .font(LBFont.titleAction)
+            HStack {
+                Text(LBStrings.Locbook.title)
+                    .font(LBFont.titleAction)
                 .foregroundStyle(LBColor.titlePrimary)
+
+                Spacer()
+            }
 
             LBIcon.dailyList.image
                 .resizable()
                 .scaledToFit()
                 .padding(.top, 70)
 
-            LBButton(
-                title: LBStrings.Locbook.button,
-                style: .primaryActivated) {
+            Text(LBStrings.Locbook.infoText)
+                .font(LBFont.head6)
+                .foregroundStyle(LBColor.text)
+                .padding(.top, 28)
+
+            HStack {
+                Spacer()
+                LBfloatingButton(
+                    text: LBStrings.Locbook.button,
+                    icon: LBIcon.plus
+                ) {
                     //
                 }
-                .padding(.top, 82)
+            }.padding(.top, 44)
+
+
         }
-        .padding(.init(top: 15, leading: 26, bottom: 50, trailing: 26))
+        .padding(24)
     }
 }
 
