@@ -61,7 +61,6 @@ struct FrequencyRotine: View {
             ImageLabel(
                 image: LBIcon.sun.rawValue,
                 name: LBStrings.FrequencyRotine.morning,
-                backImage: morningSet ? LBColor.backgroundCards : LBColor.grayLight,
                 font: LBFont.titleAction, segment: .locbook
             )
             .frame(width: 102)
@@ -73,7 +72,6 @@ struct FrequencyRotine: View {
             ImageLabel(
                 image: LBIcon.evining.rawValue,
                 name: LBStrings.FrequencyRotine.afternoon,
-                backImage: afternoonSet ? LBColor.backgroundCards : LBColor.grayLight,
                 font: LBFont.titleAction, segment: .locbook
             )
             .frame(width: 102)
@@ -85,7 +83,6 @@ struct FrequencyRotine: View {
             ImageLabel(
                 image: LBIcon.moon.rawValue,
                 name: LBStrings.FrequencyRotine.night,
-                backImage: nightSet ? LBColor.backgroundCards : LBColor.grayLight,
                 font: LBFont.titleAction, segment: .locbook
             )
             .frame(width: 102)

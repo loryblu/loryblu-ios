@@ -10,7 +10,6 @@ import SwiftUI
 struct LocbookRegisterView: View {
     var body: some View {
         VStack(alignment: .center){
-
             HStack {
                 Text(LBStrings.Locbook.title)
                     .font(LBFont.titleAction)

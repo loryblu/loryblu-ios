@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct HomeView: View {
-    @State private var selectedImageIndex: Int?
+    @State private var selectedCard: Int?
     let name: String = "Bia"
     let traills: [ImageLabel] = [
-        ImageLabel(image: LBIcon.locbook.rawValue, name: LBStrings.Locbook.NameImage.loryRotine, backImage: LBColor.backgroundImagetrails, font: LBFont.titleAction, segment: .home),
-        ImageLabel(image: LBIcon.fairyShodow.rawValue, name: LBStrings.Locbook.NameImage.loryRotine, backImage: LBColor.backgroundImagetrails, font: LBFont.titleAction, segment: .home),
-        ImageLabel(image: LBIcon.tvgameShadow.rawValue, name: LBStrings.Locbook.NameImage.loryRotine, backImage: LBColor.backgroundImagetrails, font: LBFont.titleAction, segment: .home)
+        ImageLabel(image: LBIcon.locbook.rawValue, name: LBStrings.Locbook.NameImage.loryRotine, font: LBFont.titleAction, segment: .home),
+        ImageLabel(image: LBIcon.fairyShodow.rawValue, name: LBStrings.Locbook.NameImage.loryRotine, font: LBFont.titleAction, segment: .home),
+        ImageLabel(image: LBIcon.tvgameShadow.rawValue, name: LBStrings.Locbook.NameImage.loryRotine, font: LBFont.titleAction, segment: .home)
     ]
 
     var body: some View {
@@ -41,15 +41,15 @@ struct HomeView: View {
                 Group {
                     ForEach(0..<traills.count) { index in
                         traills[index]
-                            .overlay(selectedImageIndex == index ?
+                            .overlay(selectedCard == index ?
                                 RoundedRectangle(cornerRadius: 12)
                                     .inset(by: 0)
                                     .strokeBorder(LBColor.borderImagetrails, lineWidth: 4) : nil
                                 )
 
-                            .opacity(selectedImageIndex == index ? 1.0 : 0.5)
+                            .opacity(selectedCard == index ? 1.0 : 0.5)
                             .onTapGesture {
-                                selectedImageIndex = index
+                                selectedCard = index
                             }
                     }
 

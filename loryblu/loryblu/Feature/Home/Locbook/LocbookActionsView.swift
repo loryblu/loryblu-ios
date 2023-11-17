@@ -8,17 +8,35 @@
 import SwiftUI
 
 struct LocbookActionsView: View {
+    @State private var selectedCard: Int?
     typealias Localizable = LBStrings.Locbook
+    let options: [ImageLabel] = [
+        ImageLabel(image: LBIcon.dailyStudy.rawValue, name: Localizable.NameImage.loryStudy, font: LBFont.titleAction, segment: .locbook),
+        ImageLabel(image: LBIcon.dailyRotine.rawValue, name: Localizable.NameImage.loryRotine, font: LBFont.titleAction, segment: .locbook)
+    ]
 
     var body: some View {
         VStack(alignment: .center, spacing: 15) {
-            Text(Localizable.title)
-                .font(LBFont.titleAction)
+            HStack {
+                Text("<")
+                Text(Localizable.title)
+                    .font(LBFont.titleAction)
                 .foregroundStyle(LBColor.titlePrimary)
 
-            Text(LBStrings.Locbook.actionTitle)
-                .font(LBFont.buttonSmall)
+                Spacer()
+            }
+
+            LBIcon.progression1.image
+                .resizable()
+                .scaledToFit()
+                .frame(maxWidth: .infinity, minHeight: 40)
+
+            HStack {
+                Text(LBStrings.Locbook.actionTitle)
+                    .font(LBFont.buttonSmall)
                 .foregroundStyle(LBColor.titlePrimary)
+                Spacer()
+            }
 
             actions
 
@@ -29,20 +47,27 @@ struct LocbookActionsView: View {
                 }
                 .padding(.top, 15)
         }
-        .padding(.init(top: 15, leading: 24, bottom: 50, trailing: 24))
+        .padding(24)
 
     }
 
     var actions: some View {
         VStack(spacing: 24) {
             Group {
-                ImageLabel(image: "study_lory", name: Localizable.NameImage.loryStudy, backImage: LBColor.backgroundCards, font: LBFont.titleAction, segment: .locbook)
-
-                ImageLabel(image: LBIcon.dailyRotine.rawValue, name: Localizable.NameImage.loryRotine, backImage: LBColor.backgroundCards, font: LBFont.titleAction, segment: .locbook)
-                    .opacity(0.6)
-
+                ForEach(0..<options.count) { index in
+                    options[index]
+                        .overlay(selectedCard == index ?
+                                 RoundedRectangle(cornerRadius: 12)
+                            .inset(by: 0)
+                            .strokeBorder(LBColor.titlePrimary, lineWidth: 4) : nil
+                        )
+                        .opacity(selectedCard == index ? 1.0 : 0.5)
+                        .onTapGesture {
+                            selectedCard = index
+                        }
+                }
             }
-            .frame(width: 324, height: 218)
+            .frame(maxWidth: .infinity, maxHeight: 218)
         }
     }
 }

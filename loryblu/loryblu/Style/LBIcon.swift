@@ -43,6 +43,7 @@ enum LBIcon: String {
     case noAgree = "no_agree"
     case psychologist
     case play
+    case progression1 = "progression_1"
     case progression2 = "progression_2"
     case plus
     case reading

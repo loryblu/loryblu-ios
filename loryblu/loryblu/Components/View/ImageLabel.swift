@@ -8,9 +8,9 @@ enum Segment {
 struct ImageLabel: View {
     let image: String
     let name: String
-    let backImage: Color
     let font: Font
     let segment: Segment
+    let select: Bool = false
 
     var body: some View {
         VStack {
@@ -34,17 +34,12 @@ struct ImageLabel: View {
                 .frame(maxWidth: .infinity, minHeight: 45)
                 .background(
                     segment == .home ? LBColor.borderImagetrails : LBColor.backgroundCardsText)
-
         }
-        .background(backImage)
+        .background(segment == .home ? LBColor.backgroundImagetrails : LBColor.backgroundCards)
         .cornerRadius(12)
-//        .overlay(RoundedRectangle(cornerRadius: 12)
-//            .inset(by: 2)
-//            .stroke(borderImage, lineWidth: 4)
-//        )
     }
 }
 
 #Preview {
-    ImageLabel(image: LBIcon.dailyRotine.rawValue, name: LBStrings.Locbook.NameImage.therapist, backImage: LBColor.backgroundImagetrails, font: LBFont.titleAction, segment: .home)
+    ImageLabel(image: LBIcon.dailyRotine.rawValue, name: LBStrings.Locbook.NameImage.therapist, font: LBFont.titleAction, segment: .home)
 }
