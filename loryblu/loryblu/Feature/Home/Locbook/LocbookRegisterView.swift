@@ -38,7 +38,6 @@ struct LocbookRegisterView: View {
                 }
             }.padding(.top, 44)
 
-
         }
         .padding(24)
     }

@@ -21,7 +21,7 @@ struct LocbookActionsView: View {
                 Text("<")
                 Text(Localizable.title)
                     .font(LBFont.titleAction)
-                .foregroundStyle(LBColor.titlePrimary)
+                    .foregroundStyle(LBColor.titlePrimary)
 
                 Spacer()
             }
@@ -34,7 +34,7 @@ struct LocbookActionsView: View {
             HStack {
                 Text(LBStrings.Locbook.actionTitle)
                     .font(LBFont.buttonSmall)
-                .foregroundStyle(LBColor.titlePrimary)
+                    .foregroundStyle(LBColor.titlePrimary)
                 Spacer()
             }
 
@@ -48,8 +48,8 @@ struct LocbookActionsView: View {
                 .padding(.top, 15)
         }
         .padding(24)
-
     }
+
 
     var actions: some View {
         VStack(spacing: 24) {

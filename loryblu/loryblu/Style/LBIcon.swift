@@ -45,6 +45,7 @@ enum LBIcon: String {
     case play
     case progression1 = "progression_1"
     case progression2 = "progression_2"
+    case progression3 = "progression_3"
     case plus
     case reading
     case reinforcement
