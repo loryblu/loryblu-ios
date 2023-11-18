@@ -1,10 +1,9 @@
 import SwiftUI
 
 struct LoginView: View {
-//    @State var email: String = ""
-//    @State var password: String = ""
+    
     @State private var isEmailValid: Bool = true
-    @State var isPasswordNotEmpty: Bool = true
+    @State private var isPasswordNotEmpty: Bool = true
     @State private var rememberMe: Bool = false
     @State private var isPasswordHidden: Bool = true
     @State private var textError = ""
@@ -14,7 +13,8 @@ struct LoginView: View {
     @State private var showResponsibleRegister: Bool = false
     @State private var showChildRegister: Bool = false
 
-    @StateObject var model = LoginModel()
+    @StateObject var model: LoginModel
+    @EnvironmentObject var coordinator: LoginNavigationStack.NavigationCoordinator
 
     @MainActor func tryLogin() {
         if !ValidateRules.validate(email: model.email) {
@@ -114,7 +114,7 @@ struct LoginView: View {
 
             HStack {
                 Button {
-                    showResetPassword.toggle()
+                    coordinator.openResetPassword()
                 } label: {
                     Text(LBStrings.Login.forgotPassword)
                         .font(LBFont.bodySmall)
@@ -138,7 +138,7 @@ struct LoginView: View {
                     .padding(.trailing, 8)
 
                 Button(LBStrings.Login.registerNow) {
-                    showResponsibleRegister.toggle()
+                    coordinator.openRegister()
                 }
                 .font(LBFont.caption)
                 .foregroundColor(LBColor.buttonPrimary)
@@ -153,14 +153,19 @@ struct LoginView: View {
                 showChildRegister: $showChildRegister
             )
         }
-        .navigationDestination(isPresented: $showResetPassword) {
-            ResetPasswordScreen(model: ResetPasswordModel())
-        }
+    }
+}
+
+
+// MARK: - Factory
+extension LoginView {
+    static func build() -> LoginView {
+        LoginView(model: LoginModel())
     }
 }
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView()
+        LoginView.build()
     }
 }

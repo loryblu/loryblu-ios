@@ -35,7 +35,6 @@
 		8C2A68502AF5E04A00B74295 /* LocbookRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2A684F2AF5E04A00B74295 /* LocbookRegisterView.swift */; };
 		8C2A68522AF959AB00B74295 /* LocbookActionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2A68512AF959AB00B74295 /* LocbookActionsView.swift */; };
 		8C2A68562AF9B9A000B74295 /* LocbookTasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2A68552AF9B9A000B74295 /* LocbookTasksView.swift */; };
-		8C2A68582AF9BDDE00B74295 /* LocbookTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2A68572AF9BDDE00B74295 /* LocbookTask.swift */; };
 		8C3120EC2ABB3D8B00D580BD /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3120E62ABB3D8B00D580BD /* NetworkError.swift */; };
 		8C3120ED2ABB3D8B00D580BD /* RequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3120E72ABB3D8B00D580BD /* RequestModel.swift */; };
 		8C3120EF2ABB3D8B00D580BD /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3120E92ABB3D8B00D580BD /* Server.swift */; };
@@ -47,7 +46,6 @@
 		8C5734262A6C39AF0052B955 /* RegisterResponsibleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C5734252A6C39AF0052B955 /* RegisterResponsibleView.swift */; };
 		8C5DFC8B2A7B2CB9002739D9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8C5DFC8A2A7B2CB8002739D9 /* Localizable.strings */; };
 		8C5DFC8F2A85AE13002739D9 /* LBToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C5DFC8E2A85AE13002739D9 /* LBToggle.swift */; };
-		8C61D8912B056D3700B1013B /* TasksModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C61D8902B056D3700B1013B /* TasksModelView.swift */; };
 		8C669C412AA011480028B436 /* UserRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C669C402AA011480028B436 /* UserRegister.swift */; };
 		8C7C64B32A6F4CE1002361A9 /* ValidateRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7C64B22A6F4CE1002361A9 /* ValidateRules.swift */; };
 		8C9CBCFB2A7ACF46001DBD35 /* ExternalLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9CBCF92A7ACF46001DBD35 /* ExternalLogin.swift */; };
@@ -64,6 +62,8 @@
 		911B843C2AD1C0B200F59DD2 /* AuthenticationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911B843B2AD1C0B200F59DD2 /* AuthenticationRepository.swift */; };
 		911B843E2AD1C19D00F59DD2 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911B843D2AD1C19D00F59DD2 /* Authentication.swift */; };
 		911B84402AD1C39100F59DD2 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911B843F2AD1C39100F59DD2 /* LoginModel.swift */; };
+		9132A8932B083B8E00106524 /* LoginNavigationStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9132A8922B083B8E00106524 /* LoginNavigationStack.swift */; };
+		9132A8952B083BE600106524 /* LoginNavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9132A8942B083BE600106524 /* LoginNavigationCoordinator.swift */; };
 		91361A1D2ACCBE1900700E36 /* RegisterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91361A1C2ACCBE1900700E36 /* RegisterRepository.swift */; };
 		91361A262ACEF06B00700E36 /* ResponseMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91361A252ACEF06B00700E36 /* ResponseMessage.swift */; };
 		91A7CC182ACF9F8500109300 /* LBDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A7CC172ACF9F8500109300 /* LBDatePicker.swift */; };
@@ -131,6 +131,8 @@
 		911B843B2AD1C0B200F59DD2 /* AuthenticationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationRepository.swift; sourceTree = "<group>"; };
 		911B843D2AD1C19D00F59DD2 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 		911B843F2AD1C39100F59DD2 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		9132A8922B083B8E00106524 /* LoginNavigationStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNavigationStack.swift; sourceTree = "<group>"; };
+		9132A8942B083BE600106524 /* LoginNavigationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNavigationCoordinator.swift; sourceTree = "<group>"; };
 		91361A1C2ACCBE1900700E36 /* RegisterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRepository.swift; sourceTree = "<group>"; };
 		91361A202ACCC6E700700E36 /* JSONParse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParse.swift; sourceTree = "<group>"; };
 		91361A252ACEF06B00700E36 /* ResponseMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseMessage.swift; sourceTree = "<group>"; };
@@ -268,7 +270,6 @@
 			children = (
 				8C2A684F2AF5E04A00B74295 /* LocbookRegisterView.swift */,
 				8C2A68512AF959AB00B74295 /* LocbookActionsView.swift */,
-				8C61D8902B056D3700B1013B /* TasksModelView.swift */,
 				8C2A68552AF9B9A000B74295 /* LocbookTasksView.swift */,
 			);
 			path = Locbook;
@@ -299,7 +300,6 @@
 			isa = PBXGroup;
 			children = (
 				335E21A52AFF129B00700440 /* FrequencyRotine */,
-				8C2A68492AF54A4800B74295 /* Home */,
 				8C669C422AA011650028B436 /* Models */,
 				8C2A68492AF54A4800B74295 /* Home */,
 				8CE004872AC1C5D00037F792 /* Done */,
@@ -334,6 +334,8 @@
 		8C9CBCF82A7ACF46001DBD35 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				9132A8922B083B8E00106524 /* LoginNavigationStack.swift */,
+				9132A8942B083BE600106524 /* LoginNavigationCoordinator.swift */,
 				8C9CBCFA2A7ACF46001DBD35 /* LoginView.swift */,
 				8C9CBCF92A7ACF46001DBD35 /* ExternalLogin.swift */,
 				911B843F2AD1C39100F59DD2 /* LoginModel.swift */,
@@ -589,7 +591,7 @@
 				8C2A68562AF9B9A000B74295 /* LocbookTasksView.swift in Sources */,
 				33D0F90E2AD0EE3700EE54DF /* Endpoints.swift in Sources */,
 				8C9CBCFB2A7ACF46001DBD35 /* ExternalLogin.swift in Sources */,
-				8C61D8912B056D3700B1013B /* TasksModelView.swift in Sources */,
+				9132A8952B083BE600106524 /* LoginNavigationCoordinator.swift in Sources */,
 				8C225AB12AE703B100E43B2C /* ImageLabel.swift in Sources */,
 				91B4AC442AD19CFA003A7FE5 /* AppEntryPoint.swift in Sources */,
 				33FC28612AB29446004400BC /* Formatter.swift in Sources */,
@@ -604,6 +606,7 @@
 				334D0AB62A8AF93D003881ED /* ResetPasswordScreen.swift in Sources */,
 				33B2ABFC2ACE587A004CF7DF /* RepositorySetPassword.swift in Sources */,
 				8C3120F02ABB3D8B00D580BD /* Request.swift in Sources */,
+				9132A8932B083B8E00106524 /* LoginNavigationStack.swift in Sources */,
 				911B84402AD1C39100F59DD2 /* LoginModel.swift in Sources */,
 				8C9CBD102A7AEC24001DBD35 /* PasswordRulesView.swift in Sources */,
 				8CFB359E2A6059BD008BF633 /* LorybluApp.swift in Sources */,
@@ -624,7 +627,6 @@
 				91361A1D2ACCBE1900700E36 /* RegisterRepository.swift in Sources */,
 				8CE03E392A6360BE0024919C /* LBColor.swift in Sources */,
 				3376667D2ABFD115007010E1 /* URLDecoder.swift in Sources */,
-				8C2A68582AF9BDDE00B74295 /* LocbookTask.swift in Sources */,
 				911B843E2AD1C19D00F59DD2 /* Authentication.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
