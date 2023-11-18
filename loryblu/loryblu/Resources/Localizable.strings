@@ -123,8 +123,9 @@
 
 // ==================== FrequencyRotine =========================
 
-"frequency_title" = "Selecione o turno e a frequência da rotina";
-"frequency_subtitle" = "Selecione um turno: ";
+"frequency_rotine_work_period" = "Selecione um turno:";
+"frequency_rotine_frequency" = "Selecione uma frequência:";
+"frequency_rotine_frequency_days" = "Você pode selecionar mais de dia.";
 "morning" = "Manhã";
 "afternoon" = "Tarde";
 "night" = "Noite";
