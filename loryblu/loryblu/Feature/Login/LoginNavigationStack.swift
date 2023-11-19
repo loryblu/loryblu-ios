@@ -1,16 +1,10 @@
-//
-//  LoginStack.swift
-//  LoryBlu
-//
-//  Created by dede.exe on 17/11/23.
-//
-
 import SwiftUI
 
 struct LoginNavigationStack: View {
     typealias NavigationCoordinator = LoginNavigationCoordinator
     
     @ObservedObject var coordinator: NavigationCoordinator
+    @EnvironmentObject var appData: AppData
     
     init() {
         coordinator = .init()
@@ -18,15 +12,21 @@ struct LoginNavigationStack: View {
     
     var body: some View {
         NavigationStack(path: $coordinator.path) {
-            LoginView.build()
-                .navigationDestination(for: NavigationCoordinator.Destination.self) { destination in
-                    coordinator.destinationView(to: destination)
+            coordinator.buildView(cover: .login)
+                .navigationDestination(for: NavigationCoordinator.Destination.Navigation.self) { destination in
+                    coordinator.buildView(page: destination)
+                        .environmentObject(coordinator)
                 }
-                .environmentObject(coordinator)
+                .fullScreenCover(item: $coordinator.fullScreen) { destination in
+                    coordinator.buildView(cover: destination)
+                }
         }
     }
 }
 
-#Preview {
-    LoginNavigationStack()
+struct LoginNavigationStack_Previews: PreviewProvider {
+    static var previews: some View {
+        LoginNavigationStack()
+            .environmentObject(AppData())
+    }
 }

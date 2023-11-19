@@ -4,7 +4,8 @@ struct ContentView: View {
     @EnvironmentObject var appData: AppData
     var body: some View {
         if appData.isTokenReceived {
-            NewPasswordScreen(model: NewPasswordModel(), appData: appData)
+            NewPasswordScreen(model: NewPasswordModel())
+                .environmentObject(appData)
         } else {
             VStack {
                 LBIcon.logoFull.image

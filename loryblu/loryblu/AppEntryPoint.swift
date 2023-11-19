@@ -6,8 +6,9 @@ struct AppEntryPoint: View {
     var body: some View {
         LoginNavigationStack()
             .environmentObject(appData)
-            .navigationDestination(isPresented: $appData.isTokenReceived) {
-                NewPasswordScreen(model: NewPasswordModel(), appData: appData)
+            .sheet(isPresented: $appData.isTokenReceived) {
+                NewPasswordScreen.build()
+                    .environmentObject(appData)
             }
             .onOpenURL { url in
                 let deepLinkHandler = DeepLinkHandler()

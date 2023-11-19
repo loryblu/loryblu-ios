@@ -3,44 +3,87 @@ import SwiftUI
 @MainActor
 class LoginNavigationCoordinator: ObservableObject {
     
-    enum Destination: Hashable {
-        case resetPassword
-        case responsibleRegister
+    @EnvironmentObject var appData: AppData
+    
+    enum Destination {
+        enum Navigation: String, Identifiable  {
+            case resetPassword
+            case responsibleRegister
+            case setNewPassword
+            
+            var id: String {
+                self.rawValue
+            }
+        }
+        
+        enum FullScreenPage: String, Identifiable {
+            case login
+            
+            var id: String {
+                self.rawValue
+            }
+        }
     }
     
-    @Published var path: [Destination]
+    // MARK: - Internal Properties
+    
+    @Published var path: [Destination.Navigation]
+    @Published var fullScreen: Destination.FullScreenPage?
+    
+    // MARK: - Initializers
     
     init() {
         path = []
+        fullScreen = nil
     }
+        
+    // MARK: - Internal Methods
     
-    private func navigate(to destination: Destination) {
-        self.path.append(destination)
-    }
-    
-    func openResetPassword() {
+    func showResetPassword() {
         navigate(to: .resetPassword)
     }
     
-    func openRegister() {
+    func showRegister() {
         navigate(to: .responsibleRegister)
+    }
+    
+    func showSetNewPassword() {
+        navigate(to: .setNewPassword)
     }
     
     func backToHome() {
         path.removeAll()
     }
     
-    func destinationView(to destination: Destination) -> some View {
-        Group {
-            switch destination {
-            case .resetPassword:
-                ResetPasswordScreen.build()
-                    .environmentObject(self)
-            case .responsibleRegister:
-                RegisterResponsibleView(viewModel: .init())
-                    .environmentObject(self)
-            }
+    @ViewBuilder
+    func buildView(page destination: Destination.Navigation) -> some View {
+        switch destination {
+        case .resetPassword:
+            ResetPasswordScreen.build()
+                .environmentObject(self)
+        case .responsibleRegister:
+            RegisterResponsibleView.build()
+                .environmentObject(self)
+        case .setNewPassword:
+            NewPasswordScreen.build()
+                .environmentObject(self)
+                .environmentObject(appData)
         }
     }
     
+    @ViewBuilder
+    func buildView(cover destination: Destination.FullScreenPage) -> some View {
+        switch destination {
+        case .login:
+            LoginView.build()
+                .environmentObject(self)
+        }
+    }
+
+    // MARK: - Private Methods
+
+    private func navigate(to destination: Destination.Navigation) {
+        self.path.append(destination)
+    }
+
 }

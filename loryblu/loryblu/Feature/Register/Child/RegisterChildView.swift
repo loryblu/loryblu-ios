@@ -42,7 +42,7 @@ struct RegisterChildView: View {
         .padding(.top, -40)
         .fullScreenCover(isPresented: $viewModel.registerSuccess) {
             DoneView(message: LBStrings.Register.registerFinishedSuccess) {
-                coordinator.openRegister()
+                coordinator.backToHome()
             }
             .toolbarRole(.editor)
             .navigationBarBackButtonHidden(true)

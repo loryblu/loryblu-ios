@@ -2,8 +2,11 @@ import SwiftUI
 
 struct NewPasswordScreen: View {
     @ObservedObject var model: NewPasswordModel
+    @EnvironmentObject var appData: AppData
+    @EnvironmentObject var coordinator: LoginNavigationStack.NavigationCoordinator
+
     @Environment(\.dismiss) var dismiss
-    @State var appData: AppData
+
     var body: some View {
         VStack {
             LBIcon.logoName.image
@@ -78,9 +81,17 @@ struct NewPasswordScreen: View {
     }
 }
 
+extension NewPasswordScreen {
+    static func build() -> Self {
+        NewPasswordScreen(model: NewPasswordModel())
+    }
+}
+
+
 struct NewPasswordScreen_Previews: PreviewProvider {
     static var previews: some View {
         @StateObject var appData: AppData = .init()
-           NewPasswordScreen(model: NewPasswordModel(), appData: appData)
+        NewPasswordScreen(model: NewPasswordModel())
+            .environmentObject(appData)
     }
 }

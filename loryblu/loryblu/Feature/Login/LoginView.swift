@@ -114,7 +114,7 @@ struct LoginView: View {
 
             HStack {
                 Button {
-                    coordinator.openResetPassword()
+                    coordinator.showResetPassword()
                 } label: {
                     Text(LBStrings.Login.forgotPassword)
                         .font(LBFont.bodySmall)
@@ -138,7 +138,7 @@ struct LoginView: View {
                     .padding(.trailing, 8)
 
                 Button(LBStrings.Login.registerNow) {
-                    coordinator.openRegister()
+                    coordinator.showRegister()
                 }
                 .font(LBFont.caption)
                 .foregroundColor(LBColor.buttonPrimary)
