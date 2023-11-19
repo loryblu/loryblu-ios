@@ -10,15 +10,14 @@ import WebKit
 
 struct RegisterChildView: View {
     @StateObject var viewModel: RegisterChildViewModel
+    @EnvironmentObject var coordinator: LoginNavigationStack.NavigationCoordinator
+    
     @FocusState private var focusedField: RegisterChildViewModel.FocusedField?
-    @State var presented: Bool = false
-    @State var date: Date?
+    @State private var presented: Bool = false
+    @State private var date: Date?
     var child: UserRegister?
-    @State var showDone: Bool = false
+    @State private var showDone: Bool = false
     @State private var isPresentWebView = false
-
-    @Binding var showResponsibleRegister: Bool
-    @Binding var showChildRegister: Bool
 
     var body: some View {
         VStack {
@@ -43,8 +42,7 @@ struct RegisterChildView: View {
         .padding(.top, -40)
         .fullScreenCover(isPresented: $viewModel.registerSuccess) {
             DoneView(message: LBStrings.Register.registerFinishedSuccess) {
-                showResponsibleRegister = false
-                showChildRegister = false
+                coordinator.openRegister()
             }
             .toolbarRole(.editor)
             .navigationBarBackButtonHidden(true)
@@ -153,6 +151,7 @@ struct RegisterChildView: View {
 
 struct RegisterChildView_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterChildView(viewModel: RegisterChildViewModel(user: UserRegister()), showResponsibleRegister: .constant(false), showChildRegister: .constant(false))
+        RegisterChildView(viewModel: RegisterChildViewModel(user: UserRegister()))
+            .environmentObject(LoginNavigationStack.NavigationCoordinator())
     }
 }

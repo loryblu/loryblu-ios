@@ -2,14 +2,13 @@ import SwiftUI
 
 struct RegisterResponsibleView: View {
     @StateObject var viewModel: RegisterResponsibleViewModel = RegisterResponsibleViewModel()
+    @EnvironmentObject var coordinator: LoginNavigationStack.NavigationCoordinator
+    
+    @State private var isHiddenPassword: Bool = false
+    @State private var isHiddenRepeat: Bool = false
+    @State private var showNext: Bool = false
     @FocusState private var focusedField: RegisterResponsibleViewModel.FocusedField?
-    @State var isHiddenPassword: Bool = false
-    @State var isHiddenRepeat: Bool = false
-    @State var showNext: Bool = false
-
-    @Binding var showResponsibleRegister: Bool
-    @Binding var showChildRegister: Bool
-
+    
     var body: some View {
         VStack {
             VStack {
@@ -29,11 +28,10 @@ struct RegisterResponsibleView: View {
         }
         .navigationDestination(isPresented: $showNext) {
             RegisterChildView(
-                viewModel: viewModel.makeRegisterChildViewModel(),
-                showResponsibleRegister: $showResponsibleRegister,
-                showChildRegister: $showChildRegister
+                viewModel: viewModel.makeRegisterChildViewModel()
             )
             .toolbarRole(.editor)
+            .environmentObject(coordinator)
         }
         .navigationTitle(LBStrings.General.empty)
         .padding(.bottom, 40)
@@ -127,15 +125,21 @@ struct RegisterResponsibleView: View {
             self.showNext = false
         }
     }
+}
 
+extension RegisterResponsibleView {
+    static func build(
+        viewModel: RegisterResponsibleViewModel = RegisterResponsibleViewModel()
+    ) -> RegisterResponsibleView {
+        RegisterResponsibleView(viewModel: viewModel)
+    }
 }
 
 struct ResponsibleView_Previews: PreviewProvider {
     static var previews: some View {
         RegisterResponsibleView(
-            viewModel: RegisterResponsibleViewModel(),
-            showResponsibleRegister: .constant(false),
-            showChildRegister: .constant(false)
+            viewModel: RegisterResponsibleViewModel()
         )
+        .environmentObject(LoginNavigationStack.NavigationCoordinator())
     }
 }

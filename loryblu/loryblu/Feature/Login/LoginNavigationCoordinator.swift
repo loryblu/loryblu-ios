@@ -1,5 +1,6 @@
 import SwiftUI
 
+@MainActor
 class LoginNavigationCoordinator: ObservableObject {
     
     enum Destination: Hashable {
@@ -25,6 +26,10 @@ class LoginNavigationCoordinator: ObservableObject {
         navigate(to: .responsibleRegister)
     }
     
+    func backToHome() {
+        path.removeAll()
+    }
+    
     func destinationView(to destination: Destination) -> some View {
         Group {
             switch destination {
@@ -32,7 +37,7 @@ class LoginNavigationCoordinator: ObservableObject {
                 ResetPasswordScreen.build()
                     .environmentObject(self)
             case .responsibleRegister:
-                EmptyView()
+                RegisterResponsibleView(viewModel: .init())
                     .environmentObject(self)
             }
         }

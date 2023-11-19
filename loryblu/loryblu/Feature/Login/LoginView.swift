@@ -147,12 +147,6 @@ struct LoginView: View {
             }.padding(.bottom, 32.0)
         }
         .padding(24)
-        .navigationDestination(isPresented: $showResponsibleRegister) {
-            RegisterResponsibleView(
-                showResponsibleRegister: $showResponsibleRegister,
-                showChildRegister: $showChildRegister
-            )
-        }
     }
 }
 
