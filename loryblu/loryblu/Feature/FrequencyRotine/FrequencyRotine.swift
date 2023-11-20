@@ -84,23 +84,31 @@ struct FrequencyRotine: View {
         HStack(alignment: .center, spacing: 12) {
             ImageLabel(image: LBIcon.sun.rawValue,
                        name: LBStrings.FrequencyRotine.morning,
-                       font: LBFont.titleAction, segment: .default)
+                       font: LBFont.titleTask, segment: .default)
+            .background(morningSet ? LBColor.backgroundCards : LBColor.grayLight)
+            .cornerRadius(12.0)
             .onTapGesture {
                 period = .morning
+
                 buttonSelect()
             }
 
+
             ImageLabel(image: LBIcon.evining.rawValue,
                        name: LBStrings.FrequencyRotine.afternoon,
-                       font: LBFont.titleAction, segment: .default)
-             .onTapGesture {
+                       font: LBFont.titleTask, segment: .default)
+            .background(afternoonSet ? LBColor.backgroundAfternoon : LBColor.grayLight)
+            .cornerRadius(12)
+            .onTapGesture {
                 period = .afternoon
                 buttonSelect()
             }
 
             ImageLabel(image: LBIcon.moon.rawValue,
                        name: LBStrings.FrequencyRotine.night,
-                       font: LBFont.titleAction, segment: .default)
+                       font: LBFont.titleTask, segment: .default)
+            .background(nightSet ? LBColor.text : LBColor.grayLight)
+            .cornerRadius(12)
             .onTapGesture {
                 period = .night
                 buttonSelect()

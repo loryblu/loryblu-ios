@@ -32,11 +32,31 @@ struct ImageLabel: View {
                 .multilineTextAlignment(.center)
                 .font(font)
                 .foregroundStyle(LBColor.background)
-                .frame(maxWidth: .infinity, minHeight: 45)
-                .background(segment == .home ? LBColor.borderImagetrails : LBColor.backgroundCardsLabel)
+                .frame(maxWidth: .infinity, minHeight: 40)
+                .background(setBackgroundLabel())
         }
-        .background(segment == .home ? LBColor.backgroundImagetrails : LBColor.backgroundCards)
+        .background(setBackgroundColor())
         .cornerRadius(12)
+    }
+
+    private func setBackgroundColor() -> Color {
+        if segment == .home {
+             LBColor.backgroundImagetrails
+        } else if segment == .locbook {
+             LBColor.backgroundCards
+        } else {
+             Color.clear
+        }
+    }
+
+    private func setBackgroundLabel() -> Color {
+        if segment == .home {
+             LBColor.borderImagetrails
+        } else if segment == .locbook {
+             LBColor.backgroundCardsLabel
+        } else {
+             Color.clear
+        }
     }
 }
 
