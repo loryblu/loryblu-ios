@@ -48,6 +48,13 @@ struct HomeView: View {
     }
 }
 
+
+extension HomeView {
+    static func build() -> Self {
+        HomeView()
+    }
+}
+
 #Preview {
     HomeView()
 }

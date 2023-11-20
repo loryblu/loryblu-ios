@@ -1,7 +1,7 @@
 import SwiftUI
 
-struct LoginNavigationStack: View {
-    typealias NavigationCoordinator = LoginNavigationCoordinator
+struct HomeNavigationStack: View {
+    typealias NavigationCoordinator = HomeNavigationCoordinator
     
     @ObservedObject var coordinator: NavigationCoordinator
     @EnvironmentObject var appData: AppData
@@ -12,7 +12,7 @@ struct LoginNavigationStack: View {
     
     var body: some View {
         NavigationStack(path: $coordinator.path) {
-            coordinator.buildView(cover: .login)
+            coordinator.buildView(cover: .home)
                 .navigationDestination(for: NavigationCoordinator.Destination.Navigation.self) { destination in
                     coordinator.buildView(page: destination)
                         .environmentObject(coordinator)
@@ -20,18 +20,13 @@ struct LoginNavigationStack: View {
                 .fullScreenCover(item: $coordinator.fullScreen) { destination in
                     coordinator.buildView(cover: destination)
                 }
-                .onReceive(appData.$loginStatus) { status in
-                    if status == .logged {
-                        coordinator.showHome()
-                    }
-                }
         }
     }
 }
 
-struct LoginNavigationStack_Previews: PreviewProvider {
+struct HomeNavigationStack_Previews: PreviewProvider {
     static var previews: some View {
-        LoginNavigationStack()
+        HomeNavigationStack()
             .environmentObject(AppData())
     }
 }

@@ -1,15 +1,13 @@
 import SwiftUI
 
 @MainActor
-class LoginNavigationCoordinator: ObservableObject {
+class HomeNavigationCoordinator: ObservableObject {
     
     @EnvironmentObject var appData: AppData
     
     enum Destination {
         enum Navigation: String, Identifiable  {
-            case resetPassword
-            case responsibleRegister
-            case setNewPassword
+            case agenda
             
             var id: String {
                 self.rawValue
@@ -17,7 +15,6 @@ class LoginNavigationCoordinator: ObservableObject {
         }
         
         enum FullScreenPage: String, Identifiable {
-            case login
             case home
             
             var id: String {
@@ -39,23 +36,7 @@ class LoginNavigationCoordinator: ObservableObject {
     }
         
     // MARK: - Internal Methods
-    
-    func showResetPassword() {
-        navigate(to: .resetPassword)
-    }
-    
-    func showRegister() {
-        navigate(to: .responsibleRegister)
-    }
-    
-    func showSetNewPassword() {
-        navigate(to: .setNewPassword)
-    }
-    
-    func showHome() {
-        navigate(to: .setNewPassword)
-    }
-    
+        
     func popToRoot() {
         path.removeLast(path.count)
     }
@@ -69,27 +50,17 @@ class LoginNavigationCoordinator: ObservableObject {
     @ViewBuilder
     func buildView(page destination: Destination.Navigation) -> some View {
         switch destination {
-        case .resetPassword:
-            ResetPasswordScreen.build()
-                .environmentObject(self)
-        case .responsibleRegister:
-            RegisterResponsibleView.build()
-                .environmentObject(self)
-        case .setNewPassword:
-            NewPasswordScreen.build()
-                .environmentObject(self)
-                .environmentObject(appData)
+        case .agenda:
+            EmptyView()
         }
     }
-    
+
     @ViewBuilder
     func buildView(cover destination: Destination.FullScreenPage) -> some View {
         switch destination {
-        case .login:
+        case .home:
             LoginView.build()
                 .environmentObject(self)
-        case .home:
-            HomeNavigationStack()
         }
     }
 
