@@ -46,6 +46,7 @@
 		8C5734262A6C39AF0052B955 /* RegisterResponsibleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C5734252A6C39AF0052B955 /* RegisterResponsibleView.swift */; };
 		8C5DFC8B2A7B2CB9002739D9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8C5DFC8A2A7B2CB8002739D9 /* Localizable.strings */; };
 		8C5DFC8F2A85AE13002739D9 /* LBToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C5DFC8E2A85AE13002739D9 /* LBToggle.swift */; };
+		8C61D8912B056D3700B1013B /* (null) in Sources */ = {isa = PBXBuildFile; };
 		8C669C412AA011480028B436 /* UserRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C669C402AA011480028B436 /* UserRegister.swift */; };
 		8C7C64B32A6F4CE1002361A9 /* ValidateRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7C64B22A6F4CE1002361A9 /* ValidateRules.swift */; };
 		8C9CBCFB2A7ACF46001DBD35 /* ExternalLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9CBCF92A7ACF46001DBD35 /* ExternalLogin.swift */; };
@@ -104,7 +105,6 @@
 		8C2A684F2AF5E04A00B74295 /* LocbookRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocbookRegisterView.swift; sourceTree = "<group>"; };
 		8C2A68512AF959AB00B74295 /* LocbookActionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocbookActionsView.swift; sourceTree = "<group>"; };
 		8C2A68552AF9B9A000B74295 /* LocbookTasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocbookTasksView.swift; sourceTree = "<group>"; };
-		8C2A68572AF9BDDE00B74295 /* LocbookTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocbookTask.swift; sourceTree = "<group>"; };
 		8C3120E62ABB3D8B00D580BD /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		8C3120E72ABB3D8B00D580BD /* RequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestModel.swift; sourceTree = "<group>"; };
 		8C3120E92ABB3D8B00D580BD /* Server.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
@@ -330,7 +330,6 @@
 			isa = PBXGroup;
 			children = (
 				8C669C402AA011480028B436 /* UserRegister.swift */,
-				8C2A68572AF9BDDE00B74295 /* LocbookTask.swift */,
 				91361A252ACEF06B00700E36 /* ResponseMessage.swift */,
 				911B843D2AD1C19D00F59DD2 /* Authentication.swift */,
 			);

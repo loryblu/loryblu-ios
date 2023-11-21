@@ -143,8 +143,9 @@ extension LBStrings {
 
 extension LBStrings {
     enum FrequencyRotine {
-        static let title = String(localized: "frequency_title")
-        static let frequncySubtitle = String(localized: "frequency_subtitle")
+        static let workPeriod = String(localized: "frequency_rotine_work_period")
+        static let frequencyRotine = String(localized: "frequency_rotine_frequency")
+        static let frequencyDays = String(localized: "frequency_rotine_frequency_days")
         static let morning = String(localized: "morning")
         static let afternoon = String(localized: "afternoon")
         static let night = String(localized: "night")
