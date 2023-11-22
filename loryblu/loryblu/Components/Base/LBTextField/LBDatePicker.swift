@@ -1,57 +1,40 @@
 import SwiftUI
 
 struct LBDatePicker: View {
-    enum DatePickerState: CGFloat, Equatable {
-        case active = 0
-        case alert = 2
-    }
-
-    let icon: LBIcon?
-    let title: String
-    @Binding var date: Date?
-
-    @State private var text: String?
-
-    let state: DatePickerState
-
+    let onConfirm: (Date) -> Void
+    let onCancel: () -> Void
+    @Environment(\.dismiss) var dismiss
+    @State var selectedDate = Date()
     var body: some View {
-
-        HStack {
-            HStack {
-                if let icon = icon {
-                    icon.image.frame(width: 22)
+        Color.gray.opacity(0.2)
+            .ignoresSafeArea()
+            .overlay {
+                VStack {
+                    DatePicker(LBStrings.Register.birthDay, selection: $selectedDate, displayedComponents: .date)
+                        .datePickerStyle(.graphical)
+                        .padding()
+                        .background(Color.white.cornerRadius(20))
+                        .frame(width: 350, height: 350)
+                        .clipped()
+                        .environment(\.locale, Locale.init(identifier: "pt"))
+                        .foregroundColor(LBColor.background)
+                    LBButton(title: LBStrings.General.confirm) {
+                        dismiss()
+                    }
+                    .padding(20)
                 }
-
-                LBDatePickerTextField(placeholder: title, date: $date)
-                    .foregroundColor(LBColor.text)
             }
-            .padding()
-            .foregroundColor(LBColor.placeholder)
-            .font(LBFont.bodySmall)
-            .onChange(of: date) { newValue in
-                if let newValue {
-                    self.text = Formatter.dateFormatter.string(from: newValue)
-                }
-            }
-        }
-        .background(LBColor.textfield)
-        .frame(height: 48)
-        .cornerRadius(8)
-        .overlay(content: {
-            RoundedRectangle(cornerRadius: 8)
-            .stroke(LBColor.error, lineWidth: state.rawValue)
-        })
     }
 }
 
 struct LBDatePicker_Previews: PreviewProvider {
     static var previews: some View {
-        @State var date: Date?
-        @State var presented = true
-        @State var text = ""
+        LBDatePicker { date in
 
-        VStack {
-            LBDatePicker(icon: .google, title: "Date", date: $date, state: .active)
+        } onCancel: {
+
         }
+
+
     }
 }

@@ -65,16 +65,16 @@ struct RegisterChildView: View {
                     viewModel.clearError()
                 }
 
-                LBDatePicker(
-                    icon: .cake,
-                    title: LBStrings.Register.birthDay,
-                    date: $viewModel.birthDate,
-                    state: viewModel.errorField == .birthDay ? .alert : .active
-                )
-                .focused($focusedField, equals: .birthDay)
-                .onChange(of: viewModel.birthDate) { _ in
-                    viewModel.clearError()
-                }
+//                LBDatePicker(
+//                    icon: .cake,
+//                    title: LBStrings.Register.birthDay,
+//                    date: $viewModel.birthDate,
+//                    state: viewModel.errorField == .birthDay ? .alert : .active
+//                )
+//                .focused($focusedField, equals: .birthDay)
+//                .onChange(of: viewModel.birthDate) { _ in
+//                    viewModel.clearError()
+//                }
 
                 HStack(spacing: 15) {
                     LBGenderButton(gender: .male, isActive: viewModel.gender == .male) {
