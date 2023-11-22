@@ -20,34 +20,51 @@ struct RegisterChildView: View {
     @State private var isPresentWebView = false
 
     var body: some View {
-        VStack {
+        ZStack(alignment: .center) {
             VStack {
-                Image(LBIcon.logoName.rawValue).resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 187, height: 47)
-                    .clipped()
-                    .padding(.bottom, 40)
+                VStack {
+                    Image(LBIcon.logoName.rawValue).resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 187, height: 47)
+                        .clipped()
+                        .padding(.bottom, 40)
 
-                Text(LBStrings.Register.child)
-                    .font(LBFont.head6)
-                    .foregroundColor(LBColor.text)
-                    .frame(width: 194, alignment: .topLeading)
-                    .padding(.bottom, 32)
+                    Text(LBStrings.Register.child)
+                        .font(LBFont.head6)
+                        .foregroundColor(LBColor.text)
+                        .frame(width: 194, alignment: .topLeading)
+                        .padding(.bottom, 32)
+                }
+
+                form
+
             }
-
-            form
-
-        }
-        .navigationTitle(LBStrings.General.empty)
-        .padding(.top, -40)
-        .fullScreenCover(isPresented: $viewModel.registerSuccess) {
-            DoneView(message: LBStrings.Register.registerFinishedSuccess) {
-                coordinator.popToRoot()
+            .navigationTitle(LBStrings.General.empty)
+            .padding(.top, -40)
+            .fullScreenCover(isPresented: $viewModel.registerSuccess) {
+                DoneView(message: LBStrings.Register.registerFinishedSuccess) {
+                    coordinator.popToRoot()
+                }
+                .toolbarRole(.editor)
+                .navigationBarBackButtonHidden(true)
             }
-            .toolbarRole(.editor)
-            .navigationBarBackButtonHidden(true)
-        }
         .foregroundStyle(LBColor.background)
+            if focusedField == .birthDay {
+                GeometryReader { _ in
+                    LBDatePicker { confirmDate in
+                        viewModel.birthDate = confirmDate
+                        focusedField = nil
+                    } onCancel: {
+                        focusedField = nil
+                    }
+                }
+                .background(Color.black.opacity(0.50)
+                    .edgesIgnoringSafeArea(.all)
+                )
+
+            }
+
+        }
     }
 
     var form: some View {
@@ -65,16 +82,14 @@ struct RegisterChildView: View {
                     viewModel.clearError()
                 }
 
-//                LBDatePicker(
-//                    icon: .cake,
-//                    title: LBStrings.Register.birthDay,
-//                    date: $viewModel.birthDate,
-//                    state: viewModel.errorField == .birthDay ? .alert : .active
-//                )
-//                .focused($focusedField, equals: .birthDay)
-//                .onChange(of: viewModel.birthDate) { _ in
-//                    viewModel.clearError()
-//                }
+                LBDatePickerTextField(icon: .cake,
+                                      title: LBStrings.Register.birthDay,
+                                      date: $viewModel.birthDate,
+                                      state: viewModel.errorField == .birthDay ? .alert : .active)
+                .focused($focusedField, equals: .birthDay)
+                .onChange(of: viewModel.birthDate) { _ in
+                                    viewModel.clearError()
+                                }
 
                 HStack(spacing: 15) {
                     LBGenderButton(gender: .male, isActive: viewModel.gender == .male) {
@@ -146,7 +161,6 @@ struct RegisterChildView: View {
             viewModel.showError()
         }
     }
-
 }
 
 struct RegisterChildView_Previews: PreviewProvider {

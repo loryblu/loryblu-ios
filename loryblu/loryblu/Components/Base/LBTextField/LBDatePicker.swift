@@ -20,11 +20,9 @@ struct LBDatePicker: View {
                 HStack {
                     Button(LBStrings.General.confirm) {
                         onConfirm(selectedDate)
-                        dismiss()
                     }
                     Button(LBStrings.General.cancel) {
                         onCancel()
-                        dismiss()
                     }
                 }
             }

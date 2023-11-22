@@ -1,5 +1,4 @@
 import Foundation
-
 struct Formatter {
     static let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
