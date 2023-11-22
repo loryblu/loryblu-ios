@@ -41,9 +41,12 @@ struct LocbookTasksView: View {
         ScrollView(showsIndicators: false) {
             LazyVGrid(columns: columns, alignment: .center, spacing: 16 ) {
                 ForEach(0..<10, id: \.self) { _ in
-                    ImageLabel(image: LBIcon.bathTime.rawValue, name: LBStrings.Locbook.NameImage.loryRotine, backImage: LBColor.backgroundImageLogbook, borderImage: LBColor.borderImageLogbook, font: LBFont.titleTask)
-                        .frame(maxWidth: .infinity, minHeight: 155)
-
+                    ImageLabel(
+                        image: LBIcon.bathTime.rawValue,
+                        name: LBStrings.Locbook.NameImage.loryRotine,
+                        font: LBFont.titleTask, segment: .locbook
+                    )
+                    .frame(maxWidth: .infinity, minHeight: 155)
 
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)

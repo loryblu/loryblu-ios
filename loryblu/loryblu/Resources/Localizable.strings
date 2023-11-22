@@ -83,7 +83,8 @@
 // ==================== Locbook =========================
 
 "locbook_title" = "Diário de Bordo";
-"locbook_button" = "Cadastrar Tarefas";
+"locbook_text_info" = "Hmm... nenhuma tarefa por aqui.";
+"locbook_button" = "NOVA TAREFA";
 "locbook_action_title" = "Selecione uma ação:";
 "locbook_task_title" = "Selecione uma tarefa:";
 "locbook_title_rotine" = "LoryRotina";

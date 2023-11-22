@@ -1,11 +1,17 @@
 import SwiftUI
 
+enum Segment {
+    case home
+    case locbook
+    case `default`
+}
+
 struct ImageLabel: View {
     let image: String
     let name: String
-    let backImage: Color
-    let borderImage: Color
     let font: Font
+    let segment: Segment
+    let select: Bool = false
 
     var body: some View {
         VStack {
@@ -26,19 +32,34 @@ struct ImageLabel: View {
                 .multilineTextAlignment(.center)
                 .font(font)
                 .foregroundStyle(LBColor.background)
-                .frame(maxWidth: .infinity, minHeight: 45)
-                .background(borderImage)
-
+                .frame(maxWidth: .infinity, minHeight: 40)
+                .background(setBackgroundLabel())
         }
-        .background(backImage)
+        .background(setBackgroundColor())
         .cornerRadius(12)
-        .overlay(RoundedRectangle(cornerRadius: 12)
-            .inset(by: 2)
-            .stroke(borderImage, lineWidth: 4)
-        )
+    }
+
+    private func setBackgroundColor() -> Color {
+        if segment == .home {
+             LBColor.backgroundImagetrails
+        } else if segment == .locbook {
+             LBColor.backgroundCards
+        } else {
+             Color.clear
+        }
+    }
+
+    private func setBackgroundLabel() -> Color {
+        if segment == .home {
+             LBColor.borderImagetrails
+        } else if segment == .locbook {
+             LBColor.backgroundCardsLabel
+        } else {
+             Color.clear
+        }
     }
 }
 
 #Preview {
-    ImageLabel(image: LBIcon.dailyRotine.rawValue, name: LBStrings.Locbook.NameImage.therapist, backImage: LBColor.backgroundImagetrails, borderImage: LBColor.borderImagetrails, font: LBFont.titleAction)
+    ImageLabel(image: LBIcon.dailyRotine.rawValue, name: LBStrings.Locbook.NameImage.therapist, font: LBFont.titleAction, segment: .home)
 }

@@ -100,16 +100,18 @@ extension LBStrings {
 
 extension LBStrings {
     enum Locbook {
-        static let title = String(localized: "locbook_title")
-        static let button = String(localized: "locbook_button")
         static let actionTitle = String(localized: "locbook_action_title")
-        static let taskTitle = String(localized: "locbook_task_title")
+        static let button = String(localized: "locbook_button")
         static let checklistTitle = String(localized: "locbook_checklist_title")
-        static let shiftTitle = String(localized: "locbook_checklist_shift")
         static let frequencTitle = String(localized: "locbook_checklist_frequency_title")
+        static let infoText = String(localized: "locbook_text_info")
         static let frequencyText = String(localized: "locbook_checklist_frequency")
+        static let shiftTitle = String(localized: "locbook_checklist_shift")
+        static let taskTitle = String(localized: "locbook_task_title")
+        static let title = String(localized: "locbook_title")
         static let titleRotine = String(localized: "locbook_title_rotine")
         static let titleStudy = String(localized: "locbook_title_study")
+
 
         enum NameImage {
             static let loryStudy = String(localized: "image_action_study")
