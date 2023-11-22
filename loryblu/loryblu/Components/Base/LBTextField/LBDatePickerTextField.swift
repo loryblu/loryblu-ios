@@ -1,5 +1,9 @@
 import SwiftUI
 
+enum DatepickeSelect: Hashable {
+    case datepicker
+}
+
 struct LBDatePickerTextField: View {
     enum DatePickerState: CGFloat, Equatable {
         case active = 0
@@ -11,7 +15,7 @@ struct LBDatePickerTextField: View {
     @Binding var date: Date?
 
     @State private var formatDate: String = ""
-
+    @FocusState private var focusedTextField: DatepickeSelect?
     let state: DatePickerState
 
     var body: some View {
@@ -21,9 +25,8 @@ struct LBDatePickerTextField: View {
                 if let icon = icon {
                     icon.image.frame(width: 22)
                 }
-                TextField(title, text: $formatDate )
-//                LBDatePickerTextField(placeholder: title, date: $date)
-//                    .foregroundColor(LBColor.text)
+                TextField(title, text: $formatDate)
+                    .focused($focusedTextField,equals: .datepicker)
             }
             .padding()
             .foregroundColor(LBColor.placeholder)
@@ -46,7 +49,7 @@ struct LBDatePickerTextField: View {
 
 struct LBDatePickerTextField_Previews: PreviewProvider {
     static var previews: some View {
-          VStack {
+          ZStack {
               LBDatePickerTextField(icon: .google, title: "Data de Aniversário", date: .constant(Date()), state: .active)
         }
     }
