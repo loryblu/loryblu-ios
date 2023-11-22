@@ -21,6 +21,7 @@ extension LBStrings {
         static let next = String(localized: "next")
         static let password = String(localized: "password")
         static let send = String(localized: "send")
+        static let cancel = String(localized: "cancel")
     }
 }
 
