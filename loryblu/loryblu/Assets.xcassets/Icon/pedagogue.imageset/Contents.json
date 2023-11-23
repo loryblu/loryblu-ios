@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "pedagogue.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

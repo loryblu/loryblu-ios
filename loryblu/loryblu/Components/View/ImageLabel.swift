@@ -21,7 +21,6 @@ struct ImageLabel: View {
 
                 VStack {
                     Image(image)
-                        .resizable()
                         .scaledToFill()
                         .frame(width: size, height: size)
                 }
@@ -61,5 +60,5 @@ struct ImageLabel: View {
 }
 
 #Preview {
-    ImageLabel(image: LBIcon.dailyRotine.rawValue, name: LBStrings.Locbook.NameImage.therapist, font: LBFont.titleAction, segment: .home)
+    ImageLabel(image: LBIcon.dailyStudy.rawValue, name: LBStrings.Locbook.NameImage.therapist, font: LBFont.titleAction, segment: .home)
 }
