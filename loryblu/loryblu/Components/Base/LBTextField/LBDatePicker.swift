@@ -1,57 +1,55 @@
 import SwiftUI
 
 struct LBDatePicker: View {
-    enum DatePickerState: CGFloat, Equatable {
-        case active = 0
-        case alert = 2
+    let onConfirm: (Date) -> Void
+    let onCancel: () -> Void
+    @State var selectedDate = Date()
+    var dateClosedRange: ClosedRange<Date> {
+        let min = Calendar.current.date(byAdding: .year,
+                                        value: -10,
+                                        to: Date()) ?? Date.now
+        let max = Calendar.current.date(byAdding: .year,
+                                        value: 0,
+                                        to: Date()) ?? Date.now
+        return min...max
     }
-
-    let icon: LBIcon?
-    let title: String
-    @Binding var date: Date?
-
-    @State private var text: String?
-
-    let state: DatePickerState
-
     var body: some View {
 
-        HStack {
-            HStack {
-                if let icon = icon {
-                    icon.image.frame(width: 22)
-                }
-
-                LBDatePickerTextField(placeholder: title, date: $date)
-                    .foregroundColor(LBColor.text)
-            }
-            .padding()
-            .foregroundColor(LBColor.placeholder)
-            .font(LBFont.bodySmall)
-            .onChange(of: date) { newValue in
-                if let newValue {
-                    self.text = Formatter.dateFormatter.string(from: newValue)
-                }
+        ZStack(alignment: .center ) {
+            Color.gray.opacity(0.2)
+                 .ignoresSafeArea()
+                 .overlay {
+                     VStack {
+                         DatePicker(LBStrings.Register.birthDay, selection: $selectedDate,
+                                    in: dateClosedRange, displayedComponents: .date)
+                             .datePickerStyle(.graphical)
+                             .padding(20)
+                             .background(Color.white.cornerRadius(20))
+                             .clipped()
+                             .environment(\.locale, Locale.init(identifier: "pt"))
+                             .foregroundColor(LBColor.background)
+                         
+                         HStack {
+                             Button(LBStrings.General.confirm) {
+                                 onConfirm(selectedDate)
+                             }
+                             Button(LBStrings.General.cancel) {
+                                 onCancel()
+                             }
+                         }.padding(.vertical,-35)
+                     }
+                     .padding(20)
             }
         }
-        .background(LBColor.textfield)
-        .frame(height: 48)
-        .cornerRadius(8)
-        .overlay(content: {
-            RoundedRectangle(cornerRadius: 8)
-            .stroke(LBColor.error, lineWidth: state.rawValue)
-        })
     }
 }
 
 struct LBDatePicker_Previews: PreviewProvider {
     static var previews: some View {
-        @State var date: Date?
-        @State var presented = true
-        @State var text = ""
+        LBDatePicker { date in
 
-        VStack {
-            LBDatePicker(icon: .google, title: "Date", date: $date, state: .active)
+        } onCancel: {
+
         }
     }
 }
