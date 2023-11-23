@@ -4,6 +4,11 @@ struct LBDatePicker: View {
     let onConfirm: (Date) -> Void
     let onCancel: () -> Void
     @State var selectedDate = Date()
+    var dateClosedRange: ClosedRange<Date> {
+        let min = Calendar.current.date(byAdding: .year, value: -10, to: Date()) ?? Date.now
+        let max = Calendar.current.date(byAdding: .year, value: 0, to: Date()) ?? Date.now
+        return min...max
+    }
     var body: some View {
 
         ZStack(alignment: .center ) {
@@ -11,13 +16,15 @@ struct LBDatePicker: View {
                  .ignoresSafeArea()
                  .overlay {
                      VStack {
-                         DatePicker(LBStrings.Register.birthDay, selection: $selectedDate, displayedComponents: .date)
+                         DatePicker(LBStrings.Register.birthDay, selection: $selectedDate,
+                                    in: dateClosedRange, displayedComponents: .date)
                              .datePickerStyle(.graphical)
                              .padding()
                              .background(Color.white.cornerRadius(20))
                              .clipped()
                              .environment(\.locale, Locale.init(identifier: "pt"))
                              .foregroundColor(LBColor.background)
+
                          HStack {
                              Button(LBStrings.General.confirm) {
                                  onConfirm(selectedDate)
@@ -25,7 +32,7 @@ struct LBDatePicker: View {
                              Button(LBStrings.General.cancel) {
                                  onCancel()
                              }
-                         }.padding(.vertical,-30)
+                         }.padding(.vertical,-35)
                      }
                      .padding(20)
             }
