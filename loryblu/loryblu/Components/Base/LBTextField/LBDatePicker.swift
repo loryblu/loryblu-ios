@@ -5,8 +5,12 @@ struct LBDatePicker: View {
     let onCancel: () -> Void
     @State var selectedDate = Date()
     var dateClosedRange: ClosedRange<Date> {
-        let min = Calendar.current.date(byAdding: .year, value: -10, to: Date()) ?? Date.now
-        let max = Calendar.current.date(byAdding: .year, value: 0, to: Date()) ?? Date.now
+        let min = Calendar.current.date(byAdding: .year,
+                                        value: -10,
+                                        to: Date()) ?? Date.now
+        let max = Calendar.current.date(byAdding: .year,
+                                        value: 0,
+                                        to: Date()) ?? Date.now
         return min...max
     }
     var body: some View {
@@ -19,12 +23,12 @@ struct LBDatePicker: View {
                          DatePicker(LBStrings.Register.birthDay, selection: $selectedDate,
                                     in: dateClosedRange, displayedComponents: .date)
                              .datePickerStyle(.graphical)
-                             .padding()
+                             .padding(20)
                              .background(Color.white.cornerRadius(20))
                              .clipped()
                              .environment(\.locale, Locale.init(identifier: "pt"))
                              .foregroundColor(LBColor.background)
-
+                         
                          HStack {
                              Button(LBStrings.General.confirm) {
                                  onConfirm(selectedDate)
