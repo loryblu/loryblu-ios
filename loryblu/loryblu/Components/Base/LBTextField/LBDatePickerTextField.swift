@@ -1,68 +1,50 @@
-import Foundation
 import SwiftUI
 
-struct LBDatePickerTextField: UIViewRepresentable {
-    private let textField = UITextField()
-    private let datePicker = UIDatePicker()
-    private let helper = Helper()
+struct LBDatePickerTextField: View {
+    enum DatePickerState: CGFloat, Equatable {
+        case active = 0
+        case alert = 2
+    }
 
-    public var placeholder: String
-    @Binding public var date: Date?
+    let icon: LBIcon?
+    let title: String
+    @Binding var date: Date?
 
-    func makeUIView(context: Context) -> UITextField {
-        datePicker.minimumDate = Calendar.current.date(byAdding: .year, value: -10, to: Date())
-         datePicker.datePickerMode = .date
-        datePicker.locale = Locale(identifier: "pt")
-        datePicker.preferredDatePickerStyle = .wheels
-        datePicker.addTarget(self.helper, action: #selector(self.helper.dateValueChanged), for: .valueChanged)
+    @State private var formatDate: String = ""
+    let state: DatePickerState
 
-        textField.placeholder = placeholder
-        textField.inputView = datePicker
+    var body: some View {
 
-        let toolbar = UIToolbar()
-        toolbar.sizeToFit()
-        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let doneButton = UIBarButtonItem(
-            title: LBStrings.General.confirm,
-            style: .plain,
-            target: helper,
-            action: #selector(helper.doneButtonTapped)
-        )
-
-        toolbar.setItems([flexibleSpace, doneButton], animated: true)
-        textField.inputAccessoryView = toolbar
-
-        helper.onDateValueChanged = {
-            date = datePicker.date
-        }
-
-        helper.onDoneButtonTapped = {
-            if date == nil {
-                date = datePicker.date
+        HStack {
+            HStack {
+                if let icon = icon {
+                    icon.image.frame(width: 22)
+                }
+                TextField(title, text: $formatDate)
             }
-
-            textField.resignFirstResponder()
+            .padding()
+            .foregroundColor(LBColor.placeholder)
+            .font(LBFont.bodySmall)
+            .onChange(of: date) { newValue in
+                if let newValue {
+                    self.formatDate = Formatter.dateFormatter.string(from: newValue)
+                }
+            }
         }
-
-        return textField
+        .background(LBColor.textfield)
+        .frame(height: 48)
+        .cornerRadius(8)
+        .overlay(content: {
+            RoundedRectangle(cornerRadius: 8)
+            .stroke(LBColor.error, lineWidth: state.rawValue)
+        })
     }
+}
 
-    func updateUIView(_ uiView: UITextField, context: Context) {
-        if let selectedDate = date {
-            uiView.text = Formatter.dateFormatter.string(from: selectedDate)
-        }
-    }
-
-    class Helper {
-        public var onDateValueChanged: (() -> Void)?
-        public var onDoneButtonTapped: (() -> Void)?
-
-        @objc func dateValueChanged() {
-            onDateValueChanged?()
-        }
-
-        @objc func doneButtonTapped() {
-            onDoneButtonTapped?()
+struct LBDatePickerTextField_Previews: PreviewProvider {
+    static var previews: some View {
+          ZStack {
+              LBDatePickerTextField(icon: .google, title: "Data de Aniversário", date: .constant(Date()), state: .active)
         }
     }
 }
