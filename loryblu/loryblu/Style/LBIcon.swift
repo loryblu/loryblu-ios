@@ -21,8 +21,9 @@ enum LBIcon: String {
     case eyeOpen = "eye_open"
     case facebook
     case fairy
-    case fairyShodow = "fairy_shodow"
-    case game
+    case fairyShadow = "fairy_shadow"
+    case games
+    case gamesShadow = "games_shadow"
     case google
     case headLori = "head_lori"
     case headMenu = "head_menu"
@@ -62,7 +63,6 @@ enum LBIcon: String {
     case sunSmall = "sun_small"
     case therapy
     case tvgame
-    case tvgameShadow = "tvgame_shadow"
     case user
     case watchtv
     case water

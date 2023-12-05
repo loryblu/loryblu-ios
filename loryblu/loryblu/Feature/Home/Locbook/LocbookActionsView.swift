@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LocbookActionsView: View {
+    var task = LocbookTask()
     @State private var selectedCard: Int?
     typealias Localizable = LBStrings.Locbook
     let options: [ImageLabel] = [
@@ -43,7 +44,7 @@ struct LocbookActionsView: View {
             LBButton(
                 title: Localizable.button,
                 style: .primaryActivated) {
-                    //
+//                    task.categoryId = options
                 }
                 .padding(.top, 15)
         }

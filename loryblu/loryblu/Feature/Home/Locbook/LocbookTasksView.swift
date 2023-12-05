@@ -3,48 +3,7 @@ import SwiftUI
 struct LocbookTasksView: View {
     @State private var selectedCard: Int?
     var title: String = LBStrings.Locbook.titleStudy
-    let tasks: [ImageLabel] = [
-        ImageLabel(
-            image: LBIcon.bathTime.rawValue,
-            name: LBStrings.Locbook.NameImage.loryRotine,
-            font: LBFont.titleTask, segment: .locbook) ,
-        ImageLabel(
-            image: LBIcon.school.rawValue,
-            name: LBStrings.Locbook.NameImage.loryRotine,
-            font: LBFont.titleTask, segment: .locbook),
-        ImageLabel(
-            image: LBIcon.reading.rawValue,
-            name: LBStrings.Locbook.NameImage.loryRotine,
-            font: LBFont.titleTask, segment: .locbook),
-        ImageLabel(
-            image: LBIcon.therapy.rawValue,
-            name: LBStrings.Locbook.NameImage.loryRotine,
-            font: LBFont.titleTask, segment: .locbook),
-        ImageLabel(
-            image: LBIcon.snack.rawValue,
-            name: LBStrings.Locbook.NameImage.loryRotine,
-            font: LBFont.titleTask, segment: .locbook),
-        ImageLabel(
-            image: LBIcon.lunch.rawValue,
-            name: LBStrings.Locbook.NameImage.loryRotine,
-            font: LBFont.titleTask, segment: .locbook),
-        ImageLabel(
-            image: LBIcon.school.rawValue,
-            name: LBStrings.Locbook.NameImage.loryRotine,
-            font: LBFont.titleTask, segment: .locbook),
-        ImageLabel(
-            image: LBIcon.reading.rawValue,
-            name: LBStrings.Locbook.NameImage.loryRotine,
-            font: LBFont.titleTask, segment: .locbook),
-        ImageLabel(
-            image: LBIcon.therapy.rawValue,
-            name: LBStrings.Locbook.NameImage.loryRotine,
-            font: LBFont.titleTask, segment: .locbook),
-        ImageLabel(
-            image: LBIcon.snack.rawValue,
-            name: LBStrings.Locbook.NameImage.loryRotine,
-            font: LBFont.titleTask, segment: .locbook)
-    ]
+    let tasks: [ImageLabel] = LocbookListTasks.study
     let columns = [
         GridItem(.flexible(), spacing: 16),
         GridItem(.flexible())
@@ -57,7 +16,6 @@ struct LocbookTasksView: View {
                 Text(title)
                     .font(LBFont.titleAction)
                     .foregroundStyle(LBColor.titlePrimary)
-
                 Spacer()
             }
 
@@ -70,7 +28,6 @@ struct LocbookTasksView: View {
                 Text(LBStrings.Locbook.taskTitle)
                     .font(LBFont.buttonSmall)
                     .foregroundStyle(LBColor.titlePrimary)
-
                 Spacer()
             }
 
@@ -82,34 +39,20 @@ struct LocbookTasksView: View {
 
     var collectionView: some View {
         ScrollView(showsIndicators: false) {
-            LazyVGrid(columns: columns, alignment: .center, spacing: 16 ) {
+            LazyVGrid(columns: columns, alignment: .center, spacing: 24 ) {
                 ForEach(0..<tasks.count) { index in
                     tasks[index]
                         .overlay(selectedCard == index ?
                                  RoundedRectangle(cornerRadius: 12)
                             .inset(by: 0)
-                            .strokeBorder(LBColor.titlePrimary, lineWidth: 4) : nil
-                        )
+                            .strokeBorder(LBColor.titlePrimary, lineWidth: 4) : nil)
                         .opacity(selectedCard == index ? 1.0 : 0.5)
                         .onTapGesture {
                             selectedCard = index
                         }
                 }
-                .frame(maxWidth: .infinity , minHeight: 156)
+                .frame(minWidth: 148 , minHeight: 156)
             }
-//            LazyVGrid(columns: columns, alignment: .center, spacing: 16 ) {
-//                ForEach(0..<10, id: \.self) { _ in
-//                    ImageLabel(
-//                        image: LBIcon.bathTime.rawValue,
-//                        name: LBStrings.Locbook.NameImage.loryRotine,
-//                        font: LBFont.titleTask, segment: .locbook
-//                    )
-//                    .frame(maxWidth: .infinity, minHeight: 155)
-//
-//                }
-//                .frame(maxWidth: .infinity, maxHeight: .infinity)
-//
-//            }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .padding(.bottom, 24)
 
@@ -123,8 +66,12 @@ struct LocbookTasksView: View {
         .scrollContentBackground(.hidden)
     }
 
+    private func stateButton() {
+        selectedCard == nil
+    }
+
 }
 
 #Preview {
-    LocbookTasksView()
+    LocbookTasksView(title: LBStrings.Locbook.titleStudy)
 }

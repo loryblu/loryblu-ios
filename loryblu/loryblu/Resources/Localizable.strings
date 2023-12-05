@@ -110,7 +110,7 @@
 "image_watchtv" = "TV Liberada";
 "image_tvgame" = "Vídeo Game Liberado";
 "image_school" = "Escola";
-"image_reinforcement" = "Reforço Escolar";
+"image_reinforcement" = "Reforço";
 "image_languages" = "Idiomas";
 "image_sport" = "Esporte";
 "image_reading" = "Hora da Leitura";
@@ -118,7 +118,7 @@
 "image_psychologist" = "Psicólogo";
 "image_speech_therapist" = "Fonoaudiologo";
 "image_pedagogue" = "Pedagoga";
-"image_occupational_therapist" = "Terapia Ocupacional";
+"image_occupational_therapist" = "TO";
 "image_morning" = "Manhã";
 "image_afternoon" = "Tarde";
 "image_night" = "Noite";
