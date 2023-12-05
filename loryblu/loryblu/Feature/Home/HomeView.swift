@@ -12,8 +12,8 @@ struct HomeView: View {
     let name: String = "Bia"
     let traills: [ImageLabel] = [
         ImageLabel(image: LBIcon.locbook.rawValue, name: LBStrings.Locbook.NameImage.loryRotine, font: LBFont.titleAction, segment: .home),
-        ImageLabel(image: LBIcon.fairyShodow.rawValue, name: LBStrings.Locbook.NameImage.loryRotine, font: LBFont.titleAction, segment: .home),
-        ImageLabel(image: LBIcon.tvgameShadow.rawValue, name: LBStrings.Locbook.NameImage.loryRotine, font: LBFont.titleAction, segment: .home)
+        ImageLabel(image: LBIcon.fairyShadow.rawValue, name: LBStrings.Locbook.NameImage.loryRotine, font: LBFont.titleAction, segment: .home),
+        ImageLabel(image: LBIcon.gamesShadow.rawValue, name: LBStrings.Locbook.NameImage.loryRotine, font: LBFont.titleAction, segment: .home)
     ]
 
     var body: some View {

@@ -27,6 +27,8 @@
 		33D0F90E2AD0EE3700EE54DF /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D0F90D2AD0EE3700EE54DF /* Endpoints.swift */; };
 		41931EBE2A6470B4008F13F8 /* LBButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41931EBD2A6470B4008F13F8 /* LBButton.swift */; };
 		41BE77FD2A85A12300534ADA /* LBGenderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BE77FC2A85A12300534ADA /* LBGenderButton.swift */; };
+		8C070DDD2B10C254004AAF8A /* LocbookListTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C070DDC2B10C254004AAF8A /* LocbookListTasks.swift */; };
+		8C070DDF2B1803C9004AAF8A /* LocbookTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C070DDE2B1803C9004AAF8A /* LocbookTask.swift */; };
 		8C21B3482AA6C374002EF4BD /* RegisterChildViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C21B3472AA6C374002EF4BD /* RegisterChildViewModel.swift */; };
 		8C225AB12AE703B100E43B2C /* ImageLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C225AB02AE703B100E43B2C /* ImageLabel.swift */; };
 		8C2535322A7714DD0096738B /* RegisterResponsibleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2535312A7714DD0096738B /* RegisterResponsibleViewModel.swift */; };
@@ -96,6 +98,8 @@
 		33D0F90D2AD0EE3700EE54DF /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
 		41931EBD2A6470B4008F13F8 /* LBButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBButton.swift; sourceTree = "<group>"; };
 		41BE77FC2A85A12300534ADA /* LBGenderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBGenderButton.swift; sourceTree = "<group>"; };
+		8C070DDC2B10C254004AAF8A /* LocbookListTasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocbookListTasks.swift; sourceTree = "<group>"; };
+		8C070DDE2B1803C9004AAF8A /* LocbookTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocbookTask.swift; sourceTree = "<group>"; };
 		8C21B3472AA6C374002EF4BD /* RegisterChildViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterChildViewModel.swift; sourceTree = "<group>"; };
 		8C225AB02AE703B100E43B2C /* ImageLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLabel.swift; sourceTree = "<group>"; };
 		8C2535312A7714DD0096738B /* RegisterResponsibleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterResponsibleViewModel.swift; sourceTree = "<group>"; };
@@ -230,6 +234,30 @@
 			path = Handlers;
 			sourceTree = "<group>";
 		};
+		8C070DE02B182839004AAF8A /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				8C2A68512AF959AB00B74295 /* LocbookActionsView.swift */,
+			);
+			name = Actions;
+			sourceTree = "<group>";
+		};
+		8C070DE12B182850004AAF8A /* Tasks */ = {
+			isa = PBXGroup;
+			children = (
+				8C2A68552AF9B9A000B74295 /* LocbookTasksView.swift */,
+			);
+			name = Tasks;
+			sourceTree = "<group>";
+		};
+		8C070DE22B18285E004AAF8A /* List */ = {
+			isa = PBXGroup;
+			children = (
+				8C2A684F2AF5E04A00B74295 /* LocbookRegisterView.swift */,
+			);
+			name = List;
+			sourceTree = "<group>";
+		};
 		8C2535342A788C9E0096738B /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -272,9 +300,10 @@
 		8C2A684E2AF5DFB000B74295 /* Locbook */ = {
 			isa = PBXGroup;
 			children = (
-				8C2A684F2AF5E04A00B74295 /* LocbookRegisterView.swift */,
-				8C2A68512AF959AB00B74295 /* LocbookActionsView.swift */,
-				8C2A68552AF9B9A000B74295 /* LocbookTasksView.swift */,
+				8C070DE02B182839004AAF8A /* Actions */,
+				335E21A52AFF129B00700440 /* FrequencyRotine */,
+				8C070DE22B18285E004AAF8A /* List */,
+				8C070DE12B182850004AAF8A /* Tasks */,
 			);
 			path = Locbook;
 			sourceTree = "<group>";
@@ -303,7 +332,6 @@
 		8C5734212A6C21490052B955 /* Feature */ = {
 			isa = PBXGroup;
 			children = (
-				335E21A52AFF129B00700440 /* FrequencyRotine */,
 				8C669C422AA011650028B436 /* Models */,
 				8C2A68492AF54A4800B74295 /* Home */,
 				8CE004872AC1C5D00037F792 /* Done */,
@@ -327,9 +355,11 @@
 		8C669C422AA011650028B436 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				8C669C402AA011480028B436 /* UserRegister.swift */,
-				91361A252ACEF06B00700E36 /* ResponseMessage.swift */,
 				911B843D2AD1C19D00F59DD2 /* Authentication.swift */,
+				8C070DDE2B1803C9004AAF8A /* LocbookTask.swift */,
+				8C070DDC2B10C254004AAF8A /* LocbookListTasks.swift */,
+				91361A252ACEF06B00700E36 /* ResponseMessage.swift */,
+				8C669C402AA011480028B436 /* UserRegister.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -589,6 +619,7 @@
 				8C3120F12ABB3D8B00D580BD /* Network.swift in Sources */,
 				8CFB35A02A6059BD008BF633 /* ContentView.swift in Sources */,
 				8C2A68522AF959AB00B74295 /* LocbookActionsView.swift in Sources */,
+				8C070DDF2B1803C9004AAF8A /* LocbookTask.swift in Sources */,
 				41931EBE2A6470B4008F13F8 /* LBButton.swift in Sources */,
 				8C9CBCFC2A7ACF46001DBD35 /* LoginView.swift in Sources */,
 				3380B2102B0DA63F0001E67D /* Formatter.swift in Sources */,
@@ -603,6 +634,7 @@
 				911B843C2AD1C0B200F59DD2 /* AuthenticationRepository.swift in Sources */,
 				8C9CBD0D2A7AE97B001DBD35 /* RegisterChildView.swift in Sources */,
 				8C669C412AA011480028B436 /* UserRegister.swift in Sources */,
+				8C070DDD2B10C254004AAF8A /* LocbookListTasks.swift in Sources */,
 				91664AE42B0C029E005BF5CA /* HomeNavigationCoordinator.swift in Sources */,
 				91361A262ACEF06B00700E36 /* ResponseMessage.swift in Sources */,
 				334D0AB52A8AF93D003881ED /* ResetPasswordModel.swift in Sources */,
