@@ -42,7 +42,7 @@ struct LocbookActionsView: View {
             actions
 
             LBButton(
-                title: Localizable.button,
+                title: LBStrings.General.next,
                 style: .primaryActivated) {
 //                    task.categoryId = options
                 }

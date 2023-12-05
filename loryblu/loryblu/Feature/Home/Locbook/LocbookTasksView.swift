@@ -3,7 +3,7 @@ import SwiftUI
 struct LocbookTasksView: View {
     @State private var selectedCard: Int?
     var title: String = LBStrings.Locbook.titleStudy
-    let tasks: [ImageLabel] = LocbookListTasks.study
+    let tasks: [ImageLabel] = LocbookListTasks.rotine
     let columns = [
         GridItem(.flexible(), spacing: 16),
         GridItem(.flexible())
@@ -66,9 +66,9 @@ struct LocbookTasksView: View {
         .scrollContentBackground(.hidden)
     }
 
-    private func stateButton() {
-        selectedCard == nil
-    }
+//    private func stateButton() {
+//        selectedCard == nil
+//    }
 
 }
 
