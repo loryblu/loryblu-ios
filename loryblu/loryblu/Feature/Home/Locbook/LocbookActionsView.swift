@@ -44,7 +44,7 @@ struct LocbookActionsView: View {
             LBButton(
                 title: LBStrings.General.next,
                 style: .primaryActivated) {
-//                    task.categoryId = options
+                    
                 }
                 .padding(.top, 15)
         }

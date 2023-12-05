@@ -61,15 +61,9 @@ struct LocbookTasksView: View {
                 style: .primaryActivated) {
                     //
                 }
-
         } 
         .scrollContentBackground(.hidden)
     }
-
-//    private func stateButton() {
-//        selectedCard == nil
-//    }
-
 }
 
 #Preview {
