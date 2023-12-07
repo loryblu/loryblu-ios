@@ -12,10 +12,15 @@ class TaskRepository {
         let header: [String: String] = ["Content-Type": "application/json"]
         let request = RequestModel(
                         baseURL: Server.baseURL,
-                        path: Endpoint.passwordRecovery,
+                        path: Endpoint.task,
                         method: .post,
                         header: header,
-                        body: JSONParser.parseData(from: ["childrenId": "\(locBookTask.)"])
+                        body: JSONParser.parseData(from: ["childrenId": "\(String(describing: locBookTask.childrenId))",
+                                                          "categoryId": "\(String(describing: locBookTask.categoryId))",
+                                                          "shif": "\(String(describing: locBookTask.shift))",
+                                                          "frequency": ["\(String(describing: locBookTask.frequency))"],
+                                                          "order": "\(String(describing: locBookTask.order))"
+                                                         ])
                     )
 
         do {
