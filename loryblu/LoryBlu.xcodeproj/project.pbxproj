@@ -25,6 +25,7 @@
 		33B2ABFC2ACE587A004CF7DF /* RepositorySetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B2ABFB2ACE587A004CF7DF /* RepositorySetPassword.swift */; };
 		33BA2DE62AC9BE3D009704FD /* DeepLinkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA2DE52AC9BE3D009704FD /* DeepLinkHandler.swift */; };
 		33D0F90E2AD0EE3700EE54DF /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D0F90D2AD0EE3700EE54DF /* Endpoints.swift */; };
+		33F87E902B21528000F62041 /* TaskRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F87E8F2B21528000F62041 /* TaskRepository.swift */; };
 		41931EBE2A6470B4008F13F8 /* LBButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41931EBD2A6470B4008F13F8 /* LBButton.swift */; };
 		41BE77FD2A85A12300534ADA /* LBGenderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BE77FC2A85A12300534ADA /* LBGenderButton.swift */; };
 		8C070DDD2B10C254004AAF8A /* LocbookListTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C070DDC2B10C254004AAF8A /* LocbookListTasks.swift */; };
@@ -96,6 +97,7 @@
 		33B2ABFB2ACE587A004CF7DF /* RepositorySetPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositorySetPassword.swift; sourceTree = "<group>"; };
 		33BA2DE52AC9BE3D009704FD /* DeepLinkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkHandler.swift; sourceTree = "<group>"; };
 		33D0F90D2AD0EE3700EE54DF /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
+		33F87E8F2B21528000F62041 /* TaskRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRepository.swift; sourceTree = "<group>"; };
 		41931EBD2A6470B4008F13F8 /* LBButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBButton.swift; sourceTree = "<group>"; };
 		41BE77FC2A85A12300534ADA /* LBGenderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBGenderButton.swift; sourceTree = "<group>"; };
 		8C070DDC2B10C254004AAF8A /* LocbookListTasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocbookListTasks.swift; sourceTree = "<group>"; };
@@ -480,6 +482,7 @@
 				911B843B2AD1C0B200F59DD2 /* AuthenticationRepository.swift */,
 				33B2ABFB2ACE587A004CF7DF /* RepositorySetPassword.swift */,
 				91361A1C2ACCBE1900700E36 /* RegisterRepository.swift */,
+				33F87E8F2B21528000F62041 /* TaskRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -605,6 +608,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33F87E902B21528000F62041 /* TaskRepository.swift in Sources */,
 				91B4AC282AD114D3003A7FE5 /* NavigationPathExtension.swift in Sources */,
 				91664AE22B0C003A005BF5CA /* HomeNavigationStack.swift in Sources */,
 				8CE004892AC1C6680037F792 /* DoneView.swift in Sources */,
