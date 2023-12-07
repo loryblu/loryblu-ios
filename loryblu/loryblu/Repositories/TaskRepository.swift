@@ -8,19 +8,21 @@ class TaskRepository {
         self.network = network
     }
 
-    func taskRegister(user: UserRegister) async throws -> ResponseMessage {
-        let request = RequestModel.Builder()
-            .with(baseURL: "https://loryblu-homologation.onrender.com/")
-            .with(path: "auth/register")
-            .with(method: .post)
-            .with(body: user)
-            .with(addHeaderName: "Accept", value: "*/*")
-            .with(addHeaderName: "User-Agent", value: "LoryBlu(iOS)")
-            .with(addHeaderName: "Content-Type", value: "application/json")
-            .build()
+    func taskRegister(with locBookTask: LocbookTask) async -> Bool {
+        let header: [String: String] = ["Content-Type": "application/json"]
+        let request = RequestModel(
+                        baseURL: Server.baseURL,
+                        path: Endpoint.passwordRecovery,
+                        method: .post,
+                        header: header,
+                        body: JSONParser.parseData(from: ["childrenId": "\(locBookTask.)"])
+                    )
 
-        let response = try await network.request(request: request, returning: ResponseMessage.self)
-
-        return response
+        do {
+            _ = try await network.request(request: request, returning: ResponseMessage.self)
+            return true
+        } catch {
+            return false
+        }
     }
 }
