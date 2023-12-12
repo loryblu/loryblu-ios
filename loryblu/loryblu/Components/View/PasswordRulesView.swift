@@ -1,10 +1,3 @@
-//
-//  PasswordRulesView.swift
-//  LoryBlu
-//
-//  Created by Suh on 21/07/23.
-//
-
 import SwiftUI
 
 struct PasswordRulesView: View {

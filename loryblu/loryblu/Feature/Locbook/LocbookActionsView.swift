@@ -1,10 +1,3 @@
-//
-//  LocbookActionsView.swift
-//  LoryBlu
-//
-//  Created by Suh on 06/11/23.
-//
-
 import SwiftUI
 
 struct LocbookActionsView: View {

@@ -1,10 +1,3 @@
-//
-//  HomeView.swift
-//  LoryBlu
-//
-//  Created by Suh on 03/11/23.
-//
-
 import SwiftUI
 
 struct HomeView: View {

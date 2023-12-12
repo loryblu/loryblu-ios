@@ -1,10 +1,3 @@
-//
-//  ValidateRules.swift
-//  LoryBlu
-//
-//  Created by Suh on 24/07/23.
-//
-
 import Foundation
 import SwiftUI
 

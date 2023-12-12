@@ -1,10 +1,3 @@
-//
-//  RegisterChildView.swift
-//  LoryBlu
-//
-//  Created by Suh on 31/07/23.
-//
-
 import SwiftUI
 import WebKit
 

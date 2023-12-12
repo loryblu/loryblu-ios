@@ -1,10 +1,3 @@
-//
-//  Network.swift
-//  suelencristina-fintech
-//
-//  Created by Suh on 03/07/23.
-//
-
 import Foundation
 
 class Network {

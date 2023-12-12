@@ -1,10 +1,3 @@
-//
-//  DoneView.swift
-//  LoryBlu
-//
-//  Created by Suh on 25/09/23.
-//
-
 import SwiftUI
 
 struct DoneView: View {

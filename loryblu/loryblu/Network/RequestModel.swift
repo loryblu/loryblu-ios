@@ -1,10 +1,3 @@
-//
-//  RequestModel.swift
-//  suelencristina-fintech
-//
-//  Created by Suh on 07/07/23.
-//
-
 import Foundation
 
 struct RequestModel: Request {

@@ -1,10 +1,3 @@
-//
-//  NetworkError.swift
-//  suelencristina-fintech
-//
-//  Created by Suh on 06/07/23.
-//
-
 import Foundation
 
 enum NetworkError: Error {
