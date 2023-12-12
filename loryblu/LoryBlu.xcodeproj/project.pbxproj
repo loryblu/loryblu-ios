@@ -77,6 +77,9 @@
 		91B4AC252AD0F61B003A7FE5 /* JSONParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B4AC242AD0F61B003A7FE5 /* JSONParse.swift */; };
 		91B4AC282AD114D3003A7FE5 /* NavigationPathExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B4AC272AD114D3003A7FE5 /* NavigationPathExtension.swift */; };
 		91B4AC442AD19CFA003A7FE5 /* AppEntryPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B4AC432AD19CFA003A7FE5 /* AppEntryPoint.swift */; };
+		91CA965F2B28996300611F91 /* LocbookNavigationStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CA965E2B28996300611F91 /* LocbookNavigationStack.swift */; };
+		91CA96622B2899A600611F91 /* LocbookNavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CA96612B2899A600611F91 /* LocbookNavigationCoordinator.swift */; };
+		91CA96642B28A7F800611F91 /* ClosureType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CA96632B28A7F800611F91 /* ClosureType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -152,6 +155,9 @@
 		91B4AC242AD0F61B003A7FE5 /* JSONParse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONParse.swift; sourceTree = "<group>"; };
 		91B4AC272AD114D3003A7FE5 /* NavigationPathExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationPathExtension.swift; sourceTree = "<group>"; };
 		91B4AC432AD19CFA003A7FE5 /* AppEntryPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEntryPoint.swift; sourceTree = "<group>"; };
+		91CA965E2B28996300611F91 /* LocbookNavigationStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocbookNavigationStack.swift; sourceTree = "<group>"; };
+		91CA96612B2899A600611F91 /* LocbookNavigationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocbookNavigationCoordinator.swift; sourceTree = "<group>"; };
+		91CA96632B28A7F800611F91 /* ClosureType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosureType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -273,10 +279,9 @@
 		8C2A684E2AF5DFB000B74295 /* Locbook */ = {
 			isa = PBXGroup;
 			children = (
-				8C2A68512AF959AB00B74295 /* LocbookActionsView.swift */,
-				335E21A62AFF132800700440 /* FrequencyRotineView.swift */,
-				8C2A684F2AF5E04A00B74295 /* LocbookRegisterView.swift */,
-				8C2A68552AF9B9A000B74295 /* LocbookTasksView.swift */,
+				91CA96602B28996D00611F91 /* View */,
+				91CA965E2B28996300611F91 /* LocbookNavigationStack.swift */,
+				91CA96612B2899A600611F91 /* LocbookNavigationCoordinator.swift */,
 			);
 			path = Locbook;
 			sourceTree = "<group>";
@@ -464,6 +469,7 @@
 			isa = PBXGroup;
 			children = (
 				917607392B27D8DE004F4200 /* Container+DI.swift */,
+				91CA96632B28A7F800611F91 /* ClosureType.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -491,6 +497,17 @@
 				91B4AC272AD114D3003A7FE5 /* NavigationPathExtension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		91CA96602B28996D00611F91 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8C2A684F2AF5E04A00B74295 /* LocbookRegisterView.swift */,
+				8C2A68512AF959AB00B74295 /* LocbookActionsView.swift */,
+				8C2A68552AF9B9A000B74295 /* LocbookTasksView.swift */,
+				335E21A62AFF132800700440 /* FrequencyRotineView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -601,6 +618,7 @@
 				8CE004892AC1C6680037F792 /* DoneView.swift in Sources */,
 				330A37772A660C2D00C9DCE7 /* LBFont.swift in Sources */,
 				8C2A684D2AF54A9600B74295 /* HomeView.swift in Sources */,
+				91CA965F2B28996300611F91 /* LocbookNavigationStack.swift in Sources */,
 				8C3120EC2ABB3D8B00D580BD /* NetworkError.swift in Sources */,
 				8C3120EF2ABB3D8B00D580BD /* Server.swift in Sources */,
 				8C21B3482AA6C374002EF4BD /* RegisterChildViewModel.swift in Sources */,
@@ -615,6 +633,7 @@
 				8C9CBCFC2A7ACF46001DBD35 /* LoginView.swift in Sources */,
 				3380B2102B0DA63F0001E67D /* Formatter.swift in Sources */,
 				8C5734262A6C39AF0052B955 /* RegisterResponsibleView.swift in Sources */,
+				91CA96642B28A7F800611F91 /* ClosureType.swift in Sources */,
 				8C3120F52ABD249600D580BD /* WebView.swift in Sources */,
 				8C2A68562AF9B9A000B74295 /* LocbookTasksView.swift in Sources */,
 				33D0F90E2AD0EE3700EE54DF /* Endpoints.swift in Sources */,
@@ -640,6 +659,7 @@
 				8C9CBD102A7AEC24001DBD35 /* PasswordRulesView.swift in Sources */,
 				8CFB359E2A6059BD008BF633 /* LorybluApp.swift in Sources */,
 				41BE77FD2A85A12300534ADA /* LBGenderButton.swift in Sources */,
+				91CA96622B2899A600611F91 /* LocbookNavigationCoordinator.swift in Sources */,
 				8C2A68502AF5E04A00B74295 /* LocbookRegisterView.swift in Sources */,
 				8C7C64B32A6F4CE1002361A9 /* ValidateRules.swift in Sources */,
 				33549B0A2ACB92E700CF989F /* AppData.swift in Sources */,

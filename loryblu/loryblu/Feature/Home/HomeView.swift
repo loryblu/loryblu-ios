@@ -11,21 +11,23 @@ struct HomeView: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            HStack {
-                LBIcon.headMenu.image
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 62, height: 62)
-
-                Text("Olá, \(name)")
-                    .font(LBFont.head5)
-                    .foregroundStyle(LBColor.text)
-            }
-            .padding(.init(top: 12, leading: 0, bottom: 32, trailing: 0))
-
+            header
             trails
-
         }
+    }
+    
+    var header: some View {
+        HStack {
+            LBIcon.headMenu.image
+                .resizable()
+                .scaledToFill()
+                .frame(width: 62, height: 62)
+
+            Text("Olá, \(name)")
+                .font(LBFont.head5)
+                .foregroundStyle(LBColor.text)
+        }
+        .padding(.init(top: 12, leading: 0, bottom: 32, trailing: 0))
     }
 
     var trails: some View {
