@@ -6,7 +6,7 @@ enum Period: Equatable {
     case night
 }
 
-struct FrequencyRotine: View {
+struct FrequencyRotineView: View {
     @State var sunday: Bool
     @State var monday: Bool
     @State var tuesday: Bool
@@ -138,7 +138,7 @@ struct FrequencyRotine: View {
 }
 
 #Preview {
-    FrequencyRotine(sunday: true,
+    FrequencyRotineView(sunday: true,
                     monday: false,
                     tuesday: true,
                     wednesday: false,

@@ -7,7 +7,7 @@ class HomeNavigationCoordinator: ObservableObject {
     
     enum Destination {
         enum Navigation: String, Identifiable  {
-            case agenda
+            case locbook
             
             var id: String {
                 self.rawValue
@@ -50,8 +50,8 @@ class HomeNavigationCoordinator: ObservableObject {
     @ViewBuilder
     func buildView(page destination: Destination.Navigation) -> some View {
         switch destination {
-        case .agenda:
-            EmptyView()
+        case .locbook:
+            LocbookTasksView()
         }
     }
 
