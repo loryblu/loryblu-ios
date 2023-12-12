@@ -7,25 +7,25 @@ enum Period: Equatable {
 }
 
 struct FrequencyRotineView: View {
-    @State var sunday: Bool
-    @State var monday: Bool
-    @State var tuesday: Bool
-    @State var wednesday: Bool
-    @State var thurday: Bool
-    @State var friday: Bool
-    @State var satuday: Bool
-    @State var morningSet: Bool = true
-    @State var afternoonSet: Bool = false
-    @State var nightSet: Bool = false
-    @State var period: Period = .morning
-    @Binding var title: String
+    
+    // MARK: - Defines
+    
+    struct Props {
+        var title: String
+        let onSubmit: ClosureType.VoidVoid?
+    }
 
+    // MARK: - Properties
+    
+    let props: Props
+    @State var formConfig = FormConfig()
+    
     var body: some View {
         VStack(alignment: .center, spacing: 15) {
             HStack(spacing: 20) {
                 Text("<")
 
-                Text(title)
+                Text(props.title)
                     .font(LBFont.titleAction)
                     .foregroundStyle(LBColor.titlePrimary)
                 Spacer()
@@ -65,17 +65,17 @@ struct FrequencyRotineView: View {
                 }
             }.padding(.bottom,10)
 
-            LBWeekDaysButton(sunday: $sunday,
-                             monday: $monday,
-                             tuesday: $tuesday,
-                             wednesday: $wednesday,
-                             thurday: $thurday,
-                             friday: $friday,
-                             satuday: $satuday)
+            LBWeekDaysButton(sunday: $formConfig.sunday,
+                             monday: $formConfig.monday,
+                             tuesday: $formConfig.tuesday,
+                             wednesday: $formConfig.wednesday,
+                             thurday: $formConfig.thurday,
+                             friday: $formConfig.friday,
+                             satuday: $formConfig.satuday)
             Spacer()
 
             LBButton(title: LBStrings.General.confirm) {
-                print("ok")
+                props.onSubmit?()
             }
         }.padding(24)
     }
@@ -85,65 +85,94 @@ struct FrequencyRotineView: View {
             ImageLabel(image: LBIcon.sun.rawValue,
                        name: LBStrings.FrequencyRotine.morning,
                        font: LBFont.titleTask, segment: .default)
-            .background(morningSet ? LBColor.backgroundCards : LBColor.grayLight)
+            .background(formConfig.morningSetColor)
             .cornerRadius(12.0)
             .onTapGesture {
-                period = .morning
-
-                buttonSelect()
+                formConfig.period = .morning
+                formConfig.buttonSelect()
             }
 
 
             ImageLabel(image: LBIcon.evining.rawValue,
                        name: LBStrings.FrequencyRotine.afternoon,
                        font: LBFont.titleTask, segment: .default)
-            .background(afternoonSet ? LBColor.backgroundAfternoon : LBColor.grayLight)
+            .background(formConfig.afternoonSetColor)
             .cornerRadius(12)
             .onTapGesture {
-                period = .afternoon
-                buttonSelect()
+                formConfig.period = .afternoon
+                formConfig.buttonSelect()
             }
 
             ImageLabel(image: LBIcon.moon.rawValue,
                        name: LBStrings.FrequencyRotine.night,
                        font: LBFont.titleTask, segment: .default)
-            .background(nightSet ? LBColor.text : LBColor.grayLight)
+            .background(formConfig.nightSetColor)
             .cornerRadius(12)
             .onTapGesture {
-                period = .night
-                buttonSelect()
+                formConfig.period = .night
+                formConfig.buttonSelect()
             }
-
         }
         .frame(height: 112)
     }
+}
 
-    func buttonSelect() {
-        if period == .morning {
-            morningSet = true
+
+extension FrequencyRotineView {
+    struct FormConfig {
+        var sunday: Bool = false
+        var monday: Bool = false
+        var tuesday: Bool = false
+        var wednesday: Bool = false
+        var thurday: Bool = false
+        var friday: Bool = false
+        var satuday: Bool = false
+        var morningSet: Bool = true
+        var afternoonSet: Bool = false
+        var nightSet: Bool = false
+        var period: Period = .morning
+        
+        var morningSetColor: Color {
+            morningSet ? LBColor.backgroundCards : LBColor.grayLight
+        }
+        
+        var afternoonSetColor: Color {
+            afternoonSet ? LBColor.backgroundAfternoon : LBColor.grayLight
+        }
+        
+        var nightSetColor: Color {
+            nightSet ? LBColor.text : LBColor.grayLight
+        }
+        
+        mutating func buttonSelect() {
+            morningSet = false
             afternoonSet = false
             nightSet = false
-        }
-        if period == .afternoon {
-            morningSet = false
-            afternoonSet = true
-            nightSet = false
-        }
-        if period == .night {
-            morningSet = false
-            afternoonSet = false
-            nightSet = true
+            
+            switch period {
+            case .morning:
+                morningSet = true
+
+            case .afternoon:
+                afternoonSet = true
+
+            case .night:
+                nightSet = true
+            }
         }
     }
 }
 
+extension FrequencyRotineView.Props: Hashable {
+    static func == (lhs: Self, rhs: Self) -> Bool {
+        return lhs.hashValue == rhs.hashValue
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(String(describing: Self.self))
+    }
+}
+
 #Preview {
-    FrequencyRotineView(sunday: true,
-                    monday: false,
-                    tuesday: true,
-                    wednesday: false,
-                    thurday: true,
-                    friday: false,
-                    satuday: true, title: .constant(LBStrings.Locbook.titleStudy
-))
+    FrequencyRotineView(props: .init(title: "Title", onSubmit: nil))
 }

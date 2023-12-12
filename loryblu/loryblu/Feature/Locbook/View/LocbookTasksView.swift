@@ -1,9 +1,20 @@
 import SwiftUI
 
 struct LocbookTasksView: View {
-    @State private var selectedCard: Int?
-    var title: String = LBStrings.Locbook.titleStudy
+    
+    struct Props {
+        var onNext: ClosureType.VoidVoid?
+    }
+    
+    struct FormConfig {
+        var selectedCard: Int?
+    }
+    
+    let props: Props
+    @State var formConfig: FormConfig = FormConfig()
+
     let tasks: [ImageLabel] = LocbookListTasks.rotine
+
     let columns = [
         GridItem(.flexible(), spacing: 16),
         GridItem(.flexible())
@@ -13,7 +24,7 @@ struct LocbookTasksView: View {
         VStack(spacing: 20) {
             HStack {
                 Text("<")
-                Text(title)
+                Text(LBStrings.Locbook.titleStudy)
                     .font(LBFont.titleAction)
                     .foregroundStyle(LBColor.titlePrimary)
                 Spacer()
@@ -42,13 +53,13 @@ struct LocbookTasksView: View {
             LazyVGrid(columns: columns, alignment: .center, spacing: 24 ) {
                 ForEach(0..<tasks.count) { index in
                     tasks[index]
-                        .overlay(selectedCard == index ?
+                        .overlay(formConfig.selectedCard == index ?
                                  RoundedRectangle(cornerRadius: 12)
                             .inset(by: 0)
                             .strokeBorder(LBColor.titlePrimary, lineWidth: 4) : nil)
-                        .opacity(selectedCard == index ? 1.0 : 0.5)
+                        .opacity(formConfig.selectedCard == index ? 1.0 : 0.5)
                         .onTapGesture {
-                            selectedCard = index
+                            self.formConfig.selectedCard = index
                         }
                 }
                 .frame(minWidth: 148 , minHeight: 156)
@@ -56,16 +67,24 @@ struct LocbookTasksView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .padding(.bottom, 24)
 
-            LBButton(
-                title: LBStrings.General.next,
-                style: .primaryActivated) {
-                    //
-                }
+            LBButton(title: LBStrings.General.next, style: .primaryActivated) {
+                props.onNext?()
+            }
         } 
         .scrollContentBackground(.hidden)
     }
 }
 
+extension LocbookTasksView.Props: Hashable {
+    static func == (lhs: Self, rhs: Self) -> Bool {
+        return lhs.hashValue == rhs.hashValue
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(String(describing: Self.self))
+    }
+}
+
 #Preview {
-    LocbookTasksView(title: LBStrings.Locbook.titleStudy)
+    LocbookTasksView(props: .init())
 }

@@ -36,9 +36,12 @@ struct RegisterChildView: View {
             .navigationTitle(LBStrings.General.empty)
             .padding(.top, -40)
             .fullScreenCover(isPresented: $viewModel.registerSuccess) {
-                DoneView(message: LBStrings.Register.registerFinishedSuccess) {
-                    coordinator.popToRoot()
-                }
+                DoneView(
+                    props: .init(
+                        message: LBStrings.Register.registerFinishedSuccess,
+                        onClose: { coordinator.popToRoot() }
+                    )
+                )
                 .toolbarRole(.editor)
                 .navigationBarBackButtonHidden(true)
             }

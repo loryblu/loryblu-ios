@@ -9,6 +9,7 @@ struct LocbookNavigationStack: View {
     }
     
     @ObservedObject var coordinator: NavigationCoordinator
+    @Environment(\.dismiss) private var dismiss
     
     private let props: Props
     
@@ -32,8 +33,40 @@ struct LocbookNavigationStack: View {
     }
     
     private func pushLocbookActions() {
-        coordinator.pushActionsView()
+        coordinator.pushActionsView(
+            props: LocbookActionsView.Props(
+                task: LocbookTask(),
+                onNext: { pushLocbookTasks() }
+            )
+        )
     }
+    
+    private func pushLocbookTasks() {
+        coordinator.pushTasksView(
+            props: LocbookTasksView.Props(
+                onNext: { pushLocbookRoutine() }
+            )
+        )
+    }
+    
+    private func pushLocbookRoutine() {
+        coordinator.pushTasksFrequency(
+            props: FrequencyRotineView.Props(
+                title: "AAAAA",
+                onSubmit: { pushFinishView() }
+            )
+        )
+    }
+    
+    private func pushFinishView() {
+        coordinator.pushFinishScreen(
+            props: .init(
+                message: "Nova Tarefa criada com sucesso",
+                onClose: { dismiss() }
+            )
+        )
+    }
+
 }
 
 struct LocbookNavigationStack_Previews: PreviewProvider {

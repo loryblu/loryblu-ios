@@ -1,9 +1,13 @@
 import SwiftUI
 
 struct LocbookActionsView: View {
-    var task = LocbookTask()
+    struct Props {
+        var task: LocbookTask
+        let onNext: ClosureType.VoidVoid?
+    }
     
-    @State private var selectedCard: Int?
+    let props: Props
+    @State var formConfig = FormConfig()
     
     private typealias Localizable = LBStrings.Locbook
     
@@ -37,12 +41,10 @@ struct LocbookActionsView: View {
 
             actions
 
-            LBButton(
-                title: LBStrings.General.next,
-                style: .primaryActivated) {
-                    
-                }
-                .padding(.top, 15)
+            LBButton(title: LBStrings.General.next, style: .primaryActivated) {
+                props.onNext?()
+            }
+            .padding(.top, 15)
         }
         .padding(24)
     }
@@ -53,14 +55,14 @@ struct LocbookActionsView: View {
             Group {
                 ForEach(0..<options.count) { index in
                     options[index]
-                        .overlay(selectedCard == index ?
+                        .overlay(formConfig.selectedCard == index ?
                                  RoundedRectangle(cornerRadius: 12)
                             .inset(by: 0)
                             .strokeBorder(LBColor.titlePrimary, lineWidth: 4) : nil
                         )
-                        .opacity(selectedCard == index ? 1.0 : 0.5)
+                        .opacity(formConfig.selectedCard == index ? 1.0 : 0.5)
                         .onTapGesture {
-                            selectedCard = index
+                            formConfig.selectedCard = index
                         }
                 }
             }
@@ -69,6 +71,24 @@ struct LocbookActionsView: View {
     }
 }
 
+extension LocbookActionsView {
+    struct FormConfig {
+        var selectedCard: Int? = nil
+        var task: LocbookTask = .init()
+    }
+}
+
+extension LocbookActionsView.Props: Hashable {
+    static func == (lhs: Self, rhs: Self) -> Bool {
+        return lhs.hashValue == rhs.hashValue
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(String(describing: Self.self))
+    }
+}
+
+
 #Preview {
-    LocbookActionsView()
+    LocbookActionsView(props: .init(task: LocbookTask(), onNext: nil))
 }

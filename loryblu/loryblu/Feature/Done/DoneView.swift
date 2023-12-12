@@ -1,11 +1,14 @@
 import SwiftUI
 
 struct DoneView: View {
-    let message: String
-    var onClose: () -> Void
-
     @Environment(\.dismiss) var dismiss
+    
+    struct Props {
+        let message: String
+        var onClose: ClosureType.VoidVoid?
+    }
 
+    let props: Props
     private let spacing = 50.0
 
     var body: some View {
@@ -14,7 +17,7 @@ struct DoneView: View {
                     HStack {
                         Spacer()
                         Button {
-                            onClose()
+                            props.onClose?()
                             dismiss()
                         } label: {
                             Image(LBIcon.close2.rawValue)
@@ -23,7 +26,8 @@ struct DoneView: View {
                         }
                         .padding(.bottom ,142)
                     }
-                    Text(message)
+                    
+                    Text(props.message)
                         .font(LBFont.head6)
                         .foregroundStyle(LBColor.text)
                         .padding(.bottom, 52)
@@ -38,12 +42,27 @@ struct DoneView: View {
         .navigationTitle(LBStrings.General.empty)
 
     }
-
 }
+
+extension DoneView.Props: Hashable {
+    static func == (lhs: Self, rhs: Self) -> Bool {
+        return lhs.hashValue == rhs.hashValue
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(String(describing: Self.self))
+    }
+}
+
 struct DoneView_Previews: PreviewProvider {
     static var previews: some View {
-        DoneView(message: LBStrings.Register.registerFinishedSuccess) {
-            print("Apertei o botão de fechar")
-        }
+        DoneView(
+            props: DoneView.Props(
+                message: LBStrings.Register.registerFinishedSuccess,
+                onClose: {
+                    print("Apertei o botão de fechar")
+                }
+            )
+        )
     }
 }
