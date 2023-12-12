@@ -8,13 +8,10 @@ class LoginModel: ObservableObject {
         case fail
     }
 
-    @Published var email: String = ""
-    @Published var password: String = ""
-
     private var repository = AuthenticationRepository()
 
     @MainActor
-    func authenticate() {
+    func authenticate(email: String, password: String) {
         Task {
             do {
                 let result = try await repository.login(email: email, password: password)

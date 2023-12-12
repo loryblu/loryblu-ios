@@ -1,7 +1,7 @@
+import Factory
 import Foundation
 
 class AuthenticationRepository {
-
     let network: Network
 
     init(network: Network = Network.shared) {
@@ -26,3 +26,5 @@ class AuthenticationRepository {
         return response
     }
 }
+
+

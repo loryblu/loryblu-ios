@@ -2,40 +2,14 @@ import SwiftUI
 
 struct LoginView: View {
     
-    @State private var isEmailValid: Bool = true
-    @State private var isPasswordNotEmpty: Bool = true
-    @State private var rememberMe: Bool = false
-    @State private var isPasswordHidden: Bool = true
-    @State private var textError = ""
-
-    @State private var showResetPassword: Bool = false
-
-    @State private var showResponsibleRegister: Bool = false
-    @State private var showChildRegister: Bool = false
-
+    @State private var form = FormConfig()
     @StateObject var model: LoginModel
     @EnvironmentObject var coordinator: LoginNavigationStack.NavigationCoordinator
 
     @MainActor func tryLogin() {
-        if !ValidateRules.validate(email: model.email) {
-            isEmailValid = false
-            isPasswordNotEmpty = true
-            textError =  LBStrings.Login.emailNotExists
-        } else if model.password.isEmpty {
-            textError = LBStrings.Login.requiredField
-            isEmailValid = true
-            isPasswordNotEmpty = false
-        } else if !model.password.isEmpty {
-            textError = ""
-            isPasswordNotEmpty = true
+        if form.validateLogin() {
+            model.authenticate(email: form.email, password: form.password)
         }
-        if !model.password.isEmpty && ValidateRules.validate(email: model.email) {
-            textError = ""
-            isPasswordNotEmpty = true
-            isEmailValid = true
-        }
-
-        model.authenticate()
     }
 
     var body: some View {
@@ -54,40 +28,39 @@ struct LoginView: View {
                     style: .common,
                     icon: LBIcon.mail,
                     title: LBStrings.Login.email,
-                    text: $model.email,
-                    textFiledState: isEmailValid ? .active : .alert)
+                    text: $form.email,
+                    textFiledState: form.isEmailValid ? .active : .alert)
                 .textInputAutocapitalization(.never)
 
                 LBTextField(
                     style: .password,
                     icon: LBIcon.lock,
                     title: LBStrings.Login.password,
-                    text: $model.password,
-                    textFiledState: isPasswordNotEmpty ? .active : .alert)
+                    text: $form.password,
+                    textFiledState: form.isPasswordNotEmpty ? .active : .alert)
                 .textInputAutocapitalization(.never)
             }
 
             VStack(alignment: .trailing) {
-                Text(textError)
+                Text(form.textError)
                     .font(LBFont.caption)
                     .foregroundColor(LBColor.error)
                     .frame(maxWidth: .infinity, alignment: .trailing)
 
                 HStack {
-                    LBToggle(isActived: $rememberMe)
+                    LBToggle(isActived: $form.rememberMe)
                     // Metodo pra deixar a senha salva
                     Text(LBStrings.Login.remeber)
                         .font(LBFont.caption)
                         .multilineTextAlignment(.trailing)
                 }
-            }.padding(.top, 10)
+            }
+            .padding(.top, 10)
 
-            LBButton(
-                title: LBStrings.Login.enter,
-                action: {
+            LBButton(title: LBStrings.Login.enter) {
                 self.tryLogin()
-            })
-                .padding(.top, 51)
+            }
+            .padding(.top, 51)
 
             HStack {
                 VStack {
@@ -144,6 +117,42 @@ struct LoginView: View {
     }
 }
 
+extension LoginView {
+    struct FormConfig {
+        var email: String = "dedeexe33@gmail.com"
+        var password: String = "Dede@1234"
+        
+        var isEmailValid: Bool = true
+        var isPasswordNotEmpty: Bool = true
+        var rememberMe: Bool = false
+        var isPasswordHidden: Bool = true
+        var textError = ""
+        var showResetPassword: Bool = false
+        var showResponsibleRegister: Bool = false
+        var showChildRegister: Bool = false
+        
+        mutating func validateLogin() -> Bool {
+            if !ValidateRules.validate(email: email) {
+                isEmailValid = false
+                isPasswordNotEmpty = true
+                textError =  LBStrings.Login.emailNotExists
+                return false
+            }
+            
+            if password.isEmpty {
+                textError = LBStrings.Login.requiredField
+                isEmailValid = true
+                isPasswordNotEmpty = false
+                return false
+            }
+
+            isEmailValid = true
+            textError = ""
+            isPasswordNotEmpty = true
+            return true
+        }
+    }
+}
 
 // MARK: - Factory
 extension LoginView {

@@ -4,8 +4,8 @@ import SwiftUI
 class LocbookNavigationCoordinator: ObservableObject {
         
     enum Destination {
-        enum Navigation: Hashable {
-            case register(LocbookRegisterView.Config)
+        enum Navigation: Hashable {            
+            case register(LocbookRegisterView.Props)
             case actions
         }
     }
@@ -39,8 +39,8 @@ class LocbookNavigationCoordinator: ObservableObject {
     @ViewBuilder
     func buildView(page destination: Destination.Navigation) -> some View {
         switch destination {
-        case let .register(config):
-            LocbookRegisterView(config: config)
+        case let .register(props):
+            LocbookRegisterView(props: props)
         case .actions:
             LocbookActionsView()
         }
