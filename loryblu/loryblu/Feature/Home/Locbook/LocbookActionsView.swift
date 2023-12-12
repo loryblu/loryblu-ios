@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct LocbookActionsView: View {
-    var task = LocbookTask()
+    private(set) var task = LocbookTask()
     @State private var selectedCard: Int?
+    @State private var categoryType: String = ""
     typealias Localizable = LBStrings.Locbook
     let options: [ImageLabel] = [
         ImageLabel(image: LBIcon.dailyStudy.rawValue, name: Localizable.NameImage.loryStudy, font: LBFont.titleAction, segment: .locbook),
@@ -44,7 +45,7 @@ struct LocbookActionsView: View {
             LBButton(
                 title: LBStrings.General.next,
                 style: .primaryActivated) {
-                    
+                    nextpage()
                 }
                 .padding(.top, 15)
         }
@@ -69,6 +70,14 @@ struct LocbookActionsView: View {
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: 218)
+        }
+    }
+
+    func nextpage() {
+        if selectedCard == 0 {
+            print("loryStudy")
+        } else {
+            print("loryRotine")
         }
     }
 }

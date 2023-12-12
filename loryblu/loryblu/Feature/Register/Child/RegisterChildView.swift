@@ -11,11 +11,9 @@ import WebKit
 struct RegisterChildView: View {
     @StateObject var viewModel: RegisterChildViewModel
     @EnvironmentObject var coordinator: LoginNavigationStack.NavigationCoordinator
-    
     @FocusState private var focusedField: RegisterChildViewModel.FocusedField?
     @State private var presented: Bool = false
     @State private var date: Date?
-    var child: UserRegister?
     @State private var showDone: Bool = false
     @State private var isPresentWebView = false
 
