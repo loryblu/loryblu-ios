@@ -11,12 +11,8 @@ struct HomeNavigationStack: View {
     }
     
     var body: some View {
-        NavigationStack(path: $coordinator.path) {
+        NavigationStack {
             coordinator.buildView(cover: .home)
-                .navigationDestination(for: NavigationCoordinator.Destination.Navigation.self) { destination in
-                    coordinator.buildView(page: destination)
-                        .environmentObject(coordinator)
-                }
                 .fullScreenCover(item: $coordinator.fullScreen) { destination in
                     coordinator.buildView(cover: destination)
                 }

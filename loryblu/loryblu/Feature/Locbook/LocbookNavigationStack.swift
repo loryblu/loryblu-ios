@@ -3,18 +3,25 @@ import SwiftUI
 struct LocbookNavigationStack: View {
     typealias NavigationCoordinator = LocbookNavigationCoordinator
     
-    @ObservedObject var coordinator: NavigationCoordinator
-    @EnvironmentObject var appData: AppData
+    struct Props {
+        let onFinish: ClosureType.VoidVoid?
+        let onDismiss: ClosureType.VoidVoid?
+    }
     
-    init() {
+    @ObservedObject var coordinator: NavigationCoordinator
+    
+    private let props: Props
+    
+    init(props: Props) {
         coordinator = .init()
+        self.props = props
     }
     
     var body: some View {
         NavigationStack(path: $coordinator.path) {
             coordinator.buildView(
                 page: .register(
-                    .init(onNewTask: { gotoLocbookActions() })
+                    .init(onNewTask: { pushLocbookActions() })
                 )
             )
             .navigationDestination(for: NavigationCoordinator.Destination.Navigation.self) { destination in
@@ -24,14 +31,14 @@ struct LocbookNavigationStack: View {
         }
     }
     
-    private func gotoLocbookActions() {
-        
+    private func pushLocbookActions() {
+        coordinator.pushActionsView()
     }
 }
 
 struct LocbookNavigationStack_Previews: PreviewProvider {
     static var previews: some View {
-        LocbookNavigationStack()
+        LocbookNavigationStack(props: .init(onFinish: nil, onDismiss: nil))
             .environmentObject(AppData())
     }
 }

@@ -27,7 +27,7 @@ struct AppEntryPoint: View {
                 deepLinkHandler.handleDeepLink(with: url, appData: appData)
             }
     }
-    
+
     private var homeNavitationStack: some View {
         HomeNavigationStack()
             .environmentObject(appData)
