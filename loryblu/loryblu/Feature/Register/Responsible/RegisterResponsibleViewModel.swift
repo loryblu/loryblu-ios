@@ -1,3 +1,4 @@
+import Factory
 import Foundation
 
 class RegisterResponsibleViewModel: ObservableObject {
@@ -18,7 +19,7 @@ class RegisterResponsibleViewModel: ObservableObject {
 
     func makeRegisterChildViewModel() -> RegisterChildViewModel {
         saveRegister()
-        return RegisterChildViewModel(user: user)
+        return RegisterChildViewModel(user: user, container: Container.shared)
     }
 
     func showError() {

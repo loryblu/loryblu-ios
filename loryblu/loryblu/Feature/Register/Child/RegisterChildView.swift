@@ -1,3 +1,4 @@
+import Factory
 import SwiftUI
 import WebKit
 
@@ -158,7 +159,10 @@ struct RegisterChildView: View {
 
 struct RegisterChildView_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterChildView(viewModel: RegisterChildViewModel(user: UserRegister()))
-            .environmentObject(LoginNavigationStack.NavigationCoordinator())
+        RegisterChildView(viewModel: RegisterChildViewModel(
+            user: UserRegister(),
+            container: Container()
+        ))
+        .environmentObject(LoginNavigationStack.NavigationCoordinator())
     }
 }

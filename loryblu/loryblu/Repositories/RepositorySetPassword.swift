@@ -1,3 +1,4 @@
+import Factory
 import Foundation
 
 class RepositorySetPassword {

@@ -8,7 +8,7 @@ class LoginModel: ObservableObject {
         case fail
     }
 
-    private var repository = AuthenticationRepository()
+    private var repository = Container.shared.autenticationRepository()
 
     @MainActor
     func authenticate(email: String, password: String) {

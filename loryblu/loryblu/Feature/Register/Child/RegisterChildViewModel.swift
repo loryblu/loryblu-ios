@@ -1,3 +1,4 @@
+import Factory
 import Foundation
 
 class RegisterChildViewModel: ObservableObject {
@@ -15,15 +16,15 @@ class RegisterChildViewModel: ObservableObject {
     @Published var birthDate: Date?
 
     private(set) var user: UserRegister
+    private let repository: RegisterRepository
 
     var isValid: Bool {
         ValidateRules.validateName(nameChild) && birthDate != nil && agreePrivacy
     }
 
-    private var repository = RegisterRepository()
-
-    init(user: UserRegister) {
+    init(user: UserRegister, container: Container) {
         self.user = user
+        self.repository = container.registerRepository()
     }
 
     func showError() {

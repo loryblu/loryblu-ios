@@ -1,10 +1,11 @@
+import Factory
 import Foundation
 
 class RegisterRepository {
 
     let network: Network
 
-    init(network: Network = Network.shared) {
+    init(network: Network) {
         self.network = network
     }
 

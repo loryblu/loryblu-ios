@@ -1,16 +1,22 @@
+import Factory
 import Foundation
 import SwiftUI
 
-enum FechtEmail {
-    case success
-    case error
-    case idle
-}
-
 @MainActor
 class ResetPasswordModel: ObservableObject {
+    enum FechtEmail {
+        case success
+        case error
+        case idle
+    }
+    
     @Published var fecht: FechtEmail = .idle
-    var service = RepositorySetPassword(network: Network.shared)
+    var service: RepositorySetPassword
+    
+    init(fecht: FechtEmail = .idle, container: Container) {
+        self.fecht = fecht
+        self.service = container.setPasswordRepository()
+    }
 
     func recoveryPassowrd(with email: String) async {
         let isValid = await service.recoveryPassword(with: email)

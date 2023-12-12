@@ -10,13 +10,25 @@ extension Container {
     
     var network: Factory<Network> {
         self {
-            Network.shared
+            Network()
         }
     }
     
     var autenticationRepository: Factory<AuthenticationRepository> {
-        self {
+        Factory(self) {
             AuthenticationRepository(network: self.network())
+        }
+    }
+    
+    var setPasswordRepository: Factory<RepositorySetPassword> {
+        Factory(self) {
+            RepositorySetPassword(network: self.network())
+        }
+    }
+    
+    var registerRepository: Factory<RegisterRepository> {
+        Factory(self) {
+            RegisterRepository(network: self.network())
         }
     }
 }

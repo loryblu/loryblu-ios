@@ -3,20 +3,11 @@ import Foundation
 class Network {
     // MARK: - Property(ies).
     private let session: URLSession
-    static var shared: Network {
-        if let instance = instance {
-            return instance
-        }
-
-        let network = Network()
-        instance = network
-        return network
-    }
 
     static private var instance: Network?
 
     // MARK: - Initialization.
-    private init() {
+    init() {
         session = URLSession.shared
     }
 
