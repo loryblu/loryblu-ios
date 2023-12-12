@@ -11,7 +11,7 @@ class AppData: ObservableObject {
     @Published var token: String = ""
     @Published var loginStatus: LoginStatus = .notLogged
     
-    func updateLoginState() {
+    func setLoginStatusLogged() {
         Task { @MainActor in
             loginStatus = .logged
         }

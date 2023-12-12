@@ -59,8 +59,7 @@ class HomeNavigationCoordinator: ObservableObject {
     func buildView(cover destination: Destination.FullScreenPage) -> some View {
         switch destination {
         case .home:
-            LoginView.build()
-                .environmentObject(self)
+            HomeView()
         }
     }
 

@@ -1,3 +1,4 @@
+import Factory
 import Foundation
 
 class LoginModel: ObservableObject {
@@ -9,21 +10,16 @@ class LoginModel: ObservableObject {
 
     @Published var email: String = ""
     @Published var password: String = ""
-    @Published var status: LoginStatus = .none
 
     private var repository = AuthenticationRepository()
 
     @MainActor
     func authenticate() {
-        status = .none
-
         Task {
             do {
                 let result = try await repository.login(email: email, password: password)
-                status = .success
-                print("Foi ... deu certo o login")
+                Container.shared.appData().setLoginStatusLogged()
             } catch {
-                status = .fail
                 print("Deu errado!")
             }
         }

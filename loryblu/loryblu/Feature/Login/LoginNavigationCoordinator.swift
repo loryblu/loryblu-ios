@@ -52,10 +52,6 @@ class LoginNavigationCoordinator: ObservableObject {
         navigate(to: .setNewPassword)
     }
     
-    func showHome() {
-        navigate(to: .setNewPassword)
-    }
-    
     func popToRoot() {
         path.removeLast(path.count)
     }

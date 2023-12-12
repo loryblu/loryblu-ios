@@ -82,12 +82,6 @@ struct LoginView: View {
                 }
             }.padding(.top, 10)
 
-            if model.status == .fail {
-                Text("Login falhou. 😰")
-            } else if model.status == .success {
-                Text("Deu bom hein...... ☺️")
-            }
-
             LBButton(
                 title: LBStrings.Login.enter,
                 action: {

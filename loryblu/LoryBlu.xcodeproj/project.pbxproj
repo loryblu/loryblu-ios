@@ -338,7 +338,7 @@
 		8C5734212A6C21490052B955 /* Feature */ = {
 			isa = PBXGroup;
 			children = (
-				8C669C422AA011650028B436 /* Models */,
+				8C669C422AA011650028B436 /* Entities */,
 				8C2A68492AF54A4800B74295 /* Home */,
 				8CE004872AC1C5D00037F792 /* Done */,
 				334D0AB12A8AF93D003881ED /* ResetPassword */,
@@ -358,7 +358,7 @@
 			path = Register;
 			sourceTree = "<group>";
 		};
-		8C669C422AA011650028B436 /* Models */ = {
+		8C669C422AA011650028B436 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
 				911B843D2AD1C19D00F59DD2 /* Authentication.swift */,
@@ -367,7 +367,7 @@
 				91361A252ACEF06B00700E36 /* ResponseMessage.swift */,
 				8C669C402AA011480028B436 /* UserRegister.swift */,
 			);
-			path = Models;
+			path = Entities;
 			sourceTree = "<group>";
 		};
 		8C9CBCF82A7ACF46001DBD35 /* Login */ = {
