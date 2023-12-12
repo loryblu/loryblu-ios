@@ -8,24 +8,40 @@
 import UIKit
 
 struct LocbookTask {
-    var id: Int?
-    var shift: String?
-    var frequency: [String]?
+    enum Shift {
+        case morning
+        case afternoon
+        case night
+    }
+
+    enum Frequency {
+        case sun
+        case mon
+        case tue
+        case wed
+        case thu
+        case fri
+        case sat
+    }
+
+    var childrenId: Int?
+    var shift: Shift?
+    var frequency: [Frequency]?
     var order: Int?
     var categoryId: String?
     var categoryTitle: String?
     var updatedAt: Date?
 
     init(
-        id: Int? = nil,
-        shift: String? = nil,
-        frequency: [String]? = nil,
+        childrenId: Int? = nil,
+        shift: Shift? = nil,
+        frequency: [Frequency]? = nil,
         order: Int? = nil,
         categoryId: String? = nil,
         categoryTitle: String? = nil,
         updatedAt: Date? = nil
     ) {
-        self.id = id
+        self.childrenId = childrenId
         self.shift = shift
         self.frequency = frequency
         self.order = order
