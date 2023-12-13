@@ -3,6 +3,7 @@ import SwiftUI
 struct LocbookTasksView: View {
     
     struct Props {
+        let task: LocbookTask
         var onNext: ClosureType.VoidVoid?
     }
     
@@ -86,5 +87,5 @@ extension LocbookTasksView.Props: Hashable {
 }
 
 #Preview {
-    LocbookTasksView(props: .init())
+    LocbookTasksView(props: .init(task: LocbookTask()))
 }

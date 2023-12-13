@@ -65,6 +65,7 @@
 		911B843C2AD1C0B200F59DD2 /* AuthenticationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911B843B2AD1C0B200F59DD2 /* AuthenticationRepository.swift */; };
 		911B843E2AD1C19D00F59DD2 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911B843D2AD1C19D00F59DD2 /* Authentication.swift */; };
 		911B84402AD1C39100F59DD2 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911B843F2AD1C39100F59DD2 /* LoginModel.swift */; };
+		912BC3842B2934E800B7F336 /* LocbookActionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912BC3832B2934E800B7F336 /* LocbookActionModel.swift */; };
 		9132A8932B083B8E00106524 /* LoginNavigationStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9132A8922B083B8E00106524 /* LoginNavigationStack.swift */; };
 		9132A8952B083BE600106524 /* LoginNavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9132A8942B083BE600106524 /* LoginNavigationCoordinator.swift */; };
 		91361A1D2ACCBE1900700E36 /* RegisterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91361A1C2ACCBE1900700E36 /* RegisterRepository.swift */; };
@@ -143,6 +144,7 @@
 		911B843B2AD1C0B200F59DD2 /* AuthenticationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationRepository.swift; sourceTree = "<group>"; };
 		911B843D2AD1C19D00F59DD2 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 		911B843F2AD1C39100F59DD2 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		912BC3832B2934E800B7F336 /* LocbookActionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocbookActionModel.swift; sourceTree = "<group>"; };
 		9132A8922B083B8E00106524 /* LoginNavigationStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNavigationStack.swift; sourceTree = "<group>"; };
 		9132A8942B083BE600106524 /* LoginNavigationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNavigationCoordinator.swift; sourceTree = "<group>"; };
 		91361A1C2ACCBE1900700E36 /* RegisterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRepository.swift; sourceTree = "<group>"; };
@@ -454,6 +456,15 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		912BC3822B2934CB00B7F336 /* Action */ = {
+			isa = PBXGroup;
+			children = (
+				8C2A68512AF959AB00B74295 /* LocbookActionsView.swift */,
+				912BC3832B2934E800B7F336 /* LocbookActionModel.swift */,
+			);
+			path = Action;
+			sourceTree = "<group>";
+		};
 		91361A1B2ACCBDE400700E36 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
@@ -503,7 +514,7 @@
 			isa = PBXGroup;
 			children = (
 				8C2A684F2AF5E04A00B74295 /* LocbookRegisterView.swift */,
-				8C2A68512AF959AB00B74295 /* LocbookActionsView.swift */,
+				912BC3822B2934CB00B7F336 /* Action */,
 				8C2A68552AF9B9A000B74295 /* LocbookTasksView.swift */,
 				335E21A62AFF132800700440 /* FrequencyRotineView.swift */,
 			);
@@ -613,6 +624,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				33F87E902B21528000F62041 /* TaskRepository.swift in Sources */,
+				912BC3842B2934E800B7F336 /* LocbookActionModel.swift in Sources */,
 				91B4AC282AD114D3003A7FE5 /* NavigationPathExtension.swift in Sources */,
 				91664AE22B0C003A005BF5CA /* HomeNavigationStack.swift in Sources */,
 				8CE004892AC1C6680037F792 /* DoneView.swift in Sources */,

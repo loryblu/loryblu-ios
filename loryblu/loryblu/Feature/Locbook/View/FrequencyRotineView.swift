@@ -11,8 +11,12 @@ struct FrequencyRotineView: View {
     // MARK: - Defines
     
     struct Props {
-        var title: String
+        var task: LocbookTask
         let onSubmit: ClosureType.VoidVoid?
+        
+        var title: String {
+            task.categoryTitle ?? ""
+        }
     }
 
     // MARK: - Properties
@@ -174,5 +178,7 @@ extension FrequencyRotineView.Props: Hashable {
 }
 
 #Preview {
-    FrequencyRotineView(props: .init(title: "Title", onSubmit: nil))
+    FrequencyRotineView(
+        props: .init(task: LocbookTask(categoryTitle: "Title of the task"), onSubmit: nil)
+    )
 }

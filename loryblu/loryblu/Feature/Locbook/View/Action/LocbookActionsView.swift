@@ -1,26 +1,28 @@
 import SwiftUI
 
 struct LocbookActionsView: View {
+    
+    // MARK: - Definitions
+    
     struct Props {
         var task: LocbookTask
-        let onNext: ClosureType.VoidVoid?
+        let onNext: ClosureType.LocbookTaskVoid?
     }
+    
+    // MARK: - Private propertes
+    
+    private let model = LocbookActionModel()
+    
+    // MARK: - Properties
     
     let props: Props
     @State var formConfig = FormConfig()
     
-    private typealias Localizable = LBStrings.Locbook
-    
-    let options: [ImageLabel] = [
-        ImageLabel(image: LBIcon.dailyStudy.rawValue, name: Localizable.NameImage.loryStudy, font: LBFont.titleAction, segment: .locbook),
-        ImageLabel(image: LBIcon.dailyRotine.rawValue, name: Localizable.NameImage.loryRotine, font: LBFont.titleAction, segment: .locbook)
-    ]
-
     var body: some View {
         VStack(alignment: .center, spacing: 15) {
             HStack {
                 Text("<")
-                Text(Localizable.title)
+                Text(LBStrings.Locbook.title)
                     .font(LBFont.titleAction)
                     .foregroundStyle(LBColor.titlePrimary)
 
@@ -41,8 +43,8 @@ struct LocbookActionsView: View {
 
             actions
 
-            LBButton(title: LBStrings.General.next, style: .primaryActivated) {
-                props.onNext?()
+            LBButton(title: LBStrings.General.next, style: .primaryActivated) {                
+                props.onNext?(formConfig.task)
             }
             .padding(.top, 15)
         }
@@ -53,8 +55,8 @@ struct LocbookActionsView: View {
     var actions: some View {
         VStack(spacing: 24) {
             Group {
-                ForEach(0..<options.count) { index in
-                    options[index]
+                ForEach(0..<model.options.count) { index in
+                    model.options[index]
                         .overlay(formConfig.selectedCard == index ?
                                  RoundedRectangle(cornerRadius: 12)
                             .inset(by: 0)
@@ -63,11 +65,21 @@ struct LocbookActionsView: View {
                         .opacity(formConfig.selectedCard == index ? 1.0 : 0.5)
                         .onTapGesture {
                             formConfig.selectedCard = index
+                            formConfig.task.categoryTitle = model.actions[index].name
                         }
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: 218)
         }
+    }
+    
+    // MARK: - Initializers
+    
+    init(props: Props, formConfig: FormConfig = FormConfig()) {
+        var config = formConfig
+        config.task = props.task
+        self.props = props
+        self._formConfig = State(initialValue: config)
     }
 }
 
