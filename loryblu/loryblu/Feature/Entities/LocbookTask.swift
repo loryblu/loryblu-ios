@@ -1,10 +1,3 @@
-//
-//  LocbookTask.swift
-//  LoryBlu
-//
-//  Created by Suh on 29/11/23.
-//
-
 import UIKit
 
 struct LocbookTask {

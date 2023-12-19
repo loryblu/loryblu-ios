@@ -20,11 +20,6 @@ struct LoginNavigationStack: View {
                 .fullScreenCover(item: $coordinator.fullScreen) { destination in
                     coordinator.buildView(cover: destination)
                 }
-                .onReceive(appData.$loginStatus) { status in
-                    if status == .logged {
-                        coordinator.showHome()
-                    }
-                }
         }
     }
 }

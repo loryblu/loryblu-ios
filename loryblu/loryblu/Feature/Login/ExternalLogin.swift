@@ -1,10 +1,3 @@
-//
-//  ExternalLogin.swift
-//  LoryBlu
-//
-//  Created by Paulo Pinheiro on 7/25/23.
-//
-
 import SwiftUI
 
 struct ExternalLogin: View {

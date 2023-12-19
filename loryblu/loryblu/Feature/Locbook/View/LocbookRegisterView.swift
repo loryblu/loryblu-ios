@@ -1,13 +1,13 @@
-//
-//  LocbookRegisterView.swift
-//  LoryBlu
-//
-//  Created by Suh on 03/11/23.
-//
-
 import SwiftUI
 
 struct LocbookRegisterView: View {
+    
+    struct Props {
+        let onNewTask: ClosureType.VoidVoid?
+    }
+    
+    let props: Props
+    
     var body: some View {
         VStack(alignment: .center){
             HStack {
@@ -35,7 +35,7 @@ struct LocbookRegisterView: View {
                     text: LBStrings.Locbook.button,
                     icon: LBIcon.plus
                 ) {
-                    //
+                    self.props.onNewTask?()
                 }
             }.padding(.top, 44)
 
@@ -44,6 +44,16 @@ struct LocbookRegisterView: View {
     }
 }
 
+extension LocbookRegisterView.Props: Hashable {
+    static func == (lhs: LocbookRegisterView.Props, rhs: LocbookRegisterView.Props) -> Bool {
+        return lhs.hashValue == rhs.hashValue
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(String(describing: Self.self))
+    }
+}
+
 #Preview {
-    LocbookRegisterView()
+    LocbookRegisterView(props: .init(onNewTask: nil))
 }

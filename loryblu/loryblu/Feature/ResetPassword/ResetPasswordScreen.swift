@@ -1,3 +1,4 @@
+import Factory
 import SwiftUI
 
 struct ResetPasswordScreen: View {
@@ -58,12 +59,12 @@ struct ResetPasswordScreen: View {
 
 extension ResetPasswordScreen {
     static func build() -> ResetPasswordScreen {
-        ResetPasswordScreen(model: ResetPasswordModel())
+        ResetPasswordScreen(model: .init(fecht: .idle, container: Container.shared))
     }
 }
 
 struct ForgotPasswordScreen_Previews: PreviewProvider {
     static var previews: some View {
-        ResetPasswordScreen(model: ResetPasswordModel())
+        ResetPasswordScreen(model: .init(container: Container()))
     }
 }

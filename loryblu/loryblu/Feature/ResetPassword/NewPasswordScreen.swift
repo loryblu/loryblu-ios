@@ -69,13 +69,19 @@ struct NewPasswordScreen: View {
         .fullScreenCover(isPresented: $model.goToLogin) {
             switch model.state {
             case .success:
-                DoneView(message: LBStrings.SetPassword.successChangePassword) {
-                    dismiss()
-                }
+                DoneView(
+                    props: .init(
+                        message: LBStrings.SetPassword.successChangePassword,
+                        onClose: { dismiss() }
+                    )
+                )
             case .failure:
-                DoneView(message: LBStrings.SetPassword.failureChangePassword) {
-                    dismiss()
-                }
+                DoneView(
+                    props: .init(
+                        message: LBStrings.SetPassword.failureChangePassword,
+                        onClose: { dismiss() }
+                    )
+                )
             }
         }
     }

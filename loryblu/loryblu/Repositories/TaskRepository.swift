@@ -4,7 +4,7 @@ class TaskRepository {
 
     let network: Network
 
-    init(network: Network = Network.shared) {
+    init(network: Network) {
         self.network = network
     }
 
