@@ -1,0 +1,198 @@
+// ==================== General ====================
+
+"send" = "Enviar";
+"next" = "Proximo";
+"hello" = "Seja Bem Vindo!! 💙 ";
+"email" = "E-mail";
+"password" = "Senha";
+"confirm" = "Confirmar";
+"empty" = "";
+
+// ====================  Rules Password  =========================
+
+"rule_title" = "A senha deve conter:";
+"rule1" = "Pelo menos 8 caracteres";
+"rule2" = "Pelo menos uma letra maiúscula";
+"rule3" = "Letra minúsculas";
+"rule4" = "Pelo menos um número";
+"rule5" = "Pelo menos um caractere especial: ! @ # $ % & *";
+
+// ==================== Register =========================
+
+"register_responsible" = "Cadastro do responsável";
+"register_child" = "Cadastro da criança";
+"register_name" = "Nome Completo";
+"register_confirm_password" = "Confirmar senha";
+"register_birthday" = "Data de nascimento";
+"register_gender_man" = "Menino";
+"register_gender_woman" = "Menina";
+"register_button" = "cadastrar";
+"register_agree_privacy" = "Eu concordo com a";
+"register_link_agree" = "política de privacidade";
+"register_link_navigationTitle" = "Política de Privacidade";
+"register_finished_success" = "Cadastro efetuado com sucesso!";
+"textError_name" = "*Nome Inválido";
+"textError_email" = "*E-mail inválido";
+"textError_confirm_password" = "*As senhas devem ser idênticas";
+"textError_birthday" = "*Selecione uma data";
+"textError_gender" = "*Selecione um botão";
+"textError_agree" = "*Aceite a política de privacidade.";
+
+
+// ====================  Set Password  =========================
+
+"setPassword_forget" = "Esqueceu a senha?";
+"setPassword_create" = "Criar nova senha";
+"setPassword_reset" = "Redefina sua senha aqui";
+"setPassword_error" = "Não foi possivel encontrar seu e-mail";
+"setPassword_success" = "E-mail enviado com sucesso";
+"setPassword_alert" = "Você será deslogado de todos os dispositivos e precisará logar com a nova senha";
+"setPassword_button_reset" = "redefinir senha";
+"setPassword_new_password" = "Nova senha";
+"setPassword_repeat_password" = "Repetir senha";
+"setPassword_must_be_equal" = "As senhas devem ser idênticas";
+"success_change_password" = "Redefinição de senha concluída com sucesso";
+"failure_change_password" = "Token expirado ou inválido";
+
+// ====================  Login  =========================
+
+"login_email" = "Email";
+"login_password" = "Senha";
+"login_email_not_exists" = "*E-mail inexistente";
+"login_required_field" = "*Campo obrigatório";
+"login_enter" = "entrar";
+"login_or_divider" = "ou";
+"login_forgot_password" = "Esqueceu sua senha ?";
+"login_dont_have_an_account" = "Não tem uma conta ?";
+"login_register_now" = "Registrar agora";
+"login_remember" = "Lembrar";
+"login_title" = "Login";
+
+// ====================  Gender Button  =========================
+
+"boy" = "Menino";
+"girl" = "Menina";
+
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dd7c4cd (Add localizable names image and text screens)
+// ==================== Home =========================
+
+"hello_title" = "Olá,";
+"locbook" = "Diário de Bordo";
+"trail_history" = "Trilha de Histórias";
+"trail_games" = "Trilha de Jogos";
+
+// ==================== Locbook =========================
+
+"locbook_title" = "Diário de Bordo";
+"locbook_button" = "Cadastrar Tarefas";
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 82a2bb3 (Add texts the label the imagems in LBStrings.)
+"locbook_action_title" = "Selecione uma ação:";
+"locbook_task_title" = "Selecione uma tarefa:";
+"locbook_checklist_title" = "Selecione o turno e a frequência da rotina";
+"locbook_checklist_shift" = "Selecione um turno:";
+"locbook_checklist_frequency_title" = "Selecione uma frequência:";
+"locbook_checklist_frequency" = "Você pode selecionar mais de um dia.";
+<<<<<<< HEAD
+
+// ==================== imagems =========================
+
+"image_action_study" = "LoryEstudioso";
+"image_action_rotine" = "LoryRotina";
+"image_bathTime" = "Hora do Banho";
+"image_brushTeeth" = "Escovar os Dentes";
+"image_breakfast" = "Café da Manhã";
+"image_lunch" = "Almoço";
+"image_snack" = "Hora do Lanche";
+"image_dinner" = "Jantar";
+"image_water" = "Beber Água";
+"image_play" = "Hora de Brincar";
+"image_watchtv" = "TV Liberada";
+"image_tvgame" = "Vídeo Game Liberado";
+"image_school" = "Escola";
+"image_reinforcement" = "Reforço Escolar";
+"image_languages" = "Idiomas";
+"image_sport" = "Esporte";
+"image_reading" = "Hora da Leitura";
+"image_music" = "Musicoterapia";
+"image_psychologist" = "Psicólogo";
+"image_speech_therapist" = "Fonoaudiologo";
+"image_pedagogue" = "Pedagoga";
+"image_occupational_therapist" = "Terapia Ocupacional";
+"image_morning" = "Manhã";
+"image_afternoon" = "Tarde";
+"image_night" = "Noite";
+=======
+
+>>>>>>> 795885b (Create component imageLabel.)
+=======
+"action_title" = "Selecione uma ação:";
+"action_study" = "LoryEstudioso";
+"action_rotine" = "LoryRotina";
+"task_title" = "Selecione uma tarefa:";
+"checklist_shift_title" = "Selecione o turno e a frequência da rotina";
+"checklist_shift" = "Selecione um turno:";
+"checklist_frequency_title" = "Selecione uma frequência:";
+"checklist_frequency" = "Você pode selecionar mais de um dia.";
+
+// ==================== imagems =========================
+
+"bathTime" = "Hora do Banho";
+"brushTeeth" = "Escovar os Dentes";
+"breakfast" = "Café da Manhã";
+"lunch" = "Almoço";
+"snack" = "Hora do Lanche";
+"dinner" = "Jantar";
+"water" = "Beber água";
+"play" = "Hora de Brincar";
+"watchtv" = "TV Liberada";
+"tvgame" = "Hora do lanche";
+"school" = "Escola";
+"reinforcement" = "Reforço Escolar";
+"languages" = "Idiomas";
+"sport" = "Esporte";
+"reading" = "Hora da Leitura";
+"music" = "Musicoterapia";
+"psychologist" = "Psicólogo";
+"speechTherapist" = "Fonoaudiologo";
+"pedagogue" = "Pedagoga";
+"occupationalTherapist" = "Terapia Ocupacional";
+"morning" = "Manhã";
+"afternoon" = "Tarde";
+"night" = "Noite";
+>>>>>>> dd7c4cd (Add localizable names image and text screens)
+=======
+
+// ==================== imagems =========================
+
+"image_action_study" = "LoryEstudioso";
+"image_action_rotine" = "LoryRotina";
+"image_bathTime" = "Hora do Banho";
+"image_brushTeeth" = "Escovar os Dentes";
+"image_breakfast" = "Café da Manhã";
+"image_lunch" = "Almoço";
+"image_snack" = "Hora do Lanche";
+"image_dinner" = "Jantar";
+"image_water" = "Beber Água";
+"image_play" = "Hora de Brincar";
+"image_watchtv" = "TV Liberada";
+"image_tvgame" = "Vídeo Game Liberado";
+"image_school" = "Escola";
+"image_reinforcement" = "Reforço Escolar";
+"image_languages" = "Idiomas";
+"image_sport" = "Esporte";
+"image_reading" = "Hora da Leitura";
+"image_music" = "Musicoterapia";
+"image_psychologist" = "Psicólogo";
+"image_speech_therapist" = "Fonoaudiologo";
+"image_pedagogue" = "Pedagoga";
+"image_occupational_therapist" = "Terapia Ocupacional";
+"image_morning" = "Manhã";
+"image_afternoon" = "Tarde";
+"image_night" = "Noite";
+>>>>>>> 82a2bb3 (Add texts the label the imagems in LBStrings.)

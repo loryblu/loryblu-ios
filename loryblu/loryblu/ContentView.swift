@@ -1,26 +1,25 @@
-//
-//  ContentView.swift
-//  loryblu
-//
-//  Created by Suh on 13/07/23.
-//
-
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var appData: AppData
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        if appData.isTokenReceived {
+            NewPasswordScreen(model: NewPasswordModel())
+                .environmentObject(appData)
+        } else {
+            VStack {
+                LBIcon.logoFull.image
+                Text(LBStrings.General.hello)
+                    .font(LBFont.head2)
+            }
         }
-        .padding()
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
+        @StateObject var appData: AppData = .init()
         ContentView()
+            .environmentObject(appData)
     }
 }
