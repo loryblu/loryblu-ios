@@ -12,6 +12,7 @@ struct ImageLabel: View {
     let font: Font
     let segment: Segment
     let select: Bool = false
+    var categoryID: String? = nil
 
     var body: some View {
         VStack {
@@ -60,5 +61,12 @@ struct ImageLabel: View {
 }
 
 #Preview {
-    ImageLabel(image: LBIcon.dailyStudy.rawValue, name: LBStrings.Locbook.NameImage.therapist, font: LBFont.titleAction, segment: .home)
+
+    Group {
+        ImageLabel(image: LBIcon.dailyStudy.rawValue, name: LBStrings.NameImage.therapist, font: LBFont.titleAction, segment: .home)
+
+    ImageLabel(image: LBIcon.dailyStudy.rawValue, name: LBStrings.NameImage.therapist, font: LBFont.titleAction, segment: .locbook)
+
+    ImageLabel(image: LBIcon.dailyStudy.rawValue, name: LBStrings.NameImage.therapist, font: LBFont.titleAction, segment: .default)
+    }.padding()
 }

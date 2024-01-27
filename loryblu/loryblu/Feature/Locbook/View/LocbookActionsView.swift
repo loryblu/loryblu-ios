@@ -3,18 +3,15 @@ import SwiftUI
 struct LocbookActionsView: View {
     
     // MARK: - Definitions
-    
     struct Props {
         var task: LocbookTask
         let onNext: ClosureType.LocbookTaskVoid?
     }
     
     // MARK: - Private propertes
-    
     private let model = LocbookActionModel()
     
     // MARK: - Properties
-    
     let props: Props
     @State var formConfig = FormConfig()
     
@@ -64,6 +61,7 @@ struct LocbookActionsView: View {
                         )
                         .opacity(formConfig.selectedCard == index ? 1.0 : 0.5)
                         .onTapGesture {
+                            // NAO PRECISA ENVIAR NADA PRA API
                             formConfig.selectedCard = index
                             formConfig.task.categoryTitle = model.actions[index].name
                         }
@@ -74,7 +72,6 @@ struct LocbookActionsView: View {
     }
     
     // MARK: - Initializers
-    
     init(props: Props, formConfig: FormConfig = FormConfig()) {
         var config = formConfig
         config.task = props.task
