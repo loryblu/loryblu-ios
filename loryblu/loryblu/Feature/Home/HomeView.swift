@@ -25,7 +25,7 @@ struct HomeView: View {
                 .scaledToFill()
                 .frame(width: 62, height: 62)
 
-            Text("Olá, \(name)")
+            Text("Olá, \(AppData().userData?.data.user.childrens[0].fullname ?? "Usuário")")
                 .font(LBFont.head5)
                 .foregroundStyle(LBColor.text)
         }

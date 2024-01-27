@@ -15,12 +15,13 @@ class TaskRepository {
                         path: Endpoint.task,
                         method: .post,
                         header: header,
-                        body: JSONParser.parseData(from: ["childrenId": "\(String(describing: locBookTask.childrenId))",
-                                                          "categoryId": "\(String(describing: locBookTask.categoryId))",
-                                                          "shif": "\(String(describing: locBookTask.shift))",
-                                                          "frequency": ["\(String(describing: locBookTask.frequency))"],
-                                                          "order": "\(String(describing: locBookTask.order))"
-                                                         ])
+                        body: JSONParser.parseData(
+                            from: ["childrenId": "\(String(describing: locBookTask.childrenId))",
+                            "categoryId": "\(String(describing: locBookTask.categoryId))",
+                            "shif": "\(String(describing: locBookTask.shift))",
+                            "frequency": ["\(String(describing: locBookTask.frequency))"],
+                            "order": "\(String(describing: locBookTask.order))"
+                            ])
                     )
 
         do {
