@@ -282,8 +282,6 @@
 			isa = PBXGroup;
 			children = (
 				91CA96602B28996D00611F91 /* View */,
-				91CA965E2B28996300611F91 /* LocbookNavigationStack.swift */,
-				91CA96612B2899A600611F91 /* LocbookNavigationCoordinator.swift */,
 			);
 			path = Locbook;
 			sourceTree = "<group>";
@@ -312,6 +310,7 @@
 		8C5734212A6C21490052B955 /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				8C92BD6F2B653E1A00478859 /* Navigation */,
 				8C2A684E2AF5DFB000B74295 /* Locbook */,
 				8C669C422AA011650028B436 /* Entities */,
 				8C2A68492AF54A4800B74295 /* Home */,
@@ -343,6 +342,15 @@
 				8C669C402AA011480028B436 /* UserRegister.swift */,
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		8C92BD6F2B653E1A00478859 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				91CA965E2B28996300611F91 /* LocbookNavigationStack.swift */,
+				91CA96612B2899A600611F91 /* LocbookNavigationCoordinator.swift */,
+			);
+			path = Navigation;
 			sourceTree = "<group>";
 		};
 		8C9CBCF82A7ACF46001DBD35 /* Login */ = {
@@ -459,7 +467,6 @@
 		912BC3822B2934CB00B7F336 /* Action */ = {
 			isa = PBXGroup;
 			children = (
-				8C2A68512AF959AB00B74295 /* LocbookActionsView.swift */,
 				912BC3832B2934E800B7F336 /* LocbookActionModel.swift */,
 			);
 			path = Action;
@@ -514,9 +521,10 @@
 			isa = PBXGroup;
 			children = (
 				8C2A684F2AF5E04A00B74295 /* LocbookRegisterView.swift */,
-				912BC3822B2934CB00B7F336 /* Action */,
+				8C2A68512AF959AB00B74295 /* LocbookActionsView.swift */,
 				8C2A68552AF9B9A000B74295 /* LocbookTasksView.swift */,
 				335E21A62AFF132800700440 /* FrequencyRotineView.swift */,
+				912BC3822B2934CB00B7F336 /* Action */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -821,7 +829,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"loryblu/Preview Content\"";
-				DEVELOPMENT_TEAM = L83QN8FS8U;
+				DEVELOPMENT_TEAM = 5AN4GAV8W4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LoryBlu/Info.plist;
@@ -855,7 +863,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"loryblu/Preview Content\"";
-				DEVELOPMENT_TEAM = L83QN8FS8U;
+				DEVELOPMENT_TEAM = 5AN4GAV8W4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LoryBlu/Info.plist;

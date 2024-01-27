@@ -9,7 +9,6 @@ enum Period: Equatable {
 struct FrequencyRotineView: View {
     
     // MARK: - Defines
-    
     struct Props {
         var task: LocbookTask
         let onSubmit: ClosureType.VoidVoid?
@@ -20,7 +19,6 @@ struct FrequencyRotineView: View {
     }
 
     // MARK: - Properties
-    
     let props: Props
     @State var formConfig = FormConfig()
     
@@ -69,13 +67,14 @@ struct FrequencyRotineView: View {
                 }
             }.padding(.bottom,10)
 
-            LBWeekDaysButton(sunday: $formConfig.sunday,
-                             monday: $formConfig.monday,
-                             tuesday: $formConfig.tuesday,
-                             wednesday: $formConfig.wednesday,
-                             thurday: $formConfig.thurday,
-                             friday: $formConfig.friday,
-                             satuday: $formConfig.satuday)
+            LBWeekDaysButton(
+                sunday: $formConfig.sunday,
+                monday: $formConfig.monday,
+                tuesday: $formConfig.tuesday,
+                wednesday: $formConfig.wednesday,
+                thurday: $formConfig.thurday,
+                friday: $formConfig.friday,
+                satuday: $formConfig.satuday)
             Spacer()
 
             LBButton(title: LBStrings.General.confirm) {
@@ -86,9 +85,10 @@ struct FrequencyRotineView: View {
 
     var frequecyAction: some View {
         HStack(alignment: .center, spacing: 12) {
-            ImageLabel(image: LBIcon.sun.rawValue,
-                       name: LBStrings.FrequencyRotine.morning,
-                       font: LBFont.titleTask, segment: .default)
+            ImageLabel(
+                image: LBIcon.sun.rawValue,
+                name: LBStrings.FrequencyRotine.morning,
+                font: LBFont.titleTask, segment: .default)
             .background(formConfig.morningSetColor)
             .cornerRadius(12.0)
             .onTapGesture {

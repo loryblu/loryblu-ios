@@ -54,6 +54,7 @@ struct LocbookTasksView: View {
             LazyVGrid(columns: columns, alignment: .center, spacing: 24 ) {
                 ForEach(0..<tasks.count) { index in
                     tasks[index]
+                    // Mostrar as tasks de acordo com cada fluxo
                         .overlay(formConfig.selectedCard == index ?
                                  RoundedRectangle(cornerRadius: 12)
                             .inset(by: 0)
@@ -70,6 +71,8 @@ struct LocbookTasksView: View {
 
             LBButton(title: LBStrings.General.next, style: .primaryActivated) {
                 props.onNext?()
+                // ENVIAR O categoryID da task e nome. ( task.categoryID / task.name )
+
             }
         } 
         .scrollContentBackground(.hidden)

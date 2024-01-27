@@ -105,37 +105,67 @@ extension LBStrings {
         static let title = String(localized: "locbook_title")
         static let titleRotine = String(localized: "locbook_title_rotine")
         static let titleStudy = String(localized: "locbook_title_study")
-
-
-        enum NameImage {
-            static let loryStudy = String(localized: "image_action_study")
-            static let loryRotine = String(localized: "image_action_rotine")
-            static let bathTime = String(localized: "image_bathTime")
-            static let brushTeeth = String(localized: "image_brushTeeth")
-            static let breakfast = String(localized: "image_breakfast")
-            static let lunch = String(localized: "image_lunch")
-            static let snack = String(localized: "image_snack")
-            static let dinner = String(localized: "image_dinner")
-            static let water = String(localized: "image_water")
-            static let play = String(localized: "image_play")
-            static let watchTv = String(localized: "image_watchtv")
-            static let tvgame = String(localized: "image_tvgame")
-            static let school = String(localized: "image_school")
-            static let reinforcement = String(localized: "image_reinforcement")
-            static let languages = String(localized: "image_languages")
-            static let sport = String(localized: "image_sport")
-            static let reading = String(localized: "image_reading")
-            static let music = String(localized: "image_music")
-            static let psychologist = String(localized: "image_psychologist")
-            static let speechTherapist = String(localized: "image_speech_therapist")
-            static let pedagogue = String(localized: "image_pedagogue")
-            static let therapist = String(localized: "image_occupational_therapist")
-            static let morning = String(localized: "image_morning")
-            static let afternoon = String(localized: "image_afternoon")
-            static let night = String(localized: "image_night")
-        }
     }
 }
+
+extension LBStrings {
+    enum NameImage {
+        static let loryStudy = String(localized: "image_action_study")
+        static let loryRotine = String(localized: "image_action_rotine")
+        static let bathTime = String(localized: "image_bathTime")
+        static let brushTeeth = String(localized: "image_brushTeeth")
+        static let breakfast = String(localized: "image_breakfast")
+        static let lunch = String(localized: "image_lunch")
+        static let snack = String(localized: "image_snack")
+        static let dinner = String(localized: "image_dinner")
+        static let water = String(localized: "image_water")
+        static let play = String(localized: "image_play")
+        static let watchTv = String(localized: "image_watchtv")
+        static let tvgame = String(localized: "image_tvgame")
+        static let school = String(localized: "image_school")
+        static let reinforcement = String(localized: "image_reinforcement")
+        static let languages = String(localized: "image_languages")
+        static let sport = String(localized: "image_sport")
+        static let reading = String(localized: "image_reading")
+        static let music = String(localized: "image_music")
+        static let psychologist = String(localized: "image_psychologist")
+        static let speechTherapist = String(localized: "image_speech_therapist")
+        static let pedagogue = String(localized: "image_pedagogue")
+        static let therapist = String(localized: "image_occupational_therapist")
+        static let morning = String(localized: "image_morning")
+        static let afternoon = String(localized: "image_afternoon")
+        static let night = String(localized: "image_night")
+    }
+}
+
+extension LBStrings {
+    enum CategoryID {
+        static let bathTime = String(localized: "id_bathTime")
+        static let brushTeeth = String(localized: "id_brushTeeth")
+        static let breakfast = String(localized: "id_breakfast")
+        static let lunch = String(localized: "id_lunch")
+        static let snack = String(localized: "id_snack")
+        static let dinner = String(localized: "id_dinner")
+        static let water = String(localized: "id_water")
+        static let play = String(localized: "id_play")
+        static let watchTv = String(localized: "id_watchtv")
+        static let tvgame = String(localized: "ide_tvgame")
+        static let school = String(localized: "id_school")
+        static let reinforcement = String(localized: "id_reinforcement")
+        static let languages = String(localized: "id_languages")
+        static let sport = String(localized: "id_sport")
+        static let reading = String(localized: "id_reading")
+        static let music = String(localized: "id_music")
+        static let psychologist = String(localized: "id_psychologist")
+        static let speechTherapist = String(localized: "id_speech_therapist")
+        static let pedagogue = String(localized: "id_pedagogue")
+        static let therapist = String(localized: "id_occupational_therapist")
+        static let morning = String(localized: "id_morning")
+        static let afternoon = String(localized: "id_afternoon")
+        static let night = String(localized: "id_night")
+    }
+}
+
 
 extension LBStrings {
     enum FrequencyRotine {
