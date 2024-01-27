@@ -1,10 +1,14 @@
+import Factory
 import SwiftUI
 
 struct HomeView: View {
     
-    @State var props: Props
+    @ObservedObject var model = Container.shared.homeViewModel()
     
-    let name: String = "Bia"
+    @State var props: Props
+    @Injected(\.appData) var appData
+        
+    
     let traills: [ImageLabel] = [
         ImageLabel(image: LBIcon.locbook.rawValue, name: LBStrings.Locbook.NameImage.loryRotine, font: LBFont.titleAction, segment: .home),
         ImageLabel(image: LBIcon.fairyShadow.rawValue, name: LBStrings.Locbook.NameImage.loryRotine, font: LBFont.titleAction, segment: .home),
@@ -25,7 +29,7 @@ struct HomeView: View {
                 .scaledToFill()
                 .frame(width: 62, height: 62)
 
-            Text("Olá, \(AppData().userData?.data.user.childrens[0].fullname ?? "Usuário")")
+            Text("Olá, \(model.childName)")
                 .font(LBFont.head5)
                 .foregroundStyle(LBColor.text)
         }

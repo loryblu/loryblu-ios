@@ -82,6 +82,7 @@
 		91CA965F2B28996300611F91 /* LocbookNavigationStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CA965E2B28996300611F91 /* LocbookNavigationStack.swift */; };
 		91CA96622B2899A600611F91 /* LocbookNavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CA96612B2899A600611F91 /* LocbookNavigationCoordinator.swift */; };
 		91CA96642B28A7F800611F91 /* ClosureType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CA96632B28A7F800611F91 /* ClosureType.swift */; };
+		91FD76A82B648D9400D3DAD0 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FD76A72B648D9400D3DAD0 /* HomeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -162,6 +163,7 @@
 		91CA965E2B28996300611F91 /* LocbookNavigationStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocbookNavigationStack.swift; sourceTree = "<group>"; };
 		91CA96612B2899A600611F91 /* LocbookNavigationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocbookNavigationCoordinator.swift; sourceTree = "<group>"; };
 		91CA96632B28A7F800611F91 /* ClosureType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosureType.swift; sourceTree = "<group>"; };
+		91FD76A72B648D9400D3DAD0 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -276,6 +278,7 @@
 				91664AE32B0C029E005BF5CA /* HomeNavigationCoordinator.swift */,
 				91664AE12B0C003A005BF5CA /* HomeNavigationStack.swift */,
 				8C2A684C2AF54A9600B74295 /* HomeView.swift */,
+				91FD76A72B648D9400D3DAD0 /* HomeViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -654,6 +657,7 @@
 				8C2A68562AF9B9A000B74295 /* LocbookTasksView.swift in Sources */,
 				33D0F90E2AD0EE3700EE54DF /* Endpoints.swift in Sources */,
 				8C9CBCFB2A7ACF46001DBD35 /* ExternalLogin.swift in Sources */,
+				91FD76A82B648D9400D3DAD0 /* HomeViewModel.swift in Sources */,
 				9132A8952B083BE600106524 /* LoginNavigationCoordinator.swift in Sources */,
 				8C225AB12AE703B100E43B2C /* ImageLabel.swift in Sources */,
 				91B4AC442AD19CFA003A7FE5 /* AppEntryPoint.swift in Sources */,

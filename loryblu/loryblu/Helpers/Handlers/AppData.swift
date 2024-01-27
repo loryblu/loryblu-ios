@@ -9,12 +9,18 @@ class AppData: ObservableObject {
 
     @Published var isTokenReceived: Bool = false
     @Published var token: String = ""
-    @Published var loginStatus: LoginStatus = .notLogged
     @Published var userData: UserAuth?
+    
+    var loginStatus: LoginStatus {
+        guard userData != nil else {
+            return .notLogged
+        }
+        
+        return .logged
+    }
 
     func setLoginStatusLogged(user: UserAuth) {
         Task { @MainActor in
-            loginStatus = .logged
             userData = user
         }
     }

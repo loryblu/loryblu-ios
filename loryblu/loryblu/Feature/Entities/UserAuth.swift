@@ -3,7 +3,7 @@ import Foundation
 struct UserAuth: Codable {
     var message: String
     var data: DataUser
-
+    
 }
 
 struct DataUser: Codable {
@@ -12,17 +12,17 @@ struct DataUser: Codable {
     var user: User
 }
 
- struct User: Codable {
-        var pid: String
-        var parentName: String
-        var childrens: [Childrens]
+struct User: Codable {
+    var pid: String
+    var parentName: String
+    var childrens: [Child]
 }
 
-struct Childrens: Codable {
-        var id: Int
-        var fullname: String
-        var gender: String
-        var birthdate: String
+struct Child: Codable {
+    var id: Int
+    var fullname: String
+    var gender: String
+    var birthdate: String
 }
 
 
