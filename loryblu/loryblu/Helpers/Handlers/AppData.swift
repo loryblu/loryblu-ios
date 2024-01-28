@@ -15,7 +15,7 @@ class AppData: ObservableObject {
         guard userData != nil else {
             return .notLogged
         }
-        
+
         return .logged
     }
 

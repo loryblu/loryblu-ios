@@ -7,6 +7,17 @@ class HomeViewModel: ObservableObject {
     var childName: String {
         userData?.childrens.first?.fullname ?? ""
     }
+
+    func firstName(fulName: String) -> String {
+        var childrenName: String = ""
+        let ArrayName = fulName.components(separatedBy:" ")
+
+        guard let firstName = ArrayName.first else {
+            return childrenName
+        }
+        childrenName = firstName
+        return childrenName
+    }
 }
 
 extension Container {

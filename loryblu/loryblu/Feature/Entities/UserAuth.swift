@@ -3,7 +3,6 @@ import Foundation
 struct UserAuth: Codable {
     var message: String
     var data: DataUser
-    
 }
 
 struct DataUser: Codable {
