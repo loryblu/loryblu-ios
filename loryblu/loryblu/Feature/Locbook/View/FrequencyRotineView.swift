@@ -86,36 +86,38 @@ struct FrequencyRotineView: View {
 
     var frequecyAction: some View {
         HStack(alignment: .center, spacing: 12) {
-            ImageLabel(image: LBIcon.sun.rawValue,
-                       name: LBStrings.FrequencyRotine.morning,
-                       font: LBFont.titleTask, segment: .default)
-            .background(formConfig.morningSetColor)
-            .cornerRadius(12.0)
-            .onTapGesture {
+            Button(LBStrings.FrequencyRotine.morning) {
                 formConfig.period = .morning
-                formConfig.buttonSelect()
             }
+            .buttonStyle(
+                FrequencyButtonStyle(
+                    style: .light,
+                    image: LBIcon.evining.rawValue,
+                    selected: formConfig.period == .morning
+                )
+            )
 
-
-            ImageLabel(image: LBIcon.evining.rawValue,
-                       name: LBStrings.FrequencyRotine.afternoon,
-                       font: LBFont.titleTask, segment: .default)
-            .background(formConfig.afternoonSetColor)
-            .cornerRadius(12)
-            .onTapGesture {
+            Button(LBStrings.FrequencyRotine.afternoon) {
                 formConfig.period = .afternoon
-                formConfig.buttonSelect()
             }
-
-            ImageLabel(image: LBIcon.moon.rawValue,
-                       name: LBStrings.FrequencyRotine.night,
-                       font: LBFont.titleTask, segment: .default)
-            .background(formConfig.nightSetColor)
-            .cornerRadius(12)
-            .onTapGesture {
+            .buttonStyle(
+                FrequencyButtonStyle(
+                    style: .medium,
+                    image: LBIcon.evining.rawValue,
+                    selected: formConfig.period == .afternoon
+                )
+            )
+            
+            Button(LBStrings.FrequencyRotine.night) {
                 formConfig.period = .night
-                formConfig.buttonSelect()
             }
+            .buttonStyle(
+                FrequencyButtonStyle(
+                    style: .dark,
+                    image: LBIcon.evining.rawValue,
+                    selected: formConfig.period == .night
+                )
+            )
         }
         .frame(height: 112)
     }
@@ -135,35 +137,6 @@ extension FrequencyRotineView {
         var afternoonSet: Bool = false
         var nightSet: Bool = false
         var period: Period = .morning
-        
-        var morningSetColor: Color {
-            morningSet ? LBColor.backgroundCards : LBColor.grayLight
-        }
-        
-        var afternoonSetColor: Color {
-            afternoonSet ? LBColor.backgroundAfternoon : LBColor.grayLight
-        }
-        
-        var nightSetColor: Color {
-            nightSet ? LBColor.text : LBColor.grayLight
-        }
-        
-        mutating func buttonSelect() {
-            morningSet = false
-            afternoonSet = false
-            nightSet = false
-            
-            switch period {
-            case .morning:
-                morningSet = true
-
-            case .afternoon:
-                afternoonSet = true
-
-            case .night:
-                nightSet = true
-            }
-        }
     }
 }
 
