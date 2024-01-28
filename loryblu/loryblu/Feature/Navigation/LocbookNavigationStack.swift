@@ -36,17 +36,25 @@ struct LocbookNavigationStack: View {
         coordinator.pushActionsView(
             props: LocbookActionsView.Props(
                 task: LocbookTask(),
-                onNext: { task in
-                    pushLocbookTasks(task: task)
+                onNext: { task, action in
+                    pushLocbookTasks(task: task, action: action)
                 }
             )
         )
     }
     
-    private func pushLocbookTasks(task: LocbookTask) {
+    private func pushLocbookTasks(task: LocbookTask, action: Int) {
+        let loryRouteId = 1
+        var actionType: LocbookTasksView.Props.ActionType = .study
+        
+        if action == loryRouteId {
+            actionType = .routine
+        }
+        
         coordinator.pushTasksView(
             props: LocbookTasksView.Props(
-                task: task,
+                task: task, 
+                actionType: actionType,
                 onNext: { pushLocbookRoutine(task: task) }
             )
         )
