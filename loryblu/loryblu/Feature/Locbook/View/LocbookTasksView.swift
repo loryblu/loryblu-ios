@@ -47,7 +47,6 @@ struct LocbookTasksView: View {
     var body: some View {
         VStack(spacing: 20) {
             HStack {
-                Text("<")
                 Text(title)
                     .font(LBFont.titleAction)
                     .foregroundStyle(LBColor.titlePrimary)
