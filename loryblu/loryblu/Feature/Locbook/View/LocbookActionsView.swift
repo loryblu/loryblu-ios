@@ -6,6 +6,7 @@ struct LocbookActionsView: View {
     struct Props {
         var task: LocbookTask
         let onNext: ClosureType.LocbookTaskIntVoid?
+        var onClose : ClosureType.VoidVoid?
     }
     
     // MARK: - Private propertes

@@ -11,6 +11,7 @@ struct LocbookTasksView: View {
         let task: LocbookTask
         let actionType: ActionType
         var onNext: ClosureType.VoidVoid?
+        var onClose : ClosureType.VoidVoid?
     }
     
     struct FormConfig {

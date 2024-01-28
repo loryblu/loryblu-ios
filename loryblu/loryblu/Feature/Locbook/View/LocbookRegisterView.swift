@@ -4,6 +4,7 @@ struct LocbookRegisterView: View {
     
     struct Props {
         let onNewTask: ClosureType.VoidVoid?
+        var onClose: ClosureType.VoidVoid?
     }
     
     let props: Props

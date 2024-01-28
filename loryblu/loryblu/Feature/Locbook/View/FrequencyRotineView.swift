@@ -13,6 +13,7 @@ struct FrequencyRotineView: View {
     struct Props {
         var task: LocbookTask
         let onSubmit: ClosureType.VoidVoid?
+        var onClose : ClosureType.VoidVoid?
         
         var title: String {
             task.categoryTitle ?? ""
