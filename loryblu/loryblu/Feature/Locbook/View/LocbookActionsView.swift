@@ -5,7 +5,7 @@ struct LocbookActionsView: View {
     // MARK: - Definitions
     struct Props {
         var task: LocbookTask
-        let onNext: ClosureType.LocbookTaskVoid?
+        let onNext: ClosureType.LocbookTaskIntVoid?
     }
     
     // MARK: - Private propertes
@@ -40,8 +40,9 @@ struct LocbookActionsView: View {
 
             actions
 
-            LBButton(title: LBStrings.General.next, style: .primaryActivated) {                
-                props.onNext?(formConfig.task)
+            LBButton(title: LBStrings.General.next, style: .primaryActivated) {
+                guard let index = formConfig.selectedCard else { return }
+                props.onNext?(formConfig.task, index)
             }
             .padding(.top, 15)
         }

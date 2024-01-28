@@ -3,7 +3,13 @@ import SwiftUI
 struct LocbookTasksView: View {
     
     struct Props {
+        enum ActionType {
+            case study
+            case routine
+        }
+        
         let task: LocbookTask
+        let actionType: ActionType
         var onNext: ClosureType.VoidVoid?
     }
     
@@ -12,9 +18,26 @@ struct LocbookTasksView: View {
     }
     
     let props: Props
+    
     @State var formConfig: FormConfig = FormConfig()
 
-    let tasks: [ImageLabel] = LocbookListTasks.rotine
+    var tasks: [ImageLabel] {
+        switch props.actionType {
+        case .study:
+            return LocbookListTasks.study
+        case .routine:
+            return LocbookListTasks.rotine
+        }
+    }
+    
+    var title: String {
+        switch props.actionType {
+        case .study:
+            return LBStrings.Locbook.titleStudy
+        case .routine:
+            return LBStrings.Locbook.titleRotine
+        }
+    }
 
     let columns = [
         GridItem(.flexible(), spacing: 16),
@@ -25,7 +48,7 @@ struct LocbookTasksView: View {
         VStack(spacing: 20) {
             HStack {
                 Text("<")
-                Text(LBStrings.Locbook.titleStudy)
+                Text(title)
                     .font(LBFont.titleAction)
                     .foregroundStyle(LBColor.titlePrimary)
                 Spacer()
@@ -90,5 +113,5 @@ extension LocbookTasksView.Props: Hashable {
 }
 
 #Preview {
-    LocbookTasksView(props: .init(task: LocbookTask()))
+    LocbookTasksView(props: .init(task: LocbookTask(), actionType: .routine))
 }
