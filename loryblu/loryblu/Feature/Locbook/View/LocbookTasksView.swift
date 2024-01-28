@@ -1,9 +1,7 @@
 import SwiftUI
 
 struct LocbookTasksView: View {
-    
-    @Environment(\.dismiss) var dismiss
-    
+        
     struct Props {
         enum ActionType {
             case study

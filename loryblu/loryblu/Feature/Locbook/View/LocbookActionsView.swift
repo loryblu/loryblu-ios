@@ -1,9 +1,7 @@
 import SwiftUI
 
 struct LocbookActionsView: View {
-    
-    @Environment(\.dismiss) var dismiss
-    
+        
     // MARK: - Definitions
     struct Props {
         var task: LocbookTask

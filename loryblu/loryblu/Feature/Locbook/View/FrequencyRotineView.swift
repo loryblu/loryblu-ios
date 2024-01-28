@@ -7,9 +7,7 @@ enum Period: Equatable {
 }
 
 struct FrequencyRotineView: View {
-    
-    @Environment(\.dismiss) var dismiss
-    
+        
     // MARK: - Defines
     
     struct Props {

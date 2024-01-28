@@ -1,9 +1,7 @@
 import SwiftUI
 
 struct LocbookRegisterView: View {
-    
-    @Environment(\.dismiss) var dismiss
-    
+        
     struct Props {
         let onNewTask: ClosureType.VoidVoid?
         var onClose: ClosureType.VoidVoid?
