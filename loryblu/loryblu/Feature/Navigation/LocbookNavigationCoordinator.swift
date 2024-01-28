@@ -2,9 +2,9 @@ import SwiftUI
 
 @MainActor
 class LocbookNavigationCoordinator: ObservableObject {
-        
+    
     enum Destination {
-        enum Navigation: Hashable {            
+        enum Navigation: Hashable {
             case register(LocbookRegisterView.Props)
             case actions(LocbookActionsView.Props)
             case tasks(LocbookTasksView.Props)
@@ -26,9 +26,9 @@ class LocbookNavigationCoordinator: ObservableObject {
     init() {
         path = []
     }
-        
+    
     // MARK: - Internal Methods
-        
+    
     func popToRoot() {
         path.removeLast(path.count)
     }
@@ -42,11 +42,11 @@ class LocbookNavigationCoordinator: ObservableObject {
     func pushActionsView(props: LocbookActionsView.Props) {
         navigate(to: .actions(props))
     }
-
+    
     func pushTasksView(props: LocbookTasksView.Props) {
         navigate(to: .tasks(props))
     }
-
+    
     func pushTasksFrequency(props: FrequencyRotineView.Props) {
         navigate(to: .frequency(props))
     }
@@ -54,7 +54,7 @@ class LocbookNavigationCoordinator: ObservableObject {
     func pushFinishScreen(props: DoneView.Props) {
         navigate(to: .finishView(props))
     }
-
+    
     @ViewBuilder
     func buildView(page destination: Destination.Navigation) -> some View {
         switch destination {
@@ -69,6 +69,7 @@ class LocbookNavigationCoordinator: ObservableObject {
         case let .finishView(props):
             DoneView(props: props)
         }
+        
     }
     
     @ViewBuilder
@@ -78,11 +79,11 @@ class LocbookNavigationCoordinator: ObservableObject {
             DoneView(props: props)
         }
     }
-
+    
     // MARK: - Private Methods
-
+    
     private func navigate(to destination: Destination.Navigation) {
         self.path.append(destination)
     }
-
+    
 }

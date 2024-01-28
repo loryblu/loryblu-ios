@@ -2,6 +2,8 @@ import SwiftUI
 
 struct LocbookTasksView: View {
     
+    @Environment(\.dismiss) var dismiss
+    
     struct Props {
         enum ActionType {
             case study
@@ -47,12 +49,6 @@ struct LocbookTasksView: View {
 
     var body: some View {
         VStack(spacing: 20) {
-            HStack {
-                Text(title)
-                    .font(LBFont.titleAction)
-                    .foregroundStyle(LBColor.titlePrimary)
-                Spacer()
-            }
 
             LBIcon.progression2.image
                 .resizable()
@@ -68,6 +64,7 @@ struct LocbookTasksView: View {
 
             collectionView
         }
+        .locbookToolbar(title: title, onClose: { props.onClose?() })
         .padding(24)
 
     }
@@ -97,7 +94,7 @@ struct LocbookTasksView: View {
                 // ENVIAR O categoryID da task e nome. ( task.categoryID / task.name )
 
             }
-        } 
+        }
         .scrollContentBackground(.hidden)
     }
 }

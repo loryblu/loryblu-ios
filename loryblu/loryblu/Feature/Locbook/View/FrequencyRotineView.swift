@@ -8,6 +8,8 @@ enum Period: Equatable {
 
 struct FrequencyRotineView: View {
     
+    @Environment(\.dismiss) var dismiss
+    
     // MARK: - Defines
     
     struct Props {
@@ -27,13 +29,7 @@ struct FrequencyRotineView: View {
     
     var body: some View {
         VStack(alignment: .center, spacing: 15) {
-            HStack(spacing: 20) {
-                Text(props.title)
-                    .font(LBFont.titleAction)
-                    .foregroundStyle(LBColor.titlePrimary)
-                Spacer()
-
-               }
+        
             LBIcon.progression3.image
                 .resizable()
                 .scaledToFit()
@@ -77,7 +73,9 @@ struct FrequencyRotineView: View {
             LBButton(title: LBStrings.General.confirm) {
                 props.onSubmit?()
             }
-        }.padding(24)
+        }
+        .locbookToolbar(title: props.title, onClose: { props.onClose?() })
+        .padding(24)
     }
 
     var frequecyAction: some View {

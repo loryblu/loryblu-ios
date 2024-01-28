@@ -112,6 +112,7 @@
 		91CA965F2B28996300611F91 /* LocbookNavigationStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CA965E2B28996300611F91 /* LocbookNavigationStack.swift */; };
 		91CA96622B2899A600611F91 /* LocbookNavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CA96612B2899A600611F91 /* LocbookNavigationCoordinator.swift */; };
 		91CA96642B28A7F800611F91 /* ClosureType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CA96632B28A7F800611F91 /* ClosureType.swift */; };
+		9310C8D62B66DB02007D3CE7 /* LoryBluToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9310C8D52B66DB02007D3CE7 /* LoryBluToolbar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -194,6 +195,7 @@
 		91CA965E2B28996300611F91 /* LocbookNavigationStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocbookNavigationStack.swift; sourceTree = "<group>"; };
 		91CA96612B2899A600611F91 /* LocbookNavigationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocbookNavigationCoordinator.swift; sourceTree = "<group>"; };
 		91CA96632B28A7F800611F91 /* ClosureType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosureType.swift; sourceTree = "<group>"; };
+		9310C8D52B66DB02007D3CE7 /* LoryBluToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoryBluToolbar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -324,6 +326,7 @@
 		8C27B8382A68BEF200F72214 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				9310C8D42B66DAD9007D3CE7 /* Toolbar */,
 				918F0CE72B65F55200312C86 /* Button */,
 				8CC73C952A6C4A65008A039A /* Base */,
 				8C9CBD0E2A7AEBEE001DBD35 /* View */,
@@ -610,6 +613,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		9310C8D42B66DAD9007D3CE7 /* Toolbar */ = {
+			isa = PBXGroup;
+			children = (
+				9310C8D52B66DB02007D3CE7 /* LoryBluToolbar.swift */,
+			);
+			path = Toolbar;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -792,6 +803,7 @@
 				8C9CBD102A7AEC24001DBD35 /* PasswordRulesView.swift in Sources */,
 				8CFB359E2A6059BD008BF633 /* LorybluApp.swift in Sources */,
 				41BE77FD2A85A12300534ADA /* LBGenderButton.swift in Sources */,
+				9310C8D62B66DB02007D3CE7 /* LoryBluToolbar.swift in Sources */,
 				91CA96622B2899A600611F91 /* LocbookNavigationCoordinator.swift in Sources */,
 				8C2A68502AF5E04A00B74295 /* LocbookRegisterView.swift in Sources */,
 				8C7C64B32A6F4CE1002361A9 /* ValidateRules.swift in Sources */,
