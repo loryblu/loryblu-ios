@@ -18,11 +18,9 @@ struct LocbookActionsView: View {
     var body: some View {
         VStack(alignment: .center, spacing: 15) {
             HStack {
-                Text("<")
                 Text(LBStrings.Locbook.title)
                     .font(LBFont.titleAction)
                     .foregroundStyle(LBColor.titlePrimary)
-
                 Spacer()
             }
 

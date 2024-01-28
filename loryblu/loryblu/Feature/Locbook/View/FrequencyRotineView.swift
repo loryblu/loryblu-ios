@@ -27,16 +27,11 @@ struct FrequencyRotineView: View {
     var body: some View {
         VStack(alignment: .center, spacing: 15) {
             HStack(spacing: 20) {
-                Text("<")
-
                 Text(props.title)
                     .font(LBFont.titleAction)
                     .foregroundStyle(LBColor.titlePrimary)
                 Spacer()
 
-                Image(LBIcon.close2.rawValue)
-                    .resizable()
-                    .frame(width: 18, height: 18)
                }
             LBIcon.progression3.image
                 .resizable()
@@ -92,7 +87,7 @@ struct FrequencyRotineView: View {
             .buttonStyle(
                 FrequencyButtonStyle(
                     style: .light,
-                    image: LBIcon.evining.rawValue,
+                    image: LBIcon.sun.rawValue,
                     selected: formConfig.period == .morning
                 )
             )
@@ -114,7 +109,7 @@ struct FrequencyRotineView: View {
             .buttonStyle(
                 FrequencyButtonStyle(
                     style: .dark,
-                    image: LBIcon.evining.rawValue,
+                    image: LBIcon.moon.rawValue,
                     selected: formConfig.period == .night
                 )
             )
