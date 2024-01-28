@@ -20,7 +20,7 @@ struct FrequencyRotineView: View {
     }
 
     // MARK: - Properties
-    
+    var model = FrequencyRotineModel()
     let props: Props
     @State var formConfig = FormConfig()
     
@@ -79,7 +79,10 @@ struct FrequencyRotineView: View {
             Spacer()
 
             LBButton(title: LBStrings.General.confirm) {
-                props.onSubmit?()
+                model.saveTask(task: props.task)
+                if model.stateTask == .success {
+                    props.onSubmit?()
+                }
             }
         }.padding(24)
     }
