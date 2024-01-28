@@ -60,8 +60,6 @@ struct HomeView: View {
     }
 }
 
-
-
 extension HomeView {
     struct Props {
         var selectedCard: Int?

@@ -104,6 +104,7 @@
 		91664AE42B0C029E005BF5CA /* HomeNavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91664AE32B0C029E005BF5CA /* HomeNavigationCoordinator.swift */; };
 		917607372B27D705004F4200 /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = 917607362B27D705004F4200 /* Factory */; };
 		9176073A2B27D8DE004F4200 /* Container+DI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917607392B27D8DE004F4200 /* Container+DI.swift */; };
+		918F0CEA2B65F56100312C86 /* FrequencyButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918F0CE92B65F56100312C86 /* FrequencyButtonStyle.swift */; };
 		91A7CC182ACF9F8500109300 /* LBDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A7CC172ACF9F8500109300 /* LBDatePicker.swift */; };
 		91B4AC252AD0F61B003A7FE5 /* JSONParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B4AC242AD0F61B003A7FE5 /* JSONParse.swift */; };
 		91B4AC282AD114D3003A7FE5 /* NavigationPathExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B4AC272AD114D3003A7FE5 /* NavigationPathExtension.swift */; };
@@ -185,6 +186,7 @@
 		91664AE12B0C003A005BF5CA /* HomeNavigationStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationStack.swift; sourceTree = "<group>"; };
 		91664AE32B0C029E005BF5CA /* HomeNavigationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationCoordinator.swift; sourceTree = "<group>"; };
 		917607392B27D8DE004F4200 /* Container+DI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Container+DI.swift"; sourceTree = "<group>"; };
+		918F0CE92B65F56100312C86 /* FrequencyButtonStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrequencyButtonStyle.swift; sourceTree = "<group>"; };
 		91A7CC172ACF9F8500109300 /* LBDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBDatePicker.swift; sourceTree = "<group>"; };
 		91B4AC242AD0F61B003A7FE5 /* JSONParse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONParse.swift; sourceTree = "<group>"; };
 		91B4AC272AD114D3003A7FE5 /* NavigationPathExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationPathExtension.swift; sourceTree = "<group>"; };
@@ -322,6 +324,7 @@
 		8C27B8382A68BEF200F72214 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				918F0CE72B65F55200312C86 /* Button */,
 				8CC73C952A6C4A65008A039A /* Base */,
 				8C9CBD0E2A7AEBEE001DBD35 /* View */,
 			);
@@ -554,6 +557,22 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
+		918F0CE72B65F55200312C86 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				918F0CE82B65F55700312C86 /* Style */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
+		918F0CE82B65F55700312C86 /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				918F0CE92B65F56100312C86 /* FrequencyButtonStyle.swift */,
+			);
+			path = Style;
+			sourceTree = "<group>";
+		};
 		91A7CC162ACF971800109300 /* Responsible */ = {
 			isa = PBXGroup;
 			children = (
@@ -723,6 +742,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				918F0CEA2B65F56100312C86 /* FrequencyButtonStyle.swift in Sources */,
 				33F87E902B21528000F62041 /* TaskRepository.swift in Sources */,
 				912BC3842B2934E800B7F336 /* LocbookActionModel.swift in Sources */,
 				91B4AC282AD114D3003A7FE5 /* NavigationPathExtension.swift in Sources */,
