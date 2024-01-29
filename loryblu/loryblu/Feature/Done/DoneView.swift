@@ -40,6 +40,7 @@ struct DoneView: View {
         }
         .padding()
         .navigationTitle(LBStrings.General.empty)
+        .navigationBarBackButtonHidden(true)
 
     }
 }
