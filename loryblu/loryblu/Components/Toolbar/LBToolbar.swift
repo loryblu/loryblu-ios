@@ -6,7 +6,7 @@
 //
 import SwiftUI
 
-struct LoryBluToolBarItem: ToolbarContent {
+struct LBToolBarItem: ToolbarContent {
     
     let title: String
     var onClose : () -> Void
@@ -47,26 +47,6 @@ struct LoryBluToolBarItem: ToolbarContent {
             }.frame(alignment: .topLeading).padding(.trailing, 24.0).padding(.top,16.0)
             
         }
-    }
-}
-
-struct LoryBluToolBarModifier: ViewModifier {
-
-    let title: String
-    var onClose : () -> Void
-
-    func body(content: Content) -> some View {
-        return content
-            .toolbar {
-                LoryBluToolBarItem(title: title, onClose : { onClose() })
-            }
-            .navigationBarBackButtonHidden(true)
-    }
-}
-
-extension View {
-    func locbookToolbar(title: String, onClose: @escaping ()-> Void) -> some View {
-        return self.modifier(LoryBluToolBarModifier(title: title, onClose : onClose))
     }
 }
 
