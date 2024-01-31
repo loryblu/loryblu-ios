@@ -5,7 +5,7 @@ class HomeViewModel: ObservableObject {
     let userData = Container.shared.appData().userData?.data.user
     
     var childName: String {
-        userData?.childrens.first?.fullname ?? ""
+        firstName(fulName: userData?.childrens.first?.fullname ?? "")
     }
 
     func firstName(fulName: String) -> String {

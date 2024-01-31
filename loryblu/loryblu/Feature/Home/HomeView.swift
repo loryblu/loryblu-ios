@@ -29,7 +29,7 @@ struct HomeView: View {
                 .scaledToFill()
                 .frame(width: 62, height: 62)
 
-            Text("Olá, \(model.firstName(fulName: model.childName))")
+            Text("Olá, \(model.childName)")
                 .font(LBFont.head5)
                 .foregroundStyle(LBColor.text)
         }
