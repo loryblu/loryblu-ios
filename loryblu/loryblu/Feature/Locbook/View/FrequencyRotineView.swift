@@ -145,5 +145,5 @@ extension FrequencyRotineView.Props: Hashable {
 #Preview {
     FrequencyRotineView(
         props: .init(task: LocbookTask(categoryTitle: "Title of the task"), onSubmit: nil)
-    )
+    ).locbookToolbar(title: "Title of the task" , onClose: { })
 }

@@ -108,5 +108,6 @@ extension LocbookTasksView.Props: Hashable {
 }
 
 #Preview {
-    LocbookTasksView(props: .init(task: LocbookTask(), actionType: .routine))
+  
+    LocbookTasksView(props: .init(task: LocbookTask(), actionType: .routine)).locbookToolbar(title: "Title of the task", onClose: { })
 }

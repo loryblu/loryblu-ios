@@ -93,5 +93,5 @@ extension LocbookActionsView.Props: Hashable {
 
 
 #Preview {
-    LocbookActionsView(props: .init(task: LocbookTask(), onNext: nil))
+    LocbookActionsView(props: .init(task: LocbookTask(), onNext: nil)).locbookToolbar(title: LBStrings.Locbook.title, onClose: { })
 }

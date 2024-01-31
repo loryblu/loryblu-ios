@@ -49,5 +49,5 @@ extension LocbookRegisterView.Props: Hashable {
 }
 
 #Preview {
-    LocbookRegisterView(props: .init(onNewTask: nil))
+    LocbookRegisterView(props: .init(onNewTask: nil)).locbookToolbar(title: LBStrings.Locbook.title, onClose: { })
 }
