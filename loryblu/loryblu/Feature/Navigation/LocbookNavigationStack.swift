@@ -22,7 +22,7 @@ struct LocbookNavigationStack: View {
         NavigationStack(path: $coordinator.path) {
             coordinator.buildView(
                 page: .register(
-                    .init(onNewTask: { pushLocbookActions() })
+                    .init(onNewTask: { pushLocbookActions() }, onClose : { dismiss() })
                 )
             )
             .navigationDestination(for: NavigationCoordinator.Destination.Navigation.self) { destination in
@@ -38,7 +38,8 @@ struct LocbookNavigationStack: View {
                 task: LocbookTask(),
                 onNext: { task, action in
                     pushLocbookTasks(task: task, action: action)
-                }
+                },
+                onClose : { dismiss() }
             )
         )
     }
@@ -55,7 +56,8 @@ struct LocbookNavigationStack: View {
             props: LocbookTasksView.Props(
                 task: task, 
                 actionType: actionType,
-                onNext: { pushLocbookRoutine(task: task) }
+                onNext: { pushLocbookRoutine(task: task) },
+                onClose: { dismiss() }
             )
         )
     }
@@ -64,7 +66,8 @@ struct LocbookNavigationStack: View {
         coordinator.pushTasksFrequency(
             props: FrequencyRotineView.Props(
                 task: task,
-                onSubmit: { pushFinishView() }
+                onSubmit: { pushFinishView() },
+                onClose: { dismiss() }
             )
         )
     }

@@ -1,11 +1,12 @@
 import SwiftUI
 
 struct LocbookActionsView: View {
-    
+        
     // MARK: - Definitions
     struct Props {
         var task: LocbookTask
         let onNext: ClosureType.LocbookTaskIntVoid?
+        var onClose : ClosureType.VoidVoid?
     }
     
     // MARK: - Private propertes
@@ -16,13 +17,7 @@ struct LocbookActionsView: View {
     @State var formConfig = FormConfig()
     
     var body: some View {
-        VStack(alignment: .center, spacing: 15) {
-            HStack {
-                Text(LBStrings.Locbook.title)
-                    .font(LBFont.titleAction)
-                    .foregroundStyle(LBColor.titlePrimary)
-                Spacer()
-            }
+        VStack(spacing: 20) {
 
             LBIcon.progression1.image
                 .resizable()
@@ -42,8 +37,8 @@ struct LocbookActionsView: View {
                 guard let index = formConfig.selectedCard else { return }
                 props.onNext?(formConfig.task, index)
             }
-            .padding(.top, 15)
         }
+        .locbookToolbar(title: LBStrings.Locbook.title, onClose: { props.onClose?() })
         .padding(24)
     }
 
@@ -66,7 +61,7 @@ struct LocbookActionsView: View {
                         }
                 }
             }
-            .frame(maxWidth: .infinity, maxHeight: 218)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
     }
     
@@ -98,5 +93,5 @@ extension LocbookActionsView.Props: Hashable {
 
 
 #Preview {
-    LocbookActionsView(props: .init(task: LocbookTask(), onNext: nil))
+    LocbookActionsView(props: .init(task: LocbookTask(), onNext: nil)).locbookToolbar(title: LBStrings.Locbook.title, onClose: { })
 }

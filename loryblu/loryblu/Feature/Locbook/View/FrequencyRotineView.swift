@@ -7,12 +7,13 @@ enum Period: Equatable {
 }
 
 struct FrequencyRotineView: View {
-    
+        
     // MARK: - Defines
     
     struct Props {
         var task: LocbookTask
         let onSubmit: ClosureType.VoidVoid?
+        var onClose : ClosureType.VoidVoid?
         
         var title: String {
             task.categoryTitle ?? ""
@@ -26,13 +27,7 @@ struct FrequencyRotineView: View {
     
     var body: some View {
         VStack(alignment: .center, spacing: 15) {
-            HStack(spacing: 20) {
-                Text(props.title)
-                    .font(LBFont.titleAction)
-                    .foregroundStyle(LBColor.titlePrimary)
-                Spacer()
-
-               }
+        
             LBIcon.progression3.image
                 .resizable()
                 .scaledToFit()
@@ -76,7 +71,9 @@ struct FrequencyRotineView: View {
             LBButton(title: LBStrings.General.confirm) {
                 props.onSubmit?()
             }
-        }.padding(24)
+        }
+        .locbookToolbar(title: props.title, onClose: { props.onClose?() })
+        .padding(24)
     }
 
     var frequecyAction: some View {
@@ -148,5 +145,5 @@ extension FrequencyRotineView.Props: Hashable {
 #Preview {
     FrequencyRotineView(
         props: .init(task: LocbookTask(categoryTitle: "Title of the task"), onSubmit: nil)
-    )
+    ).locbookToolbar(title: "Title of the task" , onClose: { })
 }

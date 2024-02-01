@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct LocbookTasksView: View {
-    
+        
     struct Props {
         enum ActionType {
             case study
@@ -11,6 +11,7 @@ struct LocbookTasksView: View {
         let task: LocbookTask
         let actionType: ActionType
         var onNext: ClosureType.VoidVoid?
+        var onClose : ClosureType.VoidVoid?
     }
     
     struct FormConfig {
@@ -46,12 +47,6 @@ struct LocbookTasksView: View {
 
     var body: some View {
         VStack(spacing: 20) {
-            HStack {
-                Text(title)
-                    .font(LBFont.titleAction)
-                    .foregroundStyle(LBColor.titlePrimary)
-                Spacer()
-            }
 
             LBIcon.progression2.image
                 .resizable()
@@ -67,6 +62,7 @@ struct LocbookTasksView: View {
 
             collectionView
         }
+        .locbookToolbar(title: title, onClose: { props.onClose?() })
         .padding(24)
 
     }
@@ -96,7 +92,7 @@ struct LocbookTasksView: View {
                 // ENVIAR O categoryID da task e nome. ( task.categoryID / task.name )
 
             }
-        } 
+        }
         .scrollContentBackground(.hidden)
     }
 }
@@ -112,5 +108,6 @@ extension LocbookTasksView.Props: Hashable {
 }
 
 #Preview {
-    LocbookTasksView(props: .init(task: LocbookTask(), actionType: .routine))
+  
+    LocbookTasksView(props: .init(task: LocbookTask(), actionType: .routine)).locbookToolbar(title: "Title of the task", onClose: { })
 }
