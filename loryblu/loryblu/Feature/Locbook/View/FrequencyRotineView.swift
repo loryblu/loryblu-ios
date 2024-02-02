@@ -75,6 +75,7 @@ struct FrequencyRotineView: View {
             Spacer()
 
             LBButton(title: LBStrings.General.confirm) {
+                print(props.categoryID)
                 model.saveTask(task: props.task)
                 if model.stateTask == .success {
                     props.onSubmit?()
