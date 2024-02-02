@@ -3,18 +3,42 @@ import SwiftUI
 struct LocbookTasksView: View {
     
     struct Props {
+        enum ActionType {
+            case study
+            case routine
+        }
+        
         let task: LocbookTask
-        var onNext: ClosureType.VoidVoid?
+        let actionType: ActionType
+        var onNext: ClosureType.StringVoid?
     }
     
     struct FormConfig {
         var selectedCard: Int?
     }
-    
-    let props: Props
-    @State var formConfig: FormConfig = FormConfig()
 
-    let tasks: [ImageLabel] = LocbookListTasks.rotine
+    let props: Props
+
+    @State var formConfig: FormConfig = FormConfig()
+    @State var catergoryID: String = ""
+
+    var tasks: [ImageLabel] {
+        switch props.actionType {
+        case .study:
+            return LocbookListTasks.study
+        case .routine:
+            return LocbookListTasks.rotine
+        }
+    }
+    
+    var title: String {
+        switch props.actionType {
+        case .study:
+            return LBStrings.Locbook.titleStudy
+        case .routine:
+            return LBStrings.Locbook.titleRotine
+        }
+    }
 
     let columns = [
         GridItem(.flexible(), spacing: 16),
@@ -24,8 +48,7 @@ struct LocbookTasksView: View {
     var body: some View {
         VStack(spacing: 20) {
             HStack {
-                Text("<")
-                Text(LBStrings.Locbook.titleStudy)
+                Text(title)
                     .font(LBFont.titleAction)
                     .foregroundStyle(LBColor.titlePrimary)
                 Spacer()
@@ -54,6 +77,7 @@ struct LocbookTasksView: View {
             LazyVGrid(columns: columns, alignment: .center, spacing: 24 ) {
                 ForEach(0..<tasks.count) { index in
                     tasks[index]
+                    // Mostrar as tasks de acordo com cada fluxo
                         .overlay(formConfig.selectedCard == index ?
                                  RoundedRectangle(cornerRadius: 12)
                             .inset(by: 0)
@@ -61,6 +85,7 @@ struct LocbookTasksView: View {
                         .opacity(formConfig.selectedCard == index ? 1.0 : 0.5)
                         .onTapGesture {
                             self.formConfig.selectedCard = index
+                            self.catergoryID = tasks[index].categoryID ?? "teste"
                         }
                 }
                 .frame(minWidth: 148 , minHeight: 156)
@@ -69,7 +94,9 @@ struct LocbookTasksView: View {
             .padding(.bottom, 24)
 
             LBButton(title: LBStrings.General.next, style: .primaryActivated) {
-                props.onNext?()
+                props.onNext?(self.catergoryID)
+                // ENVIAR O categoryID da task e nome. ( task.categoryID / task.name )
+
             }
         } 
         .scrollContentBackground(.hidden)
@@ -87,5 +114,5 @@ extension LocbookTasksView.Props: Hashable {
 }
 
 #Preview {
-    LocbookTasksView(props: .init(task: LocbookTask()))
+    LocbookTasksView(props: .init(task: LocbookTask(), actionType: .routine))
 }

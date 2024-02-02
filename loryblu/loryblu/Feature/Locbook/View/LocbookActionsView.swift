@@ -3,29 +3,24 @@ import SwiftUI
 struct LocbookActionsView: View {
     
     // MARK: - Definitions
-    
     struct Props {
         var task: LocbookTask
-        let onNext: ClosureType.LocbookTaskVoid?
+        let onNext: ClosureType.LocbookTaskIntVoid?
     }
     
     // MARK: - Private propertes
-    
     private let model = LocbookActionModel()
     
     // MARK: - Properties
-    
     let props: Props
     @State var formConfig = FormConfig()
     
     var body: some View {
         VStack(alignment: .center, spacing: 15) {
             HStack {
-                Text("<")
                 Text(LBStrings.Locbook.title)
                     .font(LBFont.titleAction)
                     .foregroundStyle(LBColor.titlePrimary)
-
                 Spacer()
             }
 
@@ -43,8 +38,9 @@ struct LocbookActionsView: View {
 
             actions
 
-            LBButton(title: LBStrings.General.next, style: .primaryActivated) {                
-                props.onNext?(formConfig.task)
+            LBButton(title: LBStrings.General.next, style: .primaryActivated) {
+                guard let index = formConfig.selectedCard else { return }
+                props.onNext?(formConfig.task, index)
             }
             .padding(.top, 15)
         }
@@ -64,6 +60,7 @@ struct LocbookActionsView: View {
                         )
                         .opacity(formConfig.selectedCard == index ? 1.0 : 0.5)
                         .onTapGesture {
+                            // NAO PRECISA ENVIAR NADA PRA API
                             formConfig.selectedCard = index
                             formConfig.task.categoryTitle = model.actions[index].name
                         }
@@ -74,7 +71,6 @@ struct LocbookActionsView: View {
     }
     
     // MARK: - Initializers
-    
     init(props: Props, formConfig: FormConfig = FormConfig()) {
         var config = formConfig
         config.task = props.task

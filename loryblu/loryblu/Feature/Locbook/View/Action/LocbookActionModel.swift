@@ -2,16 +2,16 @@ import Foundation
 
 struct LocbookActionModel {
     
-    private typealias Localizable = LBStrings.Locbook
- 
+    private typealias Localizable = LBStrings.NameImage
+
     struct Action {
         let name: String
         let image: LBIcon
     }
     
     var actions: [Action] = [
-        .init(name: Localizable.NameImage.loryStudy, image: .dailyStudy),
-        .init(name: Localizable.NameImage.loryRotine, image: LBIcon.dailyRotine)
+        .init(name: Localizable.loryStudy, image: .dailyStudy),
+        .init(name: Localizable.loryRotine, image: LBIcon.dailyRotine)
     ]
     
     var options: [ImageLabel] {

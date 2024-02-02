@@ -36,27 +36,38 @@ struct LocbookNavigationStack: View {
         coordinator.pushActionsView(
             props: LocbookActionsView.Props(
                 task: LocbookTask(),
-                onNext: { task in
-                    pushLocbookTasks(task: task)
+                onNext: { task, action in
+                    pushLocbookTasks(task: task, action: action)
                 }
             )
         )
     }
     
-    private func pushLocbookTasks(task: LocbookTask) {
+    private func pushLocbookTasks(task: LocbookTask, action: Int) {
+        let loryRouteId = 1
+        var actionType: LocbookTasksView.Props.ActionType = .study
+        
+        if action == loryRouteId {
+            actionType = .routine
+        }
+        
         coordinator.pushTasksView(
             props: LocbookTasksView.Props(
-                task: task,
-                onNext: { pushLocbookRoutine(task: task) }
+                task: task, 
+                actionType: actionType,
+                onNext: { catergoryID in
+                    pushLocbookRoutine(task: task,categoryID: catergoryID)
+                }
             )
         )
     }
     
-    private func pushLocbookRoutine(task: LocbookTask) {
+    private func pushLocbookRoutine(task: LocbookTask, categoryID: String) {
         coordinator.pushTasksFrequency(
             props: FrequencyRotineView.Props(
                 task: task,
-                onSubmit: { pushFinishView() }
+                onSubmit: { pushFinishView()},
+                categoryID: categoryID
             )
         )
     }
