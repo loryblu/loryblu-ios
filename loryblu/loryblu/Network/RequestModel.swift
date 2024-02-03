@@ -1,6 +1,7 @@
 import Foundation
 
 struct RequestModel: Request {
+    var bearer: [String: String]?
     var baseURL: String
     var path: String
     var method: RequestMethod

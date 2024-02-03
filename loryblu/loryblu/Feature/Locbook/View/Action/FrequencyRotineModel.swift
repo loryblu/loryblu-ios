@@ -9,6 +9,7 @@ class FrequencyRotineModel: ObservableObject {
     }
 
     @Published var stateTask: StatusTask = .none
+    @Injected(\.appData) var appData
 
     private var repository = Container.shared.taskRepository()
 
@@ -16,7 +17,8 @@ class FrequencyRotineModel: ObservableObject {
     func saveTask(task: LocbookTask) {
         Task {
             do {
-                let result = try await repository.taskRegister(with: task)
+                let result = try await repository.taskRegister(with: task, token: appData.token,childrenID: appData.childrenId)
+                print(result)
                 stateTask = .success
             } catch {
                 stateTask = .fail

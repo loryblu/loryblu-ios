@@ -55,19 +55,18 @@ struct LocbookNavigationStack: View {
             props: LocbookTasksView.Props(
                 task: task, 
                 actionType: actionType,
-                onNext: { catergoryID in
-                    pushLocbookRoutine(task: task,categoryID: catergoryID)
+                onNext: { newTask in
+                    pushLocbookRoutine(task: newTask)
                 }
             )
         )
     }
     
-    private func pushLocbookRoutine(task: LocbookTask, categoryID: String) {
+    private func pushLocbookRoutine(task: LocbookTask) {
         coordinator.pushTasksFrequency(
             props: FrequencyRotineView.Props(
                 task: task,
-                onSubmit: { pushFinishView()},
-                categoryID: categoryID
+                onSubmit: { pushFinishView()}
             )
         )
     }

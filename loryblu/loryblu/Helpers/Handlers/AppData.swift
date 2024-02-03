@@ -9,6 +9,7 @@ class AppData: ObservableObject {
 
     @Published var isTokenReceived: Bool = false
     @Published var token: String = ""
+    @Published var childrenId: Int = 0
     @Published var userData: UserAuth?
     
     var loginStatus: LoginStatus {
@@ -22,6 +23,11 @@ class AppData: ObservableObject {
     func setLoginStatusLogged(user: UserAuth) {
         Task { @MainActor in
             userData = user
+            token = user.data.accessToken
+
+            if let id = user.data.user.childrens.first?.id {
+                childrenId = id
+            }
         }
     }
 }

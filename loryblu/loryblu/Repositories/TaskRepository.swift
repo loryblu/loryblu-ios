@@ -1,4 +1,5 @@
 import Foundation
+import Factory
 
 class TaskRepository {
 
@@ -7,16 +8,18 @@ class TaskRepository {
     init(network: Network) {
         self.network = network
     }
-
-    func taskRegister(with locBookTask: LocbookTask) async -> Bool {
+    var token = Container.shared.appData
+    func taskRegister(with locBookTask: LocbookTask, token: String , childrenID: Int) async -> ResponseMessage {
         let header: [String: String] = ["Content-Type": "application/json"]
         let request = RequestModel(
+                        bearer: ["Bear \(token)" : "Authorization"],
                         baseURL: Server.baseURL,
                         path: Endpoint.task,
                         method: .post,
                         header: header,
                         body: JSONParser.parseData(
-                            from: ["childrenId": "\(String(describing: locBookTask.childrenId))",
+                            from: [
+                            "childrenId": "\(String(describing: locBookTask.childrenId))",
                             "categoryId": "\(String(describing: locBookTask.categoryId))",
                             "shif": "\(String(describing: locBookTask.shift))",
                             "frequency": ["\(String(describing: locBookTask.frequency))"],
@@ -25,10 +28,10 @@ class TaskRepository {
                     )
 
         do {
-            _ = try await network.request(request: request, returning: ResponseMessage.self)
-            return true
+            let response = try await network.request(request: request, returning: ResponseMessage.self)
+            return response
         } catch {
-            return false
+            return ResponseMessage.init()
         }
     }
 }

@@ -10,11 +10,12 @@ struct LocbookTasksView: View {
         
         let task: LocbookTask
         let actionType: ActionType
-        var onNext: ClosureType.StringVoid?
+        var onNext: ClosureType.LocbookTaskVoid?
     }
     
     struct FormConfig {
         var selectedCard: Int?
+        var task: LocbookTask = .init()
     }
 
     let props: Props
@@ -68,6 +69,9 @@ struct LocbookTasksView: View {
 
             collectionView
         }
+        .onAppear {
+            formConfig.task = props.task
+        }
         .padding(24)
 
     }
@@ -85,7 +89,7 @@ struct LocbookTasksView: View {
                         .opacity(formConfig.selectedCard == index ? 1.0 : 0.5)
                         .onTapGesture {
                             self.formConfig.selectedCard = index
-                            self.catergoryID = tasks[index].categoryID ?? "teste"
+                            self.formConfig.task.categoryId = tasks[index].categoryID
                         }
                 }
                 .frame(minWidth: 148 , minHeight: 156)
@@ -94,7 +98,7 @@ struct LocbookTasksView: View {
             .padding(.bottom, 24)
 
             LBButton(title: LBStrings.General.next, style: .primaryActivated) {
-                props.onNext?(self.catergoryID)
+                props.onNext?(formConfig.task)
                 // ENVIAR O categoryID da task e nome. ( task.categoryID / task.name )
 
             }
