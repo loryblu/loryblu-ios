@@ -12,7 +12,7 @@ class AuthenticationRepository {
         let auth = Authentication(email: email, password: password)
 
         let request = RequestModel.Builder()
-            .with(baseURL: "https://loryblu-homologation.onrender.com/")
+            .with(baseURL: Server.baseURL)
             .with(path: Endpoint.login)
             .with(method: .post)
             .with(body: JSONParser.parseData(from: auth))
