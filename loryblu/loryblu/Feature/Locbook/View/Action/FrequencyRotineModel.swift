@@ -15,6 +15,7 @@ class FrequencyRotineModel: ObservableObject {
 
     @MainActor
     func saveTask(task: LocbookTask) {
+ 
         Task {
             do {
                 let result = try await repository.taskRegister(with: task,

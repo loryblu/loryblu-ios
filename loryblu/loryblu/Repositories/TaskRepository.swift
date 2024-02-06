@@ -19,11 +19,9 @@ class TaskRepository {
             return ResponseMessage(message: "shif error")
         }
 
-//        guard let frequency = locBookTask.frequency else {
-//            return ResponseMessage(message: "frequency error")
-//        }
-
-        let frequency = ["sat"]
+        guard let frequency = locBookTask.frequency else {
+            return ResponseMessage(message: "frequency error")
+        }
 
         let request = RequestModel.Builder()
             .with(baseURL: Server.baseURL)
@@ -32,9 +30,8 @@ class TaskRepository {
             .with(body: JSONParser.parseData(from: [
                 "childrenId": "\(String(describing: childrenID))",
                 "categoryId": "\(String(describing: categoryId))",
-                "shif": "\(String(describing: shift))",
-//                "frequency": ["\(String(describing: frequency))"],
-                "frequency": ["sat"],
+                "shift": "\(String(describing: shift))",
+                "frequency": [ frequency.map { $0.rawValue }],
                 "order": "\(String(describing: locBookTask.order))"
                 ])
                 )
