@@ -7,6 +7,7 @@ enum Segment {
 }
 
 struct ImageLabel: View {
+    var uuid: UUID = UUID()
     let image: String
     let name: String
     let font: Font
