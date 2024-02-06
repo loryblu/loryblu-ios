@@ -114,6 +114,7 @@
 		91CA96642B28A7F800611F91 /* ClosureType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CA96632B28A7F800611F91 /* ClosureType.swift */; };
 		9302EE922B71BFEA003D7C4F /* LBSelectedItemShift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9302EE912B71BFEA003D7C4F /* LBSelectedItemShift.swift */; };
 		9302EE942B71C0C0003D7C4F /* LBShiftItemsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9302EE932B71C0C0003D7C4F /* LBShiftItemsComponent.swift */; };
+		9302EE962B71C47A003D7C4F /* LocbookSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9302EE952B71C47A003D7C4F /* LocbookSummaryView.swift */; };
 		9310C8D62B66DB02007D3CE7 /* LBToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9310C8D52B66DB02007D3CE7 /* LBToolbar.swift */; };
 		9366FB182B6B063900A57F89 /* LBToolBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9366FB172B6B063900A57F89 /* LBToolBarModifier.swift */; };
 /* End PBXBuildFile section */
@@ -200,6 +201,7 @@
 		91CA96632B28A7F800611F91 /* ClosureType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosureType.swift; sourceTree = "<group>"; };
 		9302EE912B71BFEA003D7C4F /* LBSelectedItemShift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBSelectedItemShift.swift; sourceTree = "<group>"; };
 		9302EE932B71C0C0003D7C4F /* LBShiftItemsComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBShiftItemsComponent.swift; sourceTree = "<group>"; };
+		9302EE952B71C47A003D7C4F /* LocbookSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocbookSummaryView.swift; sourceTree = "<group>"; };
 		9310C8D52B66DB02007D3CE7 /* LBToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBToolbar.swift; sourceTree = "<group>"; };
 		9366FB172B6B063900A57F89 /* LBToolBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBToolBarModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -616,6 +618,7 @@
 				8C2A68552AF9B9A000B74295 /* LocbookTasksView.swift */,
 				335E21A62AFF132800700440 /* FrequencyRotineView.swift */,
 				912BC3822B2934CB00B7F336 /* Action */,
+				9302EE952B71C47A003D7C4F /* LocbookSummaryView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -805,6 +808,7 @@
 				91B4AC442AD19CFA003A7FE5 /* AppEntryPoint.swift in Sources */,
 				911B843C2AD1C0B200F59DD2 /* AuthenticationRepository.swift in Sources */,
 				8C9CBD0D2A7AE97B001DBD35 /* RegisterChildView.swift in Sources */,
+				9302EE962B71C47A003D7C4F /* LocbookSummaryView.swift in Sources */,
 				8C669C412AA011480028B436 /* UserRegister.swift in Sources */,
 				8C070DDD2B10C254004AAF8A /* LocbookListTasks.swift in Sources */,
 				91664AE42B0C029E005BF5CA /* HomeNavigationCoordinator.swift in Sources */,

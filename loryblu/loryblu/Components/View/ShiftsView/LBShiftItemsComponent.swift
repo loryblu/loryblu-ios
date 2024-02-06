@@ -23,15 +23,13 @@ struct LBShiftItemsComponent: View {
                 if shift.isSelected {
                     LBSelectedItemShift(shiftName: shift.name,iconValue: shift.icon)
                 } else {
-                    Spacer().frame(width: 2)
                     Text(shift.name)
                         .font(LBFont.bodyLarge)
                         .foregroundColor(.gray)
-                        .padding(8)
-                    Spacer().frame(width: 8)
+                        .frame(maxWidth: .infinity,alignment: .center).padding(2)
                 }
             }
-        }.background(LBColor.textfield).cornerRadius(8).frame(maxWidth: .infinity)
+        }.background(LBColor.textfield).cornerRadius(8).frame(maxWidth:.infinity,alignment: .center)
     }
 }
 

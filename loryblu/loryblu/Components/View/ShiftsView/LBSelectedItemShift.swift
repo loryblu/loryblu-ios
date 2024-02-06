@@ -14,13 +14,13 @@ struct LBSelectedItemShift: View {
     
     var body: some View {
         HStack {
-            Spacer().frame(width: 8)
-            Image(iconValue).frame(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-            Spacer().frame(width: 2)
+            Spacer().frame(width: 16)
+            Image(iconValue)
+            Spacer().frame(width: 4)
             Text(shiftName)
                 .font(LBFont.bodyLarge)
                 .foregroundColor(.black)
-                .padding(8)
+                .padding(8).fixedSize(horizontal: true, vertical: false).padding(2)
             Spacer().frame(width: 8)
         }.background(LBColor.backgroundCards).cornerRadius(8)
     }
