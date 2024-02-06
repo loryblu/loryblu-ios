@@ -113,6 +113,7 @@
 		91CA96622B2899A600611F91 /* LocbookNavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CA96612B2899A600611F91 /* LocbookNavigationCoordinator.swift */; };
 		91CA96642B28A7F800611F91 /* ClosureType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CA96632B28A7F800611F91 /* ClosureType.swift */; };
 		9302EE922B71BFEA003D7C4F /* LBSelectedItemShift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9302EE912B71BFEA003D7C4F /* LBSelectedItemShift.swift */; };
+		9302EE942B71C0C0003D7C4F /* LBShiftItemsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9302EE932B71C0C0003D7C4F /* LBShiftItemsComponent.swift */; };
 		9310C8D62B66DB02007D3CE7 /* LBToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9310C8D52B66DB02007D3CE7 /* LBToolbar.swift */; };
 		9366FB182B6B063900A57F89 /* LBToolBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9366FB172B6B063900A57F89 /* LBToolBarModifier.swift */; };
 /* End PBXBuildFile section */
@@ -198,6 +199,7 @@
 		91CA96612B2899A600611F91 /* LocbookNavigationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocbookNavigationCoordinator.swift; sourceTree = "<group>"; };
 		91CA96632B28A7F800611F91 /* ClosureType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosureType.swift; sourceTree = "<group>"; };
 		9302EE912B71BFEA003D7C4F /* LBSelectedItemShift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBSelectedItemShift.swift; sourceTree = "<group>"; };
+		9302EE932B71C0C0003D7C4F /* LBShiftItemsComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBShiftItemsComponent.swift; sourceTree = "<group>"; };
 		9310C8D52B66DB02007D3CE7 /* LBToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBToolbar.swift; sourceTree = "<group>"; };
 		9366FB172B6B063900A57F89 /* LBToolBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBToolBarModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -622,6 +624,7 @@
 			isa = PBXGroup;
 			children = (
 				9302EE912B71BFEA003D7C4F /* LBSelectedItemShift.swift */,
+				9302EE932B71C0C0003D7C4F /* LBShiftItemsComponent.swift */,
 			);
 			path = ShiftsView;
 			sourceTree = "<group>";
@@ -830,6 +833,7 @@
 				3329F01F2AB3CB3000915FA3 /* LBDatePickerTextField.swift in Sources */,
 				334D0AB72A8AF93D003881ED /* NewPasswordScreen.swift in Sources */,
 				8C2535322A7714DD0096738B /* RegisterResponsibleViewModel.swift in Sources */,
+				9302EE942B71C0C0003D7C4F /* LBShiftItemsComponent.swift in Sources */,
 				8C27B8542A68C19400F72214 /* LBLabel.swift in Sources */,
 				8C5DFC8F2A85AE13002739D9 /* LBToggle.swift in Sources */,
 				8C57341B2A6B4F5F0052B955 /* LBStrings.swift in Sources */,
