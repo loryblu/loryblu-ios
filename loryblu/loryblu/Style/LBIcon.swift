@@ -56,6 +56,9 @@ enum LBIcon: String {
     case reinforcement
     case school
     case search
+    case shift_morning = "shift_morning"
+    case shift_afternoon = "shift_afternoon"
+    case shift_night = "shift_night"
     case snack
     case speechTherapy = "speech_therapy"
     case sport
