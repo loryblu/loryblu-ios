@@ -10,6 +10,8 @@ import SwiftUI
 struct ShiftItem {
     var name: String
     var icon: String
+    var backgroundColor: Color
+    var letterColor: Color
     var isSelected: Bool
 }
 
@@ -21,7 +23,11 @@ struct LBShiftItemsComponent: View {
         HStack {
             ForEach(shifts, id: \.name) { shift in
                 if shift.isSelected {
-                    LBSelectedItemShift(shiftName: shift.name,iconValue: shift.icon)
+                    LBSelectedItemShift(
+                        shiftName: shift.name,
+                        iconValue: shift.icon,
+                        backgroundColor: shift.backgroundColor,
+                        letterColor: shift.letterColor)
                 } else {
                     Text(shift.name)
                         .font(LBFont.bodyLarge)
@@ -35,7 +41,7 @@ struct LBShiftItemsComponent: View {
 
 #Preview {
     LBShiftItemsComponent(shifts: [
-        ShiftItem(name: "Manhã", icon: LBIcon.shift_morning.rawValue, isSelected: true),
-        ShiftItem(name: "Tarde", icon: LBIcon.shift_morning.rawValue, isSelected: false),
-        ShiftItem(name: "Noite", icon: LBIcon.shift_morning.rawValue, isSelected: false)])
+        ShiftItem(name: LBStrings.FrequencyRotine.morning, icon: LBIcon.shift_morning.rawValue,backgroundColor: LBColor.buttonBackgroundLight, letterColor: .black,isSelected: true),
+        ShiftItem(name: LBStrings.FrequencyRotine.afternoon, icon: LBIcon.shift_morning.rawValue, backgroundColor: LBColor.buttonBackgroundMedium,letterColor: .white, isSelected: false),
+        ShiftItem(name: LBStrings.FrequencyRotine.night, icon: LBIcon.shift_morning.rawValue,backgroundColor: LBColor.buttonBackgroundDark, letterColor: .white,isSelected: false)])
 }
