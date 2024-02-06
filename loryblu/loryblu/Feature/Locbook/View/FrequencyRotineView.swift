@@ -80,6 +80,7 @@ struct FrequencyRotineView: View {
         HStack(alignment: .center, spacing: 12) {
             Button(LBStrings.FrequencyRotine.morning) {
                 formConfig.period = .morning
+                formConfig.task.shift = .morning
             }
             .buttonStyle(
                 FrequencyButtonStyle(
@@ -91,6 +92,7 @@ struct FrequencyRotineView: View {
 
             Button(LBStrings.FrequencyRotine.afternoon) {
                 formConfig.period = .afternoon
+                formConfig.task.shift = .afternoon
             }
             .buttonStyle(
                 FrequencyButtonStyle(
@@ -102,6 +104,7 @@ struct FrequencyRotineView: View {
             
             Button(LBStrings.FrequencyRotine.night) {
                 formConfig.period = .night
+                formConfig.task.shift = .night
             }
             .buttonStyle(
                 FrequencyButtonStyle(
