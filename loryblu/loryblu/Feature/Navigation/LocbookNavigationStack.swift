@@ -56,7 +56,7 @@ struct LocbookNavigationStack: View {
             props: LocbookTasksView.Props(
                 task: task, 
                 actionType: actionType,
-                onNext: { pushLocbookRoutine(task: task) },
+                onNext: { task in pushLocbookRoutine(task: task) },
                 onClose: { dismiss() }
             )
         )

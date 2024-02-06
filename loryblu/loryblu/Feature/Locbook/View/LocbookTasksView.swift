@@ -10,12 +10,13 @@ struct LocbookTasksView: View {
         
         let task: LocbookTask
         let actionType: ActionType
-        var onNext: ClosureType.VoidVoid?
+        var onNext: ClosureType.LocbookTaskVoid?
         var onClose : ClosureType.VoidVoid?
     }
     
     struct FormConfig {
-        var selectedCard: Int?
+        var selectedCard: String?
+        var task: LocbookTask = .init()
     }
     
     let props: Props
@@ -70,16 +71,16 @@ struct LocbookTasksView: View {
     var collectionView: some View {
         ScrollView(showsIndicators: false) {
             LazyVGrid(columns: columns, alignment: .center, spacing: 24 ) {
-                ForEach(0..<tasks.count) { index in
-                    tasks[index]
+                ForEach(tasks, id: \.uuid) { task in
+                    task
                     // Mostrar as tasks de acordo com cada fluxo
-                        .overlay(formConfig.selectedCard == index ?
+                        .overlay(formConfig.selectedCard == task.categoryID ?
                                  RoundedRectangle(cornerRadius: 12)
                             .inset(by: 0)
                             .strokeBorder(LBColor.titlePrimary, lineWidth: 4) : nil)
-                        .opacity(formConfig.selectedCard == index ? 1.0 : 0.5)
+                        .opacity(formConfig.selectedCard == task.categoryID ? 1.0 : 0.5)
                         .onTapGesture {
-                            self.formConfig.selectedCard = index
+                            self.formConfig.selectedCard = task.categoryID
                         }
                 }
                 .frame(minWidth: 148 , minHeight: 156)
@@ -88,12 +89,18 @@ struct LocbookTasksView: View {
             .padding(.bottom, 24)
 
             LBButton(title: LBStrings.General.next, style: .primaryActivated) {
-                props.onNext?()
-                // ENVIAR O categoryID da task e nome. ( task.categoryID / task.name )
-
+                formConfig.task.categoryId = formConfig.selectedCard
+                props.onNext?(formConfig.task)
             }
         }
         .scrollContentBackground(.hidden)
+    }
+    
+    init(props: Props, formConfig: FormConfig = FormConfig()) {
+        var config = formConfig
+        config.task = props.task
+        self.props = props
+        self._formConfig = State(initialValue: config)
     }
 }
 
