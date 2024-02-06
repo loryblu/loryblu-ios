@@ -112,6 +112,7 @@
 		91CA965F2B28996300611F91 /* LocbookNavigationStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CA965E2B28996300611F91 /* LocbookNavigationStack.swift */; };
 		91CA96622B2899A600611F91 /* LocbookNavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CA96612B2899A600611F91 /* LocbookNavigationCoordinator.swift */; };
 		91CA96642B28A7F800611F91 /* ClosureType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CA96632B28A7F800611F91 /* ClosureType.swift */; };
+		9302EE922B71BFEA003D7C4F /* LBSelectedItemShift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9302EE912B71BFEA003D7C4F /* LBSelectedItemShift.swift */; };
 		9310C8D62B66DB02007D3CE7 /* LBToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9310C8D52B66DB02007D3CE7 /* LBToolbar.swift */; };
 		9366FB182B6B063900A57F89 /* LBToolBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9366FB172B6B063900A57F89 /* LBToolBarModifier.swift */; };
 /* End PBXBuildFile section */
@@ -196,6 +197,7 @@
 		91CA965E2B28996300611F91 /* LocbookNavigationStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocbookNavigationStack.swift; sourceTree = "<group>"; };
 		91CA96612B2899A600611F91 /* LocbookNavigationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocbookNavigationCoordinator.swift; sourceTree = "<group>"; };
 		91CA96632B28A7F800611F91 /* ClosureType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosureType.swift; sourceTree = "<group>"; };
+		9302EE912B71BFEA003D7C4F /* LBSelectedItemShift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBSelectedItemShift.swift; sourceTree = "<group>"; };
 		9310C8D52B66DB02007D3CE7 /* LBToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBToolbar.swift; sourceTree = "<group>"; };
 		9366FB172B6B063900A57F89 /* LBToolBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBToolBarModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -445,6 +447,7 @@
 		8C9CBD0E2A7AEBEE001DBD35 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9302EE902B71BFAD003D7C4F /* ShiftsView */,
 				8C225AB02AE703B100E43B2C /* ImageLabel.swift */,
 				8C9CBD0F2A7AEC24001DBD35 /* PasswordRulesView.swift */,
 			);
@@ -615,6 +618,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		9302EE902B71BFAD003D7C4F /* ShiftsView */ = {
+			isa = PBXGroup;
+			children = (
+				9302EE912B71BFEA003D7C4F /* LBSelectedItemShift.swift */,
+			);
+			path = ShiftsView;
+			sourceTree = "<group>";
+		};
 		9310C8D42B66DAD9007D3CE7 /* Toolbar */ = {
 			isa = PBXGroup;
 			children = (
@@ -780,6 +791,7 @@
 				8C9CBCFC2A7ACF46001DBD35 /* LoginView.swift in Sources */,
 				3380B2102B0DA63F0001E67D /* Formatter.swift in Sources */,
 				8C5734262A6C39AF0052B955 /* RegisterResponsibleView.swift in Sources */,
+				9302EE922B71BFEA003D7C4F /* LBSelectedItemShift.swift in Sources */,
 				91CA96642B28A7F800611F91 /* ClosureType.swift in Sources */,
 				8C3120F52ABD249600D580BD /* WebView.swift in Sources */,
 				8C2A68562AF9B9A000B74295 /* LocbookTasksView.swift in Sources */,
