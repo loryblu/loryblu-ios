@@ -131,7 +131,7 @@ struct LocbookSummaryView: View {
                 }
             }
             
-            LBButton(title: LBStrings.SummaryLocbook.confirmButton) {
+            LBButton(title: LBStrings.SummaryLocbook.submitTask) {
                 //  props.onSubmit?()
             }
         }.padding(24).locbookToolbar(title: LBStrings.SummaryLocbook.topbarTitle, onClose: { props.onClose?() })

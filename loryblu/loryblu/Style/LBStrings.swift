@@ -180,7 +180,7 @@ extension LBStrings {
 
 extension LBStrings {
     enum SummaryLocbook {
-        static let confirmButton = String(localized: "summary_confirmButton")
+        static let submitTask = String(localized: "summary_submitTask")
         static let task = String(localized: "summary_task")
         static let shift = String(localized: "summary_shift")
         static let category = String(localized: "summary_category")
