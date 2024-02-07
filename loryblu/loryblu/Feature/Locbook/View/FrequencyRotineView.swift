@@ -81,8 +81,16 @@ struct FrequencyRotineView: View {
             Spacer()
 
             LBButton(title: LBStrings.General.confirm) {
+                
                 formConfig.task.frequency = formConfig.frequency
-                props.onNext?(formConfig.task)
+                
+                if formConfig.task.shift == nil {
+                    formConfig.task.shift = .morning
+                }
+                
+                if !formConfig.frequency.isEmpty {
+                    props.onNext?(formConfig.task)
+                }
             }
         }
         .locbookToolbar(title: props.title, onClose: { props.onClose?() })
