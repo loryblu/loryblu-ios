@@ -15,7 +15,7 @@ struct LocbookTasksView: View {
     }
     
     struct FormConfig {
-        var selectedCard: String?
+        var selectedCard: String? = nil
         var task: LocbookTask = .init()
     }
     
@@ -90,7 +90,9 @@ struct LocbookTasksView: View {
 
             LBButton(title: LBStrings.General.next, style: .primaryActivated) {
                 formConfig.task.categoryId = formConfig.selectedCard
-                props.onNext?(formConfig.task)
+                if formConfig.selectedCard != nil {
+                    props.onNext?(formConfig.task)
+                }
             }
         }
         .scrollContentBackground(.hidden)
