@@ -77,7 +77,7 @@ struct LocbookSummaryView: View {
             
             VStack(spacing:8) {
                 HStack(alignment: .center, spacing: 8) {
-                    Text("Categoria:")
+                    Text(LBStrings.SummaryLocbook.category)
                         .font(LBFont.head5)
                         .foregroundStyle(LBColor.text).frame(alignment: .topLeading)
                     Spacer()
@@ -90,7 +90,7 @@ struct LocbookSummaryView: View {
                 
                 
                 HStack(alignment: .center, spacing: 24) {
-                    Text("Tarefa:")
+                    Text(LBStrings.SummaryLocbook.task)
                         .font(LBFont.head5)
                         .foregroundStyle(LBColor.text).frame(alignment: .topLeading)
                     Spacer()
@@ -104,13 +104,13 @@ struct LocbookSummaryView: View {
             
             Divider()
             
-            Text("Turno:").font(LBFont.head5)
+            Text(LBStrings.SummaryLocbook.shift).font(LBFont.head5)
                 .foregroundStyle(LBColor.text).frame(maxWidth:.infinity,alignment: .leading)
             
             LBShiftItemsComponent(shifts: props.shifts)
             
             
-            Text("Frequência:").font(LBFont.head5)
+            Text(LBStrings.SummaryLocbook.frequency).font(LBFont.head5)
                 .foregroundStyle(LBColor.text).frame(maxWidth:.infinity,alignment: .leading)
             ZStack {
                 RoundedRectangle(cornerRadius: 12)
@@ -131,10 +131,10 @@ struct LocbookSummaryView: View {
                 }
             }
             
-            LBButton(title: "Cadastrar Tarefa") {
+            LBButton(title: LBStrings.SummaryLocbook.confirmButton) {
                 //  props.onSubmit?()
             }
-        }.padding(24).locbookToolbar(title: "Resumo", onClose: { props.onClose?() })
+        }.padding(24).locbookToolbar(title: LBStrings.SummaryLocbook.topbarTitle, onClose: { props.onClose?() })
     }
 }
 

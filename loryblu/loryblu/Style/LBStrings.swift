@@ -177,3 +177,14 @@ extension LBStrings {
         static let night = String(localized: "night")
     }
 }
+
+extension LBStrings {
+    enum SummaryLocbook {
+        static let confirmButton = String(localized: "summary_confirmButton")
+        static let task = String(localized: "summary_task")
+        static let shift = String(localized: "summary_shift")
+        static let category = String(localized: "summary_category")
+        static let frequency = String(localized: "summary_frequency")
+        static let topbarTitle = String(localized: "summary_topbar")
+    }
+}

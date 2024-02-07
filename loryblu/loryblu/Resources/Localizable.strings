@@ -154,3 +154,12 @@
 "morning" = "Manhã";
 "afternoon" = "Tarde";
 "night" = "Noite";
+
+// ==================== SummaryLocbook =============================
+
+"summary_category" = "Categoria:"
+"summary_shift" = "Turno:"
+"summary_task" = "Tarefa:"
+"summary_frequency" = "Frequência:"
+"summary_topbar" = "Confira seu resumo"
+"summary_submitButton" = "Cadastrar Tarefa"
