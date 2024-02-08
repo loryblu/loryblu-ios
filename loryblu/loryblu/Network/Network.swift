@@ -32,6 +32,10 @@ class Network {
             urlRequest.setValue(value, forHTTPHeaderField: key)
         }
 
+        for (key, value) in request.header ?? [:] {
+            urlRequest.setValue(value, forHTTPHeaderField: key)
+        }
+
         let (data, response) =  try await session.data(for: urlRequest)
 
         guard let response = response as? HTTPURLResponse else {

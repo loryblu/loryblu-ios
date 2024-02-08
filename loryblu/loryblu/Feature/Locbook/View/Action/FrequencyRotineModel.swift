@@ -21,12 +21,13 @@ class FrequencyRotineModel: ObservableObject {
                 let result = try await repository.taskRegister(with: task,
                                                                token: appData.token,
                                                                childrenID: appData.childrenId)
-                print(result)
-                print("request sucess")
-                stateTask = .success
-            } catch {
-                stateTask = .fail
-                print("deu ruim")
+                if result {
+                    print("request success")
+                    stateTask = .success
+                } else {
+                    print("request fail")
+                    stateTask = .fail
+                }
             }
         }
     }
