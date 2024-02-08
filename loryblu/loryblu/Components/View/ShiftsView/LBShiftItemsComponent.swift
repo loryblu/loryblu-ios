@@ -18,7 +18,7 @@ struct ShiftItem {
 struct LBShiftItemsComponent: View {
     
     let shifts: [ShiftItem]
-
+    
     var body: some View {
         HStack {
             ForEach(shifts, id: \.name) { shift in
