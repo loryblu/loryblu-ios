@@ -75,10 +75,11 @@ struct FrequencyRotineView: View {
 
             LBButton(title: LBStrings.General.confirm) {
                 formConfig.task.frequency = formConfig.makeFrequency()
-                model.saveTask(task: formConfig.task)
-                if model.stateTask == .success {
-                    print("passei por aqui")
-                    props.onSubmit?()
+                Task  {
+                    await  model.saveTask(task: formConfig.task)
+                    if model.stateTask == .success {
+                        props.onSubmit?()
+                    }
                 }
             }
         }

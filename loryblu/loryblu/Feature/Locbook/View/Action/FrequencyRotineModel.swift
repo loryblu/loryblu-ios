@@ -14,10 +14,10 @@ class FrequencyRotineModel: ObservableObject {
     private var repository = Container.shared.taskRepository()
 
     @MainActor
-    func saveTask(task: LocbookTask) {
- 
-        Task {
-            do {
+    func saveTask(task: LocbookTask) async {
+
+//        Task {
+//            do {
                 let result = try await repository.taskRegister(with: task,
                                                                token: appData.token,
                                                                childrenID: appData.childrenId)
@@ -28,7 +28,7 @@ class FrequencyRotineModel: ObservableObject {
                     print("request fail")
                     stateTask = .fail
                 }
-            }
-        }
+//            }
+//        }
     }
 }
