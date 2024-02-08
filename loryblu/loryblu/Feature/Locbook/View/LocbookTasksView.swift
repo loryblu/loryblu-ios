@@ -10,17 +10,19 @@ struct LocbookTasksView: View {
         
         let task: LocbookTask
         let actionType: ActionType
-        var onNext: ClosureType.VoidVoid?
+        var onNext: ClosureType.LocbookTaskVoid?
         var onClose : ClosureType.VoidVoid?
     }
     
     struct FormConfig {
         var selectedCard: Int?
+        var task: LocbookTask = .init()
     }
     
     let props: Props
     
     @State var formConfig: FormConfig = FormConfig()
+    @State var categoryID: String = ""
 
     var tasks: [ImageLabel] {
         switch props.actionType {
@@ -62,6 +64,9 @@ struct LocbookTasksView: View {
 
             collectionView
         }
+        .onAppear{
+            formConfig.task = props.task
+        }
         .locbookToolbar(title: title, onClose: { props.onClose?() })
         .padding(24)
 
@@ -88,7 +93,7 @@ struct LocbookTasksView: View {
             .padding(.bottom, 24)
 
             LBButton(title: LBStrings.General.next, style: .primaryActivated) {
-                props.onNext?()
+                props.onNext?(formConfig.task)
                 // ENVIAR O categoryID da task e nome. ( task.categoryID / task.name )
 
             }
