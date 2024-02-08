@@ -60,14 +60,15 @@ struct LocbookSummaryView: View {
             LBIcon.progression4.image
                 .resizable()
                 .scaledToFit()
-                .frame(maxWidth: .infinity,minHeight: 50)
+                .frame(maxWidth: .infinity,minHeight: 40)
+                .padding(.bottom,39)
             
             Spacer()
             HStack {
                 Image(props.taskImage)
                     .resizable()
                     .padding(24)
-                    .scaledToFill()
+                    .scaledToFit()
                     .frame(width: 200, height: 200, alignment: .center)
                     .overlay(
                         RoundedRectangle(cornerRadius: 12)
@@ -171,7 +172,8 @@ extension LocbookSummaryView.Props {
                 name: LBStrings.FrequencyRotine.morning, 
                 icon:LBIcon.sunSmall.rawValue,
                 backgroundColor:LBColor.buttonBackgroundLight,
-                letterColor: .black,isSelected: false),
+                letterColor: .black,
+                isSelected: false),
             
             ShiftItem(
                 name: LBStrings.FrequencyRotine.afternoon,
@@ -242,6 +244,15 @@ extension LocbookSummaryView.Props: Hashable {
 
 #Preview {
     NavigationStack {
-        LocbookSummaryView(props: .init(task: LocbookTask(categoryTitle: "Title of the task"), onSubmit: { })).locbookToolbar(title: "LoryEstudioso", onClose: {} )
+        LocbookSummaryView(
+            props:
+                    .init(
+            task: LocbookTask(
+                shift: .morning,
+                frequency: [LocbookTask.Frequency.mon],
+                categoryId: LBStrings.CategoryID.school,
+                categoryTitle: LBStrings.Locbook.titleStudy
+            ),
+            onSubmit: { }))
     }
 }
