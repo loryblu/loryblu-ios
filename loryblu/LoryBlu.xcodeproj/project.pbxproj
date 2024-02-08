@@ -25,6 +25,7 @@
 		33B2ABFC2ACE587A004CF7DF /* RepositorySetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B2ABFB2ACE587A004CF7DF /* RepositorySetPassword.swift */; };
 		33BA2DE62AC9BE3D009704FD /* DeepLinkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA2DE52AC9BE3D009704FD /* DeepLinkHandler.swift */; };
 		33D0F90E2AD0EE3700EE54DF /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D0F90D2AD0EE3700EE54DF /* Endpoints.swift */; };
+		33DE3B212B75975400F45449 /* UserAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DE3B202B75975400F45449 /* UserAuth.swift */; };
 		33F87E902B21528000F62041 /* TaskRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F87E8F2B21528000F62041 /* TaskRepository.swift */; };
 		41931EBE2A6470B4008F13F8 /* LBButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41931EBD2A6470B4008F13F8 /* LBButton.swift */; };
 		41BE77FD2A85A12300534ADA /* LBGenderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BE77FC2A85A12300534ADA /* LBGenderButton.swift */; };
@@ -136,6 +137,7 @@
 		33B2ABFB2ACE587A004CF7DF /* RepositorySetPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositorySetPassword.swift; sourceTree = "<group>"; };
 		33BA2DE52AC9BE3D009704FD /* DeepLinkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkHandler.swift; sourceTree = "<group>"; };
 		33D0F90D2AD0EE3700EE54DF /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
+		33DE3B202B75975400F45449 /* UserAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuth.swift; sourceTree = "<group>"; };
 		33F87E8F2B21528000F62041 /* TaskRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRepository.swift; sourceTree = "<group>"; };
 		41931EBD2A6470B4008F13F8 /* LBButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBButton.swift; sourceTree = "<group>"; };
 		41BE77FC2A85A12300534ADA /* LBGenderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBGenderButton.swift; sourceTree = "<group>"; };
@@ -405,6 +407,7 @@
 			children = (
 				911B843D2AD1C19D00F59DD2 /* Authentication.swift */,
 				8C070DDE2B1803C9004AAF8A /* LocbookTask.swift */,
+				33DE3B202B75975400F45449 /* UserAuth.swift */,
 				8C070DDC2B10C254004AAF8A /* LocbookListTasks.swift */,
 				91361A252ACEF06B00700E36 /* ResponseMessage.swift */,
 				8C669C402AA011480028B436 /* UserRegister.swift */,
@@ -798,6 +801,7 @@
 				334D0AB52A8AF93D003881ED /* ResetPasswordModel.swift in Sources */,
 				91B4AC252AD0F61B003A7FE5 /* JSONParse.swift in Sources */,
 				8C5734202A6B6F6B0052B955 /* LBTextField.swift in Sources */,
+				33DE3B212B75975400F45449 /* UserAuth.swift in Sources */,
 				33212E392B0580720066BFBE /* LBfloatingButton.swift in Sources */,
 				334D0AB62A8AF93D003881ED /* ResetPasswordScreen.swift in Sources */,
 				33B2ABFC2ACE587A004CF7DF /* RepositorySetPassword.swift in Sources */,
