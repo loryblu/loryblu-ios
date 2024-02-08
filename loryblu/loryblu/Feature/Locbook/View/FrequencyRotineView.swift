@@ -22,7 +22,8 @@ struct FrequencyRotineView: View {
 
     // MARK: - Properties
     
-    let props: Props
+    var props: Props
+    var model = FrequencyRotineModel()
     @State var formConfig = FormConfig()
     
     var body: some View {
@@ -65,10 +66,11 @@ struct FrequencyRotineView: View {
                              wednesday: $formConfig.wednesday,
                              thurday: $formConfig.thurday,
                              friday: $formConfig.friday,
-                             satuday: $formConfig.satuday)
+                             satuday: $formConfig.saturday)
             Spacer()
 
             LBButton(title: LBStrings.General.confirm) {
+                formConfig
                 props.onSubmit?()
             }
         }
@@ -124,11 +126,26 @@ extension FrequencyRotineView {
         var wednesday: Bool = false
         var thurday: Bool = false
         var friday: Bool = false
-        var satuday: Bool = false
+        var saturday: Bool = false
         var morningSet: Bool = true
         var afternoonSet: Bool = false
         var nightSet: Bool = false
-        var period: Period = .morning
+        var period: LocbookTask.Shift = .morning
+        var task: LocbookTask = .init()
+
+        func makeFrequency() -> [LocbookTask.Frequency] {
+                    var result: [LocbookTask.Frequency] = []
+
+                    if sunday { result.append(.sun) }
+                    if monday { result.append(.mon) }
+                    if tuesday { result.append(.tue) }
+                    if wednesday { result.append(.wed) }
+                    if thurday { result.append(.thu) }
+                    if friday { result.append(.fri) }
+                    if saturday { result.append(.sat) }
+
+                    return result
+        }
     }
 }
 
