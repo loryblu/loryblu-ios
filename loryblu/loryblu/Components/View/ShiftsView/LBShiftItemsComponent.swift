@@ -31,13 +31,16 @@ struct LBShiftItemsComponent: View {
                     Spacer().frame(width: 8)
                 }
             }
-        }.background(LBColor.textfield).cornerRadius(8).frame(maxWidth: .infinity)
+        }
+        .background(LBColor.textfield)
+        .cornerRadius(8)
+        .frame(maxWidth: .infinity)
     }
 }
 
 #Preview {
     LBShiftItemsComponent(shifts: [
-        ShiftItem(name: "Manhã", icon: LBIcon.shift_morning.rawValue, isSelected: true),
-        ShiftItem(name: "Tarde", icon: LBIcon.shift_morning.rawValue, isSelected: false),
-        ShiftItem(name: "Noite", icon: LBIcon.shift_morning.rawValue, isSelected: false)])
+        ShiftItem(name: "Manhã", icon: LBIcon.sunSmall.rawValue, isSelected: true),
+        ShiftItem(name: "Tarde", icon: LBIcon.eviningSmall.rawValue, isSelected: false),
+        ShiftItem(name: "Noite", icon: LBIcon.moonSmall.rawValue, isSelected: false)])
 }
