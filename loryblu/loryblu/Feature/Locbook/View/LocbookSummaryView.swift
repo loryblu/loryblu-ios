@@ -169,7 +169,7 @@ extension LocbookSummaryView.Props {
             
             ShiftItem(
                 name: LBStrings.FrequencyRotine.morning, 
-                icon:LBIcon.shift_morning.rawValue,
+                icon:LBIcon.sunSmall.rawValue,
                 backgroundColor:LBColor.buttonBackgroundLight,
                 letterColor: .black,isSelected: false),
             

@@ -41,7 +41,7 @@ struct LBShiftItemsComponent: View {
 
 #Preview {
     LBShiftItemsComponent(shifts: [
-        ShiftItem(name: LBStrings.FrequencyRotine.morning, icon: LBIcon.shift_morning.rawValue,backgroundColor: LBColor.buttonBackgroundLight, letterColor: .black,isSelected: true),
-        ShiftItem(name: LBStrings.FrequencyRotine.afternoon, icon: LBIcon.shift_morning.rawValue, backgroundColor: LBColor.buttonBackgroundMedium,letterColor: .white, isSelected: false),
-        ShiftItem(name: LBStrings.FrequencyRotine.night, icon: LBIcon.shift_morning.rawValue,backgroundColor: LBColor.buttonBackgroundDark, letterColor: .white,isSelected: false)])
+        ShiftItem(name: LBStrings.FrequencyRotine.morning, icon: LBIcon.sunSmall.rawValue,backgroundColor: LBColor.buttonBackgroundLight, letterColor: .black,isSelected: true),
+        ShiftItem(name: LBStrings.FrequencyRotine.afternoon, icon: LBIcon.eviningSmall.rawValue, backgroundColor: LBColor.buttonBackgroundMedium,letterColor: .white, isSelected: false),
+        ShiftItem(name: LBStrings.FrequencyRotine.night, icon: LBIcon.moonSmall.rawValue,backgroundColor: LBColor.buttonBackgroundDark, letterColor: .white,isSelected: false)])
 }

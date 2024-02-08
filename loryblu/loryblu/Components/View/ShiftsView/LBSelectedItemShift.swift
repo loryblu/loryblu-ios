@@ -30,5 +30,5 @@ struct LBSelectedItemShift: View {
 }
 
 #Preview {
-    LBSelectedItemShift(shiftName: LBStrings.FrequencyRotine.morning, iconValue: LBIcon.shift_morning.rawValue, backgroundColor: .black, letterColor: .white)
+    LBSelectedItemShift(shiftName: LBStrings.FrequencyRotine.morning, iconValue: LBIcon.sunSmall.rawValue, backgroundColor: .black, letterColor: .white)
 }
