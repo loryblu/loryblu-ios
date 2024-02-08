@@ -24,7 +24,9 @@ struct LBSelectedItemShift: View {
                 .foregroundColor(letterColor)
                 .padding(8).fixedSize(horizontal: true, vertical: false).padding(2)
             Spacer().frame(width: 8)
-        }.background(backgroundColor).cornerRadius(8)
+        }
+        .background(backgroundColor)
+        .cornerRadius(8)
     }
     
 }

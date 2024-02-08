@@ -35,7 +35,10 @@ struct LBShiftItemsComponent: View {
                         .frame(maxWidth: .infinity,alignment: .center).padding(2)
                 }
             }
-        }.background(LBColor.textfield).cornerRadius(8).frame(maxWidth:.infinity,alignment: .center)
+        }
+        .background(LBColor.textfield)
+        .cornerRadius(8)
+        .frame(maxWidth:.infinity,alignment: .center)
     }
 }
 

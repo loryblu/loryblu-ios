@@ -73,7 +73,7 @@ struct LocbookSummaryView: View {
                         RoundedRectangle(cornerRadius: 12)
                             .inset(by: 0)
                             .strokeBorder(LBColor.titlePrimary, lineWidth: 4)).background(LBColor.backgroundCards).cornerRadius(12)
-            }.padding([.leading, .trailing], 24)
+            }.frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/).padding([.leading, .trailing], 24)
             
             VStack(spacing:8) {
                 HStack(alignment: .center, spacing: 8) {
