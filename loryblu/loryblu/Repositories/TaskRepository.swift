@@ -1,4 +1,5 @@
 import Foundation
+import Factory
 
 class TaskRepository {
 
@@ -8,20 +9,37 @@ class TaskRepository {
         self.network = network
     }
 
-    func taskRegister(with locBookTask: LocbookTask) async -> Bool {
-        let header: [String: String] = ["Content-Type": "application/json"]
-        let request = RequestModel(
-                        baseURL: Server.baseURL,
-                        path: Endpoint.task,
-                        method: .post,
-                        header: header,
-                        body: JSONParser.parseData(from: ["childrenId": "\(String(describing: locBookTask.childrenId))",
-                                                          "categoryId": "\(String(describing: locBookTask.categoryId))",
-                                                          "shif": "\(String(describing: locBookTask.shift))",
-                                                          "frequency": ["\(String(describing: locBookTask.frequency))"],
-                                                          "order": "\(String(describing: locBookTask.order))"
-                                                         ])
-                    )
+    var token = Container.shared.appData
+
+    func taskRegister(with locBookTask: LocbookTask, token: String, childrenID: String) async -> Bool {
+
+        guard let categoryId = locBookTask.categoryId?.description else {
+            return false
+        }
+
+        guard let shift = locBookTask.shift else {
+            return false
+        }
+
+        guard let frequency = locBookTask.frequency else {
+            return false
+        }
+
+        let request = RequestModel.Builder()
+            .with(baseURL: Server.baseURL)
+            .with(path: Endpoint.task)
+            .with(method: .post)
+            .with(body: JSONParser.parseData(from: [
+                "childrenId": childrenID,
+                "categoryId": categoryId,
+                "shift": "\(shift)",
+                "frequency": frequency.map { $0.rawValue },
+                "order": 0
+                ]))
+            .with(addHeaderName: "Authorization", value: "Bearer \(token)")
+            .with(addHeaderName: "User-Agent", value: "LoryBlu(iOS)")
+            .with(addHeaderName: "Content-Type", value: "application/json")
+            .build()
 
         do {
             _ = try await network.request(request: request, returning: ResponseMessage.self)
