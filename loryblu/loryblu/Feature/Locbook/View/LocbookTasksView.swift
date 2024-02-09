@@ -85,6 +85,7 @@ struct LocbookTasksView: View {
                         .opacity(formConfig.selectedCard == index ? 1.0 : 0.5)
                         .onTapGesture {
                             self.formConfig.selectedCard = index
+                            self.formConfig.task.categoryId = tasks[index].categoryID
                         }
                 }
                 .frame(minWidth: 148 , minHeight: 156)

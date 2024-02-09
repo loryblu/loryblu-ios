@@ -11,7 +11,7 @@ class TaskRepository {
 
     var token = Container.shared.appData
 
-    func taskRegister(with locBookTask: LocbookTask, token: String, childrenID: String) async -> Bool {
+    func taskRegister(with locBookTask: LocbookTask, token: String, childrenID: Int) async -> Bool {
 
         guard let categoryId = locBookTask.categoryId?.description else {
             return false

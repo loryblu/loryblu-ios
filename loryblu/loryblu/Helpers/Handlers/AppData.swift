@@ -25,7 +25,7 @@ class AppData: ObservableObject {
             userData = user
             token = user.data.accessToken
 
-            if let id = user.data.user.children.first?.id {
+            if let id = user.data.user.childrens.first?.id {
                 childrenId = id
             }
         }

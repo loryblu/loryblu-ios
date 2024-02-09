@@ -16,11 +16,9 @@ class FrequencyRotineModel: ObservableObject {
     @MainActor
     func saveTask(task: LocbookTask) async {
 
-//        Task {
-//            do {
-                let result = try await repository.taskRegister(with: task,
-                                                               token: appData.token,
-                                                               childrenID: appData.childrenId)
+                let result = await repository.taskRegister(with: task,
+                                                            token: appData.token,
+                                                            childrenID: appData.childrenId)
                 if result {
                     print("request success")
                     stateTask = .success
@@ -28,7 +26,6 @@ class FrequencyRotineModel: ObservableObject {
                     print("request fail")
                     stateTask = .fail
                 }
-//            }
-//        }
+
     }
 }
