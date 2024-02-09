@@ -22,7 +22,7 @@ struct LBSelectedItemShift: View {
             Text(shiftName)
                 .font(LBFont.bodyLarge)
                 .foregroundColor(letterColor)
-                .padding(8).fixedSize(horizontal: true, vertical: false).padding(2)
+                .padding(8).fixedSize(horizontal: true, vertical: false)
             Spacer().frame(width: 8)
         }
         .background(backgroundColor)

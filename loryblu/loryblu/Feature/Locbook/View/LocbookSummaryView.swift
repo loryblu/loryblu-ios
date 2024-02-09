@@ -61,47 +61,48 @@ struct LocbookSummaryView: View {
                 .resizable()
                 .scaledToFit()
                 .frame(maxWidth: .infinity,minHeight: 40)
-                .padding(.bottom,39)
             
-            Spacer()
-            HStack {
-                Image(props.taskImage)
-                    .resizable()
-                    .padding(24)
-                    .scaledToFit()
-                    .frame(width: 200, height: 200, alignment: .center)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 12)
-                            .inset(by: 0)
-                            .strokeBorder(LBColor.titlePrimary, lineWidth: 4)).background(LBColor.backgroundCards).cornerRadius(12)
-            }.frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/).padding([.leading, .trailing], 24)
             
+            Image(props.taskImage)
+                .resizable()
+                .scaledToFit()
+                .scenePadding()
+                .overlay {
+                    RoundedRectangle(cornerRadius: 6.0)
+                        .stroke(
+                            LBColor.backgroundCardsLabel,
+                            lineWidth: 4.0
+                        )
+                }
+                .background(LBColor.backgroundCards)
+                .cornerRadius(6.0)
+                .frame(maxWidth: 200,maxHeight: 200,alignment:.center)
+
+
             VStack(spacing:8) {
-                HStack(alignment: .center, spacing: 8) {
+
+                HStack(alignment: .center, spacing: 5) {
                     Text(LBStrings.SummaryLocbook.category)
                         .font(LBFont.head5)
                         .foregroundStyle(LBColor.text).frame(alignment: .topLeading)
                     Spacer()
                     ZStack {
-                        Text(props.task.categoryTitle!).padding(8).frame(maxWidth: .infinity,alignment: .center).multilineTextAlignment(.center).frame(maxWidth:.infinity).padding(8).font(LBFont.body)
+                        Text(props.task.categoryTitle!).padding(6).frame(maxWidth: .infinity,alignment: .center).multilineTextAlignment(.center).frame(maxWidth:.infinity).padding(6).font(LBFont.body)
                     }.background(LBColor.background_darkBlue).cornerRadius(6).foregroundColor(.white)
                     
                 }.frame(maxWidth:.infinity)
-                
-                
-                
+                                
                 HStack(alignment: .center, spacing: 24) {
                     Text(LBStrings.SummaryLocbook.task)
                         .font(LBFont.head5)
                         .foregroundStyle(LBColor.text).frame(alignment: .topLeading)
                     Spacer()
                     ZStack {
-                        Text(props.taskName).padding(8).frame(maxWidth: .infinity,alignment: .center).multilineTextAlignment(.center).padding(8).font(LBFont.body)
+                        Text(props.taskName).padding(6).frame(maxWidth: .infinity,alignment: .center).multilineTextAlignment(.center).padding(6).font(LBFont.body)
                     }.background(LBColor.background_darkBlue).cornerRadius(6).frame(maxWidth:.infinity).foregroundColor(.white)
-
+                    
                 }.frame(maxWidth:.infinity)
-                
-            }.padding(.bottom,10)
+            }
             
             Divider()
             
@@ -111,8 +112,12 @@ struct LocbookSummaryView: View {
             LBShiftItemsComponent(shifts: props.shifts)
             
             
-            Text(LBStrings.SummaryLocbook.frequency).font(LBFont.head5)
-                .foregroundStyle(LBColor.text).frame(maxWidth:.infinity,alignment: .leading)
+            VStack {
+                Text(LBStrings.SummaryLocbook.frequency).font(LBFont.head5)
+                    .foregroundStyle(LBColor.text).frame(maxWidth:.infinity,alignment: .leading)
+                Text(LBStrings.SummaryLocbook.frequencyDescription).font(LBFont.bodyMedium)
+                    .foregroundStyle(LBColor.text).frame(maxWidth:.infinity,alignment: .leading)
+            }
             ZStack {
                 RoundedRectangle(cornerRadius: 12)
                     .fill(LBColor.backgroundCards)
@@ -135,7 +140,7 @@ struct LocbookSummaryView: View {
             LBButton(title: LBStrings.SummaryLocbook.submitTask) {
                 //  props.onSubmit?()
             }
-        }.padding(24).locbookToolbar(title: LBStrings.SummaryLocbook.topbarTitle, onClose: { props.onClose?() })
+        }.padding(.init(top: 24,leading: 24,bottom: 24, trailing: 24)).locbookToolbar(title: LBStrings.SummaryLocbook.topbarTitle, onClose: { props.onClose?() })
     }
 }
 
@@ -169,7 +174,7 @@ extension LocbookSummaryView.Props {
         var shifts = [
             
             ShiftItem(
-                name: LBStrings.FrequencyRotine.morning, 
+                name: LBStrings.FrequencyRotine.morning,
                 icon:LBIcon.sunSmall.rawValue,
                 backgroundColor:LBColor.buttonBackgroundLight,
                 letterColor: .black,
@@ -187,7 +192,7 @@ extension LocbookSummaryView.Props {
                       backgroundColor: LBColor.buttonBackgroundDark,
                       letterColor: .white,
                       isSelected: false)
-        
+            
         ]
         
         shifts = shifts.map { (shift: ShiftItem) -> ShiftItem in
@@ -227,9 +232,9 @@ extension LocbookSummaryView.Props {
     }
     
     func getImageLabelByCategoryId(categoryId: String) -> ImageLabel {
-            let list:[ImageLabel] = LocbookListTasks.rotine + LocbookListTasks.study
-            let index = list.firstIndex { item in item.categoryID == categoryId }!
-            return list[index]
+        let list:[ImageLabel] = LocbookListTasks.rotine + LocbookListTasks.study
+        let index = list.firstIndex { item in item.categoryID == categoryId }!
+        return list[index]
     }
 }
 extension LocbookSummaryView.Props: Hashable {
@@ -247,12 +252,12 @@ extension LocbookSummaryView.Props: Hashable {
         LocbookSummaryView(
             props:
                     .init(
-            task: LocbookTask(
-                shift: .morning,
-                frequency: [LocbookTask.Frequency.mon],
-                categoryId: LBStrings.CategoryID.school,
-                categoryTitle: LBStrings.Locbook.titleStudy
-            ),
-            onSubmit: { }))
+                        task: LocbookTask(
+                            shift: .morning,
+                            frequency: [LocbookTask.Frequency.mon],
+                            categoryId: LBStrings.CategoryID.tvgame,
+                            categoryTitle: LBStrings.Locbook.titleStudy
+                        ),
+                        onSubmit: { }))
     }
 }

@@ -163,3 +163,4 @@
 "summary_frequency" = "Frequência:";
 "summary_topbar" = "Confira seu resumo";
 "summary_submitTask" = "Cadastrar Tarefa";
+"summary_frequencyDescription" = "Você pode escolher mais de um dia.";

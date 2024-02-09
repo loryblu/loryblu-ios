@@ -186,5 +186,6 @@ extension LBStrings {
         static let category = String(localized: "summary_category")
         static let frequency = String(localized: "summary_frequency")
         static let topbarTitle = String(localized: "summary_topbar")
+        static let frequencyDescription = String(localized: "summary_frequencyDescription")
     }
 }

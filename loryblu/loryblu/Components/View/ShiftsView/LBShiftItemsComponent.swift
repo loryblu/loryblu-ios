@@ -32,7 +32,7 @@ struct LBShiftItemsComponent: View {
                     Text(shift.name)
                         .font(LBFont.bodyLarge)
                         .foregroundColor(.gray)
-                        .frame(maxWidth: .infinity,alignment: .center).padding(2)
+                        .frame(maxWidth: .infinity,alignment: .center)
                 }
             }
         }
