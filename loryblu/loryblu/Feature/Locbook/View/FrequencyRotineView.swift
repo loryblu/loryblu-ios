@@ -22,7 +22,8 @@ struct FrequencyRotineView: View {
 
     // MARK: - Properties
     
-    let props: Props
+    var props: Props
+    var model = FrequencyRotineModel()
     @State var formConfig = FormConfig()
     
     var body: some View {
@@ -65,12 +66,21 @@ struct FrequencyRotineView: View {
                              wednesday: $formConfig.wednesday,
                              thurday: $formConfig.thurday,
                              friday: $formConfig.friday,
-                             satuday: $formConfig.satuday)
+                             satuday: $formConfig.saturday)
             Spacer()
 
             LBButton(title: LBStrings.General.confirm) {
-                props.onSubmit?()
+                formConfig.task.frequency = formConfig.makeFrequency()
+                Task  {
+                    await  model.saveTask(task: formConfig.task)
+                    if model.stateTask == .success {
+                        props.onSubmit?()
+                    }
+                }
             }
+        }
+        .onAppear{
+            formConfig.task = props.task
         }
         .locbookToolbar(title: props.title, onClose: { props.onClose?() })
         .padding(24)
@@ -80,6 +90,7 @@ struct FrequencyRotineView: View {
         HStack(alignment: .center, spacing: 12) {
             Button(LBStrings.FrequencyRotine.morning) {
                 formConfig.period = .morning
+                formConfig.task.shift = .morning
             }
             .buttonStyle(
                 FrequencyButtonStyle(
@@ -91,6 +102,7 @@ struct FrequencyRotineView: View {
 
             Button(LBStrings.FrequencyRotine.afternoon) {
                 formConfig.period = .afternoon
+                formConfig.task.shift = .afternoon
             }
             .buttonStyle(
                 FrequencyButtonStyle(
@@ -102,6 +114,7 @@ struct FrequencyRotineView: View {
             
             Button(LBStrings.FrequencyRotine.night) {
                 formConfig.period = .night
+                formConfig.task.shift = .night
             }
             .buttonStyle(
                 FrequencyButtonStyle(
@@ -124,11 +137,26 @@ extension FrequencyRotineView {
         var wednesday: Bool = false
         var thurday: Bool = false
         var friday: Bool = false
-        var satuday: Bool = false
+        var saturday: Bool = false
         var morningSet: Bool = true
         var afternoonSet: Bool = false
         var nightSet: Bool = false
-        var period: Period = .morning
+        var period: LocbookTask.Shift = .morning
+        var task: LocbookTask = .init()
+
+        func makeFrequency() -> [LocbookTask.Frequency] {
+                    var result: [LocbookTask.Frequency] = []
+
+                    if sunday { result.append(.sun) }
+                    if monday { result.append(.mon) }
+                    if tuesday { result.append(.tue) }
+                    if wednesday { result.append(.wed) }
+                    if thurday { result.append(.thu) }
+                    if friday { result.append(.fri) }
+                    if saturday { result.append(.sat) }
+
+                    return result
+        }
     }
 }
 

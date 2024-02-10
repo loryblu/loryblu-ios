@@ -31,4 +31,10 @@ extension Container {
             RegisterRepository(network: self.network())
         }
     }
+
+    var taskRepository: Factory<TaskRepository> {
+        Factory(self) {
+            TaskRepository(network: self.network())
+        }
+    }
 }
