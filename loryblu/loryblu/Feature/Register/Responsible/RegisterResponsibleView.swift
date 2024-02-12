@@ -19,7 +19,7 @@ struct RegisterResponsibleView: View {
                     .padding(.bottom, 40)
 
                 Text(LBStrings.Register.responsible)
-                    .font(LBFont.head6)
+                    .font(LBFont.titleTask)
                     .foregroundColor(LBColor.text)
                     .frame(width: 242, alignment: .topLeading)
                     .padding(.bottom, 32)

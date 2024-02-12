@@ -18,7 +18,7 @@ struct LocbookRegisterView: View {
                 .padding(.top, 70)
             
             Text(LBStrings.Locbook.infoText)
-                .font(LBFont.head6)
+                .font(LBFont.titleTask)
                 .foregroundStyle(LBColor.text)
                 .padding(.top, 28)
             

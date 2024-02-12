@@ -15,7 +15,6 @@ enum LBColor {
     static let backgroundImagetrails = Color("background_image_trails")
     static let borderImagetrails = Color("border_image_trails")
     static let titlePrimary = Color("title_primary")
-    
     static let buttonBackgroundLight = Color("button_background_light")
     static let buttonBackgroundMedium = Color("button_background_medium")
     static let buttonBackgroundDark = Color("button_background_dark")

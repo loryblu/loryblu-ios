@@ -20,7 +20,7 @@ struct LoginView: View {
                 .padding(.bottom, 30)
                 .padding(.top, 30)
             Text(LBStrings.Login.title)
-                .font(LBFont.head6)
+                .font(LBFont.titleTask)
                 .padding(.bottom, 22)
 
             VStack(spacing: 16) {
