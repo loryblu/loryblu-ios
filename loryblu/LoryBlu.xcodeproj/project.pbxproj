@@ -88,7 +88,7 @@
 		8CCD70752B65839B00AA60CF /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8CCD70742B65839B00AA60CF /* FirebaseRemoteConfigSwift */; };
 		8CCD70772B65839B00AA60CF /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 8CCD70762B65839B00AA60CF /* FirebaseStorage */; };
 		8CCD70792B65839B00AA60CF /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 8CCD70782B65839B00AA60CF /* FirebaseStorageCombine-Community */; };
-		8CCD707B2B7A637100AA60CF /* TaskRegistered.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCD707A2B7A637100AA60CF /* TaskRegistered.swift */; };
+		8CCD707B2B7A637100AA60CF /* CardTaskRegistered.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCD707A2B7A637100AA60CF /* CardTaskRegistered.swift */; };
 		8CCD707D2B7A6CE600AA60CF /* EditTaskButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCD707C2B7A6CE500AA60CF /* EditTaskButton.swift */; };
 		8CE004892AC1C6680037F792 /* DoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE004882AC1C6680037F792 /* DoneView.swift */; };
 		8CE03E392A6360BE0024919C /* LBColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE03E382A6360BE0024919C /* LBColor.swift */; };
@@ -178,7 +178,7 @@
 		8C9CBD0F2A7AEC24001DBD35 /* PasswordRulesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordRulesView.swift; sourceTree = "<group>"; };
 		8CCD703D2B6563B700AA60CF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8CCD70422B65830D00AA60CF /* FirebaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseHelper.swift; sourceTree = "<group>"; };
-		8CCD707A2B7A637100AA60CF /* TaskRegistered.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRegistered.swift; sourceTree = "<group>"; };
+		8CCD707A2B7A637100AA60CF /* CardTaskRegistered.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTaskRegistered.swift; sourceTree = "<group>"; };
 		8CCD707C2B7A6CE500AA60CF /* EditTaskButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskButton.swift; sourceTree = "<group>"; };
 		8CE004882AC1C6680037F792 /* DoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneView.swift; sourceTree = "<group>"; };
 		8CE03E382A6360BE0024919C /* LBColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBColor.swift; sourceTree = "<group>"; };
@@ -343,7 +343,6 @@
 			isa = PBXGroup;
 			children = (
 				9310C8D42B66DAD9007D3CE7 /* Toolbar */,
-				918F0CE72B65F55200312C86 /* Button */,
 				8CC73C952A6C4A65008A039A /* Base */,
 				8C9CBD0E2A7AEBEE001DBD35 /* View */,
 			);
@@ -464,7 +463,7 @@
 				9302EE902B71BFAD003D7C4F /* ShiftsView */,
 				8C225AB02AE703B100E43B2C /* ImageLabel.swift */,
 				8C9CBD0F2A7AEC24001DBD35 /* PasswordRulesView.swift */,
-				8CCD707A2B7A637100AA60CF /* TaskRegistered.swift */,
+				8CCD707A2B7A637100AA60CF /* CardTaskRegistered.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -472,9 +471,7 @@
 		8CC73C952A6C4A65008A039A /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				41931EBD2A6470B4008F13F8 /* LBButton.swift */,
-				41BE77FC2A85A12300534ADA /* LBGenderButton.swift */,
-				33212E382B0580710066BFBE /* LBfloatingButton.swift */,
+				918F0CE72B65F55200312C86 /* Button */,
 				3329F0202AB3D1F300915FA3 /* LBTextField */,
 				8C5DFC8E2A85AE13002739D9 /* LBToggle.swift */,
 				8C27B8532A68C19400F72214 /* LBLabel.swift */,
@@ -585,6 +582,9 @@
 			isa = PBXGroup;
 			children = (
 				918F0CE82B65F55700312C86 /* Style */,
+				41931EBD2A6470B4008F13F8 /* LBButton.swift */,
+				41BE77FC2A85A12300534ADA /* LBGenderButton.swift */,
+				33212E382B0580710066BFBE /* LBfloatingButton.swift */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -805,7 +805,7 @@
 				9366FB182B6B063900A57F89 /* LBToolBarModifier.swift in Sources */,
 				8C3120F12ABB3D8B00D580BD /* Network.swift in Sources */,
 				8CFB35A02A6059BD008BF633 /* ContentView.swift in Sources */,
-				8CCD707B2B7A637100AA60CF /* TaskRegistered.swift in Sources */,
+				8CCD707B2B7A637100AA60CF /* CardTaskRegistered.swift in Sources */,
 				8C2A68522AF959AB00B74295 /* LocbookActionsView.swift in Sources */,
 				8C070DDF2B1803C9004AAF8A /* LocbookTask.swift in Sources */,
 				41931EBE2A6470B4008F13F8 /* LBButton.swift in Sources */,

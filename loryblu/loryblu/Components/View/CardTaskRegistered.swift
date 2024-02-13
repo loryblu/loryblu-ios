@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct TaskRegistered: View {
+struct CardTaskRegistered: View {
     let nameAction: String
     let imageTask: String
     let nameTask: String
@@ -58,11 +58,11 @@ struct TaskRegistered: View {
 
 #Preview {
     VStack {
-        TaskRegistered(nameAction: LBStrings.Locbook.titleRotine, imageTask: LBIcon.bathTime.rawValue, nameTask: LBStrings.NameImage.bathTime, backgroundCard: LBColor.buttonBackgroundLight, isSecurity: .constant(true))
+        CardTaskRegistered(nameAction: LBStrings.Locbook.titleRotine, imageTask: LBIcon.bathTime.rawValue, nameTask: LBStrings.NameImage.bathTime, backgroundCard: LBColor.buttonBackgroundLight, isSecurity: .constant(true))
 
-        TaskRegistered(nameAction: LBStrings.Locbook.titleStudy, imageTask: LBIcon.school.rawValue, nameTask: LBStrings.NameImage.bathTime, backgroundCard: LBColor.buttonBackgroundMedium, isSecurity: .constant(false))
+        CardTaskRegistered(nameAction: LBStrings.Locbook.titleStudy, imageTask: LBIcon.school.rawValue, nameTask: LBStrings.NameImage.bathTime, backgroundCard: LBColor.buttonBackgroundMedium, isSecurity: .constant(false))
 
-        TaskRegistered(nameAction: LBStrings.Locbook.titleRotine, imageTask: LBIcon.bathTime.rawValue, nameTask: LBStrings.NameImage.bathTime, backgroundCard: LBColor.buttonGenderEnable, isSecurity: .constant(true))
+        CardTaskRegistered(nameAction: LBStrings.Locbook.titleRotine, imageTask: LBIcon.bathTime.rawValue, nameTask: LBStrings.NameImage.bathTime, backgroundCard: LBColor.buttonGenderEnable, isSecurity: .constant(true))
     }
 
 }
