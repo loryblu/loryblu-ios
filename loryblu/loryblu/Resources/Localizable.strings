@@ -1,13 +1,15 @@
 // ==================== General ====================
 
-"send" = "Enviar";
-"next" = "Proximo";
-"hello" = "Seja Bem Vindo!! 💙 ";
-"email" = "E-mail";
-"password" = "Senha";
-"confirm" = "Confirmar";
-"empty" = "";
 "cancel"= "Cancelar";
+"confirm" = "Confirmar";
+"delete" = "Deletar";
+"edit" = "Editar";
+"email" = "E-mail";
+"empty" = "";
+"hello" = "Seja Bem Vindo!! 💙 ";
+"next" = "Proximo";
+"password" = "Senha";
+"send" = "Enviar";
 
 // ====================  Rules Password  =========================
 

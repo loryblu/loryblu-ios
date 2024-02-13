@@ -5,6 +5,7 @@ struct TaskRegistered: View {
     let imageTask: String
     let nameTask: String
     let backgroundCard: Color
+    typealias Localizable = LBStrings.General
     @Binding var isSecurity: Bool
 
     var body: some View {
@@ -26,12 +27,12 @@ struct TaskRegistered: View {
 
                 if isSecurity {
                     VStack {
-                        Button("Editar") {
+                        Button(Localizable.edit) {
                             //TODO: Chamar tela de ediçãode tarefa.
                         }
                         .buttonStyle(EditTaskButton(image: LBIcon.edit.rawValue))
 
-                        Button("Deletar") {
+                        Button(Localizable.delete) {
                             //TODO: Chamar alerta de exclusao de tarefa.
                         }
                         .buttonStyle(
