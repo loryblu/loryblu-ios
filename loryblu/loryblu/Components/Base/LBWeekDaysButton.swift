@@ -8,7 +8,6 @@ struct LBWeekDaysButton: View {
     @Binding var thurday: Bool
     @Binding var friday: Bool
     @Binding var satuday: Bool
-    var addFrequency: (Bool,LocbookTask.Frequency) -> Void
     
     var body: some View {
         ZStack {
@@ -19,31 +18,24 @@ struct LBWeekDaysButton: View {
             HStack(spacing: 20) {
                 DaysButton(text: "D") {
                     sunday.toggle()
-                    addFrequency(sunday,LocbookTask.Frequency.sun)
                 }
                 DaysButton(text: "S") {
                     monday.toggle()
-                    addFrequency(monday,LocbookTask.Frequency.mon)
                 }
                 DaysButton(text: "T") {
                     tuesday.toggle()
-                    addFrequency(tuesday,LocbookTask.Frequency.tue)
                 }
                 DaysButton(text: "Q") {
                     wednesday.toggle()
-                    addFrequency(wednesday,LocbookTask.Frequency.wed)
                 }
                 DaysButton(text: "Q") {
                     thurday.toggle()
-                    addFrequency(thurday,LocbookTask.Frequency.thu)
                 }
                 DaysButton(text: "S") {
                     friday.toggle()
-                    addFrequency(friday,LocbookTask.Frequency.fri)
                 }
                 DaysButton(text: "S") {
                     satuday.toggle()
-                    addFrequency(satuday,LocbookTask.Frequency.sat)
                 }
 
             }
@@ -80,6 +72,6 @@ struct LBWeekDaysButton_Previews: PreviewProvider {
                          wednesday: .constant(true),
                          thurday: .constant(true),
                          friday: .constant(true),
-                         satuday: .constant(true), addFrequency: {_,_ in})
+                         satuday: .constant(true))
     }
 }

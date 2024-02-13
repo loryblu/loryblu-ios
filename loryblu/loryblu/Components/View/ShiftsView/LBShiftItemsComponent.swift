@@ -32,14 +32,6 @@ struct LBShiftItemsComponent: View {
                         .font(LBFont.bodyLarge)
                         .foregroundColor(.gray)
                         .frame(maxWidth: .infinity,alignment: .center)
-                    LBSelectedItemShift(shiftName: shift.name,iconValue: shift.icon)
-                } else {
-                    Spacer().frame(width: 2)
-                    Text(shift.name)
-                        .font(LBFont.bodyLarge)
-                        .foregroundColor(.gray)
-                        .padding(8)
-                    Spacer().frame(width: 8)
                 }
             }
         }
@@ -55,7 +47,4 @@ struct LBShiftItemsComponent: View {
         ShiftItem(name: LBStrings.FrequencyRotine.morning, icon: LBIcon.sunSmall.rawValue,backgroundColor: LBColor.buttonBackgroundLight, letterColor: .black,isSelected: true),
         ShiftItem(name: LBStrings.FrequencyRotine.afternoon, icon: LBIcon.eviningSmall.rawValue, backgroundColor: LBColor.buttonBackgroundMedium,letterColor: .white, isSelected: false),
         ShiftItem(name: LBStrings.FrequencyRotine.night, icon: LBIcon.moonSmall.rawValue,backgroundColor: LBColor.buttonBackgroundDark, letterColor: .white,isSelected: false)])
-        ShiftItem(name: "Manhã", icon: LBIcon.sunSmall.rawValue, isSelected: true),
-        ShiftItem(name: "Tarde", icon: LBIcon.eviningSmall.rawValue, isSelected: false),
-        ShiftItem(name: "Noite", icon: LBIcon.moonSmall.rawValue, isSelected: false)])
 }
