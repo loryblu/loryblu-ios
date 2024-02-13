@@ -12,6 +12,7 @@ struct FrequencyRotineView: View {
         var config = formConfig
         config.task = props.task
         self.props = props
+        self.props.task.shift = .morning
         self._formConfig = State(initialValue: config)
     }
         
@@ -30,7 +31,6 @@ struct FrequencyRotineView: View {
     // MARK: - Properties
     
     var props: Props
-    var model = FrequencyRotineModel()
     @State var formConfig = FormConfig()
     
     var body: some View {
@@ -67,42 +67,24 @@ struct FrequencyRotineView: View {
             }.padding(.bottom,10)
 
             LBWeekDaysButton(sunday: $formConfig.sunday,
-                             monday: $formConfig.monday,
-                             tuesday: $formConfig.tuesday,
-                             wednesday: $formConfig.wednesday,
-                             thurday: $formConfig.thurday,
-                             friday: $formConfig.friday,
-                             satuday: $formConfig.satuday, addFrequency: { isNotSelected, frequency in
-                if isNotSelected {
-                    formConfig.frequency.append(frequency)
-                } else {
-                    formConfig.frequency.removeAll { i in frequency == i }
-                }
-            })
-            Spacer()
+                                         monday: $formConfig.monday,
+                                         tuesday: $formConfig.tuesday,
+                                         wednesday: $formConfig.wednesday,
+                                         thurday: $formConfig.thurday,
+                                         friday: $formConfig.friday,
+                                         satuday: $formConfig.saturday)
+                        Spacer()
 
-            LBButton(title: LBStrings.General.confirm) {
-                
-                formConfig.task.frequency = formConfig.frequency
-                
-                if formConfig.task.shift == nil {
-                    formConfig.task.shift = .morning
-                }
-                
-                if !formConfig.frequency.isEmpty {
-                    props.onNext?(formConfig.task)
-                             satuday: $formConfig.saturday)
-            Spacer()
-
-            LBButton(title: LBStrings.General.confirm) {
-                formConfig.task.frequency = formConfig.makeFrequency()
-                Task  {
-                    await  model.saveTask(task: formConfig.task)
-                    if model.stateTask == .success {
-                        props.onSubmit?()
-                    }
-                }
-            }
+                        LBButton(title: LBStrings.General.confirm) {
+                            
+                            let frequency = formConfig.makeFrequency()
+                            
+                            if !frequency.isEmpty {
+                                formConfig.task.frequency = frequency
+                                props.onNext?(formConfig.task)
+                            }
+                            
+                        }
         }
         .onAppear{
             formConfig.task = props.task
@@ -167,9 +149,6 @@ extension FrequencyRotineView {
         var afternoonSet: Bool = false
         var nightSet: Bool = false
         var period: Period = .morning
-        var frequency:[LocbookTask.Frequency] = []
-        var task: LocbookTask = .init()
-        var period: LocbookTask.Shift = .morning
         var task: LocbookTask = .init()
 
         func makeFrequency() -> [LocbookTask.Frequency] {

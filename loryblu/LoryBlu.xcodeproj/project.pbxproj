@@ -27,7 +27,7 @@
 		33D0F90E2AD0EE3700EE54DF /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D0F90D2AD0EE3700EE54DF /* Endpoints.swift */; };
 		33DE3B212B75975400F45449 /* UserAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DE3B202B75975400F45449 /* UserAuth.swift */; };
 		33DE3B232B75993200F45449 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DE3B222B75993200F45449 /* HomeViewModel.swift */; };
-		33DE3B252B759AC300F45449 /* FrequencyRotineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DE3B242B759AC300F45449 /* FrequencyRotineModel.swift */; };
+		33DE3B252B759AC300F45449 /* SummaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DE3B242B759AC300F45449 /* SummaryViewModel.swift */; };
 		33F87E902B21528000F62041 /* TaskRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F87E8F2B21528000F62041 /* TaskRepository.swift */; };
 		41931EBE2A6470B4008F13F8 /* LBButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41931EBD2A6470B4008F13F8 /* LBButton.swift */; };
 		41BE77FD2A85A12300534ADA /* LBGenderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BE77FC2A85A12300534ADA /* LBGenderButton.swift */; };
@@ -144,7 +144,7 @@
 		33D0F90D2AD0EE3700EE54DF /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
 		33DE3B202B75975400F45449 /* UserAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuth.swift; sourceTree = "<group>"; };
 		33DE3B222B75993200F45449 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
-		33DE3B242B759AC300F45449 /* FrequencyRotineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequencyRotineModel.swift; sourceTree = "<group>"; };
+		33DE3B242B759AC300F45449 /* SummaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewModel.swift; sourceTree = "<group>"; };
 		33F87E8F2B21528000F62041 /* TaskRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRepository.swift; sourceTree = "<group>"; };
 		41931EBD2A6470B4008F13F8 /* LBButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBButton.swift; sourceTree = "<group>"; };
 		41BE77FC2A85A12300534ADA /* LBGenderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBGenderButton.swift; sourceTree = "<group>"; };
@@ -553,7 +553,7 @@
 			isa = PBXGroup;
 			children = (
 				912BC3832B2934E800B7F336 /* LocbookActionModel.swift */,
-				33DE3B242B759AC300F45449 /* FrequencyRotineModel.swift */,
+				33DE3B242B759AC300F45449 /* SummaryViewModel.swift */,
 			);
 			path = Action;
 			sourceTree = "<group>";
@@ -787,7 +787,7 @@
 				912BC3842B2934E800B7F336 /* LocbookActionModel.swift in Sources */,
 				91B4AC282AD114D3003A7FE5 /* NavigationPathExtension.swift in Sources */,
 				91664AE22B0C003A005BF5CA /* HomeNavigationStack.swift in Sources */,
-				33DE3B252B759AC300F45449 /* FrequencyRotineModel.swift in Sources */,
+				33DE3B252B759AC300F45449 /* SummaryViewModel.swift in Sources */,
 				33DE3B232B75993200F45449 /* HomeViewModel.swift in Sources */,
 				8CE004892AC1C6680037F792 /* DoneView.swift in Sources */,
 				330A37772A660C2D00C9DCE7 /* LBFont.swift in Sources */,

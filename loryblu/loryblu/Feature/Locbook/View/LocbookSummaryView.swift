@@ -46,6 +46,7 @@ struct LocbookSummaryView: View {
     // MARK: - Properties
     
     let props: Props
+    var model = SummaryViewModel()
     @State var formConfig = FormConfig()
     
     init(props: Props, formConfig: FormConfig = FormConfig()) {
@@ -138,7 +139,12 @@ struct LocbookSummaryView: View {
             }
             
             LBButton(title: LBStrings.SummaryLocbook.submitTask) {
-                //  props.onSubmit?()
+                Task  {
+                    await  model.saveTask(task: props.task)
+                    if model.stateTask == .success {
+                        props.onSubmit?()
+                    }
+                }
             }
         }.padding(.init(top: 24,leading: 24,bottom: 24, trailing: 24)).locbookToolbar(title: LBStrings.SummaryLocbook.topbarTitle, onClose: { props.onClose?() })
     }
