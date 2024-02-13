@@ -1,20 +1,20 @@
 import UIKit
 
 struct LocbookTask {
-    enum Shift {
+    enum Shift: String, Codable {
         case morning
         case afternoon
         case night
     }
 
-    enum Frequency {
-        case sun
-        case mon
-        case tue
-        case wed
-        case thu
-        case fri
-        case sat
+    enum Frequency: String, Codable {
+        case sun = "sun"
+        case mon = "mon"
+        case tue = "tue"
+        case wed = "wed"
+        case thu = "thu"
+        case fri = "fri"
+        case sat = "sat"
     }
 
     var childrenId: Int?

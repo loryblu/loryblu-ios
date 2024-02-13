@@ -57,6 +57,8 @@ struct LocbookNavigationStack: View {
                 task: task, 
                 actionType: actionType,
                 onNext: { task in pushLocbookRoutine(task: task) },
+                onNext: { newTask in
+                    pushLocbookRoutine(task: newTask) },
                 onClose: { dismiss() }
             )
         )

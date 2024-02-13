@@ -16,12 +16,14 @@ struct LocbookTasksView: View {
     
     struct FormConfig {
         var selectedCard: String? = nil
+        var selectedCard: Int?
         var task: LocbookTask = .init()
     }
     
     let props: Props
     
     @State var formConfig: FormConfig = FormConfig()
+    @State var categoryID: String = ""
 
     var tasks: [ImageLabel] {
         switch props.actionType {
@@ -63,6 +65,9 @@ struct LocbookTasksView: View {
 
             collectionView
         }
+        .onAppear{
+            formConfig.task = props.task
+        }
         .locbookToolbar(title: title, onClose: { props.onClose?() })
         .padding(24)
 
@@ -81,6 +86,8 @@ struct LocbookTasksView: View {
                         .opacity(formConfig.selectedCard == task.categoryID ? 1.0 : 0.5)
                         .onTapGesture {
                             self.formConfig.selectedCard = task.categoryID
+                            self.formConfig.selectedCard = index
+                            self.formConfig.task.categoryId = tasks[index].categoryID
                         }
                 }
                 .frame(minWidth: 148 , minHeight: 156)
@@ -93,6 +100,9 @@ struct LocbookTasksView: View {
                 if formConfig.selectedCard != nil {
                     props.onNext?(formConfig.task)
                 }
+                props.onNext?(formConfig.task)
+                // ENVIAR O categoryID da task e nome. ( task.categoryID / task.name )
+
             }
         }
         .scrollContentBackground(.hidden)
