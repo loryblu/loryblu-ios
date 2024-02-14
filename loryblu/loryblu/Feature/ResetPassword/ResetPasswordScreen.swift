@@ -13,7 +13,7 @@ struct ResetPasswordScreen: View {
                 .padding(.bottom, 40)
             
             Text(LBStrings.SetPassword.forget)
-                .font(LBFont.head6)
+                .font(LBFont.titleTask)
                 .padding(.bottom, 24)
             
             Text(LBStrings.SetPassword.reset)

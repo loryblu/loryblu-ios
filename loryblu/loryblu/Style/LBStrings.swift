@@ -7,14 +7,16 @@ enum LBStrings {
 
 extension LBStrings {
     enum General {
+        static let cancel = String(localized: "cancel")
         static let confirm = String(localized: "confirm")
+        static let delete = String(localized: "delete")
+        static let edit = String(localized: "edit")
         static let email = String(localized: "email")
         static let empty = String(localized: "empty")
         static let hello = String(localized: "hello")
         static let next = String(localized: "next")
         static let password = String(localized: "password")
         static let send = String(localized: "send")
-        static let cancel = String(localized: "cancel")
     }
 }
 

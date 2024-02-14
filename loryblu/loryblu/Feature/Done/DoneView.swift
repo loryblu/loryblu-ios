@@ -28,7 +28,7 @@ struct DoneView: View {
                     }
                     
                     Text(props.message)
-                        .font(LBFont.head6)
+                        .font(LBFont.titleTask)
                         .foregroundStyle(LBColor.text)
                         .padding(.bottom, 52)
 

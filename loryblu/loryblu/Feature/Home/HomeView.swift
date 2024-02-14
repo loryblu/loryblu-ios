@@ -1,7 +1,7 @@
 import SwiftUI
 import Factory
+
 struct HomeView: View {
-    
     @ObservedObject var model = Container.shared.homeViewModel()
     @State var props: Props
     @Injected(\.appData) var appData
