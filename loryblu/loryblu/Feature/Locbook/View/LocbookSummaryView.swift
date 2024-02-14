@@ -89,8 +89,8 @@ struct LocbookSummaryView: View {
                     Spacer()
                     ZStack {
                         Text(props.task.categoryTitle!).padding(6).frame(maxWidth: .infinity,alignment: .center).multilineTextAlignment(.center).frame(maxWidth:.infinity).padding(6).font(LBFont.body)
-                    }.background(LBColor.background_darkBlue).cornerRadius(6).foregroundColor(.white)
-                    
+                    }.background(LBColor.buttonBackgroundDark).cornerRadius(6).foregroundColor(.white)
+
                 }.frame(maxWidth:.infinity)
                                 
                 HStack(alignment: .center, spacing: 24) {
@@ -100,7 +100,7 @@ struct LocbookSummaryView: View {
                     Spacer()
                     ZStack {
                         Text(props.taskName).padding(6).frame(maxWidth: .infinity,alignment: .center).multilineTextAlignment(.center).padding(6).font(LBFont.body)
-                    }.background(LBColor.background_darkBlue).cornerRadius(6).frame(maxWidth:.infinity).foregroundColor(.white)
+                    }.background(LBColor.buttonBackgroundDark).cornerRadius(6).frame(maxWidth:.infinity).foregroundColor(.white)
                     
                 }.frame(maxWidth:.infinity)
             }

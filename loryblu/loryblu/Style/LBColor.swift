@@ -1,8 +1,6 @@
 import SwiftUI
 
 enum LBColor {
-    static let background_darkBlue = Color("darkBlue")
-    
     static let background = Color("background")
     static let buttonPrimary = Color("buttonPrimary")
     static let error = Color("error")
@@ -19,5 +17,5 @@ enum LBColor {
     static let titlePrimary = Color("title_primary")
     static let buttonBackgroundLight = Color("button_background_light")
     static let buttonBackgroundMedium = Color("button_background_medium")
-    static let buttonBackgroundDark = Color("button_background_dark")
+    static let buttonBackgroundDark = Color("darkBlue")
 }

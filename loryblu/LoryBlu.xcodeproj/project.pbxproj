@@ -365,6 +365,7 @@
 		8C2A684E2AF5DFB000B74295 /* Locbook */ = {
 			isa = PBXGroup;
 			children = (
+				912BC3822B2934CB00B7F336 /* Model */,
 				91CA96602B28996D00611F91 /* View */,
 			);
 			path = Locbook;
@@ -551,13 +552,13 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		912BC3822B2934CB00B7F336 /* Action */ = {
+		912BC3822B2934CB00B7F336 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				912BC3832B2934E800B7F336 /* LocbookActionModel.swift */,
 				33DE3B242B759AC300F45449 /* SummaryViewModel.swift */,
 			);
-			path = Action;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		91361A1B2ACCBDE400700E36 /* Repositories */ = {
@@ -632,7 +633,6 @@
 				8C2A68512AF959AB00B74295 /* LocbookActionsView.swift */,
 				8C2A68552AF9B9A000B74295 /* LocbookTasksView.swift */,
 				335E21A62AFF132800700440 /* FrequencyRotineView.swift */,
-				912BC3822B2934CB00B7F336 /* Action */,
 				9302EE952B71C47A003D7C4F /* LocbookSummaryView.swift */,
 			);
 			path = View;
