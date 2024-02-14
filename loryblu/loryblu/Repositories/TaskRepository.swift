@@ -48,4 +48,18 @@ class TaskRepository {
             return false
         }
     }
+
+    func loadTaskRegister(with weekDays: [String], childrenID: Int, token: String) -> [LocbookTask] {
+        var frequencyPath = weekDays.reduce("" , { $0 + "&frequency=" + $1})
+        var queryPath = "?childrenId=\(childrenID)"
+
+        let request = RequestModel.Builder()
+            .with(baseURL: Server.baseURL)
+            .with(path: Endpoint.task + queryPath + frequencyPath)
+            .with(method: .get)
+
+
+
+    }
+
 }
