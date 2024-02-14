@@ -15,17 +15,17 @@ class SummaryViewModel: ObservableObject {
 
     @MainActor
     func saveTask(task: LocbookTask) async {
-
-                let result = await repository.taskRegister(with: task,
-                                                            token: appData.token,
-                                                            childrenID: appData.childrenId)
-                if result {
-                    print("request success")
-                    stateTask = .success
-                } else {
-                    print("request fail")
-                    stateTask = .fail
-                }
-
+        let result = await repository.taskRegister(
+            with: task,
+            token: appData.token,
+            childrenID: appData.childrenId
+        )
+        if result {
+            print("request success")
+            stateTask = .success
+        } else {
+            print("request fail")
+            stateTask = .fail
+        }
     }
 }
