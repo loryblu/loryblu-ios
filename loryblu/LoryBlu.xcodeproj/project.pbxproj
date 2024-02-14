@@ -21,6 +21,7 @@
 		335E21A72AFF132800700440 /* FrequencyRotineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335E21A62AFF132800700440 /* FrequencyRotineView.swift */; };
 		3376667D2ABFD115007010E1 /* URLDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3376667C2ABFD115007010E1 /* URLDecoder.swift */; };
 		3380B2102B0DA63F0001E67D /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3380B20F2B0DA63F0001E67D /* Formatter.swift */; };
+		339209392B7D5E6200DF4822 /* LocbookListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339209382B7D5E6200DF4822 /* LocbookListView.swift */; };
 		33AAFCF22AC649C200039063 /* NewPasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AAFCF12AC649C200039063 /* NewPasswordModel.swift */; };
 		33B2ABFC2ACE587A004CF7DF /* RepositorySetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B2ABFB2ACE587A004CF7DF /* RepositorySetPassword.swift */; };
 		33BA2DE62AC9BE3D009704FD /* DeepLinkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA2DE52AC9BE3D009704FD /* DeepLinkHandler.swift */; };
@@ -140,6 +141,7 @@
 		335E21A62AFF132800700440 /* FrequencyRotineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequencyRotineView.swift; sourceTree = "<group>"; };
 		3376667C2ABFD115007010E1 /* URLDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLDecoder.swift; sourceTree = "<group>"; };
 		3380B20F2B0DA63F0001E67D /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
+		339209382B7D5E6200DF4822 /* LocbookListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocbookListView.swift; sourceTree = "<group>"; };
 		33AAFCF12AC649C200039063 /* NewPasswordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPasswordModel.swift; sourceTree = "<group>"; };
 		33B2ABFB2ACE587A004CF7DF /* RepositorySetPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositorySetPassword.swift; sourceTree = "<group>"; };
 		33BA2DE52AC9BE3D009704FD /* DeepLinkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkHandler.swift; sourceTree = "<group>"; };
@@ -630,6 +632,7 @@
 			isa = PBXGroup;
 			children = (
 				8C2A684F2AF5E04A00B74295 /* LocbookRegisterView.swift */,
+				339209382B7D5E6200DF4822 /* LocbookListView.swift */,
 				8C2A68512AF959AB00B74295 /* LocbookActionsView.swift */,
 				8C2A68552AF9B9A000B74295 /* LocbookTasksView.swift */,
 				335E21A62AFF132800700440 /* FrequencyRotineView.swift */,
@@ -820,6 +823,7 @@
 				91CA96642B28A7F800611F91 /* ClosureType.swift in Sources */,
 				8C3120F52ABD249600D580BD /* WebView.swift in Sources */,
 				8C2A68562AF9B9A000B74295 /* LocbookTasksView.swift in Sources */,
+				339209392B7D5E6200DF4822 /* LocbookListView.swift in Sources */,
 				33D0F90E2AD0EE3700EE54DF /* Endpoints.swift in Sources */,
 				8C9CBCFB2A7ACF46001DBD35 /* ExternalLogin.swift in Sources */,
 				9132A8952B083BE600106524 /* LoginNavigationCoordinator.swift in Sources */,
