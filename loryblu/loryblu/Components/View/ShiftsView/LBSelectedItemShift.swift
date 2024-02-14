@@ -11,27 +11,30 @@ struct LBSelectedItemShift: View {
     
     let shiftName: String
     let iconValue: String
+    let backgroundColor: Color
+    let letterColor:Color
     
     var body: some View {
         HStack {
-            Spacer()
-                .frame(width: 8)
+            Spacer().frame(width: 16)
             Image(iconValue)
-                .frame(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-            Spacer()
-                .frame(width: 2)
+            Spacer().frame(width: 4)
             Text(shiftName)
                 .font(LBFont.bodyLarge)
-                .foregroundColor(.black)
-                .padding(8)
-            Spacer()
-                .frame(width: 8)
+                .foregroundColor(letterColor)
+                .padding(8).fixedSize(horizontal: true, vertical: false)
+            Spacer().frame(width: 8)
         }
-        .background(LBColor.backgroundCards)
+        .background(backgroundColor)
         .cornerRadius(8)
     }
+    
 }
 
 #Preview {
-    LBSelectedItemShift(shiftName: "Manhã", iconValue: LBIcon.sunSmall.rawValue)
+    LBSelectedItemShift(shiftName: LBStrings.FrequencyRotine.morning, iconValue: LBIcon.sunSmall.rawValue, backgroundColor: .black, letterColor: .white)
+}
+
+#Preview {
+    LBSelectedItemShift(shiftName: LBStrings.FrequencyRotine.morning, iconValue: LBIcon.sunSmall.rawValue,backgroundColor: LBColor.buttonBackgroundLight,letterColor: .black)
 }

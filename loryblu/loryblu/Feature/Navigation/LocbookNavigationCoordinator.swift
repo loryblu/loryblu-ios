@@ -9,6 +9,7 @@ class LocbookNavigationCoordinator: ObservableObject {
             case actions(LocbookActionsView.Props)
             case tasks(LocbookTasksView.Props)
             case frequency(FrequencyRotineView.Props)
+            case summary(LocbookSummaryView.Props)
             case finishView(DoneView.Props)
         }
         
@@ -51,6 +52,10 @@ class LocbookNavigationCoordinator: ObservableObject {
         navigate(to: .frequency(props))
     }
     
+    func pushSummaryView(props: LocbookSummaryView.Props) {
+        navigate(to: .summary(props))
+    }
+    
     func pushFinishScreen(props: DoneView.Props) {
         navigate(to: .finishView(props))
     }
@@ -66,6 +71,8 @@ class LocbookNavigationCoordinator: ObservableObject {
             LocbookTasksView(props: props)
         case let .frequency(props):
             FrequencyRotineView(props: props)
+        case let .summary(props) :
+            LocbookSummaryView(props: props)
         case let .finishView(props):
             DoneView(props: props)
         }

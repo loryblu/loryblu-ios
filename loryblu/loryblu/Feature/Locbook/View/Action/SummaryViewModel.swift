@@ -1,7 +1,7 @@
 import Foundation
 import Factory
 
-class FrequencyRotineModel: ObservableObject {
+class SummaryViewModel: ObservableObject {
     enum StatusTask {
         case none
         case success

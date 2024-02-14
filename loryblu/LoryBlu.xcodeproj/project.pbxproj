@@ -27,7 +27,7 @@
 		33D0F90E2AD0EE3700EE54DF /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D0F90D2AD0EE3700EE54DF /* Endpoints.swift */; };
 		33DE3B212B75975400F45449 /* UserAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DE3B202B75975400F45449 /* UserAuth.swift */; };
 		33DE3B232B75993200F45449 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DE3B222B75993200F45449 /* HomeViewModel.swift */; };
-		33DE3B252B759AC300F45449 /* FrequencyRotineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DE3B242B759AC300F45449 /* FrequencyRotineModel.swift */; };
+		33DE3B252B759AC300F45449 /* SummaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DE3B242B759AC300F45449 /* SummaryViewModel.swift */; };
 		33F87E902B21528000F62041 /* TaskRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F87E8F2B21528000F62041 /* TaskRepository.swift */; };
 		41931EBE2A6470B4008F13F8 /* LBButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41931EBD2A6470B4008F13F8 /* LBButton.swift */; };
 		41BE77FD2A85A12300534ADA /* LBGenderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BE77FC2A85A12300534ADA /* LBGenderButton.swift */; };
@@ -117,6 +117,7 @@
 		91CA96642B28A7F800611F91 /* ClosureType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CA96632B28A7F800611F91 /* ClosureType.swift */; };
 		9302EE922B71BFEA003D7C4F /* LBSelectedItemShift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9302EE912B71BFEA003D7C4F /* LBSelectedItemShift.swift */; };
 		9302EE942B71C0C0003D7C4F /* LBShiftItemsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9302EE932B71C0C0003D7C4F /* LBShiftItemsComponent.swift */; };
+		9302EE962B71C47A003D7C4F /* LocbookSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9302EE952B71C47A003D7C4F /* LocbookSummaryView.swift */; };
 		9310C8D62B66DB02007D3CE7 /* LBToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9310C8D52B66DB02007D3CE7 /* LBToolbar.swift */; };
 		9366FB182B6B063900A57F89 /* LBToolBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9366FB172B6B063900A57F89 /* LBToolBarModifier.swift */; };
 /* End PBXBuildFile section */
@@ -143,7 +144,7 @@
 		33D0F90D2AD0EE3700EE54DF /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
 		33DE3B202B75975400F45449 /* UserAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuth.swift; sourceTree = "<group>"; };
 		33DE3B222B75993200F45449 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
-		33DE3B242B759AC300F45449 /* FrequencyRotineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequencyRotineModel.swift; sourceTree = "<group>"; };
+		33DE3B242B759AC300F45449 /* SummaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewModel.swift; sourceTree = "<group>"; };
 		33F87E8F2B21528000F62041 /* TaskRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRepository.swift; sourceTree = "<group>"; };
 		41931EBD2A6470B4008F13F8 /* LBButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBButton.swift; sourceTree = "<group>"; };
 		41BE77FC2A85A12300534ADA /* LBGenderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBGenderButton.swift; sourceTree = "<group>"; };
@@ -206,6 +207,7 @@
 		91CA96632B28A7F800611F91 /* ClosureType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosureType.swift; sourceTree = "<group>"; };
 		9302EE912B71BFEA003D7C4F /* LBSelectedItemShift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBSelectedItemShift.swift; sourceTree = "<group>"; };
 		9302EE932B71C0C0003D7C4F /* LBShiftItemsComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBShiftItemsComponent.swift; sourceTree = "<group>"; };
+		9302EE952B71C47A003D7C4F /* LocbookSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocbookSummaryView.swift; sourceTree = "<group>"; };
 		9310C8D52B66DB02007D3CE7 /* LBToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBToolbar.swift; sourceTree = "<group>"; };
 		9366FB172B6B063900A57F89 /* LBToolBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBToolBarModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -551,7 +553,7 @@
 			isa = PBXGroup;
 			children = (
 				912BC3832B2934E800B7F336 /* LocbookActionModel.swift */,
-				33DE3B242B759AC300F45449 /* FrequencyRotineModel.swift */,
+				33DE3B242B759AC300F45449 /* SummaryViewModel.swift */,
 			);
 			path = Action;
 			sourceTree = "<group>";
@@ -625,6 +627,7 @@
 				8C2A68552AF9B9A000B74295 /* LocbookTasksView.swift */,
 				335E21A62AFF132800700440 /* FrequencyRotineView.swift */,
 				912BC3822B2934CB00B7F336 /* Action */,
+				9302EE952B71C47A003D7C4F /* LocbookSummaryView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -784,7 +787,7 @@
 				912BC3842B2934E800B7F336 /* LocbookActionModel.swift in Sources */,
 				91B4AC282AD114D3003A7FE5 /* NavigationPathExtension.swift in Sources */,
 				91664AE22B0C003A005BF5CA /* HomeNavigationStack.swift in Sources */,
-				33DE3B252B759AC300F45449 /* FrequencyRotineModel.swift in Sources */,
+				33DE3B252B759AC300F45449 /* SummaryViewModel.swift in Sources */,
 				33DE3B232B75993200F45449 /* HomeViewModel.swift in Sources */,
 				8CE004892AC1C6680037F792 /* DoneView.swift in Sources */,
 				330A37772A660C2D00C9DCE7 /* LBFont.swift in Sources */,
@@ -816,6 +819,7 @@
 				91B4AC442AD19CFA003A7FE5 /* AppEntryPoint.swift in Sources */,
 				911B843C2AD1C0B200F59DD2 /* AuthenticationRepository.swift in Sources */,
 				8C9CBD0D2A7AE97B001DBD35 /* RegisterChildView.swift in Sources */,
+				9302EE962B71C47A003D7C4F /* LocbookSummaryView.swift in Sources */,
 				8C669C412AA011480028B436 /* UserRegister.swift in Sources */,
 				8C070DDD2B10C254004AAF8A /* LocbookListTasks.swift in Sources */,
 				91664AE42B0C029E005BF5CA /* HomeNavigationCoordinator.swift in Sources */,
