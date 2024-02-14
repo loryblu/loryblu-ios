@@ -67,6 +67,16 @@ struct LocbookNavigationStack: View {
         coordinator.pushTasksFrequency(
             props: FrequencyRotineView.Props(
                 task: task,
+                onNext: { task in pushSummaryView(task: task) },
+                onClose: { dismiss() }
+            )
+        )
+    }
+    
+    private func pushSummaryView(task: LocbookTask) {
+        coordinator.pushSummaryView(
+            props: LocbookSummaryView.Props(
+                task: task,
                 onSubmit: { pushFinishView() },
                 onClose: { dismiss() }
             )

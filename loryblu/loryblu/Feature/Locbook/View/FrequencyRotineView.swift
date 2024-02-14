@@ -7,12 +7,20 @@ enum Period: Equatable {
 }
 
 struct FrequencyRotineView: View {
+    
+    init(props: Props, formConfig: FormConfig = FormConfig()) {
+        var config = formConfig
+        config.task = props.task
+        self.props = props
+        self.props.task.shift = .morning
+        self._formConfig = State(initialValue: config)
+    }
         
     // MARK: - Defines
     
     struct Props {
         var task: LocbookTask
-        let onSubmit: ClosureType.VoidVoid?
+        let onNext: ClosureType.LocbookTaskVoid?
         var onClose : ClosureType.VoidVoid?
         
         var title: String {
@@ -23,12 +31,10 @@ struct FrequencyRotineView: View {
     // MARK: - Properties
     
     var props: Props
-    var model = FrequencyRotineModel()
     @State var formConfig = FormConfig()
     
     var body: some View {
         VStack(alignment: .center, spacing: 15) {
-        
             LBIcon.progression3.image
                 .resizable()
                 .scaledToFit()
@@ -61,23 +67,24 @@ struct FrequencyRotineView: View {
             }.padding(.bottom,10)
 
             LBWeekDaysButton(sunday: $formConfig.sunday,
-                             monday: $formConfig.monday,
-                             tuesday: $formConfig.tuesday,
-                             wednesday: $formConfig.wednesday,
-                             thurday: $formConfig.thurday,
-                             friday: $formConfig.friday,
-                             satuday: $formConfig.saturday)
-            Spacer()
+                                         monday: $formConfig.monday,
+                                         tuesday: $formConfig.tuesday,
+                                         wednesday: $formConfig.wednesday,
+                                         thurday: $formConfig.thurday,
+                                         friday: $formConfig.friday,
+                                         satuday: $formConfig.saturday)
+                        Spacer()
 
-            LBButton(title: LBStrings.General.confirm) {
-                formConfig.task.frequency = formConfig.makeFrequency()
-                Task  {
-                    await  model.saveTask(task: formConfig.task)
-                    if model.stateTask == .success {
-                        props.onSubmit?()
-                    }
-                }
-            }
+                        LBButton(title: LBStrings.General.confirm) {
+                            
+                            let frequency = formConfig.makeFrequency()
+                            
+                            if !frequency.isEmpty {
+                                formConfig.task.frequency = frequency
+                                props.onNext?(formConfig.task)
+                            }
+                            
+                        }
         }
         .onAppear{
             formConfig.task = props.task
@@ -141,7 +148,7 @@ extension FrequencyRotineView {
         var morningSet: Bool = true
         var afternoonSet: Bool = false
         var nightSet: Bool = false
-        var period: LocbookTask.Shift = .morning
+        var period: Period = .morning
         var task: LocbookTask = .init()
 
         func makeFrequency() -> [LocbookTask.Frequency] {
@@ -172,6 +179,6 @@ extension FrequencyRotineView.Props: Hashable {
 
 #Preview {
     FrequencyRotineView(
-        props: .init(task: LocbookTask(categoryTitle: "Title of the task"), onSubmit: nil)
+        props: .init(task: LocbookTask(categoryTitle: "Title of the task"), onNext: nil)
     ).locbookToolbar(title: "Title of the task" , onClose: { })
 }

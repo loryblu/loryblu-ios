@@ -75,31 +75,39 @@ struct LocbookTasksView: View {
     var collectionView: some View {
         ScrollView(showsIndicators: false) {
             LazyVGrid(columns: columns, alignment: .center, spacing: 24 ) {
-                ForEach(0..<tasks.count) { index in
-                    tasks[index]
-                    // Mostrar as tasks de acordo com cada fluxo
-                        .overlay(formConfig.selectedCard == index ?
-                                 RoundedRectangle(cornerRadius: 12)
-                            .inset(by: 0)
-                            .strokeBorder(LBColor.titlePrimary, lineWidth: 4) : nil)
-                        .opacity(formConfig.selectedCard == index ? 1.0 : 0.5)
-                        .onTapGesture {
-                            self.formConfig.selectedCard = index
-                            self.formConfig.task.categoryId = tasks[index].categoryID
+                            ForEach(0..<tasks.count) { index in
+                                tasks[index]
+                                // Mostrar as tasks de acordo com cada fluxo
+                                    .overlay(formConfig.selectedCard == index ?
+                                             RoundedRectangle(cornerRadius: 12)
+                                        .inset(by: 0)
+                                        .strokeBorder(LBColor.titlePrimary, lineWidth: 4) : nil)
+                                    .opacity(formConfig.selectedCard == index ? 1.0 : 0.5)
+                                    .onTapGesture {
+                                        self.formConfig.selectedCard = index
+                                        self.formConfig.task.categoryId = tasks[index].categoryID
+                                    }
+                            }
+                            .frame(minWidth: 148 , minHeight: 156)
                         }
-                }
-                .frame(minWidth: 148 , minHeight: 156)
-            }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .padding(.bottom, 24)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .padding(.bottom, 24)
 
-            LBButton(title: LBStrings.General.next, style: .primaryActivated) {
-                props.onNext?(formConfig.task)
-                // ENVIAR O categoryID da task e nome. ( task.categoryID / task.name )
-
-            }
+                        LBButton(title: LBStrings.General.next, style: .primaryActivated) {
+                            if(formConfig.selectedCard) != nil {
+                                props.onNext?(formConfig.task)
+                            }
+                            // ENVIAR O categoryID da task e nome. ( task.categoryID / task.name )
+                        }
         }
         .scrollContentBackground(.hidden)
+    }
+    
+    init(props: Props, formConfig: FormConfig = FormConfig()) {
+        var config = formConfig
+        config.task = props.task
+        self.props = props
+        self._formConfig = State(initialValue: config)
     }
 }
 
