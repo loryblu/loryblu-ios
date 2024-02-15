@@ -2,7 +2,7 @@ import Foundation
 
 struct TaskRequest: Codable {
     var message: String
-    var data: [RegisteredTask]
+    var data: RegisteredTask
     var count: Int
     var order: Int
     var categoryId: String
@@ -16,13 +16,13 @@ struct RegisteredTask: Codable {
 }
 
 
-struct Study: Codable {
+struct Study: Codable, Identifiable {
     var id : Int
     var shift: Shift
     var frequency: [Frequency]
 }
 
-struct Rotine: Codable {
+struct Rotine: Codable, Identifiable{
     var id : Int
     var shift: Shift
     var frequency: [Frequency]

@@ -23,6 +23,7 @@
 		3380B2102B0DA63F0001E67D /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3380B20F2B0DA63F0001E67D /* Formatter.swift */; };
 		339209392B7D5E6200DF4822 /* LocbookListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339209382B7D5E6200DF4822 /* LocbookListView.swift */; };
 		3392093B2B7D6F9C00DF4822 /* TaskRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3392093A2B7D6F9C00DF4822 /* TaskRequest.swift */; };
+		3392093D2B7D7E2700DF4822 /* LocbookListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3392093C2B7D7E2700DF4822 /* LocbookListModel.swift */; };
 		33AAFCF22AC649C200039063 /* NewPasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AAFCF12AC649C200039063 /* NewPasswordModel.swift */; };
 		33B2ABFC2ACE587A004CF7DF /* RepositorySetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B2ABFB2ACE587A004CF7DF /* RepositorySetPassword.swift */; };
 		33BA2DE62AC9BE3D009704FD /* DeepLinkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA2DE52AC9BE3D009704FD /* DeepLinkHandler.swift */; };
@@ -144,6 +145,7 @@
 		3380B20F2B0DA63F0001E67D /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 		339209382B7D5E6200DF4822 /* LocbookListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocbookListView.swift; sourceTree = "<group>"; };
 		3392093A2B7D6F9C00DF4822 /* TaskRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRequest.swift; sourceTree = "<group>"; };
+		3392093C2B7D7E2700DF4822 /* LocbookListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocbookListModel.swift; sourceTree = "<group>"; };
 		33AAFCF12AC649C200039063 /* NewPasswordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPasswordModel.swift; sourceTree = "<group>"; };
 		33B2ABFB2ACE587A004CF7DF /* RepositorySetPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositorySetPassword.swift; sourceTree = "<group>"; };
 		33BA2DE52AC9BE3D009704FD /* DeepLinkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkHandler.swift; sourceTree = "<group>"; };
@@ -562,6 +564,7 @@
 			children = (
 				912BC3832B2934E800B7F336 /* LocbookActionModel.swift */,
 				33DE3B242B759AC300F45449 /* SummaryViewModel.swift */,
+				3392093C2B7D7E2700DF4822 /* LocbookListModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -825,6 +828,7 @@
 				9302EE922B71BFEA003D7C4F /* LBSelectedItemShift.swift in Sources */,
 				91CA96642B28A7F800611F91 /* ClosureType.swift in Sources */,
 				8C3120F52ABD249600D580BD /* WebView.swift in Sources */,
+				3392093D2B7D7E2700DF4822 /* LocbookListModel.swift in Sources */,
 				8C2A68562AF9B9A000B74295 /* LocbookTasksView.swift in Sources */,
 				339209392B7D5E6200DF4822 /* LocbookListView.swift in Sources */,
 				33D0F90E2AD0EE3700EE54DF /* Endpoints.swift in Sources */,

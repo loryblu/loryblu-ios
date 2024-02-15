@@ -11,7 +11,7 @@ struct LocbookRegisterView: View {
     
     var body: some View {
         VStack(alignment: .center){
-            
+
             LBIcon.dailyList.image
                 .resizable()
                 .scaledToFit()

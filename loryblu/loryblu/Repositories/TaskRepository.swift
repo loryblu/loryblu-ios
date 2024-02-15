@@ -49,16 +49,22 @@ class TaskRepository {
         }
     }
 
-    func loadTaskRegister(with weekDays: [String], childrenID: Int, token: String) -> [LocbookTask] {
-        var frequencyPath = weekDays.reduce("" , { $0 + "&frequency=" + $1})
-        var queryPath = "?childrenId=\(childrenID)"
+    func loadTaskRegister(with weekDays: [String], childrenID: Int, token: String) async throws -> [TaskRequest] {
+        let frequencyPath = weekDays.reduce("" , { $0 + "&frequency=" + $1})
+        let queryPath = "?childrenId=\(childrenID)"
 
         let request = RequestModel.Builder()
             .with(baseURL: Server.baseURL)
             .with(path: Endpoint.task + queryPath + frequencyPath)
             .with(method: .get)
+            .with(addHeaderName: "Authorization", value: "Bearer \(token)")
+            .with(addHeaderName: "User-Agent", value: "LoryBlu(iOS)")
+            .with(addHeaderName: "Content-Type", value: "application/json")
+            .build()
 
 
+        let response = try await network.request(request: request, returning: [TaskRequest].self)
+        return response
 
     }
 

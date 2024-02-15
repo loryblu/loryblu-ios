@@ -3,34 +3,54 @@ import SwiftUI
 struct LocbookListView: View {
 
     struct Props {
-        var task: LocbookTask
+        var task: [TaskRequest]
     }
 
-    init(props: Props, formConfig: FormConfig = FormConfig()) {
+    init(props: Props, formConfig: FormConfig = FormConfig(),card: CardTaskRegistered) {
+        self.card = card
         var config = formConfig
         config.task = props.task
         self.props = props
-        self.props.task.shift = .morning
         self._formConfig = State(initialValue: config)
     }
 
     var props: Props
     @State var formConfig = FormConfig()
+    var model = LocbookListModel()
+    var card: CardTaskRegistered
 
     var body: some View {
-        LBWeekDaysButton(sunday: $formConfig.sunday,
-                         monday: $formConfig.monday,
-                         tuesday: $formConfig.tuesday,
-                         wednesday: $formConfig.wednesday,
-                         thurday: $formConfig.thurday,
-                         friday: $formConfig.friday,
-                         satuday: $formConfig.saturday)
-        .padding(20)
+        VStack {
+            LBWeekDaysButton(sunday: $formConfig.sunday,
+                             monday: $formConfig.monday,
+                             tuesday: $formConfig.tuesday,
+                             wednesday: $formConfig.wednesday,
+                             thurday: $formConfig.thurday,
+                             friday: $formConfig.friday,
+                             satuday: $formConfig.saturday)
+            .padding(20)
+        }
+        .onAppear {
+            Task {
+                formConfig.task = try await model.loadTask(with:["sat","mon"])
+            }
+        }
+    }
+
+
+    var list: some View {
+        VStack {
+            List {
+                Button("Oi "){
+
+                }
+            }
+        }
     }
 }
 
 #Preview {
-    LocbookListView(props: .init(task: LocbookTask.init()))
+    LocbookListView(props: .init(task: [TaskRequest]()), card:CardTaskRegistered(nameAction: LBStrings.Locbook.titleRotine, imageTask: LBIcon.bathTime.rawValue, nameTask: LBStrings.NameImage.bathTime, backgroundCard: LBColor.buttonGenderEnable, isSecurity: .constant(true)))
 }
 
 extension LocbookListView {
@@ -45,6 +65,6 @@ extension LocbookListView {
         var morningSet: Bool = true
         var afternoonSet: Bool = false
         var nightSet: Bool = false
-        var task: LocbookTask = .init()
+        var task: [TaskRequest] = []
     }
 }
