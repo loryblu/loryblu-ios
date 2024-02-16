@@ -1,6 +1,6 @@
 import Foundation
 
-struct LocbookListTasks {
+struct ListTasks {
     private typealias Localizable = LBStrings.NameImage
 
     static let study: [ImageLabel] = [

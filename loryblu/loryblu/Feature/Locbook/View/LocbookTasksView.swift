@@ -27,9 +27,9 @@ struct LocbookTasksView: View {
     var tasks: [ImageLabel] {
         switch props.actionType {
         case .study:
-            return LocbookListTasks.study
+            return ListTasks.study
         case .routine:
-            return LocbookListTasks.rotine
+            return ListTasks.rotine
         }
     }
     

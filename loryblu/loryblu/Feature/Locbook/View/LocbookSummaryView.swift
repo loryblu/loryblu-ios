@@ -238,7 +238,7 @@ extension LocbookSummaryView.Props {
     }
     
     func getImageLabelByCategoryId(categoryId: String) -> ImageLabel {
-        let list:[ImageLabel] = LocbookListTasks.rotine + LocbookListTasks.study
+        let list:[ImageLabel] = ListTasks.rotine + ListTasks.study
         let index = list.firstIndex { item in item.categoryID == categoryId }!
         return list[index]
     }
