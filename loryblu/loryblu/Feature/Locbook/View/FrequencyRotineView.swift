@@ -7,7 +7,7 @@ enum Period: Equatable {
 }
 
 struct FrequencyRotineView: View {
-    
+
     init(props: Props, formConfig: FormConfig = FormConfig()) {
         var config = formConfig
         config.task = props.task
@@ -15,24 +15,24 @@ struct FrequencyRotineView: View {
         self.props.task.shift = .morning
         self._formConfig = State(initialValue: config)
     }
-        
+
     // MARK: - Defines
-    
+
     struct Props {
         var task: LocbookTask
         let onNext: ClosureType.LocbookTaskVoid?
         var onClose : ClosureType.VoidVoid?
-        
+
         var title: String {
             task.categoryTitle ?? ""
         }
     }
 
     // MARK: - Properties
-    
+
     var props: Props
     @State var formConfig = FormConfig()
-    
+
     var body: some View {
         VStack(alignment: .center, spacing: 15) {
             LBIcon.progression3.image
@@ -44,7 +44,7 @@ struct FrequencyRotineView: View {
             HStack {
                 Text(LBStrings.FrequencyRotine.workPeriod)
                     .font(LBFont.buttonSmall)
-                .foregroundStyle(LBColor.titlePrimary)
+                    .foregroundStyle(LBColor.titlePrimary)
                 Spacer()
             }
 
@@ -61,30 +61,31 @@ struct FrequencyRotineView: View {
                 HStack {
                     Text(LBStrings.FrequencyRotine.frequencyDays)
                         .font(LBFont.caption1)
-                    .foregroundStyle(LBColor.titlePrimary)
+                        .foregroundStyle(LBColor.titlePrimary)
                     Spacer()
                 }
             }.padding(.bottom,10)
 
-            LBWeekDaysButton(sunday: $formConfig.sunday,
-                                         monday: $formConfig.monday,
-                                         tuesday: $formConfig.tuesday,
-                                         wednesday: $formConfig.wednesday,
-                                         thurday: $formConfig.thurday,
-                                         friday: $formConfig.friday,
-                                         satuday: $formConfig.saturday)
-                        Spacer()
+            LBWeekDaysButton(
+                sunday: $formConfig.sunday,
+                monday: $formConfig.monday,
+                tuesday: $formConfig.tuesday,
+                wednesday: $formConfig.wednesday,
+                thurday: $formConfig.thurday,
+                friday: $formConfig.friday,
+                satuday: $formConfig.saturday
+            )
 
-                        LBButton(title: LBStrings.General.confirm) {
-                            
-                            let frequency = formConfig.makeFrequency()
-                            
-                            if !frequency.isEmpty {
-                                formConfig.task.frequency = frequency
-                                props.onNext?(formConfig.task)
-                            }
-                            
-                        }
+            Spacer()
+
+            LBButton(title: LBStrings.General.confirm) {
+                let frequency = formConfig.makeFrequency()
+
+                if !frequency.isEmpty {
+                    formConfig.task.frequency = frequency
+                    props.onNext?(formConfig.task)
+                }
+            }
         }
         .onAppear{
             formConfig.task = props.task
@@ -118,7 +119,7 @@ struct FrequencyRotineView: View {
                     selected: formConfig.period == .afternoon
                 )
             )
-            
+
             Button(LBStrings.FrequencyRotine.night) {
                 formConfig.period = .night
                 formConfig.task.shift = .night
@@ -152,17 +153,17 @@ extension FrequencyRotineView {
         var task: LocbookTask = .init()
 
         func makeFrequency() -> [LocbookTask.Frequency] {
-                    var result: [LocbookTask.Frequency] = []
+            var result: [LocbookTask.Frequency] = []
 
-                    if sunday { result.append(.sun) }
-                    if monday { result.append(.mon) }
-                    if tuesday { result.append(.tue) }
-                    if wednesday { result.append(.wed) }
-                    if thurday { result.append(.thu) }
-                    if friday { result.append(.fri) }
-                    if saturday { result.append(.sat) }
+            if sunday { result.append(.sun) }
+            if monday { result.append(.mon) }
+            if tuesday { result.append(.tue) }
+            if wednesday { result.append(.wed) }
+            if thurday { result.append(.thu) }
+            if friday { result.append(.fri) }
+            if saturday { result.append(.sat) }
 
-                    return result
+            return result
         }
     }
 }
