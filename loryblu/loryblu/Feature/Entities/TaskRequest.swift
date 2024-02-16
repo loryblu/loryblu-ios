@@ -3,31 +3,34 @@ import Foundation
 struct TaskRequest: Codable {
     var message: String
     var data: RegisteredTask
+
+}
+
+struct RegisteredTask: Codable {
     var count: Int
+    var study: [Study]
+    var rotine: [Rotine]
+}
+
+struct Study: Codable, Identifiable {
+    var id : Int
+    var shift: Shift
+    var frequency: [Frequency]
     var order: Int
     var categoryId: String
     var categoryTitle: String
     var updatedAt: String
 }
 
-struct RegisteredTask: Codable {
-    var study: [Study]
-    var rotine: [Rotine]
-}
-
-
-struct Study: Codable, Identifiable {
+struct Rotine: Codable, Identifiable {
     var id : Int
     var shift: Shift
     var frequency: [Frequency]
+    var order: Int
+    var categoryId: String
+    var categoryTitle: String
+    var updatedAt: String
 }
-
-struct Rotine: Codable, Identifiable{
-    var id : Int
-    var shift: Shift
-    var frequency: [Frequency]
-}
-
 
 enum Shift: String, Codable {
     case morning

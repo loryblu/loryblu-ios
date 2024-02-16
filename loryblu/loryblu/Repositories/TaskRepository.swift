@@ -49,8 +49,8 @@ class TaskRepository {
         }
     }
 
-    func loadTaskRegister(with weekDays: [String], childrenID: Int, token: String) async throws -> [TaskRequest] {
-        let frequencyPath = weekDays.reduce("" , { $0 + "&frequency=" + $1})
+    func loadTaskRegister(with weekDays: [String], childrenID: Int, token: String) async throws -> TaskRequest {
+        let frequencyPath = weekDays.reduce("" , { $0 + "&frequency=" + $1 })
         let queryPath = "?childrenId=\(childrenID)"
 
         let request = RequestModel.Builder()
@@ -63,7 +63,7 @@ class TaskRepository {
             .build()
 
 
-        let response = try await network.request(request: request, returning: [TaskRequest].self)
+        let response = try await network.request(request: request, returning: TaskRequest.self)
         return response
 
     }

@@ -11,11 +11,10 @@ struct LocbookRegisterView: View {
     
     var body: some View {
         VStack(alignment: .center){
-
-            LBIcon.dailyList.image
-                .resizable()
-                .scaledToFit()
-                .padding(.top, 70)
+            LocbookListView()           //LBIcon.dailyList.image
+//                .resizable()
+//                .scaledToFit()
+//                .padding(.top, 70)
             
             Text(LBStrings.Locbook.infoText)
                 .font(LBFont.titleTask)
