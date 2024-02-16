@@ -49,7 +49,7 @@ class TaskRepository {
         }
     }
     
-    func fetchTasks(token: String, childrenId: Int) async -> [TaskModel]? {
+    func fetchTasks(token: String, childrenId: Int) async -> [TaskModel] {
         
         var tasks: [TaskModel] = []
         
