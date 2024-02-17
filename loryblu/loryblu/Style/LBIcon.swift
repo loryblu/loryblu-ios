@@ -33,6 +33,7 @@ enum LBIcon: String {
     case locbook
     case locbookShadow = "locbook_shadow"
     case lock
+    case lockToggle = "lock_toggle"
     case logoAnimal = "logo_animal"
     case logoFull = "logo_full"
     case logoLetter = "logo_letter"
@@ -67,6 +68,7 @@ enum LBIcon: String {
     case therapy
     case trash
     case tvgame
+    case unlock = "unlock_toggle"
     case user
     case watchtv
     case water

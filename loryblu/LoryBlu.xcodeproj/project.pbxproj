@@ -93,7 +93,7 @@
 		8CE004892AC1C6680037F792 /* DoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE004882AC1C6680037F792 /* DoneView.swift */; };
 		8CE03E392A6360BE0024919C /* LBColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE03E382A6360BE0024919C /* LBColor.swift */; };
 		8CE03E3C2A6363630024919C /* LBIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE03E3B2A6363630024919C /* LBIcon.swift */; };
-		8CE33B242B7EFF4E005D1219 /* LocbookListTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE33B232B7EFF4E005D1219 /* LocbookListTasks.swift */; };
+		8CE33B242B7EFF4E005D1219 /* LocbookListTasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE33B232B7EFF4E005D1219 /* LocbookListTasksView.swift */; };
 		8CE33B262B7F1328005D1219 /* CardTasksModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE33B252B7F1328005D1219 /* CardTasksModel.swift */; };
 		8CFB359E2A6059BD008BF633 /* LorybluApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB359D2A6059BD008BF633 /* LorybluApp.swift */; };
 		8CFB35A02A6059BD008BF633 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB359F2A6059BD008BF633 /* ContentView.swift */; };
@@ -186,7 +186,7 @@
 		8CE004882AC1C6680037F792 /* DoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneView.swift; sourceTree = "<group>"; };
 		8CE03E382A6360BE0024919C /* LBColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBColor.swift; sourceTree = "<group>"; };
 		8CE03E3B2A6363630024919C /* LBIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBIcon.swift; sourceTree = "<group>"; };
-		8CE33B232B7EFF4E005D1219 /* LocbookListTasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocbookListTasks.swift; sourceTree = "<group>"; };
+		8CE33B232B7EFF4E005D1219 /* LocbookListTasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocbookListTasksView.swift; sourceTree = "<group>"; };
 		8CE33B252B7F1328005D1219 /* CardTasksModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTasksModel.swift; sourceTree = "<group>"; };
 		8CFB359A2A6059BD008BF633 /* LoryBlu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoryBlu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CFB359D2A6059BD008BF633 /* LorybluApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LorybluApp.swift; sourceTree = "<group>"; };
@@ -263,8 +263,8 @@
 		330A37782A660D1A00C9DCE7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				8C5DFC8A2A7B2CB8002739D9 /* Localizable.strings */,
 				330A37792A660D3300C9DCE7 /* Fonts */,
+				8C5DFC8A2A7B2CB8002739D9 /* Localizable.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -639,7 +639,7 @@
 				8C2A68552AF9B9A000B74295 /* LocbookTasksView.swift */,
 				335E21A62AFF132800700440 /* FrequencyRotineView.swift */,
 				9302EE952B71C47A003D7C4F /* LocbookSummaryView.swift */,
-				8CE33B232B7EFF4E005D1219 /* LocbookListTasks.swift */,
+				8CE33B232B7EFF4E005D1219 /* LocbookListTasksView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -854,7 +854,7 @@
 				41BE77FD2A85A12300534ADA /* LBGenderButton.swift in Sources */,
 				9310C8D62B66DB02007D3CE7 /* LBToolbar.swift in Sources */,
 				91CA96622B2899A600611F91 /* LocbookNavigationCoordinator.swift in Sources */,
-				8CE33B242B7EFF4E005D1219 /* LocbookListTasks.swift in Sources */,
+				8CE33B242B7EFF4E005D1219 /* LocbookListTasksView.swift in Sources */,
 				8C2A68502AF5E04A00B74295 /* LocbookRegisterView.swift in Sources */,
 				8C7C64B32A6F4CE1002361A9 /* ValidateRules.swift in Sources */,
 				33549B0A2ACB92E700CF989F /* AppData.swift in Sources */,
