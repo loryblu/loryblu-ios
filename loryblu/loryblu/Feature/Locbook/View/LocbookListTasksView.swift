@@ -3,12 +3,13 @@ import SwiftUI
 struct LocbookListTasksView: View {
     @State private var securityIsOn = true
 
-    // TODO: implementar funcionalidade e filtro
+    // TODO: Implementar funcionalidade e filtro
     let shiftsEXEMPLO = [
         ShiftItem(name: LBStrings.FrequencyRotine.morning, icon: LBIcon.sunSmall.rawValue,backgroundColor: LBColor.buttonBackgroundLight, letterColor: .black,isSelected: false),
         ShiftItem(name: LBStrings.FrequencyRotine.afternoon, icon: LBIcon.eviningSmall.rawValue, backgroundColor: LBColor.buttonBackgroundMedium,letterColor: .white, isSelected: true),
         ShiftItem(name: LBStrings.FrequencyRotine.night, icon: LBIcon.moonSmall.rawValue,backgroundColor: LBColor.buttonBackgroundDark, letterColor: .white,isSelected: false)]
 
+    // TODO: Implementar chamada da model e filtro
     let listTasksModelEXEMPLO: [CardTaskRegistered] = [
         CardTaskRegistered(nameAction: LBStrings.Locbook.titleRotine, imageTask: LBIcon.bathTime.rawValue, nameTask: LBStrings.NameImage.bathTime, backgroundCard: LBColor.buttonBackgroundLight, isSecurity: .constant(true)),
         CardTaskRegistered(nameAction: LBStrings.Locbook.titleStudy, imageTask: LBIcon.school.rawValue, nameTask: LBStrings.NameImage.bathTime, backgroundCard: LBColor.buttonBackgroundMedium, isSecurity: .constant(false)),
@@ -24,7 +25,7 @@ struct LocbookListTasksView: View {
     var props: Props
 
     var body: some View {
-        VStack(spacing: 12) {
+        VStack() {
             VStack(spacing: 16) {
                 LBWeekDaysButton(  // TODO: implementar funcionalidade e filtro
                     sunday: .constant(false),
@@ -65,11 +66,11 @@ struct LocbookListTasksView: View {
             ForEach(0..<listTasksModelEXEMPLO.count) { index in
                 listTasksModelEXEMPLO[index]
             }
+            .listRowSeparator(.hidden)
         }
         .scrollContentBackground(.hidden)
         .scrollIndicators(ScrollIndicatorVisibility.hidden)
     }
-
 }
 
 extension LocbookListTasksView.Props: Hashable {
