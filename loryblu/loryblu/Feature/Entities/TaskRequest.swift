@@ -11,7 +11,7 @@ struct RegisteredTask: Decodable {
     var routine: [Rotine]
 }
 
-struct Study: Decodable, Identifiable {
+struct Study: Decodable, Identifiable, Hashable {
     var id : Int
     var shift: Shift
     var frequency: [Frequency]

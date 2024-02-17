@@ -1,5 +1,6 @@
 import Foundation
 import Factory
+import SwiftUI
 class LocbookListModel: ObservableObject {
 
     @Injected(\.appData) var appData
@@ -14,5 +15,10 @@ class LocbookListModel: ObservableObject {
         return result
     }
 
-    
+    func configCard(with task: Study) -> CardTaskRegistered {
+        var card = CardTaskRegistered(nameAction: LBStrings.Locbook.titleRotine, imageTask: task.categoryId, nameTask: task.categoryTitle, backgroundCard: LBColor.buttonBackgroundLight, isSecurity: .constant(true))
+        return card
+    }
+
+
 }
