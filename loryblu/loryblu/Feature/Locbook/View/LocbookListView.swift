@@ -4,7 +4,7 @@ struct LocbookListView: View {
 
     @State var formConfig = FormConfig()
     var model = LocbookListModel()
-
+    var taskRotine: [Rotine] = []
 
     var body: some View {
         VStack {
@@ -12,7 +12,7 @@ struct LocbookListView: View {
             Button("teste") {
                 Task {
                     formConfig.task = try await model.loadTask(with:["sat","wed"])
-                }
+                 }
 
             }
               LBWeekDaysButton(sunday: $formConfig.sunday,
@@ -28,10 +28,11 @@ struct LocbookListView: View {
 
     var taskList: some View {
         List {
-
-            CardTaskRegistered(nameAction: LBStrings.Locbook.titleRotine, imageTask: LBIcon.bathTime.rawValue, nameTask: LBStrings.NameImage.bathTime, backgroundCard: LBColor.buttonBackgroundLight, isSecurity: .constant(true))
-
-            CardTaskRegistered(nameAction: LBStrings.Locbook.titleStudy, imageTask: LBIcon.school.rawValue, nameTask: LBStrings.NameImage.bathTime, backgroundCard: LBColor.buttonBackgroundMedium, isSecurity: .constant(false))
+            if let taskRotine = formConfig.task?.data?.study {
+                ForEach(taskRotine ) { task in
+                    model.configCard(with: task)
+                }
+            }
         }
     }
 }
