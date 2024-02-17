@@ -8,9 +8,10 @@ struct LocbookListView: View {
 
     var body: some View {
         VStack {
+            taskList
             Button("teste") {
                 Task {
-                    formConfig.task = try await model.loadTask(with:["sat","mon"])
+                    formConfig.task = try await model.loadTask(with:["sat","wed"])
                 }
 
             }
@@ -22,6 +23,15 @@ struct LocbookListView: View {
                              friday: $formConfig.friday,
                              satuday: $formConfig.saturday)
             .padding(20)
+        }
+    }
+
+    var taskList: some View {
+        List {
+
+            CardTaskRegistered(nameAction: LBStrings.Locbook.titleRotine, imageTask: LBIcon.bathTime.rawValue, nameTask: LBStrings.NameImage.bathTime, backgroundCard: LBColor.buttonBackgroundLight, isSecurity: .constant(true))
+
+            CardTaskRegistered(nameAction: LBStrings.Locbook.titleStudy, imageTask: LBIcon.school.rawValue, nameTask: LBStrings.NameImage.bathTime, backgroundCard: LBColor.buttonBackgroundMedium, isSecurity: .constant(false))
         }
     }
 }

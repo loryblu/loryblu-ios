@@ -1,18 +1,17 @@
 import Foundation
 
-struct TaskRequest: Codable {
+struct TaskRequest: Decodable {
     var message: String
-    var data: RegisteredTask
-
+    var data: RegisteredTask?
 }
 
-struct RegisteredTask: Codable {
+struct RegisteredTask: Decodable {
     var count: Int
     var study: [Study]
-    var rotine: [Rotine]
+    var routine: [Rotine]
 }
 
-struct Study: Codable, Identifiable {
+struct Study: Decodable, Identifiable {
     var id : Int
     var shift: Shift
     var frequency: [Frequency]
@@ -22,7 +21,7 @@ struct Study: Codable, Identifiable {
     var updatedAt: String
 }
 
-struct Rotine: Codable, Identifiable {
+struct Rotine: Decodable, Identifiable {
     var id : Int
     var shift: Shift
     var frequency: [Frequency]
@@ -32,13 +31,13 @@ struct Rotine: Codable, Identifiable {
     var updatedAt: String
 }
 
-enum Shift: String, Codable {
+enum Shift: String, Decodable {
     case morning
     case afternoon
     case night
 }
 
-enum Frequency: String, Codable {
+enum Frequency: String, Decodable {
     case sun = "sun"
     case mon = "mon"
     case tue = "tue"

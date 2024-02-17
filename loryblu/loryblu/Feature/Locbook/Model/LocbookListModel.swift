@@ -10,7 +10,9 @@ class LocbookListModel: ObservableObject {
 
     func loadTask(with weekDays:[String]) async throws -> TaskRequest {
         let result =  try await repository.loadTaskRegister(with: weekDays, childrenID: appData.childrenId, token: appData.token)
+        print(result)
         return result
     }
 
+    
 }

@@ -63,9 +63,8 @@ class TaskRepository {
             .build()
 
 
-        let response = try await network.request(request: request, returning: TaskRequest.self)
-        return response
-
+            let response = try await network.request(request: request, returning: TaskRequest.self)
+            return response
     }
 
 }
