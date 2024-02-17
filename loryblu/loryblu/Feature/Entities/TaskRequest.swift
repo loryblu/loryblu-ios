@@ -8,7 +8,7 @@ struct TaskRequest: Decodable {
 struct RegisteredTask: Decodable {
     var count: Int
     var study: [Study]
-    var routine: [Rotine]
+    var routine: [Routine]
 }
 
 struct Study: Decodable, Identifiable, Hashable {
@@ -21,7 +21,7 @@ struct Study: Decodable, Identifiable, Hashable {
     var updatedAt: String
 }
 
-struct Rotine: Decodable, Identifiable {
+struct Routine: Decodable, Identifiable {
     var id : Int
     var shift: Shift
     var frequency: [Frequency]

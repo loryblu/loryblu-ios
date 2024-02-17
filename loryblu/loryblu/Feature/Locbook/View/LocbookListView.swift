@@ -4,7 +4,7 @@ struct LocbookListView: View {
 
     @State var formConfig = FormConfig()
     var model = LocbookListModel()
-    var taskRotine: [Rotine] = []
+    var taskRotine: [Routine] = []
 
     var body: some View {
         VStack {
@@ -28,9 +28,15 @@ struct LocbookListView: View {
 
     var taskList: some View {
         List {
-            if let taskRotine = formConfig.task?.data?.study {
-                ForEach(taskRotine ) { task in
-                    model.configCard(with: task)
+            if let taskStudy = formConfig.task?.data?.study {
+                ForEach(taskStudy) { task in
+                    model.configCardStudy(with: task)
+                }
+            }
+
+            if let taskRoutine = formConfig.task?.data?.routine {
+                ForEach(taskRoutine) { task in
+                    model.configCardRoutine(with: task)
                 }
             }
         }
