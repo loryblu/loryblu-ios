@@ -51,7 +51,7 @@ struct CardTaskRegistered: View {
         }
         .background(backgroundCard)
         .cornerRadius(8)
-        .frame(maxWidth: 312, maxHeight: 207)
+        .frame(maxWidth: .infinity, maxHeight: 207)
 
     }
 }
