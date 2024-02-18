@@ -9,6 +9,7 @@ import SwiftUI
 struct LBToolBarItem: ToolbarContent {
     
     let title: String
+    let showCloseButton: Bool
     var onClose : () -> Void
     
     @Environment(\.presentationMode) var presentationMode
@@ -34,17 +35,19 @@ struct LBToolBarItem: ToolbarContent {
         
         ToolbarItem(placement: .topBarTrailing) {
             
-            Button {
-                
-                onClose()
-                
-            } label: {
-                
-                Image(LBIcon.close2.rawValue)
-                    .resizable()
-                    .frame(width: 12, height: 12)
-                
-            }.frame(alignment: .topLeading).padding(.trailing, 24.0).padding(.top,16.0)
+            if(showCloseButton) {
+                Button {
+                    
+                    onClose()
+                    
+                } label: {
+                    
+                    Image(LBIcon.close2.rawValue)
+                        .resizable()
+                        .frame(width: 12, height: 12)
+                    
+                }.frame(alignment: .topLeading).padding(.trailing, 24.0).padding(.top,16.0)
+            }
             
         }
     }

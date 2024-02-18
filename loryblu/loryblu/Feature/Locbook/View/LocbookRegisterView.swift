@@ -4,7 +4,6 @@ struct LocbookRegisterView: View {
         
     struct Props {
         let onNewTask: ClosureType.VoidVoid?
-        var onClose: ClosureType.VoidVoid?
     }
     
     let props: Props
@@ -33,7 +32,7 @@ struct LocbookRegisterView: View {
             }.padding(.top, 44)
             
         }
-        .locbookToolbar(title: LBStrings.Locbook.title, onClose: { props.onClose?() })
+        .locbookToolbar(title: LBStrings.Locbook.title,showCloseButton: false)
         .padding(24)
     }
 }
