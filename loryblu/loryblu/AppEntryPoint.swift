@@ -16,17 +16,16 @@ struct AppEntryPoint: View {
     }
     
     private var loginNavitationStack: some View {
-        LocbookListTasksView(props: .init(onClose: {}))
-//        LoginNavigationStack()
-//            .environmentObject(appData)
-//            .sheet(isPresented: $appData.isTokenReceived) {
-//                NewPasswordScreen.build()
-//                    .environmentObject(appData)
-//            }
-//            .onOpenURL { url in
-//                let deepLinkHandler = DeepLinkHandler()
-//                deepLinkHandler.handleDeepLink(with: url, appData: appData)
-//            }
+        LoginNavigationStack()
+            .environmentObject(appData)
+            .sheet(isPresented: $appData.isTokenReceived) {
+                NewPasswordScreen.build()
+                    .environmentObject(appData)
+            }
+            .onOpenURL { url in
+                let deepLinkHandler = DeepLinkHandler()
+                deepLinkHandler.handleDeepLink(with: url, appData: appData)
+            }
     }
 
     private var homeNavitationStack: some View {
