@@ -634,10 +634,10 @@
 		91CA96602B28996D00611F91 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				335E21A62AFF132800700440 /* FrequencyRotineView.swift */,
 				8C2A684F2AF5E04A00B74295 /* LocbookRegisterView.swift */,
 				8C2A68512AF959AB00B74295 /* LocbookActionsView.swift */,
 				8C2A68552AF9B9A000B74295 /* LocbookTasksView.swift */,
-				335E21A62AFF132800700440 /* FrequencyRotineView.swift */,
 				9302EE952B71C47A003D7C4F /* LocbookSummaryView.swift */,
 				8CE33B232B7EFF4E005D1219 /* LocbookListTasksView.swift */,
 			);
