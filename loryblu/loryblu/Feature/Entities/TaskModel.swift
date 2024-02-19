@@ -4,4 +4,5 @@ import Foundation
      var uuid: UUID = UUID()
      var actionType: String
      var locbookTask: LocbookTask
+     var image: String
 }

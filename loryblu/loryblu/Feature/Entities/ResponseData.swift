@@ -1,3 +1,4 @@
+import Foundation
 
 struct ResponseData <T : Decodable>: Decodable {
      var message: String?
