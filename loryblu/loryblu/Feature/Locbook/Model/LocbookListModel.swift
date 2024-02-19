@@ -20,7 +20,7 @@ class LocbookListModel: ObservableObject {
         let card = CardTaskRegistered(nameAction: LBStrings.Locbook.titleStudy,
                                       imageTask: giveBackImageTask(with: task.categoryId),
                                       nameTask: task.categoryTitle,
-                                      backgroundCard: LBColor.buttonBackgroundLight,
+                                      backgroundCard: configBackgroundCard(with: task.shift),
                                       isSecurity: .constant(false))
         return card
     }
@@ -29,7 +29,7 @@ class LocbookListModel: ObservableObject {
         let card = CardTaskRegistered(nameAction: LBStrings.Locbook.titleRotine,
                                       imageTask: giveBackImageTask(with: task.categoryId),
                                       nameTask: task.categoryTitle,
-                                      backgroundCard: LBColor.buttonBackgroundLight,
+                                      backgroundCard: configBackgroundCard(with: task.shift),
                                       isSecurity: .constant(false))
         return card
     }
@@ -39,7 +39,9 @@ class LocbookListModel: ObservableObject {
             return LBColor.buttonBackgroundLight
         }
         if shift == .afternoon {
-            reu
+            return LBColor.buttonBackgroundMedium
+        } else {
+           return LBColor.buttonGenderEnable
         }
     }
 
