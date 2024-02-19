@@ -26,13 +26,7 @@ extension [TasksNetworkModel] {
         return self.map { (task: TasksNetworkModel) -> TaskModel in
             let shift = getShift(shift:task.shift)
             let frequency = frequencyMapper(frequency:task.frequency)
-            let locbooktask = LocbookTask(
-                childrenId: task.id,
-                shift: shift,frequency: frequency,
-                order: task.order,
-                categoryId: task.categoryId,
-                categoryTitle: task.categoryTitle,
-                updatedAt: Date())
+            let locbooktask = LocbookTask(childrenId: task.id, shift: shift,frequency: frequency, order: task.order, categoryId: task.categoryId,categoryTitle: task.categoryTitle,updatedAt: Date())
             let img = taskImages.filter { label in
                 label.categoryID == task.categoryId
             }.first
