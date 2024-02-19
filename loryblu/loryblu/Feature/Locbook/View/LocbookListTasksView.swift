@@ -17,18 +17,29 @@ struct LocbookListTasksView: View {
     var props: Props
     
     @State var viewmodel: TasksViewModel  = TasksViewModel()
-    
+    @State var sunday: Bool = false
+    @State var monday: Bool = false
+    @State var tuesday: Bool = false
+    @State var wednesday: Bool = false
+    @State var thurday: Bool = false
+    @State var friday: Bool = false
+    @State var saturday: Bool = false
+
     var body: some View {
         VStack() {
             VStack(spacing: 16) {
+                Button ("teste") {
+                    let filterTask: [TaskModel] =  viewmodel.filterWeekDay(weekDays: "wed", listTask: viewmodel.tasks)
+                    print(filterTask)
+                }
                 LBWeekDaysButton(  // TODO: implementar funcionalidade e filtro
-                    sunday: .constant(false),
-                    monday: .constant(true),
-                    tuesday: .constant(false),
-                    wednesday: .constant(false),
-                    thurday: .constant(true),
-                    friday: .constant(false),
-                    satuday: .constant(false)
+                    sunday: $sunday,
+                    monday: $monday,
+                    tuesday: $tuesday,
+                    wednesday: $wednesday,
+                    thurday: $thurday,
+                    friday: $friday,
+                    satuday: $saturday
                 )
                 
                 LBShiftItemsComponent(shifts: shiftsEXEMPLO)
@@ -105,6 +116,8 @@ extension LocbookListTasksView.Props: Hashable {
         hasher.combine(String(describing: Self.self))
     }
 }
+
+
 
 #Preview {
     LocbookListTasksView(props: .init(onNewTask: {}))
