@@ -1,6 +1,5 @@
 import Foundation
 import Factory
-
 class TaskRepository {
     
     let network: Network
@@ -63,9 +62,9 @@ class TaskRepository {
         do {
             let result = try await network.request(request: request, returning: ResponseData<NetworkDataModel>.self)
             
-            tasks = getStudyTasks(studyTasks: result.data?.study ?? [])
+            tasks = getTasks(type: LBStrings.Locbook.titleStudy,tasks: result.data?.study ?? [])
             
-            tasks += getRoutineTasks(routineTasks: result.data?.routine ?? [])
+            tasks += getTasks(type: LBStrings.Locbook.titleRotine, tasks : result.data?.routine ?? [])
 
             return tasks
         } catch {
@@ -75,71 +74,7 @@ class TaskRepository {
 }
 
 extension TaskRepository {
-    
-    func getStudyTasks(studyTasks: [TasksNetworkModel]) -> [TaskModel] {
-        
-        return studyTasks.map { (task: TasksNetworkModel) -> TaskModel in
-            
-            let shift = getShift(shift:task.shift)
-            
-            let frequency = frequencyMapper(frequency:task.frequency)
-            
-            let locbooktask = LocbookTask(childrenId: task.id, shift: shift,frequency: frequency, order: task.order, categoryId: task.categoryId,categoryTitle: task.categoryTitle,updatedAt: Date())
-            
-            var images = ListTasks.rotine + ListTasks.study
-            
-            var img = images.filter { label in
-                label.categoryID == task.categoryId
-            }.first
-            
-            return TaskModel(actionType: LBStrings.Locbook.titleStudy, locbookTask: locbooktask, image: img!.image)
-        }
+    func getTasks(type: String, tasks:[TasksNetworkModel]) -> [TaskModel] {
+        return tasks.toTasksModel(type: type)
     }
-    
-    func getRoutineTasks(routineTasks: [TasksNetworkModel]) -> [TaskModel] {
-        
-        return routineTasks.map { (task: TasksNetworkModel) -> TaskModel in
-            
-            let shift = getShift(shift:task.shift)
-            
-            let frequency = frequencyMapper(frequency:task.frequency)
-            
-            let locbooktask = LocbookTask(childrenId: task.id, shift: shift,frequency: frequency, order: task.order, categoryId: task.categoryId,categoryTitle: task.categoryTitle,updatedAt: Date())
-            
-            var images = ListTasks.rotine + ListTasks.study
-            
-            var img = images.filter { label in
-                label.categoryID == task.categoryId
-            }.first
-            
-            return TaskModel(actionType: LBStrings.Locbook.titleRotine, locbookTask: locbooktask, image: img!.image)
-        }
-    }
-    
-    private func frequencyMapper(frequency: [String]) -> [LocbookTask.Frequency] {
-        return frequency.map { (item: String) -> LocbookTask.Frequency in
-            return getFrequency(frequency:item)
-        }
-    }
-    
-    private func getFrequency(frequency: String) -> LocbookTask.Frequency {
-        return switch frequency {
-        case "sun" : LocbookTask.Frequency.sun
-        case "mon" : LocbookTask.Frequency.mon
-        case "tue" : LocbookTask.Frequency.tue
-        case "wed" : LocbookTask.Frequency.wed
-        case "thu" : LocbookTask.Frequency.thu
-        case "fri" : LocbookTask.Frequency.fri
-        default : LocbookTask.Frequency.sat
-        }
-    }
-    private func getShift(shift: String) -> LocbookTask.Shift {
-        return switch shift {
-        case "morning" : LocbookTask.Shift.morning
-        case "afternoon" : LocbookTask.Shift.afternoon
-        default :
-            LocbookTask.Shift.night
-        }
-    }
-    
 }
