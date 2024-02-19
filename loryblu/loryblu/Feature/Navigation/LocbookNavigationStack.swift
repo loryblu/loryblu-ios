@@ -21,8 +21,8 @@ struct LocbookNavigationStack: View {
     var body: some View {
         NavigationStack(path: $coordinator.path) {
             coordinator.buildView(
-                page: .register(
-                    .init(onNewTask: { pushLocbookActions() }, onClose : { dismiss() })
+                page: .board(
+                    .init(onNewTask: { pushLocbookActions() })
                 )
             )
             .navigationDestination(for: NavigationCoordinator.Destination.Navigation.self) { destination in

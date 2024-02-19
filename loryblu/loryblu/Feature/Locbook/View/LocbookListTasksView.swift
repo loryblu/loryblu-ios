@@ -60,7 +60,7 @@ struct LocbookListTasksView: View {
                         text: LBStrings.Locbook.button,
                         icon: LBIcon.plus
                     ) {
-                        //self.props.onNewTask?()
+                        self.props.onNewTask?()
                     }
                 }.frame(maxHeight:.infinity,alignment: .bottomTrailing).padding(.init(top: 0, leading: 0, bottom: 33, trailing: 16))
             }

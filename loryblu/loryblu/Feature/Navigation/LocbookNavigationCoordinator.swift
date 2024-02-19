@@ -5,7 +5,7 @@ class LocbookNavigationCoordinator: ObservableObject {
     
     enum Destination {
         enum Navigation: Hashable {
-            case register(LocbookRegisterView.Props)
+            case board(LocbookListTasksView.Props)
             case actions(LocbookActionsView.Props)
             case tasks(LocbookTasksView.Props)
             case frequency(FrequencyRotineView.Props)
@@ -63,8 +63,8 @@ class LocbookNavigationCoordinator: ObservableObject {
     @ViewBuilder
     func buildView(page destination: Destination.Navigation) -> some View {
         switch destination {
-        case let .register(props):
-            LocbookRegisterView(props: props)
+        case let .board(props):
+            LocbookListTasksView(props: props)
         case let .actions(props):
             LocbookActionsView(props: props)
         case let .tasks(props):
