@@ -123,6 +123,10 @@
 		9302EE942B71C0C0003D7C4F /* LBShiftItemsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9302EE932B71C0C0003D7C4F /* LBShiftItemsComponent.swift */; };
 		9302EE962B71C47A003D7C4F /* LocbookSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9302EE952B71C47A003D7C4F /* LocbookSummaryView.swift */; };
 		9310C8D62B66DB02007D3CE7 /* LBToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9310C8D52B66DB02007D3CE7 /* LBToolbar.swift */; };
+		931D12D32B82C0C000589032 /* ResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931D12D22B82C0C000589032 /* ResponseData.swift */; };
+		931D12D52B82C11A00589032 /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931D12D42B82C11A00589032 /* TaskModel.swift */; };
+		931D12D92B82C16F00589032 /* TaskNetworkModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931D12D82B82C16F00589032 /* TaskNetworkModels.swift */; };
+		931D12DB2B82C25300589032 /* TasksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931D12DA2B82C25300589032 /* TasksViewModel.swift */; };
 		9366FB182B6B063900A57F89 /* LBToolBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9366FB172B6B063900A57F89 /* LBToolBarModifier.swift */; };
 /* End PBXBuildFile section */
 
@@ -217,6 +221,10 @@
 		9302EE932B71C0C0003D7C4F /* LBShiftItemsComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBShiftItemsComponent.swift; sourceTree = "<group>"; };
 		9302EE952B71C47A003D7C4F /* LocbookSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocbookSummaryView.swift; sourceTree = "<group>"; };
 		9310C8D52B66DB02007D3CE7 /* LBToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBToolbar.swift; sourceTree = "<group>"; };
+		931D12D22B82C0C000589032 /* ResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseData.swift; sourceTree = "<group>"; };
+		931D12D42B82C11A00589032 /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
+		931D12D82B82C16F00589032 /* TaskNetworkModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskNetworkModels.swift; sourceTree = "<group>"; };
+		931D12DA2B82C25300589032 /* TasksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewModel.swift; sourceTree = "<group>"; };
 		9366FB172B6B063900A57F89 /* LBToolBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBToolBarModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -430,6 +438,9 @@
 				8C070DDC2B10C254004AAF8A /* ListTasks.swift */,
 				91361A252ACEF06B00700E36 /* ResponseMessage.swift */,
 				8C669C402AA011480028B436 /* UserRegister.swift */,
+				931D12D22B82C0C000589032 /* ResponseData.swift */,
+				931D12D42B82C11A00589032 /* TaskModel.swift */,
+				931D12D82B82C16F00589032 /* TaskNetworkModels.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -562,6 +573,7 @@
 				912BC3832B2934E800B7F336 /* LocbookActionModel.swift */,
 				8CE33B252B7F1328005D1219 /* CardTasksModel.swift */,
 				33DE3B242B759AC300F45449 /* SummaryViewModel.swift */,
+				931D12DA2B82C25300589032 /* TasksViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -802,11 +814,14 @@
 				33DE3B252B759AC300F45449 /* SummaryViewModel.swift in Sources */,
 				33DE3B232B75993200F45449 /* HomeViewModel.swift in Sources */,
 				8CE004892AC1C6680037F792 /* DoneView.swift in Sources */,
+				931D12D32B82C0C000589032 /* ResponseData.swift in Sources */,
 				330A37772A660C2D00C9DCE7 /* LBFont.swift in Sources */,
 				8C2A684D2AF54A9600B74295 /* HomeView.swift in Sources */,
+				931D12D52B82C11A00589032 /* TaskModel.swift in Sources */,
 				91CA965F2B28996300611F91 /* LocbookNavigationStack.swift in Sources */,
 				8C3120EC2ABB3D8B00D580BD /* NetworkError.swift in Sources */,
 				8C3120EF2ABB3D8B00D580BD /* Server.swift in Sources */,
+				931D12D92B82C16F00589032 /* TaskNetworkModels.swift in Sources */,
 				8C21B3482AA6C374002EF4BD /* RegisterChildViewModel.swift in Sources */,
 				33BA2DE62AC9BE3D009704FD /* DeepLinkHandler.swift in Sources */,
 				8C3120ED2ABB3D8B00D580BD /* RequestModel.swift in Sources */,
@@ -860,6 +875,7 @@
 				33549B0A2ACB92E700CF989F /* AppData.swift in Sources */,
 				335E21A72AFF132800700440 /* FrequencyRotineView.swift in Sources */,
 				91A7CC182ACF9F8500109300 /* LBDatePicker.swift in Sources */,
+				931D12DB2B82C25300589032 /* TasksViewModel.swift in Sources */,
 				8CE03E3C2A6363630024919C /* LBIcon.swift in Sources */,
 				3329F01F2AB3CB3000915FA3 /* LBDatePickerTextField.swift in Sources */,
 				334D0AB72A8AF93D003881ED /* NewPasswordScreen.swift in Sources */,
