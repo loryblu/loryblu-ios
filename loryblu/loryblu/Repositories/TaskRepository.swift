@@ -55,7 +55,7 @@ class TaskRepository {
         
         let request = RequestModel.Builder()
             .with(baseURL: Server.baseURL)
-            .with(path: "\(Endpoint.task)?childreId=\(childrenId)&frequency=sun,mon,tue,wed,thu,fri,sat")
+            .with(path: "\(Endpoint.task)?childrenId=\(childrenId)&frequency=sun,mon,tue,wed,thu,fri,sat")
             .with(method: .get)
             .with(addHeaderName: "Authorization", value: "Bearer \(token)")
             .build()
@@ -66,7 +66,7 @@ class TaskRepository {
             tasks = getStudyTasks(studyTasks: result.data?.study ?? [])
             
             tasks += getRoutineTasks(routineTasks: result.data?.routine ?? [])
-            
+
             return tasks
         } catch {
             return tasks
@@ -84,9 +84,15 @@ extension TaskRepository {
             
             let frequency = frequencyMapper(frequency:task.frequency)
             
-            let locbooktask = LocbookTask(childrenId: task.childrenId, shift: shift,frequency: frequency, order: task.order, categoryId: task.categoryId,categoryTitle: task.categoryTitle,updatedAt: DateFormatter().date(from:task.updatedAt)!)
+            let locbooktask = LocbookTask(childrenId: task.id, shift: shift,frequency: frequency, order: task.order, categoryId: task.categoryId,categoryTitle: task.categoryTitle,updatedAt: Date())
             
-            return TaskModel(actionType: LBStrings.Locbook.titleStudy, locbookTask: locbooktask)
+            var images = ListTasks.rotine + ListTasks.study
+            
+            var img = images.filter { label in
+                label.categoryID == task.categoryId
+            }.first
+            
+            return TaskModel(actionType: LBStrings.Locbook.titleStudy, locbookTask: locbooktask, image: img!.image)
         }
     }
     
@@ -98,9 +104,15 @@ extension TaskRepository {
             
             let frequency = frequencyMapper(frequency:task.frequency)
             
-            let locbooktask = LocbookTask(childrenId: task.childrenId, shift: shift,frequency: frequency, order: task.order, categoryId: task.categoryId,categoryTitle: task.categoryTitle,updatedAt: DateFormatter().date(from:task.updatedAt)!)
+            let locbooktask = LocbookTask(childrenId: task.id, shift: shift,frequency: frequency, order: task.order, categoryId: task.categoryId,categoryTitle: task.categoryTitle,updatedAt: Date())
             
-            return TaskModel(actionType: LBStrings.Locbook.titleRotine, locbookTask: locbooktask)
+            var images = ListTasks.rotine + ListTasks.study
+            
+            var img = images.filter { label in
+                label.categoryID == task.categoryId
+            }.first
+            
+            return TaskModel(actionType: LBStrings.Locbook.titleRotine, locbookTask: locbooktask, image: img!.image)
         }
     }
     
