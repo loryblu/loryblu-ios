@@ -1,7 +1,7 @@
 import Foundation
 import Factory
 
- class TasksViewModel: ObservableObject {
+class TasksViewModel: ObservableObject {
 
      @Injected(\.appData) var appData
      
@@ -11,9 +11,7 @@ import Factory
 
      @MainActor
      func fetchTasks() async {
-
          tasks = await repository
              .fetchTasks(token: appData.token,childrenId: appData.childrenId)
-
      }
  }
