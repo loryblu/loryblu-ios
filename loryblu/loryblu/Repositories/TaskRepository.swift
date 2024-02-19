@@ -1,7 +1,6 @@
 import Foundation
 import Factory
 class TaskRepository {
-    
     let network: Network
     
     init(network: Network) {
@@ -49,9 +48,7 @@ class TaskRepository {
     }
     
     func fetchTasks(token: String, childrenId: Int) async -> [TaskModel] {
-        
         var tasks: [TaskModel] = []
-        
         let request = RequestModel.Builder()
             .with(baseURL: Server.baseURL)
             .with(path: "\(Endpoint.task)?childrenId=\(childrenId)&frequency=sun,mon,tue,wed,thu,fri,sat")
@@ -61,11 +58,9 @@ class TaskRepository {
         
         do {
             let result = try await network.request(request: request, returning: ResponseData<NetworkDataModel>.self)
-            
             tasks = getTasks(type: LBStrings.Locbook.titleStudy,tasks: result.data?.study ?? [])
-            
             tasks += getTasks(type: LBStrings.Locbook.titleRotine, tasks : result.data?.routine ?? [])
-
+            
             return tasks
         } catch {
             return tasks

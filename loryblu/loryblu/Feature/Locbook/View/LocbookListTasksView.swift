@@ -44,7 +44,9 @@ struct LocbookListTasksView: View {
                     SwitchToggleStyle(
                         tint: securityIsOn ? LBColor.buttonBackgroundDark : LBColor.placeholder)
                 ).padding(.trailing, 6)
-            }.frame(maxWidth: .infinity,alignment: .trailing).padding(.init(top: 8, leading: 0, bottom: 0, trailing: 32))
+            }
+            .frame(maxWidth: .infinity,alignment: .trailing)
+            .padding(.init(top: 8, leading: 0, bottom: 0, trailing: 32))
             
             ZStack {
                 ListTasksView(viewmodel: viewmodel,securityIsOn: $securityIsOn).frame(maxHeight:.infinity)
@@ -53,8 +55,6 @@ struct LocbookListTasksView: View {
                     }
                     }
                     .padding(.init(top: 0, leading: 8, bottom: 0, trailing: 8))
-                
-                
                 HStack {
                     Spacer()
                     LBfloatingButton(
@@ -67,12 +67,9 @@ struct LocbookListTasksView: View {
                 .frame(maxHeight:.infinity,alignment: .bottomTrailing)
                 .padding(.init(top: 0, leading: 0, bottom: 33, trailing: 16))
             }
-            
-            
         }
         .locbookToolbar(title: LBStrings.Locbook.title, showCloseButton: false)
         .backgroundStyle(LBColor.background)
-        
     }
 }
 
@@ -95,7 +92,7 @@ struct ListTasksView : View {
         .listStyle(.plain)
         .scrollContentBackground(.hidden)
         .scrollIndicators(ScrollIndicatorVisibility.hidden)
-        
+
     }
 }
 

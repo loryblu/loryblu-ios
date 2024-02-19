@@ -2,7 +2,6 @@ import Foundation
 import Factory
 
 class TasksViewModel: ObservableObject {
-
      @Injected(\.appData) var appData
      
      private var repository = Container.shared.taskRepository()
