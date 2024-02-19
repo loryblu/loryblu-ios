@@ -33,6 +33,15 @@ class LocbookListModel: ObservableObject {
                                       isSecurity: .constant(false))
         return card
     }
+    
+    func configBackgroundCard(with shift: Shift) -> Color {
+        if shift == .morning {
+            return LBColor.buttonBackgroundLight
+        }
+        if shift == .afternoon {
+            reu
+        }
+    }
 
     func giveBackImageTask(with categoryId: String) -> String {
         if categoryId == LBStrings.CategoryID.school {
