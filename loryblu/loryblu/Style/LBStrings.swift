@@ -1,9 +1,7 @@
 import Foundation
 import SwiftUI
 
-enum LBStrings {
-
-}
+enum LBStrings {}
 
 extension LBStrings {
     enum General {
@@ -167,7 +165,6 @@ extension LBStrings {
         static let night = String(localized: "id_night")
     }
 }
-
 
 extension LBStrings {
     enum FrequencyRotine {
