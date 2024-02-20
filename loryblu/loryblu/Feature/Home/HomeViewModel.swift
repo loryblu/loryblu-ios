@@ -10,9 +10,9 @@ class HomeViewModel: ObservableObject {
 
     func firstName(fulName: String) -> String {
         var childrenName: String = ""
-        let ArrayName = fulName.components(separatedBy:" ")
+        let arrayName = fulName.components(separatedBy: " ")
 
-        guard let firstName = ArrayName.first else {
+        guard let firstName = arrayName.first else {
             return childrenName
         }
         childrenName = firstName

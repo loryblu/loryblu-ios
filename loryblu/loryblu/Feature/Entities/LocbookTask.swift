@@ -8,13 +8,7 @@ struct LocbookTask {
     }
 
     enum Frequency: String, Codable {
-        case sun = "sun"
-        case mon = "mon"
-        case tue = "tue"
-        case wed = "wed"
-        case thu = "thu"
-        case fri = "fri"
-        case sat = "sat"
+        case sun, mon, tue, wed, thu, fri, sat
     }
 
     var childrenId: Int?
