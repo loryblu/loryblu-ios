@@ -18,16 +18,14 @@ class TasksViewModel: ObservableObject {
 
     func filterWeekDay(weekDays: [LocbookTask.Frequency]) {
         var taskFiltered: [TaskModel] = []
-        
-        taskFiltered = listTask.filter({ task in
-            if let 
-            Set(weekDays).intersection(Set(task.locbookTask.frequency ?? [])).isEmpty == false
-        })
 
-        self.tasks = taskFiltered
-        print(taskFiltered.map {
-            $0.locbookTask.frequency
-        })
+        if weekDays == [] {
+            self.tasks = listTask
+        } else {
+            taskFiltered = listTask.filter({ task in
+                Set(weekDays).intersection(Set(task.locbookTask.frequency ?? [])).isEmpty == false
+            })
+            self.tasks = taskFiltered
+        }
     }
-
 }

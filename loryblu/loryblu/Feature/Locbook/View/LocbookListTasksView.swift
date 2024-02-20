@@ -28,7 +28,7 @@ struct LocbookListTasksView: View {
     var body: some View {
         VStack() {
             VStack(spacing: 16) {
-                LBWeekDaysButton(  // TODO: implementar funcionalidade e filtro
+                LBWeekDaysButton( 
                     sunday: $sunday,
                     monday: $monday,
                     tuesday: $tuesday,
