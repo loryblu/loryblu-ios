@@ -8,7 +8,7 @@ struct LBWeekDaysButton: View {
     @Binding var thurday: Bool
     @Binding var friday: Bool
     @Binding var satuday: Bool
-    
+
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 12)

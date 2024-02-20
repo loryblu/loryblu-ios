@@ -28,10 +28,6 @@ struct LocbookListTasksView: View {
     var body: some View {
         VStack() {
             VStack(spacing: 16) {
-                Button ("teste") {
-                    let filterTask: [TaskModel] =  viewmodel.filterWeekDay(weekDays: "wed", listTask: viewmodel.tasks)
-                    print(filterTask)
-                }
                 LBWeekDaysButton(  // TODO: implementar funcionalidade e filtro
                     sunday: $sunday,
                     monday: $monday,
@@ -41,7 +37,28 @@ struct LocbookListTasksView: View {
                     friday: $friday,
                     satuday: $saturday
                 )
-                
+                .onChange(of: sunday) { value in
+                    viewmodel.filterWeekDay(weekDays: weekDaysFrenquency())
+                 }
+                .onChange(of: monday) { value in
+                    viewmodel.filterWeekDay(weekDays: weekDaysFrenquency())
+                }
+                .onChange(of: tuesday) { value in
+                    viewmodel.filterWeekDay(weekDays: weekDaysFrenquency())
+                }
+                .onChange(of: wednesday) { value in
+                    viewmodel.filterWeekDay(weekDays: weekDaysFrenquency())
+                }
+                .onChange(of: thurday) { value in
+                    viewmodel.filterWeekDay(weekDays: weekDaysFrenquency())
+                }
+                .onChange(of: friday) { value in
+                    viewmodel.filterWeekDay(weekDays: weekDaysFrenquency())
+                }
+                .onChange(of: saturday) { value in
+                    viewmodel.filterWeekDay(weekDays: weekDaysFrenquency())
+                }
+
                 LBShiftItemsComponent(shifts: shiftsEXEMPLO)
             }
             .padding(.init(top: 16, leading: 24, bottom: 0, trailing: 24))
@@ -64,8 +81,9 @@ struct LocbookListTasksView: View {
                     .onAppear { Task {
                         await viewmodel.fetchTasks()
                     }
-                    }
-                    .padding(.init(top: 0, leading: 8, bottom: 0, trailing: 8))
+                }
+                .padding(.init(top: 0, leading: 8, bottom: 0, trailing: 8))
+                
                 HStack {
                     Spacer()
                     LBfloatingButton(
@@ -75,13 +93,29 @@ struct LocbookListTasksView: View {
                         self.props.onNewTask?()
                     }
                 }
-                .frame(maxHeight:.infinity,alignment: .bottomTrailing)
+                .frame(maxHeight:.infinity, alignment: .bottomTrailing)
                 .padding(.init(top: 0, leading: 0, bottom: 33, trailing: 16))
             }
         }
         .locbookToolbar(title: LBStrings.Locbook.title, showCloseButton: false)
         .backgroundStyle(LBColor.background)
     }
+
+    private func weekDaysFrenquency() -> [LocbookTask.Frequency] {
+        var result: [LocbookTask.Frequency] = []
+
+        if sunday { result.append(.sun) }
+        if monday { result.append(.mon) }
+        if tuesday { result.append(.tue) }
+        if wednesday { result.append(.wed) }
+        if thurday { result.append(.thu) }
+        if friday { result.append(.fri) }
+        if saturday { result.append(.sat) }
+
+        return result
+
+    }
+
 }
 
 struct ListTasksView : View {
@@ -95,7 +129,11 @@ struct ListTasksView : View {
             
             if(!viewmodel.tasks.isEmpty) {
                 ForEach(viewmodel.tasks, id: \.uuid) { model in
-                    CardTaskRegistered(nameAction: model.actionType, imageTask: model.image, nameTask: model.locbookTask.categoryTitle!, backgroundCard: LBColor.buttonBackgroundLight, isSecurity: .constant(true))
+                    CardTaskRegistered(nameAction: model.actionType,
+                                       imageTask: model.image,
+                                       nameTask: model.locbookTask.categoryTitle!,
+                                       backgroundCard: LBColor.buttonBackgroundLight,
+                                       isSecurity: .constant(true))
                 }
                 .listRowSeparator(.hidden)
             }
