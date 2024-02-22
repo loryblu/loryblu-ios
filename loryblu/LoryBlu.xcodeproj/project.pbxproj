@@ -21,6 +21,7 @@
 		335E21A72AFF132800700440 /* FrequencyRotineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335E21A62AFF132800700440 /* FrequencyRotineView.swift */; };
 		3376667D2ABFD115007010E1 /* URLDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3376667C2ABFD115007010E1 /* URLDecoder.swift */; };
 		3380B2102B0DA63F0001E67D /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3380B20F2B0DA63F0001E67D /* Formatter.swift */; };
+		339573E32B87E37600E38B80 /* LBDaysButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339573E22B87E37600E38B80 /* LBDaysButtonStyle.swift */; };
 		33AAFCF22AC649C200039063 /* NewPasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AAFCF12AC649C200039063 /* NewPasswordModel.swift */; };
 		33B2ABFC2ACE587A004CF7DF /* RepositorySetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B2ABFB2ACE587A004CF7DF /* RepositorySetPassword.swift */; };
 		33BA2DE62AC9BE3D009704FD /* DeepLinkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA2DE52AC9BE3D009704FD /* DeepLinkHandler.swift */; };
@@ -146,6 +147,7 @@
 		335E21A62AFF132800700440 /* FrequencyRotineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequencyRotineView.swift; sourceTree = "<group>"; };
 		3376667C2ABFD115007010E1 /* URLDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLDecoder.swift; sourceTree = "<group>"; };
 		3380B20F2B0DA63F0001E67D /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
+		339573E22B87E37600E38B80 /* LBDaysButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBDaysButtonStyle.swift; sourceTree = "<group>"; };
 		33AAFCF12AC649C200039063 /* NewPasswordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPasswordModel.swift; sourceTree = "<group>"; };
 		33B2ABFB2ACE587A004CF7DF /* RepositorySetPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositorySetPassword.swift; sourceTree = "<group>"; };
 		33BA2DE52AC9BE3D009704FD /* DeepLinkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkHandler.swift; sourceTree = "<group>"; };
@@ -514,6 +516,7 @@
 				330A37762A660C2D00C9DCE7 /* LBFont.swift */,
 				8CE03E3B2A6363630024919C /* LBIcon.swift */,
 				8C57341A2A6B4F5F0052B955 /* LBStrings.swift */,
+				339573E22B87E37600E38B80 /* LBDaysButtonStyle.swift */,
 			);
 			path = Style;
 			sourceTree = "<group>";
@@ -880,6 +883,7 @@
 				3329F01F2AB3CB3000915FA3 /* LBDatePickerTextField.swift in Sources */,
 				334D0AB72A8AF93D003881ED /* NewPasswordScreen.swift in Sources */,
 				8C2535322A7714DD0096738B /* RegisterResponsibleViewModel.swift in Sources */,
+				339573E32B87E37600E38B80 /* LBDaysButtonStyle.swift in Sources */,
 				9302EE942B71C0C0003D7C4F /* LBShiftItemsComponent.swift in Sources */,
 				8C27B8542A68C19400F72214 /* LBLabel.swift in Sources */,
 				8C5DFC8F2A85AE13002739D9 /* LBToggle.swift in Sources */,
