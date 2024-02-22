@@ -28,19 +28,12 @@ struct LocbookListTasksView: View {
 
     var props: Props
     @State var viewmodel: TasksViewModel  = TasksViewModel()
+    @State var day: LBFrequencyFilter.Week = .none
 
     var body: some View {
         VStack {
             VStack(spacing: 16) {
-                LBWeekDaysButton(  // TODO: implementar funcionalidade e filtro
-                    sunday: .constant(false),
-                    monday: .constant(true),
-                    tuesday: .constant(false),
-                    wednesday: .constant(false),
-                    thurday: .constant(true),
-                    friday: .constant(false),
-                    satuday: .constant(false)
-                )
+                LBFrequencyFilter(day: day, viewmodel: viewmodel)
 
                 LBShiftItemsComponent(shifts: shiftsEXEMPLO)
             }
@@ -106,6 +99,67 @@ struct ListTasksView: View {
         .listStyle(.plain)
         .scrollContentBackground(.hidden)
         .scrollIndicators(ScrollIndicatorVisibility.hidden)
+    }
+}
+
+struct LBFrequencyFilter: View {
+    enum Week: Equatable {
+        case sunday
+        case monday
+        case tuesday
+        case wednesday
+        case thurday
+        case friday
+        case satuday
+        case none
+    }
+
+    @State var day: Week
+    @ObservedObject var viewmodel:TasksViewModel
+
+    var body: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 12)
+                .fill(LBColor.backgroundCards)
+                .frame(height: 45)
+
+            HStack(spacing: 20) {
+                Button("D") {
+                    day = .sunday
+                    viewmodel.filterWeekDay(weekDays: [.sun])
+                }.buttonStyle(LBDaysButtonStyle(isSet: day == .sunday ))
+
+                Button("S") {
+                    day = .monday
+                    viewmodel.filterWeekDay(weekDays: [.mon])
+                }.buttonStyle(LBDaysButtonStyle(isSet: day == .monday))
+
+                Button("T") {
+                    day = .tuesday
+                    viewmodel.filterWeekDay(weekDays: [.tue])
+                }.buttonStyle(LBDaysButtonStyle(isSet: day == .tuesday))
+
+                Button("Q") {
+                    day = .wednesday
+                    viewmodel.filterWeekDay(weekDays: [.wed])
+                }.buttonStyle(LBDaysButtonStyle(isSet: day == .wednesday))
+
+                Button("Q") {
+                    day = .thurday
+                    viewmodel.filterWeekDay(weekDays: [.thu])
+                }.buttonStyle(LBDaysButtonStyle(isSet: day == .thurday))
+
+                Button("S") {
+                    day = .friday
+                    viewmodel.filterWeekDay(weekDays: [.fri])
+                }.buttonStyle(LBDaysButtonStyle(isSet: day == .friday))
+
+                Button("S") {
+                    day = .satuday
+                    viewmodel.filterWeekDay(weekDays: [.sat])
+                }.buttonStyle(LBDaysButtonStyle(isSet: day == .satuday))
+            }
+        }
     }
 }
 
