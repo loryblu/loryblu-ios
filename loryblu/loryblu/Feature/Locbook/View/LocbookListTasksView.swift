@@ -106,7 +106,7 @@ struct LBFrequencyFilter: View {
         case none
     }
 
-    @State var day: Week = .none
+    @State var day: Week
     @ObservedObject var viewmodel:TasksViewModel
 
     var body: some View {

@@ -29,44 +29,4 @@ class TasksViewModel: ObservableObject {
             self.tasks = taskFiltered
         }
     }
-
-    func getFirstDayWithTask() -> LBFrequencyFilter.Week {
-
-        let days = ["sun","mon","tue","wed","thu","fri","sat"]
-
-        if !listTask.isEmpty {
-            for day in days {
-                for task in listTask {
-                    if ((task.locbookTask.frequency?.contains(getFrequency(frequency: day))) != nil) {
-                        return  getWeekday(frequency: getFrequency(frequency: day))
-                    }
-                }
-            }
-        }
-        return .none
-    }
-
-    private func getFrequency(frequency: String) -> LocbookTask.Frequency {
-        return switch frequency {
-        case "sun" : LocbookTask.Frequency.sun
-        case "mon" : LocbookTask.Frequency.mon
-        case "tue" : LocbookTask.Frequency.tue
-        case "wed" : LocbookTask.Frequency.wed
-        case "thu" : LocbookTask.Frequency.thu
-        case "fri" : LocbookTask.Frequency.fri
-        default : LocbookTask.Frequency.sat
-        }
-    }
-
-    private func getWeekday(frequency: LocbookTask.Frequency) -> LBFrequencyFilter.Week {
-        return switch frequency {
-        case LocbookTask.Frequency.sun : LBFrequencyFilter.Week.sunday
-        case LocbookTask.Frequency.mon : LBFrequencyFilter.Week.monday
-        case LocbookTask.Frequency.tue : LBFrequencyFilter.Week.tuesday
-        case LocbookTask.Frequency.wed : LBFrequencyFilter.Week.wednesday
-        case LocbookTask.Frequency.thu : LBFrequencyFilter.Week.thurday
-        case LocbookTask.Frequency.fri : LBFrequencyFilter.Week.friday
-        default : LBFrequencyFilter.Week.satuday
-        }
-    }
 }
