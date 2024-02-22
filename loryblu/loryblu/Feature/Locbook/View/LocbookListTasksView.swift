@@ -54,8 +54,8 @@ struct LocbookListTasksView: View {
             .padding(.init(top: 8, leading: 0, bottom: 0, trailing: 32))
 
             ZStack {
-                ListTasksView(viewmodel: viewmodel,securityIsOn: $securityIsOn)
-                    .frame(maxHeight:.infinity)
+                ListTasksView(viewmodel: viewmodel, securityIsOn: $securityIsOn)
+                    .frame(maxHeight: .infinity)
                     .onAppear {
                         Task { await viewmodel.fetchTasks() }
                     }
@@ -70,7 +70,7 @@ struct LocbookListTasksView: View {
                         self.props.onNewTask?()
                     }
                 }
-                .frame(maxHeight:.infinity,alignment: .bottomTrailing)
+                .frame(maxHeight: .infinity, alignment: .bottomTrailing)
                 .padding(.init(top: 0, leading: 0, bottom: 33, trailing: 16))
             }
         }
@@ -115,7 +115,7 @@ struct LBFrequencyFilter: View {
     }
 
     @State var day: Week
-    @ObservedObject var viewmodel:TasksViewModel
+    @ObservedObject var viewmodel: TasksViewModel
 
     var body: some View {
         ZStack {
