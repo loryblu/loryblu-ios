@@ -8,6 +8,7 @@ class TasksViewModel: ObservableObject {
 
     @Published var tasks: [TaskModel] = []
     var listTask: [TaskModel] = []
+
     @MainActor
     func fetchTasks() async {
 

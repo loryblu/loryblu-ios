@@ -17,48 +17,12 @@ struct LocbookListTasksView: View {
     var props: Props
     
     @State var viewmodel: TasksViewModel  = TasksViewModel()
-    @State var sunday: Bool = false
-    @State var monday: Bool = false
-    @State var tuesday: Bool = false
-    @State var wednesday: Bool = false
-    @State var thurday: Bool = false
-    @State var friday: Bool = false
-    @State var saturday: Bool = false
+    @State var day: LBFrequencyFilter.Week = .none
 
     var body: some View {
         VStack() {
             VStack(spacing: 16) {
-                LBWeekDaysButton( 
-                    sunday: $sunday,
-                    monday: $monday,
-                    tuesday: $tuesday,
-                    wednesday: $wednesday,
-                    thurday: $thurday,
-                    friday: $friday,
-                    satuday: $saturday
-                )
-                .onChange(of: sunday) { value in
-                    viewmodel.filterWeekDay(weekDays: weekDaysFrenquency())
-                 }
-                .onChange(of: monday) { value in
-                    viewmodel.filterWeekDay(weekDays: weekDaysFrenquency())
-                }
-                .onChange(of: tuesday) { value in
-                    viewmodel.filterWeekDay(weekDays: weekDaysFrenquency())
-                }
-                .onChange(of: wednesday) { value in
-                    viewmodel.filterWeekDay(weekDays: weekDaysFrenquency())
-                }
-                .onChange(of: thurday) { value in
-                    viewmodel.filterWeekDay(weekDays: weekDaysFrenquency())
-                }
-                .onChange(of: friday) { value in
-                    viewmodel.filterWeekDay(weekDays: weekDaysFrenquency())
-                }
-                .onChange(of: saturday) { value in
-                    viewmodel.filterWeekDay(weekDays: weekDaysFrenquency())
-                }
-
+                LBFrequencyFilter(day: day)
                 LBShiftItemsComponent(shifts: shiftsEXEMPLO)
             }
             .padding(.init(top: 16, leading: 24, bottom: 0, trailing: 24))
@@ -104,18 +68,16 @@ struct LocbookListTasksView: View {
     private func weekDaysFrenquency() -> [LocbookTask.Frequency] {
         var result: [LocbookTask.Frequency] = []
 
-        if sunday { result.append(.sun) }
-        if monday { result.append(.mon) }
-        if tuesday { result.append(.tue) }
-        if wednesday { result.append(.wed) }
-        if thurday { result.append(.thu) }
-        if friday { result.append(.fri) }
-        if saturday { result.append(.sat) }
+//        if sunday { result.append(.sun) }
+//        if monday { result.append(.mon) }
+//        if tuesday { result.append(.tue) }
+//        if wednesday { result.append(.wed) }
+//        if thurday { result.append(.thu) }
+//        if friday { result.append(.fri) }
+//        if saturday { result.append(.sat) }
 
         return result
-
     }
-
 }
 
 struct ListTasksView : View {
@@ -142,6 +104,62 @@ struct ListTasksView : View {
         .scrollContentBackground(.hidden)
         .scrollIndicators(ScrollIndicatorVisibility.hidden)
 
+    }
+}
+
+struct LBFrequencyFilter: View {
+    enum Week: Equatable {
+        case sunday
+        case monday
+        case tuesday
+        case wednesday
+        case thurday
+        case friday
+        case satuday
+        case none
+    }
+
+    @State var day: Week = .friday
+
+    var body: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 12)
+                .fill(LBColor.backgroundCards)
+                .frame(height: 45)
+
+            HStack(spacing: 20) {
+                Button("D") {
+                    day = .sunday
+                    if day == .sunday {
+                        day = .none
+                    }
+                }.buttonStyle(LBDaysButtonStyle(isSet: day == .sunday))
+
+                Button("S") {
+                    day = .monday
+                }.buttonStyle(LBDaysButtonStyle(isSet: day == .monday))
+
+                Button("T") {
+                    day = .tuesday
+                }.buttonStyle(LBDaysButtonStyle(isSet: day == .tuesday))
+
+                Button("Q") {
+                    day = .wednesday
+                }.buttonStyle(LBDaysButtonStyle(isSet: day == .wednesday))
+
+                Button("Q") {
+                    day = .thurday
+                }.buttonStyle(LBDaysButtonStyle(isSet: day == .thurday))
+
+                Button("S") {
+                    day = .friday
+                }.buttonStyle(LBDaysButtonStyle(isSet: day == .friday))
+
+                Button("S") {
+                    day = .satuday
+                }.buttonStyle(LBDaysButtonStyle(isSet: day == .satuday))
+            }
+        }
     }
 }
 
