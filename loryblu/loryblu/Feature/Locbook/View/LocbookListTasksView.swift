@@ -91,7 +91,7 @@ struct ListTasksView: View {
                         nameAction: model.actionType,
                         imageTask: model.image,
                         nameTask: model.locbookTask.categoryTitle ?? "",
-                        backgroundCard: LBColor.buttonBackgroundLight, isSecurity: .constant(securityIsOn))
+                        backgroundCard: model.backgroundCard, isSecurity: .constant(securityIsOn))
                 }
                 .listRowSeparator(.hidden)
             }
