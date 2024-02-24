@@ -3,25 +3,6 @@ import SwiftUI
 struct LocbookListTasksView: View {
     @State private var securityIsOn = true
 
-    // TODO: Implementar funcionalidade e filtro
-    let shiftsEXEMPLO = [
-        ShiftItem(
-            name: LBStrings.FrequencyRotine.morning,
-            icon: LBIcon.sunSmall.rawValue,
-            backgroundColor: LBColor.buttonBackgroundLight,
-            letterColor: .black, isSelected: false),
-        ShiftItem(
-            name: LBStrings.FrequencyRotine.afternoon,
-            icon: LBIcon.eviningSmall.rawValue,
-            backgroundColor: LBColor.buttonBackgroundMedium,
-            letterColor: .white, isSelected: true),
-        ShiftItem(
-            name: LBStrings.FrequencyRotine.night,
-            icon: LBIcon.moonSmall.rawValue,
-            backgroundColor: LBColor.buttonBackgroundDark,
-            letterColor: .white, isSelected: false)
-    ]
-
     struct Props {
         let onNewTask: ClosureType.VoidVoid?
     }
@@ -35,7 +16,10 @@ struct LocbookListTasksView: View {
             VStack(spacing: 16) {
                 LBFrequencyFilter(viewmodel: viewmodel)
 
-                LBShiftItemsComponent(shifts: shiftsEXEMPLO)
+                TabRowShiftItems(
+                    viewmodel: viewmodel,
+                    onSelect: { shift in viewmodel.filterByShifts(shiftSelected: shift) }
+                )
             }
             .padding(.init(top: 16, leading: 24, bottom: 0, trailing: 24))
 

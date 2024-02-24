@@ -129,6 +129,7 @@
 		931D12D92B82C16F00589032 /* TaskNetworkModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931D12D82B82C16F00589032 /* TaskNetworkModels.swift */; };
 		931D12DB2B82C25300589032 /* TasksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931D12DA2B82C25300589032 /* TasksViewModel.swift */; };
 		9366FB182B6B063900A57F89 /* LBToolBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9366FB172B6B063900A57F89 /* LBToolBarModifier.swift */; };
+		93698CC62B89B9E7005EB154 /* TabRowShiftItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93698CC52B89B9E7005EB154 /* TabRowShiftItems.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -228,6 +229,7 @@
 		931D12D82B82C16F00589032 /* TaskNetworkModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskNetworkModels.swift; sourceTree = "<group>"; };
 		931D12DA2B82C25300589032 /* TasksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewModel.swift; sourceTree = "<group>"; };
 		9366FB172B6B063900A57F89 /* LBToolBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBToolBarModifier.swift; sourceTree = "<group>"; };
+		93698CC52B89B9E7005EB154 /* TabRowShiftItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabRowShiftItems.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -664,6 +666,7 @@
 			children = (
 				9302EE912B71BFEA003D7C4F /* LBSelectedItemShift.swift */,
 				9302EE932B71C0C0003D7C4F /* LBShiftItemsComponent.swift */,
+				93698CC52B89B9E7005EB154 /* TabRowShiftItems.swift */,
 			);
 			path = ShiftsView;
 			sourceTree = "<group>";
@@ -885,6 +888,7 @@
 				8C2535322A7714DD0096738B /* RegisterResponsibleViewModel.swift in Sources */,
 				339573E32B87E37600E38B80 /* LBDaysButtonStyle.swift in Sources */,
 				9302EE942B71C0C0003D7C4F /* LBShiftItemsComponent.swift in Sources */,
+				93698CC62B89B9E7005EB154 /* TabRowShiftItems.swift in Sources */,
 				8C27B8542A68C19400F72214 /* LBLabel.swift in Sources */,
 				8C5DFC8F2A85AE13002739D9 /* LBToggle.swift in Sources */,
 				8C57341B2A6B4F5F0052B955 /* LBStrings.swift in Sources */,
