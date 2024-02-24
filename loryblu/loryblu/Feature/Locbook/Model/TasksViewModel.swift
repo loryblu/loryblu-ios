@@ -21,7 +21,42 @@ class TasksViewModel: ObservableObject {
         tasks = pairShift.tasksFiltered
     }
     func filterWeekDay(weekDays: [LocbookTask.Frequency]) {
-           var taskFiltered: [TaskModel] = []
+        var taskFiltered: [TaskModel] = []
+        currentSelectedDay = weekDays.first ?? .sun
+        if weekDays == [] {
+            self.tasks = cacheTasks
+        } else {
+            taskFiltered = cacheTasks.filter({ task in
+                Set(weekDays).intersection(Set(task.locbookTask.frequency ?? [])).isEmpty == false && task.locbookTask.shift == currentSelectedShift
+            })
+            self.tasks = taskFiltered
+        }
+    }
+    
+    func filterByShifts(shiftSelected: String) {
+        currentSelectedShift = switch shiftSelected {
+        case LBStrings.FrequencyRotine.morning:
+            LocbookTask.Shift.morning
+        case LBStrings.FrequencyRotine.afternoon:
+            LocbookTask.Shift.afternoon
+        default:
+            LocbookTask.Shift.night
+        }
+        shifts = shifts.map { (shift: ShiftItem) -> ShiftItem in
+            let isSelected = shiftSelected == shift.name ? true : false
+            return ShiftItem(
+                name: shift.name,
+                icon: shift.icon,
+                backgroundColor: shift.backgroundColor,
+                letterColor: shift.letterColor,
+                isSelected: isSelected
+            )
+        }
+        tasks = cacheTasks.filter({ task in
+            Set([currentSelectedDay]).intersection(Set(task.locbookTask.frequency ?? [])).isEmpty == false && task.locbookTask.shift == currentSelectedShift
+        })
+    }
+}
 
 extension TasksViewModel {
     func pairDefaultDayNTasks(tasks: [TaskModel]) async ->
