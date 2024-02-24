@@ -2,20 +2,24 @@ import Foundation
 import Factory
 
 class TasksViewModel: ObservableObject {
-     @Injected(\.appData) var appData
-     
+    @Injected(\.appData) var appData
     private var repository = Container.shared.taskRepository()
-
+    private var cacheTasks: [TaskModel] = []
     @Published var tasks: [TaskModel] = []
-    private var listTask: [TaskModel] = []
-
+    @Published var shifts: [ShiftItem] = []
+    private var currentSelectedShift: LocbookTask.Shift?
+    @Published var currentSelectedDay: LocbookTask.Frequency?
+    @Published var filteredTasks: [TaskModel] = []
     @MainActor
     func fetchTasks() async {
-        listTask = await repository
-             .fetchTasks(token: appData.token,childrenId: appData.childrenId)
-        tasks = listTask
+        cacheTasks = await repository.fetchTasks(token: appData.token, childrenId: appData.childrenId)
+        var pairDay = await pairDefaultDayNTasks(tasks: cacheTasks)
+        var pairShift = await pairDefaultShiftNTasks(tasks: pairDay.tasksFiltered)
+        currentSelectedDay = pairDay.defaultDay
+        currentSelectedShift = pairShift.defaultShift
+        shifts = getShiftsSelectedByDefault(shiftSelected: pairShift.defaultShift)
+        tasks = pairShift.tasksFiltered
     }
-
     func filterWeekDay(weekDays: [LocbookTask.Frequency]) {
            var taskFiltered: [TaskModel] = []
 
