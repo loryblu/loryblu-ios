@@ -75,17 +75,18 @@ extension TasksViewModel {
                     LocbookTask.Frequency.fri,
                     LocbookTask.Frequency.sat]
         var count = 0
-        while(tasksFiltered == nil) {
+        while tasksFiltered == nil {
             let actualTasks = tasks.filter({ task in
                 Set([week[count]]).intersection(Set(task.locbookTask.frequency ?? [])).isEmpty == false
             })
-            if(!actualTasks.isEmpty) {
+            if !actualTasks.isEmpty {
                 tasksFiltered = actualTasks
+                dayDefault = tasksFiltered != nil ? week[count] : LocbookTask.Frequency.sun
             }
-            if(count == week.count && tasksFiltered == nil) {
+            if count == week.count && tasksFiltered == nil {
                 tasksFiltered = []
+                dayDefault = tasksFiltered != nil ? week[count - 1] : LocbookTask.Frequency.sun
             }
-            dayDefault = tasksFiltered != nil ? week[count] : LocbookTask.Frequency.sun
             count += 1
         }
         return (defaultDay: dayDefault!, tasksFiltered: tasksFiltered ?? [])
@@ -95,23 +96,24 @@ extension TasksViewModel {
         var shiftDefault: LocbookTask.Shift = LocbookTask.Shift.morning
         var shiftsItems = [LocbookTask.Shift.morning, LocbookTask.Shift.afternoon, LocbookTask.Shift.night]
         var count = 0
-        while(tasksFiltered == nil) {
+        while tasksFiltered == nil {
             let actualTasks = tasks.filter({ task in
                 task.locbookTask.shift == shiftsItems[count]
             })
-            if(!actualTasks.isEmpty) {
+            if !actualTasks.isEmpty {
                 tasksFiltered = actualTasks
+                shiftDefault = tasksFiltered != nil ? shiftsItems[count] : shiftDefault
             }
-            if(count == shiftsItems.count && tasksFiltered == nil) {
+            if count == shiftsItems.count && tasksFiltered == nil {
                 tasksFiltered = []
+                shiftDefault = tasksFiltered != nil ? shiftsItems[count - 1] : shiftDefault
             }
-            shiftDefault = tasksFiltered != nil ? shiftsItems[count] : shiftDefault
             count += 1
         }
         return (defaultShift: shiftDefault, tasksFiltered: tasksFiltered ?? [])
     }
     func getShiftsSelectedByDefault(shiftSelected: LocbookTask.Shift) -> [ShiftItem] {
-        var items = [ShiftItem(
+        let items = [ShiftItem(
             name: LBStrings.FrequencyRotine.morning,
             icon: LBIcon.sunSmall.rawValue,
             backgroundColor: LBColor.buttonBackgroundLight,
@@ -135,7 +137,7 @@ extension TasksViewModel {
             default:
                 LBStrings.FrequencyRotine.night
             }
-            var isSelected = shiftText == shift.name ? true : false
+            let isSelected = shiftText == shift.name ? true : false
             return ShiftItem(
                 name: shift.name,
                 icon: shift.icon,
