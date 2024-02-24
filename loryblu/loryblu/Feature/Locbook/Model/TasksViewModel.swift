@@ -47,4 +47,24 @@ extension TasksViewModel {
         }
         return (defaultDay: dayDefault!, tasksFiltered: tasksFilted ?? [])
     }
+    func pairDefaultShiftNTasks(tasks: [TaskModel]) async -> (defaultShift: LocbookTask.Shift, tasksFiltered: [TaskModel]) {
+        var tasksFilted: [TaskModel]?
+        var shiftDefault: LocbookTask.Shift = LocbookTask.Shift.morning
+        var shiftsItems = [LocbookTask.Shift.morning, LocbookTask.Shift.afternoon, LocbookTask.Shift.night]
+        var count = 0
+        while(tasksFilted == nil) {
+            let actualTasks = tasks.filter({ task in
+                task.locbookTask.shift == shiftsItems[count]
+            })
+            if(!actualTasks.isEmpty) {
+                tasksFilted = tasks
+            }
+            if(count == shiftsItems.count && tasksFilted == nil) {
+                tasksFilted = []
+            }
+            shiftDefault = tasksFilted != nil ? shiftsItems[count] : shiftDefault
+            count += 1
+        }
+        return (defaultShift: shiftDefault, tasksFiltered: tasksFilted ?? [])
+    }
 }
