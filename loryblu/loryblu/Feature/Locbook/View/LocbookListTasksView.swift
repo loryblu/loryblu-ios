@@ -22,7 +22,6 @@ struct LocbookListTasksView: View {
                 )
             }
             .padding(.init(top: 16, leading: 24, bottom: 0, trailing: 24))
-
             if !viewmodel.tasks.isEmpty {
                 HStack(alignment: .center) {
                     Toggle(isOn: $securityIsOn) {
@@ -44,8 +43,7 @@ struct LocbookListTasksView: View {
                     .onAppear {
                         Task { await viewmodel.fetchTasks() }
                     }
-                    .padding(.init(top: 0, leading: 8, bottom: 80, trailing: 8))
-
+                    .padding(.init(top: 0, leading: 8, bottom: 0, trailing: 8))
                 HStack {
                     Spacer()
                     LBfloatingButton(
@@ -79,7 +77,8 @@ struct ListTasksView: View {
                     .font(LBFont.titleTask)
                     .foregroundStyle(LBColor.text)
                     .padding(.top, 8)
-            }.frame(maxHeight: .infinity)
+            }
+            .padding(.bottom, 80)
         } else {
             List {
                 ForEach(viewmodel.tasks, id: \.uuid) { model in
