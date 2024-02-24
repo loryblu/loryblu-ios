@@ -85,7 +85,6 @@ extension TasksViewModel {
             }
             if count == week.count && tasksFiltered == nil {
                 tasksFiltered = []
-                dayDefault = tasksFiltered != nil ? week[count - 1] : LocbookTask.Frequency.sun
             }
             count += 1
         }
@@ -106,7 +105,6 @@ extension TasksViewModel {
             }
             if count == shiftsItems.count && tasksFiltered == nil {
                 tasksFiltered = []
-                shiftDefault = tasksFiltered != nil ? shiftsItems[count - 1] : shiftDefault
             }
             count += 1
         }
