@@ -67,4 +67,39 @@ extension TasksViewModel {
         }
         return (defaultShift: shiftDefault, tasksFiltered: tasksFilted ?? [])
     }
+    func getShiftsSelectedByDefault(shiftSelected: LocbookTask.Shift) -> [ShiftItem] {
+        var items = [ShiftItem(
+            name: LBStrings.FrequencyRotine.morning,
+            icon: LBIcon.sunSmall.rawValue,
+            backgroundColor: LBColor.buttonBackgroundLight,
+            letterColor: .black, isSelected: false),
+                     ShiftItem(
+                        name: LBStrings.FrequencyRotine.afternoon,
+                        icon: LBIcon.eviningSmall.rawValue,
+                        backgroundColor: LBColor.buttonBackgroundMedium,
+                        letterColor: .white, isSelected: false),
+                     ShiftItem(
+                        name: LBStrings.FrequencyRotine.night,
+                        icon: LBIcon.moonSmall.rawValue,
+                        backgroundColor: LBColor.buttonBackgroundDark,
+                        letterColor: .white, isSelected: false)]
+        return items.map { (shift: ShiftItem) -> ShiftItem in
+            let shiftText = switch shiftSelected {
+            case LocbookTask.Shift.morning:
+                LBStrings.FrequencyRotine.morning
+            case LocbookTask.Shift.afternoon:
+                LBStrings.FrequencyRotine.afternoon
+            default:
+                LBStrings.FrequencyRotine.night
+            }
+            var isSelected = shiftText == shift.name ? true : false
+            return ShiftItem(
+                name: shift.name,
+                icon: shift.icon,
+                backgroundColor: shift.backgroundColor,
+                letterColor: shift.letterColor,
+                isSelected: isSelected
+            )
+        }
+    }
 }
