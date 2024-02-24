@@ -18,6 +18,8 @@ struct ShiftItem {
 struct LBShiftItemsComponent: View {
     
     let shifts: [ShiftItem]
+    var onClick: (String) -> Void = { _ in }
+    
     var body: some View {
         HStack {
             ForEach(shifts, id: \.name) { shift in
@@ -31,7 +33,8 @@ struct LBShiftItemsComponent: View {
                     Text(shift.name)
                         .font(LBFont.bodyLarge)
                         .foregroundColor(.gray)
-                        .frame(maxWidth: .infinity,alignment: .center)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .onTapGesture { onClick(shift.name) }
                 }
             }
         }
