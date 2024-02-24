@@ -4,31 +4,36 @@ import Factory
 class TasksViewModel: ObservableObject {
     @Injected(\.appData) var appData
     private var repository = Container.shared.taskRepository()
-    private var cacheTasks: [TaskModel] = []
+    private var cacheTasks: [TaskModel]?
     @Published var tasks: [TaskModel] = []
     @Published var shifts: [ShiftItem] = []
-    private var currentSelectedShift: LocbookTask.Shift? = nil
-    @Published var currentSelectedDay: LocbookTask.Frequency? = nil
+    private var currentSelectedShift: LocbookTask.Shift?
+    @Published var currentSelectedDay: LocbookTask.Frequency?
     @Published var filteredTasks: [TaskModel] = []
     @MainActor
     func fetchTasks() async {
-        cacheTasks = await repository.fetchTasks(token: appData.token, childrenId: appData.childrenId)
-        let pairDay = await pairDefaultDayNTasks(tasks: cacheTasks)
-        let pairShift = await pairDefaultShiftNTasks(tasks: pairDay.tasksFiltered)
-        currentSelectedDay = pairDay.defaultDay
-        currentSelectedShift = pairShift.defaultShift
-        shifts = getShiftsSelectedByDefault(shiftSelected: pairShift.defaultShift)
-        tasks = pairShift.tasksFiltered
+         
+        if(cacheTasks == nil) {
+            cacheTasks = await repository.fetchTasks(token: appData.token, childrenId: appData.childrenId)
+            let pairDay = await pairDefaultDayNTasks(tasks: cacheTasks ?? [])
+            let pairShift = await pairDefaultShiftNTasks(tasks: pairDay.tasksFiltered)
+            currentSelectedDay = pairDay.defaultDay
+            currentSelectedShift = pairShift.defaultShift
+            shifts = getShiftsSelectedByDefault(shiftSelected: pairShift.defaultShift)
+            tasks = pairShift.tasksFiltered
+        } else {
+            filterWeekDay(weekDays: [currentSelectedDay ?? LocbookTask.Frequency.sun])
+        }
     }
     func filterWeekDay(weekDays: [LocbookTask.Frequency]) {
         var taskFiltered: [TaskModel] = []
         currentSelectedDay = weekDays.first ?? .sun
         if weekDays == [] {
-            self.tasks = cacheTasks
+            self.tasks = cacheTasks ?? []
         } else {
-            taskFiltered = cacheTasks.filter({ task in
+            taskFiltered = cacheTasks?.filter({ task in
                 Set(weekDays).intersection(Set(task.locbookTask.frequency ?? [])).isEmpty == false && task.locbookTask.shift == currentSelectedShift
-            })
+            }) ?? []
             self.tasks = taskFiltered
         }
     }
@@ -51,9 +56,9 @@ class TasksViewModel: ObservableObject {
                 isSelected: isSelected
             )
         }
-        tasks = cacheTasks.filter({ task in
+        tasks = cacheTasks?.filter({ task in
             Set([currentSelectedDay]).intersection(Set(task.locbookTask.frequency ?? [])).isEmpty == false && task.locbookTask.shift == currentSelectedShift
-        })
+        }) ?? []
     }
 }
 
