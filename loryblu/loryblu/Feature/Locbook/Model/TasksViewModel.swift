@@ -7,14 +7,14 @@ class TasksViewModel: ObservableObject {
     private var cacheTasks: [TaskModel] = []
     @Published var tasks: [TaskModel] = []
     @Published var shifts: [ShiftItem] = []
-    private var currentSelectedShift: LocbookTask.Shift?
-    @Published var currentSelectedDay: LocbookTask.Frequency?
+    private var currentSelectedShift: LocbookTask.Shift? = nil
+    @Published var currentSelectedDay: LocbookTask.Frequency? = nil
     @Published var filteredTasks: [TaskModel] = []
     @MainActor
     func fetchTasks() async {
         cacheTasks = await repository.fetchTasks(token: appData.token, childrenId: appData.childrenId)
-        var pairDay = await pairDefaultDayNTasks(tasks: cacheTasks)
-        var pairShift = await pairDefaultShiftNTasks(tasks: pairDay.tasksFiltered)
+        let pairDay = await pairDefaultDayNTasks(tasks: cacheTasks)
+        let pairShift = await pairDefaultShiftNTasks(tasks: pairDay.tasksFiltered)
         currentSelectedDay = pairDay.defaultDay
         currentSelectedShift = pairShift.defaultShift
         shifts = getShiftsSelectedByDefault(shiftSelected: pairShift.defaultShift)
@@ -32,7 +32,6 @@ class TasksViewModel: ObservableObject {
             self.tasks = taskFiltered
         }
     }
-    
     func filterByShifts(shiftSelected: String) {
         currentSelectedShift = switch shiftSelected {
         case LBStrings.FrequencyRotine.morning:
@@ -61,7 +60,7 @@ class TasksViewModel: ObservableObject {
 extension TasksViewModel {
     func pairDefaultDayNTasks(tasks: [TaskModel]) async ->
     (defaultDay: LocbookTask.Frequency, tasksFiltered: [TaskModel]) {
-        var tasksFilted: [TaskModel]?
+        var tasksFiltered: [TaskModel]?
         var dayDefault: LocbookTask.Frequency?
         let week = [LocbookTask.Frequency.sun,
                     LocbookTask.Frequency.mon,
@@ -71,40 +70,40 @@ extension TasksViewModel {
                     LocbookTask.Frequency.fri,
                     LocbookTask.Frequency.sat]
         var count = 0
-        while(tasksFilted == nil) {
+        while(tasksFiltered == nil) {
             let actualTasks = tasks.filter({ task in
                 Set([week[count]]).intersection(Set(task.locbookTask.frequency ?? [])).isEmpty == false
             })
             if(!actualTasks.isEmpty) {
-                tasksFilted = tasks
+                tasksFiltered = actualTasks
             }
-            if(count == week.count && tasksFilted == nil) {
-                tasksFilted = []
+            if(count == week.count && tasksFiltered == nil) {
+                tasksFiltered = []
             }
-            dayDefault = tasksFilted != nil ? week[count] : LocbookTask.Frequency.sun
+            dayDefault = tasksFiltered != nil ? week[count] : LocbookTask.Frequency.sun
             count += 1
         }
-        return (defaultDay: dayDefault!, tasksFiltered: tasksFilted ?? [])
+        return (defaultDay: dayDefault!, tasksFiltered: tasksFiltered ?? [])
     }
     func pairDefaultShiftNTasks(tasks: [TaskModel]) async -> (defaultShift: LocbookTask.Shift, tasksFiltered: [TaskModel]) {
-        var tasksFilted: [TaskModel]?
+        var tasksFiltered: [TaskModel]?
         var shiftDefault: LocbookTask.Shift = LocbookTask.Shift.morning
         var shiftsItems = [LocbookTask.Shift.morning, LocbookTask.Shift.afternoon, LocbookTask.Shift.night]
         var count = 0
-        while(tasksFilted == nil) {
+        while(tasksFiltered == nil) {
             let actualTasks = tasks.filter({ task in
                 task.locbookTask.shift == shiftsItems[count]
             })
             if(!actualTasks.isEmpty) {
-                tasksFilted = tasks
+                tasksFiltered = actualTasks
             }
-            if(count == shiftsItems.count && tasksFilted == nil) {
-                tasksFilted = []
+            if(count == shiftsItems.count && tasksFiltered == nil) {
+                tasksFiltered = []
             }
-            shiftDefault = tasksFilted != nil ? shiftsItems[count] : shiftDefault
+            shiftDefault = tasksFiltered != nil ? shiftsItems[count] : shiftDefault
             count += 1
         }
-        return (defaultShift: shiftDefault, tasksFiltered: tasksFilted ?? [])
+        return (defaultShift: shiftDefault, tasksFiltered: tasksFiltered ?? [])
     }
     func getShiftsSelectedByDefault(shiftSelected: LocbookTask.Shift) -> [ShiftItem] {
         var items = [ShiftItem(
