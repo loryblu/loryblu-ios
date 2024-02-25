@@ -3,25 +3,6 @@ import SwiftUI
 struct LocbookListTasksView: View {
     @State private var securityIsOn = true
 
-    // TODO: Implementar funcionalidade e filtro
-    let shiftsEXEMPLO = [
-        ShiftItem(
-            name: LBStrings.FrequencyRotine.morning,
-            icon: LBIcon.sunSmall.rawValue,
-            backgroundColor: LBColor.buttonBackgroundLight,
-            letterColor: .black, isSelected: false),
-        ShiftItem(
-            name: LBStrings.FrequencyRotine.afternoon,
-            icon: LBIcon.eviningSmall.rawValue,
-            backgroundColor: LBColor.buttonBackgroundMedium,
-            letterColor: .white, isSelected: true),
-        ShiftItem(
-            name: LBStrings.FrequencyRotine.night,
-            icon: LBIcon.moonSmall.rawValue,
-            backgroundColor: LBColor.buttonBackgroundDark,
-            letterColor: .white, isSelected: false)
-    ]
-
     struct Props {
         let onNewTask: ClosureType.VoidVoid?
     }
@@ -33,9 +14,12 @@ struct LocbookListTasksView: View {
     var body: some View {
         VStack {
             VStack(spacing: 16) {
-                LBFrequencyFilter(day: day, viewmodel: viewmodel)
+                LBFrequencyFilter(viewmodel: viewmodel)
 
-                LBShiftItemsComponent(shifts: shiftsEXEMPLO)
+                TabRowShiftItems(
+                    viewmodel: viewmodel,
+                    onSelect: { shift in viewmodel.filterByShifts(shiftSelected: shift) }
+                )
             }
             .padding(.init(top: 16, leading: 24, bottom: 0, trailing: 24))
 
@@ -91,7 +75,7 @@ struct ListTasksView: View {
                         nameAction: model.actionType,
                         imageTask: model.image,
                         nameTask: model.locbookTask.categoryTitle ?? "",
-                        backgroundCard: LBColor.buttonBackgroundLight, isSecurity: .constant(securityIsOn))
+                        backgroundCard: model.backgroundCard, isSecurity: .constant(securityIsOn))
                 }
                 .listRowSeparator(.hidden)
             }
@@ -114,7 +98,6 @@ struct LBFrequencyFilter: View {
         case none
     }
 
-    @State var day: Week
     @ObservedObject var viewmodel: TasksViewModel
 
     var body: some View {
@@ -125,39 +108,32 @@ struct LBFrequencyFilter: View {
 
             HStack(spacing: 20) {
                 Button("D") {
-                    day = .sunday
                     viewmodel.filterWeekDay(weekDays: [.sun])
-                }.buttonStyle(LBDaysButtonStyle(isSet: day == .sunday ))
+                }.buttonStyle(LBDaysButtonStyle(isSet: viewmodel.currentSelectedDay == .sun ))
 
                 Button("S") {
-                    day = .monday
                     viewmodel.filterWeekDay(weekDays: [.mon])
-                }.buttonStyle(LBDaysButtonStyle(isSet: day == .monday))
+                }.buttonStyle(LBDaysButtonStyle(isSet: viewmodel.currentSelectedDay == .mon))
 
                 Button("T") {
-                    day = .tuesday
                     viewmodel.filterWeekDay(weekDays: [.tue])
-                }.buttonStyle(LBDaysButtonStyle(isSet: day == .tuesday))
+                }.buttonStyle(LBDaysButtonStyle(isSet: viewmodel.currentSelectedDay == .tue))
 
                 Button("Q") {
-                    day = .wednesday
                     viewmodel.filterWeekDay(weekDays: [.wed])
-                }.buttonStyle(LBDaysButtonStyle(isSet: day == .wednesday))
+                }.buttonStyle(LBDaysButtonStyle(isSet: viewmodel.currentSelectedDay == .wed))
 
                 Button("Q") {
-                    day = .thurday
                     viewmodel.filterWeekDay(weekDays: [.thu])
-                }.buttonStyle(LBDaysButtonStyle(isSet: day == .thurday))
+                }.buttonStyle(LBDaysButtonStyle(isSet: viewmodel.currentSelectedDay == .thu))
 
                 Button("S") {
-                    day = .friday
                     viewmodel.filterWeekDay(weekDays: [.fri])
-                }.buttonStyle(LBDaysButtonStyle(isSet: day == .friday))
+                }.buttonStyle(LBDaysButtonStyle(isSet: viewmodel.currentSelectedDay == .fri))
 
                 Button("S") {
-                    day = .satuday
                     viewmodel.filterWeekDay(weekDays: [.sat])
-                }.buttonStyle(LBDaysButtonStyle(isSet: day == .satuday))
+                }.buttonStyle(LBDaysButtonStyle(isSet: viewmodel.currentSelectedDay == .sat))
             }
         }
     }
