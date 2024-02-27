@@ -66,7 +66,7 @@ extension TasksViewModel {
     func pairDefaultDayNTasks(tasks: [TaskModel]) async ->
     (defaultDay: LocbookTask.Frequency, tasksFiltered: [TaskModel]) {
         var tasksFiltered: [TaskModel]?
-        var dayDefault: LocbookTask.Frequency?
+        var dayDefault: LocbookTask.Frequency = LocbookTask.Frequency.sun
         let week = [LocbookTask.Frequency.sun,
                     LocbookTask.Frequency.mon,
                     LocbookTask.Frequency.tue,
@@ -88,7 +88,7 @@ extension TasksViewModel {
             }
             count += 1
         }
-        return (defaultDay: dayDefault!, tasksFiltered: tasksFiltered ?? [])
+        return (defaultDay: dayDefault, tasksFiltered: tasksFiltered ?? [])
     }
     func pairDefaultShiftNTasks(tasks: [TaskModel]) async -> (defaultShift: LocbookTask.Shift, tasksFiltered: [TaskModel]) {
         var tasksFiltered: [TaskModel]?
@@ -111,22 +111,25 @@ extension TasksViewModel {
         return (defaultShift: shiftDefault, tasksFiltered: tasksFiltered ?? [])
     }
     func getShiftsSelectedByDefault(shiftSelected: LocbookTask.Shift) -> [ShiftItem] {
-        let items = [ShiftItem(
-            name: LBStrings.FrequencyRotine.morning,
-            icon: LBIcon.sunSmall.rawValue,
-            backgroundColor: LBColor.buttonBackgroundLight,
-            letterColor: .black, isSelected: false),
-                     ShiftItem(
-                        name: LBStrings.FrequencyRotine.afternoon,
-                        icon: LBIcon.eviningSmall.rawValue,
-                        backgroundColor: LBColor.buttonBackgroundMedium,
-                        letterColor: .white, isSelected: false),
-                     ShiftItem(
-                        name: LBStrings.FrequencyRotine.night,
-                        icon: LBIcon.moonSmall.rawValue,
-                        backgroundColor: LBColor.buttonBackgroundDark,
-                        letterColor: .white, isSelected: false)]
-        return items.map { (shift: ShiftItem) -> ShiftItem in
+        let items = [
+            ShiftItem(
+                name: LBStrings.FrequencyRotine.morning,
+                icon: LBIcon.sunSmall.rawValue,
+                backgroundColor: LBColor.buttonBackgroundLight,
+                letterColor: .black,
+                isSelected: false),
+            ShiftItem(
+                name: LBStrings.FrequencyRotine.afternoon,
+                icon: LBIcon.eviningSmall.rawValue,
+                backgroundColor: LBColor.buttonBackgroundMedium,
+                letterColor: .white, isSelected: false),
+            ShiftItem(
+                name: LBStrings.FrequencyRotine.night,
+                icon: LBIcon.moonSmall.rawValue,
+                backgroundColor: LBColor.buttonBackgroundDark,
+                letterColor: .white, isSelected: false)
+        ]
+        let shiftItemsUpdated = items.map { (shift: ShiftItem) -> ShiftItem in
             let shiftText = switch shiftSelected {
             case LocbookTask.Shift.morning:
                 LBStrings.FrequencyRotine.morning
@@ -144,5 +147,6 @@ extension TasksViewModel {
                 isSelected: isSelected
             )
         }
+        return shiftItemsUpdated
     }
 }

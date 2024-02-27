@@ -8,7 +8,7 @@ struct LocbookListTasksView: View {
     }
 
     var props: Props
-    @State var viewmodel: TasksViewModel  = TasksViewModel()
+    @StateObject var viewmodel: TasksViewModel  = TasksViewModel()
     @State var day: LBFrequencyFilter.Week = .none
 
     var body: some View {
@@ -22,29 +22,28 @@ struct LocbookListTasksView: View {
                 )
             }
             .padding(.init(top: 16, leading: 24, bottom: 0, trailing: 24))
-
-            HStack(alignment: .center) {
-                Toggle(isOn: $securityIsOn) {
-                    Image(systemName: securityIsOn ? "lock.open" : "lock")
+            if !viewmodel.tasks.isEmpty {
+                HStack(alignment: .center) {
+                    Toggle(isOn: $securityIsOn) {
+                        Image(systemName: securityIsOn ? "lock.open" : "lock")
+                    }
+                    .frame(width: 52, height: 32)
+                    .toggleStyle(
+                        SwitchToggleStyle(
+                            tint: securityIsOn ? LBColor.buttonBackgroundDark : LBColor.placeholder)
+                    )
+                    .padding(.trailing, 6)
                 }
-                .frame(width: 52, height: 32)
-                .toggleStyle(
-                    SwitchToggleStyle(
-                        tint: securityIsOn ? LBColor.buttonBackgroundDark : LBColor.placeholder)
-                )
-                .padding(.trailing, 6)
+                .frame(maxWidth: .infinity, alignment: .trailing)
+                .padding(.init(top: 8, leading: 0, bottom: 0, trailing: 32))
             }
-            .frame(maxWidth: .infinity, alignment: .trailing)
-            .padding(.init(top: 8, leading: 0, bottom: 0, trailing: 32))
-
             ZStack {
                 ListTasksView(viewmodel: viewmodel, securityIsOn: $securityIsOn)
-                    .frame(maxHeight: .infinity)
+                    .frame(maxHeight: .infinity, alignment: .top)
                     .onAppear {
                         Task { await viewmodel.fetchTasks() }
                     }
                     .padding(.init(top: 0, leading: 8, bottom: 0, trailing: 8))
-
                 HStack {
                     Spacer()
                     LBfloatingButton(
@@ -66,10 +65,22 @@ struct LocbookListTasksView: View {
 struct ListTasksView: View {
     @ObservedObject var viewmodel: TasksViewModel
     @Binding var securityIsOn: Bool
-
     var body: some View {
-        List {
-            if !viewmodel.tasks.isEmpty {
+        if viewmodel.tasks.isEmpty {
+            VStack(alignment: .center) {
+                LBIcon.dailyList.image
+                    .resizable()
+                    .scaledToFit()
+                    .padding(24)
+                    .frame(alignment: .top)
+                Text(LBStrings.Locbook.infoText)
+                    .font(LBFont.titleTask)
+                    .foregroundStyle(LBColor.text)
+                    .padding(.top, 8)
+            }
+            .padding(.bottom, 80)
+        } else {
+            List {
                 ForEach(viewmodel.tasks, id: \.uuid) { model in
                     CardTaskRegistered(
                         nameAction: model.actionType,
@@ -79,10 +90,10 @@ struct ListTasksView: View {
                 }
                 .listRowSeparator(.hidden)
             }
+            .listStyle(.plain)
+            .scrollContentBackground(.hidden)
+            .scrollIndicators(ScrollIndicatorVisibility.hidden)
         }
-        .listStyle(.plain)
-        .scrollContentBackground(.hidden)
-        .scrollIndicators(ScrollIndicatorVisibility.hidden)
     }
 }
 
