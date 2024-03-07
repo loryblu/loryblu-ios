@@ -65,6 +65,8 @@ struct LocbookListTasksView: View {
 struct ListTasksView: View {
     @ObservedObject var viewmodel: TasksViewModel
     @Binding var securityIsOn: Bool
+    @State var draggedTask: TaskModel?
+
     var body: some View {
         if viewmodel.tasks.isEmpty {
             VStack(alignment: .center) {
@@ -87,6 +89,11 @@ struct ListTasksView: View {
                         imageTask: model.image,
                         nameTask: model.locbookTask.categoryTitle ?? "",
                         backgroundCard: model.backgroundCard, isSecurity: .constant(securityIsOn))
+                    .onDrag({
+                        self.draggedTask = model
+                        return NSItemProvider()
+                    })
+                    .onDrop(of: [.text], delegate: CardTaskDropDelegate())
                 }
                 .listRowSeparator(.hidden)
             }
