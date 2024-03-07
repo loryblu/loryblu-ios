@@ -65,7 +65,6 @@ struct LocbookListTasksView: View {
 struct ListTasksView: View {
     @ObservedObject var viewmodel: TasksViewModel
     @Binding var securityIsOn: Bool
-    @State var draggedTask: TaskModel?
 
     var body: some View {
         if viewmodel.tasks.isEmpty {
@@ -90,10 +89,10 @@ struct ListTasksView: View {
                         nameTask: model.locbookTask.categoryTitle ?? "",
                         backgroundCard: model.backgroundCard, isSecurity: .constant(securityIsOn))
                     .onDrag({
-                        self.draggedTask = model
+                        self.viewmodel.currentTask = model
                         return NSItemProvider()
                     })
-                    .onDrop(of: [.text], delegate: CardTaskDropDelegate())
+                    .onDrop(of: [.text], delegate: CardTaskDropDelegate(task: model))
                 }
                 .listRowSeparator(.hidden)
             }

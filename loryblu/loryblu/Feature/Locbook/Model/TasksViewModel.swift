@@ -3,6 +3,7 @@ import Factory
 
 class TasksViewModel: ObservableObject {
     @Injected(\.appData) var appData
+    @Published var currentTask: TaskModel?
     private var repository = Container.shared.taskRepository()
     private var cacheTasks: [TaskModel]?
     @Published var tasks: [TaskModel] = []
