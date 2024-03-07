@@ -1,24 +1,22 @@
 import SwiftUI
 
 struct LocbookActionsView: View {
-        
     // MARK: - Definitions
     struct Props {
         var task: LocbookTask
         let onNext: ClosureType.LocbookTaskIntVoid?
-        var onClose : ClosureType.VoidVoid?
+        var onClose: ClosureType.VoidVoid?
     }
-    
+
     // MARK: - Private propertes
     private let model = LocbookActionModel()
-    
+
     // MARK: - Properties
     let props: Props
     @State var formConfig = FormConfig()
-    
+
     var body: some View {
         VStack(spacing: 20) {
-
             LBIcon.progression1.image
                 .resizable()
                 .scaledToFit()
@@ -42,7 +40,6 @@ struct LocbookActionsView: View {
         .padding(24)
     }
 
-
     var actions: some View {
         VStack(spacing: 24) {
             Group {
@@ -64,7 +61,7 @@ struct LocbookActionsView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
     }
-    
+
     // MARK: - Initializers
     init(props: Props, formConfig: FormConfig = FormConfig()) {
         var config = formConfig
@@ -76,7 +73,7 @@ struct LocbookActionsView: View {
 
 extension LocbookActionsView {
     struct FormConfig {
-        var selectedCard: Int? = nil
+        var selectedCard: Int?
         var task: LocbookTask = .init()
     }
 }
@@ -91,7 +88,10 @@ extension LocbookActionsView.Props: Hashable {
     }
 }
 
-
 #Preview {
-    LocbookActionsView(props: .init(task: LocbookTask(), onNext: nil)).locbookToolbar(title: LBStrings.Locbook.title, onClose: { })
+    LocbookActionsView(props: .init(
+        task: LocbookTask(),
+        onNext: nil)
+    )
+    .locbookToolbar(title: LBStrings.Locbook.title, onClose: { })
 }

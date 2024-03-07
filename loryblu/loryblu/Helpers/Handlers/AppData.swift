@@ -2,11 +2,9 @@ import Foundation
 
 class AppData: ObservableObject {
     enum LoginStatus {
-        case loading
-        case logged
-        case notLogged
+        case loading, logged, notLogged
     }
-    
+
     @Published var isTokenReceived: Bool = false
     @Published var token: String = ""
     @Published var childrenId: Int = 0
@@ -16,7 +14,6 @@ class AppData: ObservableObject {
             guard userData != nil else {
                 return .notLogged
             }
-
             return .logged
         }
 
