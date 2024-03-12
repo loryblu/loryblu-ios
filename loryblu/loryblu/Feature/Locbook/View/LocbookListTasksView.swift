@@ -81,7 +81,7 @@ struct ListTasksView: View {
             }
             .padding(.bottom, 80)
         } else {
-            List {
+            ScrollView(showsIndicators: false, content: {
                 ForEach(viewmodel.tasks, id: \.uuid) { model in
                     CardTaskRegistered(
                         nameAction: model.actionType,
@@ -92,10 +92,11 @@ struct ListTasksView: View {
                         self.viewmodel.currentTask = model
                         return NSItemProvider()
                     })
-                    .onDrop(of: [.text], delegate: CardTaskDropDelegate(task: model))
+                    .onDrop(of: [.text], delegate: CardTaskDropDelegate(taskData: viewmodel, task: model))
                 }
                 .listRowSeparator(.hidden)
-            }
+            })
+            .padding(.horizontal, 20)
             .listStyle(.plain)
             .scrollContentBackground(.hidden)
             .scrollIndicators(ScrollIndicatorVisibility.hidden)
