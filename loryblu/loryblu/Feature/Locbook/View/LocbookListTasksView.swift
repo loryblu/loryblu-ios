@@ -24,14 +24,8 @@ struct LocbookListTasksView: View {
             .padding(.init(top: 16, leading: 24, bottom: 0, trailing: 24))
             if !viewmodel.tasks.isEmpty {
                 HStack(alignment: .center) {
-                    Toggle(isOn: $securityIsOn) {
-                        Image(systemName: securityIsOn ? "lock.open" : "lock")
-                    }
-                    .frame(width: 52, height: 32)
-                    .toggleStyle(
-                        SwitchToggleStyle(
-                            tint: securityIsOn ? LBColor.buttonBackgroundDark : LBColor.placeholder)
-                    )
+                    Toggle(isOn: $securityIsOn) {}
+                    .toggleStyle(SymbolToggleStyle())
                     .padding(.trailing, 6)
                 }
                 .frame(maxWidth: .infinity, alignment: .trailing)

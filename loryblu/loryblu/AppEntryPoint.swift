@@ -14,7 +14,7 @@ struct AppEntryPoint: View {
             loginNavitationStack
         }
     }
-    
+
     private var loginNavitationStack: some View {
         LoginNavigationStack()
             .environmentObject(appData)

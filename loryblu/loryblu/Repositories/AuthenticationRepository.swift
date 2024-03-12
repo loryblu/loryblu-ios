@@ -26,5 +26,3 @@ class AuthenticationRepository {
         return response
     }
 }
-
-
