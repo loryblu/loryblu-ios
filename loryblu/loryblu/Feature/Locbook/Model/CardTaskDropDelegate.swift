@@ -9,6 +9,7 @@ struct CardTaskDropDelegate: DropDelegate {
     }
 
     func performDrop(info: DropInfo) -> Bool {
+        // MARK: - TODO fazer patch da task na API
         taskData.currentTask = nil
         return true
     }
