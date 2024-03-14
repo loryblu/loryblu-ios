@@ -89,10 +89,14 @@ struct ListTasksView: View {
                         nameTask: model.locbookTask.categoryTitle ?? "",
                         backgroundCard: model.backgroundCard, isSecurity: .constant(securityIsOn))
                     .padding(.bottom, 20)
-                    .onDrag({
-                        self.viewmodel.currentTask = model
-                        return NSItemProvider()
+                    .if(securityIsOn, transform: { view in
+                        view
+                            .onDrag({
+                                self.viewmodel.currentTask = model
+                                return NSItemProvider()
+                            })
                     })
+
                     .onDrop(of: [.text], delegate: CardTaskDropDelegate(taskData: viewmodel, task: model))
                 }
                 .listRowSeparator(.hidden)
