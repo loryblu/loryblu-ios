@@ -19,6 +19,7 @@
 		334D0AB72A8AF93D003881ED /* NewPasswordScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334D0AB42A8AF93D003881ED /* NewPasswordScreen.swift */; };
 		33549B0A2ACB92E700CF989F /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33549B092ACB92E700CF989F /* AppData.swift */; };
 		335E21A72AFF132800700440 /* FrequencyRotineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335E21A62AFF132800700440 /* FrequencyRotineView.swift */; };
+		336884D22BA2849F0041C9A2 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336884D12BA2849F0041C9A2 /* ViewExtension.swift */; };
 		3376667D2ABFD115007010E1 /* URLDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3376667C2ABFD115007010E1 /* URLDecoder.swift */; };
 		3380B2102B0DA63F0001E67D /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3380B20F2B0DA63F0001E67D /* Formatter.swift */; };
 		339573E32B87E37600E38B80 /* LBDaysButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339573E22B87E37600E38B80 /* LBDaysButtonStyle.swift */; };
@@ -29,6 +30,7 @@
 		33DE3B212B75975400F45449 /* UserAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DE3B202B75975400F45449 /* UserAuth.swift */; };
 		33DE3B232B75993200F45449 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DE3B222B75993200F45449 /* HomeViewModel.swift */; };
 		33DE3B252B759AC300F45449 /* SummaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DE3B242B759AC300F45449 /* SummaryViewModel.swift */; };
+		33E6A68B2B98058400B6C484 /* CardTaskDropDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E6A68A2B98058400B6C484 /* CardTaskDropDelegate.swift */; };
 		33F87E902B21528000F62041 /* TaskRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F87E8F2B21528000F62041 /* TaskRepository.swift */; };
 		41931EBE2A6470B4008F13F8 /* LBButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41931EBD2A6470B4008F13F8 /* LBButton.swift */; };
 		41BE77FD2A85A12300534ADA /* LBGenderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BE77FC2A85A12300534ADA /* LBGenderButton.swift */; };
@@ -144,6 +146,7 @@
 		334D0AB42A8AF93D003881ED /* NewPasswordScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPasswordScreen.swift; sourceTree = "<group>"; };
 		33549B092ACB92E700CF989F /* AppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
 		335E21A62AFF132800700440 /* FrequencyRotineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequencyRotineView.swift; sourceTree = "<group>"; };
+		336884D12BA2849F0041C9A2 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		3376667C2ABFD115007010E1 /* URLDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLDecoder.swift; sourceTree = "<group>"; };
 		3380B20F2B0DA63F0001E67D /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 		339573E22B87E37600E38B80 /* LBDaysButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBDaysButtonStyle.swift; sourceTree = "<group>"; };
@@ -154,6 +157,7 @@
 		33DE3B202B75975400F45449 /* UserAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuth.swift; sourceTree = "<group>"; };
 		33DE3B222B75993200F45449 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		33DE3B242B759AC300F45449 /* SummaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewModel.swift; sourceTree = "<group>"; };
+		33E6A68A2B98058400B6C484 /* CardTaskDropDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTaskDropDelegate.swift; sourceTree = "<group>"; };
 		33F87E8F2B21528000F62041 /* TaskRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRepository.swift; sourceTree = "<group>"; };
 		41931EBD2A6470B4008F13F8 /* LBButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBButton.swift; sourceTree = "<group>"; };
 		41BE77FC2A85A12300534ADA /* LBGenderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBGenderButton.swift; sourceTree = "<group>"; };
@@ -582,6 +586,7 @@
 				8CE33B252B7F1328005D1219 /* CardTasksModel.swift */,
 				33DE3B242B759AC300F45449 /* SummaryViewModel.swift */,
 				931D12DA2B82C25300589032 /* TasksViewModel.swift */,
+				33E6A68A2B98058400B6C484 /* CardTaskDropDelegate.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -647,6 +652,7 @@
 			isa = PBXGroup;
 			children = (
 				91B4AC272AD114D3003A7FE5 /* NavigationPathExtension.swift */,
+				336884D12BA2849F0041C9A2 /* ViewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -819,6 +825,7 @@
 				91B4AC282AD114D3003A7FE5 /* NavigationPathExtension.swift in Sources */,
 				91664AE22B0C003A005BF5CA /* HomeNavigationStack.swift in Sources */,
 				33DE3B252B759AC300F45449 /* SummaryViewModel.swift in Sources */,
+				336884D22BA2849F0041C9A2 /* ViewExtension.swift in Sources */,
 				33DE3B232B75993200F45449 /* HomeViewModel.swift in Sources */,
 				8CE004892AC1C6680037F792 /* DoneView.swift in Sources */,
 				931D12D32B82C0C000589032 /* ResponseData.swift in Sources */,
@@ -874,6 +881,7 @@
 				8C9CBD102A7AEC24001DBD35 /* PasswordRulesView.swift in Sources */,
 				8CFB359E2A6059BD008BF633 /* LorybluApp.swift in Sources */,
 				41BE77FD2A85A12300534ADA /* LBGenderButton.swift in Sources */,
+				33E6A68B2B98058400B6C484 /* CardTaskDropDelegate.swift in Sources */,
 				9310C8D62B66DB02007D3CE7 /* LBToolbar.swift in Sources */,
 				91CA96622B2899A600611F91 /* LocbookNavigationCoordinator.swift in Sources */,
 				8CE33B242B7EFF4E005D1219 /* LocbookListTasksView.swift in Sources */,

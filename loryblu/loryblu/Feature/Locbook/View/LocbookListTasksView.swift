@@ -59,6 +59,7 @@ struct LocbookListTasksView: View {
 struct ListTasksView: View {
     @ObservedObject var viewmodel: TasksViewModel
     @Binding var securityIsOn: Bool
+
     var body: some View {
         if viewmodel.tasks.isEmpty {
             VStack(alignment: .center) {
@@ -74,16 +75,27 @@ struct ListTasksView: View {
             }
             .padding(.bottom, 80)
         } else {
-            List {
+            ScrollView(showsIndicators: false) {
                 ForEach(viewmodel.tasks, id: \.uuid) { model in
                     CardTaskRegistered(
                         nameAction: model.actionType,
                         imageTask: model.image,
                         nameTask: model.locbookTask.categoryTitle ?? "",
                         backgroundCard: model.backgroundCard, isSecurity: .constant(securityIsOn))
+                    .padding(.bottom, 20)
+                    .if(securityIsOn, transform: { view in
+                        view
+                            .onDrag({
+                                self.viewmodel.currentTask = model
+                                return NSItemProvider()
+                            })
+                    })
+
+                    .onDrop(of: [.text], delegate: CardTaskDropDelegate(taskData: viewmodel, task: model))
                 }
                 .listRowSeparator(.hidden)
             }
+            .padding(.horizontal, 20)
             .listStyle(.plain)
             .scrollContentBackground(.hidden)
             .scrollIndicators(ScrollIndicatorVisibility.hidden)
