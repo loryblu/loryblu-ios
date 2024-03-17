@@ -13,6 +13,7 @@ extension LBStrings {
         static let empty = String(localized: "empty")
         static let hello = String(localized: "hello")
         static let next = String(localized: "next")
+        static let newTask = String(localized: "new_task")
         static let password = String(localized: "password")
         static let send = String(localized: "send")
     }
