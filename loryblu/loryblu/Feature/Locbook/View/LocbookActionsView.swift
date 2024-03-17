@@ -4,6 +4,7 @@ struct LocbookActionsView: View {
     // MARK: - Definitions
     struct Props {
         var task: LocbookTask
+        var title: String
         let onNext: ClosureType.LocbookTaskIntVoid?
         var onClose: ClosureType.VoidVoid?
     }
@@ -36,7 +37,7 @@ struct LocbookActionsView: View {
                 props.onNext?(formConfig.task, index)
             }
         }
-        .locbookToolbar(title: LBStrings.Locbook.title, onClose: { props.onClose?() })
+        .locbookToolbar(title: props.title, onClose: { props.onClose?() })
         .padding(24)
     }
 
@@ -90,7 +91,7 @@ extension LocbookActionsView.Props: Hashable {
 
 #Preview {
     LocbookActionsView(props: .init(
-        task: LocbookTask(),
+        task: LocbookTask(), title: "Actions",
         onNext: nil)
     )
     .locbookToolbar(title: LBStrings.Locbook.title, onClose: { })
