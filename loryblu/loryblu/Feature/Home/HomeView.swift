@@ -7,9 +7,21 @@ struct HomeView: View {
     @Injected(\.appData) var appData
 
     let traills: [ImageLabel] = [
-        ImageLabel(image: LBIcon.locbook.rawValue, name: LBStrings.NameImage.loryRotine, font: LBFont.titleAction, segment: .home),
-        ImageLabel(image: LBIcon.fairyShadow.rawValue, name: LBStrings.NameImage.loryRotine, font: LBFont.titleAction, segment: .home),
-        ImageLabel(image: LBIcon.gamesShadow.rawValue, name: LBStrings.NameImage.loryRotine, font: LBFont.titleAction, segment: .home)
+        ImageLabel(
+            image: LBIcon.locbook.rawValue,
+            name: LBStrings.Home.locbook,
+            font: LBFont.titleAction,
+            segment: .home),
+        ImageLabel(
+            image: LBIcon.fairyShadow.rawValue,
+            name: LBStrings.Home.trailHistory,
+            font: LBFont.titleAction,
+            segment: .home),
+        ImageLabel(
+            image: LBIcon.gamesShadow.rawValue,
+            name: LBStrings.Home.trailGames,
+            font: LBFont.titleAction,
+            segment: .home)
     ]
 
     var body: some View {
@@ -18,7 +30,7 @@ struct HomeView: View {
             trails
         }
     }
-    
+
     var header: some View {
         HStack {
             LBIcon.headMenu.image

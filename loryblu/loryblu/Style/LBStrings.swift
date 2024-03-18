@@ -20,6 +20,15 @@ extension LBStrings {
 }
 
 extension LBStrings {
+    enum Home {
+        static let hello = String(localized: "home_hello")
+        static let locbook = String(localized: "home_locbook")
+        static let trailHistory = String(localized: "home_trail_history")
+        static let trailGames = String(localized: "home_trail_games")
+    }
+}
+
+extension LBStrings {
     enum Rules {
         static let title = String(localized: "rule_title")
         static let rule1 = String(localized: "rule1")

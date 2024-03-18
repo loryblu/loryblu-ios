@@ -53,7 +53,6 @@ struct LocbookActionsView: View {
                         )
                         .opacity(formConfig.selectedCard == index ? 1.0 : 0.5)
                         .onTapGesture {
-                            // NAO PRECISA ENVIAR NADA PRA API
                             formConfig.selectedCard = index
                             formConfig.task.categoryTitle = model.actions[index].name
                         }
