@@ -10,6 +10,7 @@
 "next" = "Proximo";
 "password" = "Senha";
 "send" = "Enviar";
+"new_task" = "Nova tarefa";
 
 // ====================  Rules Password  =========================
 
@@ -40,7 +41,6 @@
 "textError_birthday" = "*Selecione uma data";
 "textError_gender" = "*Selecione um botão";
 "textError_agree" = "*Aceite a política de privacidade.";
-
 
 // ====================  Set Password  =========================
 
@@ -78,10 +78,10 @@
 
 // ==================== Home =========================
 
-"hello_title" = "Olá,";
-"locbook" = "Diário de Bordo";
-"trail_history" = "Trilha de Histórias";
-"trail_games" = "Trilha de Jogos";
+"home_hello" = "Olá,";
+"home_locbook" = "Diário de Bordo";
+"home_trail_history" = "Trilha de Histórias";
+"home_trail_games" = "Trilha de Jogos";
 
 // ==================== Locbook =========================
 

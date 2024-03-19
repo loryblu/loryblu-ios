@@ -1,17 +1,17 @@
 import SwiftUI
 
 struct LocbookTasksView: View {
+    enum ActionType {
+        case study
+        case routine
+    }
 
     struct Props {
-        enum ActionType {
-            case study
-            case routine
-        }
-
         let task: LocbookTask
+        let title: String
         let actionType: ActionType
         var onNext: ClosureType.LocbookTaskVoid?
-        var onClose : ClosureType.VoidVoid?
+        var onClose: ClosureType.VoidVoid?
     }
 
     struct FormConfig {
@@ -33,15 +33,6 @@ struct LocbookTasksView: View {
         }
     }
 
-    var title: String {
-        switch props.actionType {
-        case .study:
-            return LBStrings.Locbook.titleStudy
-        case .routine:
-            return LBStrings.Locbook.titleRotine
-        }
-    }
-
     let columns = [
         GridItem(.flexible(), spacing: 16),
         GridItem(.flexible())
@@ -49,7 +40,6 @@ struct LocbookTasksView: View {
 
     var body: some View {
         VStack(spacing: 20) {
-
             LBIcon.progression2.image
                 .resizable()
                 .scaledToFit()
@@ -64,10 +54,10 @@ struct LocbookTasksView: View {
 
             collectionView
         }
-        .onAppear{
+        .onAppear {
             formConfig.task = props.task
         }
-        .locbookToolbar(title: title, onClose: { props.onClose?() })
+        .locbookToolbar(title: props.title, onClose: { props.onClose?() })
         .padding(24)
 
     }
@@ -87,7 +77,7 @@ struct LocbookTasksView: View {
                             self.formConfig.task.categoryId = tasks[index].categoryID
                         }
                 }
-                .frame(minWidth: 148 , minHeight: 156)
+                .frame(minWidth: 148, minHeight: 156)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .padding(.bottom, 24)
@@ -121,5 +111,7 @@ extension LocbookTasksView.Props: Hashable {
 }
 
 #Preview {
-    LocbookTasksView(props: .init(task: LocbookTask(), actionType: .routine)).locbookToolbar(title: "Title of the task", onClose: { })
+    LocbookTasksView(
+        props: .init(task: LocbookTask(), title: "Nova tarefa", actionType: .routine)
+    ).locbookToolbar(title: "Title of the task", onClose: {})
 }

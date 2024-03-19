@@ -16,34 +16,29 @@ struct CardTaskRegistered: View {
                     .font(LBFont.head6)
 
                 Spacer()
-                Image(LBIcon.reorg.rawValue)
-                    .frame(width: 10, height: 16)
+                if isSecurity {
+                    Image(LBIcon.reorg.rawValue)
+                        .frame(width: 10, height: 16)
+                }
             }
             .padding(8)
             .background(LBColor.textfield)
 
             HStack {
                 Image(imageTask)
-
                 if isSecurity {
                     VStack {
-                        Button(Localizable.edit) {
-                            //TODO: Chamar tela de ediçãode tarefa.
-                        }
-                        .buttonStyle(EditTaskButton(image: LBIcon.edit.rawValue))
+                        Button(Localizable.edit) {}
+                            .buttonStyle(EditTaskButton(image: LBIcon.edit.rawValue))
 
-                        Button(Localizable.delete) {
-                            //TODO: Chamar alerta de exclusao de tarefa.
-                        }
-                        .buttonStyle(
-                            EditTaskButton(image: LBIcon.trash.rawValue)
+                        Button(Localizable.delete) {}
+                            .buttonStyle(EditTaskButton(image: LBIcon.trash.rawValue)
                         )
-
                     }
                 }
 
             }
-            
+
             Text(nameTask)
                 .font(LBFont.titleTask)
                 .frame(maxWidth: .infinity, minHeight: 40)
@@ -52,7 +47,6 @@ struct CardTaskRegistered: View {
         .background(backgroundCard)
         .cornerRadius(8)
         .frame(maxWidth: .infinity, maxHeight: 207)
-
     }
 }
 

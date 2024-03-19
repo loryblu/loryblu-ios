@@ -13,8 +13,18 @@ extension LBStrings {
         static let empty = String(localized: "empty")
         static let hello = String(localized: "hello")
         static let next = String(localized: "next")
+        static let newTask = String(localized: "new_task")
         static let password = String(localized: "password")
         static let send = String(localized: "send")
+    }
+}
+
+extension LBStrings {
+    enum Home {
+        static let hello = String(localized: "home_hello")
+        static let locbook = String(localized: "home_locbook")
+        static let trailHistory = String(localized: "home_trail_history")
+        static let trailGames = String(localized: "home_trail_games")
     }
 }
 

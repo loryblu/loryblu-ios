@@ -24,7 +24,7 @@ struct DoneView: View {
                             .resizable()
                             .frame(width: 22, height: 22)
                     }
-                    .padding(.bottom ,200)
+                    .padding(.bottom, 200)
                 }
 
                 Text(props.message)

@@ -2,7 +2,7 @@ import SwiftUI
 
 struct DayOfWeekOption {
     var name: String
-    var isSelected:Bool
+    var isSelected: Bool
     var frequency: LocbookTask.Frequency
 }
 
@@ -10,14 +10,11 @@ struct LocbookSummaryView: View {
     // MARK: - Defines
     struct Props {
         var task: LocbookTask
+        var title: String
         let onSubmit: ClosureType.VoidVoid?
-        var onClose : ClosureType.VoidVoid?
+        var onClose: ClosureType.VoidVoid?
 
-        var title: String {
-            task.categoryTitle ?? ""
-        }
-
-        var shifts : [ShiftItem] {
+        var shifts: [ShiftItem] {
             getShiftsUiModel(shift: task.shift)
         }
 
@@ -50,7 +47,7 @@ struct LocbookSummaryView: View {
             LBIcon.progression4.image
                 .resizable()
                 .scaledToFit()
-                .frame(maxWidth: .infinity,minHeight: 40)
+                .frame(maxWidth: .infinity, minHeight: 40)
 
             Image(props.taskImage)
                 .resizable()
@@ -67,7 +64,7 @@ struct LocbookSummaryView: View {
                 .cornerRadius(6.0)
                 .frame(maxWidth: 200, maxHeight: 200, alignment: .center)
 
-            VStack(spacing:8) {
+            VStack(spacing: 8) {
                 HStack(alignment: .center, spacing: 5) {
                     Text(LBStrings.SummaryLocbook.category)
                         .font(LBFont.head5)
@@ -77,9 +74,9 @@ struct LocbookSummaryView: View {
                     ZStack {
                         Text(props.task.categoryTitle!)
                             .padding(6)
-                            .frame(maxWidth: .infinity,alignment: .center)
+                            .frame(maxWidth: .infinity, alignment: .center)
                             .multilineTextAlignment(.center)
-                            .frame(maxWidth:.infinity)
+                            .frame(maxWidth: .infinity)
                             .font(LBFont.subtitle)
                             .padding(6)
                     }
@@ -87,7 +84,7 @@ struct LocbookSummaryView: View {
                     .cornerRadius(6)
                     .foregroundColor(.white)
 
-                }.frame(maxWidth:.infinity)
+                }.frame(maxWidth: .infinity)
 
                 HStack(alignment: .center, spacing: 24) {
                     Text(LBStrings.SummaryLocbook.task)
@@ -99,17 +96,17 @@ struct LocbookSummaryView: View {
                     ZStack {
                         Text(props.taskName)
                             .padding(6)
-                            .frame(maxWidth: .infinity,alignment: .center)
+                            .frame(maxWidth: .infinity, alignment: .center)
                             .multilineTextAlignment(.center)
                             .padding(6)
                             .font(LBFont.subtitle)
                     }
                     .background(LBColor.buttonBackgroundDark)
                     .cornerRadius(6)
-                    .frame(maxWidth:.infinity)
-                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity)
+                    .foregroundColor( .white)
 
-                }.frame(maxWidth:.infinity)
+                }.frame(maxWidth: .infinity)
             }
 
             Divider()
@@ -117,21 +114,20 @@ struct LocbookSummaryView: View {
             Text(LBStrings.SummaryLocbook.shift)
                 .font(LBFont.head5)
                 .foregroundStyle(LBColor.text)
-                .frame(maxWidth:.infinity,alignment: .leading)
+                .frame(maxWidth: .infinity, alignment: .leading)
 
             LBShiftItemsComponent(shifts: props.shifts)
-
 
             VStack {
                 Text(LBStrings.SummaryLocbook.frequency)
                     .font(LBFont.head5)
                     .foregroundStyle(LBColor.text)
-                    .frame(maxWidth:.infinity,alignment: .leading)
+                    .frame(maxWidth: .infinity, alignment: .leading)
 
                 Text(LBStrings.SummaryLocbook.frequencyDescription)
                     .font(LBFont.bodyMedium)
                     .foregroundStyle(LBColor.text)
-                    .frame(maxWidth:.infinity,alignment: .leading)
+                    .frame(maxWidth: .infinity, alignment: .leading)
             }
 
             ZStack {
@@ -155,7 +151,7 @@ struct LocbookSummaryView: View {
             }
 
             LBButton(title: LBStrings.SummaryLocbook.submitTask) {
-                Task  {
+                Task {
                     await  model.saveTask(task: props.task)
                     if model.stateTask == .success {
                         props.onSubmit?()
@@ -163,9 +159,9 @@ struct LocbookSummaryView: View {
                 }
             }
         }
-        .padding(.init(top: 24,leading: 24,bottom: 24, trailing: 24))
+        .padding(.init(top: 24, leading: 24, bottom: 24, trailing: 24))
         .locbookToolbar(
-            title: LBStrings.SummaryLocbook.topbarTitle,
+            title: props.title,
             onClose: {
                 props.onClose?()
             }
@@ -190,43 +186,43 @@ extension LocbookSummaryView {
 }
 
 extension LocbookSummaryView.Props {
-    func getShiftsUiModel(shift:LocbookTask.Shift?) -> [ShiftItem] {
+    func getShiftsUiModel(shift: LocbookTask.Shift?) -> [ShiftItem] {
         let shiftName = switch shift {
         case .morning:
             LBStrings.FrequencyRotine.morning
         case .afternoon:
             LBStrings.FrequencyRotine.afternoon
-        default :
+        default:
             LBStrings.FrequencyRotine.night
         }
 
         var shifts = [
-
             ShiftItem(
                 name: LBStrings.FrequencyRotine.morning,
-                icon:LBIcon.sunSmall.rawValue,
-                backgroundColor:LBColor.buttonBackgroundLight,
+                icon: LBIcon.sunSmall.rawValue,
+                backgroundColor: LBColor.buttonBackgroundLight,
                 letterColor: .black,
-                isSelected: false),
-
+                isSelected: false
+            ),
             ShiftItem(
                 name: LBStrings.FrequencyRotine.afternoon,
                 icon: LBIcon.eviningSmall.rawValue,
                 backgroundColor: LBColor.buttonBackgroundMedium,
                 letterColor: .white,
-                isSelected: false),
-
-            ShiftItem(name: LBStrings.FrequencyRotine.night,
-                      icon: LBIcon.moonSmall.rawValue,
-                      backgroundColor: LBColor.buttonBackgroundDark,
-                      letterColor: .white,
-                      isSelected: false)
-
+                isSelected: false
+            ),
+            ShiftItem(
+                name: LBStrings.FrequencyRotine.night,
+                icon: LBIcon.moonSmall.rawValue,
+                backgroundColor: LBColor.buttonBackgroundDark,
+                letterColor: .white,
+                isSelected: false
+            )
         ]
 
         shifts = shifts.map { (shift: ShiftItem) -> ShiftItem in
             var mutableShift = shift
-            if(shift.name == shiftName) {
+            if (shift.name == shiftName) {
                 mutableShift.isSelected = true
             }
             return mutableShift
@@ -235,11 +231,11 @@ extension LocbookSummaryView.Props {
         return shifts
     }
 
-    func getDaysOfWeekOptionsUiModel(frequency:[LocbookTask.Frequency]?) -> [DayOfWeekOption] {
+    func getDaysOfWeekOptionsUiModel(frequency: [LocbookTask.Frequency]?) -> [DayOfWeekOption] {
 
         var dayOfWeekOptions = [
-            DayOfWeekOption(name: "D",isSelected: false, frequency: .sun),
-            DayOfWeekOption(name: "S", isSelected: false,frequency: .mon),
+            DayOfWeekOption(name: "D", isSelected: false, frequency: .sun),
+            DayOfWeekOption(name: "S", isSelected: false, frequency: .mon),
             DayOfWeekOption(name: "T", isSelected: false, frequency: .tue),
             DayOfWeekOption(name: "Q", isSelected: false, frequency: .wed),
             DayOfWeekOption(name: "Q", isSelected: false, frequency: .thu),
@@ -250,7 +246,7 @@ extension LocbookSummaryView.Props {
         frequency?.forEach { frequency in
             dayOfWeekOptions = dayOfWeekOptions.map { (dayOfWeek: DayOfWeekOption) -> DayOfWeekOption in
                 var mutableDayOfWeek = dayOfWeek
-                if(dayOfWeek.frequency == frequency) {
+                if dayOfWeek.frequency == frequency {
                     mutableDayOfWeek.isSelected = true
                 }
                 return mutableDayOfWeek
@@ -261,7 +257,7 @@ extension LocbookSummaryView.Props {
     }
 
     func getImageLabelByCategoryId(categoryId: String) -> ImageLabel {
-        let list:[ImageLabel] = ListTasks.rotine + ListTasks.study
+        let list: [ImageLabel] = ListTasks.rotine + ListTasks.study
         let index = list.firstIndex { item in
             item.categoryID == categoryId
         }!
@@ -279,7 +275,6 @@ extension LocbookSummaryView.Props: Hashable {
     }
 }
 
-
 #Preview {
     LocbookSummaryView(
         props:
@@ -289,6 +284,6 @@ extension LocbookSummaryView.Props: Hashable {
                     frequency: [LocbookTask.Frequency.mon],
                     categoryId: LBStrings.CategoryID.tvgame,
                     categoryTitle: LBStrings.Locbook.titleStudy
-                ),
+                ), title: "LocbookSumary",
                 onSubmit: {}))
 }

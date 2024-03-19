@@ -5,6 +5,7 @@ struct LocbookListTasksView: View {
 
     struct Props {
         let onNewTask: ClosureType.VoidVoid?
+        let onEditTask: ClosureType.VoidVoid?
     }
 
     var props: Props
@@ -167,5 +168,5 @@ extension LocbookListTasksView.Props: Hashable {
 }
 
 #Preview {
-    LocbookListTasksView(props: .init(onNewTask: {}))
+    LocbookListTasksView(props: .init(onNewTask: {}, onEditTask: {}))
 }

@@ -17,19 +17,14 @@ struct FrequencyRotineView: View {
     }
 
     // MARK: - Defines
-
     struct Props {
         var task: LocbookTask
+        var title: String
         let onNext: ClosureType.LocbookTaskVoid?
-        var onClose : ClosureType.VoidVoid?
-
-        var title: String {
-            task.categoryTitle ?? ""
-        }
+        var onClose: ClosureType.VoidVoid?
     }
 
     // MARK: - Properties
-
     var props: Props
     @State var formConfig = FormConfig()
 
@@ -38,8 +33,8 @@ struct FrequencyRotineView: View {
             LBIcon.progression3.image
                 .resizable()
                 .scaledToFit()
-                .frame(maxWidth: .infinity,minHeight: 40)
-                .padding(.bottom,39)
+                .frame(maxWidth: .infinity, minHeight: 40)
+                .padding(.bottom, 39)
 
             HStack {
                 Text(LBStrings.FrequencyRotine.workPeriod)
@@ -49,9 +44,9 @@ struct FrequencyRotineView: View {
             }
 
             frequecyAction
-                .padding(.bottom,36)
+                .padding(.bottom, 36)
 
-            VStack(spacing:8) {
+            VStack(spacing: 8) {
                 HStack {
                     Text(LBStrings.FrequencyRotine.frequencyRotine)
                         .font(LBFont.buttonSmall)
@@ -64,7 +59,7 @@ struct FrequencyRotineView: View {
                         .foregroundStyle(LBColor.titlePrimary)
                     Spacer()
                 }
-            }.padding(.bottom,10)
+            }.padding(.bottom, 10)
 
             LBWeekDaysButton(
                 sunday: $formConfig.sunday,
@@ -87,7 +82,7 @@ struct FrequencyRotineView: View {
                 }
             }
         }
-        .onAppear{
+        .onAppear {
             formConfig.task = props.task
         }
         .locbookToolbar(title: props.title, onClose: { props.onClose?() })
@@ -136,7 +131,6 @@ struct FrequencyRotineView: View {
     }
 }
 
-
 extension FrequencyRotineView {
     struct FormConfig {
         var sunday: Bool = false
@@ -180,6 +174,6 @@ extension FrequencyRotineView.Props: Hashable {
 
 #Preview {
     FrequencyRotineView(
-        props: .init(task: LocbookTask(categoryTitle: "Title of the task"), onNext: nil)
-    ).locbookToolbar(title: "Title of the task" , onClose: { })
+        props: .init(task: LocbookTask(categoryTitle: "Title of the task"), title: "FrequencyRotineView", onNext: nil)
+    ).locbookToolbar(title: "Title of the task", onClose: {})
 }
