@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct LoginView: View {
-    
     @State private var form = FormConfig()
     @StateObject var model: LoginModel
     @EnvironmentObject var coordinator: LoginNavigationStack.NavigationCoordinator
@@ -9,6 +8,12 @@ struct LoginView: View {
     @MainActor func tryLogin() {
         if form.validateLogin() {
             model.authenticate(email: form.email, password: form.password)
+        }
+    }
+
+    func updateStatusLogin() {
+        if model.loginStatus == .fail {
+            form.textError = model.networkError
         }
     }
 
@@ -114,6 +119,11 @@ struct LoginView: View {
             }.padding(.bottom, 32.0)
         }
         .padding(24)
+        .onChange(of: model.loginStatus) { newValue in
+            if newValue == .fail {
+                updateStatusLogin()
+            }
+        }
     }
 }
 
@@ -121,7 +131,6 @@ extension LoginView {
     struct FormConfig {
         var email: String = ""
         var password: String = ""
-        
         var isEmailValid: Bool = true
         var isPasswordNotEmpty: Bool = true
         var rememberMe: Bool = false
@@ -130,7 +139,7 @@ extension LoginView {
         var showResetPassword: Bool = false
         var showResponsibleRegister: Bool = false
         var showChildRegister: Bool = false
-        
+
         mutating func validateLogin() -> Bool {
             if !ValidateRules.validate(email: email) {
                 isEmailValid = false
@@ -138,7 +147,7 @@ extension LoginView {
                 textError =  LBStrings.Login.emailNotExists
                 return false
             }
-            
+
             if password.isEmpty {
                 textError = LBStrings.Login.requiredField
                 isEmailValid = true

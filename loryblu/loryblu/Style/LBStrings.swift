@@ -92,6 +92,9 @@ extension LBStrings {
         static let dontHaveAccount = String(localized: "login_dont_have_an_account")
         static let registerNow = String(localized: "login_register_now")
         static let remeber = String(localized: "login_remember")
+        static let emailNotFound = String(localized: "login_email_not_found")
+        static let userNotFound = String(localized: "login_user_not_found")
+        static let serverError = String(localized: "login_server_error")
     }
 }
 
