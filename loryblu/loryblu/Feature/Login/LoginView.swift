@@ -12,6 +12,12 @@ struct LoginView: View {
         }
     }
 
+    func updateStatusLogin() {
+        if model.loginStatus == .fail {
+            form.textError = model.networkError
+        }
+    }
+
     var body: some View {
         VStack {
             LBIcon.logoName.image
@@ -114,6 +120,11 @@ struct LoginView: View {
             }.padding(.bottom, 32.0)
         }
         .padding(24)
+        .onChange(of: model.loginStatus) { newValue in
+            if newValue == .fail {
+                updateStatusLogin()
+            }
+        }
     }
 }
 

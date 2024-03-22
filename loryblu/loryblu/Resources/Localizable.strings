@@ -70,8 +70,9 @@
 "login_register_now" = "Registrar agora";
 "login_remember" = "Lembrar";
 "login_title" = "Login";
-"login_email_not_found" = "O e-mail informado não foi cadastrado";
-"login_user_not_found" = "Senha ou usuário icorreto";
+"login_email_not_found" = "O E-mail informado não foi cadastrado";
+"login_user_not_found" = "Senha ou usuário incorreto";
+"login_server_error" = "Servidor indisponível. Tente novamente mais tarde";
 
 // ====================  Gender Button  =========================
 
