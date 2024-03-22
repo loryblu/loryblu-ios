@@ -18,10 +18,8 @@ class LoginModel: ObservableObject {
             do {
                 let result = try await repository.login(email: email, password: password)
                 Container.shared.appData().setLoginStatusLogged(user: result)
-                print(result)
             } catch {
                 let networkError = error as NSError
-                print(networkError)
                 switch networkError.code {
                 case 401:
                     self.networkError = LBStrings.Login.userNotFound
