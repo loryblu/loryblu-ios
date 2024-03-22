@@ -20,7 +20,6 @@ class LoginModel: ObservableObject {
                 Container.shared.appData().setLoginStatusLogged(user: result)
                 print(result)
             } catch {
-
                 let networkError = error as NSError
                 print(networkError)
                 switch networkError.code {
