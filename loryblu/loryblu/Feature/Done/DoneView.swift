@@ -38,7 +38,7 @@ struct DoneView: View {
                     .padding(.bottom, 170)
             }
         }
-        .padding(24)
+        .padding()
         .navigationTitle(LBStrings.General.empty)
         .navigationBarBackButtonHidden(true)
     }

@@ -57,7 +57,7 @@ struct DaysButton: View {
                     action()
                 }
                 Text(text)
-                .font(LBFont.titleTask)
+                .font(LBFont.head6)
                 .foregroundColor(isSet ? LBColor.backgroundCards : LBColor.buttonGenderEnable)
         }
 
