@@ -3,12 +3,12 @@ import SwiftUI
 struct RegisterResponsibleView: View {
     @StateObject var viewModel: RegisterResponsibleViewModel = RegisterResponsibleViewModel()
     @EnvironmentObject var coordinator: LoginNavigationStack.NavigationCoordinator
-    
+
     @State private var isHiddenPassword: Bool = false
     @State private var isHiddenRepeat: Bool = false
     @State private var showNext: Bool = false
     @FocusState private var focusedField: RegisterResponsibleViewModel.FocusedField?
-    
+
     var body: some View {
         VStack {
             VStack {
@@ -19,7 +19,7 @@ struct RegisterResponsibleView: View {
                     .padding(.bottom, 40)
 
                 Text(LBStrings.Register.responsible)
-                    .font(LBFont.head6)
+                    .font(LBFont.titleTask)
                     .foregroundColor(LBColor.text)
                     .frame(width: 242, alignment: .topLeading)
                     .padding(.bottom, 32)

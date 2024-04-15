@@ -1,20 +1,37 @@
 import SwiftUI
 
 struct LocbookTasksView: View {
-    
+    enum ActionType {
+        case study
+        case routine
+    }
+
     struct Props {
         let task: LocbookTask
-        var onNext: ClosureType.VoidVoid?
+        let title: String
+        let actionType: ActionType
+        var onNext: ClosureType.LocbookTaskVoid?
+        var onClose: ClosureType.VoidVoid?
     }
-    
+
     struct FormConfig {
         var selectedCard: Int?
+        var task: LocbookTask = .init()
     }
-    
-    let props: Props
-    @State var formConfig: FormConfig = FormConfig()
 
-    let tasks: [ImageLabel] = LocbookListTasks.rotine
+    let props: Props
+
+    @State var formConfig: FormConfig = FormConfig()
+    @State var categoryID: String = ""
+
+    var tasks: [ImageLabel] {
+        switch props.actionType {
+        case .study:
+            return ListTasks.study
+        case .routine:
+            return ListTasks.rotine
+        }
+    }
 
     let columns = [
         GridItem(.flexible(), spacing: 16),
@@ -23,14 +40,6 @@ struct LocbookTasksView: View {
 
     var body: some View {
         VStack(spacing: 20) {
-            HStack {
-                Text("<")
-                Text(LBStrings.Locbook.titleStudy)
-                    .font(LBFont.titleAction)
-                    .foregroundStyle(LBColor.titlePrimary)
-                Spacer()
-            }
-
             LBIcon.progression2.image
                 .resizable()
                 .scaledToFit()
@@ -45,6 +54,10 @@ struct LocbookTasksView: View {
 
             collectionView
         }
+        .onAppear {
+            formConfig.task = props.task
+        }
+        .locbookToolbar(title: props.title, onClose: { props.onClose?() })
         .padding(24)
 
     }
@@ -61,18 +74,29 @@ struct LocbookTasksView: View {
                         .opacity(formConfig.selectedCard == index ? 1.0 : 0.5)
                         .onTapGesture {
                             self.formConfig.selectedCard = index
+                            self.formConfig.task.categoryId = tasks[index].categoryID
                         }
                 }
-                .frame(minWidth: 148 , minHeight: 156)
+                .frame(minWidth: 148, minHeight: 156)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .padding(.bottom, 24)
 
             LBButton(title: LBStrings.General.next, style: .primaryActivated) {
-                props.onNext?()
+                if(formConfig.selectedCard) != nil {
+                    props.onNext?(formConfig.task)
+                }
+                // ENVIAR O categoryID da task e nome. ( task.categoryID / task.name )
             }
-        } 
+        }
         .scrollContentBackground(.hidden)
+    }
+
+    init(props: Props, formConfig: FormConfig = FormConfig()) {
+        var config = formConfig
+        config.task = props.task
+        self.props = props
+        self._formConfig = State(initialValue: config)
     }
 }
 
@@ -87,5 +111,7 @@ extension LocbookTasksView.Props: Hashable {
 }
 
 #Preview {
-    LocbookTasksView(props: .init(task: LocbookTask()))
+    LocbookTasksView(
+        props: .init(task: LocbookTask(), title: "Nova tarefa", actionType: .routine)
+    ).locbookToolbar(title: "Title of the task", onClose: {})
 }

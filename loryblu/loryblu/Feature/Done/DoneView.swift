@@ -2,7 +2,7 @@ import SwiftUI
 
 struct DoneView: View {
     @Environment(\.dismiss) var dismiss
-    
+
     struct Props {
         let message: String
         var onClose: ClosureType.VoidVoid?
@@ -13,34 +13,34 @@ struct DoneView: View {
 
     var body: some View {
         VStack {
-                VStack(alignment: .center) {
-                    HStack {
-                        Spacer()
-                        Button {
-                            props.onClose?()
-                            dismiss()
-                        } label: {
-                            Image(LBIcon.close2.rawValue)
-                                .resizable()
-                                .frame(width: 22, height: 22)
-                        }
-                        .padding(.bottom ,142)
+            VStack(alignment: .center) {
+                HStack {
+                    Spacer()
+                    Button {
+                        props.onClose?()
+                        dismiss()
+                    } label: {
+                        Image(LBIcon.close2.rawValue)
+                            .resizable()
+                            .frame(width: 22, height: 22)
                     }
-                    
-                    Text(props.message)
-                        .font(LBFont.head6)
-                        .foregroundStyle(LBColor.text)
-                        .padding(.bottom, 52)
-
-                    Image(LBIcon.done.rawValue)
-                        .resizable(resizingMode: .stretch)
-                        .frame(width: 118, height: 111)
-                        .padding(.bottom ,344)
+                    .padding(.bottom, 200)
                 }
+
+                Text(props.message)
+                    .font(LBFont.titleTask)
+                    .foregroundStyle(LBColor.text)
+                    .padding(.bottom, 50)
+
+                Image(LBIcon.done.rawValue)
+                    .resizable(resizingMode: .stretch)
+                    .frame(width: 118, height: 111)
+                    .padding(.bottom, 170)
+            }
         }
         .padding()
         .navigationTitle(LBStrings.General.empty)
-
+        .navigationBarBackButtonHidden(true)
     }
 }
 

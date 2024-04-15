@@ -7,54 +7,46 @@ enum Period: Equatable {
 }
 
 struct FrequencyRotineView: View {
-    
+
+    init(props: Props, formConfig: FormConfig = FormConfig()) {
+        var config = formConfig
+        config.task = props.task
+        self.props = props
+        self.props.task.shift = .morning
+        self._formConfig = State(initialValue: config)
+    }
+
     // MARK: - Defines
-    
     struct Props {
         var task: LocbookTask
-        let onSubmit: ClosureType.VoidVoid?
-        
-        var title: String {
-            task.categoryTitle ?? ""
-        }
+        var title: String
+        let onNext: ClosureType.LocbookTaskVoid?
+        var onClose: ClosureType.VoidVoid?
     }
 
     // MARK: - Properties
-    
-    let props: Props
+    var props: Props
     @State var formConfig = FormConfig()
-    
+
     var body: some View {
         VStack(alignment: .center, spacing: 15) {
-            HStack(spacing: 20) {
-                Text("<")
-
-                Text(props.title)
-                    .font(LBFont.titleAction)
-                    .foregroundStyle(LBColor.titlePrimary)
-                Spacer()
-
-                Image(LBIcon.close2.rawValue)
-                    .resizable()
-                    .frame(width: 18, height: 18)
-               }
             LBIcon.progression3.image
                 .resizable()
                 .scaledToFit()
-                .frame(maxWidth: .infinity,minHeight: 40)
-                .padding(.bottom,39)
+                .frame(maxWidth: .infinity, minHeight: 40)
+                .padding(.bottom, 39)
 
             HStack {
                 Text(LBStrings.FrequencyRotine.workPeriod)
                     .font(LBFont.buttonSmall)
-                .foregroundStyle(LBColor.titlePrimary)
+                    .foregroundStyle(LBColor.titlePrimary)
                 Spacer()
             }
 
             frequecyAction
-                .padding(.bottom,36)
+                .padding(.bottom, 36)
 
-            VStack(spacing:8) {
+            VStack(spacing: 8) {
                 HStack {
                     Text(LBStrings.FrequencyRotine.frequencyRotine)
                         .font(LBFont.buttonSmall)
@@ -64,63 +56,80 @@ struct FrequencyRotineView: View {
                 HStack {
                     Text(LBStrings.FrequencyRotine.frequencyDays)
                         .font(LBFont.caption1)
-                    .foregroundStyle(LBColor.titlePrimary)
+                        .foregroundStyle(LBColor.titlePrimary)
                     Spacer()
                 }
-            }.padding(.bottom,10)
+            }.padding(.bottom, 10)
 
-            LBWeekDaysButton(sunday: $formConfig.sunday,
-                             monday: $formConfig.monday,
-                             tuesday: $formConfig.tuesday,
-                             wednesday: $formConfig.wednesday,
-                             thurday: $formConfig.thurday,
-                             friday: $formConfig.friday,
-                             satuday: $formConfig.satuday)
+            LBWeekDaysButton(
+                sunday: $formConfig.sunday,
+                monday: $formConfig.monday,
+                tuesday: $formConfig.tuesday,
+                wednesday: $formConfig.wednesday,
+                thurday: $formConfig.thurday,
+                friday: $formConfig.friday,
+                satuday: $formConfig.saturday
+            )
+
             Spacer()
 
             LBButton(title: LBStrings.General.confirm) {
-                props.onSubmit?()
+                let frequency = formConfig.makeFrequency()
+
+                if !frequency.isEmpty {
+                    formConfig.task.frequency = frequency
+                    props.onNext?(formConfig.task)
+                }
             }
-        }.padding(24)
+        }
+        .onAppear {
+            formConfig.task = props.task
+        }
+        .locbookToolbar(title: props.title, onClose: { props.onClose?() })
+        .padding(24)
     }
 
     var frequecyAction: some View {
         HStack(alignment: .center, spacing: 12) {
-            ImageLabel(image: LBIcon.sun.rawValue,
-                       name: LBStrings.FrequencyRotine.morning,
-                       font: LBFont.titleTask, segment: .default)
-            .background(formConfig.morningSetColor)
-            .cornerRadius(12.0)
-            .onTapGesture {
+            Button(LBStrings.FrequencyRotine.morning) {
                 formConfig.period = .morning
-                formConfig.buttonSelect()
+                formConfig.task.shift = .morning
             }
+            .buttonStyle(
+                FrequencyButtonStyle(
+                    style: .light,
+                    image: LBIcon.sun.rawValue,
+                    selected: formConfig.period == .morning
+                )
+            )
 
-
-            ImageLabel(image: LBIcon.evining.rawValue,
-                       name: LBStrings.FrequencyRotine.afternoon,
-                       font: LBFont.titleTask, segment: .default)
-            .background(formConfig.afternoonSetColor)
-            .cornerRadius(12)
-            .onTapGesture {
+            Button(LBStrings.FrequencyRotine.afternoon) {
                 formConfig.period = .afternoon
-                formConfig.buttonSelect()
+                formConfig.task.shift = .afternoon
             }
+            .buttonStyle(
+                FrequencyButtonStyle(
+                    style: .medium,
+                    image: LBIcon.evining.rawValue,
+                    selected: formConfig.period == .afternoon
+                )
+            )
 
-            ImageLabel(image: LBIcon.moon.rawValue,
-                       name: LBStrings.FrequencyRotine.night,
-                       font: LBFont.titleTask, segment: .default)
-            .background(formConfig.nightSetColor)
-            .cornerRadius(12)
-            .onTapGesture {
+            Button(LBStrings.FrequencyRotine.night) {
                 formConfig.period = .night
-                formConfig.buttonSelect()
+                formConfig.task.shift = .night
             }
+            .buttonStyle(
+                FrequencyButtonStyle(
+                    style: .dark,
+                    image: LBIcon.moon.rawValue,
+                    selected: formConfig.period == .night
+                )
+            )
         }
         .frame(height: 112)
     }
 }
-
 
 extension FrequencyRotineView {
     struct FormConfig {
@@ -130,39 +139,25 @@ extension FrequencyRotineView {
         var wednesday: Bool = false
         var thurday: Bool = false
         var friday: Bool = false
-        var satuday: Bool = false
+        var saturday: Bool = false
         var morningSet: Bool = true
         var afternoonSet: Bool = false
         var nightSet: Bool = false
         var period: Period = .morning
-        
-        var morningSetColor: Color {
-            morningSet ? LBColor.backgroundCards : LBColor.grayLight
-        }
-        
-        var afternoonSetColor: Color {
-            afternoonSet ? LBColor.backgroundAfternoon : LBColor.grayLight
-        }
-        
-        var nightSetColor: Color {
-            nightSet ? LBColor.text : LBColor.grayLight
-        }
-        
-        mutating func buttonSelect() {
-            morningSet = false
-            afternoonSet = false
-            nightSet = false
-            
-            switch period {
-            case .morning:
-                morningSet = true
+        var task: LocbookTask = .init()
 
-            case .afternoon:
-                afternoonSet = true
+        func makeFrequency() -> [LocbookTask.Frequency] {
+            var result: [LocbookTask.Frequency] = []
 
-            case .night:
-                nightSet = true
-            }
+            if sunday { result.append(.sun) }
+            if monday { result.append(.mon) }
+            if tuesday { result.append(.tue) }
+            if wednesday { result.append(.wed) }
+            if thurday { result.append(.thu) }
+            if friday { result.append(.fri) }
+            if saturday { result.append(.sat) }
+
+            return result
         }
     }
 }
@@ -179,6 +174,6 @@ extension FrequencyRotineView.Props: Hashable {
 
 #Preview {
     FrequencyRotineView(
-        props: .init(task: LocbookTask(categoryTitle: "Title of the task"), onSubmit: nil)
-    )
+        props: .init(task: LocbookTask(categoryTitle: "Title of the task"), title: "FrequencyRotineView", onNext: nil)
+    ).locbookToolbar(title: "Title of the task", onClose: {})
 }

@@ -1,6 +1,7 @@
 import SwiftUI
 
 enum LBIcon: String {
+    case arrowBack = "arrow_back"
     case bathTime = "bath_time"
     case brushTeeth = "brush_teeth"
     case cake
@@ -15,6 +16,7 @@ enum LBIcon: String {
     case dental
     case dinner
     case done
+    case edit
     case evining
     case eviningSmall = "evining_small"
     case eyeClose = "eye_close"
@@ -31,6 +33,7 @@ enum LBIcon: String {
     case locbook
     case locbookShadow = "locbook_shadow"
     case lock
+    case lockToggle = "lock_toggle"
     case logoAnimal = "logo_animal"
     case logoFull = "logo_full"
     case logoLetter = "logo_letter"
@@ -53,6 +56,7 @@ enum LBIcon: String {
     case plus
     case reading
     case reinforcement
+    case reorg
     case school
     case search
     case snack
@@ -62,7 +66,9 @@ enum LBIcon: String {
     case sun
     case sunSmall = "sun_small"
     case therapy
+    case trash
     case tvgame
+    case unlock = "unlock_toggle"
     case user
     case watchtv
     case water

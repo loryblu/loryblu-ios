@@ -6,7 +6,12 @@ enum Segment {
     case `default`
 }
 
-struct ImageLabel: View {
+struct ImageLabel: View, Identifiable {
+    var id: String {
+        uuid.uuidString
+    }
+
+    var uuid: UUID = UUID()
     let image: String
     let name: String
     let font: Font

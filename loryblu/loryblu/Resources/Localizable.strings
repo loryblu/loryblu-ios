@@ -1,13 +1,16 @@
 // ==================== General ====================
 
-"send" = "Enviar";
-"next" = "Proximo";
-"hello" = "Seja Bem Vindo!! 💙 ";
-"email" = "E-mail";
-"password" = "Senha";
-"confirm" = "Confirmar";
-"empty" = "";
 "cancel"= "Cancelar";
+"confirm" = "Confirmar";
+"delete" = "Deletar";
+"edit" = "Editar";
+"email" = "E-mail";
+"empty" = "";
+"hello" = "Seja Bem Vindo!! 💙 ";
+"next" = "Proximo";
+"password" = "Senha";
+"send" = "Enviar";
+"new_task" = "Nova tarefa";
 
 // ====================  Rules Password  =========================
 
@@ -38,7 +41,6 @@
 "textError_birthday" = "*Selecione uma data";
 "textError_gender" = "*Selecione um botão";
 "textError_agree" = "*Aceite a política de privacidade.";
-
 
 // ====================  Set Password  =========================
 
@@ -76,10 +78,10 @@
 
 // ==================== Home =========================
 
-"hello_title" = "Olá,";
-"locbook" = "Diário de Bordo";
-"trail_history" = "Trilha de Histórias";
-"trail_games" = "Trilha de Jogos";
+"home_hello" = "Olá,";
+"home_locbook" = "Diário de Bordo";
+"home_trail_history" = "Trilha de Histórias";
+"home_trail_games" = "Trilha de Jogos";
 
 // ==================== Locbook =========================
 
@@ -123,6 +125,29 @@
 "image_afternoon" = "Tarde";
 "image_night" = "Noite";
 
+// ==================== categoryID =========================
+
+"id_school" = "44f29121-b7b1-4d1a-bbff-5f1cf2fc5497";
+"id_reinforcement" = "e9f17f88-7c94-4953-a1eb-bce035c483d8";
+"id_languages" = "8c004aa0-961d-4ec4-b6fe-cb70cbc0c4c1";
+"id_sport" = "648d5ce9-6880-476e-bf98-0d7139aadb2c";
+"id_reading" = "549a70f6-3f9c-4640-9b1e-b23d69f1d213";
+"id_music" = "6166d506-b5f0-4feb-b900-e78d23f1e6ac";
+"id_psychologist" = "49f9aed1-e583-427c-82bf-a596513a6707";
+"id_speech_therapist" = "aa61d985-93a9-4ee0-b465-2e73848c84a8";
+"id_pedagogue" = "1b2f2a80-9b3e-455d-aab4-66ba68e6dac0";
+"id_occupational_therapist" = "7da68252-143d-4e98-b5b0-17c7ea9953a3";
+"id_bathTime" = "6dfc15bb-f422-4c75-b2cc-bf3e9806c76a";
+"id_brushTeeth" = "61123e8a-22af-421f-8e0d-6356c920803b";
+"id_breakfast" = "15d2ceb0-ab06-4cf6-8e46-54ccf8c1e556";
+"id_lunch" = "5431e6bf-c1d3-43b6-9289-843ca6455ee3";
+"id_snack" = "27e4089a-8643-487d-9634-2332419c2adc";
+"id_dinner" = "a6284261-134d-4c96-ad1c-4afd50ae493d";
+"id_water" = "161bf998-4bf3-4c9f-bd72-1542bad40ed9";
+"id_play" = "86008ded-8ba1-4719-a55e-ef6d8d4cb8b1";
+"id_watchtv" = "bc920d36-d024-481b-9923-3d2d6a478a81";
+"id_tvgame" = "63631065-7485-42d1-a9c1-523787954f56";
+
 // ==================== FrequencyRotine =========================
 
 "frequency_rotine_work_period" = "Selecione um turno:";
@@ -131,3 +156,13 @@
 "morning" = "Manhã";
 "afternoon" = "Tarde";
 "night" = "Noite";
+
+// ==================== SummaryLocbook =============================
+
+"summary_category" = "Categoria:";
+"summary_shift" = "Turno:";
+"summary_task" = "Tarefa:";
+"summary_frequency" = "Frequência:";
+"summary_topbar" = "Confira seu resumo";
+"summary_submitTask" = "Cadastrar Tarefa";
+"summary_frequencyDescription" = "Você pode escolher mais de um dia.";

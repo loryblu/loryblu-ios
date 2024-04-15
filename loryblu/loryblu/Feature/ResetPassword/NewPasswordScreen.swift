@@ -13,7 +13,7 @@ struct NewPasswordScreen: View {
                 .frame(width: 187, height: 47)
                 .padding(40)
             Text(LBStrings.SetPassword.create)
-                .font(LBFont.head6)
+                .font(LBFont.titleTask)
                 .padding(24)
             Text(LBStrings.SetPassword.reset)
                 .font(LBFont.bodySmall)

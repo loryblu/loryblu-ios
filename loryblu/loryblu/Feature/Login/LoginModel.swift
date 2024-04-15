@@ -15,7 +15,8 @@ class LoginModel: ObservableObject {
         Task {
             do {
                 let result = try await repository.login(email: email, password: password)
-                Container.shared.appData().setLoginStatusLogged()
+                Container.shared.appData().setLoginStatusLogged(user: result)
+                print(result)
             } catch {
                 print("Deu errado!")
             }

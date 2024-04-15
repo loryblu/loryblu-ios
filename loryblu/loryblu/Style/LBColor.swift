@@ -11,8 +11,11 @@ enum LBColor {
     static let buttonGenderEnable = Color("darkBlue")
     static let backgroundCards = Color("background_cards")
     static let backgroundCardsLabel = Color("title_primary")
+    static let backgroundCardsLabelDisable = Color("placeholder")
     static let backgroundImagetrails = Color("background_image_trails")
     static let borderImagetrails = Color("border_image_trails")
     static let titlePrimary = Color("title_primary")
-    static let backgroundAfternoon = Color("background_afternoon")
+    static let buttonBackgroundLight = Color("button_background_light")
+    static let buttonBackgroundMedium = Color("button_background_medium")
+    static let buttonBackgroundDark = Color("darkBlue")
 }
