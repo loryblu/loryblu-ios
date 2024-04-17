@@ -2,27 +2,20 @@ import Foundation
 import Factory
 class TaskRepository {
     let network: Network
-    
     init(network: Network) {
         self.network = network
     }
-    
     var token = Container.shared.appData
-    
     func taskRegister(with locBookTask: LocbookTask, token: String, childrenID: Int) async -> Bool {
-        
         guard let categoryId = locBookTask.categoryId?.description else {
             return false
         }
-        
         guard let shift = locBookTask.shift else {
             return false
         }
-        
         guard let frequency = locBookTask.frequency else {
             return false
         }
-        
         let request = RequestModel.Builder()
             .with(baseURL: Server.baseURL)
             .with(path: Endpoint.task)
@@ -38,7 +31,6 @@ class TaskRepository {
             .with(addHeaderName: "User-Agent", value: "LoryBlu(iOS)")
             .with(addHeaderName: "Content-Type", value: "application/json")
             .build()
-        
         do {
             _ = try await network.request(request: request, returning: ResponseMessage.self)
             return true
@@ -46,7 +38,6 @@ class TaskRepository {
             return false
         }
     }
-    
     func fetchTasks(token: String, childrenId: Int) async -> [TaskModel] {
         var tasks: [TaskModel] = []
         let request = RequestModel.Builder()
@@ -55,12 +46,10 @@ class TaskRepository {
             .with(method: .get)
             .with(addHeaderName: "Authorization", value: "Bearer \(token)")
             .build()
-        
         do {
             let result = try await network.request(request: request, returning: ResponseData<NetworkDataModel>.self)
-            tasks = getTasks(type: LBStrings.Locbook.titleStudy,tasks: result.data?.study ?? [])
-            tasks += getTasks(type: LBStrings.Locbook.titleRotine, tasks : result.data?.routine ?? [])
-            
+            tasks = getTasks(type: LBStrings.Locbook.titleStudy, tasks: result.data?.study ?? [])
+            tasks += getTasks(type: LBStrings.Locbook.titleRotine, tasks: result.data?.routine ?? [])
             return tasks
         } catch {
             return tasks
@@ -69,7 +58,7 @@ class TaskRepository {
 }
 
 extension TaskRepository {
-    func getTasks(type: String, tasks:[TasksNetworkModel]) -> [TaskModel] {
-        return tasks.toTasksModel(type: type)
+    func getTasks(type: String, tasks: [TasksNetworkModel]) -> [TaskModel] {
+        return tasks.toTasksModel(category: type)
     }
 }

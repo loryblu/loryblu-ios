@@ -27,8 +27,7 @@ struct LocbookSummaryView: View {
             return imageLabel.image
         }
         var taskName: String {
-            let imageLabel = getImageLabelByCategoryId(categoryId: task.categoryId!)
-            return imageLabel.name
+            return getImageLabelByCategoryId(categoryId: task.categoryId!).name
         }
     }
     // MARK: - Properties
@@ -94,7 +93,7 @@ struct LocbookSummaryView: View {
                     Spacer()
 
                     ZStack {
-                        Text(props.taskName)
+                        Text(props.task.taskTitle ?? props.taskName)
                             .padding(6)
                             .frame(maxWidth: .infinity, alignment: .center)
                             .multilineTextAlignment(.center)

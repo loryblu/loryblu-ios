@@ -17,6 +17,7 @@ struct LocbookTask {
     var order: Int?
     var categoryId: String?
     var categoryTitle: String?
+    var taskTitle: String?
     var updatedAt: Date?
 
     init(
@@ -26,6 +27,7 @@ struct LocbookTask {
         order: Int? = nil,
         categoryId: String? = nil,
         categoryTitle: String? = nil,
+        taskTitle: String? = nil,
         updatedAt: Date? = nil
     ) {
         self.childrenId = childrenId
@@ -34,6 +36,7 @@ struct LocbookTask {
         self.order = order
         self.categoryId = categoryId
         self.categoryTitle = categoryTitle
+        self.taskTitle = taskTitle
         self.updatedAt = updatedAt
     }
 }

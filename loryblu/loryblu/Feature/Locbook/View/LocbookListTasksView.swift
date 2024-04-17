@@ -79,7 +79,7 @@ struct ListTasksView: View {
             ScrollView(showsIndicators: false) {
                 ForEach(viewmodel.tasks, id: \.uuid) { model in
                     CardTaskRegistered(
-                        nameAction: model.actionType,
+                        nameAction: model.locbookTask.categoryTitle ?? "",
                         imageTask: model.image,
                         nameTask: model.locbookTask.categoryTitle ?? "",
                         backgroundCard: model.backgroundCard, isSecurity: .constant(securityIsOn))

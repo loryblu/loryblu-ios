@@ -17,56 +17,53 @@ struct TasksNetworkModel: Decodable {
 }
 
 extension [TasksNetworkModel] {
-    func toTasksModel(type: String) -> [TaskModel] {
-        let taskImages = type == LBStrings.Locbook.titleStudy ? ListTasks.study : ListTasks.rotine
+    func toTasksModel(category: String) -> [TaskModel] {
+        let taskImages = category == LBStrings.Locbook.titleStudy ? ListTasks.study : ListTasks.rotine
         return self.map { (task: TasksNetworkModel) -> TaskModel in
             let shift = getShift(shift: task.shift)
             let frequency = frequencyMapper(frequency: task.frequency)
-            let locbooktask = LocbookTask(childrenId: task.id, shift: shift,frequency: frequency, order: task.order, categoryId: task.categoryId,categoryTitle: task.categoryTitle,updatedAt: Date())
+            let locbooktask = LocbookTask(
+                childrenId: task.id,
+                shift: shift,
+                frequency: frequency,
+                order: task.order,
+                categoryId: task.categoryId,
+                categoryTitle: category,
+                taskTitle: task.categoryTitle,
+                updatedAt: Date()
+            )
             let img = taskImages.filter { label in
                 label.categoryID == task.categoryId
             }.first
-            return task.toTaskModel(actionType: type, locbookTask: locbooktask, img: img!.image)
+            return task.toTaskModel(locbookTask: locbooktask, img: img!.image)
         }
     }
-    
     private func frequencyMapper(frequency: [String]) -> [LocbookTask.Frequency] {
         return frequency.map { (item: String) -> LocbookTask.Frequency in
-            return getFrequency(frequency:item)
+            return getFrequency(frequency: item)
         }
     }
-    
     private func getFrequency(frequency: String) -> LocbookTask.Frequency {
         return switch frequency {
-        case "sun": 
-            LocbookTask.Frequency.sun
-        case "mon": 
-            LocbookTask.Frequency.mon
-        case "tue": 
-            LocbookTask.Frequency.tue
-        case "wed": 
-            LocbookTask.Frequency.wed
-        case "thu":
-            LocbookTask.Frequency.thu
-        case "fri": 
-            LocbookTask.Frequency.fri
-        default: 
-            LocbookTask.Frequency.sat
+        case "sun": LocbookTask.Frequency.sun
+        case "mon": LocbookTask.Frequency.mon
+        case "tue": LocbookTask.Frequency.tue
+        case "wed": LocbookTask.Frequency.wed
+        case "thu": LocbookTask.Frequency.thu
+        case "fri": LocbookTask.Frequency.fri
+        default: LocbookTask.Frequency.sat
         }
     }
     private func getShift(shift: String) -> LocbookTask.Shift {
         return switch shift {
-        case "morning": 
-            LocbookTask.Shift.morning
-        case "afternoon": 
-            LocbookTask.Shift.afternoon
-        default:
-            LocbookTask.Shift.night
+        case "morning": LocbookTask.Shift.morning
+        case "afternoon": LocbookTask.Shift.afternoon
+        default: LocbookTask.Shift.night
         }
     }
 }
 extension TasksNetworkModel {
-    func toTaskModel(actionType: String, locbookTask: LocbookTask, img: String) -> TaskModel {
+    func toTaskModel(locbookTask: LocbookTask, img: String) -> TaskModel {
         let backgroundCardColor: Color = switch locbookTask.shift {
         case LocbookTask.Shift.morning?:
             LBColor.buttonBackgroundLight
@@ -75,6 +72,10 @@ extension TasksNetworkModel {
         default:
             LBColor.buttonBackgroundDark
         }
-        return TaskModel(actionType: actionType, locbookTask: locbookTask, image: img, backgroundCard: backgroundCardColor)
+        return TaskModel(
+            locbookTask: locbookTask,
+            image: img,
+            backgroundCard: backgroundCardColor
+        )
     }
 }
