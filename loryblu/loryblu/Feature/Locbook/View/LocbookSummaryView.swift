@@ -152,7 +152,7 @@ struct LocbookSummaryView: View {
             if props.addOrEdit == AddOrEditType.edit {
                 HStack {
                     LBButton(title: "Cancelar", style: .primaryOff) {
-                        // cancel operation
+                        props.onClose?()
                     }
                     LBButton(title: "Salvar") {
 //                        Task {
