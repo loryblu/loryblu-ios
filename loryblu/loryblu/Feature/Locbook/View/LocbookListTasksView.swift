@@ -5,7 +5,7 @@ struct LocbookListTasksView: View {
 
     struct Props {
         let onNewTask: ClosureType.VoidVoid?
-        let onEditTask: ClosureType.VoidVoid?
+        let onEditTask: ClosureType.LocbookTaskVoid
     }
 
     var props: Props
@@ -33,7 +33,9 @@ struct LocbookListTasksView: View {
                 .padding(.init(top: 8, leading: 0, bottom: 0, trailing: 32))
             }
             ZStack {
-                ListTasksView(viewmodel: viewmodel, securityIsOn: $securityIsOn)
+                ListTasksView(viewmodel: viewmodel, securityIsOn: $securityIsOn, onEditTask: { closure in
+                    props.onEditTask(closure)
+                })
                     .frame(maxHeight: .infinity, alignment: .top)
                     .onAppear {
                         Task { await viewmodel.fetchTasks() }
@@ -60,6 +62,7 @@ struct LocbookListTasksView: View {
 struct ListTasksView: View {
     @ObservedObject var viewmodel: TasksViewModel
     @Binding var securityIsOn: Bool
+    let onEditTask: ClosureType.LocbookTaskVoid
 
     var body: some View {
         if viewmodel.tasks.isEmpty {
@@ -81,8 +84,10 @@ struct ListTasksView: View {
                     CardTaskRegistered(
                         nameAction: model.locbookTask.categoryTitle ?? "",
                         imageTask: model.image,
-                        nameTask: model.locbookTask.categoryTitle ?? "",
-                        backgroundCard: model.backgroundCard, isSecurity: .constant(securityIsOn))
+                        nameTask: model.locbookTask.taskTitle ?? "",
+                        backgroundCard: model.backgroundCard,
+                        onEdit: { onEditTask(model.locbookTask) },
+                        isSecurity: .constant(securityIsOn))
                     .padding(.bottom, 20)
                     .if(securityIsOn, transform: { view in
                         view
@@ -168,5 +173,5 @@ extension LocbookListTasksView.Props: Hashable {
 }
 
 #Preview {
-    LocbookListTasksView(props: .init(onNewTask: {}, onEditTask: {}))
+    LocbookListTasksView(props: .init(onNewTask: {}, onEditTask: {_ in }))
 }
