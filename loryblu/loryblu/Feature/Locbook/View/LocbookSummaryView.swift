@@ -177,14 +177,20 @@ struct LocbookSummaryView: View {
         .padding(.init(top: 24, leading: 24, bottom: 24, trailing: 24))
         .locbookToolbar(
             title: props.title,
-            onClose: {
-                props.onClose?()
-            }
+            showCloseButton: showCloseBtnOrNot(addOrEdit: props.addOrEdit),
+            onClose: { props.onClose?() }
         )
     }
 }
 
 extension LocbookSummaryView {
+    private func showCloseBtnOrNot(addOrEdit: AddOrEditType) -> Bool {
+        if addOrEdit == .edit {
+            return false
+        } else {
+            return true
+        }
+    }
     struct FormConfig {
         var sunday: Bool = false
         var monday: Bool = false
