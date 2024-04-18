@@ -102,7 +102,10 @@ struct LocbookNavigationStack: View {
             props: LocbookSummaryView.Props(
                 task: task, title: navigationTitle.title,
                 onSubmit: { pushFinishView() },
-                onClose: { dismiss() }
+                onClose: {
+                    addOrEdit == .add ? dismiss() : coordinator.popToRoot()
+                },
+                addOrEdit: addOrEdit
             )
         )
     }

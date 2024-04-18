@@ -23,9 +23,18 @@ struct LBToolBarModifier: ViewModifier {
 }
 
 extension View {
+    private func showCloseBtnOrNot(addOrEdit: AddOrEditType) -> Bool {
+        if addOrEdit == .edit {
+            return false
+        } else {
+            return true
+        }
+    }
     func locbookToolbar(
         title: String,
         showCloseButton: Bool = true,
+        addOrEdit: AddOrEditType = .add,
         onClose: @escaping () -> Void = {}) -> some View {
-        return self.modifier(LBToolBarModifier(title: title, showCloseButton: showCloseButton, onClose: onClose))}
+        let showCloseButtonAdapted = showCloseBtnOrNot(addOrEdit: addOrEdit) && showCloseButton
+        return self.modifier(LBToolBarModifier(title: title, showCloseButton: showCloseButtonAdapted, onClose: onClose))}
 }

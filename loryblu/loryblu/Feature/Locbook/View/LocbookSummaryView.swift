@@ -13,7 +13,7 @@ struct LocbookSummaryView: View {
         var title: String
         let onSubmit: ClosureType.VoidVoid?
         var onClose: ClosureType.VoidVoid?
-        let addOrEdit: AddOrEditType = AddOrEditType.edit // TODO: Have to inject AddOrEditType value
+        let addOrEdit: AddOrEditType
         var shifts: [ShiftItem] {
             getShiftsUiModel(shift: task.shift)
         }
@@ -34,8 +34,6 @@ struct LocbookSummaryView: View {
     let props: Props
     var model = SummaryViewModel()
     @State var formConfig = FormConfig()
-
-    @Environment(\.presentationMode) var presentationMode
 
     init(props: Props, formConfig: FormConfig = FormConfig()) {
         self.props = props
@@ -177,20 +175,13 @@ struct LocbookSummaryView: View {
         .padding(.init(top: 24, leading: 24, bottom: 24, trailing: 24))
         .locbookToolbar(
             title: props.title,
-            showCloseButton: showCloseBtnOrNot(addOrEdit: props.addOrEdit),
+            addOrEdit: props.addOrEdit,
             onClose: { props.onClose?() }
         )
     }
 }
 
 extension LocbookSummaryView {
-    private func showCloseBtnOrNot(addOrEdit: AddOrEditType) -> Bool {
-        if addOrEdit == .edit {
-            return false
-        } else {
-            return true
-        }
-    }
     struct FormConfig {
         var sunday: Bool = false
         var monday: Bool = false
@@ -306,5 +297,5 @@ extension LocbookSummaryView.Props: Hashable {
                     categoryId: LBStrings.CategoryID.tvgame,
                     categoryTitle: LBStrings.Locbook.titleStudy
                 ), title: "LocbookSumary",
-                onSubmit: {}))
+                onSubmit: {}, addOrEdit: AddOrEditType.add))
 }
