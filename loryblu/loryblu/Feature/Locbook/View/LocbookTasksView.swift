@@ -73,7 +73,7 @@ struct LocbookTasksView: View {
                             .inset(by: 0)
                             .strokeBorder(LBColor.titlePrimary, lineWidth: 4) : nil)
                         .opacity(formConfig.selectedCard == index ? 1.0 : 0.5)
-                        .animationOnPressed(action: {
+                        .animationOnPressed(listContext: true, action: {
                             self.formConfig.selectedCard = index
                             self.formConfig.task.categoryId = tasks[index].categoryID
                             self.formConfig.task.taskTitle = tasks[index].name

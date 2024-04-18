@@ -52,7 +52,7 @@ struct LocbookActionsView: View {
                             .strokeBorder(LBColor.titlePrimary, lineWidth: 4) : nil
                         )
                         .opacity(formConfig.selectedCard == index ? 1.0 : 0.5)
-                        .animationOnPressed(action: {
+                        .animationOnPressed(listContext: true, action: {
                             formConfig.selectedCard = index
                             formConfig.task.categoryTitle = model.actions[index].name
                         })
