@@ -154,7 +154,7 @@ struct LocbookSummaryView: View {
 
             if props.addOrEdit == AddOrEditType.edit {
                 HStack {
-                    LBButton(title: "Cancelar", style: .primaryOff) { presentationMode.wrappedValue.dismiss() }
+                    LBButton(title: "Cancelar", style: .primaryOff) { props.onClose?() }
                     LBButton(title: "Salvar") {
 //                        Task {
 //                            await  model.saveTask(task: props.task)
