@@ -12,6 +12,7 @@ struct LocbookSummaryView: View {
         var task: LocbookTask
         var title: String
         let onSubmit: ClosureType.VoidVoid?
+        let onEditTaskPath: ClosureType.EditTaskPath?
         var onClose: ClosureType.VoidVoid?
         let addOrEdit: AddOrEditType
         var shifts: [ShiftItem] {
@@ -62,7 +63,6 @@ struct LocbookSummaryView: View {
                 .background(LBColor.backgroundCards)
                 .cornerRadius(6.0)
                 .frame(maxWidth: 200, maxHeight: 200, alignment: .center)
-
             VStack(spacing: 8) {
                 HStack(alignment: .center, spacing: 5) {
                     Text(LBStrings.SummaryLocbook.category)
@@ -82,6 +82,9 @@ struct LocbookSummaryView: View {
                     .background(LBColor.buttonBackgroundDark)
                     .cornerRadius(6)
                     .foregroundColor(.white)
+                    .animationOnPressed(action: {
+                        props.onEditTaskPath?(EditPath.category)
+                    })
 
                 }.frame(maxWidth: .infinity)
 
@@ -297,5 +300,5 @@ extension LocbookSummaryView.Props: Hashable {
                     categoryId: LBStrings.CategoryID.tvgame,
                     categoryTitle: LBStrings.Locbook.titleStudy
                 ), title: "LocbookSumary",
-                onSubmit: {}, addOrEdit: AddOrEditType.add))
+                onSubmit: {}, onEditTaskPath: {_ in}, addOrEdit: AddOrEditType.add))
 }
