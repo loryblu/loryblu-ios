@@ -3,7 +3,7 @@
 "cancel"= "Cancelar";
 "confirm" = "Confirmar";
 "delete" = "Deletar";
-"edit" = "Editar Tarefa";
+"edit" = "Editar";
 "email" = "E-mail";
 "empty" = "";
 "hello" = "Seja Bem Vindo!! 💙 ";
@@ -166,3 +166,8 @@
 "summary_topbar" = "Confira seu resumo";
 "summary_submitTask" = "Cadastrar Tarefa";
 "summary_frequencyDescription" = "Você pode escolher mais de um dia.";
+
+// ==================== Toolbar ====================
+
+"toolbar_edit_title" = "Editar Tarefa";
+"toolbar_add_title" = "Nova Tarefa";

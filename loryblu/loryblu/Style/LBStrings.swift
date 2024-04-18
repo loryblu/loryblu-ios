@@ -18,6 +18,12 @@ extension LBStrings {
         static let send = String(localized: "send")
     }
 }
+extension LBStrings {
+    enum Toolbar {
+        static let editTaskTitle = String(localized: "toolbar_edit_title")
+        static let addTaskTitle = String(localized: "toolbar_add_title")
+    }
+}
 
 extension LBStrings {
     enum Home {

@@ -7,9 +7,9 @@ struct LocbookNavigationStack: View {
         var title: String {
             switch self {
             case .edit:
-                return LBStrings.General.edit
+                return LBStrings.Toolbar.editTaskTitle
             case .new:
-                return LBStrings.General.newTask
+                return LBStrings.Toolbar.addTaskTitle
             }
         }
     }
