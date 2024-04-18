@@ -44,7 +44,7 @@ struct LocbookActionsView: View {
     var actions: some View {
         VStack(spacing: 24) {
             Group {
-                ForEach(0..<model.options.count) { index in
+                ForEach(0..<model.options.count, id: \.self) { index in
                     model.options[index]
                         .overlay(formConfig.selectedCard == index ?
                                  RoundedRectangle(cornerRadius: 12)
@@ -52,10 +52,10 @@ struct LocbookActionsView: View {
                             .strokeBorder(LBColor.titlePrimary, lineWidth: 4) : nil
                         )
                         .opacity(formConfig.selectedCard == index ? 1.0 : 0.5)
-                        .onTapGesture {
+                        .animationOnPressed(action: {
                             formConfig.selectedCard = index
                             formConfig.task.categoryTitle = model.actions[index].name
-                        }
+                        })
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)

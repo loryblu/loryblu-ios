@@ -65,14 +65,14 @@ struct LocbookTasksView: View {
     var collectionView: some View {
         ScrollView(showsIndicators: false) {
             LazyVGrid(columns: columns, alignment: .center, spacing: 24 ) {
-                ForEach(0..<tasks.count) { index in
+                ForEach(0..<tasks.count, id: \.self) { index in
                     tasks[index]
                         .overlay(formConfig.selectedCard == index ?
                                  RoundedRectangle(cornerRadius: 12)
                             .inset(by: 0)
                             .strokeBorder(LBColor.titlePrimary, lineWidth: 4) : nil)
                         .opacity(formConfig.selectedCard == index ? 1.0 : 0.5)
-                        .onTapGesture {
+                        .animationOnPressed(action: {
                             self.formConfig.selectedCard = index
                             self.formConfig.task.categoryId = tasks[index].categoryID
                         }
