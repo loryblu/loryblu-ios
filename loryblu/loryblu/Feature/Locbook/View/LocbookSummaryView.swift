@@ -70,21 +70,11 @@ struct LocbookSummaryView: View {
                         .foregroundStyle(LBColor.text).frame(alignment: .topLeading)
                     Spacer()
 
-                    ZStack {
-                        Text(props.task.categoryTitle ?? "")
-                            .padding(6)
-                            .frame(maxWidth: .infinity, alignment: .center)
-                            .multilineTextAlignment(.center)
-                            .frame(maxWidth: .infinity)
-                            .font(LBFont.subtitle)
-                            .padding(6)
-                    }
-                    .background(LBColor.buttonBackgroundDark)
-                    .cornerRadius(6)
-                    .foregroundColor(.white)
-                    .animationOnPressed(action: {
-                        props.onEditTaskPath?(EditPath.category)
-                    })
+                    LBCategoryButton(
+                        title: props.task.categoryTitle,
+                        isClickable: props.addOrEdit == .add ? false : true,
+                        onClick: { props.onEditTaskPath?(EditPath.category) }
+                    )
 
                 }.frame(maxWidth: .infinity)
 
