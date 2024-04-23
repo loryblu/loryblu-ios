@@ -1,10 +1,3 @@
-//
-//  LBCategoryButton.swift
-//  LoryBlu
-//
-//  Created by Rodrigo Cavalcante on 18/04/24.
-//
-
 import Foundation
 import SwiftUI
 
@@ -14,7 +7,7 @@ struct LBCategoryButton: View {
     let onClick: () -> Void
     var body: some View {
             ZStack {
-                Text(title ?? "")
+                Text(title ?? String())
                     .padding(6)
                     .frame(maxWidth: .infinity, alignment: .center)
                     .multilineTextAlignment(.center)
