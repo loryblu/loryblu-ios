@@ -182,6 +182,13 @@ struct LocbookSummaryView: View {
 }
 
 extension LocbookSummaryView {
+    private func showCloseBtnOrNot(addOrEdit: AddOrEditType) -> Bool {
+        if addOrEdit == .edit {
+            return false
+        } else {
+            return true
+        }
+    }
     struct FormConfig {
         var sunday: Bool = false
         var monday: Bool = false
