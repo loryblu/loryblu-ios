@@ -130,6 +130,7 @@
 		931D12DB2B82C25300589032 /* TasksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931D12DA2B82C25300589032 /* TasksViewModel.swift */; };
 		9366FB182B6B063900A57F89 /* LBToolBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9366FB172B6B063900A57F89 /* LBToolBarModifier.swift */; };
 		93698CC62B89B9E7005EB154 /* TabRowShiftItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93698CC52B89B9E7005EB154 /* TabRowShiftItems.swift */; };
+		93B2DD622BC8E39C009BEB16 /* AddOrEditType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B2DD612BC8E39C009BEB16 /* AddOrEditType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -230,6 +231,7 @@
 		931D12DA2B82C25300589032 /* TasksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewModel.swift; sourceTree = "<group>"; };
 		9366FB172B6B063900A57F89 /* LBToolBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBToolBarModifier.swift; sourceTree = "<group>"; };
 		93698CC52B89B9E7005EB154 /* TabRowShiftItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabRowShiftItems.swift; sourceTree = "<group>"; };
+		93B2DD612BC8E39C009BEB16 /* AddOrEditType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrEditType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -381,6 +383,7 @@
 		8C2A684E2AF5DFB000B74295 /* Locbook */ = {
 			isa = PBXGroup;
 			children = (
+				93B2DD602BC8E36B009BEB16 /* Enums */,
 				912BC3822B2934CB00B7F336 /* Model */,
 				91CA96602B28996D00611F91 /* View */,
 			);
@@ -688,6 +691,14 @@
 			path = Toolbar;
 			sourceTree = "<group>";
 		};
+		93B2DD602BC8E36B009BEB16 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				93B2DD612BC8E39C009BEB16 /* AddOrEditType.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -860,6 +871,7 @@
 				8C9CBCFB2A7ACF46001DBD35 /* ExternalLogin.swift in Sources */,
 				9132A8952B083BE600106524 /* LoginNavigationCoordinator.swift in Sources */,
 				8C225AB12AE703B100E43B2C /* ImageLabel.swift in Sources */,
+				93B2DD622BC8E39C009BEB16 /* AddOrEditType.swift in Sources */,
 				91B4AC442AD19CFA003A7FE5 /* AppEntryPoint.swift in Sources */,
 				911B843C2AD1C0B200F59DD2 /* AuthenticationRepository.swift in Sources */,
 				8C9CBD0D2A7AE97B001DBD35 /* RegisterChildView.swift in Sources */,

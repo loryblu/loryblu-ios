@@ -5,6 +5,7 @@ struct CardTaskRegistered: View {
     let imageTask: String
     let nameTask: String
     let backgroundCard: Color
+    let onEdit: () -> Void
     typealias Localizable = LBStrings.General
     @Binding var isSecurity: Bool
 
@@ -28,7 +29,7 @@ struct CardTaskRegistered: View {
                 Image(imageTask)
                 if isSecurity {
                     VStack {
-                        Button(Localizable.edit) {}
+                        Button(Localizable.edit) { onEdit() }
                             .buttonStyle(EditTaskButton(image: LBIcon.edit.rawValue))
 
                         Button(Localizable.delete) {}
@@ -56,19 +57,19 @@ struct CardTaskRegistered: View {
             nameAction: LBStrings.Locbook.titleRotine,
             imageTask: LBIcon.bathTime.rawValue,
             nameTask: LBStrings.NameImage.bathTime,
-            backgroundCard: LBColor.buttonBackgroundLight,
+            backgroundCard: LBColor.buttonBackgroundLight, onEdit: {},
             isSecurity: .constant(true))
         CardTaskRegistered(
             nameAction: LBStrings.Locbook.titleStudy,
             imageTask: LBIcon.school.rawValue,
             nameTask: LBStrings.NameImage.bathTime,
-            backgroundCard: LBColor.buttonBackgroundMedium,
+            backgroundCard: LBColor.buttonBackgroundMedium, onEdit: {},
             isSecurity: .constant(false))
         CardTaskRegistered(
             nameAction: LBStrings.Locbook.titleRotine,
             imageTask: LBIcon.bathTime.rawValue,
             nameTask: LBStrings.NameImage.bathTime,
-            backgroundCard: LBColor.buttonGenderEnable,
+            backgroundCard: LBColor.buttonGenderEnable, onEdit: {},
             isSecurity: .constant(true))
     }
 

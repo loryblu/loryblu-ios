@@ -41,9 +41,9 @@ struct LocbookNavigationStack: View {
                             navigationTitle = .new
                             pushLocbookActions()
                         },
-                        onEditTask: {
+                        onEditTask: { locbookTask in
                             navigationTitle = .edit
-                            pushLocbookActions()
+                            pushSummaryView(task: locbookTask, addOrEdit: AddOrEditType.edit)
                         }
                     )
                 )
@@ -97,7 +97,7 @@ struct LocbookNavigationStack: View {
         )
     }
 
-    private func pushSummaryView(task: LocbookTask) {
+    private func pushSummaryView(task: LocbookTask, addOrEdit: AddOrEditType = AddOrEditType.add) {
         coordinator.pushSummaryView(
             props: LocbookSummaryView.Props(
                 task: task, title: navigationTitle.title,

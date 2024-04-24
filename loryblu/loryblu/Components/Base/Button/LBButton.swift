@@ -26,12 +26,12 @@ struct LBButton: View {
                 .foregroundColor( ((style == .primaryActivated) ? .white : LBColor.buttonPrimary))
                 .frame(height: 44)
                 .frame(maxWidth: .infinity)
-                .background((style == .primaryActivated) ? LBColor.buttonPrimary : LBColor.grayLight)
+                .background((style == .primaryActivated) ? LBColor.buttonPrimary : .white)
                 .cornerRadius(10)
                 .overlay(
                     RoundedRectangle(cornerRadius: 10)
                         .inset(by: -1)
-                        .stroke((style == .primaryActivated) ? .white :  LBColor.grayLight))
+                        .stroke((style == .primaryActivated) ? .white :  LBColor.buttonPrimary))
         }
     }
 }

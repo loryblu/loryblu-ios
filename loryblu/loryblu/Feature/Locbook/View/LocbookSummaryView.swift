@@ -13,7 +13,7 @@ struct LocbookSummaryView: View {
         var title: String
         let onSubmit: ClosureType.VoidVoid?
         var onClose: ClosureType.VoidVoid?
-
+        let addOrEdit: AddOrEditType = AddOrEditType.edit // TODO: Have to inject AddOrEditType value
         var shifts: [ShiftItem] {
             getShiftsUiModel(shift: task.shift)
         }
@@ -27,8 +27,7 @@ struct LocbookSummaryView: View {
             return imageLabel.image
         }
         var taskName: String {
-            let imageLabel = getImageLabelByCategoryId(categoryId: task.categoryId!)
-            return imageLabel.name
+            return getImageLabelByCategoryId(categoryId: task.categoryId!).name
         }
     }
     // MARK: - Properties
@@ -72,7 +71,7 @@ struct LocbookSummaryView: View {
                     Spacer()
 
                     ZStack {
-                        Text(props.task.categoryTitle!)
+                        Text(props.task.categoryTitle ?? "")
                             .padding(6)
                             .frame(maxWidth: .infinity, alignment: .center)
                             .multilineTextAlignment(.center)
@@ -94,7 +93,7 @@ struct LocbookSummaryView: View {
                     Spacer()
 
                     ZStack {
-                        Text(props.taskName)
+                        Text(props.task.taskTitle ?? props.taskName)
                             .padding(6)
                             .frame(maxWidth: .infinity, alignment: .center)
                             .multilineTextAlignment(.center)
@@ -150,26 +149,48 @@ struct LocbookSummaryView: View {
                 }
             }
 
-            LBButton(title: LBStrings.SummaryLocbook.submitTask) {
-                Task {
-                    await  model.saveTask(task: props.task)
-                    if model.stateTask == .success {
-                        props.onSubmit?()
+            if props.addOrEdit == AddOrEditType.edit {
+                HStack {
+                    LBButton(title: "Cancelar", style: .primaryOff) {
+                        // cancel operation
+                    }
+                    LBButton(title: "Salvar") {
+//                        Task {
+//                            await  model.saveTask(task: props.task)
+//                            if model.stateTask == .success {
+//                                props.onSubmit?()
+//                            }
+//                        }
                     }
                 }
-            }
+                } else {
+                    LBButton(title: LBStrings.SummaryLocbook.submitTask) {
+                        Task {
+                            await  model.saveTask(task: props.task)
+                            if model.stateTask == .success {
+                                props.onSubmit?()
+                            }
+                        }
+                    }
+                }
         }
         .padding(.init(top: 24, leading: 24, bottom: 24, trailing: 24))
         .locbookToolbar(
             title: props.title,
-            onClose: {
-                props.onClose?()
-            }
+            showCloseButton: showCloseBtnOrNot(addOrEdit: props.addOrEdit),
+            onClose: { props.onClose?() }
         )
     }
 }
 
 extension LocbookSummaryView {
+    private func showCloseBtnOrNot(addOrEdit: AddOrEditType) -> Bool {
+        if addOrEdit == .edit {
+            return false
+        } else {
+            return true
+        }
+    }
     struct FormConfig {
         var sunday: Bool = false
         var monday: Bool = false
@@ -222,7 +243,7 @@ extension LocbookSummaryView.Props {
 
         shifts = shifts.map { (shift: ShiftItem) -> ShiftItem in
             var mutableShift = shift
-            if (shift.name == shiftName) {
+            if shift.name == shiftName {
                 mutableShift.isSelected = true
             }
             return mutableShift
