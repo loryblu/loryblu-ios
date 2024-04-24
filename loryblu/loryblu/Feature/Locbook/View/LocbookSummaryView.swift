@@ -13,7 +13,7 @@ struct LocbookSummaryView: View {
         var title: String
         let onSubmit: ClosureType.VoidVoid?
         var onClose: ClosureType.VoidVoid?
-        let addOrEdit: AddOrEditType = AddOrEditType.edit // TODO: Have to inject AddOrEditType value
+        let addOrEdit: AddOrEditType
         var shifts: [ShiftItem] {
             getShiftsUiModel(shift: task.shift)
         }
@@ -151,9 +151,7 @@ struct LocbookSummaryView: View {
 
             if props.addOrEdit == AddOrEditType.edit {
                 HStack {
-                    LBButton(title: "Cancelar", style: .primaryOff) {
-                        // cancel operation
-                    }
+                    LBButton(title: "Cancelar", style: .primaryOff) { props.onClose?() }
                     LBButton(title: "Salvar") {
 //                        Task {
 //                            await  model.saveTask(task: props.task)
@@ -177,7 +175,7 @@ struct LocbookSummaryView: View {
         .padding(.init(top: 24, leading: 24, bottom: 24, trailing: 24))
         .locbookToolbar(
             title: props.title,
-            showCloseButton: showCloseBtnOrNot(addOrEdit: props.addOrEdit),
+            addOrEdit: props.addOrEdit,
             onClose: { props.onClose?() }
         )
     }
@@ -306,5 +304,5 @@ extension LocbookSummaryView.Props: Hashable {
                     categoryId: LBStrings.CategoryID.tvgame,
                     categoryTitle: LBStrings.Locbook.titleStudy
                 ), title: "LocbookSumary",
-                onSubmit: {}))
+                onSubmit: {}, addOrEdit: AddOrEditType.add))
 }
