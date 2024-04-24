@@ -7,9 +7,9 @@ struct LocbookNavigationStack: View {
         var title: String {
             switch self {
             case .edit:
-                return LBStrings.General.edit
+                return LBStrings.Toolbar.editTaskTitle
             case .new:
-                return LBStrings.General.newTask
+                return LBStrings.Toolbar.addTaskTitle
             }
         }
     }
@@ -39,7 +39,7 @@ struct LocbookNavigationStack: View {
                     .init(
                         onNewTask: {
                             navigationTitle = .new
-                            pushLocbookActions()
+                            pushLocbookActions(locbookTask: LocbookTask())
                         },
                         onEditTask: { locbookTask in
                             navigationTitle = .edit
@@ -55,33 +55,33 @@ struct LocbookNavigationStack: View {
         }
     }
 
-    private func pushLocbookActions() {
+    private func pushLocbookActions(locbookTask: LocbookTask, addOrEdit: AddOrEditType = AddOrEditType.add) {
         coordinator.pushActionsView(
             props: LocbookActionsView.Props(
-                task: LocbookTask(), title: navigationTitle.title,
-                onNext: { task, action in
-                    pushLocbookTasks(task: task, action: action)
+                task: locbookTask, title: navigationTitle.title,
+                addOrEdit: addOrEdit,
+                onNext: { task in
+                    pushLocbookTasks(task: task, addOrEdit: addOrEdit)
                 },
                 onClose: { dismiss() }
             )
         )
     }
 
-    private func pushLocbookTasks(task: LocbookTask, action: Int) {
-        let loryRouteId = 1
+    private func pushLocbookTasks(task: LocbookTask, addOrEdit: AddOrEditType) {
         var actionType: LocbookTasksView.ActionType = .study
-
-        if action == loryRouteId {
-            actionType = .routine
-        }
+        actionType = task.categoryTitle == LBStrings.Locbook.titleStudy ? .study : .routine
 
         coordinator.pushTasksView(
             props: LocbookTasksView.Props(
+                addOrEdit: addOrEdit,
                 task: task,
                 title: navigationTitle.title,
                 actionType: actionType,
                 onNext: { newTask in
-                    pushLocbookRoutine(task: newTask) },
+                    addOrEdit == .add ? pushLocbookRoutine(task: newTask) : pushSummaryView(
+                        task: newTask, addOrEdit: addOrEdit)
+                },
                 onClose: { dismiss() }
             )
         )
@@ -102,6 +102,13 @@ struct LocbookNavigationStack: View {
             props: LocbookSummaryView.Props(
                 task: task, title: navigationTitle.title,
                 onSubmit: { pushFinishView() },
+                onEditTaskPath: { path in
+                    switch path {
+                    case .category:
+                        return pushLocbookActions(locbookTask: task, addOrEdit: addOrEdit)
+                    case .task: break
+                    }
+                },
                 onClose: {
                     addOrEdit == .add ? dismiss() : coordinator.popToRoot()
                 },

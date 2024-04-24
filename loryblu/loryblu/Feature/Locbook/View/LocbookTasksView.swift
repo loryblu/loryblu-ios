@@ -7,6 +7,7 @@ struct LocbookTasksView: View {
     }
 
     struct Props {
+        let addOrEdit: AddOrEditType
         let task: LocbookTask
         let title: String
         let actionType: ActionType
@@ -57,7 +58,7 @@ struct LocbookTasksView: View {
         .onAppear {
             formConfig.task = props.task
         }
-        .locbookToolbar(title: props.title, onClose: { props.onClose?() })
+        .locbookToolbar(title: props.title, addOrEdit: props.addOrEdit, onClose: { props.onClose?() })
         .padding(24)
 
     }
@@ -65,17 +66,18 @@ struct LocbookTasksView: View {
     var collectionView: some View {
         ScrollView(showsIndicators: false) {
             LazyVGrid(columns: columns, alignment: .center, spacing: 24 ) {
-                ForEach(0..<tasks.count) { index in
+                ForEach(0..<tasks.count, id: \.self) { index in
                     tasks[index]
                         .overlay(formConfig.selectedCard == index ?
                                  RoundedRectangle(cornerRadius: 12)
                             .inset(by: 0)
                             .strokeBorder(LBColor.titlePrimary, lineWidth: 4) : nil)
                         .opacity(formConfig.selectedCard == index ? 1.0 : 0.5)
-                        .onTapGesture {
+                        .animationOnPressed(listContext: true, action: {
                             self.formConfig.selectedCard = index
                             self.formConfig.task.categoryId = tasks[index].categoryID
-                        }
+                            self.formConfig.task.taskTitle = tasks[index].name
+                        })
                 }
                 .frame(minWidth: 148, minHeight: 156)
             }
@@ -112,6 +114,6 @@ extension LocbookTasksView.Props: Hashable {
 
 #Preview {
     LocbookTasksView(
-        props: .init(task: LocbookTask(), title: "Nova tarefa", actionType: .routine)
+        props: .init(addOrEdit: AddOrEditType.add, task: LocbookTask(), title: "Nova tarefa", actionType: .routine)
     ).locbookToolbar(title: "Title of the task", onClose: {})
 }

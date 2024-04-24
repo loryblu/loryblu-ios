@@ -12,7 +12,6 @@ struct LocbookActionModel {
         .init(name: Localizable.loryStudy, image: .dailyStudy),
         .init(name: Localizable.loryRotine, image: LBIcon.dailyRotine)
     ]
-    
     var options: [ImageLabel] {
         actions.map {
             ImageLabel(
