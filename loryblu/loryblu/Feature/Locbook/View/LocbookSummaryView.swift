@@ -63,11 +63,13 @@ struct LocbookSummaryView: View {
                 .background(LBColor.backgroundCards)
                 .cornerRadius(6.0)
                 .frame(maxWidth: 200, maxHeight: 200, alignment: .center)
+
             VStack(spacing: 8) {
                 HStack(alignment: .center, spacing: 5) {
                     Text(LBStrings.SummaryLocbook.category)
                         .font(LBFont.head5)
-                        .foregroundStyle(LBColor.text).frame(alignment: .topLeading)
+                        .foregroundStyle(LBColor.text)
+                        .frame(alignment: .topLeading)
                     Spacer()
 
                     LBCategoryButton(
@@ -85,19 +87,11 @@ struct LocbookSummaryView: View {
                         .frame(alignment: .topLeading)
                     Spacer()
 
-                    ZStack {
-                        Text(props.task.taskTitle ?? props.taskName)
-                            .padding(6)
-                            .frame(maxWidth: .infinity, alignment: .center)
-                            .multilineTextAlignment(.center)
-                            .padding(6)
-                            .font(LBFont.subtitle)
-                    }
-                    .background(LBColor.buttonBackgroundDark)
-                    .cornerRadius(6)
-                    .frame(maxWidth: .infinity)
-                    .foregroundColor( .white)
-
+                    LBCategoryButton(
+                        title: props.task.taskTitle ?? props.taskName,
+                        isClickable: props.addOrEdit == .add ? false : true,
+                        onClick: { props.onEditTaskPath?(EditPath.task) }
+                    )
                 }.frame(maxWidth: .infinity)
             }
 
@@ -154,16 +148,16 @@ struct LocbookSummaryView: View {
 //                        }
                     }
                 }
-                } else {
-                    LBButton(title: LBStrings.SummaryLocbook.submitTask) {
-                        Task {
-                            await  model.saveTask(task: props.task)
-                            if model.stateTask == .success {
-                                props.onSubmit?()
-                            }
+            } else {
+                LBButton(title: LBStrings.SummaryLocbook.submitTask) {
+                    Task {
+                        await  model.saveTask(task: props.task)
+                        if model.stateTask == .success {
+                            props.onSubmit?()
                         }
                     }
                 }
+            }
         }
         .padding(.init(top: 24, leading: 24, bottom: 24, trailing: 24))
         .locbookToolbar(
@@ -196,7 +190,7 @@ extension LocbookSummaryView {
         var period: Period = .morning
     }
 }
-
+// swiftlint:disable switch_case_alignment
 extension LocbookSummaryView.Props {
     func getShiftsUiModel(shift: LocbookTask.Shift?) -> [ShiftItem] {
         let shiftName = switch shift {
@@ -207,7 +201,7 @@ extension LocbookSummaryView.Props {
         default:
             LBStrings.FrequencyRotine.night
         }
-
+// swiftlint:enable switch_case_alignment
         var shifts = [
             ShiftItem(
                 name: LBStrings.FrequencyRotine.morning,
@@ -297,5 +291,5 @@ extension LocbookSummaryView.Props: Hashable {
                     categoryId: LBStrings.CategoryID.tvgame,
                     categoryTitle: LBStrings.Locbook.titleStudy
                 ), title: "LocbookSumary",
-                onSubmit: {}, onEditTaskPath: {_ in}, addOrEdit: AddOrEditType.add))
+                onSubmit: {}, onEditTaskPath: {_ in}, addOrEdit: AddOrEditType.edit))
 }

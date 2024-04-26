@@ -67,10 +67,22 @@ struct ImageLabel: View, Identifiable {
 
 #Preview {
     Group {
-        ImageLabel(image: LBIcon.dailyStudy.rawValue, name: LBStrings.NameImage.therapist, font: LBFont.titleAction, segment: .home)
+        ImageLabel(
+            image: LBIcon.dailyStudy.rawValue,
+            name: LBStrings.NameImage.therapist,
+            font: LBFont.titleAction,
+            segment: .home)
 
-        ImageLabel(image: LBIcon.dailyStudy.rawValue, name: LBStrings.NameImage.therapist, font: LBFont.titleAction, segment: .locbook)
+        ImageLabel(
+            image: LBIcon.dailyStudy.rawValue,
+            name: LBStrings.NameImage.therapist,
+            font: LBFont.titleAction,
+            segment: .locbook)
 
-        ImageLabel(image: LBIcon.dailyStudy.rawValue, name: LBStrings.NameImage.therapist, font: LBFont.titleAction, segment: .default)
+        ImageLabel(
+            image: LBIcon.dailyStudy.rawValue,
+            name: LBStrings.NameImage.therapist,
+            font: LBFont.titleAction,
+            segment: .default)
     }.padding()
 }
