@@ -107,7 +107,8 @@ struct LocbookSummaryView: View {
 
             LBShiftItemsComponent(
                 shifts: model.shifts,
-                onClick: { shiftSelected in 
+                isClickable: props.addOrEdit == .edit,
+                onClick: { shiftSelected in
                     model.onChangeShift(
                         shiftSelected: shiftSelected,
                         changeTaskShift: { shift in

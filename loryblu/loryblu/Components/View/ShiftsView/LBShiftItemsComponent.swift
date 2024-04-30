@@ -10,6 +10,7 @@ struct ShiftItem {
 
 struct LBShiftItemsComponent: View {
     let shifts: [ShiftItem]
+    var isClickable: Bool = true
     var onClick: (String) -> Void = { _ in }
     var body: some View {
         HStack {
@@ -25,7 +26,11 @@ struct LBShiftItemsComponent: View {
                         .font(LBFont.bodyLarge)
                         .foregroundColor(.gray)
                         .frame(maxWidth: .infinity, alignment: .center)
-                        .onTapGesture { onClick(shift.name) }
+                        .onTapGesture {
+                            if(isClickable) {
+                                onClick(shift.name)
+                            }
+                        }
                 }
             }
         }
