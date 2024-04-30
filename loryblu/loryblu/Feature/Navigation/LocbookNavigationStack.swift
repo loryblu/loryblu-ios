@@ -106,7 +106,8 @@ struct LocbookNavigationStack: View {
                     switch path {
                     case .category:
                         return pushLocbookActions(locbookTask: task, addOrEdit: addOrEdit)
-                    case .task: break
+                    case .task:
+                        return pushLocbookTasks(task: task, addOrEdit: addOrEdit)
                     }
                 },
                 onClose: {

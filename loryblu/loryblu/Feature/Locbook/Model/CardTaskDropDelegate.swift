@@ -37,5 +37,3 @@ struct CardTaskDropDelegate: DropDelegate {
         }
     }
 }
-
-

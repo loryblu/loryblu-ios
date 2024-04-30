@@ -3,7 +3,7 @@
 "cancel"= "Cancelar";
 "confirm" = "Confirmar";
 "delete" = "Deletar";
-"edit" = "Editar Tarefa";
+"edit" = "Editar";
 "email" = "E-mail";
 "empty" = "";
 "hello" = "Seja Bem Vindo!! 💙 ";
@@ -65,7 +65,7 @@
 "login_required_field" = "*Campo obrigatório";
 "login_enter" = "entrar";
 "login_or_divider" = "ou";
-"login_forgot_password" = "Esqueceu sua senha ?";
+"login_forgot_password" = "Esqueceu sua senha?";
 "login_dont_have_an_account" = "Não tem uma conta ?";
 "login_register_now" = "Registrar agora";
 "login_remember" = "Lembrar";
