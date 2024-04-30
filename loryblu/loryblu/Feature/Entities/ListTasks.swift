@@ -61,7 +61,7 @@ struct ListTasks {
             image: LBIcon.bathTime.rawValue,
             name: Localizable.bathTime,
             font: LBFont.titleTask, segment: .locbook,
-            categoryID: LBStrings.CategoryID.bathTime) ,
+            categoryID: LBStrings.CategoryID.bathTime),
         ImageLabel(
             image: LBIcon.brushTeeth.rawValue,
             name: Localizable.brushTeeth,
