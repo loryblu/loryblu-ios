@@ -1,10 +1,3 @@
-//
-//  LBShiftItemsComponent.swift
-//  LoryBlu
-//
-//  Created by Rodrigo Cavalcante on 05/02/24.
-//
-
 import SwiftUI
 
 struct ShiftItem {
@@ -16,10 +9,8 @@ struct ShiftItem {
 }
 
 struct LBShiftItemsComponent: View {
-    
     let shifts: [ShiftItem]
     var onClick: (String) -> Void = { _ in }
-    
     var body: some View {
         HStack {
             ForEach(shifts, id: \.name) { shift in
