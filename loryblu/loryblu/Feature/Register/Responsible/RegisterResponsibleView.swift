@@ -10,34 +10,36 @@ struct RegisterResponsibleView: View {
     @FocusState private var focusedField: RegisterResponsibleViewModel.FocusedField?
 
     var body: some View {
-        VStack {
+        GeometryReader { _ in
             VStack {
-                Image(LBIcon.logoName.rawValue).resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 187, height: 47)
-                    .clipped()
-                    .padding(.bottom, 40)
+                VStack {
+                    Image(LBIcon.logoName.rawValue).resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 187, height: 47)
+                        .clipped()
+                        .padding(.bottom, 40)
 
-                Text(LBStrings.Register.responsible)
-                    .font(LBFont.titleTask)
-                    .foregroundColor(LBColor.text)
-                    .frame(width: 242, alignment: .topLeading)
-                    .padding(.bottom, 32)
+                    Text(LBStrings.Register.responsible)
+                        .font(LBFont.titleTask)
+                        .foregroundColor(LBColor.text)
+                        .frame(width: 242, alignment: .topLeading)
+                        .padding(.bottom, 32)
+                }
+                form
             }
-            form
-        }
-        .navigationDestination(isPresented: $showNext) {
-            RegisterChildView(
-                viewModel: viewModel.makeRegisterChildViewModel()
-            )
-            .toolbarRole(.editor)
-            .environmentObject(coordinator)
-        }
-        .navigationTitle(LBStrings.General.empty)
-        .padding(.bottom, 40)
-        .onChange(of: viewModel.errorField) { newValue in
-            if newValue != .none {
-                focusedField = newValue
+            .navigationDestination(isPresented: $showNext) {
+                RegisterChildView(
+                    viewModel: viewModel.makeRegisterChildViewModel()
+                )
+                .toolbarRole(.editor)
+                .environmentObject(coordinator)
+            }
+            .navigationTitle(LBStrings.General.empty)
+            .padding(.bottom, 40)
+            .onChange(of: viewModel.errorField) { newValue in
+                if newValue != .none {
+                    focusedField = newValue
+                }
             }
         }
     }
