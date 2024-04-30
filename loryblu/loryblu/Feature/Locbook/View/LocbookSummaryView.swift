@@ -36,7 +36,9 @@ struct LocbookSummaryView: View {
     init(props: Props, formConfig: FormConfig? = nil) {
         self.props = props
         print(props.task)
-        self._formConfig  = State(initialValue: FormConfig(task: props.task))
+        var formConfig = FormConfig(task: props.task)
+        formConfig.initProperties(frequency: props.task.frequency)
+        self._formConfig  = State(initialValue: formConfig)
     }
 
     var body: some View {
@@ -123,33 +125,26 @@ struct LocbookSummaryView: View {
                     .foregroundStyle(LBColor.text)
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
-
-            ZStack {
-                RoundedRectangle(cornerRadius: 12)
-                    .fill(LBColor.backgroundCards)
-                    .frame(height: 45)
-
-                HStack(spacing: 20) {
-                    ForEach(props.frequencyDaysOfWeek, id: \.frequency) { day in
-                        ZStack {
-                            Circle()
-                                .frame(width: 30, height: 30)
-                                .foregroundColor(day.isSelected ? LBColor.buttonGenderEnable : LBColor.backgroundCards)
-
-                            Text(day.name)
-                                .font(LBFont.head6)
-                                .foregroundColor(day.isSelected ? LBColor.backgroundCards : LBColor.buttonGenderEnable)
-                        }
-                    }
-                }
-            }
-
+            LBWeekDaysButton(
+                sunday: $formConfig.sunday,
+                monday: $formConfig.monday,
+                tuesday: $formConfig.tuesday,
+                wednesday: $formConfig.wednesday,
+                thurday: $formConfig.thurday,
+                friday: $formConfig.friday,
+                satuday: $formConfig.saturday,
+                isClickable: props.addOrEdit == .edit
+            )
             if props.addOrEdit == AddOrEditType.edit {
                 HStack {
                     LBButton(title: "Cancelar", style: .primaryOff) { props.onClose?() }
                     LBButton(title: "Salvar") {
+                        let frequency = formConfig.makeFrequency()
+                        formConfig.task?.frequency = formConfig.makeFrequency()
                         // Here we should submit with formConfig.task
-                        print(formConfig.task)
+                        if !frequency.isEmpty {
+                            print(formConfig.task)
+                        }
                     }
                 }
             } else {
@@ -183,7 +178,42 @@ extension LocbookSummaryView {
         }
     }
     struct FormConfig {
+        var sunday: Bool = false
+        var monday: Bool = false
+        var tuesday: Bool = false
+        var wednesday: Bool = false
+        var thurday: Bool = false
+        var friday: Bool = false
+        var saturday: Bool = false
+        var frequency: [LocbookTask.Frequency]?
         var task: LocbookTask?
+
+        mutating func initProperties(frequency: [LocbookTask.Frequency]?) {
+            if frequency != nil {
+                frequency?.forEach { day in
+                    switch day {
+                    case .sun: self.sunday = true
+                    case .mon: self.monday = true
+                    case .tue: self.tuesday = true
+                    case .wed: self.wednesday = true
+                    case .thu: self.thurday = true
+                    case .fri: self.friday = true
+                    case .sat: self.saturday = true
+                    }
+                }
+            }
+        }
+        func makeFrequency() -> [LocbookTask.Frequency] {
+            var result: [LocbookTask.Frequency] = []
+            if sunday { result.append(.sun) }
+            if monday { result.append(.mon) }
+            if tuesday { result.append(.tue) }
+            if wednesday { result.append(.wed) }
+            if thurday { result.append(.thu) }
+            if friday { result.append(.fri) }
+            if saturday { result.append(.sat) }
+            return result
+        }
     }
 }
 // swiftlint:disable switch_case_alignment

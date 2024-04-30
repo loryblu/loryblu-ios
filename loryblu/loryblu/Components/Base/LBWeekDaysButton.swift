@@ -8,44 +8,44 @@ struct LBWeekDaysButton: View {
     @Binding var thurday: Bool
     @Binding var friday: Bool
     @Binding var satuday: Bool
-    
+    var isClickable: Bool = true
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 12)
                 .fill(LBColor.backgroundCards)
                 .frame(height: 45)
-            
-            HStack(spacing: 20) {
-                DaysButton(text: "D") {
+                HStack(spacing: 20) {
+                    
+                DaysButton(isSet: sunday,text: "D", isClickable: isClickable) {
                     sunday.toggle()
                 }
-                DaysButton(text: "S") {
+                DaysButton(isSet: monday,text: "S", isClickable: isClickable) {
                     monday.toggle()
                 }
-                DaysButton(text: "T") {
+                DaysButton(isSet: tuesday,text: "T", isClickable: isClickable) {
                     tuesday.toggle()
                 }
-                DaysButton(text: "Q") {
+                DaysButton(isSet: wednesday,text: "Q", isClickable: isClickable) {
                     wednesday.toggle()
                 }
-                DaysButton(text: "Q") {
+                DaysButton(isSet: thurday, text: "Q", isClickable: isClickable) {
                     thurday.toggle()
                 }
-                DaysButton(text: "S") {
+                DaysButton(isSet: friday, text: "S", isClickable: isClickable) {
                     friday.toggle()
                 }
-                DaysButton(text: "S") {
+                DaysButton(isSet: satuday, text: "S", isClickable: isClickable) {
                     satuday.toggle()
                 }
-
             }
         }
     }
 }
 
 struct DaysButton: View {
-    @State var isSet: Bool = false
+    @State var isSet: Bool
     @State var text: String
+    var isClickable: Bool
     var action: () -> Void
     var body: some View {
         ZStack {
@@ -53,8 +53,10 @@ struct DaysButton: View {
                 .frame(width: 30, height: 30)
                 .foregroundColor(isSet ? LBColor.buttonGenderEnable : LBColor.backgroundCards)
                 .onTapGesture {
-                    isSet.toggle()
-                    action()
+                    if isClickable {
+                        isSet.toggle()
+                        action()
+                    }
                 }
                 Text(text)
                 .font(LBFont.titleTask)
