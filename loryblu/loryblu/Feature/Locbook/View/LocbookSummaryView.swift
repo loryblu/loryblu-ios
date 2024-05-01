@@ -15,9 +15,6 @@ struct LocbookSummaryView: View {
         let onEditTaskPath: ClosureType.EditTaskPath?
         var onClose: ClosureType.VoidVoid?
         let addOrEdit: AddOrEditType
-        var shifts: [ShiftItem] {
-            getShiftsUiModel(shift: task.shift)
-        }
 
         var frequencyDaysOfWeek: [DayOfWeekOption] {
             getDaysOfWeekOptionsUiModel(frequency: task.frequency)
@@ -33,13 +30,13 @@ struct LocbookSummaryView: View {
     }
     // MARK: - Properties
     let props: Props
-    var model = SummaryViewModel()
-    @State var formConfig = FormConfig()
+    @StateObject var model = SummaryViewModel()
+    @State var formConfig: FormConfig
 
-    init(props: Props, formConfig: FormConfig = FormConfig()) {
+    init(props: Props, formConfig: FormConfig? = nil) {
         self.props = props
         print(props.task)
-        self.formConfig = formConfig
+        self._formConfig  = State(initialValue: FormConfig(task: props.task))
     }
 
     var body: some View {
@@ -102,7 +99,18 @@ struct LocbookSummaryView: View {
                 .foregroundStyle(LBColor.text)
                 .frame(maxWidth: .infinity, alignment: .leading)
 
-            LBShiftItemsComponent(shifts: props.shifts)
+            LBShiftItemsComponent(
+                shifts: model.shifts,
+                isClickable: props.addOrEdit == .edit,
+                onClick: { shiftSelected in
+                    model.onChangeShift(
+                        shiftSelected: shiftSelected,
+                        changeTaskShift: { shift in
+                            formConfig.task?.shift = shift
+                        }
+                    )
+                }
+            )
 
             VStack {
                 Text(LBStrings.SummaryLocbook.frequency)
@@ -140,12 +148,8 @@ struct LocbookSummaryView: View {
                 HStack {
                     LBButton(title: "Cancelar", style: .primaryOff) { props.onClose?() }
                     LBButton(title: "Salvar") {
-//                        Task {
-//                            await  model.saveTask(task: props.task)
-//                            if model.stateTask == .success {
-//                                props.onSubmit?()
-//                            }
-//                        }
+                        // Here we should submit with formConfig.task
+                        print(formConfig.task)
                     }
                 }
             } else {
@@ -164,7 +168,9 @@ struct LocbookSummaryView: View {
             title: props.title,
             addOrEdit: props.addOrEdit,
             onClose: { props.onClose?() }
-        )
+        ).onAppear {
+            model.iniShifts(shift: props.task.shift)
+        }
     }
 }
 
@@ -177,17 +183,7 @@ extension LocbookSummaryView {
         }
     }
     struct FormConfig {
-        var sunday: Bool = false
-        var monday: Bool = false
-        var tuesday: Bool = false
-        var wednesday: Bool = false
-        var thurday: Bool = false
-        var friday: Bool = false
-        var satuday: Bool = false
-        var morningSet: Bool = true
-        var afternoonSet: Bool = false
-        var nightSet: Bool = false
-        var period: Period = .morning
+        var task: LocbookTask?
     }
 }
 // swiftlint:disable switch_case_alignment

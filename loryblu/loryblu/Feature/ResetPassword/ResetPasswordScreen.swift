@@ -11,7 +11,6 @@ struct ResetPasswordScreen: View {
             LBIcon.logoName.image
                 .frame(width: 187, height: 47)
                 .padding(.bottom, 40)
-            
             Text(LBStrings.SetPassword.forget)
                 .font(LBFont.titleTask)
                 .padding(.bottom, 24)
@@ -33,7 +32,6 @@ struct ResetPasswordScreen: View {
                 }
             }
             .padding(.bottom, 10)
-            
             HStack {
                 Spacer()
                 switch model.fecht {
@@ -54,7 +52,6 @@ struct ResetPasswordScreen: View {
         }
         .padding(.horizontal, 24)
     }
-    
 }
 
 extension ResetPasswordScreen {

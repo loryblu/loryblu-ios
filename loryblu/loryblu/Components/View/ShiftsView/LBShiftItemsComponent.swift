@@ -1,10 +1,3 @@
-//
-//  LBShiftItemsComponent.swift
-//  LoryBlu
-//
-//  Created by Rodrigo Cavalcante on 05/02/24.
-//
-
 import SwiftUI
 
 struct ShiftItem {
@@ -16,10 +9,10 @@ struct ShiftItem {
 }
 
 struct LBShiftItemsComponent: View {
-    
+    @State var isPressed: Bool = false
     let shifts: [ShiftItem]
+    var isClickable: Bool = true
     var onClick: (String) -> Void = { _ in }
-    
     var body: some View {
         HStack {
             ForEach(shifts, id: \.name) { shift in
@@ -28,13 +21,26 @@ struct LBShiftItemsComponent: View {
                         shiftName: shift.name,
                         iconValue: shift.icon,
                         backgroundColor: shift.backgroundColor,
-                        letterColor: shift.letterColor)
+                        letterColor: shift.letterColor).scaleEffect(isPressed ? 1.50 : 1.0)
                 } else {
                     Text(shift.name)
                         .font(LBFont.bodyLarge)
                         .foregroundColor(.gray)
                         .frame(maxWidth: .infinity, alignment: .center)
-                        .onTapGesture { onClick(shift.name) }
+                        .onTapGesture {
+                            if isClickable {
+                                onClick(shift.name)
+                                withAnimation(.easeInOut(duration: 0.5)) {
+                                    isPressed = true
+                                }
+                                Task {
+                                    try? await Task.sleep(nanoseconds: 7_500_000_000)
+                                }
+                                withAnimation {
+                                    isPressed = false
+                                }
+                            }
+                        }
                 }
             }
         }
