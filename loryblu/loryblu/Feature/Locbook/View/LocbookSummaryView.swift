@@ -40,67 +40,95 @@ struct LocbookSummaryView: View {
         formConfig.initProperties(frequency: props.task.frequency)
         self._formConfig  = State(initialValue: formConfig)
     }
-
     var body: some View {
-        VStack(alignment: .center, spacing: 15) {
-            LBIcon.progression4.image
-                .resizable()
-                .scaledToFit()
-                .frame(maxWidth: .infinity, minHeight: 40)
-
-            Image(props.taskImage)
-                .resizable()
-                .scaledToFit()
-                .scenePadding()
-                .overlay {
-                    RoundedRectangle(cornerRadius: 6.0)
-                        .stroke(
-                            LBColor.backgroundCardsLabel,
-                            lineWidth: 4.0
-                        )
-                }
-                .background(LBColor.backgroundCards)
-                .cornerRadius(6.0)
-                .frame(maxWidth: 200, maxHeight: 200, alignment: .center)
-
-            VStack(spacing: 8) {
-                HStack(alignment: .center, spacing: 5) {
-                    Text(LBStrings.SummaryLocbook.category)
-                        .font(LBFont.head5)
-                        .foregroundStyle(LBColor.text)
-                        .frame(alignment: .topLeading)
-                    Spacer()
-
-                    LBCategoryButton(
-                        title: props.task.categoryTitle,
-                        isClickable: props.addOrEdit == .add ? false : true,
-                        onClick: { props.onEditTaskPath?(EditPath.category) }
-                    )
-
-                }.frame(maxWidth: .infinity)
-
-                HStack(alignment: .center, spacing: 24) {
-                    Text(LBStrings.SummaryLocbook.task)
-                        .font(LBFont.head5)
-                        .foregroundStyle(LBColor.text)
-                        .frame(alignment: .topLeading)
-                    Spacer()
-
-                    LBCategoryButton(
-                        title: props.task.taskTitle ?? props.taskName,
-                        isClickable: props.addOrEdit == .add ? false : true,
-                        onClick: { props.onEditTaskPath?(EditPath.task) }
-                    )
-                }.frame(maxWidth: .infinity)
+        VStack(alignment: .center, spacing: props.addOrEdit == .add ? 15 : 32) {
+            summaryProgressBar
+            summaryTaskImage
+            summaryTaskProps
+            summaryShiftContent
+            summaryFrequencyContent
+            summaryButtonConfirmation
+        }
+        .locbookToolbar(
+            title: props.title,
+            addOrEdit: props.addOrEdit,
+            onClose: { props.onClose?() }
+        ).onAppear {
+            model.iniShifts(shift: props.task.shift)
+        }
+        .padding(24)
+    }
+    var summaryProgressBar: some View {
+        let isVisible = props.addOrEdit == .add
+        return Group {
+            if isVisible {
+                LBIcon.progression4.image
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxWidth: .infinity, minHeight: 40)
             }
+        }
+    }
+    var summaryTaskImage: some View {
+        Image(props.taskImage)
+            .resizable()
+            .scaledToFit()
+            .scenePadding()
+            .overlay {
+                RoundedRectangle(cornerRadius: 6.0)
+                    .stroke(
+                        LBColor.backgroundCardsLabel,
+                        lineWidth: 4.0
+                    )
+            }
+            .background(LBColor.backgroundCards)
+            .cornerRadius(6.0)
+            .frame(maxWidth: 200, maxHeight: 200, alignment: .center)
+    }
+    var summaryTaskProps: some View {
+        VStack(spacing: 8) {
+            categoryContent
+            nameContent
+        }
+    }
+    var categoryContent: some View {
+        HStack(alignment: .center, spacing: 5) {
+            Text(LBStrings.SummaryLocbook.category)
+                .font(LBFont.head5)
+                .foregroundStyle(LBColor.text)
+                .frame(alignment: .topLeading)
+            Spacer()
 
+            LBCategoryButton(
+                title: props.task.categoryTitle,
+                isClickable: props.addOrEdit == .add ? false : true,
+                onClick: { props.onEditTaskPath?(EditPath.category) }
+            )
+
+        }.frame(maxWidth: .infinity)
+    }
+    var nameContent: some View {
+        HStack(alignment: .center, spacing: 24) {
+            Text(LBStrings.SummaryLocbook.task)
+                .font(LBFont.head5)
+                .foregroundStyle(LBColor.text)
+                .frame(alignment: .topLeading)
+            Spacer()
+
+            LBCategoryButton(
+                title: props.task.taskTitle ?? props.taskName,
+                isClickable: props.addOrEdit == .add ? false : true,
+                onClick: { props.onEditTaskPath?(EditPath.task) }
+            )
+        }.frame(maxWidth: .infinity)
+    }
+    var summaryShiftContent: some View {
+        VStack {
             Divider()
-
             Text(LBStrings.SummaryLocbook.shift)
                 .font(LBFont.head5)
                 .foregroundStyle(LBColor.text)
                 .frame(maxWidth: .infinity, alignment: .leading)
-
             LBShiftItemsComponent(
                 shifts: model.shifts,
                 isClickable: props.addOrEdit == .edit,
@@ -113,18 +141,18 @@ struct LocbookSummaryView: View {
                     )
                 }
             )
-
-            VStack {
-                Text(LBStrings.SummaryLocbook.frequency)
-                    .font(LBFont.head5)
-                    .foregroundStyle(LBColor.text)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-
-                Text(LBStrings.SummaryLocbook.frequencyDescription)
-                    .font(LBFont.bodyMedium)
-                    .foregroundStyle(LBColor.text)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-            }
+        }
+    }
+    var summaryFrequencyContent: some View {
+        VStack {
+            Text(LBStrings.SummaryLocbook.frequency)
+                .font(LBFont.head5)
+                .foregroundStyle(LBColor.text)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            Text(LBStrings.SummaryLocbook.frequencyDescription)
+                .font(LBFont.bodyMedium)
+                .foregroundStyle(LBColor.text)
+                .frame(maxWidth: .infinity, alignment: .leading)
             LBWeekDaysButton(
                 sunday: $formConfig.sunday,
                 monday: $formConfig.monday,
@@ -135,36 +163,39 @@ struct LocbookSummaryView: View {
                 satuday: $formConfig.saturday,
                 isClickable: props.addOrEdit == .edit
             )
-            if props.addOrEdit == AddOrEditType.edit {
-                HStack {
-                    LBButton(title: "Cancelar", style: .primaryOff) { props.onClose?() }
-                    LBButton(title: "Salvar") {
-                        let frequency = formConfig.makeFrequency()
-                        formConfig.task?.frequency = formConfig.makeFrequency()
-                        // Here we should submit with formConfig.task
-                        if !frequency.isEmpty {
-                            print(formConfig.task)
-                        }
-                    }
-                }
+        }
+    }
+    var summaryButtonConfirmation: some View {
+        let editFlow = props.addOrEdit == AddOrEditType.edit
+        return Group {
+            if editFlow {
+                editConfirmationContent
             } else {
-                LBButton(title: LBStrings.SummaryLocbook.submitTask) {
-                    Task {
-                        await  model.saveTask(task: props.task)
-                        if model.stateTask == .success {
-                            props.onSubmit?()
-                        }
-                    }
+                addConfirmationContent
+            }
+        }
+    }
+    var addConfirmationContent: some View {
+        LBButton(title: LBStrings.SummaryLocbook.submitTask) {
+            Task {
+                await  model.saveTask(task: props.task)
+                if model.stateTask == .success {
+                    props.onSubmit?()
                 }
             }
         }
-        .padding(.init(top: 24, leading: 24, bottom: 24, trailing: 24))
-        .locbookToolbar(
-            title: props.title,
-            addOrEdit: props.addOrEdit,
-            onClose: { props.onClose?() }
-        ).onAppear {
-            model.iniShifts(shift: props.task.shift)
+    }
+    var editConfirmationContent: some View {
+        HStack {
+            LBButton(title: "Cancelar", style: .primaryOff) { props.onClose?() }
+            LBButton(title: "Salvar") {
+                let frequency = formConfig.makeFrequency()
+                formConfig.task?.frequency = formConfig.makeFrequency()
+                // Here we should submit with formConfig.task
+                if !frequency.isEmpty {
+                    print(formConfig.task)
+                }
+            }
         }
     }
 }
