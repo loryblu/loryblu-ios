@@ -17,9 +17,9 @@ struct LocbookListTasksView: View {
             VStack(spacing: 16) {
                 LBFrequencyFilter(viewmodel: viewmodel)
 
-                TabRowShiftItems(
-                    viewmodel: viewmodel,
-                    onSelect: { shift in viewmodel.filterByShifts(shiftSelected: shift) }
+                LBShiftItemsComponent(
+                    shifts: viewmodel.shifts,
+                    onClick: { shift in viewmodel.filterByShifts(shiftSelected: shift) }
                 )
             }
             .padding(.init(top: 16, leading: 24, bottom: 0, trailing: 24))

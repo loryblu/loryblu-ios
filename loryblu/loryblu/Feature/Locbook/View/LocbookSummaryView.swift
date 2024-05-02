@@ -15,9 +15,6 @@ struct LocbookSummaryView: View {
         let onEditTaskPath: ClosureType.EditTaskPath?
         var onClose: ClosureType.VoidVoid?
         let addOrEdit: AddOrEditType
-        var shifts: [ShiftItem] {
-            getShiftsUiModel(shift: task.shift)
-        }
 
         var frequencyDaysOfWeek: [DayOfWeekOption] {
             getDaysOfWeekOptionsUiModel(frequency: task.frequency)
@@ -33,138 +30,173 @@ struct LocbookSummaryView: View {
     }
     // MARK: - Properties
     let props: Props
-    var model = SummaryViewModel()
-    @State var formConfig = FormConfig()
+    @StateObject var model = SummaryViewModel()
+    @State var formConfig: FormConfig
 
-    init(props: Props, formConfig: FormConfig = FormConfig()) {
+    init(props: Props, formConfig: FormConfig? = nil) {
         self.props = props
         print(props.task)
-        self.formConfig = formConfig
+        var formConfig = FormConfig(task: props.task)
+        formConfig.initProperties(frequency: props.task.frequency)
+        self._formConfig  = State(initialValue: formConfig)
     }
-
     var body: some View {
-        VStack(alignment: .center, spacing: 15) {
-            LBIcon.progression4.image
-                .resizable()
-                .scaledToFit()
-                .frame(maxWidth: .infinity, minHeight: 40)
-
-            Image(props.taskImage)
-                .resizable()
-                .scaledToFit()
-                .scenePadding()
-                .overlay {
-                    RoundedRectangle(cornerRadius: 6.0)
-                        .stroke(
-                            LBColor.backgroundCardsLabel,
-                            lineWidth: 4.0
-                        )
-                }
-                .background(LBColor.backgroundCards)
-                .cornerRadius(6.0)
-                .frame(maxWidth: 200, maxHeight: 200, alignment: .center)
-
-            VStack(spacing: 8) {
-                HStack(alignment: .center, spacing: 5) {
-                    Text(LBStrings.SummaryLocbook.category)
-                        .font(LBFont.head5)
-                        .foregroundStyle(LBColor.text)
-                        .frame(alignment: .topLeading)
-                    Spacer()
-
-                    LBCategoryButton(
-                        title: props.task.categoryTitle,
-                        isClickable: props.addOrEdit == .add ? false : true,
-                        onClick: { props.onEditTaskPath?(EditPath.category) }
-                    )
-
-                }.frame(maxWidth: .infinity)
-
-                HStack(alignment: .center, spacing: 24) {
-                    Text(LBStrings.SummaryLocbook.task)
-                        .font(LBFont.head5)
-                        .foregroundStyle(LBColor.text)
-                        .frame(alignment: .topLeading)
-                    Spacer()
-
-                    LBCategoryButton(
-                        title: props.task.taskTitle ?? props.taskName,
-                        isClickable: props.addOrEdit == .add ? false : true,
-                        onClick: { props.onEditTaskPath?(EditPath.task) }
-                    )
-                }.frame(maxWidth: .infinity)
-            }
-
-            Divider()
-
-            Text(LBStrings.SummaryLocbook.shift)
-                .font(LBFont.head5)
-                .foregroundStyle(LBColor.text)
-                .frame(maxWidth: .infinity, alignment: .leading)
-
-            LBShiftItemsComponent(shifts: props.shifts)
-
-            VStack {
-                Text(LBStrings.SummaryLocbook.frequency)
-                    .font(LBFont.head5)
-                    .foregroundStyle(LBColor.text)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-
-                Text(LBStrings.SummaryLocbook.frequencyDescription)
-                    .font(LBFont.bodyMedium)
-                    .foregroundStyle(LBColor.text)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-            }
-
-            ZStack {
-                RoundedRectangle(cornerRadius: 12)
-                    .fill(LBColor.backgroundCards)
-                    .frame(height: 45)
-
-                HStack(spacing: 20) {
-                    ForEach(props.frequencyDaysOfWeek, id: \.frequency) { day in
-                        ZStack {
-                            Circle()
-                                .frame(width: 30, height: 30)
-                                .foregroundColor(day.isSelected ? LBColor.buttonGenderEnable : LBColor.backgroundCards)
-
-                            Text(day.name)
-                                .font(LBFont.head6)
-                                .foregroundColor(day.isSelected ? LBColor.backgroundCards : LBColor.buttonGenderEnable)
-                        }
-                    }
-                }
-            }
-
-            if props.addOrEdit == AddOrEditType.edit {
-                HStack {
-                    LBButton(title: "Cancelar", style: .primaryOff) { props.onClose?() }
-                    LBButton(title: "Salvar") {
-//                        Task {
-//                            await  model.saveTask(task: props.task)
-//                            if model.stateTask == .success {
-//                                props.onSubmit?()
-//                            }
-//                        }
-                    }
-                }
-            } else {
-                LBButton(title: LBStrings.SummaryLocbook.submitTask) {
-                    Task {
-                        await  model.saveTask(task: props.task)
-                        if model.stateTask == .success {
-                            props.onSubmit?()
-                        }
-                    }
-                }
-            }
+        VStack(alignment: .center, spacing: props.addOrEdit == .add ? 15 : 32) {
+            summaryProgressBar
+            summaryTaskImage
+            summaryTaskProps
+            summaryShiftContent
+            summaryFrequencyContent
+            summaryButtonConfirmation
         }
-        .padding(.init(top: 24, leading: 24, bottom: 24, trailing: 24))
         .locbookToolbar(
             title: props.title,
             addOrEdit: props.addOrEdit,
             onClose: { props.onClose?() }
-        )
+        ).onAppear {
+            model.iniShifts(shift: props.task.shift)
+        }
+        .padding(24)
+    }
+    var summaryProgressBar: some View {
+        let isVisible = props.addOrEdit == .add
+        return Group {
+            if isVisible {
+                LBIcon.progression4.image
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxWidth: .infinity, minHeight: 40)
+            }
+        }
+    }
+    var summaryTaskImage: some View {
+        Image(props.taskImage)
+            .resizable()
+            .scaledToFit()
+            .scenePadding()
+            .overlay {
+                RoundedRectangle(cornerRadius: 6.0)
+                    .stroke(
+                        LBColor.backgroundCardsLabel,
+                        lineWidth: 4.0
+                    )
+            }
+            .background(LBColor.backgroundCards)
+            .cornerRadius(6.0)
+            .frame(maxWidth: 200, maxHeight: 200, alignment: .center)
+    }
+    var summaryTaskProps: some View {
+        VStack(spacing: 8) {
+            categoryContent
+            nameContent
+        }
+    }
+    var categoryContent: some View {
+        HStack(alignment: .center, spacing: 5) {
+            Text(LBStrings.SummaryLocbook.category)
+                .font(LBFont.head5)
+                .foregroundStyle(LBColor.text)
+                .frame(alignment: .topLeading)
+            Spacer()
+
+            LBCategoryButton(
+                title: props.task.categoryTitle,
+                isClickable: props.addOrEdit == .add ? false : true,
+                onClick: { props.onEditTaskPath?(EditPath.category) }
+            )
+
+        }.frame(maxWidth: .infinity)
+    }
+    var nameContent: some View {
+        HStack(alignment: .center, spacing: 24) {
+            Text(LBStrings.SummaryLocbook.task)
+                .font(LBFont.head5)
+                .foregroundStyle(LBColor.text)
+                .frame(alignment: .topLeading)
+            Spacer()
+
+            LBCategoryButton(
+                title: props.task.taskTitle ?? props.taskName,
+                isClickable: props.addOrEdit == .add ? false : true,
+                onClick: { props.onEditTaskPath?(EditPath.task) }
+            )
+        }.frame(maxWidth: .infinity)
+    }
+    var summaryShiftContent: some View {
+        VStack {
+            Divider()
+            Text(LBStrings.SummaryLocbook.shift)
+                .font(LBFont.head5)
+                .foregroundStyle(LBColor.text)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            LBShiftItemsComponent(
+                shifts: model.shifts,
+                isClickable: props.addOrEdit == .edit,
+                onClick: { shiftSelected in
+                    model.onChangeShift(
+                        shiftSelected: shiftSelected,
+                        changeTaskShift: { shift in
+                            formConfig.task?.shift = shift
+                        }
+                    )
+                }
+            )
+        }
+    }
+    var summaryFrequencyContent: some View {
+        VStack {
+            Text(LBStrings.SummaryLocbook.frequency)
+                .font(LBFont.head5)
+                .foregroundStyle(LBColor.text)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            Text(LBStrings.SummaryLocbook.frequencyDescription)
+                .font(LBFont.bodyMedium)
+                .foregroundStyle(LBColor.text)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            LBWeekDaysButton(
+                sunday: $formConfig.sunday,
+                monday: $formConfig.monday,
+                tuesday: $formConfig.tuesday,
+                wednesday: $formConfig.wednesday,
+                thurday: $formConfig.thurday,
+                friday: $formConfig.friday,
+                satuday: $formConfig.saturday,
+                isClickable: props.addOrEdit == .edit
+            )
+        }
+    }
+    var summaryButtonConfirmation: some View {
+        let editFlow = props.addOrEdit == AddOrEditType.edit
+        return Group {
+            if editFlow {
+                editConfirmationContent
+            } else {
+                addConfirmationContent
+            }
+        }
+    }
+    var addConfirmationContent: some View {
+        LBButton(title: LBStrings.SummaryLocbook.submitTask) {
+            Task {
+                await  model.saveTask(task: props.task)
+                if model.stateTask == .success {
+                    props.onSubmit?()
+                }
+            }
+        }
+    }
+    var editConfirmationContent: some View {
+        HStack {
+            LBButton(title: "Cancelar", style: .primaryOff) { props.onClose?() }
+            LBButton(title: "Salvar") {
+                let frequency = formConfig.makeFrequency()
+                formConfig.task?.frequency = formConfig.makeFrequency()
+                // Here we should submit with formConfig.task
+                if !frequency.isEmpty {
+                    print(formConfig.task)
+                }
+            }
+        }
     }
 }
 
@@ -183,11 +215,36 @@ extension LocbookSummaryView {
         var wednesday: Bool = false
         var thurday: Bool = false
         var friday: Bool = false
-        var satuday: Bool = false
-        var morningSet: Bool = true
-        var afternoonSet: Bool = false
-        var nightSet: Bool = false
-        var period: Period = .morning
+        var saturday: Bool = false
+        var frequency: [LocbookTask.Frequency]?
+        var task: LocbookTask?
+
+        mutating func initProperties(frequency: [LocbookTask.Frequency]?) {
+            if frequency != nil {
+                frequency?.forEach { day in
+                    switch day {
+                    case .sun: self.sunday = true
+                    case .mon: self.monday = true
+                    case .tue: self.tuesday = true
+                    case .wed: self.wednesday = true
+                    case .thu: self.thurday = true
+                    case .fri: self.friday = true
+                    case .sat: self.saturday = true
+                    }
+                }
+            }
+        }
+        func makeFrequency() -> [LocbookTask.Frequency] {
+            var result: [LocbookTask.Frequency] = []
+            if sunday { result.append(.sun) }
+            if monday { result.append(.mon) }
+            if tuesday { result.append(.tue) }
+            if wednesday { result.append(.wed) }
+            if thurday { result.append(.thu) }
+            if friday { result.append(.fri) }
+            if saturday { result.append(.sat) }
+            return result
+        }
     }
 }
 // swiftlint:disable switch_case_alignment

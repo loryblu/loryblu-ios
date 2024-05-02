@@ -33,27 +33,15 @@ struct LocbookTasksView: View {
             return ListTasks.rotine
         }
     }
-
     let columns = [
         GridItem(.flexible(), spacing: 16),
         GridItem(.flexible())
     ]
-
     var body: some View {
         VStack(spacing: 20) {
-            LBIcon.progression2.image
-                .resizable()
-                .scaledToFit()
-                .frame(maxWidth: .infinity, minHeight: 40)
-
-            HStack {
-                Text(LBStrings.Locbook.taskTitle)
-                    .font(LBFont.buttonSmall)
-                    .foregroundStyle(LBColor.titlePrimary)
-                Spacer()
-            }
-
-            collectionView
+            tasksProgressBar
+            tasksTitleScreen
+            tasksCollectionView
         }
         .onAppear {
             formConfig.task = props.task
@@ -62,8 +50,26 @@ struct LocbookTasksView: View {
         .padding(24)
 
     }
-
-    var collectionView: some View {
+    var tasksTitleScreen: some View {
+        HStack {
+            Text(LBStrings.Locbook.taskTitle)
+                .font(LBFont.buttonSmall)
+                .foregroundStyle(LBColor.titlePrimary)
+            Spacer()
+        }
+    }
+    var tasksProgressBar: some View {
+        let isVisible: Bool = props.addOrEdit == .add
+        return Group {
+            if isVisible {
+                LBIcon.progression2.image
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxWidth: .infinity, minHeight: 40)
+            }
+        }
+    }
+    var tasksCollectionView: some View {
         ScrollView(showsIndicators: false) {
             LazyVGrid(columns: columns, alignment: .center, spacing: 24 ) {
                 ForEach(0..<tasks.count, id: \.self) { index in

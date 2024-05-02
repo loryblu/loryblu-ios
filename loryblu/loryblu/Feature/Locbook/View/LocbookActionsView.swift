@@ -19,28 +19,38 @@ struct LocbookActionsView: View {
 
     var body: some View {
         VStack(spacing: 20) {
-            LBIcon.progression1.image
-                .resizable()
-                .scaledToFit()
-                .frame(maxWidth: .infinity, minHeight: 40)
-
-            HStack {
-                Text(LBStrings.Locbook.actionTitle)
-                    .font(LBFont.buttonSmall)
-                    .foregroundStyle(LBColor.titlePrimary)
-                Spacer()
-            }
-
+            actionsProgressBar
+            actionsTitleScreen
             actions
-
-            LBButton(title: LBStrings.General.next, style: .primaryActivated) {
-                props.onNext?(formConfig.task)
-            }
+            actionsButtonConfirmation
         }
         .locbookToolbar(title: props.title, addOrEdit: props.addOrEdit, onClose: { props.onClose?() })
         .padding(24)
     }
-
+    var actionsButtonConfirmation: some View {
+        LBButton(title: LBStrings.General.next, style: .primaryActivated) {
+            props.onNext?(formConfig.task)
+        }
+    }
+    var actionsTitleScreen: some View {
+        HStack {
+            Text(LBStrings.Locbook.actionTitle)
+                .font(LBFont.buttonSmall)
+                .foregroundStyle(LBColor.titlePrimary)
+            Spacer()
+        }
+    }
+    var actionsProgressBar: some View {
+        let isVisible: Bool = props.addOrEdit == .add
+        return Group {
+            if isVisible {
+                LBIcon.progression1.image
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxWidth: .infinity, minHeight: 40)
+            }
+        }
+    }
     var actions: some View {
         VStack(spacing: 24) {
             Group {
@@ -61,7 +71,6 @@ struct LocbookActionsView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
     }
-
     // MARK: - Initializers
     init(props: Props, formConfig: FormConfig = FormConfig()) {
         var config = formConfig
