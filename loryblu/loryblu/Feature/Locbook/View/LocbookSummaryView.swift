@@ -7,6 +7,8 @@ struct DayOfWeekOption {
 }
 
 struct LocbookSummaryView: View {
+    @State private var isLoading = false
+
     // MARK: - Defines
     struct Props {
         var task: LocbookTask
@@ -40,24 +42,33 @@ struct LocbookSummaryView: View {
         formConfig.initProperties(frequency: props.task.frequency)
         self._formConfig  = State(initialValue: formConfig)
     }
+
     var body: some View {
-        VStack(alignment: .center, spacing: props.addOrEdit == .add ? 15 : 32) {
-            summaryProgressBar
-            summaryTaskImage
-            summaryTaskProps
-            summaryShiftContent
-            summaryFrequencyContent
-            summaryButtonConfirmation
+        ZStack {
+            VStack(alignment: .center, spacing: props.addOrEdit == .add ? 15 : 32) {
+                summaryProgressBar
+                summaryTaskImage
+                summaryTaskProps
+                summaryShiftContent
+                summaryFrequencyContent
+                summaryButtonConfirmation
+            }
+            .locbookToolbar(
+                title: props.title,
+                addOrEdit: props.addOrEdit,
+                onClose: { props.onClose?() }
+
+            ).onAppear {
+                model.iniShifts(shift: props.task.shift)
+            }
+            .padding(24)
+
+            if isLoading {
+                LoadingView()
+            }
         }
-        .locbookToolbar(
-            title: props.title,
-            addOrEdit: props.addOrEdit,
-            onClose: { props.onClose?() }
-        ).onAppear {
-            model.iniShifts(shift: props.task.shift)
-        }
-        .padding(24)
     }
+
     var summaryProgressBar: some View {
         let isVisible = props.addOrEdit == .add
         return Group {
@@ -69,6 +80,7 @@ struct LocbookSummaryView: View {
             }
         }
     }
+
     var summaryTaskImage: some View {
         Image(props.taskImage)
             .resizable()
@@ -85,12 +97,14 @@ struct LocbookSummaryView: View {
             .cornerRadius(6.0)
             .frame(maxWidth: 200, maxHeight: 200, alignment: .center)
     }
+
     var summaryTaskProps: some View {
         VStack(spacing: 8) {
             categoryContent
             nameContent
         }
     }
+
     var categoryContent: some View {
         HStack(alignment: .center, spacing: 5) {
             Text(LBStrings.SummaryLocbook.category)
@@ -107,6 +121,7 @@ struct LocbookSummaryView: View {
 
         }.frame(maxWidth: .infinity)
     }
+
     var nameContent: some View {
         HStack(alignment: .center, spacing: 24) {
             Text(LBStrings.SummaryLocbook.task)
@@ -122,6 +137,7 @@ struct LocbookSummaryView: View {
             )
         }.frame(maxWidth: .infinity)
     }
+
     var summaryShiftContent: some View {
         VStack {
             Divider()
@@ -143,6 +159,7 @@ struct LocbookSummaryView: View {
             )
         }
     }
+
     var summaryFrequencyContent: some View {
         VStack {
             Text(LBStrings.SummaryLocbook.frequency)
@@ -165,6 +182,7 @@ struct LocbookSummaryView: View {
             )
         }
     }
+
     var summaryButtonConfirmation: some View {
         let editFlow = props.addOrEdit == AddOrEditType.edit
         return Group {
@@ -185,15 +203,19 @@ struct LocbookSummaryView: View {
             }
         }
     }
+
     var editConfirmationContent: some View {
         HStack {
-            LBButton(title: "Cancelar", style: .primaryOff) { props.onClose?() }
+            LBButton(title: "Cancelar", style: .primaryOff) {
+                props.onClose?()
+            }
             LBButton(title: "Salvar") {
+                isLoading = true
                 let frequency = formConfig.makeFrequency()
                 formConfig.task?.frequency = formConfig.makeFrequency()
                 // Here we should submit with formConfig.task
                 if !frequency.isEmpty {
-                    print(formConfig.task)
+                    print(String(describing: formConfig.task))
                 }
             }
         }
