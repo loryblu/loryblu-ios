@@ -101,7 +101,12 @@ struct LocbookNavigationStack: View {
         coordinator.pushSummaryView(
             props: LocbookSummaryView.Props(
                 task: task, title: navigationTitle.title,
-                onSubmit: { pushFinishView() },
+                onSubmitNewTask: {
+                    pushFinishView(message: LBStrings.SummaryLocbook.summaryFinishedNewTaskMessage)
+                },
+                onSubmitEditedTask: {
+                    pushFinishView(message: LBStrings.SummaryLocbook.summaryFinishedEditTaskMessage)
+                },
                 onEditTaskPath: { path in
                     switch path {
                     case .category:
@@ -118,10 +123,10 @@ struct LocbookNavigationStack: View {
         )
     }
 
-    private func pushFinishView() {
+    private func pushFinishView(message: String) {
         coordinator.pushFinishScreen(
             props: .init(
-                message: "Nova Tarefa criada com sucesso",
+                message: message,
                 onClose: { dismiss() }
             )
         )

@@ -202,5 +202,8 @@ extension LBStrings {
         static let frequency = String(localized: "summary_frequency")
         static let topbarTitle = String(localized: "summary_topbar")
         static let frequencyDescription = String(localized: "summary_frequencyDescription")
+
+        static let summaryFinishedNewTaskMessage = String(localized: "summary_finished_new_task_message")
+        static let summaryFinishedEditTaskMessage = String(localized: "summary_finished_edit_task_message")
     }
 }
