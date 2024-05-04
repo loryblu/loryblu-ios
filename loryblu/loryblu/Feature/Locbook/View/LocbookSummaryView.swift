@@ -30,6 +30,7 @@ struct LocbookSummaryView: View {
             return getImageLabelByCategoryId(categoryId: task.categoryId!).name
         }
     }
+
     // MARK: - Properties
     let props: Props
     @StateObject var model = SummaryViewModel()
@@ -193,6 +194,7 @@ struct LocbookSummaryView: View {
             }
         }
     }
+
     var addConfirmationContent: some View {
         LBButton(title: LBStrings.SummaryLocbook.submitTask) {
             isLoading = true
@@ -265,6 +267,7 @@ extension LocbookSummaryView {
                 }
             }
         }
+
         func makeFrequency() -> [LocbookTask.Frequency] {
             var result: [LocbookTask.Frequency] = []
             if sunday { result.append(.sun) }
@@ -278,6 +281,7 @@ extension LocbookSummaryView {
         }
     }
 }
+
 // swiftlint:disable switch_case_alignment
 extension LocbookSummaryView.Props {
     func getShiftsUiModel(shift: LocbookTask.Shift?) -> [ShiftItem] {
@@ -290,6 +294,7 @@ extension LocbookSummaryView.Props {
             LBStrings.FrequencyRotine.night
         }
 // swiftlint:enable switch_case_alignment
+
         var shifts = [
             ShiftItem(
                 name: LBStrings.FrequencyRotine.morning,
