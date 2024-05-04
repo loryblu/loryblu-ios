@@ -195,9 +195,11 @@ struct LocbookSummaryView: View {
     }
     var addConfirmationContent: some View {
         LBButton(title: LBStrings.SummaryLocbook.submitTask) {
+            isLoading = true
             Task {
                 await  model.saveTask(task: props.task)
                 if model.stateTask == .success {
+                    isLoading = false
                     props.onSubmit?()
                 }
             }
@@ -216,6 +218,13 @@ struct LocbookSummaryView: View {
                 // Here we should submit with formConfig.task
                 if !frequency.isEmpty {
                     print(String(describing: formConfig.task))
+                }
+                Task {
+                    await  model.saveTask(task: props.task)
+                    if model.stateTask == .success {
+                        isLoading = false
+                        props.onSubmit?()
+                    }
                 }
             }
         }
