@@ -167,6 +167,9 @@
 "summary_submitTask" = "Cadastrar Tarefa";
 "summary_frequencyDescription" = "Você pode escolher mais de um dia.";
 
+"summary_finished_new_task_message" = "Nova Tarefa criada com sucesso";
+"summary_finished_edit_task_message" = "Tarefa editada com sucesso";
+
 // ==================== Toolbar ====================
 
 "toolbar_edit_title" = "Editar Tarefa";

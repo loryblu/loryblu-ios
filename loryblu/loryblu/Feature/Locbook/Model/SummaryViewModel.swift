@@ -21,17 +21,33 @@ class SummaryViewModel: ObservableObject {
             token: appData.token,
             childrenID: appData.childrenId
         )
+
         if result {
-            print("request success")
             stateTask = .success
         } else {
-            print("request fail")
             stateTask = .fail
         }
     }
+
+    @MainActor
+    func saveEditedTask(task: LocbookTask) async {
+        let result = await repository.taskEdit(
+            with: task,
+            token: appData.token,
+            childrenID: appData.childrenId
+        )
+
+        if result {
+            stateTask = .success
+        } else {
+            stateTask = .fail
+        }
+    }
+
     func iniShifts(shift: LocbookTask.Shift?) {
         self.shifts = getShiftsUiModel(shift: shift)
     }
+
     func onChangeShift(shiftSelected: String, changeTaskShift: (LocbookTask.Shift) -> Void) {
         shifts = shifts.map { (shift: ShiftItem) -> ShiftItem in
             let isSelected = shiftSelected == shift.name  ? true : false
@@ -43,26 +59,32 @@ class SummaryViewModel: ObservableObject {
                 isSelected: isSelected
             )
         }
-        let shift = switch shiftSelected {
+
+        let shift: LocbookTask.Shift
+
+        switch shiftSelected {
         case LBStrings.FrequencyRotine.morning:
-            LocbookTask.Shift.morning
+            shift = LocbookTask.Shift.morning
         case LBStrings.FrequencyRotine.afternoon:
-            LocbookTask.Shift.afternoon
+            shift = LocbookTask.Shift.afternoon
         default:
-            LocbookTask.Shift.night
+            shift = LocbookTask.Shift.night
         }
+
         changeTaskShift(shift)
     }
 }
 extension SummaryViewModel {
     private func getShiftsUiModel(shift: LocbookTask.Shift?) -> [ShiftItem] {
-        let shiftName = switch shift {
+        let shiftName: String
+
+        switch shift {
         case .morning:
-            LBStrings.FrequencyRotine.morning
+            shiftName = LBStrings.FrequencyRotine.morning
         case .afternoon:
-            LBStrings.FrequencyRotine.afternoon
+            shiftName = LBStrings.FrequencyRotine.afternoon
         default:
-            LBStrings.FrequencyRotine.night
+            shiftName = LBStrings.FrequencyRotine.night
         }
 
         var shifts = [

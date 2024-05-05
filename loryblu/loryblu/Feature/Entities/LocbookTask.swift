@@ -11,6 +11,7 @@ struct LocbookTask {
         case sun, mon, tue, wed, thu, fri, sat
     }
 
+    var id: Int?
     var childrenId: Int?
     var shift: Shift?
     var frequency: [Frequency]?
@@ -21,6 +22,7 @@ struct LocbookTask {
     var updatedAt: Date?
 
     init(
+        id: Int? = nil,
         childrenId: Int? = nil,
         shift: Shift? = nil,
         frequency: [Frequency]? = nil,
@@ -30,6 +32,7 @@ struct LocbookTask {
         taskTitle: String? = nil,
         updatedAt: Date? = nil
     ) {
+        self.id = id
         self.childrenId = childrenId
         self.shift = shift
         self.frequency = frequency
