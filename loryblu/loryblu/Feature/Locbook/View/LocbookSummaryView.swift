@@ -7,6 +7,8 @@ struct DayOfWeekOption {
 }
 
 struct LocbookSummaryView: View {
+    @State private var isLoading = false
+
     // MARK: - Defines
     struct Props {
         var task: LocbookTask
@@ -29,6 +31,7 @@ struct LocbookSummaryView: View {
             return getImageLabelByCategoryId(categoryId: task.categoryId!).name
         }
     }
+
     // MARK: - Properties
     let props: Props
     @StateObject var model = SummaryViewModel()
@@ -42,22 +45,29 @@ struct LocbookSummaryView: View {
     }
 
     var body: some View {
-        VStack(alignment: .center, spacing: props.addOrEdit == .add ? 15 : 32) {
-            summaryProgressBar
-            summaryTaskImage
-            summaryTaskProps
-            summaryShiftContent
-            summaryFrequencyContent
-            summaryButtonConfirmation
+        ZStack {
+            VStack(alignment: .center, spacing: props.addOrEdit == .add ? 15 : 32) {
+                summaryProgressBar
+                summaryTaskImage
+                summaryTaskProps
+                summaryShiftContent
+                summaryFrequencyContent
+                summaryButtonConfirmation
+            }
+            .locbookToolbar(
+                title: props.title,
+                addOrEdit: props.addOrEdit,
+                onClose: { props.onClose?() }
+
+            ).onAppear {
+                model.iniShifts(shift: props.task.shift)
+            }
+            .padding(24)
+
+            if isLoading {
+                LoadingView()
+            }
         }
-        .locbookToolbar(
-            title: props.title,
-            addOrEdit: props.addOrEdit,
-            onClose: { props.onClose?() }
-        ).onAppear {
-            model.iniShifts(shift: props.task.shift)
-        }
-        .padding(24)
     }
 
     var summaryProgressBar: some View {
@@ -187,9 +197,11 @@ struct LocbookSummaryView: View {
 
     var addConfirmationContent: some View {
         LBButton(title: LBStrings.SummaryLocbook.submitTask) {
+            isLoading = true
             Task {
                 await  model.saveTask(task: props.task)
                 if model.stateTask == .success {
+                    isLoading = false
                     props.onSubmitNewTask?()
                 }
             }
@@ -198,8 +210,11 @@ struct LocbookSummaryView: View {
 
     var editConfirmationContent: some View {
         HStack {
-            LBButton(title: "Cancelar", style: .primaryOff) { props.onClose?() }
+            LBButton(title: "Cancelar", style: .primaryOff) {
+                props.onClose?()
+            }
             LBButton(title: "Salvar") {
+                isLoading = true
                 formConfig.task?.frequency = formConfig.makeFrequency()
 
                 guard let editedTask = formConfig.task else {
@@ -209,6 +224,7 @@ struct LocbookSummaryView: View {
                 Task {
                     await  model.saveEditedTask(task: editedTask)
                     if model.stateTask == .success {
+                        isLoading = false
                         props.onSubmitEditedTask?()
                     }
                 }
@@ -266,6 +282,7 @@ extension LocbookSummaryView {
         }
     }
 }
+
 // swiftlint:disable switch_case_alignment
 extension LocbookSummaryView.Props {
     func getShiftsUiModel(shift: LocbookTask.Shift?) -> [ShiftItem] {
@@ -278,6 +295,7 @@ extension LocbookSummaryView.Props {
             LBStrings.FrequencyRotine.night
         }
 // swiftlint:enable switch_case_alignment
+
         var shifts = [
             ShiftItem(
                 name: LBStrings.FrequencyRotine.morning,
