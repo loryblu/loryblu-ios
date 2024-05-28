@@ -1,16 +1,21 @@
 import SwiftUI
 
 struct LBCustomDialog<Content> : View where Content : View {
+    let dismiss: () -> Void
     let content: () -> Content
-    
-    init(@ViewBuilder content: @escaping () -> Content) {
-            self.content = content
+    init(dismiss: @escaping () -> Void, @ViewBuilder content: @escaping () -> Content) {
+        self.dismiss = dismiss
+        self.content = content
     }
-
     @State private var offset: CGFloat = 1000
     
     var body: some View {
         ZStack {
+            Color(.black)
+                .opacity(0.5)
+                .onTapGesture {
+                    dismiss()
+                }
             VStack {
                 content()
             }

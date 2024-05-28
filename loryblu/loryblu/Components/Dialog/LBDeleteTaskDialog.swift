@@ -17,7 +17,7 @@ struct LBDeleteTaskDialog: View {
     @State var selectedOption: Option? = .option2
 
     var body: some View {
-        LBCustomDialog {
+        LBCustomDialog(dismiss: onCancel) {
             Text(title)
                 .font(.title2)
                 .bold()
