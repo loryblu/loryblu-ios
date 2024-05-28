@@ -6,6 +6,7 @@ struct CardTaskRegistered: View {
     let nameTask: String
     let backgroundCard: Color
     let onEdit: () -> Void
+    let openDeleteDialog: () -> Void
     typealias Localizable = LBStrings.General
     @Binding var isSecurity: Bool
 
@@ -32,7 +33,7 @@ struct CardTaskRegistered: View {
                         Button(Localizable.edit) { onEdit() }
                             .buttonStyle(EditTaskButton(image: LBIcon.edit.rawValue))
 
-                        Button(Localizable.delete) {}
+                        Button(Localizable.delete) { openDeleteDialog() }
                             .buttonStyle(EditTaskButton(image: LBIcon.trash.rawValue)
                         )
                     }
@@ -57,19 +58,19 @@ struct CardTaskRegistered: View {
             nameAction: LBStrings.Locbook.titleRotine,
             imageTask: LBIcon.bathTime.rawValue,
             nameTask: LBStrings.NameImage.bathTime,
-            backgroundCard: LBColor.buttonBackgroundLight, onEdit: {},
+            backgroundCard: LBColor.buttonBackgroundLight, onEdit: {}, openDeleteDialog: { },
             isSecurity: .constant(true))
         CardTaskRegistered(
             nameAction: LBStrings.Locbook.titleStudy,
             imageTask: LBIcon.school.rawValue,
             nameTask: LBStrings.NameImage.bathTime,
-            backgroundCard: LBColor.buttonBackgroundMedium, onEdit: {},
+            backgroundCard: LBColor.buttonBackgroundMedium, onEdit: {}, openDeleteDialog: { },
             isSecurity: .constant(false))
         CardTaskRegistered(
             nameAction: LBStrings.Locbook.titleRotine,
             imageTask: LBIcon.bathTime.rawValue,
             nameTask: LBStrings.NameImage.bathTime,
-            backgroundCard: LBColor.buttonGenderEnable, onEdit: {},
+            backgroundCard: LBColor.buttonGenderEnable, onEdit: {}, openDeleteDialog: { },
             isSecurity: .constant(true))
     }
 

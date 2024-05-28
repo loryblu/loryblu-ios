@@ -11,54 +11,67 @@ struct LocbookListTasksView: View {
     var props: Props
     @StateObject var viewmodel: TasksViewModel  = TasksViewModel()
     @State var day: LBFrequencyFilter.Week = .none
+    @State var openDeleteDialog: Bool = false
 
     var body: some View {
-        VStack {
-            VStack(spacing: 16) {
-                LBFrequencyFilter(viewmodel: viewmodel)
-
-                LBShiftItemsComponent(
-                    shifts: viewmodel.shifts,
-                    onClick: { shift in viewmodel.filterByShifts(shiftSelected: shift) }
-                )
+        ZStack {
+            if openDeleteDialog {
+                LBDeleteTaskDialog(dayOfWeek: viewmodel.currentSelectedDayText ?? "", taskName: viewmodel.selectedToDelete.taskTitle ?? "", onCancel: { openDeleteDialog = false })
             }
-            .padding(.init(top: 16, leading: 24, bottom: 0, trailing: 24))
+            VStack {
+                VStack(spacing: 16) {
+                    LBFrequencyFilter(viewmodel: viewmodel)
 
-            if !viewmodel.tasks.isEmpty {
-                HStack(alignment: .center) {
-                    Toggle(isOn: $securityIsOn) {}
-                    .toggleStyle(SymbolToggleStyle())
-                    .padding(.trailing, 6)
+                    LBShiftItemsComponent(
+                        shifts: viewmodel.shifts,
+                        onClick: { shift in viewmodel.filterByShifts(shiftSelected: shift) }
+                    )
                 }
-                .frame(maxWidth: .infinity, alignment: .trailing)
-                .padding(.init(top: 8, leading: 0, bottom: 0, trailing: 32))
-            }
+                .padding(.init(top: 16, leading: 24, bottom: 0, trailing: 24))
 
-            ZStack {
-                ListTasksView(viewmodel: viewmodel, securityIsOn: $securityIsOn, onEditTask: { closure in
-                    props.onEditTask(closure)
-                })
-                    .frame(maxHeight: .infinity, alignment: .top)
-                    .onAppear {
-                        Task { await viewmodel.fetchTasks() }
+                if !viewmodel.tasks.isEmpty {
+                    HStack(alignment: .center) {
+                        Toggle(isOn: $securityIsOn) {}
+                        .toggleStyle(SymbolToggleStyle())
+                        .padding(.trailing, 6)
                     }
-                    .padding(.init(top: 0, leading: 8, bottom: 0, trailing: 8))
-
-                HStack {
-                    Spacer()
-                    LBfloatingButton(
-                        text: LBStrings.Locbook.button,
-                        icon: LBIcon.plus
-                    ) {
-                        self.props.onNewTask?()
-                    }
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+                    .padding(.init(top: 8, leading: 0, bottom: 0, trailing: 32))
                 }
-                .frame(maxHeight: .infinity, alignment: .bottomTrailing)
-                .padding(.init(top: 0, leading: 0, bottom: 33, trailing: 16))
+                
+                ZStack {
+                    ListTasksView(
+                        viewmodel: viewmodel,
+                        securityIsOn: $securityIsOn,
+                        onEditTask: { closure in
+                        props.onEditTask(closure)
+                        },
+                        openDeleteDialog: { taskToDelete in
+                            openDeleteDialog.toggle()
+                            viewmodel.taskToDelete(taskToDelete: taskToDelete)
+                        })
+                        .frame(maxHeight: .infinity, alignment: .top)
+                        .onAppear {
+                            Task { await viewmodel.fetchTasks() }
+                        }
+                        .padding(.init(top: 0, leading: 8, bottom: 0, trailing: 8))
+
+                    HStack {
+                        Spacer()
+                        LBfloatingButton(
+                            text: LBStrings.Locbook.button,
+                            icon: LBIcon.plus
+                        ) {
+                            self.props.onNewTask?()
+                        }
+                    }
+                    .frame(maxHeight: .infinity, alignment: .bottomTrailing)
+                    .padding(.init(top: 0, leading: 0, bottom: 33, trailing: 16))
+                }
             }
+            .locbookToolbar(title: LBStrings.Locbook.title, showCloseButton: false)
+            .backgroundStyle(LBColor.background)
         }
-        .locbookToolbar(title: LBStrings.Locbook.title, showCloseButton: false)
-        .backgroundStyle(LBColor.background)
     }
 }
 
@@ -66,7 +79,7 @@ struct ListTasksView: View {
     @ObservedObject var viewmodel: TasksViewModel
     @Binding var securityIsOn: Bool
     let onEditTask: ClosureType.LocbookTaskVoid
-
+    let openDeleteDialog: ClosureType.LocbookTaskVoid
     var body: some View {
         if viewmodel.tasks.isEmpty {
             VStack(alignment: .center) {
@@ -90,6 +103,7 @@ struct ListTasksView: View {
                         nameTask: model.locbookTask.taskTitle ?? "",
                         backgroundCard: model.backgroundCard,
                         onEdit: { onEditTask(model.locbookTask) },
+                        openDeleteDialog: { openDeleteDialog(model.locbookTask) },
                         isSecurity: .constant(securityIsOn))
                     .padding(.bottom, 20)
                     .if(securityIsOn, transform: { view in
