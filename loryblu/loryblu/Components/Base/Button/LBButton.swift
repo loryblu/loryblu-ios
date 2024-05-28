@@ -11,6 +11,7 @@ struct LBButton: View {
     enum ButtonStyle {
         case primaryActivated
         case primaryOff
+        case error
     }
 
     var title: String
@@ -23,15 +24,50 @@ struct LBButton: View {
                 .textCase(.uppercase)
                 .font(LBFont.button)
                 .multilineTextAlignment(.center)
-                .foregroundColor( ((style == .primaryActivated) ? .white : LBColor.buttonPrimary))
+                .foregroundColor(getForegroundColor(btnStyle:style))
                 .frame(height: 44)
                 .frame(maxWidth: .infinity)
-                .background((style == .primaryActivated) ? LBColor.buttonPrimary : .white)
+                .background(getBackgroundColor(btnStyle: style))
                 .cornerRadius(10)
                 .overlay(
                     RoundedRectangle(cornerRadius: 10)
                         .inset(by: -1)
-                        .stroke((style == .primaryActivated) ? .white :  LBColor.buttonPrimary))
+                        .stroke(getStrokeColor(btnStyle:style)))
+        }
+    }
+}
+
+extension LBButton {
+    func getForegroundColor(btnStyle: ButtonStyle) -> Color {
+        switch btnStyle {
+        case .primaryActivated:
+                .white
+        case .primaryOff:
+            LBColor.buttonPrimary
+        case .error:
+            LBColor.error
+        }
+    }
+    
+    func getBackgroundColor(btnStyle: ButtonStyle) -> Color {
+        switch btnStyle {
+        case .primaryActivated:
+            LBColor.buttonPrimary
+        case .primaryOff:
+             .white
+        case .error:
+            Color.clear
+        }
+    }
+    
+    func getStrokeColor(btnStyle: ButtonStyle) -> Color {
+        switch btnStyle {
+        case .primaryActivated:
+                .white
+        case .primaryOff:
+            LBColor.buttonPrimary
+        case .error:
+            LBColor.error
         }
     }
 }
