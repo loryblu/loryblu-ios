@@ -13,7 +13,7 @@ struct LBDeleteTaskDialog: View {
     let message: String = "Este conteúdo será deletado de forma permanente."
     let buttonTitle: String = " "
     let onDelete: ()-> Void = {}
-    let onCancel: ()-> Void = {}
+    let onCancel: ()-> Void
     @State var selectedOption: Option? = .option2
 
     var body: some View {
@@ -69,5 +69,5 @@ struct LBDeleteTaskDialog: View {
 }
 
 #Preview {
-    LBDeleteTaskDialog(dayOfWeek: "segunda-feira", taskName: "Vídeo Game Liberado")
+    LBDeleteTaskDialog(dayOfWeek: "segunda-feira", taskName: "Vídeo Game Liberado", onCancel: { })
 }

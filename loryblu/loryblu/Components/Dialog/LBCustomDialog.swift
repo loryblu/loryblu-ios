@@ -33,6 +33,7 @@ struct LBCustomDialog<Content> : View where Content : View {
                 }
             }
         }
+        .zIndex(1)
         .ignoresSafeArea()
     }
 }
