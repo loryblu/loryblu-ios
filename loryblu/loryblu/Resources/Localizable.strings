@@ -11,6 +11,7 @@
 "password" = "Senha";
 "send" = "Enviar";
 "new_task" = "Nova tarefa";
+"question_mark" = "?";
 
 // ====================  Rules Password  =========================
 
@@ -174,3 +175,22 @@
 
 "toolbar_edit_title" = "Editar Tarefa";
 "toolbar_add_title" = "Nova Tarefa";
+
+// ==================== Delete Operations ====================
+"delete_title" = "Deseja excluir a tarefa";
+"delete_justForOneDayOption" = "Apenas de";
+"delete_forAllDaysOption" = "Todos os dias";
+"delete_warning" = "Este conteúdo será deletado de forma permanente.";
+"delete_titleBtn" = "Excluir";
+
+// ==================== Days of Week ====================
+"dayOfWeek_sunday" = "domingo";
+"dayOfWeek_monday" = "segunda-feira";
+"dayOfWeek_tuesday" = "terça-feira";
+"dayOfWeek_wednesday" = "quarta-feira";
+"dayOfWeek_thursday" = "quinta-feira";
+"dayOfWeek_friday" = "sexta-feira";
+"dayOfWeek_saturday" = "sábado";
+
+
+

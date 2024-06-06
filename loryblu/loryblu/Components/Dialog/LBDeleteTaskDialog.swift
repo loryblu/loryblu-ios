@@ -6,19 +6,15 @@ enum Option {
 }
 
 struct LBDeleteTaskDialog: View {
-    let title: String = "Deseja excluir a tarefa"
-    let firstText: String = "Apenas de"
     let dayOfWeek: String
     let taskName: String
-    let message: String = "Este conteúdo será deletado de forma permanente."
-    let buttonTitle: String = " "
-    let onDelete: ()-> Void = {}
-    let onCancel: ()-> Void
+    let onDelete: () -> Void = {}
+    let onCancel: () -> Void
     @State var selectedOption: Option? = .option2
 
     var body: some View {
         LBCustomDialog(dismiss: onCancel) {
-            Text(title)
+            Text(LBStrings.DeleteLocbookAction.deleteTaskTitle)
                 .font(.title2)
                 .bold()
             HStack {
@@ -27,24 +23,24 @@ struct LBDeleteTaskDialog: View {
                     .bold()
                     .foregroundColor(LBColor.titlePrimary)
                     .multilineTextAlignment(.center)
-                Text("?")
+                Text(LBStrings.General.questionMark)
                     .font(.title2)
                     .bold()
                     .multilineTextAlignment(.center)
             }
             Spacer(minLength: 16)
-            Text(message)
+            Text(LBStrings.DeleteLocbookAction.warning)
                 .font(.system(size: 12, weight: .regular))
                 .padding(24)
                 .multilineTextAlignment(.center)
             Spacer(minLength: 16)
             VStack(alignment: .listRowSeparatorLeading) {
                 LBRadioButton(tag: .option1, selection: $selectedOption) {
-                    Text("Apenas de")
+                    Text(LBStrings.DeleteLocbookAction.deleteOnlyForOneday)
                     Text(dayOfWeek).bold()
                 }
                 LBRadioButton(tag: .option2, selection: $selectedOption) {
-                    Text("Todos os dias")
+                    Text(LBStrings.DeleteLocbookAction.deleteForAllDays)
                 }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -55,11 +51,11 @@ struct LBDeleteTaskDialog: View {
                 Button {
                    onCancel()
                 } label: {
-                    Text("Cancelar").foregroundColor(Color.black)
+                    Text(LBStrings.General.cancel).foregroundColor(Color.black)
                 }
                 .contentShape(Rectangle())
                 Spacer().frame(maxWidth: .infinity)
-                LBButton(title: "Excluir", style: .error) {
+                LBButton(title: LBStrings.DeleteLocbookAction.deleteTitleBtn, style: .error) {
                     onDelete()
                 }
             }.padding(16)
@@ -69,5 +65,5 @@ struct LBDeleteTaskDialog: View {
 }
 
 #Preview {
-    LBDeleteTaskDialog(dayOfWeek: "segunda-feira", taskName: "Vídeo Game Liberado", onCancel: { })
+    LBDeleteTaskDialog(dayOfWeek: LBStrings.DaysOfWeek.monday, taskName: LBStrings.NameImage.tvgame, onCancel: { })
 }

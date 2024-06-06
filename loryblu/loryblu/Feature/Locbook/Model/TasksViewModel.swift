@@ -160,21 +160,21 @@ extension TasksViewModel {
     func getDayOfWeekName(dayValue: LocbookTask.Frequency?) -> String {
         switch dayValue {
         case .sun:
-            "domingo"
+            LBStrings.DaysOfWeek.sunday
         case .mon:
-            "segunda-feira"
+            LBStrings.DaysOfWeek.monday
         case .tue:
-            "terça-feira"
+            LBStrings.DaysOfWeek.tuesday
         case .wed:
-            "quarta-feira"
+            LBStrings.DaysOfWeek.wednesday
         case .thu:
-            "quinta-feira"
+            LBStrings.DaysOfWeek.thursday
         case .fri:
-            "sexta-feira"
+            LBStrings.DaysOfWeek.friday
         case .sat:
-            "sábado"
+            LBStrings.DaysOfWeek.saturday
         case .none:
-            "domingo"
+            LBStrings.DaysOfWeek.sunday
         }
     }
 }
