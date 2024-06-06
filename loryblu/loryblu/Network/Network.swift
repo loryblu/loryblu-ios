@@ -25,7 +25,8 @@ class Network {
         let header: [String: String] = [
             "Accept": "*/*",
             "User-Agent": "Loryblu-iOS",
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "Cache-Control": "no-cache"
         ]
 
         for (key, value) in header {

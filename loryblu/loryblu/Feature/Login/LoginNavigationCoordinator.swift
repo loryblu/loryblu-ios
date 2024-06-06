@@ -2,66 +2,62 @@ import SwiftUI
 
 @MainActor
 class LoginNavigationCoordinator: ObservableObject {
-    
     @EnvironmentObject var appData: AppData
-    
+
     enum Destination {
         enum Navigation: String, Identifiable  {
             case resetPassword
             case responsibleRegister
             case setNewPassword
-            
+
             var id: String {
                 self.rawValue
             }
         }
-        
+
         enum FullScreenPage: String, Identifiable {
             case login
             case home
-            
+
             var id: String {
                 self.rawValue
             }
         }
     }
-    
+
     // MARK: - Internal Properties
-    
     @Published var path: [Destination.Navigation]
     @Published var fullScreen: Destination.FullScreenPage?
-    
+
     // MARK: - Initializers
-    
     init() {
         path = []
         fullScreen = nil
     }
-        
+
     // MARK: - Internal Methods
-    
     func showResetPassword() {
         navigate(to: .resetPassword)
     }
-    
+
     func showRegister() {
         navigate(to: .responsibleRegister)
     }
-    
+
     func showSetNewPassword() {
         navigate(to: .setNewPassword)
     }
-    
+
     func popToRoot() {
         path.removeLast(path.count)
     }
-    
+
     func popView() {
         if path.isEmpty == false {
             path.removeLast()
         }
     }
-    
+
     @ViewBuilder
     func buildView(page destination: Destination.Navigation) -> some View {
         switch destination {
@@ -77,7 +73,7 @@ class LoginNavigationCoordinator: ObservableObject {
                 .environmentObject(appData)
         }
     }
-    
+
     @ViewBuilder
     func buildView(cover destination: Destination.FullScreenPage) -> some View {
         switch destination {
@@ -90,9 +86,7 @@ class LoginNavigationCoordinator: ObservableObject {
     }
 
     // MARK: - Private Methods
-
     private func navigate(to destination: Destination.Navigation) {
         self.path.append(destination)
     }
-
 }

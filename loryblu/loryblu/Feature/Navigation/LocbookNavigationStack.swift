@@ -100,7 +100,8 @@ struct LocbookNavigationStack: View {
     private func pushSummaryView(task: LocbookTask, addOrEdit: AddOrEditType = AddOrEditType.add) {
         coordinator.pushSummaryView(
             props: LocbookSummaryView.Props(
-                task: task, title: navigationTitle.title,
+                task: task,
+                title: navigationTitle.title,
                 onSubmitNewTask: {
                     pushFinishView(message: LBStrings.SummaryLocbook.summaryFinishedNewTaskMessage)
                 },
@@ -131,7 +132,6 @@ struct LocbookNavigationStack: View {
             )
         )
     }
-
 }
 
 struct LocbookNavigationStack_Previews: PreviewProvider {
