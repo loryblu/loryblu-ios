@@ -207,3 +207,10 @@ extension LBStrings {
         static let summaryFinishedEditTaskMessage = String(localized: "summary_finished_edit_task_message")
     }
 }
+
+extension LBStrings {
+    enum Dialog {
+        static let taskDelete = String(localized: "dialog_delete_task")
+        static let sucessDelete = String(localized: "dialog_success_delete")
+    }
+}
