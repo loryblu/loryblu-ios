@@ -174,3 +174,8 @@
 
 "toolbar_edit_title" = "Editar Tarefa";
 "toolbar_add_title" = "Nova Tarefa";
+
+// ==================== Dialog ====================
+
+"dialog_delete_task" = "Tarefa deletada:";
+"dialog_success_delete" = "Deletada com sucesso de";

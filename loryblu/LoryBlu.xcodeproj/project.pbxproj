@@ -21,6 +21,7 @@
 		335E21A72AFF132800700440 /* FrequencyRotineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335E21A62AFF132800700440 /* FrequencyRotineView.swift */; };
 		336884D22BA2849F0041C9A2 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336884D12BA2849F0041C9A2 /* ViewExtension.swift */; };
 		3376667D2ABFD115007010E1 /* URLDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3376667C2ABFD115007010E1 /* URLDecoder.swift */; };
+		337A39E92C0FD89900B89B3D /* LBDeleteConfirmation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337A39E82C0FD89900B89B3D /* LBDeleteConfirmation.swift */; };
 		3380B2102B0DA63F0001E67D /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3380B20F2B0DA63F0001E67D /* Formatter.swift */; };
 		339573E32B87E37600E38B80 /* LBDaysButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339573E22B87E37600E38B80 /* LBDaysButtonStyle.swift */; };
 		33AAFCF22AC649C200039063 /* NewPasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AAFCF12AC649C200039063 /* NewPasswordModel.swift */; };
@@ -152,6 +153,7 @@
 		335E21A62AFF132800700440 /* FrequencyRotineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequencyRotineView.swift; sourceTree = "<group>"; };
 		336884D12BA2849F0041C9A2 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		3376667C2ABFD115007010E1 /* URLDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLDecoder.swift; sourceTree = "<group>"; };
+		337A39E82C0FD89900B89B3D /* LBDeleteConfirmation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBDeleteConfirmation.swift; sourceTree = "<group>"; };
 		3380B20F2B0DA63F0001E67D /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 		339573E22B87E37600E38B80 /* LBDaysButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBDaysButtonStyle.swift; sourceTree = "<group>"; };
 		33AAFCF12AC649C200039063 /* NewPasswordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPasswordModel.swift; sourceTree = "<group>"; };
@@ -337,6 +339,14 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		337A39E72C0FD7B600B89B3D /* Dialog */ = {
+			isa = PBXGroup;
+			children = (
+				337A39E82C0FD89900B89B3D /* LBDeleteConfirmation.swift */,
+			);
+			path = Dialog;
+			sourceTree = "<group>";
+		};
 		33BA2DE72AC9E120009704FD /* Handlers */ = {
 			isa = PBXGroup;
 			children = (
@@ -368,6 +378,7 @@
 		8C27B8382A68BEF200F72214 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				337A39E72C0FD7B600B89B3D /* Dialog */,
 				9310C8D42B66DAD9007D3CE7 /* Toolbar */,
 				8CC73C952A6C4A65008A039A /* Base */,
 				8C9CBD0E2A7AEBEE001DBD35 /* View */,
@@ -935,6 +946,7 @@
 				334D0AB72A8AF93D003881ED /* NewPasswordScreen.swift in Sources */,
 				93B2DD682BD0D462009BEB16 /* EditPath.swift in Sources */,
 				8C2535322A7714DD0096738B /* RegisterResponsibleViewModel.swift in Sources */,
+				337A39E92C0FD89900B89B3D /* LBDeleteConfirmation.swift in Sources */,
 				339573E32B87E37600E38B80 /* LBDaysButtonStyle.swift in Sources */,
 				9302EE942B71C0C0003D7C4F /* LBShiftItemsComponent.swift in Sources */,
 				8C27B8542A68C19400F72214 /* LBLabel.swift in Sources */,
@@ -1078,7 +1090,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"loryblu/Preview Content\"";
-				DEVELOPMENT_TEAM = 5AN4GAV8W4;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LoryBlu/Info.plist;
@@ -1117,7 +1129,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"loryblu/Preview Content\"";
-				DEVELOPMENT_TEAM = 5AN4GAV8W4;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LoryBlu/Info.plist;
