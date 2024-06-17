@@ -166,7 +166,7 @@ extension LBStrings {
         static let water = String(localized: "id_water")
         static let play = String(localized: "id_play")
         static let watchTv = String(localized: "id_watchtv")
-        static let tvgame = String(localized: "ide_tvgame")
+        static let tvgame = String(localized: "id_tvgame")
         static let school = String(localized: "id_school")
         static let reinforcement = String(localized: "id_reinforcement")
         static let languages = String(localized: "id_languages")
