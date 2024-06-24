@@ -14,7 +14,7 @@ struct LBDeleteTaskDialog: View {
 
     var body: some View {
         LBCustomDialog(dismiss: onCancel) {
-            Text(LBStrings.DeleteLocbookAction.deleteTaskTitle)
+            Text(LBStrings.Dialog.deleteTaskTitle)
                 .font(.title2)
                 .bold()
             HStack {
@@ -29,18 +29,18 @@ struct LBDeleteTaskDialog: View {
                     .multilineTextAlignment(.center)
             }
             Spacer(minLength: 16)
-            Text(LBStrings.DeleteLocbookAction.warning)
+            Text(LBStrings.Dialog.warning)
                 .font(.system(size: 12, weight: .regular))
                 .padding(24)
                 .multilineTextAlignment(.center)
             Spacer(minLength: 16)
             VStack(alignment: .listRowSeparatorLeading) {
                 LBRadioButton(tag: .option1, selection: $selectedOption) {
-                    Text(LBStrings.DeleteLocbookAction.deleteOnlyForOneday)
+                    Text(LBStrings.Dialog.deleteOnlyForOneday)
                     Text(dayOfWeek).bold()
                 }
                 LBRadioButton(tag: .option2, selection: $selectedOption) {
-                    Text(LBStrings.DeleteLocbookAction.deleteForAllDays)
+                    Text(LBStrings.Dialog.deleteForAllDays)
                 }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -55,7 +55,7 @@ struct LBDeleteTaskDialog: View {
                 }
                 .contentShape(Rectangle())
                 Spacer().frame(maxWidth: .infinity)
-                LBButton(title: LBStrings.DeleteLocbookAction.deleteTitleBtn, style: .error) {
+                LBButton(title: LBStrings.Dialog.deleteTitleBtn, style: .error) {
                     onDelete()
                 }
             }.padding(16)

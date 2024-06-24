@@ -203,21 +203,23 @@ extension LBStrings {
         static let frequency = String(localized: "summary_frequency")
         static let topbarTitle = String(localized: "summary_topbar")
         static let frequencyDescription = String(localized: "summary_frequencyDescription")
-
         static let summaryFinishedNewTaskMessage = String(localized: "summary_finished_new_task_message")
         static let summaryFinishedEditTaskMessage = String(localized: "summary_finished_edit_task_message")
     }
 }
 
 extension LBStrings {
-    enum DeleteLocbookAction {
-        static let deleteTaskTitle = String(localized: "delete_title")
-        static let deleteOnlyForOneday = String(localized: "delete_justForOneDayOption")
-        static let deleteForAllDays = String(localized: "delete_forAllDaysOption")
-        static let warning = String(localized: "delete_warning")
-        static let deleteTitleBtn = String(localized: "delete_titleBtn")
-    }
+     enum Dialog {
+         static let taskDelete = String(localized: "dialog_delete_task")
+         static let sucessDelete = String(localized: "dialog_success_delete")
+         static let deleteTaskTitle = String(localized: "delete_title")
+         static let deleteOnlyForOneday = String(localized: "delete_justForOneDayOption")
+         static let deleteForAllDays = String(localized: "delete_forAllDaysOption")
+         static let warning = String(localized: "delete_warning")
+         static let deleteTitleBtn = String(localized: "delete_titleBtn")
+     }
 }
+
 extension LBStrings {
     enum DaysOfWeek {
         static let sunday = String(localized: "dayOfWeek_sunday")
