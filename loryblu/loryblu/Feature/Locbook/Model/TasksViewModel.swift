@@ -4,16 +4,17 @@ import Factory
 class TasksViewModel: ObservableObject {
     @Injected(\.appData) var appData
     @Published var currentTask: TaskModel?
+    @Published var selectedToDelete: LocbookTask = .init()
     private var repository = Container.shared.taskRepository()
     private var cacheTasks: [TaskModel]?
     @Published var tasks: [TaskModel] = []
     @Published var shifts: [ShiftItem] = []
     private var currentSelectedShift: LocbookTask.Shift?
     @Published var currentSelectedDay: LocbookTask.Frequency?
+    @Published var currentSelectedDayText: String?
     @Published var filteredTasks: [TaskModel] = []
     @MainActor
     func fetchTasks() async {
-         
         if(cacheTasks == nil) {
             cacheTasks = await repository.fetchTasks(token: appData.token, childrenId: appData.childrenId)
             let pairDay = await pairDefaultDayNTasks(tasks: cacheTasks ?? [])
@@ -25,6 +26,7 @@ class TasksViewModel: ObservableObject {
         } else {
             filterWeekDay(weekDays: [currentSelectedDay ?? LocbookTask.Frequency.sun])
         }
+        currentSelectedDayText  = getDayOfWeekName(dayValue: currentSelectedDay)
     }
     func filterWeekDay(weekDays: [LocbookTask.Frequency]) {
         var taskFiltered: [TaskModel] = []
@@ -37,6 +39,7 @@ class TasksViewModel: ObservableObject {
             }) ?? []
             self.tasks = taskFiltered
         }
+        currentSelectedDayText  = getDayOfWeekName(dayValue: currentSelectedDay)
     }
     func filterByShifts(shiftSelected: String) {
         currentSelectedShift = switch shiftSelected {
@@ -60,6 +63,9 @@ class TasksViewModel: ObservableObject {
         tasks = cacheTasks?.filter({ task in
             Set([currentSelectedDay]).intersection(Set(task.locbookTask.frequency ?? [])).isEmpty == false && task.locbookTask.shift == currentSelectedShift
         }) ?? []
+    }
+    func taskToDelete(taskToDelete:LocbookTask) {
+        selectedToDelete = taskToDelete
     }
 }
 
@@ -149,5 +155,26 @@ extension TasksViewModel {
             )
         }
         return shiftItemsUpdated
+    }
+    
+    func getDayOfWeekName(dayValue: LocbookTask.Frequency?) -> String {
+        switch dayValue {
+        case .sun:
+            LBStrings.DaysOfWeek.sunday
+        case .mon:
+            LBStrings.DaysOfWeek.monday
+        case .tue:
+            LBStrings.DaysOfWeek.tuesday
+        case .wed:
+            LBStrings.DaysOfWeek.wednesday
+        case .thu:
+            LBStrings.DaysOfWeek.thursday
+        case .fri:
+            LBStrings.DaysOfWeek.friday
+        case .sat:
+            LBStrings.DaysOfWeek.saturday
+        case .none:
+            LBStrings.DaysOfWeek.sunday
+        }
     }
 }

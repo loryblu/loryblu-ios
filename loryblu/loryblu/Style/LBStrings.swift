@@ -16,6 +16,7 @@ extension LBStrings {
         static let newTask = String(localized: "new_task")
         static let password = String(localized: "password")
         static let send = String(localized: "send")
+        static let questionMark = String(localized: "question_mark")
     }
 }
 extension LBStrings {
@@ -165,7 +166,7 @@ extension LBStrings {
         static let water = String(localized: "id_water")
         static let play = String(localized: "id_play")
         static let watchTv = String(localized: "id_watchtv")
-        static let tvgame = String(localized: "ide_tvgame")
+        static let tvgame = String(localized: "id_tvgame")
         static let school = String(localized: "id_school")
         static let reinforcement = String(localized: "id_reinforcement")
         static let languages = String(localized: "id_languages")
@@ -202,8 +203,31 @@ extension LBStrings {
         static let frequency = String(localized: "summary_frequency")
         static let topbarTitle = String(localized: "summary_topbar")
         static let frequencyDescription = String(localized: "summary_frequencyDescription")
-
         static let summaryFinishedNewTaskMessage = String(localized: "summary_finished_new_task_message")
         static let summaryFinishedEditTaskMessage = String(localized: "summary_finished_edit_task_message")
+    }
+}
+
+extension LBStrings {
+     enum Dialog {
+         static let taskDelete = String(localized: "dialog_delete_task")
+         static let sucessDelete = String(localized: "dialog_success_delete")
+         static let deleteTaskTitle = String(localized: "delete_title")
+         static let deleteOnlyForOneday = String(localized: "delete_justForOneDayOption")
+         static let deleteForAllDays = String(localized: "delete_forAllDaysOption")
+         static let warning = String(localized: "delete_warning")
+         static let deleteTitleBtn = String(localized: "delete_titleBtn")
+     }
+}
+
+extension LBStrings {
+    enum DaysOfWeek {
+        static let sunday = String(localized: "dayOfWeek_sunday")
+        static let monday = String(localized: "dayOfWeek_monday")
+        static let tuesday = String(localized: "dayOfWeek_tuesday")
+        static let wednesday = String(localized: "dayOfWeek_wednesday")
+        static let thursday = String(localized: "dayOfWeek_thursday")
+        static let friday = String(localized: "dayOfWeek_friday")
+        static let saturday = String(localized: "dayOfWeek_saturday")
     }
 }
