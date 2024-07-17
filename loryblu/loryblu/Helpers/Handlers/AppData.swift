@@ -9,6 +9,7 @@ class AppData: ObservableObject {
     @Published var token: String = ""
     @Published var childrenId: Int = 0
     @Published var userData: UserAuth?
+    var forceReloadListView = false
 
     var loginStatus: LoginStatus {
             guard userData != nil else {

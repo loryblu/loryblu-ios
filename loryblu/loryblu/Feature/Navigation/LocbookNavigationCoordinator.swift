@@ -15,36 +15,47 @@ class LocbookNavigationCoordinator: ObservableObject {
             case finishView(DoneView.Props)
         }
     }
+
     // MARK: - Internal Properties
     @Published var path: [Destination.Navigation]
+
     // MARK: - Initializers
     init() {
         path = []
     }
+
     // MARK: - Internal Methods
     func popToRoot() {
         path.removeLast(path.count)
     }
-    func popView() {
+
+    func popView(count: Int = 1) {
         if path.isEmpty == false {
-            path.removeLast()
+            path.removeLast(count)
         }
+        path = []
     }
+
     func pushActionsView(props: LocbookActionsView.Props) {
         navigate(to: .actions(props))
     }
+
     func pushTasksView(props: LocbookTasksView.Props) {
         navigate(to: .tasks(props))
     }
+
     func pushTasksFrequency(props: FrequencyRotineView.Props) {
         navigate(to: .frequency(props))
     }
+
     func pushSummaryView(props: LocbookSummaryView.Props) {
         navigate(to: .summary(props))
     }
+
     func pushFinishScreen(props: DoneView.Props) {
         navigate(to: .finishView(props))
     }
+
     @ViewBuilder
     func buildView(page destination: Destination.Navigation) -> some View {
         switch destination {
@@ -62,6 +73,7 @@ class LocbookNavigationCoordinator: ObservableObject {
             DoneView(props: props)
         }
     }
+
     @ViewBuilder
     func buildView(cover destination: Destination.FullScreen) -> some View {
         switch destination {
@@ -69,6 +81,7 @@ class LocbookNavigationCoordinator: ObservableObject {
             DoneView(props: props)
         }
     }
+
     // MARK: - Private Methods
     private func navigate(to destination: Destination.Navigation) {
         self.path.append(destination)
