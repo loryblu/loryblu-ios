@@ -114,16 +114,9 @@ extension TasksViewModel {
         let shiftsItems = [
             LocbookTask.Shift.morning,
             LocbookTask.Shift.afternoon,
-            LocbookTask.Shift.night
-        var tasksFiltered: [TaskModel]?
-        var shiftDefault: LocbookTask.Shift = LocbookTask.Shift.morning
-        var shiftsItems = [LocbookTask.Shift.morning, LocbookTask.Shift.afternoon, LocbookTask.Shift.night]
+            LocbookTask.Shift.night]
         var count = 0
-        var count = 0
-        var tasksFiltered: [TaskModel]?
-        var shiftDefault: LocbookTask.Shift = LocbookTask.Shift.morning
-        var shiftsItems = [LocbookTask.Shift.morning, LocbookTask.Shift.afternoon, LocbookTask.Shift.night]
-        var count = 0
+
         while tasksFiltered == nil {
             let actualTasks = tasks.filter({ task in
                 task.locbookTask.shift == shiftsItems[count]
