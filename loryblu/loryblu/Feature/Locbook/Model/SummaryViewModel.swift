@@ -8,10 +8,9 @@ class SummaryViewModel: ObservableObject {
         case fail
     }
 
-    @Published var stateTask: StatusTask = .none
     @Injected(\.appData) var appData
+    @Published var stateTask: StatusTask = .none
     @Published var shifts: [ShiftItem] = []
-
     private var repository = Container.shared.taskRepository()
 
     @MainActor
@@ -27,6 +26,8 @@ class SummaryViewModel: ObservableObject {
         } else {
             stateTask = .fail
         }
+
+        appData.forceReloadListView = true
     }
 
     @MainActor
@@ -42,6 +43,8 @@ class SummaryViewModel: ObservableObject {
         } else {
             stateTask = .fail
         }
+
+        appData.forceReloadListView = true
     }
 
     func iniShifts(shift: LocbookTask.Shift?) {
@@ -74,6 +77,7 @@ class SummaryViewModel: ObservableObject {
         changeTaskShift(shift)
     }
 }
+
 extension SummaryViewModel {
     private func getShiftsUiModel(shift: LocbookTask.Shift?) -> [ShiftItem] {
         let shiftName: String

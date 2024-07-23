@@ -41,7 +41,6 @@ struct LoginView: View {
                     .textInputAutocapitalization(.never)
                 }
 
-
                 VStack(alignment: .trailing) {
                     Text(form.textError)
                         .font(LBFont.caption)
@@ -131,6 +130,7 @@ extension LoginView {
         var showResetPassword: Bool = false
         var showResponsibleRegister: Bool = false
         var showChildRegister: Bool = false
+
         mutating func validateLogin() -> Bool {
             if !ValidateRules.validate(email: email) {
                 isEmailValid = false
@@ -138,7 +138,7 @@ extension LoginView {
                 textError =  LBStrings.Login.emailNotExists
                 return false
             }
-            
+
             if password.isEmpty {
                 textError = LBStrings.Login.requiredField
                 isEmailValid = true
