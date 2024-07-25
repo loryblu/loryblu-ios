@@ -44,7 +44,7 @@ class TasksViewModel: ObservableObject {
                 if(result) {
                     switchMsgDialogState()
                     switchDeleteDialogState()
-                    updateCache(taskEdited: taskEdited)
+                    removeFromCache()
                     updateUiState()
                 } else {
                     switchDeleteDialogState()
@@ -58,6 +58,7 @@ class TasksViewModel: ObservableObject {
     }
     func closeDeleteSuccessfulMsg() {
         switchMsgDialogState()
+        resetTaskToDelete()
     }
     func filterWeekDay(weekDays: [LocbookTask.Frequency]) {
         var taskFiltered: [TaskModel] = []
@@ -144,6 +145,8 @@ extension TasksViewModel {
     }
     private func updateUiState() {
         tasks.removeAll(where: { $0.locbookTask.id == taskToDelete.id })
+    }
+    private func resetTaskToDelete() {
         taskToDelete = .init()
     }
 }

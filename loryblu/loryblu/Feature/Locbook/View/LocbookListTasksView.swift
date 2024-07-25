@@ -27,7 +27,7 @@ struct LocbookListTasksView: View {
             if viewmodel.displayDeleteMsgSuccessful {
                 LBDeleteConfirmation(onClose: {
                     viewmodel.closeDeleteSuccessfulMsg()
-                }, nameTask: viewmodel.taskToDelete.taskTitle ?? "", taskDay: "")
+                }, nameTask: viewmodel.taskToDelete.taskTitle ?? "", taskDay: viewmodel.currentSelectedDayText ?? "")
             }
             VStack {
                 VStack(spacing: 16) {
