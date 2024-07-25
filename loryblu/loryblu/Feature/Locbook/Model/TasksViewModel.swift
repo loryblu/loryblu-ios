@@ -5,14 +5,14 @@ class TasksViewModel: ObservableObject {
     @Injected(\.appData) var appData
     @Published var currentTask: TaskModel?
     @Published var selectedToDelete: LocbookTask = .init()
-    private var repository = Container.shared.taskRepository()
-    private var cacheTasks: [TaskModel]?
     @Published var tasks: [TaskModel] = []
     @Published var shifts: [ShiftItem] = []
-    private var currentSelectedShift: LocbookTask.Shift?
     @Published var currentSelectedDay: LocbookTask.Frequency?
     @Published var currentSelectedDayText: String?
     @Published var filteredTasks: [TaskModel] = []
+    private var repository = Container.shared.taskRepository()
+    private var cacheTasks: [TaskModel]?
+    private var currentSelectedShift: LocbookTask.Shift?
 
     var forceReload: Bool {
         appData.forceReloadListView
@@ -30,36 +30,41 @@ class TasksViewModel: ObservableObject {
             tasks = pairShift.tasksFiltered
             appData.forceReloadListView = false
         }
-        
+
         filterWeekDay(weekDays: [currentSelectedDay ?? LocbookTask.Frequency.sun])
         currentSelectedDayText  = getDayOfWeekName(dayValue: currentSelectedDay)
     }
 
     func filterWeekDay(weekDays: [LocbookTask.Frequency]) {
-        var taskFiltered: [TaskModel] = []
-        currentSelectedDay = weekDays.first ?? .sun
-        if weekDays == [] {
+        guard !weekDays.isEmpty else {
             self.tasks = cacheTasks ?? []
-        } else {
-            taskFiltered = cacheTasks?.filter({ task in
-                Set(weekDays).intersection(Set(task.locbookTask.frequency ?? [])).isEmpty == false && task.locbookTask.shift == currentSelectedShift
-            }) ?? []
-            self.tasks = taskFiltered
+            return
         }
-        currentSelectedDayText  = getDayOfWeekName(dayValue: currentSelectedDay)
+
+        currentSelectedDay = weekDays.first ?? .sun
+
+        tasks = cacheTasks?.filter { task in
+            let taskFrequencies = Set(task.locbookTask.frequency ?? [])
+            return !taskFrequencies.isDisjoint(with: weekDays) && task.locbookTask.shift == currentSelectedShift
+        } ?? []
+
+        currentSelectedDayText = getDayOfWeekName(dayValue: currentSelectedDay)
     }
 
     func filterByShifts(shiftSelected: String) {
-        currentSelectedShift = switch shiftSelected {
-        case LBStrings.FrequencyRotine.morning:
-            LocbookTask.Shift.morning
-        case LBStrings.FrequencyRotine.afternoon:
-            LocbookTask.Shift.afternoon
-        default:
-            LocbookTask.Shift.night
-        }
-        shifts = shifts.map { (shift: ShiftItem) -> ShiftItem in
-            let isSelected = shiftSelected == shift.name ? true : false
+        currentSelectedShift = {
+            switch shiftSelected {
+            case LBStrings.FrequencyRotine.morning:
+                return LocbookTask.Shift.morning
+            case LBStrings.FrequencyRotine.afternoon:
+                return LocbookTask.Shift.afternoon
+            default:
+                return LocbookTask.Shift.night
+            }
+        }()
+
+        shifts = shifts.map { shift in
+            let isSelected = shiftSelected == shift.name
             return ShiftItem(
                 name: shift.name,
                 icon: shift.icon,
@@ -68,77 +73,68 @@ class TasksViewModel: ObservableObject {
                 isSelected: isSelected
             )
         }
-        tasks = cacheTasks?.filter({ task in
-            Set([currentSelectedDay]).intersection(Set(task.locbookTask.frequency ?? [])).isEmpty == false && task.locbookTask.shift == currentSelectedShift
-        }) ?? []
+
+        guard let currentDay = currentSelectedDay else {
+            tasks = cacheTasks ?? []
+            return
+        }
+
+        tasks = cacheTasks?.filter { task in
+            let taskFrequencies = Set(task.locbookTask.frequency ?? [])
+            return !taskFrequencies.isDisjoint(with: [currentDay]) && task.locbookTask.shift == currentSelectedShift
+        } ?? []
     }
 
-    func taskToDelete(taskToDelete:LocbookTask) {
+    func taskToDelete(taskToDelete: LocbookTask) {
         selectedToDelete = taskToDelete
     }
 }
 
 // MARK: Extension(s).
 extension TasksViewModel {
-    func pairDefaultDayNTasks(tasks: [TaskModel]) async ->
-    (defaultDay: LocbookTask.Frequency, tasksFiltered: [TaskModel]) {
-        var tasksFiltered: [TaskModel]?
-        var dayDefault: LocbookTask.Frequency = LocbookTask.Frequency.sun
-        let week = [LocbookTask.Frequency.sun,
-                    LocbookTask.Frequency.mon,
-                    LocbookTask.Frequency.tue,
-                    LocbookTask.Frequency.wed,
-                    LocbookTask.Frequency.thu,
-                    LocbookTask.Frequency.fri,
-                    LocbookTask.Frequency.sat]
-        var count = 0
-        
-        while tasksFiltered == nil {
-            let actualTasks = tasks.filter({ task in
-                Set([week[count]]).intersection(Set(task.locbookTask.frequency ?? [])).isEmpty == false
-            })
-            if !actualTasks.isEmpty {
-                tasksFiltered = actualTasks
-                dayDefault = tasksFiltered != nil ? week[count] : LocbookTask.Frequency.sun
+    func pairDefaultDayNTasks(tasks: [TaskModel]) async -> (
+        defaultDay: LocbookTask.Frequency,
+        tasksFiltered: [TaskModel]) {
+
+        let week: [LocbookTask.Frequency] = [
+            .sun, .mon, .tue, .wed, .thu, .fri, .sat
+        ]
+
+        for day in week {
+            let tasksFiltered = tasks.filter { task in
+                let taskFrequencies = Set(task.locbookTask.frequency ?? [])
+                return !taskFrequencies.isSubset(of: [day])
             }
-            if count == week.count && tasksFiltered == nil {
-                tasksFiltered = []
+
+            if !tasksFiltered.isEmpty {
+                return (defaultDay: day, tasksFiltered: tasksFiltered)
             }
-            count += 1
         }
-        return (defaultDay: dayDefault, tasksFiltered: tasksFiltered ?? [])
+
+        return (defaultDay: .sun, tasksFiltered: [])
     }
-    func pairDefaultShiftNTasks(tasks: [TaskModel]) async -> (defaultShift: LocbookTask.Shift, tasksFiltered: [TaskModel]) {
-        var tasksFiltered: [TaskModel]?
-        var shiftDefault: LocbookTask.Shift = LocbookTask.Shift.morning
-        let shiftsItems = [
-            LocbookTask.Shift.morning,
-            LocbookTask.Shift.afternoon,
-            LocbookTask.Shift.night
-        var tasksFiltered: [TaskModel]?
-        var shiftDefault: LocbookTask.Shift = LocbookTask.Shift.morning
-        var shiftsItems = [LocbookTask.Shift.morning, LocbookTask.Shift.afternoon, LocbookTask.Shift.night]
-        var count = 0
-        var count = 0
-        var tasksFiltered: [TaskModel]?
-        var shiftDefault: LocbookTask.Shift = LocbookTask.Shift.morning
-        var shiftsItems = [LocbookTask.Shift.morning, LocbookTask.Shift.afternoon, LocbookTask.Shift.night]
-        var count = 0
-        while tasksFiltered == nil {
-            let actualTasks = tasks.filter({ task in
-                task.locbookTask.shift == shiftsItems[count]
-            })
-            if !actualTasks.isEmpty {
-                tasksFiltered = actualTasks
-                shiftDefault = tasksFiltered != nil ? shiftsItems[count] : shiftDefault
+
+    func pairDefaultShiftNTasks(tasks: [TaskModel]) async -> (
+        defaultShift: LocbookTask.Shift,
+        tasksFiltered: [TaskModel]) {
+
+        let shiftsItems: [LocbookTask.Shift] = [
+            .morning, .afternoon, .night
+        ]
+
+        for shift in shiftsItems {
+            let tasksFiltered = tasks.filter { task in
+                task.locbookTask.shift == shift
             }
-            if count == shiftsItems.count && tasksFiltered == nil {
-                tasksFiltered = []
+
+            if !tasksFiltered.isEmpty {
+                return (defaultShift: shift, tasksFiltered: tasksFiltered)
             }
-            count += 1
         }
-        return (defaultShift: shiftDefault, tasksFiltered: tasksFiltered ?? [])
+
+        return (defaultShift: shiftsItems.first ?? .morning, tasksFiltered: [])
     }
+
     func getShiftsSelectedByDefault(shiftSelected: LocbookTask.Shift) -> [ShiftItem] {
         let items = [
             ShiftItem(
@@ -158,27 +154,30 @@ extension TasksViewModel {
                 backgroundColor: LBColor.buttonBackgroundDark,
                 letterColor: .white, isSelected: false)
         ]
-        let shiftItemsUpdated = items.map { (shift: ShiftItem) -> ShiftItem in
-            let shiftText = switch shiftSelected {
-            case LocbookTask.Shift.morning:
-                LBStrings.FrequencyRotine.morning
-            case LocbookTask.Shift.afternoon:
-                LBStrings.FrequencyRotine.afternoon
-            default:
-                LBStrings.FrequencyRotine.night
-            }
-            let isSelected = shiftText == shift.name ? true : false
-            return ShiftItem(
+        let shiftText: String
+
+        switch shiftSelected {
+        case LocbookTask.Shift.morning:
+            shiftText = LBStrings.FrequencyRotine.morning
+        case LocbookTask.Shift.afternoon:
+            shiftText = LBStrings.FrequencyRotine.afternoon
+        default:
+            shiftText = LBStrings.FrequencyRotine.night
+        }
+
+        let shiftItemsUpdated = items.map { shift in
+            ShiftItem(
                 name: shift.name,
                 icon: shift.icon,
                 backgroundColor: shift.backgroundColor,
                 letterColor: shift.letterColor,
-                isSelected: isSelected
+                isSelected: shift.name == shiftText
             )
         }
+
         return shiftItemsUpdated
     }
-    
+
     func getDayOfWeekName(dayValue: LocbookTask.Frequency?) -> String {
         switch dayValue {
         case .sun:
