@@ -11,12 +11,23 @@ struct LocbookListTasksView: View {
     var props: Props
     @StateObject var viewmodel: TasksViewModel  = TasksViewModel()
     @State var day: LBFrequencyFilter.Week = .none
-    @State var openDeleteDialog: Bool = false
 
     var body: some View {
         ZStack {
-            if openDeleteDialog {
-                LBDeleteTaskDialog(dayOfWeek: viewmodel.currentSelectedDayText ?? "", taskName: viewmodel.selectedToDelete.taskTitle ?? "", onCancel: { openDeleteDialog = false })
+            if viewmodel.openDeleteDialog {
+                LBDeleteTaskDialog(
+                    dayOfWeek: viewmodel.currentSelectedDayText ?? "",
+                    taskName: viewmodel.taskToDelete.taskTitle ?? "",
+                    onDelete: { deleteOption in
+                        viewmodel.removeTask(deleteOption: deleteOption)
+                    },
+                    onCancel: { viewmodel.closeDeleteDialog() }
+                )
+            }
+            if viewmodel.displayDeleteMsgSuccessful {
+                LBDeleteConfirmation(onClose: {
+                    viewmodel.closeDeleteSuccessfulMsg()
+                }, nameTask: viewmodel.taskToDelete.taskTitle ?? "", taskDay: "")
             }
             VStack {
                 VStack(spacing: 16) {
@@ -46,9 +57,8 @@ struct LocbookListTasksView: View {
                         onEditTask: { closure in
                         props.onEditTask(closure)
                         },
-                        openDeleteDialog: { taskToDelete in
-                            openDeleteDialog.toggle()
-                            viewmodel.taskToDelete(taskToDelete: taskToDelete)
+                        openDeleteDialog: { task in
+                            viewmodel.removeTask(selectedTask: task)
                         })
                         .frame(maxHeight: .infinity, alignment: .top)
                         .onAppear {
