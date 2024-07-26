@@ -40,20 +40,15 @@ class TasksViewModel: ObservableObject {
     func removeTask(deleteOption: DeleteOption) {
         Task {
             switch deleteOption {
-                // Delete the task
-            case DeleteOption.allDays:
-                let result = await repository.deleteTask(token: appData.token, childrenId: appData.childrenId, taskId: taskToDelete.id!)
-                if(result) {
-                    switchMsgDialogState()
-                    switchDeleteDialogState()
-                    updateUiState()
-                } else {
-                    switchDeleteDialogState()
-                }
+            case DeleteOption.allDays: break
             default:
                 let taskEdited = getTaskEdited()
-                let result = await repository.taskEdit(with: taskEdited, token: appData.token, childrenID: appData.childrenId)
-                if(result) {
+                let result = await repository.taskEdit(
+                    with: taskEdited,
+                    token: appData.token,
+                    childrenID: appData.childrenId
+                )
+                if result {
                     switchMsgDialogState()
                     switchDeleteDialogState()
                     removeFromCache()
