@@ -38,7 +38,7 @@ class TasksViewModel: ObservableObject {
     }
     
     func removeTask(deleteOption: DeleteOption) {
-        Task {
+        Task { @MainActor in
             switch deleteOption {
             case DeleteOption.allDays: break
             default:
