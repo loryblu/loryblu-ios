@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct LBDeleteConfirmation: View {
-    @Environment(\.dismiss) var dismiss
     let onClose: () -> Void
     let nameTask: String
     let taskDay: String
@@ -11,9 +10,6 @@ struct LBDeleteConfirmation: View {
         ZStack {
             Color(.black)
             .opacity(0.5)
-                .onTapGesture {
-                    dismiss()
-                }
             VStack {
                 Text(LBStrings.Dialog.taskDelete)
                     .font(LBFont.button)
@@ -33,7 +29,7 @@ struct LBDeleteConfirmation: View {
                     .padding(.bottom, 20)
 
                 LBButton(title: "Fechar") {
-                    dismiss()
+                    onClose()
                 }
                 .padding(.trailing, 15)
                 .padding(.leading, 15)
@@ -50,6 +46,7 @@ struct LBDeleteConfirmation: View {
                 }
         })
         }
+        .zIndex(1)
         .ignoresSafeArea()
     }
 }

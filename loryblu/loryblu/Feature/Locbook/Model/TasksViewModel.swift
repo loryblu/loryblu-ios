@@ -4,15 +4,17 @@ import Factory
 class TasksViewModel: ObservableObject {
     @Injected(\.appData) var appData
     @Published var currentTask: TaskModel?
-    @Published var selectedToDelete: LocbookTask = .init()
-    private var repository = Container.shared.taskRepository()
-    private var cacheTasks: [TaskModel]?
+    @Published var taskToDelete: LocbookTask = .init()
     @Published var tasks: [TaskModel] = []
     @Published var shifts: [ShiftItem] = []
-    private var currentSelectedShift: LocbookTask.Shift?
     @Published var currentSelectedDay: LocbookTask.Frequency?
     @Published var currentSelectedDayText: String?
     @Published var filteredTasks: [TaskModel] = []
+    @Published var displayDeleteMsgSuccessful: Bool = false
+    @Published var openDeleteDialog: Bool = false
+    private var repository = Container.shared.taskRepository()
+    private var cacheTasks: [TaskModel]?
+    private var currentSelectedShift: LocbookTask.Shift?
 
     var forceReload: Bool {
         appData.forceReloadListView
@@ -30,9 +32,40 @@ class TasksViewModel: ObservableObject {
             tasks = pairShift.tasksFiltered
             appData.forceReloadListView = false
         }
-        
         filterWeekDay(weekDays: [currentSelectedDay ?? LocbookTask.Frequency.sun])
         currentSelectedDayText  = getDayOfWeekName(dayValue: currentSelectedDay)
+    }
+
+    func removeTask(deleteOption: DeleteOption) {
+        Task { @MainActor in
+            switch deleteOption {
+            case DeleteOption.allDays: break
+            default:
+                let taskEdited = getTaskEdited()
+                let result = await repository.taskEdit(
+                    with: taskEdited,
+                    token: appData.token,
+                    childrenID: appData.childrenId
+                )
+                if result {
+                    switchMsgDialogState()
+                    switchDeleteDialogState()
+                    removeFromCache()
+                    updateUiState()
+                } else {
+                    switchDeleteDialogState()
+                }
+            }
+        }
+    }
+
+    func closeDeleteDialog() {
+        switchDeleteDialogState()
+    }
+
+    func closeDeleteSuccessfulMsg() {
+        switchMsgDialogState()
+        resetTaskToDelete()
     }
 
     func filterWeekDay(weekDays: [LocbookTask.Frequency]) {
@@ -73,8 +106,62 @@ class TasksViewModel: ObservableObject {
         }) ?? []
     }
 
-    func taskToDelete(taskToDelete:LocbookTask) {
-        selectedToDelete = taskToDelete
+    func removeTask(selectedTask: LocbookTask) {
+        setupTaskToDelete(selectedTask: selectedTask)
+        switchDeleteDialogState()
+    }
+}
+
+extension TasksViewModel {
+    private func updateCache(taskEdited: LocbookTask) {
+        cacheTasks = cacheTasks?.map { (taskModel: TaskModel) -> TaskModel in
+            var mutableTask = taskModel
+            if taskModel.locbookTask.id == taskEdited.id {
+                mutableTask.locbookTask = taskEdited
+            }
+            return mutableTask
+        }
+    }
+
+    private func removeFromCache() {
+        cacheTasks?.removeAll(where: { $0.locbookTask.id == taskToDelete.id })
+    }
+
+    private func switchMsgDialogState() {
+        displayDeleteMsgSuccessful = !displayDeleteMsgSuccessful
+    }
+
+    private func setupTaskToDelete(selectedTask: LocbookTask) {
+        taskToDelete = selectedTask
+    }
+
+    private func switchDeleteDialogState() {
+        openDeleteDialog = !openDeleteDialog
+    }
+
+    private func getTaskEdited() -> LocbookTask {
+        let newFrequency = getNewFrequency()
+        return LocbookTask(
+            id: taskToDelete.id,
+            childrenId: appData.childrenId,
+            shift: taskToDelete.shift,
+            frequency: newFrequency,
+            categoryId: taskToDelete.categoryId
+        )
+    }
+
+    private func getNewFrequency() -> [LocbookTask.Frequency] {
+        var oldFrequency = taskToDelete.frequency
+        oldFrequency?.removeAll(where: { $0 == currentSelectedDay })
+        return oldFrequency ?? []
+    }
+
+    private func updateUiState() {
+        tasks.removeAll(where: { $0.locbookTask.id == taskToDelete.id })
+    }
+
+    private func resetTaskToDelete() {
+        taskToDelete = .init()
     }
 }
 
@@ -92,7 +179,7 @@ extension TasksViewModel {
                     LocbookTask.Frequency.fri,
                     LocbookTask.Frequency.sat]
         var count = 0
-        
+
         while tasksFiltered == nil {
             let actualTasks = tasks.filter({ task in
                 Set([week[count]]).intersection(Set(task.locbookTask.frequency ?? [])).isEmpty == false
@@ -108,6 +195,7 @@ extension TasksViewModel {
         }
         return (defaultDay: dayDefault, tasksFiltered: tasksFiltered ?? [])
     }
+
     func pairDefaultShiftNTasks(tasks: [TaskModel]) async -> (defaultShift: LocbookTask.Shift, tasksFiltered: [TaskModel]) {
         var tasksFiltered: [TaskModel]?
         var shiftDefault: LocbookTask.Shift = LocbookTask.Shift.morning
@@ -132,6 +220,7 @@ extension TasksViewModel {
         }
         return (defaultShift: shiftDefault, tasksFiltered: tasksFiltered ?? [])
     }
+
     func getShiftsSelectedByDefault(shiftSelected: LocbookTask.Shift) -> [ShiftItem] {
         let items = [
             ShiftItem(
@@ -171,7 +260,7 @@ extension TasksViewModel {
         }
         return shiftItemsUpdated
     }
-    
+
     func getDayOfWeekName(dayValue: LocbookTask.Frequency?) -> String {
         switch dayValue {
         case .sun:

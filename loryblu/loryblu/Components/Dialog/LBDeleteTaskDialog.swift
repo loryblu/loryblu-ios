@@ -1,16 +1,16 @@
 import SwiftUI
 
-enum Option {
-  case option1
-  case option2
+enum DeleteOption {
+  case currentDay
+  case allDays
 }
 
 struct LBDeleteTaskDialog: View {
     let dayOfWeek: String
     let taskName: String
-    let onDelete: () -> Void = {}
+    let onDelete: (DeleteOption) -> Void
     let onCancel: () -> Void
-    @State var selectedOption: Option? = .option2
+    @State var selectedOption: DeleteOption? = .allDays
 
     var body: some View {
         LBCustomDialog(dismiss: onCancel) {
@@ -35,11 +35,11 @@ struct LBDeleteTaskDialog: View {
                 .multilineTextAlignment(.center)
             Spacer(minLength: 16)
             VStack(alignment: .listRowSeparatorLeading) {
-                LBRadioButton(tag: .option1, selection: $selectedOption) {
+                LBRadioButton(tag: .currentDay, selection: $selectedOption) {
                     Text(LBStrings.Dialog.deleteOnlyForOneday)
                     Text(dayOfWeek).bold()
                 }
-                LBRadioButton(tag: .option2, selection: $selectedOption) {
+                LBRadioButton(tag: .allDays, selection: $selectedOption) {
                     Text(LBStrings.Dialog.deleteForAllDays)
                 }
             }
@@ -56,7 +56,7 @@ struct LBDeleteTaskDialog: View {
                 .contentShape(Rectangle())
                 Spacer().frame(maxWidth: .infinity)
                 LBButton(title: LBStrings.Dialog.deleteTitleBtn, style: .error) {
-                    onDelete()
+                    onDelete(selectedOption ?? .allDays)
                 }
             }.padding(16)
         }
@@ -65,5 +65,5 @@ struct LBDeleteTaskDialog: View {
 }
 
 #Preview {
-    LBDeleteTaskDialog(dayOfWeek: LBStrings.DaysOfWeek.monday, taskName: LBStrings.NameImage.tvgame, onCancel: { })
+    LBDeleteTaskDialog(dayOfWeek: LBStrings.DaysOfWeek.monday, taskName: LBStrings.NameImage.tvgame, onDelete: {_ in }, onCancel: { })
 }
