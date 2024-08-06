@@ -26,8 +26,6 @@ class SummaryViewModel: ObservableObject {
         } else {
             stateTask = .fail
         }
-
-        appData.forceReloadListView = true
     }
 
     @MainActor

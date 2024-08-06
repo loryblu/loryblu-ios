@@ -16,13 +16,10 @@ class TasksViewModel: ObservableObject {
     private var cacheTasks: [TaskModel]?
     private var currentSelectedShift: LocbookTask.Shift?
 
-    var forceReload: Bool {
-        appData.forceReloadListView
-    }
 
     @MainActor
     func fetchTasks() async {
-        if cacheTasks == nil || forceReload {
+        if cacheTasks == nil {
             cacheTasks = await repository.fetchTasks(token: appData.token, childrenId: appData.childrenId)
             let pairDay = await pairDefaultDayNTasks(tasks: cacheTasks ?? [])
             let pairShift = await pairDefaultShiftNTasks(tasks: pairDay.tasksFiltered)
@@ -30,7 +27,6 @@ class TasksViewModel: ObservableObject {
             currentSelectedShift = pairShift.defaultShift
             shifts = getShiftsSelectedByDefault(shiftSelected: pairShift.defaultShift)
             tasks = pairShift.tasksFiltered
-            appData.forceReloadListView = false
         }
         filterWeekDay(weekDays: [currentSelectedDay ?? LocbookTask.Frequency.sun])
         currentSelectedDayText  = getDayOfWeekName(dayValue: currentSelectedDay)
@@ -39,7 +35,21 @@ class TasksViewModel: ObservableObject {
     func removeTask(deleteOption: DeleteOption) {
         Task { @MainActor in
             switch deleteOption {
-            case DeleteOption.allDays: break
+            case DeleteOption.allDays: 
+                let result = await repository.deleteTask(
+                    token: appData.token,
+                    childrenId: appData.childrenId,
+                    taskId: taskToDelete.id!
+                )
+                if result {
+                   switchMsgDialogState()
+                   currentSelectedDayText = "Todos os dias"
+                   switchDeleteDialogState()
+                   removeFromCache()
+                   updateUiState()
+               } else {
+                   switchDeleteDialogState()
+               }
             default:
                 let taskEdited = getTaskEdited()
                 let result = await repository.taskEdit(
@@ -50,7 +60,7 @@ class TasksViewModel: ObservableObject {
                 if result {
                     switchMsgDialogState()
                     switchDeleteDialogState()
-                    removeFromCache()
+                    updateCache(taskEdited: taskToDelete)
                     updateUiState()
                 } else {
                     switchDeleteDialogState()

@@ -129,7 +129,7 @@ struct LocbookNavigationStack: View {
             props: .init(
                 message: message,
                 onClose: {
-                    addOrEdit == .add ? coordinator.popView(count: 4) : coordinator.popView(count: 2)
+                    dismiss()
                 }
             )
         )

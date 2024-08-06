@@ -87,6 +87,7 @@ class TaskRepository {
             .with(path: "\(Endpoint.task)?childrenId=\(childrenId)&frequency=sun,mon,tue,wed,thu,fri,sat")
             .with(method: .get)
             .with(addHeaderName: "Authorization", value: "Bearer \(token)")
+            .with(addHeaderName: "Content-Type", value: "application/json")
             .build()
 
         do {
@@ -96,6 +97,23 @@ class TaskRepository {
             return tasks
         } catch {
             return tasks
+        }
+    }
+    
+    func deleteTask(token: String, childrenId: Int, taskId: Int) async -> Bool {
+        let request = RequestModel.Builder()
+            .with(baseURL: Server.baseURL)
+            .with(path: "\(Endpoint.task)?childrenId=\(childrenId)&taskId=\(taskId)")
+            .with(method: .delete)
+            .with(addHeaderName: "Authorization", value: "Bearer \(token)")
+            .with(addHeaderName: "Content-Type", value: "application/json")
+            .build()
+
+        do {
+            _ = try await network.request(request: request, returning: ResponseMessage.self)
+            return true
+        } catch {
+            return false
         }
     }
 }

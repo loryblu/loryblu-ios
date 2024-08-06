@@ -5,6 +5,7 @@ enum RequestMethod: String {
     case get = "GET"
     case put = "PUT"
     case patch = "PATCH"
+    case delete = "DELETE"
 }
 
 protocol Request {

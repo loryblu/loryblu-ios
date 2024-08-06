@@ -2,8 +2,8 @@ import Foundation
 import SwiftUI
 
 struct NetworkDataModel: Decodable {
-    var study: [TasksNetworkModel]
-    var routine: [TasksNetworkModel]
+    var study: [TasksNetworkModel]?
+    var routine: [TasksNetworkModel]?
 }
 
 struct TasksNetworkModel: Decodable {
