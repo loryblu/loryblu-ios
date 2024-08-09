@@ -10,7 +10,6 @@ class TaskRepository {
     }
 
     func taskRegister(with locBookTask: LocbookTask, token: String, childrenID: Int) async -> Bool {
-        
         guard let categoryId = locBookTask.categoryId?.description else {
             return false
         }
@@ -36,7 +35,6 @@ class TaskRepository {
             ]))
             .with(addHeaderName: "Authorization", value: "Bearer \(token)")
             .with(addHeaderName: "User-Agent", value: "LoryBlu(iOS)")
-            .with(addHeaderName: "Content-Type", value: "application/json")
             .build()
 
         do {
@@ -58,7 +56,7 @@ class TaskRepository {
 
         let request = RequestModel.Builder()
             .with(baseURL: Server.baseURL)
-            .with(path: Endpoint.task + "?id_task=\(taskId)")
+            .with(path: "\(Endpoint.task)?childrenId=\(childrenID)&taskId=\(taskId)")
             .with(method: .patch)
             .with(body: JSONParser.parseData(from: [
                 "childrenId": childrenID,
@@ -69,7 +67,6 @@ class TaskRepository {
             ]))
             .with(addHeaderName: "Authorization", value: "Bearer \(token)")
             .with(addHeaderName: "User-Agent", value: "LoryBlu(iOS)")
-            .with(addHeaderName: "Content-Type", value: "application/json")
             .build()
 
         do {
