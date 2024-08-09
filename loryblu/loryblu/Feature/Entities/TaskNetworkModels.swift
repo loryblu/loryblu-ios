@@ -10,10 +10,11 @@ struct TasksNetworkModel: Decodable {
     var id: Int
     var shift: String
     var frequency: [String]
-    var order: Int
+    var order: Int?
     var categoryId: String
-    var categoryTitle: String
-    var updatedAt: String
+    var childrenId: String?
+    var categoryTitle: String?
+    var updatedAt: String?
 }
 
 extension [TasksNetworkModel] {
