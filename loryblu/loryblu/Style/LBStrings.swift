@@ -231,3 +231,17 @@ extension LBStrings {
         static let saturday = String(localized: "dayOfWeek_saturday")
     }
 }
+
+extension LBStrings {
+    enum Menu {
+        static let menu = String(localized: "profile")
+        static let configuration = String(localized: "configuration")
+        static let child_name = String(localized: "child_name")
+        static let parentsName = String(localized: "parents_name")
+        static let security = String(localized: "security")
+        static let faq = String(localized: "faq")
+        static let privacyTerms = String(localized: "privacy_terms")
+        static let exit = String(localized: "exit")
+
+    }
+}

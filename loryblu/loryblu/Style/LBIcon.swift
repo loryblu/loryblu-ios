@@ -6,6 +6,7 @@ enum LBIcon: String {
     case brushTeeth = "brush_teeth"
     case cake
     case check
+    case childTree = "child_tree"
     case circle
     case circleFill = "circle_fill"
     case close
@@ -21,6 +22,7 @@ enum LBIcon: String {
     case eviningSmall = "evining_small"
     case eyeClose = "eye_close"
     case eyeOpen = "eye_open"
+    case exit
     case facebook
     case fairy
     case fairyShadow = "fairy_shadow"
@@ -47,13 +49,16 @@ enum LBIcon: String {
     case morning
     case music
     case noAgree = "no_agree"
+    case parentsTree = "parents_tree"
     case psychologist
     case play
+    case privacyTerms = "privacy_terms"
     case progression1 = "progression_1"
     case progression2 = "progression_2"
     case progression3 = "progression_3"
     case progression4 = "progression_4"
     case plus
+    case questionMark = "question_mark"
     case reading
     case reinforcement
     case reorg
@@ -63,6 +68,7 @@ enum LBIcon: String {
     case speechTherapy = "speech_therapy"
     case sport
     case pedagogue = "pedagogue"
+    case shield
     case sun
     case sunSmall = "sun_small"
     case therapy
