@@ -64,7 +64,7 @@ struct LocbookSummaryView: View {
             }
             .padding(24)
 
-            if isLoading {
+            if model.stateTask == .loading {
                 LoadingView()
             }
         }

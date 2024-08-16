@@ -16,6 +16,7 @@ class SummaryViewModel: ObservableObject {
 
     @MainActor
     func saveTask(task: LocbookTask) async {
+        stateTask = .loading
         let result = await repository.taskRegister(
             with: task,
             token: appData.token,
