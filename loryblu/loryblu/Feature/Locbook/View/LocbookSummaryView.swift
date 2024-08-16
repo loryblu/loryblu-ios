@@ -7,7 +7,6 @@ struct DayOfWeekOption {
 }
 
 struct LocbookSummaryView: View {
-    @State private var isLoading = false
 
     // MARK: - Defines
     struct Props {
@@ -197,11 +196,9 @@ struct LocbookSummaryView: View {
 
     var addConfirmationContent: some View {
         LBButton(title: LBStrings.SummaryLocbook.submitTask) {
-            isLoading = true
             Task {
                 await  model.saveTask(task: props.task)
                 if model.stateTask == .success {
-                    isLoading = false
                     props.onSubmitNewTask?()
                 }
             }
@@ -214,7 +211,6 @@ struct LocbookSummaryView: View {
                 props.onClose?()
             }
             LBButton(title: "Salvar") {
-                isLoading = true
                 formConfig.task?.frequency = formConfig.makeFrequency()
 
                 guard let editedTask = formConfig.task else {
