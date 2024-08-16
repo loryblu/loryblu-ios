@@ -18,8 +18,8 @@ class TasksViewModel: ObservableObject {
 
 
     @MainActor
-    func fetchTasks() async {
-        if cacheTasks == nil {
+    func fetchTasks(taskSelected: LocbookTask?) async {
+        if cacheTasks == nil || taskSelected != nil {
             cacheTasks = await repository.fetchTasks(token: appData.token, childrenId: appData.childrenId)
             let pairDay = await pairDefaultDayNTasks(tasks: cacheTasks ?? [])
             let pairShift = await pairDefaultShiftNTasks(tasks: pairDay.tasksFiltered)

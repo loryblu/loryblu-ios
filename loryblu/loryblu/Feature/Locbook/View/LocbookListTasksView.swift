@@ -64,7 +64,10 @@ struct LocbookListTasksView: View {
                         })
                         .frame(maxHeight: .infinity, alignment: .top)
                         .onAppear {
-                            Task { await viewmodel.fetchTasks() }
+                            Task {
+                                await viewmodel.fetchTasks(taskSelected: taskSelected.locbookTask)
+                                resetTaskSelected()
+                            }
                         }
                         .padding(.init(top: 0, leading: 8, bottom: 0, trailing: 8))
 
