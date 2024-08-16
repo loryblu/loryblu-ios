@@ -5,10 +5,11 @@ struct LocbookListTasksView: View {
 
     struct Props {
         let onNewTask: ClosureType.VoidVoid?
-        let onEditTask: ClosureType.LocbookTaskVoid
+        let onEditTask: ClosureType.TaskSelectedVoid
     }
 
     var props: Props
+    @StateObject var taskSelected: TaskSelected = TaskSelected()
     @StateObject var viewmodel: TasksViewModel  = TasksViewModel()
     @State var day: LBFrequencyFilter.Week = .none
 
@@ -55,7 +56,8 @@ struct LocbookListTasksView: View {
                         viewmodel: viewmodel,
                         securityIsOn: $securityIsOn,
                         onEditTask: { closure in
-                        props.onEditTask(closure)
+                        taskSelected.setupTaskSelected(task: closure)
+                        props.onEditTask(taskSelected)
                         },
                         openDeleteDialog: { task in
                             viewmodel.removeTask(selectedTask: task)

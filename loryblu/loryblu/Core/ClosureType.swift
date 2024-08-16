@@ -3,4 +3,5 @@ enum ClosureType {
     typealias LocbookTaskVoid = (LocbookTask) -> Void
     typealias LocbookTaskIntVoid = (LocbookTask, Int) -> Void
     typealias EditTaskPath = (EditPath) -> Void
+    typealias TaskSelectedVoid = (TaskSelected) -> Void
 }
