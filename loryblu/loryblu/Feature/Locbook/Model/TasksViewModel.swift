@@ -60,7 +60,7 @@ class TasksViewModel: ObservableObject {
                 if result {
                     switchMsgDialogState()
                     switchDeleteDialogState()
-                    updateCache(taskEdited: taskToDelete)
+                    updateCache(taskEdited: taskEdited)
                     updateUiState()
                 } else {
                     switchDeleteDialogState()
