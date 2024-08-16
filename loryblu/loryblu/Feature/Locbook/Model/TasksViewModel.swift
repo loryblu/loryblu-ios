@@ -156,7 +156,9 @@ extension TasksViewModel {
             childrenId: appData.childrenId,
             shift: taskToDelete.shift,
             frequency: newFrequency,
-            categoryId: taskToDelete.categoryId
+            categoryId: taskToDelete.categoryId,
+            categoryTitle: taskToDelete.categoryTitle,
+            taskTitle: taskToDelete.taskTitle
         )
     }
 
