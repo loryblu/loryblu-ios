@@ -191,6 +191,14 @@ struct LBFrequencyFilter: View {
     }
 }
 
+extension LocbookListTasksView {
+    func resetTaskSelected() {
+        if(taskSelected.locbookTask != nil) {
+            taskSelected.resetTaskSelected()
+        }
+    }
+}
+
 extension LocbookListTasksView.Props: Hashable {
     static func == (lhs: LocbookListTasksView.Props, rhs: LocbookListTasksView.Props) -> Bool {
         return lhs.hashValue == rhs.hashValue
