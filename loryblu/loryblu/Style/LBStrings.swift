@@ -236,7 +236,7 @@ extension LBStrings {
     enum Menu {
         static let menu = String(localized: "profile")
         static let configuration = String(localized: "configuration")
-        static let child_name = String(localized: "child_name")
+        static let childName = String(localized: "child_name")
         static let parentsName = String(localized: "parents_name")
         static let security = String(localized: "security")
         static let faq = String(localized: "faq")
