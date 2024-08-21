@@ -196,5 +196,13 @@
 "dayOfWeek_friday" = "sexta-feira";
 "dayOfWeek_saturday" = "sábado";
 
-
+// ==================== Menu ====================
+"profile" = "Perfil";
+"configuration = Configurações";
+"child_name" = "Nome da Criança";
+"parents_name" = "Nome da pessoa responsáve";
+"security" = "Segurança";
+"faq" = "Perguntas Frequentes";
+"privacy_terms" = "Termos e Privacidade";
+"exit" = "Sair do App";
 
