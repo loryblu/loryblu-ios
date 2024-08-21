@@ -2,6 +2,7 @@ import SwiftUI
 
 enum LBIcon: String {
     case arrowBack = "arrow_back"
+    case arrowRight = "arrow_right"
     case bathTime = "bath_time"
     case brushTeeth = "brush_teeth"
     case cake
