@@ -28,6 +28,7 @@
 		33B2ABFC2ACE587A004CF7DF /* RepositorySetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B2ABFB2ACE587A004CF7DF /* RepositorySetPassword.swift */; };
 		33BA2DE62AC9BE3D009704FD /* DeepLinkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA2DE52AC9BE3D009704FD /* DeepLinkHandler.swift */; };
 		33D0F90E2AD0EE3700EE54DF /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D0F90D2AD0EE3700EE54DF /* Endpoints.swift */; };
+		33D1AED22C756CE5002E630C /* LBMenuCellPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D1AED12C756CE5002E630C /* LBMenuCellPerson.swift */; };
 		33DE3B212B75975400F45449 /* UserAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DE3B202B75975400F45449 /* UserAuth.swift */; };
 		33DE3B232B75993200F45449 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DE3B222B75993200F45449 /* HomeViewModel.swift */; };
 		33DE3B252B759AC300F45449 /* SummaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DE3B242B759AC300F45449 /* SummaryViewModel.swift */; };
@@ -163,6 +164,7 @@
 		33B2ABFB2ACE587A004CF7DF /* RepositorySetPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositorySetPassword.swift; sourceTree = "<group>"; };
 		33BA2DE52AC9BE3D009704FD /* DeepLinkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkHandler.swift; sourceTree = "<group>"; };
 		33D0F90D2AD0EE3700EE54DF /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
+		33D1AED12C756CE5002E630C /* LBMenuCellPerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBMenuCellPerson.swift; sourceTree = "<group>"; };
 		33DE3B202B75975400F45449 /* UserAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuth.swift; sourceTree = "<group>"; };
 		33DE3B222B75993200F45449 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		33DE3B242B759AC300F45449 /* SummaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewModel.swift; sourceTree = "<group>"; };
@@ -349,6 +351,7 @@
 			isa = PBXGroup;
 			children = (
 				337A39E82C0FD89900B89B3D /* LBDeleteConfirmation.swift */,
+				33D1AED12C756CE5002E630C /* LBMenuCellPerson.swift */,
 			);
 			path = Dialog;
 			sourceTree = "<group>";
@@ -897,6 +900,7 @@
 				330A37772A660C2D00C9DCE7 /* LBFont.swift in Sources */,
 				8C2A684D2AF54A9600B74295 /* HomeView.swift in Sources */,
 				931D12D52B82C11A00589032 /* TaskModel.swift in Sources */,
+				33D1AED22C756CE5002E630C /* LBMenuCellPerson.swift in Sources */,
 				91CA965F2B28996300611F91 /* LocbookNavigationStack.swift in Sources */,
 				8C3120EC2ABB3D8B00D580BD /* NetworkError.swift in Sources */,
 				8C3120EF2ABB3D8B00D580BD /* Server.swift in Sources */,
