@@ -1,10 +1,16 @@
 import SwiftUI
 
 struct LBMenuCellPerson: View {
+    enum StyleCell {
+        case person
+        case confuguration
+    }
+
     let onClick: () -> Void
-    let functionPerson: String
-    let namePerson: String
+    let description: String
+    let name: String
     let image: Image
+    let style: StyleCell
 
     var body: some View {
         HStack {
@@ -17,10 +23,10 @@ struct LBMenuCellPerson: View {
                     .frame(width: 20, height: 20)
             }
             VStack(alignment: .leading, spacing: 2) {
-                Text(functionPerson)
-                    .font(LBFont.caption1)
-                Text(namePerson)
-                    .font(LBFont.bodyLarge)
+                Text(style == .person ? description : name)
+                    .font(style == .person ? LBFont.caption1 : LBFont.bodyLarge)
+                Text(style == .person ? name : description)
+                    .font(style == .person ? LBFont.bodyLarge : LBFont.caption1)
             }
             Spacer()
             Button {
@@ -43,7 +49,18 @@ struct LBMenuCellPerson: View {
 }
 
 #Preview {
-    LBMenuCellPerson(onClick: {
+    VStack {
+        LBMenuCellPerson(onClick: { },
+                         description: LBStrings.Menu.childName,
+                         name: "Roberta Dias",
+                         image: LBIcon.childTree.image,
+                         style: .person)
 
-    }, functionPerson: LBStrings.Menu.childName, namePerson: "Roberta Dias", image: LBIcon.childTree.image)
+        LBMenuCellPerson(onClick: { },
+                         description: "Controle de acessos e gerencie as funcionalidade do app",
+                         name: "Segurança",
+                         image: LBIcon.shield.image,
+                         style: .confuguration)
+    }
+
 }
