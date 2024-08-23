@@ -180,6 +180,7 @@
 
 "dialog_delete_task" = "Tarefa deletada:";
 "dialog_success_delete" = "Deletada com sucesso de";
+"closed_windows" = "Fechar";
 // ==================== Delete Operations ====================
 "delete_title" = "Deseja excluir a tarefa";
 "delete_justForOneDayOption" = "Apenas de";

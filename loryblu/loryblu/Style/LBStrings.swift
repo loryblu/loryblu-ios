@@ -217,6 +217,7 @@ extension LBStrings {
          static let deleteForAllDays = String(localized: "delete_forAllDaysOption")
          static let warning = String(localized: "delete_warning")
          static let deleteTitleBtn = String(localized: "delete_titleBtn")
+         static let closedWindows = String(localized: "closed_windows")
      }
 }
 
