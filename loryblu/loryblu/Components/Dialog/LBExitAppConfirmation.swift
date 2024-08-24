@@ -7,13 +7,13 @@ struct LBExitAppConfirmation: View {
     var body: some View {
         ZStack {
             Color(.black)
-                .opacity(0.3)
+                .opacity(0.5)
             VStack {
                 VStack {
                     Text("Tem certeza que deseja")
                         .font(LBFont.button)
                         .bold()
-                    HStack(spacing:1) {
+                    HStack {
                         Text("Sair do App")
                             .font(LBFont.button)
                             .bold()
@@ -23,25 +23,40 @@ struct LBExitAppConfirmation: View {
                             .bold()
                     }
                 }
-                .padding()
-                HStack(spacing: 20) {
+                .padding(.top, 24)
+                .padding(.bottom, 30)
+                .padding(.trailing, 24)
+                .padding(.leading,24)
+
+                HStack(spacing: 10){
                     Button(action: {
 
                     }, label: {
                         Text(LBStrings.General.cancel)
                             .foregroundStyle(.black)
                 })
-
+                    .padding()
                     LBButton(title: "Sair", style: .error) {
 
                     }
-                    .frame(width: 96,height: 34)
+                    .padding(.trailing, 8)
                 }
-                .padding()
+                .padding(.leading, 8)
+                .padding(.trailing, 8)
+                .padding(.bottom, 24)
+                
+
             }
             .background(LBColor.textfield)
             .clipShape(RoundedRectangle(cornerRadius: 24))
-            .frame(width: 240, height: 182)
+            .frame(width: 240,height: 182)
+            .padding(24)
+            .offset(x: 0, y: offset)
+            .onAppear(perform: {
+                withAnimation(.bouncy) {
+                    offset = 0
+                }
+        })
         }
         .zIndex(1)
         .ignoresSafeArea()
