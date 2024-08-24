@@ -295,7 +295,6 @@
 			isa = PBXGroup;
 			children = (
 				337A39E82C0FD89900B89B3D /* LBDeleteConfirmation.swift */,
-				33D1AED12C756CE5002E630C /* LBMenuCellPerson.swift */,
 			);
 			path = Dialog;
 			sourceTree = "<group>";
@@ -491,6 +490,7 @@
 				8C27B8532A68C19400F72214 /* LBLabel.swift */,
 				333B740E2AED9CBE003A5EBD /* LBWeekDaysButton.swift */,
 				3380B20F2B0DA63F0001E67D /* Formatter.swift */,
+				33D1AED12C756CE5002E630C /* LBMenuCellPerson.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
