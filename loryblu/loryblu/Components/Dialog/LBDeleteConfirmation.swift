@@ -28,7 +28,7 @@ struct LBDeleteConfirmation: View {
                     .bold()
                     .padding(.bottom, 20)
 
-                LBButton(title: "Fechar") {
+                LBButton(title: LBStrings.Dialog.closedWindows) {
                     onClose()
                 }
                 .padding(.trailing, 15)

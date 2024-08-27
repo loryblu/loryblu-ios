@@ -17,6 +17,7 @@ extension LBStrings {
         static let password = String(localized: "password")
         static let send = String(localized: "send")
         static let questionMark = String(localized: "question_mark")
+        static let leave = String(localized: "leave")
     }
 }
 extension LBStrings {
@@ -217,6 +218,9 @@ extension LBStrings {
          static let deleteForAllDays = String(localized: "delete_forAllDaysOption")
          static let warning = String(localized: "delete_warning")
          static let deleteTitleBtn = String(localized: "delete_titleBtn")
+         static let closedWindows = String(localized: "closed_windows")
+         static let areYousSure = String(localized: "are_you_sure" )
+         static let leaveApp = String(localized: "leave_app")
      }
 }
 
