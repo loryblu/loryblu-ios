@@ -2,6 +2,7 @@ import SwiftUI
 
 struct LBExitAppConfirmation: View {
     let onClosed: () -> Void
+    let onCancel: () -> Void
     @State private var offset: CGFloat = 1000
 
     var body: some View {
@@ -10,11 +11,11 @@ struct LBExitAppConfirmation: View {
                 .opacity(0.5)
             VStack {
                 VStack {
-                    Text("Tem certeza que deseja")
+                    Text(LBStrings.Dialog.areYousSure)
                         .font(LBFont.button)
                         .bold()
                     HStack {
-                        Text("Sair do App")
+                        Text(LBStrings.Dialog.leaveApp)
                             .font(LBFont.button)
                             .bold()
                             .foregroundStyle(LBColor.titlePrimary)
@@ -26,30 +27,37 @@ struct LBExitAppConfirmation: View {
                 .padding(.top, 24)
                 .padding(.bottom, 30)
                 .padding(.trailing, 24)
-                .padding(.leading,24)
+                .padding(.leading, 24)
 
-                HStack(spacing: 10){
+                HStack(spacing: 10) {
                     Button(action: {
-
+                        onCancel()
                     }, label: {
                         Text(LBStrings.General.cancel)
                             .foregroundStyle(.black)
                 })
                     .padding()
-                    LBButton(title: "Sair", style: .error) {
-
-                    }
-                    .padding(.trailing, 8)
+                    Button(action: {
+                        onClosed()
+                    }, label: {
+                        Text(LBStrings.General.leave)
+                            .foregroundStyle(.red)
+                            .bold()
+                    })
+                    .frame(height: 34)
+                    .frame(maxWidth: .infinity)
+                    .cornerRadius(8)
+                    .overlay(RoundedRectangle(cornerRadius: 8)
+                        .stroke(.red, lineWidth: 1)
+                    )
                 }
                 .padding(.leading, 8)
-                .padding(.trailing, 8)
+                .padding(.trailing, 20)
                 .padding(.bottom, 24)
-                
-
             }
             .background(LBColor.textfield)
             .clipShape(RoundedRectangle(cornerRadius: 24))
-            .frame(width: 240,height: 182)
+            .frame(width: 240, height: 182)
             .padding(24)
             .offset(x: 0, y: offset)
             .onAppear(perform: {
@@ -65,5 +73,5 @@ struct LBExitAppConfirmation: View {
 }
 
 #Preview {
-    LBExitAppConfirmation(onClosed: { })
+    LBExitAppConfirmation(onClosed: { }, onCancel: {  })
 }

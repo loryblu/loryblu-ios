@@ -12,6 +12,7 @@
 "send" = "Enviar";
 "new_task" = "Nova tarefa";
 "question_mark" = "?";
+"leave" = "Sair";
 
 // ====================  Rules Password  =========================
 
@@ -181,6 +182,8 @@
 "dialog_delete_task" = "Tarefa deletada:";
 "dialog_success_delete" = "Deletada com sucesso de";
 "closed_windows" = "Fechar";
+"are_you_sure" = "Tem certeza que deseja";
+"leave_app" = "Sair do App";
 // ==================== Delete Operations ====================
 "delete_title" = "Deseja excluir a tarefa";
 "delete_justForOneDayOption" = "Apenas de";
