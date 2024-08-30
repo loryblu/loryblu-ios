@@ -9,7 +9,7 @@ class LoginModel: ObservableObject {
     }
 
     @Published var loginStatus: LoginStatus = .none
-    @Published var networkErro: String = ""
+    @Published var networkError: String = ""
 
     private var repository = Container.shared.autenticationRepository()
 
@@ -20,9 +20,19 @@ class LoginModel: ObservableObject {
             do {
                 let result = try await repository.login(email: email, password: password)
                 Container.shared.appData().setLoginStatusLogged(user: result)
-                print(result)
-            } catch {
-                print("Deu errado!")
+             } catch {
+                let networkError = error as NSError
+                 switch networkError.code {
+                 case 401:
+                     self.networkError = LBStrings.Login.userNotFound
+                 case 422:
+                     self.networkError = LBStrings.Login.userNotFound
+                 case 500...:
+                     self.networkError = LBStrings.Login.serverError
+                 default:
+                     self.networkError = LBStrings.Login.serverError
+                 }
+                 loginStatus = .fail
             }
         }
     }
