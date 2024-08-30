@@ -4,6 +4,7 @@ import Foundation
 class LoginModel: ObservableObject {
     enum LoginStatus {
         case none
+        case processing
         case success
         case fail
     }
@@ -15,11 +16,12 @@ class LoginModel: ObservableObject {
 
     @MainActor
     func authenticate(email: String, password: String) {
-        loginStatus = .none
+        loginStatus = .processing
         Task {
             do {
                 let result = try await repository.login(email: email, password: password)
                 Container.shared.appData().setLoginStatusLogged(user: result)
+                loginStatus = .success
              } catch {
                 let networkError = error as NSError
                  switch networkError.code {

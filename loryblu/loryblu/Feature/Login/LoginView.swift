@@ -125,6 +125,9 @@ struct LoginView: View {
                     updateStatusLogin()
                 }
             }
+            if model.loginStatus == .processing {
+                LoadingView()
+            }
         }
     }
 }
