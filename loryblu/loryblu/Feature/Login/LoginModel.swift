@@ -8,10 +8,14 @@ class LoginModel: ObservableObject {
         case fail
     }
 
+    @Published var loginStatus: LoginStatus = .none
+    @Published var networkErro: String = ""
+
     private var repository = Container.shared.autenticationRepository()
 
     @MainActor
     func authenticate(email: String, password: String) {
+        loginStatus = .none
         Task {
             do {
                 let result = try await repository.login(email: email, password: password)
