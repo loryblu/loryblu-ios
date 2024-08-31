@@ -29,8 +29,6 @@ class LoginModel: ObservableObject {
                      self.networkError = LBStrings.Login.userNotFound
                  case 422:
                      self.networkError = LBStrings.Login.userNotFound
-                 case 500...:
-                     self.networkError = LBStrings.Login.serverError
                  default:
                      self.networkError = LBStrings.Login.serverError
                  }
