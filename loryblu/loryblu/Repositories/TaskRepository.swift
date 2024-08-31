@@ -10,7 +10,7 @@ class TaskRepository {
     }
 
     func taskRegister(with locBookTask: LocbookTask, token: String, childrenID: Int) async -> Bool {
-        
+
         guard let categoryId = locBookTask.categoryId?.description else {
             return false
         }

@@ -5,7 +5,7 @@ import WebKit
 struct RegisterChildView: View {
     @StateObject var viewModel: RegisterChildViewModel
     @EnvironmentObject var coordinator: LoginNavigationStack.NavigationCoordinator
-    
+
     @FocusState private var focusedField: RegisterChildViewModel.FocusedField?
     @State private var presented: Bool = false
     @State private var date: Date?
@@ -14,53 +14,54 @@ struct RegisterChildView: View {
     @State private var isPresentWebView = false
 
     var body: some View {
-        ZStack(alignment: .center) {
-            VStack {
+        GeometryReader { _ in
+            ZStack(alignment: .center) {
                 VStack {
-                    Image(LBIcon.logoName.rawValue).resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 187, height: 47)
-                        .clipped()
-                        .padding(.bottom, 40)
+                    VStack {
+                        LBIcon.logoName.image
+                            .resizable()
+                            .frame(width: 187, height: 47)
+                            .padding(.bottom, 30)
+                            .padding(.top, 30)
 
-                    Text(LBStrings.Register.child)
-                        .font(LBFont.titleTask)
-                        .foregroundColor(LBColor.text)
-                        .frame(width: 194, alignment: .topLeading)
-                        .padding(.bottom, 32)
-                }
-
-                form
-
-            }
-            .navigationTitle(LBStrings.General.empty)
-            .padding(.top, -40)
-            .fullScreenCover(isPresented: $viewModel.registerSuccess) {
-                DoneView(
-                    props: .init(
-                        message: LBStrings.Register.registerFinishedSuccess,
-                        onClose: { coordinator.popToRoot() }
-                    )
-                )
-                .toolbarRole(.editor)
-                .navigationBarBackButtonHidden(true)
-            }
-        .foregroundStyle(LBColor.background)
-            if focusedField == .birthDay {
-                GeometryReader { _ in
-                    LBDatePicker { confirmDate in
-                        viewModel.birthDate = confirmDate
-                        focusedField = nil
-                    } onCancel: {
-                        focusedField = nil
+                        Text(LBStrings.Register.child)
+                            .font(LBFont.titleTask)
+                            .foregroundColor(LBColor.text)
+                            .frame(width: 194, alignment: .topLeading)
+                            .padding(.bottom, 32)
                     }
+
+                    form
+
                 }
-                .background(Color.black.opacity(0.50)
-                    .edgesIgnoringSafeArea(.all)
-                )
-
+                .padding(24)
+                .navigationTitle(LBStrings.General.empty)
+                .fullScreenCover(isPresented: $viewModel.registerSuccess) {
+                    DoneView(
+                        props: .init(
+                            message: LBStrings.Register.registerFinishedSuccess,
+                            onClose: { coordinator.popToRoot() }
+                        )
+                    )
+                    .toolbarRole(.editor)
+                    .navigationBarBackButtonHidden(true)
+                }
+            .foregroundStyle(LBColor.background)
+                if focusedField == .birthDay {
+                    GeometryReader { _ in
+                        LBDatePicker { confirmDate in
+                            viewModel.birthDate = confirmDate
+                            focusedField = nil
+                        } onCancel: {
+                            focusedField = nil
+                        }
+                    }
+                    .background(
+                        Color.black.opacity(0.50)
+                        .edgesIgnoringSafeArea(.all)
+                    )
+                }
             }
-
         }
     }
 
@@ -79,23 +80,24 @@ struct RegisterChildView: View {
                     viewModel.clearError()
                 }
 
-                LBDatePickerTextField(icon: .cake,
-                                      title: LBStrings.Register.birthDay,
-                                      date: $viewModel.birthDate,
-                                      state: viewModel.errorField == .birthDay ? .alert : .active)
+                LBDatePickerTextField(
+                    icon: .cake,
+                    title: LBStrings.Register.birthDay,
+                    date: $viewModel.birthDate,
+                    state: viewModel.errorField == .birthDay ? .alert : .active)
                 .focused($focusedField, equals: .birthDay)
                 .onChange(of: viewModel.birthDate) { _ in
-                                    viewModel.clearError()
-                                }
+                    viewModel.clearError()
+                }
 
                 HStack(spacing: 15) {
-                    LBGenderButton(gender: .male, isActive: viewModel.gender == .male) {
-                        viewModel.gender = .male
-                    }
+                    LBGenderButton(
+                        gender: .male, isActive: viewModel.gender == .male
+                    ) { viewModel.gender = .male }
 
-                    LBGenderButton(gender: .female, isActive: viewModel.gender == .female) {
-                        viewModel.gender = .female
-                    }
+                    LBGenderButton(
+                        gender: .female, isActive: viewModel.gender == .female
+                    ) { viewModel.gender = .female }
                 }
                 .padding(.top, 2)
                 .focused($focusedField, equals: .gender)
@@ -145,7 +147,7 @@ struct RegisterChildView: View {
                 .disabled(!viewModel.agreePrivacy)
                 .padding(.top, 43)
 
-            }.padding([.leading, .trailing], 26)
+            }
         }
     }
 
