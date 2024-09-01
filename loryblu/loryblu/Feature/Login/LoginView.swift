@@ -120,10 +120,8 @@ struct LoginView: View {
                 }.padding(.bottom, 32.0)
             }
             .padding(24)
-            .onChange(of: model.loginStatus) { newValue in
-                if newValue == .fail {
+            .onChange(of: model.loginStatus) { _ in
                     updateStatusLogin()
-                }
             }
             if model.loginStatus == .processing {
                 LoadingView()
