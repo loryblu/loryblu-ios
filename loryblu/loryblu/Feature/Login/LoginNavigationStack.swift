@@ -2,14 +2,14 @@ import SwiftUI
 
 struct LoginNavigationStack: View {
     typealias NavigationCoordinator = LoginNavigationCoordinator
-    
+
     @ObservedObject var coordinator: NavigationCoordinator
     @EnvironmentObject var appData: AppData
-    
+
     init() {
         coordinator = .init()
     }
-    
+
     var body: some View {
         NavigationStack(path: $coordinator.path) {
             coordinator.buildView(cover: .login)
@@ -20,6 +20,7 @@ struct LoginNavigationStack: View {
                 .fullScreenCover(item: $coordinator.fullScreen) { destination in
                     coordinator.buildView(cover: destination)
                 }
+                .navigationTitle(LBStrings.General.empty)
         }
     }
 }

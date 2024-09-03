@@ -55,7 +55,6 @@ struct LoginView: View {
                             .multilineTextAlignment(.trailing)
                     }
                 }
-                .padding(.top, 10)
 
                 LBButton(title: LBStrings.Login.enter) {
                     self.tryLogin()
@@ -77,7 +76,7 @@ struct LoginView: View {
                             .background(LBColor.text)
                     }.padding(20)
                 }
-                .padding(.top, 28)
+//                .padding(.top, 28)
 
                 HStack {
                     Button {
@@ -94,7 +93,7 @@ struct LoginView: View {
                 .frame(maxWidth: .infinity, alignment: .trailing)
 
                 ExternalLogin()
-                    .padding(.top, 53.0)
+                    .padding(.top, 50)
                     .padding(.bottom, 24)
 
                 HStack {
@@ -110,11 +109,10 @@ struct LoginView: View {
                     .font(LBFont.caption)
                     .foregroundColor(LBColor.buttonPrimary)
                     .multilineTextAlignment(.trailing)
-
-                }.padding(.bottom, 32.0)
+                }
             }
-            .padding(24)
-        }
+//            .padding(24)
+        }.padding(24)
     }
 }
 

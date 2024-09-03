@@ -9,9 +9,10 @@ struct RegisterChildView: View {
     @FocusState private var focusedField: RegisterChildViewModel.FocusedField?
     @State private var presented: Bool = false
     @State private var date: Date?
-    var child: UserRegister?
     @State private var showDone: Bool = false
     @State private var isPresentWebView = false
+
+    var child: UserRegister?
 
     var body: some View {
         GeometryReader { _ in
@@ -32,6 +33,7 @@ struct RegisterChildView: View {
                     }
 
                     form
+                    Spacer()
 
                 }
                 .padding(24)
@@ -46,7 +48,7 @@ struct RegisterChildView: View {
                     .toolbarRole(.editor)
                     .navigationBarBackButtonHidden(true)
                 }
-            .foregroundStyle(LBColor.background)
+                .foregroundStyle(LBColor.background)
                 if focusedField == .birthDay {
                     GeometryReader { _ in
                         LBDatePicker { confirmDate in
@@ -58,7 +60,7 @@ struct RegisterChildView: View {
                     }
                     .background(
                         Color.black.opacity(0.50)
-                        .edgesIgnoringSafeArea(.all)
+                            .edgesIgnoringSafeArea(.all)
                     )
                 }
             }
@@ -81,9 +83,9 @@ struct RegisterChildView: View {
                 }
 
                 LBDatePickerTextField(
+                    date: $viewModel.birthDate,
                     icon: .cake,
                     title: LBStrings.Register.birthDay,
-                    date: $viewModel.birthDate,
                     state: viewModel.errorField == .birthDay ? .alert : .active)
                 .focused($focusedField, equals: .birthDay)
                 .onChange(of: viewModel.birthDate) { _ in
@@ -124,7 +126,6 @@ struct RegisterChildView: View {
                             .underline()
                             .multilineTextAlignment(.trailing)
                     }
-
                 }
 
                 if viewModel.hasError {
@@ -141,8 +142,8 @@ struct RegisterChildView: View {
                     title: LBStrings.Register.buttonRegister,
                     style: !viewModel.agreePrivacy ? .primaryOff : .primaryActivated
                 ) {
-                     self.viewModel.showError()
-                     self.confirmRegister()
+                    self.viewModel.showError()
+                    self.confirmRegister()
                 }
                 .disabled(!viewModel.agreePrivacy)
                 .padding(.top, 43)
@@ -162,6 +163,7 @@ struct RegisterChildView: View {
     }
 }
 
+// MARK: - Previews.
 struct RegisterChildView_Previews: PreviewProvider {
     static var previews: some View {
         RegisterChildView(viewModel: RegisterChildViewModel(
