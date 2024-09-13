@@ -13,11 +13,10 @@ struct LocbookSummaryView: View {
         var task: LocbookTask
         var title: String
         let onSubmitNewTask: ClosureType.VoidVoid?
-        let onSubmitEditedTask: ClosureType.VoidVoid?
+        let onSubmitEditedTask: ClosureType.LocbookTaskVoid?
         let onEditTaskPath: ClosureType.EditTaskPath?
         var onClose: ClosureType.VoidVoid?
         let addOrEdit: AddOrEditType
-        var taskSelected: TaskSelected?
 
         var frequencyDaysOfWeek: [DayOfWeekOption] {
             getDaysOfWeekOptionsUiModel(frequency: task.frequency)
@@ -218,13 +217,11 @@ struct LocbookSummaryView: View {
                     return
                 }
                 
-                props.taskSelected?.setupTaskSelected(task: editedTask)
-
                 Task {
                     await model.saveEditedTask(
                         task: editedTask,
                         onDismiss: {
-                            props.onSubmitEditedTask?()
+                            props.onSubmitEditedTask?(editedTask)
                         })
                 }
             }
@@ -385,7 +382,7 @@ extension LocbookSummaryView.Props: Hashable {
                     categoryTitle: LBStrings.Locbook.titleStudy
                 ), title: "LocbookSumary",
                 onSubmitNewTask: {},
-                onSubmitEditedTask: { },
+                onSubmitEditedTask: {_ in },
                 onEditTaskPath: {_ in},
                 addOrEdit: AddOrEditType.edit
             )
