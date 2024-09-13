@@ -196,5 +196,7 @@
 "dayOfWeek_friday" = "sexta-feira";
 "dayOfWeek_saturday" = "sábado";
 
+// ==================== Delete Option ====================
+"all_days" = "Todos os dias";
 
 
