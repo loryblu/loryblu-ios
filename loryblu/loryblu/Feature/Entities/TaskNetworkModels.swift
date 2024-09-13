@@ -6,15 +6,20 @@ struct NetworkDataModel: Decodable {
     var routine: [TasksNetworkModel]?
 }
 
+struct ResponseTaskCreated: Decodable {
+    var task: TasksNetworkModel
+}
+
 struct TasksNetworkModel: Decodable {
     var id: Int
     var shift: String
     var frequency: [String]
     var order: Int?
-    var categoryId: String
-    var childrenId: String?
+    var categoryId: String?
+    var childrenId: Int?
     var categoryTitle: String?
     var updatedAt: String?
+    var createdAt: String?
 }
 
 extension [TasksNetworkModel] {
