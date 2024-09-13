@@ -41,9 +41,12 @@ struct LocbookNavigationStack: View {
                             navigationTitle = .new
                             pushLocbookActions(locbookTask: LocbookTask())
                         },
-                        onEditTask: { taskSelected in
+                        onEditTask: { task in
                             navigationTitle = .edit
-                            pushSummaryView(taskSelected: taskSelected, task: taskSelected.locbookTask ?? LocbookTask(), addOrEdit: AddOrEditType.edit)
+                            pushSummaryView(
+                                task: task,
+                                addOrEdit: AddOrEditType.edit
+                            )
                         }
                     )
                 )
@@ -79,8 +82,11 @@ struct LocbookNavigationStack: View {
                 title: navigationTitle.title,
                 actionType: actionType,
                 onNext: { newTask in
-                    addOrEdit == .add ? pushLocbookRoutine(task: newTask) : pushSummaryView(
-                        task: newTask, addOrEdit: addOrEdit)
+                    if(addOrEdit == .add) {
+                        pushLocbookRoutine(task: newTask)
+                    } else {
+                        pushSummaryView(task: newTask, addOrEdit: AddOrEditType.edit)
+                    }
                 },
                 onClose: { dismiss() }
             )
@@ -97,7 +103,7 @@ struct LocbookNavigationStack: View {
         )
     }
 
-    private func pushSummaryView(taskSelected: TaskSelected? = nil, task: LocbookTask, addOrEdit: AddOrEditType = AddOrEditType.add) {
+    private func pushSummaryView(task: LocbookTask, addOrEdit: AddOrEditType = AddOrEditType.add) {
         coordinator.pushSummaryView(
             props: LocbookSummaryView.Props(
                 task: task,
@@ -105,8 +111,8 @@ struct LocbookNavigationStack: View {
                 onSubmitNewTask: {
                     pushFinishView(message: LBStrings.SummaryLocbook.summaryFinishedNewTaskMessage, addOrEdit: .add)
                 },
-                onSubmitEditedTask: {
-                    pushFinishView(message: LBStrings.SummaryLocbook.summaryFinishedEditTaskMessage, addOrEdit: .edit)
+                onSubmitEditedTask: { editedTask in
+                    coordinator.popToRoot()
                 },
                 onEditTaskPath: { path in
                     switch path {
@@ -117,10 +123,9 @@ struct LocbookNavigationStack: View {
                     }
                 },
                 onClose: {
-                    addOrEdit == .add ? dismiss() : coordinator.popToRoot()
+                    coordinator.popToRoot()
                 },
-                addOrEdit: addOrEdit,
-                taskSelected: taskSelected
+                addOrEdit: addOrEdit
             )
         )
     }
