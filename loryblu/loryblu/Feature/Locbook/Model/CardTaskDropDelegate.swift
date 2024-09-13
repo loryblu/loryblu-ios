@@ -20,19 +20,27 @@ struct CardTaskDropDelegate: DropDelegate {
             taskData.currentTask = task
         }
 
-        let fromIndex = taskData.tasks.firstIndex { (taks) -> Bool in
+        let fromIndex = taskData.taskFilter?.tasks.firstIndex { (taks) -> Bool in
             return taks.uuid == taskData.currentTask?.uuid
         } ?? 0
 
-        let toIndex = taskData.tasks.firstIndex { (taks) -> Bool in
+        let toIndex = taskData.taskFilter?.tasks.firstIndex { (taks) -> Bool in
             return taks.uuid  == self.task.uuid
         } ?? 0
 
         if fromIndex != toIndex {
             withAnimation {
-                let fromTask = taskData.tasks[fromIndex]
-                taskData.tasks[fromIndex] = taskData.tasks[toIndex]
-                taskData.tasks[toIndex] = fromTask
+                let fromTask = taskData.taskFilter?.tasks[fromIndex]
+                taskData.taskFilter?.tasks[fromIndex] = taskData.taskFilter?.tasks[toIndex] ?? TaskModel(
+                    locbookTask: LocbookTask(),
+                    image: "",
+                    backgroundCard: Color.white
+                )
+                taskData.taskFilter?.tasks[toIndex] = fromTask ?? TaskModel(
+                    locbookTask: LocbookTask(),
+                    image: "",
+                    backgroundCard: Color.white
+                )
             }
         }
     }

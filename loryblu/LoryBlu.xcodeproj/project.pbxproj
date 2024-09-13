@@ -126,6 +126,9 @@
 		9302EE942B71C0C0003D7C4F /* LBShiftItemsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9302EE932B71C0C0003D7C4F /* LBShiftItemsComponent.swift */; };
 		9302EE962B71C47A003D7C4F /* LocbookSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9302EE952B71C47A003D7C4F /* LocbookSummaryView.swift */; };
 		9310C8D62B66DB02007D3CE7 /* LBToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9310C8D52B66DB02007D3CE7 /* LBToolbar.swift */; };
+		9316BE632C94B16500913C16 /* TaskCacheBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9316BE622C94B16500913C16 /* TaskCacheBuilder.swift */; };
+		9316BE652C94C61900913C16 /* TaskFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9316BE642C94C61900913C16 /* TaskFilter.swift */; };
+		9316BE672C94D4E500913C16 /* TaskFilterBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9316BE662C94D4E500913C16 /* TaskFilterBuilder.swift */; };
 		931D12D32B82C0C000589032 /* ResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931D12D22B82C0C000589032 /* ResponseData.swift */; };
 		931D12D52B82C11A00589032 /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931D12D42B82C11A00589032 /* TaskModel.swift */; };
 		931D12D92B82C16F00589032 /* TaskNetworkModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931D12D82B82C16F00589032 /* TaskNetworkModels.swift */; };
@@ -234,6 +237,9 @@
 		9302EE932B71C0C0003D7C4F /* LBShiftItemsComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBShiftItemsComponent.swift; sourceTree = "<group>"; };
 		9302EE952B71C47A003D7C4F /* LocbookSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocbookSummaryView.swift; sourceTree = "<group>"; };
 		9310C8D52B66DB02007D3CE7 /* LBToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBToolbar.swift; sourceTree = "<group>"; };
+		9316BE622C94B16500913C16 /* TaskCacheBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCacheBuilder.swift; sourceTree = "<group>"; };
+		9316BE642C94C61900913C16 /* TaskFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFilter.swift; sourceTree = "<group>"; };
+		9316BE662C94D4E500913C16 /* TaskFilterBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFilterBuilder.swift; sourceTree = "<group>"; };
 		931D12D22B82C0C000589032 /* ResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseData.swift; sourceTree = "<group>"; };
 		931D12D42B82C11A00589032 /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
 		931D12D82B82C16F00589032 /* TaskNetworkModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskNetworkModels.swift; sourceTree = "<group>"; };
@@ -410,6 +416,7 @@
 				93B2DD602BC8E36B009BEB16 /* Enums */,
 				912BC3822B2934CB00B7F336 /* Model */,
 				91CA96602B28996D00611F91 /* View */,
+				9316BE662C94D4E500913C16 /* TaskFilterBuilder.swift */,
 			);
 			path = Locbook;
 			sourceTree = "<group>";
@@ -623,6 +630,7 @@
 				33DE3B242B759AC300F45449 /* SummaryViewModel.swift */,
 				931D12DA2B82C25300589032 /* TasksViewModel.swift */,
 				33E6A68A2B98058400B6C484 /* CardTaskDropDelegate.swift */,
+				9316BE642C94C61900913C16 /* TaskFilter.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -634,6 +642,7 @@
 				33B2ABFB2ACE587A004CF7DF /* RepositorySetPassword.swift */,
 				91361A1C2ACCBE1900700E36 /* RegisterRepository.swift */,
 				33F87E8F2B21528000F62041 /* TaskRepository.swift */,
+				9316BE622C94B16500913C16 /* TaskCacheBuilder.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -925,14 +934,17 @@
 				8C2A68562AF9B9A000B74295 /* LocbookTasksView.swift in Sources */,
 				33D0F90E2AD0EE3700EE54DF /* Endpoints.swift in Sources */,
 				9370B5292C059F6E00C28B0D /* LBCustomDialog.swift in Sources */,
+				9316BE652C94C61900913C16 /* TaskFilter.swift in Sources */,
 				8C9CBCFB2A7ACF46001DBD35 /* ExternalLogin.swift in Sources */,
 				9132A8952B083BE600106524 /* LoginNavigationCoordinator.swift in Sources */,
+				9316BE672C94D4E500913C16 /* TaskFilterBuilder.swift in Sources */,
 				8C225AB12AE703B100E43B2C /* ImageLabel.swift in Sources */,
 				93B2DD622BC8E39C009BEB16 /* AddOrEditType.swift in Sources */,
 				91B4AC442AD19CFA003A7FE5 /* AppEntryPoint.swift in Sources */,
 				911B843C2AD1C0B200F59DD2 /* AuthenticationRepository.swift in Sources */,
 				8C9CBD0D2A7AE97B001DBD35 /* RegisterChildView.swift in Sources */,
 				9302EE962B71C47A003D7C4F /* LocbookSummaryView.swift in Sources */,
+				9316BE632C94B16500913C16 /* TaskCacheBuilder.swift in Sources */,
 				8C669C412AA011480028B436 /* UserRegister.swift in Sources */,
 				8C070DDD2B10C254004AAF8A /* ListTasks.swift in Sources */,
 				91664AE42B0C029E005BF5CA /* HomeNavigationCoordinator.swift in Sources */,
