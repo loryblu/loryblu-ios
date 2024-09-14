@@ -17,6 +17,7 @@ extension LBStrings {
         static let password = String(localized: "password")
         static let send = String(localized: "send")
         static let questionMark = String(localized: "question_mark")
+        static let leave = String(localized: "leave")
         static let allDays = String(localized: "all_days")
     }
 }
@@ -100,6 +101,8 @@ extension LBStrings {
         static let dontHaveAccount = String(localized: "login_dont_have_an_account")
         static let registerNow = String(localized: "login_register_now")
         static let remeber = String(localized: "login_remember")
+        static let userNotFound = String(localized: "user_not_found")
+        static let serverError = String(localized: "server_error")
     }
 }
 
@@ -218,6 +221,9 @@ extension LBStrings {
          static let deleteForAllDays = String(localized: "delete_forAllDaysOption")
          static let warning = String(localized: "delete_warning")
          static let deleteTitleBtn = String(localized: "delete_titleBtn")
+         static let closedWindows = String(localized: "closed_windows")
+         static let areYousSure = String(localized: "are_you_sure" )
+         static let leaveApp = String(localized: "leave_app")
      }
 }
 
@@ -230,5 +236,19 @@ extension LBStrings {
         static let thursday = String(localized: "dayOfWeek_thursday")
         static let friday = String(localized: "dayOfWeek_friday")
         static let saturday = String(localized: "dayOfWeek_saturday")
+    }
+}
+
+extension LBStrings {
+    enum Menu {
+        static let menu = String(localized: "profile")
+        static let configuration = String(localized: "configuration")
+        static let childName = String(localized: "child_name")
+        static let parentsName = String(localized: "parents_name")
+        static let security = String(localized: "security")
+        static let faq = String(localized: "faq")
+        static let privacyTerms = String(localized: "privacy_terms")
+        static let exit = String(localized: "exit")
+
     }
 }
