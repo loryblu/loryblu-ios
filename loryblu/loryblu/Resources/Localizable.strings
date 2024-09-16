@@ -211,4 +211,7 @@
 "faq" = "Perguntas Frequentes";
 "privacy_terms" = "Termos e Privacidade";
 "exit" = "Sair do App";
+// ==================== Delete Option ====================
+"all_days" = "Todos os dias";
+
 

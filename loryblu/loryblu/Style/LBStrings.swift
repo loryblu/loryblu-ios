@@ -18,6 +18,7 @@ extension LBStrings {
         static let send = String(localized: "send")
         static let questionMark = String(localized: "question_mark")
         static let leave = String(localized: "leave")
+        static let allDays = String(localized: "all_days")
     }
 }
 extension LBStrings {

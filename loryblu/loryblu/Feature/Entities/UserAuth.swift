@@ -12,7 +12,7 @@ struct DataUser: Codable {
 }
 
 struct User: Codable {
-    var pid: String
+    var pid: String?
     var parentName: String
     var childrens: [Child]
 }

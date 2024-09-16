@@ -1,16 +1,17 @@
 import Foundation
+import SwiftUI
 import Factory
 
 class TaskRepository {
     let network: Network
     let token = Container.shared.appData
+    private var cache: [Int: TaskModel]?
 
     init(network: Network) {
         self.network = network
     }
 
     func taskRegister(with locBookTask: LocbookTask, token: String, childrenID: Int) async -> Bool {
-        
         guard let categoryId = locBookTask.categoryId?.description else {
             return false
         }
@@ -36,12 +37,31 @@ class TaskRepository {
             ]))
             .with(addHeaderName: "Authorization", value: "Bearer \(token)")
             .with(addHeaderName: "User-Agent", value: "LoryBlu(iOS)")
-            .with(addHeaderName: "Content-Type", value: "application/json")
             .build()
 
         do {
-            _ = try await network.request(request: request, returning: ResponseMessage.self)
-            return true
+            let response = try await network.request(request: request, returning: ResponseData<ResponseTaskCreated>.self)
+            if (response.isSuccess ?? false) {
+                let task = response.data?.task
+                let locbooktask = LocbookTask(
+                    id: task!.id,
+                    shift: shift,
+                    frequency: frequency,
+                    order: task!.order,
+                    categoryId: categoryId,
+                    categoryTitle: locBookTask.categoryTitle,
+                    taskTitle: locBookTask.categoryTitle,
+                    updatedAt: Date()
+                )
+
+                if cache != nil {
+                    cache?[task!.id] = locbooktask.toTaskModel()
+                } else {
+                    cache = [:]
+                    cache?[task!.id] = locbooktask.toTaskModel()
+                }
+            }
+            return response.isSuccess ?? false
         } catch {
             return false
         }
@@ -58,7 +78,7 @@ class TaskRepository {
 
         let request = RequestModel.Builder()
             .with(baseURL: Server.baseURL)
-            .with(path: Endpoint.task + "?id_task=\(taskId)")
+            .with(path: "\(Endpoint.task)?childrenId=\(childrenID)&taskId=\(taskId)")
             .with(method: .patch)
             .with(body: JSONParser.parseData(from: [
                 "childrenId": childrenID,
@@ -69,33 +89,64 @@ class TaskRepository {
             ]))
             .with(addHeaderName: "Authorization", value: "Bearer \(token)")
             .with(addHeaderName: "User-Agent", value: "LoryBlu(iOS)")
-            .with(addHeaderName: "Content-Type", value: "application/json")
             .build()
 
         do {
-            _ = try await network.request(request: request, returning: ResponseMessage.self)
-            return true
+            let response = try await network.request(request: request, returning: ResponseMessage.self)
+            if(response.isSuccess) {
+                updateCache(taskEdited: locBookTask)
+            }
+            return response.isSuccess
         } catch {
             return false
         }
     }
 
-    func fetchTasks(token: String, childrenId: Int) async -> [TaskModel] {
-        var tasks: [TaskModel] = []
+    func fetchTasks(token: String, childrenId: Int) async -> [Int : TaskModel] {
         let request = RequestModel.Builder()
             .with(baseURL: Server.baseURL)
             .with(path: "\(Endpoint.task)?childrenId=\(childrenId)&frequency=sun,mon,tue,wed,thu,fri,sat")
             .with(method: .get)
             .with(addHeaderName: "Authorization", value: "Bearer \(token)")
+            .with(addHeaderName: "Content-Type", value: "application/json")
             .build()
 
         do {
-            let result = try await network.request(request: request, returning: ResponseData<NetworkDataModel>.self)
-            tasks = getTasks(type: LBStrings.Locbook.titleStudy, tasks: result.data?.study ?? [])
-            tasks += getTasks(type: LBStrings.Locbook.titleRotine, tasks: result.data?.routine ?? [])
-            return tasks
+            
+            if (cache == nil) {
+                let result = try await network.request(request: request, returning: ResponseData<NetworkDataModel>.self)
+            
+                let cacheBuilder = TaskCacheBuilder()
+                
+                cacheBuilder.addStudyList(studyTasks: getTasks(type: LBStrings.Locbook.titleStudy, tasks: result.data?.study ?? []))
+                cacheBuilder.addRoutineList(routineTasks: getTasks(type: LBStrings.Locbook.titleRotine, tasks: result.data?.routine ?? []))
+                
+                cache = cacheBuilder.build()
+            }
+            
+            return cache ?? [:]
         } catch {
-            return tasks
+            return cache ?? [:]
+        }
+    }
+    
+    func deleteTask(token: String, childrenId: Int, taskId: Int?) async -> Bool {
+        do {
+            let request = RequestModel.Builder()
+                .with(baseURL: Server.baseURL)
+                .with(path: "\(Endpoint.task)?childrenId=\(childrenId)&taskId=\(taskId!)")
+                .with(method: .delete)
+                .with(addHeaderName: "Authorization", value: "Bearer \(token)")
+                .with(addHeaderName: "Content-Type", value: "application/json")
+                .build()
+            
+            let response = try await network.request(request: request, returning: ResponseMessage.self)
+            if(response.isSuccess) {
+                removeFromCache(taskId: taskId!)
+            }
+            return response.isSuccess
+        } catch {
+            return false
         }
     }
 }
@@ -103,5 +154,15 @@ class TaskRepository {
 extension TaskRepository {
     func getTasks(type: String, tasks: [TasksNetworkModel]) -> [TaskModel] {
         return tasks.toTasksModel(category: type)
+    }
+     
+    func updateCache(taskEdited: LocbookTask) {
+        do {            
+            cache?.updateValue(taskEdited.toTaskModel(), forKey: taskEdited.id!)
+        }
+    }
+    
+    func removeFromCache(taskId: Int) {
+        cache?.removeValue(forKey: taskId)
     }
 }

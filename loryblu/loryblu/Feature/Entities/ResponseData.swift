@@ -6,7 +6,7 @@ struct ResponseData <T: Decodable>: Decodable {
      var error: String?
      var statusCode: Int?
 
-     var isSuccess: Bool {
+     var isSuccess: Bool? {
          guard let statusCode = statusCode else {
              return true
          }

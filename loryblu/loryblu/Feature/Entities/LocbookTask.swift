@@ -1,4 +1,5 @@
 import UIKit
+import SwiftUI
 
 struct LocbookTask {
     enum Shift: String, Codable {
@@ -41,5 +42,32 @@ struct LocbookTask {
         self.categoryTitle = categoryTitle
         self.taskTitle = taskTitle
         self.updatedAt = updatedAt
+    }
+}
+
+extension LocbookTask {
+    func toTaskModel() -> TaskModel {
+        let backgroundCardColor: Color
+
+        switch shift {
+        case .morning:
+            backgroundCardColor = LBColor.buttonBackgroundLight
+        case .afternoon:
+            backgroundCardColor = LBColor.buttonBackgroundMedium
+        default:
+            backgroundCardColor = LBColor.buttonBackgroundDark
+        }
+        
+        let taskImages = categoryTitle == LBStrings.Locbook.titleStudy ? ListTasks.study : ListTasks.rotine
+
+        let img = taskImages.filter { label in
+            label.categoryID == self.categoryId
+        }.first!.image
+
+        return TaskModel(
+            locbookTask: self,
+            image: img,
+            backgroundCard: backgroundCardColor
+        )
     }
 }

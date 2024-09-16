@@ -33,7 +33,6 @@ class LocbookNavigationCoordinator: ObservableObject {
         if path.isEmpty == false {
             path.removeLast(count)
         }
-        path = []
     }
 
     func pushActionsView(props: LocbookActionsView.Props) {

@@ -7,14 +7,13 @@ struct DayOfWeekOption {
 }
 
 struct LocbookSummaryView: View {
-    @State private var isLoading = false
 
     // MARK: - Defines
     struct Props {
         var task: LocbookTask
         var title: String
         let onSubmitNewTask: ClosureType.VoidVoid?
-        let onSubmitEditedTask: ClosureType.VoidVoid?
+        let onSubmitEditedTask: ClosureType.LocbookTaskVoid?
         let onEditTaskPath: ClosureType.EditTaskPath?
         var onClose: ClosureType.VoidVoid?
         let addOrEdit: AddOrEditType
@@ -64,7 +63,7 @@ struct LocbookSummaryView: View {
             }
             .padding(24)
 
-            if isLoading {
+            if model.stateTask == .loading {
                 LoadingView()
             }
         }
@@ -197,11 +196,9 @@ struct LocbookSummaryView: View {
 
     var addConfirmationContent: some View {
         LBButton(title: LBStrings.SummaryLocbook.submitTask) {
-            isLoading = true
             Task {
                 await  model.saveTask(task: props.task)
                 if model.stateTask == .success {
-                    isLoading = false
                     props.onSubmitNewTask?()
                 }
             }
@@ -214,19 +211,18 @@ struct LocbookSummaryView: View {
                 props.onClose?()
             }
             LBButton(title: "Salvar") {
-                isLoading = true
                 formConfig.task?.frequency = formConfig.makeFrequency()
 
                 guard let editedTask = formConfig.task else {
                     return
                 }
-
+                
                 Task {
-                    await  model.saveEditedTask(task: editedTask)
-                    if model.stateTask == .success {
-                        isLoading = false
-                        props.onSubmitEditedTask?()
-                    }
+                    await model.saveEditedTask(
+                        task: editedTask,
+                        onDismiss: {
+                            props.onSubmitEditedTask?(editedTask)
+                        })
                 }
             }
         }
@@ -386,7 +382,7 @@ extension LocbookSummaryView.Props: Hashable {
                     categoryTitle: LBStrings.Locbook.titleStudy
                 ), title: "LocbookSumary",
                 onSubmitNewTask: {},
-                onSubmitEditedTask: {},
+                onSubmitEditedTask: {_ in },
                 onEditTaskPath: {_ in},
                 addOrEdit: AddOrEditType.edit
             )

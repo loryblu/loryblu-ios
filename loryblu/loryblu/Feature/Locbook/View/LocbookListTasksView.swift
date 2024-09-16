@@ -4,7 +4,7 @@ struct LocbookListTasksView: View {
     @State private var securityIsOn = true
 
     struct Props {
-        let onNewTask: ClosureType.VoidVoid?
+        let onNewTask: ClosureType.VoidVoid
         let onEditTask: ClosureType.LocbookTaskVoid
     }
 
@@ -16,7 +16,7 @@ struct LocbookListTasksView: View {
         ZStack {
             if viewmodel.openDeleteDialog {
                 LBDeleteTaskDialog(
-                    dayOfWeek: viewmodel.currentSelectedDayText ?? "",
+                    dayOfWeek: viewmodel.taskFilter?.dayText ?? "",
                     taskName: viewmodel.taskToDelete.taskTitle ?? "",
                     onDelete: { deleteOption in
                         viewmodel.removeTask(deleteOption: deleteOption)
@@ -27,20 +27,22 @@ struct LocbookListTasksView: View {
             if viewmodel.displayDeleteMsgSuccessful {
                 LBDeleteConfirmation(onClose: {
                     viewmodel.closeDeleteSuccessfulMsg()
-                }, nameTask: viewmodel.taskToDelete.taskTitle ?? "", taskDay: viewmodel.currentSelectedDayText ?? "")
+                }, nameTask: viewmodel.taskToDelete.taskTitle ?? "", taskDay: viewmodel.deleteOptionTitle ?? "")
             }
             VStack {
-                VStack(spacing: 16) {
-                    LBFrequencyFilter(viewmodel: viewmodel)
+                if viewmodel.taskFilter?.tasks != nil {
+                    VStack(spacing: 16) {
+                        LBFrequencyFilter(viewmodel: viewmodel)
 
-                    LBShiftItemsComponent(
-                        shifts: viewmodel.shifts,
-                        onClick: { shift in viewmodel.filterByShifts(shiftSelected: shift) }
-                    )
+                        LBShiftItemsComponent(
+                            shifts: viewmodel.shifts,
+                            onClick: { shift in viewmodel.filterByShifts(shiftSelected: shift) }
+                        )
+                    }
+                    .padding(.init(top: 16, leading: 24, bottom: 0, trailing: 24))
                 }
-                .padding(.init(top: 16, leading: 24, bottom: 0, trailing: 24))
 
-                if !viewmodel.tasks.isEmpty {
+                if !(viewmodel.taskFilter?.tasks.isEmpty ?? true) {
                     HStack(alignment: .center) {
                         Toggle(isOn: $securityIsOn) {}
                         .toggleStyle(SymbolToggleStyle())
@@ -54,15 +56,17 @@ struct LocbookListTasksView: View {
                     ListTasksView(
                         viewmodel: viewmodel,
                         securityIsOn: $securityIsOn,
-                        onEditTask: { closure in
-                        props.onEditTask(closure)
+                        onEditTask: { task in
+                        props.onEditTask(task)
                         },
                         openDeleteDialog: { task in
-                            viewmodel.removeTask(selectedTask: task)
+                            viewmodel.openDeleteOptions(selectedTask: task)
                         })
                         .frame(maxHeight: .infinity, alignment: .top)
                         .onAppear {
-                            Task { await viewmodel.fetchTasks() }
+                            Task {
+                                await viewmodel.fetchTasks()
+                            }
                         }
                         .padding(.init(top: 0, leading: 8, bottom: 0, trailing: 8))
 
@@ -72,7 +76,7 @@ struct LocbookListTasksView: View {
                             text: LBStrings.Locbook.button,
                             icon: LBIcon.plus
                         ) {
-                            self.props.onNewTask?()
+                            self.props.onNewTask()
                         }
                     }
                     .frame(maxHeight: .infinity, alignment: .bottomTrailing)
@@ -91,7 +95,7 @@ struct ListTasksView: View {
     let onEditTask: ClosureType.LocbookTaskVoid
     let openDeleteDialog: ClosureType.LocbookTaskVoid
     var body: some View {
-        if viewmodel.tasks.isEmpty {
+        if viewmodel.taskFilter?.tasks.isEmpty ?? false {
             VStack(alignment: .center) {
                 LBIcon.dailyList.image
                     .resizable()
@@ -106,7 +110,7 @@ struct ListTasksView: View {
             .padding(.bottom, 80)
         } else {
             ScrollView(showsIndicators: false) {
-                ForEach(viewmodel.tasks, id: \.uuid) { model in
+                ForEach(viewmodel.taskFilter?.tasks ?? [], id: \.uuid) { model in
                     CardTaskRegistered(
                         nameAction: model.locbookTask.categoryTitle ?? "",
                         imageTask: model.image,
@@ -159,31 +163,31 @@ struct LBFrequencyFilter: View {
             HStack(spacing: 20) {
                 Button("D") {
                     viewmodel.filterWeekDay(weekDays: [.sun])
-                }.buttonStyle(LBDaysButtonStyle(isSet: viewmodel.currentSelectedDay == .sun ))
+                }.buttonStyle(LBDaysButtonStyle(isSet: viewmodel.taskFilter?.day == .sun))
 
                 Button("S") {
                     viewmodel.filterWeekDay(weekDays: [.mon])
-                }.buttonStyle(LBDaysButtonStyle(isSet: viewmodel.currentSelectedDay == .mon))
+                }.buttonStyle(LBDaysButtonStyle(isSet: viewmodel.taskFilter?.day == .mon))
 
                 Button("T") {
                     viewmodel.filterWeekDay(weekDays: [.tue])
-                }.buttonStyle(LBDaysButtonStyle(isSet: viewmodel.currentSelectedDay == .tue))
+                }.buttonStyle(LBDaysButtonStyle(isSet: viewmodel.taskFilter?.day == .tue))
 
                 Button("Q") {
                     viewmodel.filterWeekDay(weekDays: [.wed])
-                }.buttonStyle(LBDaysButtonStyle(isSet: viewmodel.currentSelectedDay == .wed))
+                }.buttonStyle(LBDaysButtonStyle(isSet: viewmodel.taskFilter?.day == .wed))
 
                 Button("Q") {
                     viewmodel.filterWeekDay(weekDays: [.thu])
-                }.buttonStyle(LBDaysButtonStyle(isSet: viewmodel.currentSelectedDay == .thu))
+                }.buttonStyle(LBDaysButtonStyle(isSet: viewmodel.taskFilter?.day == .thu))
 
                 Button("S") {
                     viewmodel.filterWeekDay(weekDays: [.fri])
-                }.buttonStyle(LBDaysButtonStyle(isSet: viewmodel.currentSelectedDay == .fri))
+                }.buttonStyle(LBDaysButtonStyle(isSet: viewmodel.taskFilter?.day == .fri))
 
                 Button("S") {
                     viewmodel.filterWeekDay(weekDays: [.sat])
-                }.buttonStyle(LBDaysButtonStyle(isSet: viewmodel.currentSelectedDay == .sat))
+                }.buttonStyle(LBDaysButtonStyle(isSet: viewmodel.taskFilter?.day == .sat))
             }
         }
     }
