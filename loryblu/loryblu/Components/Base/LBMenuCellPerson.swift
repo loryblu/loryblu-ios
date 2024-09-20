@@ -46,7 +46,8 @@ struct LBMenuCellPerson: View {
                 }
 
             }
-            .frame(width: 327, height: 80)
+            .frame(height: 80)
+            .frame(maxWidth: .infinity)
             .background(LBColor.textfield)
             .clipShape(RoundedRectangle(cornerRadius: 12))
             .overlay {
@@ -76,7 +77,8 @@ struct LBMenuCellPerson: View {
         .onTapGesture {
             onClick()
         }
-        .frame(width: 327, height: 80)
+        .frame(height: 80)
+        .frame(maxWidth: .infinity)
         .background(LBColor.buttonBackgroundLightRed)
         .clipShape(RoundedRectangle(cornerRadius: 12))
         .overlay {
@@ -111,5 +113,6 @@ struct LBMenuCellPerson: View {
                          image: LBIcon.exit.image,
                          style: .exit)
     }
+    .padding(20)
 
 }
