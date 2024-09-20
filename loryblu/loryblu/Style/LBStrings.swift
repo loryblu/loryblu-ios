@@ -249,6 +249,7 @@ extension LBStrings {
         static let faq = String(localized: "faq")
         static let privacyTerms = String(localized: "privacy_terms")
         static let exit = String(localized: "exit")
+        static let accessControl = String(localized: "access_and_control")
 
     }
 }
