@@ -7,18 +7,21 @@ struct MenuView: View {
         VStack {
             HStack {
                 Spacer()
-                Text("Menu")
+                Text(LBStrings.Menu.menu)
+                    .font(LBFont.head5)
                 Spacer()
                 Button {
 
                 } label: {
-                    Text("X")
+                    LBIcon.close3.image
                 }
             }
             .padding(.trailing, 20)
-            VStack(spacing: 10) {
+            VStack(spacing: 15) {
                 HStack {
-                    Text("Perfil")
+                    Text(LBStrings.Menu.profile)
+                        .font(LBFont.head5)
+                        .foregroundStyle(LBColor.loryGray)
                     Spacer()
                 }
                 LBMenuCellPerson(onClick: {   },
@@ -31,8 +34,11 @@ struct MenuView: View {
                                  image: LBIcon.childTree.image, style: .person)
                 HStack {
                     Text(LBStrings.Menu.configuration)
+                        .font(LBFont.head5)
+                        .foregroundStyle(LBColor.loryGray)
                     Spacer()
                 }
+
 
                 LBMenuCellPerson(onClick: {   },
                                  description: LBStrings.Menu.accessControl,
