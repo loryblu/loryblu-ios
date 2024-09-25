@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct MenuView: View {
+    @Environment(\.dismiss) var dismiss
     @State var user: User
 
     var body: some View {
@@ -11,7 +12,7 @@ struct MenuView: View {
                     .font(LBFont.head5)
                 Spacer()
                 Button {
-
+                    dismiss()
                 } label: {
                     LBIcon.close3.image
                 }
@@ -68,5 +69,6 @@ struct MenuView: View {
 }
 
 #Preview {
-    MenuView(user: User(parentName: "Rodrigo", childrens: [Child(id: 01, fullname: "Zeider Silva", gender: "male", birthdate: "27/01/2020")]))
+    MenuView(user: User(parentName: "Rodrigo",
+                        childrens: [Child(id: 01, fullname: "Zeider Silva", gender: "male", birthdate: "27/01/2020")]))
 }
