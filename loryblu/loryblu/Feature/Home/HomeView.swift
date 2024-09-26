@@ -61,7 +61,7 @@ struct HomeView: View {
             }
             
             Button(action: {
-
+                props.onShowMenu?()
             }, label: {
                 LBIcon.menuButton.image
             })

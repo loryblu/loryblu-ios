@@ -1,9 +1,11 @@
 import SwiftUI
+import Factory
 
 @MainActor
 class HomeNavigationCoordinator: ObservableObject {
 
     @EnvironmentObject var appData: AppData
+    let userData = Container.shared.appData().userData?.data.user
 
     enum Destination {
         enum FullScreenPage: String, Identifiable {
@@ -62,5 +64,13 @@ class HomeNavigationCoordinator: ObservableObject {
             )
         }
     }
-    
+
+    @ViewBuilder
+    func buildView(sheet destination: Destination.Sheet) -> some View {
+        switch destination {
+        case .menu:
+            MenuView(user: userData! )
+                .environmentObject(AppData())
+        }
+    }
 }

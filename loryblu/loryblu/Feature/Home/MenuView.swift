@@ -33,7 +33,7 @@ struct MenuView: View {
                 LBMenuCellPerson(onClick: {   },
                                  description: LBStrings.Menu.parentsName,
                                  name: user.parentName ,
-                                 image: LBIcon.childTree.image, style: .person)
+                                 image: LBIcon.parentsTree.image, style: .person)
                 HStack {
                     Text(LBStrings.Menu.configuration)
                         .font(LBFont.head5)
@@ -64,7 +64,8 @@ struct MenuView: View {
 
         }
         .frame(maxWidth: .infinity)
-        Spacer()
+        .padding(.init(top: 30, leading: 0, bottom: 0, trailing: 0))
+        //Spacer()
     }
 }
 
