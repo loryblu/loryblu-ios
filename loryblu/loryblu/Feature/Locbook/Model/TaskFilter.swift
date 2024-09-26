@@ -17,6 +17,7 @@ class TaskFilter {
         tasks = allTasks.values.filter({ task in
             Set([day]).intersection(Set(task.locbookTask.frequency ?? [])).isEmpty == false && task.locbookTask.shift == shift
         })
+        self.shift = shift
         return getCurrentFilterState()
     }
     
