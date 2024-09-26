@@ -32,15 +32,40 @@ struct HomeView: View {
     }
 
     var header: some View {
-        HStack {
+        HStack(alignment:.top, spacing: 20 ) {
             LBIcon.headMenu.image
                 .resizable()
                 .scaledToFill()
-                .frame(width: 62, height: 62)
+                .frame(width: 81, height: 78)
+            VStack(alignment: .leading) {
+                Text("Olá, \(model.childName)")
+                    .font(LBFont.body)
+                    .foregroundStyle(.white)
+                    .padding(10)
+                    .background(UnevenRoundedRectangle(topLeadingRadius: 14,
+                                                        bottomLeadingRadius: 0,
+                                                        bottomTrailingRadius: 14,
+                                                        topTrailingRadius: 14)
+                        .foregroundStyle(LBColor.buttonGenderEnable)
+                      )
+                Text("Como você está?")
+                    .font(LBFont.body)
+                    .foregroundStyle(.white)
+                    .padding(10)
+                    .background(UnevenRoundedRectangle(topLeadingRadius: 14,
+                                                        bottomLeadingRadius: 0,
+                                                        bottomTrailingRadius: 14,
+                                                        topTrailingRadius: 14)
+                        .foregroundStyle(LBColor.buttonGenderEnable)
+                      )
+            }
+            
+            Button(action: {
 
-            Text("Olá, \(model.childName)")
-                .font(LBFont.head5)
-                .foregroundStyle(LBColor.text)
+            }, label: {
+                LBIcon.menuButton.image
+            })
+
         }
         .padding(.init(top: 12, leading: 0, bottom: 32, trailing: 0))
     }

@@ -46,6 +46,7 @@ enum LBIcon: String {
     case mail
     case man
     case mangray
+    case menuButton = "menu_button"
     case moon
     case moonSmall = "moon_small"
     case morning
