@@ -34,6 +34,7 @@ extension LBStrings {
         static let locbook = String(localized: "home_locbook")
         static let trailHistory = String(localized: "home_trail_history")
         static let trailGames = String(localized: "home_trail_games")
+        static let howAreYou = String(localized: "how_are_you")
     }
 }
 

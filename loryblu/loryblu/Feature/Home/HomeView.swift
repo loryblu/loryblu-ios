@@ -48,7 +48,7 @@ struct HomeView: View {
                                                         topTrailingRadius: 14)
                         .foregroundStyle(LBColor.buttonGenderEnable)
                       )
-                Text("Como você está?")
+                Text(LBStrings.Home.howAreYou)
                     .font(LBFont.body)
                     .foregroundStyle(.white)
                     .padding(10)
@@ -67,7 +67,7 @@ struct HomeView: View {
             })
 
         }
-        .padding(.init(top: 12, leading: 0, bottom: 32, trailing: 0))
+        .padding(.init(top: 12, leading: 20, bottom: 0, trailing: 12))
     }
 
     var trails: some View {
