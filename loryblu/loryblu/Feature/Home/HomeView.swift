@@ -41,7 +41,7 @@ struct HomeView: View {
                 Text("Olá, \(model.childName)")
                     .font(LBFont.body)
                     .foregroundStyle(.white)
-                    .padding(10)
+                    .padding(8)
                     .background(UnevenRoundedRectangle(topLeadingRadius: 14,
                                                         bottomLeadingRadius: 0,
                                                         bottomTrailingRadius: 14,
@@ -51,7 +51,7 @@ struct HomeView: View {
                 Text(LBStrings.Home.howAreYou)
                     .font(LBFont.body)
                     .foregroundStyle(.white)
-                    .padding(10)
+                    .padding(8)
                     .background(UnevenRoundedRectangle(topLeadingRadius: 14,
                                                         bottomLeadingRadius: 0,
                                                         bottomTrailingRadius: 14,
@@ -102,15 +102,16 @@ extension HomeView {
     struct Props {
         var selectedCard: Int?
         let onSelectCard: ClosureType.VoidVoid?
+        let onShowMenu: ClosureType.VoidVoid?
     }
 }
 
 extension HomeView {
     static func build(onSelectCard: ClosureType.VoidVoid?) -> Self {
-        HomeView(props: .init(onSelectCard: onSelectCard))
+        HomeView(props: .init(onSelectCard: onSelectCard, onShowMenu: nil))
     }
 }
 
 #Preview {
-    HomeView(props: .init(onSelectCard: nil))
+    HomeView(props: .init(onSelectCard: nil, onShowMenu: nil))
 }

@@ -14,22 +14,33 @@ class HomeNavigationCoordinator: ObservableObject {
                 self.rawValue
             }
         }
+
+        enum Sheet: String, Identifiable {
+            case menu
+
+            var id: String {
+                self.rawValue
+            }
+        }
     }
 
     // MARK: - Internal Properties
 
     @Published var fullScreen: Destination.FullScreenPage?
+    @Published var sheet: Destination.Sheet?
 
     // MARK: - Initializers
 
     init() {
         fullScreen = nil
+        sheet = nil
     }
 
     // MARK: - Internal Methods
 
     func popToRoot() {
         fullScreen = nil
+        sheet = nil
     }
 
     @ViewBuilder
@@ -38,7 +49,8 @@ class HomeNavigationCoordinator: ObservableObject {
         case .home:
             HomeView(
                 props: .init (
-                    onSelectCard: { self.fullScreen = .locbook }
+                    onSelectCard: { self.fullScreen = .locbook },
+                    onShowMenu: { self.sheet = .menu }
                 )
             )
         case .locbook:
@@ -50,4 +62,5 @@ class HomeNavigationCoordinator: ObservableObject {
             )
         }
     }
+    
 }
