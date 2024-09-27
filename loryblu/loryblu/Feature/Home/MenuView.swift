@@ -2,7 +2,7 @@ import SwiftUI
 
 struct MenuView: View {
     @Environment(\.dismiss) var dismiss
-    @State var user: User
+    @State var user: User?
 
     var body: some View {
         VStack {
@@ -28,11 +28,11 @@ struct MenuView: View {
                 }
                 LBMenuCellPerson(onClick: {   },
                                  description: LBStrings.Menu.childName,
-                                 name: user.childrens.first?.fullname ?? "",
+                                 name: user?.childrens.first?.fullname ?? "",
                                  image: LBIcon.childTree.image, style: .person)
                 LBMenuCellPerson(onClick: {   },
                                  description: LBStrings.Menu.parentsName,
-                                 name: user.parentName ,
+                                 name: user?.parentName ?? " ",
                                  image: LBIcon.parentsTree.image, style: .person)
                 HStack {
                     Text(LBStrings.Menu.configuration)
@@ -64,12 +64,14 @@ struct MenuView: View {
 
         }
         .frame(maxWidth: .infinity)
-        .padding(.init(top: 30, leading: 0, bottom: 0, trailing: 0))
-        //Spacer()
+        .padding(.init(top: 50, leading: 0, bottom: 0, trailing: 0))
     }
 }
 
 #Preview {
     MenuView(user: User(parentName: "Rodrigo",
-                        childrens: [Child(id: 01, fullname: "Zeider Silva", gender: "male", birthdate: "27/01/2020")]))
+                childrens: [Child(id: 01,
+                                  fullname: "Zeider Silva",
+                                  gender: "male",
+                                  birthdate: "27/01/2020")]))
 }

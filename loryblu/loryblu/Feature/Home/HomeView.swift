@@ -59,7 +59,7 @@ struct HomeView: View {
                         .foregroundStyle(LBColor.buttonGenderEnable)
                       )
             }
-            
+        
             Button(action: {
                 props.onShowMenu?()
             }, label: {
