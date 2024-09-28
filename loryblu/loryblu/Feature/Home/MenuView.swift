@@ -26,14 +26,20 @@ struct MenuView: View {
                         .foregroundStyle(LBColor.loryGray)
                     Spacer()
                 }
-                LBMenuCellPerson(onClick: {   },
-                                 description: LBStrings.Menu.childName,
-                                 name: user?.childrens.first?.fullname ?? "",
-                                 image: LBIcon.childTree.image, style: .person)
-                LBMenuCellPerson(onClick: {   },
-                                 description: LBStrings.Menu.parentsName,
-                                 name: user?.parentName ?? " ",
-                                 image: LBIcon.parentsTree.image, style: .person)
+                LBMenuCellPerson(
+                                onClick: {},
+                                description: LBStrings.Menu.childName,
+                                name: user?.childrens.first?.fullname ?? "",
+                                image: LBIcon.childTree.image,
+                                style: .person
+                )
+                LBMenuCellPerson(
+                                onClick: {},
+                                description: LBStrings.Menu.parentsName,
+                                name: user?.parentName ?? " ",
+                                image: LBIcon.parentsTree.image,
+                                style: .person
+                )
                 HStack {
                     Text(LBStrings.Menu.configuration)
                         .font(LBFont.head5)
@@ -41,22 +47,34 @@ struct MenuView: View {
                     Spacer()
                 }
 
-                LBMenuCellPerson(onClick: {   },
-                                 description: LBStrings.Menu.accessControl,
-                                 name: LBStrings.Menu.security,
-                                 image: LBIcon.shield.image, style: .configuration)
-                LBMenuCellPerson(onClick: {   },
-                                 description: "",
-                                 name: LBStrings.Menu.faq,
-                                 image: LBIcon.questionMark.image, style: .configuration)
-                LBMenuCellPerson(onClick: {   },
-                                 description: "",
-                                 name: LBStrings.Menu.privacyTerms,
-                                 image: LBIcon.privacyTerms.image, style: .configuration)
-                LBMenuCellPerson(onClick: {   },
-                                 description: "",
-                                 name: LBStrings.Menu.exit,
-                                 image: LBIcon.exit.image, style: .exit)
+                LBMenuCellPerson(
+                                onClick: {},
+                                description: LBStrings.Menu.accessControl,
+                                name: LBStrings.Menu.security,
+                                image: LBIcon.shield.image,
+                                style: .configuration
+                )
+                LBMenuCellPerson(
+                                onClick: {},
+                                description: "",
+                                name: LBStrings.Menu.faq,
+                                image: LBIcon.questionMark.image,
+                                style: .configuration
+                )
+                LBMenuCellPerson(
+                                onClick: {},
+                                description: "",
+                                name: LBStrings.Menu.privacyTerms,
+                                image: LBIcon.privacyTerms.image,
+                                style: .configuration
+                )
+                LBMenuCellPerson(
+                                onClick: {},
+                                description: "",
+                                name: LBStrings.Menu.exit,
+                                image: LBIcon.exit.image,
+                                style: .exit
+                )
                 .padding(.top, 20)
 
             }
@@ -69,9 +87,10 @@ struct MenuView: View {
 }
 
 #Preview {
-    MenuView(user: User(parentName: "Rodrigo",
-                childrens: [Child(id: 01,
-                                  fullname: "Zeider Silva",
-                                  gender: "male",
-                                  birthdate: "27/01/2020")]))
+    MenuView(user: User(
+                        parentName: "Rodrigo",
+                        childrens: [Child(id: 01,
+                                          fullname: "Zeider Silva",
+                                          gender: "male",
+                                          birthdate: "27/01/2020")]))
 }
