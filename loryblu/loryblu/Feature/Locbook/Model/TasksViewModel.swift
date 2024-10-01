@@ -17,35 +17,41 @@ class TasksViewModel: ObservableObject {
     @MainActor
     func fetchTasks() async {
         cacheTasks = await repository.fetchTasks(
-            token: appData.token, 
+            token: appData.token,
             childrenId: appData.childrenId
         )
-        
+
         let taskFilterBuilder = TaskFilterBuilder()
         taskFilterBuilder.setupFilter(tasks: cacheTasks)
         taskFilter = taskFilterBuilder.build()
-        
-        shifts = getShiftsSelectedByDefault(shiftSelected: taskFilter?.shift ?? LocbookTask.Shift.morning)
+        shifts = getShiftsSelectedByDefault(
+            shiftSelected: taskFilter?.shift ?? LocbookTask.Shift.morning
+        )
     }
 
     func removeTask(deleteOption: DeleteOption) {
         Task { @MainActor in
             switch deleteOption {
-            case DeleteOption.allDays: 
+            case DeleteOption.allDays:
                 let result = await repository.deleteTask(
                     token: appData.token,
                     childrenId: appData.childrenId,
                     taskId: taskToDelete.id
                 )
+
                 if result {
                    deleteOptionTitle = LBStrings.General.allDays
                    switchMsgDialogState()
                    switchDeleteDialogState()
                    updateUiState()
-                   cacheTasks = await repository.fetchTasks(token: appData.token, childrenId: appData.childrenId)
+                    cacheTasks = await repository.fetchTasks(
+                        token: appData.token,
+                        childrenId: appData.childrenId
+                    )
                } else {
                    switchDeleteDialogState()
                }
+
             default:
                 let taskEdited = getTaskEdited()
                 let result = await repository.taskEdit(
@@ -53,12 +59,16 @@ class TasksViewModel: ObservableObject {
                     token: appData.token,
                     childrenID: appData.childrenId
                 )
+
                 if result {
                     deleteOptionTitle = taskFilter?.dayText
                     switchMsgDialogState()
                     switchDeleteDialogState()
                     updateUiState()
-                    cacheTasks = await repository.fetchTasks(token: appData.token, childrenId: appData.childrenId)
+                    cacheTasks = await repository.fetchTasks(
+                        token: appData.token,
+                        childrenId: appData.childrenId
+                    )
                 } else {
                     switchDeleteDialogState()
                 }
@@ -76,16 +86,19 @@ class TasksViewModel: ObservableObject {
     }
 
     func filterByShifts(shiftSelected: String) {
-        currentSelectedShift = switch shiftSelected {
-        case LBStrings.FrequencyRotine.morning:
-            LocbookTask.Shift.morning
-        case LBStrings.FrequencyRotine.afternoon:
-            LocbookTask.Shift.afternoon
-        default:
-            LocbookTask.Shift.night
-        }
+        currentSelectedShift = {
+            switch shiftSelected {
+            case LBStrings.FrequencyRotine.morning:
+                LocbookTask.Shift.morning
+            case LBStrings.FrequencyRotine.afternoon:
+                LocbookTask.Shift.afternoon
+            default:
+                LocbookTask.Shift.night
+            }
+        }()
+
         shifts = shifts.map { (shift: ShiftItem) -> ShiftItem in
-            let isSelected = shiftSelected == shift.name ? true : false
+            let isSelected = shiftSelected == shift.name
             return ShiftItem(
                 name: shift.name,
                 icon: shift.icon,
@@ -100,7 +113,7 @@ class TasksViewModel: ObservableObject {
             allTasks: cacheTasks
         )
     }
-    
+
     func filterWeekDay(weekDays: [LocbookTask.Frequency]) {
         taskFilter = taskFilter?.filterByWeekDay(weekDays: weekDays, allTasks: cacheTasks)
     }
@@ -151,11 +164,10 @@ extension TasksViewModel {
     private func resetTaskToDelete() {
         taskToDelete = .init()
     }
-    
+
 }
 
 extension TasksViewModel {
-    
     func getShiftsSelectedByDefault(shiftSelected: LocbookTask.Shift) -> [ShiftItem] {
         let items = [
             ShiftItem(
@@ -175,15 +187,19 @@ extension TasksViewModel {
                 backgroundColor: LBColor.buttonBackgroundDark,
                 letterColor: .white, isSelected: false)
         ]
+
         let shiftItemsUpdated = items.map { (shift: ShiftItem) -> ShiftItem in
-            let shiftText = switch shiftSelected {
-            case LocbookTask.Shift.morning:
-                LBStrings.FrequencyRotine.morning
-            case LocbookTask.Shift.afternoon:
-                LBStrings.FrequencyRotine.afternoon
-            default:
-                LBStrings.FrequencyRotine.night
-            }
+            let shiftText = {
+                switch shiftSelected {
+                case LocbookTask.Shift.morning:
+                    LBStrings.FrequencyRotine.morning
+                case LocbookTask.Shift.afternoon:
+                    LBStrings.FrequencyRotine.afternoon
+                default:
+                    LBStrings.FrequencyRotine.night
+                }
+            }()
+
             let isSelected = shiftText == shift.name ? true : false
             return ShiftItem(
                 name: shift.name,

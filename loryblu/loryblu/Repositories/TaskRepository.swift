@@ -16,13 +16,8 @@ class TaskRepository {
             return false
         }
 
-        guard let shift = locBookTask.shift else {
-            return false
-        }
-
-        guard let frequency = locBookTask.frequency else {
-            return false
-        }
+        guard let shift = locBookTask.shift else { return false }
+        guard let frequency = locBookTask.frequency else { return false }
 
         let request = RequestModel.Builder()
             .with(baseURL: Server.baseURL)
@@ -40,8 +35,12 @@ class TaskRepository {
             .build()
 
         do {
-            let response = try await network.request(request: request, returning: ResponseData<ResponseTaskCreated>.self)
-            if (response.isSuccess ?? false) {
+            let response = try await network.request(
+                request: request,
+                returning: ResponseData<ResponseTaskCreated>.self
+            )
+
+            if response.isSuccess ?? false {
                 let task = response.data?.task
                 let locbooktask = LocbookTask(
                     id: task!.id,
@@ -68,10 +67,11 @@ class TaskRepository {
     }
 
     func taskEdit(with locBookTask: LocbookTask, token: String, childrenID: Int) async -> Bool {
-        guard let categoryId = locBookTask.categoryId,
-              let shift = locBookTask.shift,
-              let frequency = locBookTask.frequency,
-              let taskId = locBookTask.id
+        guard
+            let categoryId = locBookTask.categoryId,
+            let shift = locBookTask.shift,
+            let frequency = locBookTask.frequency,
+            let taskId = locBookTask.id
         else {
             return false
         }
@@ -93,43 +93,60 @@ class TaskRepository {
 
         do {
             let response = try await network.request(request: request, returning: ResponseMessage.self)
-            if(response.isSuccess) {
+
+            if response.isSuccess {
                 updateCache(taskEdited: locBookTask)
             }
+
             return response.isSuccess
         } catch {
             return false
         }
     }
 
-    func fetchTasks(token: String, childrenId: Int) async -> [Int : TaskModel] {
+    func fetchTasks(
+        token: String,
+        childrenId: Int,
+        frequency: String = "frequency=sun,mon,tue,wed,thu,fri,sat",
+        perPage: Int = 70
+    ) async -> [Int: TaskModel] {
+
         let request = RequestModel.Builder()
             .with(baseURL: Server.baseURL)
-            .with(path: "\(Endpoint.task)?childrenId=\(childrenId)&frequency=sun,mon,tue,wed,thu,fri,sat")
+            .with(path: "\(Endpoint.task)?childrenId=\(childrenId)&\(frequency)&perPage=\(perPage)")
             .with(method: .get)
             .with(addHeaderName: "Authorization", value: "Bearer \(token)")
             .with(addHeaderName: "Content-Type", value: "application/json")
             .build()
 
         do {
-            
-            if (cache == nil) {
-                let result = try await network.request(request: request, returning: ResponseData<NetworkDataModel>.self)
-            
+            if cache == nil {
+                let result = try await network.request(
+                    request: request,
+                    returning: ResponseData<NetworkDataModel>.self
+                )
+
                 let cacheBuilder = TaskCacheBuilder()
-                
-                cacheBuilder.addStudyList(studyTasks: getTasks(type: LBStrings.Locbook.titleStudy, tasks: result.data?.study ?? []))
-                cacheBuilder.addRoutineList(routineTasks: getTasks(type: LBStrings.Locbook.titleRotine, tasks: result.data?.routine ?? []))
-                
+                cacheBuilder.addStudyList(
+                    studyTasks: getTasks(
+                        type: LBStrings.Locbook.titleStudy,
+                        tasks: result.data?.study ?? []
+                    )
+                )
+                cacheBuilder.addRoutineList(
+                    routineTasks: getTasks(
+                        type: LBStrings.Locbook.titleRotine,
+                        tasks: result.data?.routine ?? []
+                    )
+                )
                 cache = cacheBuilder.build()
             }
-            
             return cache ?? [:]
         } catch {
             return cache ?? [:]
         }
     }
-    
+
     func deleteTask(token: String, childrenId: Int, taskId: Int?) async -> Bool {
         do {
             let request = RequestModel.Builder()
@@ -139,11 +156,13 @@ class TaskRepository {
                 .with(addHeaderName: "Authorization", value: "Bearer \(token)")
                 .with(addHeaderName: "Content-Type", value: "application/json")
                 .build()
-            
+
             let response = try await network.request(request: request, returning: ResponseMessage.self)
-            if(response.isSuccess) {
+
+            if response.isSuccess {
                 removeFromCache(taskId: taskId!)
             }
+
             return response.isSuccess
         } catch {
             return false
@@ -152,16 +171,19 @@ class TaskRepository {
 }
 
 extension TaskRepository {
-    func getTasks(type: String, tasks: [TasksNetworkModel]) -> [TaskModel] {
+    func getTasks(
+        type: String,
+        tasks: [TasksNetworkModel]
+    ) -> [TaskModel] {
         return tasks.toTasksModel(category: type)
     }
-     
+
     func updateCache(taskEdited: LocbookTask) {
-        do {            
+        do {
             cache?.updateValue(taskEdited.toTaskModel(), forKey: taskEdited.id!)
         }
     }
-    
+
     func removeFromCache(taskId: Int) {
         cache?.removeValue(forKey: taskId)
     }
