@@ -86,6 +86,7 @@
 "home_locbook" = "Diário de Bordo";
 "home_trail_history" = "Trilha de Histórias";
 "home_trail_games" = "Trilha de Jogos";
+"how_are_you" = "Como você está?";
 
 // ==================== Locbook =========================
 
@@ -204,13 +205,15 @@
 
 // ==================== Menu ====================
 "profile" = "Perfil";
-"configuration = Configurações";
+"configuration" = "Configurações";
 "child_name" = "Nome da Criança";
-"parents_name" = "Nome da pessoa responsáve";
+"parents_name" = "Nome da pessoa responsável";
 "security" = "Segurança";
 "faq" = "Perguntas Frequentes";
 "privacy_terms" = "Termos e Privacidade";
 "exit" = "Sair do App";
+"access_and_control" = "Controle os acessos e gerencie as funcionalidades do app";
+"menu" = "Menu";
 // ==================== Delete Option ====================
 "all_days" = "Todos os dias";
 

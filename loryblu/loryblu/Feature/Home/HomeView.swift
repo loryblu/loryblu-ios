@@ -32,17 +32,42 @@ struct HomeView: View {
     }
 
     var header: some View {
-        HStack {
+        HStack(alignment:.top, spacing: 20 ) {
             LBIcon.headMenu.image
                 .resizable()
                 .scaledToFill()
-                .frame(width: 62, height: 62)
+                .frame(width: 81, height: 78)
+            VStack(alignment: .leading) {
+                Text("Olá, \(model.childName)")
+                    .font(LBFont.body)
+                    .foregroundStyle(.white)
+                    .padding(8)
+                    .background(UnevenRoundedRectangle(topLeadingRadius: 14,
+                                                        bottomLeadingRadius: 0,
+                                                        bottomTrailingRadius: 14,
+                                                        topTrailingRadius: 14)
+                        .foregroundStyle(LBColor.buttonGenderEnable)
+                      )
+                Text(LBStrings.Home.howAreYou)
+                    .font(LBFont.body)
+                    .foregroundStyle(.white)
+                    .padding(8)
+                    .background(UnevenRoundedRectangle(topLeadingRadius: 14,
+                                                        bottomLeadingRadius: 0,
+                                                        bottomTrailingRadius: 14,
+                                                        topTrailingRadius: 14)
+                        .foregroundStyle(LBColor.buttonGenderEnable)
+                      )
+            }
+        
+            Button(action: {
+                props.onShowMenu?()
+            }, label: {
+                LBIcon.menuButton.image
+            })
 
-            Text("Olá, \(model.childName)")
-                .font(LBFont.head5)
-                .foregroundStyle(LBColor.text)
         }
-        .padding(.init(top: 12, leading: 0, bottom: 32, trailing: 0))
+        .padding(.init(top: 12, leading: 20, bottom: 0, trailing: 12))
     }
 
     var trails: some View {
@@ -77,15 +102,16 @@ extension HomeView {
     struct Props {
         var selectedCard: Int?
         let onSelectCard: ClosureType.VoidVoid?
+        let onShowMenu: ClosureType.VoidVoid?
     }
 }
 
 extension HomeView {
     static func build(onSelectCard: ClosureType.VoidVoid?) -> Self {
-        HomeView(props: .init(onSelectCard: onSelectCard))
+        HomeView(props: .init(onSelectCard: onSelectCard, onShowMenu: nil))
     }
 }
 
 #Preview {
-    HomeView(props: .init(onSelectCard: nil))
+    HomeView(props: .init(onSelectCard: nil, onShowMenu: nil))
 }
