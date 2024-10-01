@@ -75,7 +75,7 @@ struct MenuView: View {
                                 image: LBIcon.exit.image,
                                 style: .exit
                 )
-                .padding(.top, 20)
+                .padding(.top, 16)
 
             }
             .padding(20)
