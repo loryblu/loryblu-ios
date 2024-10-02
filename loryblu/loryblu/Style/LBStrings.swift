@@ -18,6 +18,7 @@ extension LBStrings {
         static let send = String(localized: "send")
         static let questionMark = String(localized: "question_mark")
         static let leave = String(localized: "leave")
+        static let allDays = String(localized: "all_days")
     }
 }
 extension LBStrings {
@@ -100,6 +101,8 @@ extension LBStrings {
         static let dontHaveAccount = String(localized: "login_dont_have_an_account")
         static let registerNow = String(localized: "login_register_now")
         static let remeber = String(localized: "login_remember")
+        static let userNotFound = String(localized: "user_not_found")
+        static let serverError = String(localized: "server_error")
     }
 }
 

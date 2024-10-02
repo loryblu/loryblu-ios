@@ -4,6 +4,7 @@ import Factory
 class SummaryViewModel: ObservableObject {
     enum StatusTask {
         case none
+        case loading
         case success
         case fail
     }
@@ -15,6 +16,7 @@ class SummaryViewModel: ObservableObject {
 
     @MainActor
     func saveTask(task: LocbookTask) async {
+        stateTask = .loading
         let result = await repository.taskRegister(
             with: task,
             token: appData.token,
@@ -26,12 +28,11 @@ class SummaryViewModel: ObservableObject {
         } else {
             stateTask = .fail
         }
-
-        appData.forceReloadListView = true
     }
 
     @MainActor
-    func saveEditedTask(task: LocbookTask) async {
+    func saveEditedTask(task: LocbookTask, onDismiss:() -> Void) async {
+        stateTask = .loading
         let result = await repository.taskEdit(
             with: task,
             token: appData.token,
@@ -40,11 +41,10 @@ class SummaryViewModel: ObservableObject {
 
         if result {
             stateTask = .success
+            onDismiss()
         } else {
             stateTask = .fail
         }
-
-        appData.forceReloadListView = true
     }
 
     func iniShifts(shift: LocbookTask.Shift?) {

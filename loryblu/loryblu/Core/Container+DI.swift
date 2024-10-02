@@ -4,7 +4,7 @@ import Foundation
 extension Container {
     var appData: Factory<AppData> {
         self {
-            AppData()
+            AppData() 
         }.singleton
     }
 
@@ -35,6 +35,6 @@ extension Container {
     var taskRepository: Factory<TaskRepository> {
         Factory(self) {
             TaskRepository(network: self.network())
-        }
+        }.shared
     }
 }

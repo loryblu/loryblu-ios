@@ -2,18 +2,24 @@ import Foundation
 import SwiftUI
 
 struct NetworkDataModel: Decodable {
-    var study: [TasksNetworkModel]
-    var routine: [TasksNetworkModel]
+    var study: [TasksNetworkModel]?
+    var routine: [TasksNetworkModel]?
+}
+
+struct ResponseTaskCreated: Decodable {
+    var task: TasksNetworkModel
 }
 
 struct TasksNetworkModel: Decodable {
     var id: Int
     var shift: String
     var frequency: [String]
-    var order: Int
-    var categoryId: String
-    var categoryTitle: String
-    var updatedAt: String
+    var order: Int?
+    var categoryId: String?
+    var childrenId: Int?
+    var categoryTitle: String?
+    var updatedAt: String?
+    var createdAt: String?
 }
 
 extension [TasksNetworkModel] {
