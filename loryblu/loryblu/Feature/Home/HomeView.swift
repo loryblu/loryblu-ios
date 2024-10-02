@@ -13,13 +13,18 @@ struct HomeView: View {
             font: LBFont.titleAction,
             segment: .home),
         ImageLabel(
-            image: LBIcon.fairyShadow.rawValue,
+            image: LBIcon.fairy.rawValue,
             name: LBStrings.Home.trailHistory,
             font: LBFont.titleAction,
             segment: .home),
         ImageLabel(
-            image: LBIcon.gamesShadow.rawValue,
+            image: LBIcon.games.rawValue,
             name: LBStrings.Home.trailGames,
+            font: LBFont.titleAction,
+            segment: .home),
+        ImageLabel(
+            image: LBIcon.musical.rawValue,
+            name: LBStrings.Home.trailMusical,
             font: LBFont.titleAction,
             segment: .home)
     ]
@@ -55,7 +60,7 @@ struct HomeView: View {
                                 RoundedRectangle(cornerRadius: 12)
                                     .inset(by: 0)
                                     .strokeBorder(LBColor.borderImagetrails, lineWidth: 4) : nil
-                                )
+                            )
 
                             .opacity(props.selectedCard == index ? 1.0 : 0.5)
                             .onTapGesture {
