@@ -13,17 +13,17 @@ struct HomeView: View {
             font: LBFont.titleAction,
             segment: .home),
         ImageLabel(
-            image: LBIcon.fairy.rawValue,
+            image: LBIcon.fairyShadow.rawValue,
             name: LBStrings.Home.trailHistory,
             font: LBFont.titleAction,
             segment: .home),
         ImageLabel(
-            image: LBIcon.games.rawValue,
+            image: LBIcon.gamesShadow.rawValue,
             name: LBStrings.Home.trailGames,
             font: LBFont.titleAction,
             segment: .home),
         ImageLabel(
-            image: LBIcon.musical.rawValue,
+            image: LBIcon.musicalShadow.rawValue,
             name: LBStrings.Home.trailMusical,
             font: LBFont.titleAction,
             segment: .home)
