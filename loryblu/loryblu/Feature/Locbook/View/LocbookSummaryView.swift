@@ -13,7 +13,7 @@ struct LocbookSummaryView: View {
         var task: LocbookTask
         var title: String
         let onSubmitNewTask: ClosureType.VoidVoid?
-        let onSubmitEditedTask: ClosureType.LocbookTaskVoid?
+        let onSubmitEditedTask: ClosureType.VoidVoid?
         let onEditTaskPath: ClosureType.EditTaskPath?
         var onClose: ClosureType.VoidVoid?
         let addOrEdit: AddOrEditType
@@ -221,7 +221,7 @@ struct LocbookSummaryView: View {
                     await model.saveEditedTask(
                         task: editedTask,
                         onDismiss: {
-                            props.onSubmitEditedTask?(editedTask)
+                            props.onSubmitEditedTask?()
                         })
                 }
             }
@@ -382,7 +382,7 @@ extension LocbookSummaryView.Props: Hashable {
                     categoryTitle: LBStrings.Locbook.titleStudy
                 ), title: "LocbookSumary",
                 onSubmitNewTask: {},
-                onSubmitEditedTask: {_ in },
+                onSubmitEditedTask: { },
                 onEditTaskPath: {_ in},
                 addOrEdit: AddOrEditType.edit
             )

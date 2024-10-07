@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct DoneView: View {
-    @Environment(\.dismiss) var dismiss
 
     struct Props {
         let message: String
@@ -18,7 +17,6 @@ struct DoneView: View {
                     Spacer()
                     Button {
                         props.onClose?()
-                        dismiss()
                     } label: {
                         Image(LBIcon.close2.rawValue)
                             .resizable()
