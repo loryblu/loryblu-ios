@@ -109,10 +109,14 @@ struct LocbookNavigationStack: View {
                 task: task,
                 title: navigationTitle.title,
                 onSubmitNewTask: {
-                    pushFinishView(message: LBStrings.SummaryLocbook.summaryFinishedNewTaskMessage, addOrEdit: .add)
+                    pushFinishView(
+                        message: LBStrings.SummaryLocbook.summaryFinishedNewTaskMessage
+                    )
                 },
-                onSubmitEditedTask: { editedTask in
-                    coordinator.popToRoot()
+                onSubmitEditedTask: {
+                    pushFinishView(
+                        message: LBStrings.SummaryLocbook.summaryFinishedEditTaskMessage
+                    )
                 },
                 onEditTaskPath: { path in
                     switch path {
@@ -130,12 +134,12 @@ struct LocbookNavigationStack: View {
         )
     }
 
-    private func pushFinishView(message: String, addOrEdit: AddOrEditType) {
+    private func pushFinishView(message: String) {
         coordinator.pushFinishScreen(
             props: .init(
                 message: message,
                 onClose: {
-                    dismiss()
+                    coordinator.popToRoot()
                 }
             )
         )
