@@ -32,7 +32,7 @@ struct HomeView: View {
     }
 
     var header: some View {
-        HStack(alignment:.top, spacing: 20 ) {
+        HStack(alignment: .top, spacing: 20) {
             LBIcon.headMenu.image
                 .resizable()
                 .scaledToFill()
@@ -59,7 +59,7 @@ struct HomeView: View {
                         .foregroundStyle(LBColor.buttonGenderEnable)
                       )
             }
-        
+            Spacer()
             Button(action: {
                 props.onShowMenu?()
             }, label: {
@@ -67,14 +67,14 @@ struct HomeView: View {
             })
 
         }
-        .padding(.init(top: 12, leading: 20, bottom: 0, trailing: 12))
+        .padding(.init(top: 12, leading: 24, bottom: 0, trailing: 24))
     }
 
     var trails: some View {
         ScrollView(.vertical, showsIndicators: true) {
             VStack(spacing: 24) {
                 Group {
-                    ForEach(0..<traills.count) { index in
+                    ForEach(0..<traills.count, id: \.self) { index in
                         traills[index]
                             .overlay(props.selectedCard == index ?
                                 RoundedRectangle(cornerRadius: 12)
@@ -91,7 +91,7 @@ struct HomeView: View {
                             }
                     }
                 }
-                .frame(width: 312, height: 218)
+                .frame(width: .infinity, height: 218)
 
             }.padding(24)
         }
