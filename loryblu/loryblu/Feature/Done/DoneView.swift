@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct DoneView: View {
-    @Environment(\.dismiss) var dismiss
 
     struct Props {
         let message: String
@@ -13,6 +12,7 @@ struct DoneView: View {
 
     var body: some View {
         VStack {
+<<<<<<< HEAD
             HStack {
                 Spacer()
                 Button {
@@ -22,6 +22,19 @@ struct DoneView: View {
                     Image(LBIcon.close2.rawValue)
                         .resizable()
                         .frame(width: 22, height: 22)
+=======
+            VStack(alignment: .center) {
+                HStack {
+                    Spacer()
+                    Button {
+                        props.onClose?()
+                    } label: {
+                        Image(LBIcon.close2.rawValue)
+                            .resizable()
+                            .frame(width: 22, height: 22)
+                    }
+                    .padding(.bottom, 200)
+>>>>>>> develop
                 }
             }
             Spacer()

@@ -21,6 +21,7 @@
 		335E21A72AFF132800700440 /* FrequencyRotineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335E21A62AFF132800700440 /* FrequencyRotineView.swift */; };
 		33676BCB2C780BDD0043FF91 /* LBExitAppConfirmation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33676BCA2C780BDD0043FF91 /* LBExitAppConfirmation.swift */; };
 		336884D22BA2849F0041C9A2 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336884D12BA2849F0041C9A2 /* ViewExtension.swift */; };
+		336ECF882C9CFFD30062691E /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336ECF872C9CFFD30062691E /* MenuView.swift */; };
 		3376667D2ABFD115007010E1 /* URLDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3376667C2ABFD115007010E1 /* URLDecoder.swift */; };
 		337A39E92C0FD89900B89B3D /* LBDeleteConfirmation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337A39E82C0FD89900B89B3D /* LBDeleteConfirmation.swift */; };
 		3380B2102B0DA63F0001E67D /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3380B20F2B0DA63F0001E67D /* Formatter.swift */; };
@@ -133,6 +134,7 @@
 		335E21A62AFF132800700440 /* FrequencyRotineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequencyRotineView.swift; sourceTree = "<group>"; };
 		33676BCA2C780BDD0043FF91 /* LBExitAppConfirmation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBExitAppConfirmation.swift; sourceTree = "<group>"; };
 		336884D12BA2849F0041C9A2 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
+		336ECF872C9CFFD30062691E /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		3376667C2ABFD115007010E1 /* URLDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLDecoder.swift; sourceTree = "<group>"; };
 		337A39E82C0FD89900B89B3D /* LBDeleteConfirmation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBDeleteConfirmation.swift; sourceTree = "<group>"; };
 		3380B20F2B0DA63F0001E67D /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
@@ -355,6 +357,7 @@
 				91664AE12B0C003A005BF5CA /* HomeNavigationStack.swift */,
 				8C2A684C2AF54A9600B74295 /* HomeView.swift */,
 				33DE3B222B75993200F45449 /* HomeViewModel.swift */,
+				336ECF872C9CFFD30062691E /* MenuView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -821,6 +824,7 @@
 				91B4AC282AD114D3003A7FE5 /* NavigationPathExtension.swift in Sources */,
 				91664AE22B0C003A005BF5CA /* HomeNavigationStack.swift in Sources */,
 				33DE3B252B759AC300F45449 /* SummaryViewModel.swift in Sources */,
+				336ECF882C9CFFD30062691E /* MenuView.swift in Sources */,
 				336884D22BA2849F0041C9A2 /* ViewExtension.swift in Sources */,
 				33DE3B232B75993200F45449 /* HomeViewModel.swift in Sources */,
 				33676BCB2C780BDD0043FF91 /* LBExitAppConfirmation.swift in Sources */,
