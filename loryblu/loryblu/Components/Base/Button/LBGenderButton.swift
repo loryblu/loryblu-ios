@@ -28,7 +28,7 @@ struct LBGenderButton: View {
                     .fontWeight(.bold)
             }
             .foregroundColor(isActive ? LBColor.background : LBColor.placeholder)
-            .frame(maxWidth: .infinity, maxHeight: 44, alignment: .leading)
+            .frame(maxWidth: .infinity, minHeight: 44, alignment: .leading)
             .background(isActive ? LBColor.buttonGenderEnable : LBColor.background)
             .cornerRadius(10)
             .overlay(RoundedRectangle(cornerRadius: 10)

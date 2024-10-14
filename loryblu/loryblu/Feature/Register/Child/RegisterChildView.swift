@@ -5,62 +5,65 @@ import WebKit
 struct RegisterChildView: View {
     @StateObject var viewModel: RegisterChildViewModel
     @EnvironmentObject var coordinator: LoginNavigationStack.NavigationCoordinator
-    
+
     @FocusState private var focusedField: RegisterChildViewModel.FocusedField?
     @State private var presented: Bool = false
     @State private var date: Date?
-    var child: UserRegister?
     @State private var showDone: Bool = false
     @State private var isPresentWebView = false
 
+    var child: UserRegister?
+
     var body: some View {
-        ZStack(alignment: .center) {
-            VStack {
+        GeometryReader { _ in
+            ZStack(alignment: .center) {
                 VStack {
-                    Image(LBIcon.logoName.rawValue).resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 187, height: 47)
-                        .clipped()
-                        .padding(.bottom, 40)
+                    VStack {
+                        LBIcon.logoName.image
+                            .resizable()
+                            .frame(width: 187, height: 47)
+                            .padding(.bottom, 30)
+                            .padding(.top, 30)
 
-                    Text(LBStrings.Register.child)
-                        .font(LBFont.titleTask)
-                        .foregroundColor(LBColor.text)
-                        .frame(width: 194, alignment: .topLeading)
-                        .padding(.bottom, 32)
-                }
-
-                form
-
-            }
-            .navigationTitle(LBStrings.General.empty)
-            .padding(.top, -40)
-            .fullScreenCover(isPresented: $viewModel.registerSuccess) {
-                DoneView(
-                    props: .init(
-                        message: LBStrings.Register.registerFinishedSuccess,
-                        onClose: { coordinator.popToRoot() }
-                    )
-                )
-                .toolbarRole(.editor)
-                .navigationBarBackButtonHidden(true)
-            }
-        .foregroundStyle(LBColor.background)
-            if focusedField == .birthDay {
-                GeometryReader { _ in
-                    LBDatePicker { confirmDate in
-                        viewModel.birthDate = confirmDate
-                        focusedField = nil
-                    } onCancel: {
-                        focusedField = nil
+                        Text(LBStrings.Register.child)
+                            .font(LBFont.titleTask)
+                            .foregroundColor(LBColor.text)
+                            .frame(width: 194, alignment: .topLeading)
+                            .padding(.bottom, 32)
                     }
+
+                    form
+                    Spacer()
+
                 }
-                .background(Color.black.opacity(0.50)
-                    .edgesIgnoringSafeArea(.all)
-                )
-
+                .padding(24)
+                .navigationTitle(LBStrings.General.empty)
+                .fullScreenCover(isPresented: $viewModel.registerSuccess) {
+                    DoneView(
+                        props: .init(
+                            message: LBStrings.Register.registerFinishedSuccess,
+                            onClose: { coordinator.popToRoot() }
+                        )
+                    )
+                    .toolbarRole(.editor)
+                    .navigationBarBackButtonHidden(true)
+                }
+                .foregroundStyle(LBColor.background)
+                if focusedField == .birthDay {
+                    GeometryReader { _ in
+                        LBDatePicker { confirmDate in
+                            viewModel.birthDate = confirmDate
+                            focusedField = nil
+                        } onCancel: {
+                            focusedField = nil
+                        }
+                    }
+                    .background(
+                        Color.black.opacity(0.50)
+                            .edgesIgnoringSafeArea(.all)
+                    )
+                }
             }
-
         }
     }
 
@@ -79,23 +82,24 @@ struct RegisterChildView: View {
                     viewModel.clearError()
                 }
 
-                LBDatePickerTextField(icon: .cake,
-                                      title: LBStrings.Register.birthDay,
-                                      date: $viewModel.birthDate,
-                                      state: viewModel.errorField == .birthDay ? .alert : .active)
+                LBDatePickerTextField(
+                    date: $viewModel.birthDate,
+                    icon: .cake,
+                    title: LBStrings.Register.birthDay,
+                    state: viewModel.errorField == .birthDay ? .alert : .active)
                 .focused($focusedField, equals: .birthDay)
                 .onChange(of: viewModel.birthDate) { _ in
-                                    viewModel.clearError()
-                                }
+                    viewModel.clearError()
+                }
 
                 HStack(spacing: 15) {
-                    LBGenderButton(gender: .male, isActive: viewModel.gender == .male) {
-                        viewModel.gender = .male
-                    }
+                    LBGenderButton(
+                        gender: .male, isActive: viewModel.gender == .male
+                    ) { viewModel.gender = .male }
 
-                    LBGenderButton(gender: .female, isActive: viewModel.gender == .female) {
-                        viewModel.gender = .female
-                    }
+                    LBGenderButton(
+                        gender: .female, isActive: viewModel.gender == .female
+                    ) { viewModel.gender = .female }
                 }
                 .padding(.top, 2)
                 .focused($focusedField, equals: .gender)
@@ -122,7 +126,6 @@ struct RegisterChildView: View {
                             .underline()
                             .multilineTextAlignment(.trailing)
                     }
-
                 }
 
                 if viewModel.hasError {
@@ -139,13 +142,13 @@ struct RegisterChildView: View {
                     title: LBStrings.Register.buttonRegister,
                     style: !viewModel.agreePrivacy ? .primaryOff : .primaryActivated
                 ) {
-                     self.viewModel.showError()
-                     self.confirmRegister()
+                    self.viewModel.showError()
+                    self.confirmRegister()
                 }
                 .disabled(!viewModel.agreePrivacy)
                 .padding(.top, 43)
 
-            }.padding([.leading, .trailing], 26)
+            }
         }
     }
 
@@ -160,6 +163,7 @@ struct RegisterChildView: View {
     }
 }
 
+// MARK: - Previews.
 struct RegisterChildView_Previews: PreviewProvider {
     static var previews: some View {
         RegisterChildView(viewModel: RegisterChildViewModel(
