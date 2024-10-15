@@ -3,7 +3,7 @@ import SwiftUI
 struct LBMenuCellPerson: View {
     enum StyleCell {
         case person
-        case confuguration
+        case configuration
         case exit
     }
 
@@ -14,7 +14,7 @@ struct LBMenuCellPerson: View {
     let style: StyleCell
 
     var body: some View {
-        if style == .person || style == .confuguration {
+        if style == .person || style == .configuration {
             HStack {
                 ZStack {
                     Circle()
@@ -25,10 +25,16 @@ struct LBMenuCellPerson: View {
                         .frame(width: 20, height: 20)
                 }
                 VStack(alignment: .leading, spacing: 2) {
-                    Text(style == .person ? description : name)
-                        .font(style == .person ? LBFont.caption1 : LBFont.bodyLarge)
-                    Text(style == .person ? name : description)
-                        .font(style == .person ? LBFont.bodyLarge : LBFont.caption1)
+                    if description != "" {
+                        Text(style == .person ? description : name)
+                            .font(style == .person ? LBFont.caption1 : LBFont.bodyLarge)
+                        Text(style == .person ? name : description)
+                            .font(style == .person ? LBFont.bodyLarge : LBFont.caption1)
+                    } else {
+                        Text(style == .person ? description : name)
+                            .font(style == .person ? LBFont.caption : LBFont.bodyLarge)
+                    }
+
                 }
                 Spacer()
                 Button {
@@ -40,7 +46,8 @@ struct LBMenuCellPerson: View {
                 }
 
             }
-            .frame(width: 327, height: 80)
+            .frame(height: 80)
+            .frame(maxWidth: .infinity)
             .background(LBColor.textfield)
             .clipShape(RoundedRectangle(cornerRadius: 12))
             .overlay {
@@ -70,7 +77,8 @@ struct LBMenuCellPerson: View {
         .onTapGesture {
             onClick()
         }
-        .frame(width: 327, height: 80)
+        .frame(height: 80)
+        .frame(maxWidth: .infinity)
         .background(LBColor.buttonBackgroundLightRed)
         .clipShape(RoundedRectangle(cornerRadius: 12))
         .overlay {
@@ -92,7 +100,12 @@ struct LBMenuCellPerson: View {
                          description: "Controle de acessos e gerencie as funcionalidade do app",
                          name: "Segurança",
                          image: LBIcon.shield.image,
-                         style: .confuguration)
+                         style: .configuration)
+        LBMenuCellPerson(onClick: { },
+                         description: "",
+                         name: "Perguntas Frequentes",
+                         image: LBIcon.questionMark.image,
+                         style: .configuration)
 
         LBMenuCellPerson(onClick: { },
                          description: "",
@@ -100,5 +113,6 @@ struct LBMenuCellPerson: View {
                          image: LBIcon.exit.image,
                          style: .exit)
     }
+    .padding(20)
 
 }

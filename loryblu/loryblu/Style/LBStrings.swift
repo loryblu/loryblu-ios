@@ -35,6 +35,7 @@ extension LBStrings {
         static let trailHistory = String(localized: "home_trail_history")
         static let trailGames = String(localized: "home_trail_games")
         static let trailMusical = String(localized: "home_trail_musical")
+        static let howAreYou = String(localized: "how_are_you")
     }
 }
 
@@ -242,7 +243,7 @@ extension LBStrings {
 
 extension LBStrings {
     enum Menu {
-        static let menu = String(localized: "profile")
+        static let profile = String(localized: "profile")
         static let configuration = String(localized: "configuration")
         static let childName = String(localized: "child_name")
         static let parentsName = String(localized: "parents_name")
@@ -250,6 +251,7 @@ extension LBStrings {
         static let faq = String(localized: "faq")
         static let privacyTerms = String(localized: "privacy_terms")
         static let exit = String(localized: "exit")
-
+        static let accessControl = String(localized: "access_and_control")
+        static let menu = String(localized: "menu")
     }
 }

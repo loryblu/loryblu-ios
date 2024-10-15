@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct DoneView: View {
-    @Environment(\.dismiss) var dismiss
 
     struct Props {
         let message: String
@@ -13,30 +12,42 @@ struct DoneView: View {
 
     var body: some View {
         VStack {
+<<<<<<< HEAD
+            HStack {
+                Spacer()
+                Button {
+                    props.onClose?()
+                    dismiss()
+                } label: {
+                    Image(LBIcon.close2.rawValue)
+                        .resizable()
+                        .frame(width: 22, height: 22)
+=======
             VStack(alignment: .center) {
                 HStack {
                     Spacer()
                     Button {
                         props.onClose?()
-                        dismiss()
                     } label: {
                         Image(LBIcon.close2.rawValue)
                             .resizable()
                             .frame(width: 22, height: 22)
                     }
                     .padding(.bottom, 200)
+>>>>>>> develop
                 }
-
-                Text(props.message)
-                    .font(LBFont.titleTask)
-                    .foregroundStyle(LBColor.text)
-                    .padding(.bottom, 50)
-
-                Image(LBIcon.done.rawValue)
-                    .resizable(resizingMode: .stretch)
-                    .frame(width: 118, height: 111)
-                    .padding(.bottom, 170)
             }
+            Spacer()
+            Text(props.message)
+                .font(LBFont.titleTask)
+                .foregroundStyle(LBColor.text)
+                .padding(.bottom, 50)
+
+            Image(LBIcon.done.rawValue)
+                .resizable(resizingMode: .stretch)
+                .frame(width: 118, height: 111)
+                .padding(.bottom, 80)
+            Spacer()
         }
         .padding(24)
         .navigationTitle(LBStrings.General.empty)

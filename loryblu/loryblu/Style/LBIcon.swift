@@ -12,6 +12,7 @@ enum LBIcon: String {
     case circleFill = "circle_fill"
     case close
     case close2
+    case close3
     case dailyList = "daily_list"
     case dailyRotine = "daily_rotine"
     case dailyStudy = "daily_study"
@@ -45,6 +46,7 @@ enum LBIcon: String {
     case mail
     case man
     case mangray
+    case menuButton = "menu_button"
     case moon
     case moonSmall = "moon_small"
     case morning
