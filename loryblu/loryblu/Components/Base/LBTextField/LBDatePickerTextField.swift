@@ -6,14 +6,15 @@ struct LBDatePickerTextField: View {
         case alert = 2
     }
 
-    @Binding var date: Date?
-    @State private var formatDate: String = ""
-
     let icon: LBIcon?
     let title: String
+    @Binding var date: Date?
+
+    @State private var formatDate: String = ""
     let state: DatePickerState
 
     var body: some View {
+
         HStack {
             HStack {
                 if let icon = icon {
@@ -22,7 +23,7 @@ struct LBDatePickerTextField: View {
                 TextField(title, text: $formatDate)
             }
             .padding()
-            .foregroundColor(LBColor.text)
+            .foregroundColor(LBColor.placeholder)
             .font(LBFont.bodySmall)
             .onChange(of: date) { newValue in
                 if let newValue {
@@ -43,12 +44,7 @@ struct LBDatePickerTextField: View {
 struct LBDatePickerTextField_Previews: PreviewProvider {
     static var previews: some View {
           ZStack {
-              LBDatePickerTextField(
-                date: .constant(Date()),
-                icon: .google,
-                title: "Data de Aniversário",
-                state: .active
-              )
+              LBDatePickerTextField(icon: .google, title: "Data de Aniversário", date: .constant(Date()), state: .active)
         }
     }
 }

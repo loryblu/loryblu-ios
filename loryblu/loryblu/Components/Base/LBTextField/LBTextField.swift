@@ -91,7 +91,7 @@ struct CustomTextField_Previews: PreviewProvider {
         VStack {
             LBTextField(
                 style: .common,
-                icon: LBIcon.mail,
+                icon: LBIcon.lock,
                 title: "User",
                 text: .constant("Email"),
                 textFiledState: .alert
