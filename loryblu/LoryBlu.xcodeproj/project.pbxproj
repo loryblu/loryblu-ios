@@ -108,6 +108,7 @@
 		931D12D52B82C11A00589032 /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931D12D42B82C11A00589032 /* TaskModel.swift */; };
 		931D12D92B82C16F00589032 /* TaskNetworkModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931D12D82B82C16F00589032 /* TaskNetworkModels.swift */; };
 		931D12DB2B82C25300589032 /* TasksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931D12DA2B82C25300589032 /* TasksViewModel.swift */; };
+		93501B0E2CC0195200E6D81F /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93501B0D2CC0195200E6D81F /* MenuViewModel.swift */; };
 		9366FB182B6B063900A57F89 /* LBToolBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9366FB172B6B063900A57F89 /* LBToolBarModifier.swift */; };
 		9370B5292C059F6E00C28B0D /* LBCustomDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9370B5282C059F6E00C28B0D /* LBCustomDialog.swift */; };
 		9370B52B2C06286300C28B0D /* LBRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9370B52A2C06286300C28B0D /* LBRadioButton.swift */; };
@@ -222,6 +223,7 @@
 		931D12D42B82C11A00589032 /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
 		931D12D82B82C16F00589032 /* TaskNetworkModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskNetworkModels.swift; sourceTree = "<group>"; };
 		931D12DA2B82C25300589032 /* TasksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewModel.swift; sourceTree = "<group>"; };
+		93501B0D2CC0195200E6D81F /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
 		9366FB172B6B063900A57F89 /* LBToolBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBToolBarModifier.swift; sourceTree = "<group>"; };
 		9370B5282C059F6E00C28B0D /* LBCustomDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBCustomDialog.swift; sourceTree = "<group>"; };
 		9370B52A2C06286300C28B0D /* LBRadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBRadioButton.swift; sourceTree = "<group>"; };
@@ -358,6 +360,7 @@
 				8C2A684C2AF54A9600B74295 /* HomeView.swift */,
 				33DE3B222B75993200F45449 /* HomeViewModel.swift */,
 				336ECF872C9CFFD30062691E /* MenuView.swift */,
+				93501B0D2CC0195200E6D81F /* MenuViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -916,6 +919,7 @@
 				333B740F2AED9CBE003A5EBD /* LBWeekDaysButton.swift in Sources */,
 				91361A1D2ACCBE1900700E36 /* RegisterRepository.swift in Sources */,
 				8CE33B262B7F1328005D1219 /* CardTasksModel.swift in Sources */,
+				93501B0E2CC0195200E6D81F /* MenuViewModel.swift in Sources */,
 				8CE03E392A6360BE0024919C /* LBColor.swift in Sources */,
 				3376667D2ABFD115007010E1 /* URLDecoder.swift in Sources */,
 				911B843E2AD1C19D00F59DD2 /* Authentication.swift in Sources */,
