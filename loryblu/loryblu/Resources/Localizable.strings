@@ -86,6 +86,7 @@
 "home_locbook" = "Diário de Bordo";
 "home_trail_history" = "Trilha de Histórias";
 "home_trail_games" = "Trilha de Jogos";
+"home_trail_musical" = "Trilha de Músicas";
 "how_are_you" = "Como você está?";
 
 // ==================== Locbook =========================
@@ -172,7 +173,7 @@
 "summary_submitTask" = "Cadastrar Tarefa";
 "summary_frequencyDescription" = "Você pode escolher mais de um dia.";
 
-"summary_finished_new_task_message" = "Nova Tarefa criada com sucesso";
+"summary_finished_new_task_message" = "Nova tarefa criada com sucesso";
 "summary_finished_edit_task_message" = "Tarefa editada com sucesso";
 
 // ==================== Toolbar ====================
@@ -187,7 +188,9 @@
 "closed_windows" = "Fechar";
 "are_you_sure" = "Tem certeza que deseja";
 "leave_app" = "Sair do App";
+
 // ==================== Delete Operations ====================
+
 "delete_title" = "Deseja excluir a tarefa";
 "delete_justForOneDayOption" = "Apenas de";
 "delete_forAllDaysOption" = "Todos os dias";
@@ -195,6 +198,7 @@
 "delete_titleBtn" = "Excluir";
 
 // ==================== Days of Week ====================
+
 "dayOfWeek_sunday" = "domingo";
 "dayOfWeek_monday" = "segunda-feira";
 "dayOfWeek_tuesday" = "terça-feira";
