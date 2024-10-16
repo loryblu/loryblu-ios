@@ -17,5 +17,4 @@ class MenuViewModel: ObservableObject {
     func giveUpToLogout() {
         openExitConfirmationDialog = !openExitConfirmationDialog
     }
-    
 }
