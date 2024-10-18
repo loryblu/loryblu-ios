@@ -74,9 +74,6 @@ struct LBMenuCellPerson: View {
             }
             Spacer()
         }
-        .onTapGesture {
-            onClick()
-        }
         .frame(height: 80)
         .frame(maxWidth: .infinity)
         .background(LBColor.buttonBackgroundLightRed)
@@ -84,6 +81,9 @@ struct LBMenuCellPerson: View {
         .overlay {
             RoundedRectangle(cornerRadius: 12)
                 .stroke(LBColor.placeholder)
+        }
+        .onTapGesture {
+            onClick()
         }
     }
 }
