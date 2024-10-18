@@ -4,7 +4,6 @@ struct MenuView: View {
     @Environment(\.dismiss) var dismiss
     @State var user: User?
     @StateObject var menuViewModel: MenuViewModel = MenuViewModel()
-    
     var body: some View {
         ZStack {
             VStack {
@@ -20,7 +19,6 @@ struct MenuView: View {
                     }
                 }
                 .padding()
-                
                 VStack(spacing: 15) {
                     HStack {
                         Text(LBStrings.Menu.profile)
@@ -48,7 +46,6 @@ struct MenuView: View {
                             .foregroundStyle(LBColor.loryGray)
                         Spacer()
                     }
-                    
                     LBMenuCellPerson(
                         onClick: {},
                         description: LBStrings.Menu.accessControl,
@@ -80,10 +77,8 @@ struct MenuView: View {
                         style: .exit
                     )
                     .padding(.top, 16)
-                    
                 }
                 .padding(20)
-                
             }
             .frame(maxWidth: .infinity)
             .padding(.init(top: 50, leading: 0, bottom: 0, trailing: 0))
