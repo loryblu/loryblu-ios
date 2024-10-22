@@ -96,26 +96,26 @@ struct LBMenuCellPerson: View {
             name: "Roberta Dias",
             image: LBIcon.childTree.image,
             style: .person)
-        
+
         LBMenuCellPerson(
             onClick: { },
             description: "Controle de acessos e gerencie as funcionalidade do app",
             name: "Segurança",
             image: LBIcon.shield.image,
             style: .configuration)
-        
+
         LBMenuCellPerson(
             onClick: { },
             description: "",
             name: "Perguntas Frequentes",
             image: LBIcon.questionMark.image,
             style: .configuration)
-        
+
         LBMenuCellPerson(
             onClick: { },
             description: "",
             name: "Sair do App",
             image: LBIcon.exit.image,
             style: .exit)
-    }.padding(20)    
+    }.padding(20)
 }
