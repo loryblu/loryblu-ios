@@ -11,17 +11,20 @@ struct HomeView: View {
             image: LBIcon.locbook.rawValue,
             name: LBStrings.Home.locbook,
             font: LBFont.titleAction,
-            segment: .home),
+            segment: .home
+        ),
         ImageLabel(
             image: LBIcon.fairyShadow.rawValue,
             name: LBStrings.Home.trailHistory,
             font: LBFont.titleAction,
-            segment: .home),
+            segment: .home
+        ),
         ImageLabel(
             image: LBIcon.gamesShadow.rawValue,
             name: LBStrings.Home.trailGames,
             font: LBFont.titleAction,
-            segment: .home),
+            segment: .home
+        ),
         ImageLabel(
             image: LBIcon.musicalShadow.rawValue,
             name: LBStrings.Home.trailMusical,
@@ -48,20 +51,20 @@ struct HomeView: View {
                     .foregroundStyle(.white)
                     .padding(8)
                     .background(UnevenRoundedRectangle(
-                                                        topLeadingRadius: 14,
-                                                        bottomLeadingRadius: 0,
-                                                        bottomTrailingRadius: 14,
-                                                        topTrailingRadius: 14)
+                        topLeadingRadius: 14,
+                        bottomLeadingRadius: 0,
+                        bottomTrailingRadius: 14,
+                        topTrailingRadius: 14)
                         .foregroundStyle(LBColor.buttonGenderEnable))
                 Text(LBStrings.Home.howAreYou)
                     .font(LBFont.body)
                     .foregroundStyle(.white)
                     .padding(8)
                     .background(UnevenRoundedRectangle(
-                                                        topLeadingRadius: 14,
-                                                        bottomLeadingRadius: 0,
-                                                        bottomTrailingRadius: 14,
-                                                        topTrailingRadius: 14)
+                        topLeadingRadius: 14,
+                        bottomLeadingRadius: 0,
+                        bottomTrailingRadius: 14,
+                        topTrailingRadius: 14)
                         .foregroundStyle(LBColor.buttonGenderEnable))
             }
             Spacer()
@@ -96,7 +99,7 @@ struct HomeView: View {
                             }
                     }
                 }
-                .frame(width: .infinity, height: 218)
+                .frame(minWidth: 324, minHeight: 218)
 
             }.padding(24)
         }
