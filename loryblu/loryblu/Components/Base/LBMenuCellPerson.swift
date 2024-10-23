@@ -24,15 +24,19 @@ struct LBMenuCellPerson: View {
                     image
                         .frame(width: 20, height: 20)
                 }
+
                 VStack(alignment: .leading, spacing: 2) {
                     if description != "" {
                         Text(style == .person ? description : name)
-                            .font(style == .person ? LBFont.caption1 : LBFont.bodyLarge)
+                            .font(style == .person ? LBFont.caption1 : LBFont.titleLarge)
+                            .foregroundStyle(style == .person ? LBColor.loryGray : LBColor.text)
+
                         Text(style == .person ? name : description)
-                            .font(style == .person ? LBFont.bodyLarge : LBFont.caption1)
+                            .font(style == .person ? LBFont.subtitle : LBFont.caption1)
+                            .foregroundStyle(style == .person ? LBColor.text : LBColor.loryGray)
                     } else {
                         Text(style == .person ? description : name)
-                            .font(style == .person ? LBFont.caption : LBFont.bodyLarge)
+                            .font(style == .person ? LBFont.caption : LBFont.titleLarge)
                     }
 
                 }
@@ -71,6 +75,8 @@ struct LBMenuCellPerson: View {
             }
             VStack(alignment: .leading, spacing: 2) {
                 Text(name)
+                    .font(LBFont.titleLarge)
+                    .foregroundStyle(LBColor.text)
             }
             Spacer()
         }

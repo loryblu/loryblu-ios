@@ -212,7 +212,7 @@
 "configuration" = "Configurações";
 "child_name" = "Nome da Criança";
 "parents_name" = "Nome da pessoa responsável";
-"security" = "Segurança";
+"security" = "Controle de Acesso";
 "faq" = "Perguntas Frequentes";
 "privacy_terms" = "Termos e Privacidade";
 "exit" = "Sair do App";

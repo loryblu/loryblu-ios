@@ -45,17 +45,22 @@ struct HomeView: View {
                 .resizable()
                 .scaledToFill()
                 .frame(width: 81, height: 78)
+
             VStack(alignment: .leading) {
                 Text("Olá, \(model.childName)")
                     .font(LBFont.body)
                     .foregroundStyle(.white)
                     .padding(8)
-                    .background(UnevenRoundedRectangle(
-                        topLeadingRadius: 14,
-                        bottomLeadingRadius: 0,
-                        bottomTrailingRadius: 14,
-                        topTrailingRadius: 14)
-                        .foregroundStyle(LBColor.buttonGenderEnable))
+                    .background(
+                        UnevenRoundedRectangle(
+                            topLeadingRadius: 14,
+                            bottomLeadingRadius: 0,
+                            bottomTrailingRadius: 14,
+                            topTrailingRadius: 14
+                        )
+                        .foregroundStyle(LBColor.buttonGenderEnable)
+                    )
+
                 Text(LBStrings.Home.howAreYou)
                     .font(LBFont.body)
                     .foregroundStyle(.white)
@@ -67,6 +72,7 @@ struct HomeView: View {
                         topTrailingRadius: 14)
                         .foregroundStyle(LBColor.buttonGenderEnable))
             }
+
             Spacer()
             Button(action: {
                 props.onShowMenu?()
