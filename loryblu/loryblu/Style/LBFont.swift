@@ -10,6 +10,7 @@ enum LBFont {
     static let head6 = Font.custom("Inter-Bold", size: 20)
     static let titleAction = Font.custom("Inter-Bold", size: 24)
     static let titleTask = Font.custom("Inter-Medium", size: 20)
+    static let titleLarge = Font.custom("Inter-Medium", size: 18)
     static let subtitle = Font.custom("Inter-Medium", size: 16)
     static let body = Font.custom("Inter-Regular", size: 16)
     static let bodySmall = Font.custom("Inter-Regular", size: 14)

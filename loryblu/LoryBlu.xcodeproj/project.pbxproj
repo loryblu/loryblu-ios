@@ -62,6 +62,7 @@
 		8C5DFC8F2A85AE13002739D9 /* LBToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C5DFC8E2A85AE13002739D9 /* LBToggle.swift */; };
 		8C669C412AA011480028B436 /* UserRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C669C402AA011480028B436 /* UserRegister.swift */; };
 		8C7C64B32A6F4CE1002361A9 /* ValidateRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7C64B22A6F4CE1002361A9 /* ValidateRules.swift */; };
+		8C9053072CC84C5E00E4485C /* MenuWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9053062CC84C5E00E4485C /* MenuWebView.swift */; };
 		8C9CBCFB2A7ACF46001DBD35 /* ExternalLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9CBCF92A7ACF46001DBD35 /* ExternalLogin.swift */; };
 		8C9CBCFC2A7ACF46001DBD35 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9CBCFA2A7ACF46001DBD35 /* LoginView.swift */; };
 		8C9CBD0D2A7AE97B001DBD35 /* RegisterChildView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9CBD0C2A7AE97B001DBD35 /* RegisterChildView.swift */; };
@@ -176,6 +177,7 @@
 		8C5DFC8E2A85AE13002739D9 /* LBToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBToggle.swift; sourceTree = "<group>"; };
 		8C669C402AA011480028B436 /* UserRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRegister.swift; sourceTree = "<group>"; };
 		8C7C64B22A6F4CE1002361A9 /* ValidateRules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateRules.swift; sourceTree = "<group>"; };
+		8C9053062CC84C5E00E4485C /* MenuWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuWebView.swift; sourceTree = "<group>"; };
 		8C9CBCF92A7ACF46001DBD35 /* ExternalLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExternalLogin.swift; sourceTree = "<group>"; };
 		8C9CBCFA2A7ACF46001DBD35 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		8C9CBD0C2A7AE97B001DBD35 /* RegisterChildView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterChildView.swift; sourceTree = "<group>"; };
@@ -359,8 +361,6 @@
 				91664AE12B0C003A005BF5CA /* HomeNavigationStack.swift */,
 				8C2A684C2AF54A9600B74295 /* HomeView.swift */,
 				33DE3B222B75993200F45449 /* HomeViewModel.swift */,
-				336ECF872C9CFFD30062691E /* MenuView.swift */,
-				93501B0D2CC0195200E6D81F /* MenuViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -420,6 +420,7 @@
 				8C92BD6F2B653E1A00478859 /* Navigation */,
 				8C2A684E2AF5DFB000B74295 /* Locbook */,
 				8C669C422AA011650028B436 /* Entities */,
+				8C9053052CC84BEA00E4485C /* Menu */,
 				8C2A68492AF54A4800B74295 /* Home */,
 				8CE004872AC1C5D00037F792 /* Done */,
 				334D0AB12A8AF93D003881ED /* ResetPassword */,
@@ -453,6 +454,16 @@
 				931D12D82B82C16F00589032 /* TaskNetworkModels.swift */,
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		8C9053052CC84BEA00E4485C /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				336ECF872C9CFFD30062691E /* MenuView.swift */,
+				93501B0D2CC0195200E6D81F /* MenuViewModel.swift */,
+				8C9053062CC84C5E00E4485C /* MenuWebView.swift */,
+			);
+			path = Menu;
 			sourceTree = "<group>";
 		};
 		8C92BD6F2B653E1A00478859 /* Navigation */ = {
@@ -838,6 +849,7 @@
 				931D12D52B82C11A00589032 /* TaskModel.swift in Sources */,
 				33D1AED22C756CE5002E630C /* LBMenuCellPerson.swift in Sources */,
 				91CA965F2B28996300611F91 /* LocbookNavigationStack.swift in Sources */,
+				8C9053072CC84C5E00E4485C /* MenuWebView.swift in Sources */,
 				8C3120EC2ABB3D8B00D580BD /* NetworkError.swift in Sources */,
 				8C3120EF2ABB3D8B00D580BD /* Server.swift in Sources */,
 				931D12D92B82C16F00589032 /* TaskNetworkModels.swift in Sources */,
@@ -1054,7 +1066,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"loryblu/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 5AN4GAV8W4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LoryBlu/Info.plist;
@@ -1073,7 +1085,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sucris2.loryblu;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sucris3.loryblu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -1093,7 +1105,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"loryblu/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 5AN4GAV8W4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LoryBlu/Info.plist;
@@ -1112,7 +1124,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sucris2.loryblu;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sucris3.loryblu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
