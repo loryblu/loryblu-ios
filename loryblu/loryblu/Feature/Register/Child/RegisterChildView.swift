@@ -3,15 +3,14 @@ import SwiftUI
 import WebKit
 
 struct RegisterChildView: View {
-    @StateObject var viewModel: RegisterChildViewModel
     @EnvironmentObject var coordinator: LoginNavigationStack.NavigationCoordinator
-    
     @FocusState private var focusedField: RegisterChildViewModel.FocusedField?
+    @StateObject var viewModel: RegisterChildViewModel
     @State private var presented: Bool = false
     @State private var date: Date?
-    var child: UserRegister?
     @State private var showDone: Bool = false
     @State private var isPresentWebView = false
+    var child: UserRegister?
 
     var body: some View {
         ZStack(alignment: .center) {
@@ -79,10 +78,12 @@ struct RegisterChildView: View {
                     viewModel.clearError()
                 }
 
-                LBDatePickerTextField(icon: .cake,
-                                      title: LBStrings.Register.birthDay,
-                                      date: $viewModel.birthDate,
-                                      state: viewModel.errorField == .birthDay ? .alert : .active)
+                LBDatePickerTextField(
+                    icon: .cake,
+                    title: LBStrings.Register.birthDay,
+                    date: $viewModel.birthDate,
+                    state: viewModel.errorField == .birthDay ? .alert : .active
+                )
                 .focused($focusedField, equals: .birthDay)
                 .onChange(of: viewModel.birthDate) { _ in
                                     viewModel.clearError()

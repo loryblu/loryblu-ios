@@ -25,7 +25,7 @@ class AppData: ObservableObject {
             }
         }
     }
-    
+
     func logout() {
         userData = nil
         loginStatus = .notLogged

@@ -4,7 +4,7 @@ import Foundation
 extension Container {
     var appData: Factory<AppData> {
         self {
-            AppData() 
+            AppData()
         }.singleton
     }
 

@@ -11,17 +11,20 @@ struct HomeView: View {
             image: LBIcon.locbook.rawValue,
             name: LBStrings.Home.locbook,
             font: LBFont.titleAction,
-            segment: .home),
+            segment: .home
+        ),
         ImageLabel(
             image: LBIcon.fairyShadow.rawValue,
             name: LBStrings.Home.trailHistory,
             font: LBFont.titleAction,
-            segment: .home),
+            segment: .home
+        ),
         ImageLabel(
             image: LBIcon.gamesShadow.rawValue,
             name: LBStrings.Home.trailGames,
             font: LBFont.titleAction,
-            segment: .home),
+            segment: .home
+        ),
         ImageLabel(
             image: LBIcon.musicalShadow.rawValue,
             name: LBStrings.Home.trailMusical,
@@ -37,33 +40,41 @@ struct HomeView: View {
     }
 
     var header: some View {
-        HStack(alignment: .top, spacing: 20) {
-            LBIcon.headMenu.image
-                .resizable()
-                .scaledToFill()
-                .frame(width: 81, height: 78)
-            VStack(alignment: .leading) {
-                Text("Olá, \(model.childName)")
-                    .font(LBFont.body)
-                    .foregroundStyle(.white)
-                    .padding(8)
-                    .background(UnevenRoundedRectangle(
-                                                        topLeadingRadius: 14,
-                                                        bottomLeadingRadius: 0,
-                                                        bottomTrailingRadius: 14,
-                                                        topTrailingRadius: 14)
-                        .foregroundStyle(LBColor.buttonGenderEnable))
-                Text(LBStrings.Home.howAreYou)
-                    .font(LBFont.body)
-                    .foregroundStyle(.white)
-                    .padding(8)
-                    .background(UnevenRoundedRectangle(
-                                                        topLeadingRadius: 14,
-                                                        bottomLeadingRadius: 0,
-                                                        bottomTrailingRadius: 14,
-                                                        topTrailingRadius: 14)
-                        .foregroundStyle(LBColor.buttonGenderEnable))
+        HStack {
+            HStack(alignment: .top, spacing: 20) {
+                LBIcon.headMenu.image
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 81, height: 78)
+
+                VStack(alignment: .leading) {
+                    Text("Olá, \(model.childName)")
+                        .font(LBFont.body)
+                        .foregroundStyle(.white)
+                        .padding(8)
+                        .background(
+                            UnevenRoundedRectangle(
+                                topLeadingRadius: 14,
+                                bottomLeadingRadius: 0,
+                                bottomTrailingRadius: 14,
+                                topTrailingRadius: 14
+                            )
+                            .foregroundStyle(LBColor.buttonGenderEnable)
+                        )
+
+                    Text(LBStrings.Home.howAreYou)
+                        .font(LBFont.body)
+                        .foregroundStyle(.white)
+                        .padding(8)
+                        .background(UnevenRoundedRectangle(
+                            topLeadingRadius: 14,
+                            bottomLeadingRadius: 0,
+                            bottomTrailingRadius: 14,
+                            topTrailingRadius: 14)
+                            .foregroundStyle(LBColor.buttonGenderEnable))
+                }
             }
+
             Spacer()
             Button(action: {
                 props.onShowMenu?()
@@ -96,7 +107,7 @@ struct HomeView: View {
                             }
                     }
                 }
-                .frame(width: .infinity, height: 218)
+                .frame(maxWidth: .infinity, minHeight: 218)
 
             }.padding(24)
         }

@@ -65,5 +65,10 @@ struct LBDeleteTaskDialog: View {
 }
 
 #Preview {
-    LBDeleteTaskDialog(dayOfWeek: LBStrings.DaysOfWeek.monday, taskName: LBStrings.NameImage.tvgame, onDelete: {_ in }, onCancel: { })
+    LBDeleteTaskDialog(
+        dayOfWeek: LBStrings.DaysOfWeek.monday,
+        taskName: LBStrings.NameImage.tvgame,
+        onDelete: {_ in
+        },
+        onCancel: { })
 }
