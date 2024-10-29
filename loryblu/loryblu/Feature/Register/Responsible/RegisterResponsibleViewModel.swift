@@ -31,7 +31,7 @@ class RegisterResponsibleViewModel: ObservableObject {
             hasError = true
             textError = LBStrings.Register.errorEmail
             errorField = .email
-        } else if password.isEmpty {
+        } else if !ValidateRules.validateSize(password: password) {
             hasError = true
             errorField = .password
         } else if confirmPassword != password {
