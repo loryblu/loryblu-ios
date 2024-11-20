@@ -4,7 +4,7 @@ import SwiftUI
 enum ValidateRules {
 
     static func validateName(_ name: String) -> Bool {
-        let nameRegex = "^[a-zA-ZÀ-ÖØ-öø-ÿ]{3,}(\\s[a-zA-ZÀ-ÖØ-öø-ÿ]+){0,1}(\\s[a-zA-ZÀ-ÖØ-öø-ÿ]+){0,1}$"
+        let nameRegex = "^[a-zA-ZÀ-ÖØ-öø-ÿ]{3,}(\\s[a-zA-ZÀ-ÖØ-öø-ÿ]+){1,}(\\s[a-zA-ZÀ-ÖØ-öø-ÿ]+){0,1}$"
         let namePredicate = NSPredicate(format: "SELF MATCHES %@", nameRegex)
         return namePredicate.evaluate(with: name)
     }
@@ -43,6 +43,10 @@ enum ValidateRules {
         let passwordRegex = ".*[@$#!%*&].*"
         let passwordPredicate = NSPredicate(format: "SELF MATCHES %@", passwordRegex)
         return passwordPredicate.evaluate(with: password)
+    }
+
+    static func validatePassword(password: String) -> Bool {
+        validateSize(password: password) && validateUppercase(password: password) && validateLowercase(password: password) && validateNumber(password: password) && validateSpecial(password: password)
     }
 
 }
