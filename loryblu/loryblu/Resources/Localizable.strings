@@ -220,5 +220,7 @@
 "menu" = "Menu";
 // ==================== Delete Option ====================
 "all_days" = "Todos os dias";
+// ==================== Profile ====================
+"gender" = "Gênero";
 
 

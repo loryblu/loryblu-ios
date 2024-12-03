@@ -242,6 +242,14 @@ extension LBStrings {
 }
 
 extension LBStrings {
+    enum Profile {
+        static let childName = String(localized: "child_name")
+        static let birthDay = String(localized: "register_birthday")
+        static let profile = String(localized: "profile")
+        static let gender = String(localized: "gender")
+    }
+}
+extension LBStrings {
     enum Menu {
         static let profile = String(localized: "profile")
         static let configuration = String(localized: "configuration")

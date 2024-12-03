@@ -110,6 +110,12 @@
 		931D12D92B82C16F00589032 /* TaskNetworkModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931D12D82B82C16F00589032 /* TaskNetworkModels.swift */; };
 		931D12DB2B82C25300589032 /* TasksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931D12DA2B82C25300589032 /* TasksViewModel.swift */; };
 		93501B0E2CC0195200E6D81F /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93501B0D2CC0195200E6D81F /* MenuViewModel.swift */; };
+		93501B152CE8467400E6D81F /* ChildProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93501B142CE8467400E6D81F /* ChildProfileView.swift */; };
+		93501B172CE8EF0A00E6D81F /* ChildProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93501B162CE8EF0A00E6D81F /* ChildProfileViewModel.swift */; };
+		93501B212CEA593500E6D81F /* MenuNavigationStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93501B202CEA593500E6D81F /* MenuNavigationStack.swift */; };
+		93501B232CEA5B4F00E6D81F /* MenuNavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93501B222CEA59EE00E6D81F /* MenuNavigationCoordinator.swift */; };
+		93501B282CEE147E00E6D81F /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93501B272CEE147E00E6D81F /* ImageLoader.swift */; };
+		93501B2A2CEE14AC00E6D81F /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93501B292CEE14AC00E6D81F /* AsyncImage.swift */; };
 		9366FB182B6B063900A57F89 /* LBToolBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9366FB172B6B063900A57F89 /* LBToolBarModifier.swift */; };
 		9370B5292C059F6E00C28B0D /* LBCustomDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9370B5282C059F6E00C28B0D /* LBCustomDialog.swift */; };
 		9370B52B2C06286300C28B0D /* LBRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9370B52A2C06286300C28B0D /* LBRadioButton.swift */; };
@@ -226,6 +232,12 @@
 		931D12D82B82C16F00589032 /* TaskNetworkModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskNetworkModels.swift; sourceTree = "<group>"; };
 		931D12DA2B82C25300589032 /* TasksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewModel.swift; sourceTree = "<group>"; };
 		93501B0D2CC0195200E6D81F /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
+		93501B142CE8467400E6D81F /* ChildProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildProfileView.swift; sourceTree = "<group>"; };
+		93501B162CE8EF0A00E6D81F /* ChildProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildProfileViewModel.swift; sourceTree = "<group>"; };
+		93501B202CEA593500E6D81F /* MenuNavigationStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuNavigationStack.swift; sourceTree = "<group>"; };
+		93501B222CEA59EE00E6D81F /* MenuNavigationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuNavigationCoordinator.swift; sourceTree = "<group>"; };
+		93501B272CEE147E00E6D81F /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		93501B292CEE14AC00E6D81F /* AsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
 		9366FB172B6B063900A57F89 /* LBToolBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBToolBarModifier.swift; sourceTree = "<group>"; };
 		9370B5282C059F6E00C28B0D /* LBCustomDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBCustomDialog.swift; sourceTree = "<group>"; };
 		9370B52A2C06286300C28B0D /* LBRadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBRadioButton.swift; sourceTree = "<group>"; };
@@ -345,6 +357,7 @@
 		8C27B8382A68BEF200F72214 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				93501B252CEE145B00E6D81F /* Image */,
 				337A39E72C0FD7B600B89B3D /* Dialog */,
 				9370B5272C059F3C00C28B0D /* Dialog */,
 				9310C8D42B66DAD9007D3CE7 /* Toolbar */,
@@ -416,6 +429,7 @@
 		8C5734212A6C21490052B955 /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				93501B0F2CE845D100E6D81F /* Profile */,
 				8C4570952BDE7E1B00EE0699 /* LoadingView */,
 				8C92BD6F2B653E1A00478859 /* Navigation */,
 				8C2A684E2AF5DFB000B74295 /* Locbook */,
@@ -459,6 +473,7 @@
 		8C9053052CC84BEA00E4485C /* Menu */ = {
 			isa = PBXGroup;
 			children = (
+				93501B1F2CEA592200E6D81F /* Navigation */,
 				336ECF872C9CFFD30062691E /* MenuView.swift */,
 				93501B0D2CC0195200E6D81F /* MenuViewModel.swift */,
 				8C9053062CC84C5E00E4485C /* MenuWebView.swift */,
@@ -469,6 +484,7 @@
 		8C92BD6F2B653E1A00478859 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				93501B242CEA8AED00E6D81F /* Menu */,
 				91CA965E2B28996300611F91 /* LocbookNavigationStack.swift */,
 				91CA96612B2899A600611F91 /* LocbookNavigationCoordinator.swift */,
 			);
@@ -702,6 +718,40 @@
 			path = Toolbar;
 			sourceTree = "<group>";
 		};
+		93501B0F2CE845D100E6D81F /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				93501B142CE8467400E6D81F /* ChildProfileView.swift */,
+				93501B162CE8EF0A00E6D81F /* ChildProfileViewModel.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		93501B1F2CEA592200E6D81F /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				93501B222CEA59EE00E6D81F /* MenuNavigationCoordinator.swift */,
+				93501B202CEA593500E6D81F /* MenuNavigationStack.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		93501B242CEA8AED00E6D81F /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		93501B252CEE145B00E6D81F /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				93501B272CEE147E00E6D81F /* ImageLoader.swift */,
+				93501B292CEE14AC00E6D81F /* AsyncImage.swift */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
 		9370B5272C059F3C00C28B0D /* Dialog */ = {
 			isa = PBXGroup;
 			children = (
@@ -833,6 +883,7 @@
 			files = (
 				918F0CEA2B65F56100312C86 /* FrequencyButtonStyle.swift in Sources */,
 				33F87E902B21528000F62041 /* TaskRepository.swift in Sources */,
+				93501B152CE8467400E6D81F /* ChildProfileView.swift in Sources */,
 				912BC3842B2934E800B7F336 /* LocbookActionModel.swift in Sources */,
 				9370B52B2C06286300C28B0D /* LBRadioButton.swift in Sources */,
 				91B4AC282AD114D3003A7FE5 /* NavigationPathExtension.swift in Sources */,
@@ -890,13 +941,17 @@
 				9316BE632C94B16500913C16 /* TaskCacheBuilder.swift in Sources */,
 				8C669C412AA011480028B436 /* UserRegister.swift in Sources */,
 				8C070DDD2B10C254004AAF8A /* ListTasks.swift in Sources */,
+				93501B2A2CEE14AC00E6D81F /* AsyncImage.swift in Sources */,
 				91664AE42B0C029E005BF5CA /* HomeNavigationCoordinator.swift in Sources */,
 				91361A262ACEF06B00700E36 /* ResponseMessage.swift in Sources */,
 				334D0AB52A8AF93D003881ED /* ResetPasswordModel.swift in Sources */,
+				93501B282CEE147E00E6D81F /* ImageLoader.swift in Sources */,
+				93501B232CEA5B4F00E6D81F /* MenuNavigationCoordinator.swift in Sources */,
 				91B4AC252AD0F61B003A7FE5 /* JSONParse.swift in Sources */,
 				8C5734202A6B6F6B0052B955 /* LBTextField.swift in Sources */,
 				33DE3B212B75975400F45449 /* UserAuth.swift in Sources */,
 				33212E392B0580720066BFBE /* LBfloatingButton.swift in Sources */,
+				93501B172CE8EF0A00E6D81F /* ChildProfileViewModel.swift in Sources */,
 				334D0AB62A8AF93D003881ED /* ResetPasswordScreen.swift in Sources */,
 				33B2ABFC2ACE587A004CF7DF /* RepositorySetPassword.swift in Sources */,
 				8C3120F02ABB3D8B00D580BD /* Request.swift in Sources */,
@@ -914,6 +969,7 @@
 				335E21A72AFF132800700440 /* FrequencyRotineView.swift in Sources */,
 				91A7CC182ACF9F8500109300 /* LBDatePicker.swift in Sources */,
 				931D12DB2B82C25300589032 /* TasksViewModel.swift in Sources */,
+				93501B212CEA593500E6D81F /* MenuNavigationStack.swift in Sources */,
 				9370B52D2C06444E00C28B0D /* LBDeleteTaskDialog.swift in Sources */,
 				93B2DD6E2BD1EC6C009BEB16 /* LBCategoryButton.swift in Sources */,
 				8CE03E3C2A6363630024919C /* LBIcon.swift in Sources */,
