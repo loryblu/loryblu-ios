@@ -9,6 +9,7 @@ struct LBTextField: View {
     enum TextFieldState: CGFloat, Equatable {
         case active = 0
         case alert = 2
+        case disable
     }
 
     let style: TexfieldType
@@ -34,18 +35,28 @@ struct LBTextField: View {
                 case .common:
                     TextField(title, text: $text)
                         .foregroundColor(LBColor.text)
+                        .disabled(textFiledState == .disable ? true : false)
                 case .password:
                     if isHidden {
                         SecureField(title, text: $text)
                             .foregroundColor(LBColor.text)
-                        passwordButton
-                            .accentColor(LBColor.text)
+                            .disabled(textFiledState == .disable ? true : false)
+                        if textFiledState != .disable {
+                            passwordButton
+                                .accentColor(LBColor.text)
+                        }
+
                     } else {
                         TextField(title, text: $text)
                             .foregroundColor(LBColor.text)
                         passwordButton
                             .accentColor(LBColor.text)
+                            .disabled(textFiledState == .disable ? true : false)
                     }
+                }
+
+                if textFiledState == .disable {
+                    Image(LBIcon.lockBlue.rawValue)
                 }
             }
             .padding()
@@ -57,13 +68,17 @@ struct LBTextField: View {
                 }
             }
         }
-        .background(LBColor.textfield)
+        .background( textFiledState == .disable ? LBColor.grayLight : LBColor.textfield)
         .frame(height: 48)
         .cornerRadius(8)
-        .overlay(content: {
-            RoundedRectangle(cornerRadius: 8)
-            .stroke(LBColor.error, lineWidth: textFiledState.rawValue)
+        .if(textFiledState != .disable, transform: { view in
+            view
+                .overlay(content: {
+                    RoundedRectangle(cornerRadius: 8)
+                    .stroke(LBColor.error, lineWidth: textFiledState.rawValue)
+                })
         })
+
     }
 
     var passwordButton: some View {
@@ -104,6 +119,23 @@ struct CustomTextField_Previews: PreviewProvider {
                 text: .constant("12345"),
                 textFiledState: .active
             )
+
+            LBTextField(
+                style: .common,
+                icon: LBIcon.mailGray,
+                title: "User",
+                text: .constant("teste@gmail.com"),
+                textFiledState: .disable
+            )
+
+            LBTextField(
+                style: .password,
+                icon: LBIcon.mailGray,
+                title: "User",
+                text: .constant("teste@gmail.com"),
+                textFiledState: .disable
+            )
+
         }
     }
 }

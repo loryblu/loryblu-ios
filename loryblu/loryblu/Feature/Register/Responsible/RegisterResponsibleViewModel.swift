@@ -50,7 +50,7 @@ class RegisterResponsibleViewModel: ObservableObject {
     }
 
     func showNextScreen() -> Bool {
-        if !email.isEmpty && !password.isEmpty && validatePassword() {
+        if ValidateRules.validate(email: email) && ValidateRules.validateName(name) && validatePassword() {
             return true
         } else {
             return false
@@ -64,6 +64,6 @@ class RegisterResponsibleViewModel: ObservableObject {
     }
 
     private func validatePassword() -> Bool {
-        confirmPassword == password && ValidateRules.validateName(name)
+        confirmPassword == password && ValidateRules.validatePassword(password: password)
     }
 }
