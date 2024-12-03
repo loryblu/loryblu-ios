@@ -57,6 +57,7 @@ enum LBIcon: String {
     case musicalShadow = "musical_shadow"
     case noAgree = "no_agree"
     case parentsTree = "parents_tree"
+    case parentsTree2 = "parents_tree_2"
     case psychologist
     case play
     case privacyTerms = "privacy_terms"

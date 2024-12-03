@@ -1,11 +1,24 @@
 import SwiftUI
 
 struct MenuResponsibleEditView: View {
+    let image: Image
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+            ZStack {
+                Circle()
+                    .fill(.white)
+                    .frame(width: 96, height: 96)
+                .padding()
+                image
+                    .frame(width: 79, height: 79)
+
+            }
+        }
+        .background(LBColor.textfield)
+        .frame(maxWidth: .infinity)
     }
 }
 
 #Preview {
-    MenuResponsibleEditView()
+    MenuResponsibleEditView(image: LBIcon.parentsTree2.image)
 }
