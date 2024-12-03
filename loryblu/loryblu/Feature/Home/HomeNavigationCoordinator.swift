@@ -69,7 +69,7 @@ class HomeNavigationCoordinator: ObservableObject {
     func buildView(sheet destination: Destination.Sheet) -> some View {
         switch destination {
         case .menu:
-            MenuView(user: userData)
+            MenuNavigationStack(props: MenuNavigationStack.Props(userData: userData, onFinish: { }, onDismiss: { }))
         }
     }
 }

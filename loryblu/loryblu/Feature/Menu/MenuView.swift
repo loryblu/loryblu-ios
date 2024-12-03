@@ -2,13 +2,19 @@ import SwiftUI
 
 struct MenuView: View {
     @Environment(\.dismiss) var dismiss
-    @State var user: User?
     @StateObject var menuViewModel: MenuViewModel = MenuViewModel()
     @State private var showWebView = false
     @State var urlString = String()
     @State var urlFaq = Server.faq
     @State var urlTerms = Server.termsOfUse
     @State private var navigationTitle = String()
+    
+    struct Props {
+        let user: User?
+        let onChildProfile: ClosureType.VoidVoid
+    }
+    
+    let props: Props
 
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -36,16 +42,16 @@ struct MenuView: View {
                         }
 
                         LBMenuCellPerson(
-                            onClick: { },
+                            onClick: { props.onChildProfile() },
                             description: LBStrings.Menu.childName,
-                            name: user?.childrens.first?.fullname ?? String(),
+                            name: props.user?.childrens.first?.fullname ?? String(),
                             image: LBIcon.childTree.image,
                             style: .person
                         )
                         LBMenuCellPerson(
                             onClick: { },
                             description: LBStrings.Menu.parentsName,
-                            name: user?.parentName ?? String(),
+                            name: props.user?.parentName ?? String(),
                             image: LBIcon.parentsTree.image,
                             style: .person
                         )
@@ -123,9 +129,19 @@ struct MenuView: View {
     }
 }
 
+extension MenuView.Props: Hashable {
+    static func == (lhs: MenuView.Props, rhs: MenuView.Props) -> Bool {
+        return lhs.hashValue == rhs.hashValue
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(String(describing: Self.self))
+    }
+}
+
 #Preview {
     MenuView(
-        user: User(
+        props: .init(user: User(
             parentName: "Rodrigo",
             childrens: [Child(
                 id: 01,
@@ -133,6 +149,8 @@ struct MenuView: View {
                 gender: "male",
                 birthdate: "27/01/2020"
             )]
-        ), urlString: ""
+        ),
+          onChildProfile: { }
+        )
     )
 }

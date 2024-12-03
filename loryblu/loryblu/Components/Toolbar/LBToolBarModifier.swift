@@ -23,7 +23,7 @@ struct LBToolBarModifier: ViewModifier {
 }
 
 extension View {
-    private func showCloseBtnOrNot(addOrEdit: AddOrEditType) -> Bool {
+    private func showCloseBtnOrNot(addOrEdit: AddOrEditType?) -> Bool {
         if addOrEdit == .edit {
             return false
         } else {
@@ -33,8 +33,14 @@ extension View {
     func locbookToolbar(
         title: String,
         showCloseButton: Bool = true,
-        addOrEdit: AddOrEditType = .add,
+        addOrEdit: AddOrEditType? = nil,
         onClose: @escaping () -> Void = {}) -> some View {
-        let showCloseButtonAdapted = showCloseBtnOrNot(addOrEdit: addOrEdit) && showCloseButton
-        return self.modifier(LBToolBarModifier(title: title, showCloseButton: showCloseButtonAdapted, onClose: onClose))}
+         var showCloseButtonAdapted: Bool? = nil
+         if addOrEdit != nil {
+            showCloseButtonAdapted = showCloseBtnOrNot(addOrEdit: addOrEdit) && showCloseButton
+         }
+        return self.modifier(LBToolBarModifier(
+            title: title,
+            showCloseButton: showCloseButtonAdapted ?? true,
+            onClose: onClose))}
 }
