@@ -1,18 +1,29 @@
-//
-//  ImageLoader.swift
-//  LoryBlu
-//
-//  Created by Rodrigo Cavalcante on 20/11/24.
-//
-
 import SwiftUI
+import Combine
+import Foundation
 
-struct ImageLoader: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+class ImageLoader: ObservableObject {
+    @Published var image: UIImage?
+    private let url: URL
+    private var cancellable: AnyCancellable?
+
+    init(url: String) {
+        self.url = URL(string: url)!
     }
-}
 
-#Preview {
-    ImageLoader()
+    deinit {
+        cancel()
+    }
+    
+    func load() {
+        cancellable = URLSession.shared.dataTaskPublisher(for: url)
+            .map { UIImage(data: $0.data) }
+            .replaceError(with: nil)
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] in self?.image = $0 }
+    }
+
+    func cancel() {
+        cancellable?.cancel()
+    }
 }

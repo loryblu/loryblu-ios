@@ -1,18 +1,16 @@
-//
-//  AsyncImage.swift
-//  LoryBlu
-//
-//  Created by Rodrigo Cavalcante on 20/11/24.
-//
-
 import SwiftUI
 
-struct AsyncImage: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
+struct AsyncImage : View {
+    @StateObject private var loader: ImageLoader
 
-#Preview {
-    AsyncImage()
+    init(url: String) {
+        _loader = StateObject(wrappedValue: ImageLoader(url: url))
+    }
+
+    var body: some View {
+        Group {
+            Image(uiImage: loader.image!)
+                .resizable()
+        }
+    }
 }
