@@ -3,8 +3,10 @@ import SwiftUI
 struct MenuResponsibleEditView: View {
     let image: Image
     @Binding var user: User
+    @State var isAvaliable: Bool
     var body: some View {
         VStack {
+            Spacer()
             HStack {
                 imageDefault
             }
@@ -20,7 +22,7 @@ struct MenuResponsibleEditView: View {
                             icon: LBIcon.user,
                             title: "" ,
                             text: $user.parentName,
-                            textFiledState: .disable)
+                            textFiledState: isAvaliable ? .active : .disable )
                 .padding(.bottom, 30)
 
                 Text("E-mail")
@@ -35,7 +37,8 @@ struct MenuResponsibleEditView: View {
                         .foregroundColor(.gray)
                         .frame(width: 15, height: 15)
                     Text("Náo é possivel editar o e-mail. ")
-                        .font(.caption2) +                    Text("Entre em Contato")
+                        .font(.caption2) + 
+                    Text("Entre em Contato")
                         .bold()
                         .font(.caption2)
                         .underline() +
@@ -51,21 +54,16 @@ struct MenuResponsibleEditView: View {
                             icon: LBIcon.lock,
                             title: "",
                             text: $user.parentName,
-                            textFiledState: .active)
-                .padding(.bottom, 20)
-
-                HStack {
-                    LBButton(title: "Cancelar") {
-
-                    }
-
-                    LBButton(title: "Salvar") {
-                        
-                    }
+                            textFiledState: isAvaliable ? .active : .disable)
+                if isAvaliable {
+                    bottomBody
+                        .padding(.top, 68)
                 }
+                Spacer()
             }
             .padding()
         }
+        .locbookToolbar(title: "Perfil Responsável", showCloseButton: true)
     }
 
     var imageDefault: some View {
@@ -76,6 +74,18 @@ struct MenuResponsibleEditView: View {
                 .padding()
             image
                 .frame(width: 79, height: 79)
+        }
+    }
+
+    var bottomBody: some View {
+        HStack(spacing: 16) {
+            LBButton(title: "Cancelar", style: .primaryOff) {
+
+            }
+
+            LBButton(title: "Salvar") {
+
+            }
         }
     }
 }
@@ -89,7 +99,7 @@ struct MenuResponsibleEditView: View {
                                                     fullname: "Zeider Silva",
                                                     gender: "male",
                                                     birthdate: "27/01/2020"
-                                                )]))
+                                                )])),
+                            isAvaliable: true
                             )
-
 }
