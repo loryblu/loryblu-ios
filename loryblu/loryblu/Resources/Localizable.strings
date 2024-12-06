@@ -13,6 +13,7 @@
 "new_task" = "Nova tarefa";
 "question_mark" = "?";
 "leave" = "Sair";
+"change_password"= "Alterar Senha";
 
 // ====================  Rules Password  =========================
 

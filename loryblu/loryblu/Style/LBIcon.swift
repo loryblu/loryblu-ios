@@ -6,6 +6,7 @@ enum LBIcon: String {
     case bathTime = "bath_time"
     case brushTeeth = "brush_teeth"
     case cake
+    case changePassword = "change_password"
     case check
     case childTree = "child_tree"
     case circle

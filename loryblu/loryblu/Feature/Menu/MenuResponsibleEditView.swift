@@ -64,6 +64,7 @@ struct MenuResponsibleEditView: View {
             .padding()
         }
         .locbookToolbar(title: "Perfil Responsável", showCloseButton: true)
+        .backgroundStyle(LBColor.background)
     }
 
     var imageDefault: some View {
