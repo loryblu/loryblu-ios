@@ -13,10 +13,10 @@ struct MenuResponsibleEditView: View {
             .frame(maxWidth: .infinity)
             .frame(height: 148)
             .background(LBColor.textfield)
-            .padding(.bottom, 50)
+            .padding(.bottom, 60)
 
             VStack(alignment: .leading) {
-                Text("Nome da pessoa responsável")
+                Text(LBStrings.Menu.parentsName)
                     .font(LBFont.buttonSmall)
                 LBTextField(style: .common,
                             icon: LBIcon.user,
@@ -25,7 +25,7 @@ struct MenuResponsibleEditView: View {
                             textFiledState: isAvaliable ? .active : .disable )
                 .padding(.bottom, 30)
 
-                Text("E-mail")
+                Text(LBStrings.General.email)
                     .font(LBFont.buttonSmall)
                 LBTextField(style: .common,
                             icon: LBIcon.mail,
@@ -36,21 +36,21 @@ struct MenuResponsibleEditView: View {
                     Image(systemName: "info.circle")
                         .foregroundColor(.gray)
                         .frame(width: 15, height: 15)
-                    Text("Náo é possivel editar o e-mail. ")
-                        .font(.caption2) + 
-                    Text("Entre em Contato")
+                    Text(LBStrings.Menu.suportInfPart1)
+                        .font(.caption2) +
+                    Text(LBStrings.Menu.suportInfPart2)
                         .bold()
                         .font(.caption2)
                         .underline() +
-                    Text(" com o nosso suporte para mais informações")
+                    Text(LBStrings.Menu.suportInfPart3)
                         .font(.caption2)
                 }
                 .padding(.top, 10)
-                .padding(.bottom, 20)
+                .padding(.bottom, 30)
 
-                Text("Senha")
+                Text(LBStrings.General.password)
                     .font(LBFont.buttonSmall)
-                LBTextField(style: .password,
+                LBTextField(style: .changePassword,
                             icon: LBIcon.lock,
                             title: "",
                             text: $user.parentName,
@@ -63,8 +63,6 @@ struct MenuResponsibleEditView: View {
             }
             .padding()
         }
-        .locbookToolbar(title: "Perfil Responsável", showCloseButton: true)
-        .backgroundStyle(LBColor.background)
     }
 
     var imageDefault: some View {
@@ -80,12 +78,12 @@ struct MenuResponsibleEditView: View {
 
     var bottomBody: some View {
         HStack(spacing: 16) {
-            LBButton(title: "Cancelar", style: .primaryOff) {
-
+            LBButton(title: LBStrings.General.cancel, style: .primaryOff) {
+                // MARK: - TODO fazer fluxo de tela
             }
 
-            LBButton(title: "Salvar") {
-
+            LBButton(title: LBStrings.General.save) {
+                // MARK: - TODO fazer uddate na API
             }
         }
     }

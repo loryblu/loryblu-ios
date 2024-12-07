@@ -20,6 +20,7 @@ extension LBStrings {
         static let leave = String(localized: "leave")
         static let allDays = String(localized: "all_days")
         static let changePassword = String(localized: "change_password")
+        static let save = String(localized: "save")
     }
 }
 extension LBStrings {
@@ -254,5 +255,8 @@ extension LBStrings {
         static let exit = String(localized: "exit")
         static let accessControl = String(localized: "access_and_control")
         static let menu = String(localized: "menu")
+        static let suportInfPart1 = String(localized: "suport_inf_part1")
+        static let suportInfPart2 = String(localized: "suport_inf_part2")
+        static let suportInfPart3 = String(localized: "suport_inf_part3")
     }
 }
