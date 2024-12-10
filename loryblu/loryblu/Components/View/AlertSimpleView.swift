@@ -1,12 +1,16 @@
 import SwiftUI
 
 struct AlertSimpleView: View {
+    let text: String
+    let icon: String
+    let textColor: Color
+    let borderColor: Color
+
     var body: some View {
         HStack(alignment: .center) {
-            Image(LBIcon.check.rawValue)
-            
-            Text("Sua conta será desconectada e você \nprecisará entrar com sua nova senha.")
-                .foregroundStyle(LBColor.titlePrimary)
+            Image(icon)
+            Text(text)
+                .foregroundStyle(textColor)
                 .font(LBFont.bodySmall)
 
         }
@@ -15,11 +19,16 @@ struct AlertSimpleView: View {
             RoundedRectangle(
                 cornerRadius: 8,
                 style: .continuous
-            ).stroke(LBColor.titlePrimary, lineWidth: 1)
+            ).stroke(borderColor, lineWidth: 1)
         )
     }
 }
 
 #Preview {
-    AlertSimpleView()
+    AlertSimpleView(
+        text: LBStrings.SetPassword.logoutNewPassword,
+        icon: LBIcon.check.rawValue,
+        textColor: LBColor.titlePrimary,
+        borderColor: LBColor.titlePrimary
+    )
 }
