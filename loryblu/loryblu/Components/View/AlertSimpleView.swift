@@ -7,14 +7,19 @@ struct AlertSimpleView: View {
     let borderColor: Color
 
     var body: some View {
-        HStack(alignment: .center) {
+        HStack(alignment: .top, spacing: 16) {
             Image(icon)
+                .resizable()
+                .frame(width: 20, height: 20)
+                .padding(.top, 2)
             Text(text)
                 .foregroundStyle(textColor)
                 .font(LBFont.bodySmall)
-
+                .lineLimit(2)
+            Spacer()
         }
-        .padding(8)
+        .frame(maxWidth: .infinity, minHeight: 40)
+        .padding(.init(top: 8, leading: 12, bottom: 8, trailing: 0))
         .overlay(
             RoundedRectangle(
                 cornerRadius: 8,
