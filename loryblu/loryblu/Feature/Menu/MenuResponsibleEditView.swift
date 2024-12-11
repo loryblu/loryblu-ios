@@ -4,6 +4,7 @@ struct MenuResponsibleEditView: View {
     let image: Image
     @Binding var user: User
     @State var isAvaliable: Bool
+
     var body: some View {
         VStack {
             Spacer()
@@ -18,20 +19,25 @@ struct MenuResponsibleEditView: View {
             VStack(alignment: .leading) {
                 Text(LBStrings.Menu.parentsName)
                     .font(LBFont.buttonSmall)
+
                 LBTextField(style: .common,
                             icon: LBIcon.user,
                             title: "" ,
                             text: $user.parentName,
-                            textFiledState: isAvaliable ? .active : .disable )
+                            textFiledState: isAvaliable ? .active : .disable 
+                )
                 .padding(.bottom, 30)
 
                 Text(LBStrings.General.email)
                     .font(LBFont.buttonSmall)
+
                 LBTextField(style: .common,
                             icon: LBIcon.mail,
                             title: "",
                             text: $user.parentName,
-                            textFiledState: .disable)
+                            textFiledState: .disable
+                )
+
                 HStack {
                     Image(systemName: "info.circle")
                         .foregroundColor(.gray)
@@ -45,16 +51,18 @@ struct MenuResponsibleEditView: View {
                     Text(LBStrings.Menu.suportInfPart3)
                         .font(.caption2)
                 }
-                .padding(.top, 10)
-                .padding(.bottom, 30)
+                .padding(.init(top: 10, leading: 0, bottom: 30, trailing: 0))
 
                 Text(LBStrings.General.password)
                     .font(LBFont.buttonSmall)
+
                 LBTextField(style: .changePassword,
                             icon: LBIcon.lock,
                             title: "",
                             text: $user.parentName,
-                            textFiledState: isAvaliable ? .active : .disable)
+                            textFiledState: isAvaliable ? .active : .disable
+                )
+
                 if isAvaliable {
                     bottomBody
                         .padding(.top, 68)
@@ -98,7 +106,8 @@ struct MenuResponsibleEditView: View {
                                                     fullname: "Zeider Silva",
                                                     gender: "male",
                                                     birthdate: "27/01/2020"
-                                                )])),
-                            isAvaliable: true
+                                                )]
+                                            )),
+                            isAvaliable: false
                             )
 }
