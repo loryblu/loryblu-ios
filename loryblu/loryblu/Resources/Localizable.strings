@@ -13,6 +13,8 @@
 "new_task" = "Nova tarefa";
 "question_mark" = "?";
 "leave" = "Sair";
+"change_password" = "Alterar Senha";
+"save" = "Salvar";
 
 // ====================  Rules Password  =========================
 
@@ -219,6 +221,8 @@
 "exit" = "Sair do App";
 "access_and_control" = "Controle os acessos e gerencie as funcionalidades do app";
 "menu" = "Menu";
-
+"suport_inf_part1" = "Náo é possivel editar o e-mail. ";
+"suport_inf_part2" = "Entre em Contato";
+"suport_inf_part3" = " com o nosso suporte para mais informações" ;
 // ==================== Delete Option ====================
 "all_days" = "Todos os dias";
