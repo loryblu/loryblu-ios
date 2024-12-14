@@ -65,7 +65,7 @@ class RegisterChildViewModel: ObservableObject {
 
         Task {
             do {
-                let _ = try await repository.register(user: user)
+                try await repository.register(user: user)
                 registerSuccess = true
             } catch {
                 print(error.localizedDescription)
