@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct LBSelectedItemShift: View {
-    
+
     let shiftName: String
     let iconValue: String
     let backgroundColor: Color
-    let letterColor:Color
-    
+    let letterColor: Color
+
     var body: some View {
         HStack {
             Spacer().frame(width: 16)
@@ -28,13 +28,22 @@ struct LBSelectedItemShift: View {
         .background(backgroundColor)
         .cornerRadius(8)
     }
-    
 }
 
 #Preview {
-    LBSelectedItemShift(shiftName: LBStrings.FrequencyRotine.morning, iconValue: LBIcon.sunSmall.rawValue, backgroundColor: .black, letterColor: .white)
+    LBSelectedItemShift(
+        shiftName: LBStrings.FrequencyRotine.morning,
+        iconValue: LBIcon.sunSmall.rawValue,
+        backgroundColor: .black,
+        letterColor: .white
+    )
 }
 
 #Preview {
-    LBSelectedItemShift(shiftName: LBStrings.FrequencyRotine.morning, iconValue: LBIcon.sunSmall.rawValue,backgroundColor: LBColor.buttonBackgroundLight,letterColor: .black)
+    LBSelectedItemShift(
+        shiftName: LBStrings.FrequencyRotine.morning,
+        iconValue: LBIcon.sunSmall.rawValue,
+        backgroundColor: LBColor.buttonBackgroundLight,
+        letterColor: .black
+    )
 }

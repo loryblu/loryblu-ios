@@ -7,11 +7,11 @@ class RegisterResponsibleViewModel: ObservableObject {
         case none, name, email, password, confirmPassword
     }
 
-    @Published var name: String = ""
-    @Published var email: String = ""
-    @Published var password: String = ""
-    @Published var confirmPassword: String = ""
-    @Published var textError: String = ""
+    @Published var name: String = String()
+    @Published var email: String = String()
+    @Published var password: String = String()
+    @Published var confirmPassword: String = String()
+    @Published var textError: String = String()
     @Published var hasError: Bool = false
     @Published var errorField: FocusedField = .none
 
@@ -45,7 +45,7 @@ class RegisterResponsibleViewModel: ObservableObject {
 
     func clearError() {
         hasError = false
-        textError = ""
+        textError = String()
         errorField = .none
     }
 

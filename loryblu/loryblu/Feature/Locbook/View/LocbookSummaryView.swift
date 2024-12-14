@@ -216,7 +216,7 @@ struct LocbookSummaryView: View {
                 guard let editedTask = formConfig.task else {
                     return
                 }
-                
+
                 Task {
                     await model.saveEditedTask(
                         task: editedTask,

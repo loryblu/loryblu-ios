@@ -1,14 +1,15 @@
 import SwiftUI
 
-struct LBCustomDialog<Content> : View where Content : View {
+struct LBCustomDialog<Content>: View where Content: View {
+    @State private var offset: CGFloat = 1000
     let dismiss: () -> Void
     let content: () -> Content
+
     init(dismiss: @escaping () -> Void, @ViewBuilder content: @escaping () -> Content) {
         self.dismiss = dismiss
         self.content = content
     }
-    @State private var offset: CGFloat = 1000
-    
+
     var body: some View {
         ZStack {
             Color(.black)

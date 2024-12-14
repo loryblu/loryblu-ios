@@ -23,7 +23,7 @@ struct LocbookTasksView: View {
     let props: Props
 
     @State var formConfig: FormConfig = FormConfig()
-    @State var categoryID: String = ""
+    @State var categoryID: String = String()
 
     var tasks: [ImageLabel] {
         switch props.actionType {

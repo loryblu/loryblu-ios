@@ -1,7 +1,6 @@
 import Foundation
 
 class TaskFilterBuilder {
-
     private var taskFilter: TaskFilter = TaskFilter()
 
     func setupFilter(tasks: [Int: TaskModel]) {
@@ -29,13 +28,15 @@ extension TaskFilterBuilder {
         ) {
             var tasksFiltered: [TaskModel]?
             var dayDefault: LocbookTask.Frequency = LocbookTask.Frequency.sun
-            let week = [LocbookTask.Frequency.sun,
-                        LocbookTask.Frequency.mon,
-                        LocbookTask.Frequency.tue,
-                        LocbookTask.Frequency.wed,
-                        LocbookTask.Frequency.thu,
-                        LocbookTask.Frequency.fri,
-                        LocbookTask.Frequency.sat]
+            let week = [
+                LocbookTask.Frequency.sun,
+                LocbookTask.Frequency.mon,
+                LocbookTask.Frequency.tue,
+                LocbookTask.Frequency.wed,
+                LocbookTask.Frequency.thu,
+                LocbookTask.Frequency.fri,
+                LocbookTask.Frequency.sat
+            ]
             var count = 0
 
             while tasksFiltered == nil {

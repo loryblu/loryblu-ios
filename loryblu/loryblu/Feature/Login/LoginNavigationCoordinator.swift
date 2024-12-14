@@ -1,11 +1,12 @@
 import SwiftUI
 
+// swiftlint:disable nesting
 @MainActor
 class LoginNavigationCoordinator: ObservableObject {
     @EnvironmentObject var appData: AppData
 
     enum Destination {
-        enum Navigation: String, Identifiable  {
+        enum Navigation: String, Identifiable {
             case resetPassword
             case responsibleRegister
             case setNewPassword
@@ -90,3 +91,4 @@ class LoginNavigationCoordinator: ObservableObject {
         self.path.append(destination)
     }
 }
+// swiftlint:enable nesting

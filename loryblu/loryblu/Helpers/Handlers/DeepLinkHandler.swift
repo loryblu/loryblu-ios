@@ -12,7 +12,7 @@ class DeepLinkHandler {
      }
 
     func getToken(url: [URLQueryItem]?) -> String {
-        var recoveryToken: String = ""
+        var recoveryToken: String = String()
         guard let key = url else {  return recoveryToken  }
 
         guard let token = key[0].value else { return recoveryToken  }

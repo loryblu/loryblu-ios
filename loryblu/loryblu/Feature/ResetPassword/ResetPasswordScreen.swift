@@ -2,10 +2,9 @@ import Factory
 import SwiftUI
 
 struct ResetPasswordScreen: View {
-    
     @ObservedObject var model: ResetPasswordModel
-    @State private var userEmail: String = ""
-    
+    @State private var userEmail: String = String()
+
     var body: some View {
         VStack {
             LBIcon.logoName.image
@@ -14,11 +13,11 @@ struct ResetPasswordScreen: View {
             Text(LBStrings.SetPassword.forget)
                 .font(LBFont.titleTask)
                 .padding(.bottom, 24)
-            
+
             Text(LBStrings.SetPassword.reset)
                 .font(LBFont.subtitle)
                 .padding(.bottom, 56)
-            
+
             LBTextField(style: .common,
                         icon: LBIcon.mail,
                         title: LBStrings.General.email,
@@ -26,12 +25,14 @@ struct ResetPasswordScreen: View {
                         textFiledState: .active)
             .padding(.bottom, 39)
             .textInputAutocapitalization(.never)
+
             LBButton(title: LBStrings.General.send) {
                 Task {
                     await model.recoveryPassowrd(with: userEmail)
                 }
             }
             .padding(.bottom, 10)
+
             HStack {
                 Spacer()
                 switch model.fecht {
@@ -45,7 +46,7 @@ struct ResetPasswordScreen: View {
                         .foregroundColor(LBColor.error)
                         .padding()
                 case .idle:
-                    Text("")
+                    Text(String())
                         .padding()
                 }
             }

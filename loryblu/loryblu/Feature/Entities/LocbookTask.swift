@@ -57,7 +57,7 @@ extension LocbookTask {
         default:
             backgroundCardColor = LBColor.buttonBackgroundDark
         }
-        
+
         let taskImages = categoryTitle == LBStrings.Locbook.titleStudy ? ListTasks.study : ListTasks.rotine
 
         let img = taskImages.filter { label in

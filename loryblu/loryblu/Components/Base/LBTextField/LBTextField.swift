@@ -101,7 +101,7 @@ struct CustomTextField_Previews: PreviewProvider {
     static var previews: some View {
         @State var date: Date?
         @State var presented = true
-        @State var value = ""
+        @State var value = String()
 
         VStack {
             LBTextField(

@@ -6,10 +6,10 @@ class RegisterChildViewModel: ObservableObject {
         case none, nameChild, birthDay, gender
     }
 
-    @Published var nameChild: String = ""
+    @Published var nameChild: String = String()
     @Published var gender: LBGenderButton.Gender?
     @Published var agreePrivacy: Bool = false
-    @Published var textError: String = ""
+    @Published var textError: String = String()
     @Published var hasError: Bool = false
     @Published var errorField: FocusedField = .none
     @Published var registerSuccess: Bool = false
@@ -47,7 +47,7 @@ class RegisterChildViewModel: ObservableObject {
 
     func clearError() {
         hasError = false
-        textError = ""
+        textError = String()
         errorField = .none
     }
 
@@ -65,7 +65,7 @@ class RegisterChildViewModel: ObservableObject {
 
         Task {
             do {
-                let result = try await repository.register(user: user)
+                let _ = try await repository.register(user: user)
                 registerSuccess = true
             } catch {
                 print(error.localizedDescription)

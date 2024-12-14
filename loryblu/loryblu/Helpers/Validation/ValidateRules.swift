@@ -46,6 +46,8 @@ enum ValidateRules {
     }
 
     static func validatePassword(password: String) -> Bool {
-        validateSize(password: password) && validateUppercase(password: password) && validateLowercase(password: password) && validateNumber(password: password) && validateSpecial(password: password)
+        validateSize(password: password) && validateUppercase(password: password)
+        && validateLowercase(password: password) && validateNumber(password: password)
+        && validateSpecial(password: password)
     }
 }

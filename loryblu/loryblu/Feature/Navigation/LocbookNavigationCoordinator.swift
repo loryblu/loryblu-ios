@@ -1,5 +1,6 @@
 import SwiftUI
 
+// swiftlint:disable nesting
 @MainActor
 class LocbookNavigationCoordinator: ObservableObject {
     enum Destination {
@@ -86,3 +87,4 @@ class LocbookNavigationCoordinator: ObservableObject {
         self.path.append(destination)
     }
 }
+// swiftlint: enable nesting

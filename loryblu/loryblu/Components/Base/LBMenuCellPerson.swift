@@ -26,7 +26,7 @@ struct LBMenuCellPerson: View {
                 }
 
                 VStack(alignment: .leading, spacing: 2) {
-                    if description != "" {
+                    if description != String() {
                         Text(style == .person ? description : name)
                             .font(style == .person ? LBFont.caption1 : LBFont.titleLarge)
                             .foregroundStyle(style == .person ? LBColor.loryGray : LBColor.text)
@@ -112,14 +112,14 @@ struct LBMenuCellPerson: View {
 
         LBMenuCellPerson(
             onClick: { },
-            description: "",
+            description: String(),
             name: "Perguntas Frequentes",
             image: LBIcon.questionMark.image,
             style: .configuration)
 
         LBMenuCellPerson(
             onClick: { },
-            description: "",
+            description: String(),
             name: "Sair do App",
             image: LBIcon.exit.image,
             style: .exit)

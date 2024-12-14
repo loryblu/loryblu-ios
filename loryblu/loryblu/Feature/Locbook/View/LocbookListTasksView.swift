@@ -16,8 +16,8 @@ struct LocbookListTasksView: View {
         ZStack {
             if viewmodel.openDeleteDialog {
                 LBDeleteTaskDialog(
-                    dayOfWeek: viewmodel.taskFilter?.dayText ?? "",
-                    taskName: viewmodel.taskToDelete.taskTitle ?? "",
+                    dayOfWeek: viewmodel.taskFilter?.dayText ?? String(),
+                    taskName: viewmodel.taskToDelete.taskTitle ?? String(),
                     onDelete: { deleteOption in
                         viewmodel.removeTask(deleteOption: deleteOption)
                     },
@@ -25,9 +25,12 @@ struct LocbookListTasksView: View {
                 )
             }
             if viewmodel.displayDeleteMsgSuccessful {
-                LBDeleteConfirmation(onClose: {
-                    viewmodel.closeDeleteSuccessfulMsg()
-                }, nameTask: viewmodel.taskToDelete.taskTitle ?? "", taskDay: viewmodel.deleteOptionTitle ?? "")
+                LBDeleteConfirmation(
+                    onClose: {
+                        viewmodel.closeDeleteSuccessfulMsg()
+                    },
+                    nameTask: viewmodel.taskToDelete.taskTitle ?? String(),
+                    taskDay: viewmodel.deleteOptionTitle ?? String())
             }
             VStack {
                 if viewmodel.taskFilter?.tasks != nil {
@@ -51,7 +54,7 @@ struct LocbookListTasksView: View {
                     .frame(maxWidth: .infinity, alignment: .trailing)
                     .padding(.init(top: 8, leading: 0, bottom: 0, trailing: 32))
                 }
-                
+
                 ZStack {
                     ListTasksView(
                         viewmodel: viewmodel,
@@ -112,9 +115,9 @@ struct ListTasksView: View {
             ScrollView(showsIndicators: false) {
                 ForEach(viewmodel.taskFilter?.tasks ?? [], id: \.uuid) { model in
                     CardTaskRegistered(
-                        nameAction: model.locbookTask.categoryTitle ?? "",
+                        nameAction: model.locbookTask.categoryTitle ?? String(),
                         imageTask: model.image,
-                        nameTask: model.locbookTask.taskTitle ?? "",
+                        nameTask: model.locbookTask.taskTitle ?? String(),
                         backgroundCard: model.backgroundCard,
                         onEdit: { onEditTask(model.locbookTask) },
                         openDeleteDialog: { openDeleteDialog(model.locbookTask) },
