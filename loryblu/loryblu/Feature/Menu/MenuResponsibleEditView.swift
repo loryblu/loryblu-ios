@@ -41,7 +41,7 @@ struct MenuResponsibleEditView: View {
                 )
 
                 HStack {
-                    Image(systemName: "info.circle")
+                    Image(LBIcon.infoGray.rawValue)
                         .foregroundColor(.gray)
                         .frame(width: 15, height: 15)
                     Text(LBStrings.Menu.suportInfPart1)
