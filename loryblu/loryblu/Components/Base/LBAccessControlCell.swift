@@ -1,43 +1,59 @@
 import SwiftUI
 
 struct LBAccessControlCell: View {
-    let isLoccked: Bool = false
-    let title: String
-    let description: String
-    let image: Image
+    @State var isLoccked: Bool
+    var title: String
+    var description: String
+    var image: Image
 
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack {
             HStack {
-                ZStack {
-                    Circle()
-                        .fill(.white)
-                        .frame(width: 40, height: 40)
-                        .padding(6)
-                    image
-                        .frame(width: 20, height: 20)
+                VStack(alignment: .leading) {
+                    HStack {
+                        ZStack {
+                            Circle()
+                                .fill(.white)
+                                .frame(width: 40, height: 40)
+                            image
+                                .frame(width: 20, height: 20)
+                        }
+                         Toggle(isOn: $isLoccked) {}
+                        .toggleStyle(SymbolToggleStyle())
+                    }
+                    Text(title)
+                        .font(LBFont.titleLarge)
+                    Text(description)
+                        .font(LBFont.caption1)
+                        .foregroundStyle(LBColor.loryGray)
                 }
+                .padding(.init(top: 0, leading: 10, bottom: 0, trailing: 0))
+
+                Spacer()
             }
-            Text(title)
-                .font(LBFont.titleLarge)
-            Text(description)
-                .font(LBFont.caption1)
-                .foregroundStyle(LBColor.loryGray)
-            
+
         }
         .frame(height: 114)
         .frame(maxWidth: .infinity)
         .background(LBColor.textfield)
-        .clipShape(RoundedRectangle(cornerRadius: 5))
+        .clipShape(RoundedRectangle(cornerRadius: 10))
         .overlay {
-            RoundedRectangle(cornerRadius: 5)
+            RoundedRectangle(cornerRadius: 10)
                 .stroke(LBColor.placeholder)
         }
     }
 }
 
 #Preview {
-    LBAccessControlCell(title: "Perfil da Criança",
-                        description: "Bloqueia a edição do perfil da criança",
-                        image: LBIcon.childTree.image)
+    VStack {
+        LBAccessControlCell(isLoccked: false ,
+                            title: "Perfil da Criança",
+                            description: "Bloqueia a edição do perfil da criança",
+                            image: LBIcon.childTree.image)
+        LBAccessControlCell(isLoccked: true ,
+                            title: "Perfil da Criança",
+                            description: "Bloqueia a edição do perfil da criança",
+                            image: LBIcon.childTree.image)
+    }
+    .padding(20)
 }
