@@ -9,6 +9,7 @@ struct MenuView: View {
     @State var urlFaq = Server.faq
     @State var urlTerms = Server.termsOfUse
     @State private var navigationTitle = String()
+    @State var props: Props
 
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -43,7 +44,9 @@ struct MenuView: View {
                             style: .person
                         )
                         LBMenuCellPerson(
-                            onClick: { },
+                            onClick: {
+                                props.showNextPage?()
+                            },
                             description: LBStrings.Menu.parentsName,
                             name: user?.parentName ?? String(),
                             image: LBIcon.parentsTree.image,
@@ -123,6 +126,40 @@ struct MenuView: View {
     }
 }
 
+extension MenuView {
+    struct Props {
+        let showNextPage: ClosureType.VoidVoid?
+    }
+}
+
+extension MenuView.Props: Hashable {
+    static func == (lhs: MenuView.Props, rhs: MenuView.Props) -> Bool {
+        return lhs.hashValue == rhs.hashValue
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(String(describing: Self.self))
+    }
+}
+
+extension MenuView {
+    static func build(nextPage: ClosureType.VoidVoid?) -> Self {
+        MenuView(
+            user: User.init(
+                parentName: "",
+                childrens: [Child(
+                    id: 01,
+                    fullname: "",
+                    gender: "",
+                    birthdate: "10/10/10"
+                )]
+            ),
+            urlString: "",
+            props: .init(showNextPage: nextPage)
+        )
+    }
+}
+
 #Preview {
     MenuView(
         user: User(
@@ -133,6 +170,6 @@ struct MenuView: View {
                 gender: "male",
                 birthdate: "27/01/2020"
             )]
-        ), urlString: String()
+        ), urlString: String(), props: .init(showNextPage: nil)
     )
 }

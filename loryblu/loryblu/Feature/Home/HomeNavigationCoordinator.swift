@@ -66,7 +66,13 @@ class HomeNavigationCoordinator: ObservableObject {
     func buildView(sheet destination: Destination.Sheet) -> some View {
         switch destination {
         case .menu:
-            MenuView(user: userData)
+            MenuNavigationStack(
+                props: MenuNavigationStack.Props(
+                    onFinish: { self.fullScreen = nil },
+                    onDismiss: { self.fullScreen = nil }
+                )
+            )
+//            MenuView(user: userData, props: .init(onSelectCard: nil))
         }
     }
 }
