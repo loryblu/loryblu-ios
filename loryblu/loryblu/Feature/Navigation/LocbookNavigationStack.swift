@@ -82,7 +82,7 @@ struct LocbookNavigationStack: View {
                 title: navigationTitle.title,
                 actionType: actionType,
                 onNext: { newTask in
-                    if(addOrEdit == .add) {
+                    if addOrEdit == .add {
                         pushLocbookRoutine(task: newTask)
                     } else {
                         pushSummaryView(task: newTask, addOrEdit: AddOrEditType.edit)

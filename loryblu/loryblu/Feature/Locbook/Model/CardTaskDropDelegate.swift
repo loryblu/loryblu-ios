@@ -33,12 +33,12 @@ struct CardTaskDropDelegate: DropDelegate {
                 let fromTask = taskData.taskFilter?.tasks[fromIndex]
                 taskData.taskFilter?.tasks[fromIndex] = taskData.taskFilter?.tasks[toIndex] ?? TaskModel(
                     locbookTask: LocbookTask(),
-                    image: "",
+                    image: String(),
                     backgroundCard: Color.white
                 )
                 taskData.taskFilter?.tasks[toIndex] = fromTask ?? TaskModel(
                     locbookTask: LocbookTask(),
-                    image: "",
+                    image: String(),
                     backgroundCard: Color.white
                 )
             }

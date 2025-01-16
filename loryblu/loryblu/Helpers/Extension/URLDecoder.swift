@@ -2,6 +2,6 @@ import Foundation
 
 extension String {
     var URLDecoder: String {
-        return String(NSString(string: self).removingPercentEncoding ?? "")
+        return String(NSString(string: self).removingPercentEncoding ?? String())
     }
 }

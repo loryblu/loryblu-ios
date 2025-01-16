@@ -9,34 +9,35 @@ struct LBWeekDaysButton: View {
     @Binding var friday: Bool
     @Binding var satuday: Bool
     var isClickable: Bool = true
+
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 12)
                 .fill(LBColor.backgroundCards)
                 .frame(height: 45)
+
                 HStack(spacing: 20) {
-                    
-                DaysButton(isSet: sunday,text: "D", isClickable: isClickable) {
-                    sunday.toggle()
-                }
-                DaysButton(isSet: monday,text: "S", isClickable: isClickable) {
-                    monday.toggle()
-                }
-                DaysButton(isSet: tuesday,text: "T", isClickable: isClickable) {
-                    tuesday.toggle()
-                }
-                DaysButton(isSet: wednesday,text: "Q", isClickable: isClickable) {
-                    wednesday.toggle()
-                }
-                DaysButton(isSet: thurday, text: "Q", isClickable: isClickable) {
-                    thurday.toggle()
-                }
-                DaysButton(isSet: friday, text: "S", isClickable: isClickable) {
-                    friday.toggle()
-                }
-                DaysButton(isSet: satuday, text: "S", isClickable: isClickable) {
-                    satuday.toggle()
-                }
+                    DaysButton(isSet: sunday, text: "D", isClickable: isClickable) {
+                        sunday.toggle()
+                    }
+                    DaysButton(isSet: monday, text: "S", isClickable: isClickable) {
+                        monday.toggle()
+                    }
+                    DaysButton(isSet: tuesday, text: "T", isClickable: isClickable) {
+                        tuesday.toggle()
+                    }
+                    DaysButton(isSet: wednesday, text: "Q", isClickable: isClickable) {
+                        wednesday.toggle()
+                    }
+                    DaysButton(isSet: thurday, text: "Q", isClickable: isClickable) {
+                        thurday.toggle()
+                    }
+                    DaysButton(isSet: friday, text: "S", isClickable: isClickable) {
+                        friday.toggle()
+                    }
+                    DaysButton(isSet: satuday, text: "S", isClickable: isClickable) {
+                        satuday.toggle()
+                    }
             }
         }
     }

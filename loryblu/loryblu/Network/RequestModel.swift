@@ -14,7 +14,7 @@ extension RequestModel {
     /// A helper class to help build new requests
     ///
     class Builder {
-        private var model = RequestModel(baseURL: "", path: "", method: .get, header: [:], body: nil)
+        private var model = RequestModel(baseURL: String(), path: String(), method: .get, header: [:], body: nil)
 
         init() {}
 

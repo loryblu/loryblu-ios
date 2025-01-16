@@ -1,9 +1,9 @@
 import SwiftUI
 import Factory
 
+// swiftlint:disable nesting
 @MainActor
 class HomeNavigationCoordinator: ObservableObject {
-
     @EnvironmentObject var appData: AppData
     let userData = Container.shared.appData().userData?.data.user
 
@@ -27,19 +27,16 @@ class HomeNavigationCoordinator: ObservableObject {
     }
 
     // MARK: - Internal Properties
-
     @Published var fullScreen: Destination.FullScreenPage?
     @Published var sheet: Destination.Sheet?
 
     // MARK: - Initializers
-
     init() {
         fullScreen = nil
         sheet = nil
     }
 
     // MARK: - Internal Methods
-
     func popToRoot() {
         fullScreen = nil
         sheet = nil
@@ -50,7 +47,7 @@ class HomeNavigationCoordinator: ObservableObject {
         switch destination {
         case .home:
             HomeView(
-                props: .init (
+                props: .init(
                     onSelectCard: { self.fullScreen = .locbook },
                     onShowMenu: { self.sheet = .menu }
                 )
@@ -73,3 +70,4 @@ class HomeNavigationCoordinator: ObservableObject {
         }
     }
 }
+// swiftlint: enable nesting

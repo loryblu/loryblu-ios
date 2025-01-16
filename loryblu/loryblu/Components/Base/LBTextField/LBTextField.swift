@@ -84,7 +84,7 @@ struct LBTextField: View {
                 }
             }
         }
-        .background( textFiledState == .disable ? LBColor.grayLight : LBColor.textfield)
+        .background( textFiledState == .disable ? LBColor.grayLight.opacity(0.4) : LBColor.textfield)
         .frame(height: 48)
         .cornerRadius(8)
         .if(textFiledState != .disable, transform: { view in
@@ -127,7 +127,7 @@ struct CustomTextField_Previews: PreviewProvider {
     static var previews: some View {
         @State var date: Date?
         @State var presented = true
-        @State var value = ""
+        @State var value = String()
 
         VStack {
             LBTextField(
@@ -167,7 +167,7 @@ struct CustomTextField_Previews: PreviewProvider {
                 icon: LBIcon.mailGray,
                 title: "User",
                 text: .constant("teste@gmail.com"),
-                textFiledState: .active
+                textFiledState: .disable
             )
 
         }

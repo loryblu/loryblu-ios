@@ -68,6 +68,7 @@
 		8C9CBCFC2A7ACF46001DBD35 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9CBCFA2A7ACF46001DBD35 /* LoginView.swift */; };
 		8C9CBD0D2A7AE97B001DBD35 /* RegisterChildView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9CBD0C2A7AE97B001DBD35 /* RegisterChildView.swift */; };
 		8C9CBD102A7AEC24001DBD35 /* PasswordRulesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9CBD0F2A7AEC24001DBD35 /* PasswordRulesView.swift */; };
+		8CB8E02F2D07C4260013CDAB /* AlertSimpleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB8E02E2D07C4260013CDAB /* AlertSimpleView.swift */; };
 		8CCD707B2B7A637100AA60CF /* CardTaskRegistered.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCD707A2B7A637100AA60CF /* CardTaskRegistered.swift */; };
 		8CCD707D2B7A6CE600AA60CF /* EditTaskButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCD707C2B7A6CE500AA60CF /* EditTaskButton.swift */; };
 		8CE004892AC1C6680037F792 /* DoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE004882AC1C6680037F792 /* DoneView.swift */; };
@@ -184,6 +185,7 @@
 		8C9CBCFA2A7ACF46001DBD35 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		8C9CBD0C2A7AE97B001DBD35 /* RegisterChildView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterChildView.swift; sourceTree = "<group>"; };
 		8C9CBD0F2A7AEC24001DBD35 /* PasswordRulesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordRulesView.swift; sourceTree = "<group>"; };
+		8CB8E02E2D07C4260013CDAB /* AlertSimpleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertSimpleView.swift; sourceTree = "<group>"; };
 		8CCD707A2B7A637100AA60CF /* CardTaskRegistered.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTaskRegistered.swift; sourceTree = "<group>"; };
 		8CCD707C2B7A6CE500AA60CF /* EditTaskButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskButton.swift; sourceTree = "<group>"; };
 		8CE004882AC1C6680037F792 /* DoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneView.swift; sourceTree = "<group>"; };
@@ -312,6 +314,8 @@
 			children = (
 				337A39E82C0FD89900B89B3D /* LBDeleteConfirmation.swift */,
 				33676BCA2C780BDD0043FF91 /* LBExitAppConfirmation.swift */,
+				9370B5282C059F6E00C28B0D /* LBCustomDialog.swift */,
+				9370B52C2C06444E00C28B0D /* LBDeleteTaskDialog.swift */,
 			);
 			path = Dialog;
 			sourceTree = "<group>";
@@ -348,7 +352,6 @@
 			isa = PBXGroup;
 			children = (
 				337A39E72C0FD7B600B89B3D /* Dialog */,
-				9370B5272C059F3C00C28B0D /* Dialog */,
 				9310C8D42B66DAD9007D3CE7 /* Toolbar */,
 				8CC73C952A6C4A65008A039A /* Base */,
 				8C9CBD0E2A7AEBEE001DBD35 /* View */,
@@ -506,6 +509,7 @@
 				8C225AB02AE703B100E43B2C /* ImageLabel.swift */,
 				8C9CBD0F2A7AEC24001DBD35 /* PasswordRulesView.swift */,
 				8CCD707A2B7A637100AA60CF /* CardTaskRegistered.swift */,
+				8CB8E02E2D07C4260013CDAB /* AlertSimpleView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -703,15 +707,6 @@
 				9366FB172B6B063900A57F89 /* LBToolBarModifier.swift */,
 			);
 			path = Toolbar;
-			sourceTree = "<group>";
-		};
-		9370B5272C059F3C00C28B0D /* Dialog */ = {
-			isa = PBXGroup;
-			children = (
-				9370B5282C059F6E00C28B0D /* LBCustomDialog.swift */,
-				9370B52C2C06444E00C28B0D /* LBDeleteTaskDialog.swift */,
-			);
-			path = Dialog;
 			sourceTree = "<group>";
 		};
 		93B2DD602BC8E36B009BEB16 /* Enums */ = {
@@ -938,6 +933,7 @@
 				93501B0E2CC0195200E6D81F /* MenuViewModel.swift in Sources */,
 				8CE03E392A6360BE0024919C /* LBColor.swift in Sources */,
 				3376667D2ABFD115007010E1 /* URLDecoder.swift in Sources */,
+				8CB8E02F2D07C4260013CDAB /* AlertSimpleView.swift in Sources */,
 				911B843E2AD1C19D00F59DD2 /* Authentication.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

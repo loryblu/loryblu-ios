@@ -1,9 +1,9 @@
 import SwiftUI
 
 struct MenuResponsibleEditView: View {
-    let image: Image
     @Binding var user: User
     @State var isAvaliable: Bool
+    let image: Image
 
     var body: some View {
         VStack {
@@ -20,22 +20,24 @@ struct MenuResponsibleEditView: View {
                 Text(LBStrings.Menu.parentsName)
                     .font(LBFont.buttonSmall)
 
-                LBTextField(style: .common,
-                            icon: LBIcon.user,
-                            title: "" ,
-                            text: $user.parentName,
-                            textFiledState: isAvaliable ? .active : .disable 
+                LBTextField(
+                    style: .common,
+                    icon: LBIcon.user,
+                    title: String(),
+                    text: $user.parentName,
+                    textFiledState: isAvaliable ? .active : .disable
                 )
                 .padding(.bottom, 30)
 
                 Text(LBStrings.General.email)
                     .font(LBFont.buttonSmall)
 
-                LBTextField(style: .common,
-                            icon: LBIcon.mail,
-                            title: "",
-                            text: $user.parentName,
-                            textFiledState: .disable
+                LBTextField(
+                    style: .common,
+                    icon: LBIcon.mail,
+                    title: String(),
+                    text: $user.parentName,
+                    textFiledState: .disable
                 )
 
                 HStack {
@@ -56,11 +58,12 @@ struct MenuResponsibleEditView: View {
                 Text(LBStrings.General.password)
                     .font(LBFont.buttonSmall)
 
-                LBTextField(style: .changePassword,
-                            icon: LBIcon.lock,
-                            title: "",
-                            text: $user.parentName,
-                            textFiledState: isAvaliable ? .active : .disable
+                LBTextField(
+                    style: .changePassword,
+                    icon: LBIcon.lock,
+                    title: String(),
+                    text: $user.parentName,
+                    textFiledState: isAvaliable ? .active : .disable
                 )
 
                 if isAvaliable {
@@ -98,16 +101,19 @@ struct MenuResponsibleEditView: View {
 }
 
 #Preview {
-    MenuResponsibleEditView(image: LBIcon.parentsTree2.image,
-                            user: .constant(User(
-                                                parentName: "Rodrigo Silva",
-                                                childrens: [Child(
-                                                    id: 01,
-                                                    fullname: "Zeider Silva",
-                                                    gender: "male",
-                                                    birthdate: "27/01/2020"
-                                                )]
-                                            )),
-                            isAvaliable: false
-                            )
+    MenuResponsibleEditView(
+        user: .constant(
+            User(
+                parentName: "Rodrigo Silva",
+                childrens: [Child(
+                    id: 01,
+                    fullname: "Zeider Silva",
+                    gender: "male",
+                    birthdate: "27/01/2020"
+                )]
+            )
+        ),
+        isAvaliable: false,
+        image: LBIcon.parentsTree2.image
+    )
 }

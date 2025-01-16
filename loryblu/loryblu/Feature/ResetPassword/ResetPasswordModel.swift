@@ -9,10 +9,10 @@ class ResetPasswordModel: ObservableObject {
         case error
         case idle
     }
-    
+
     @Published var fecht: FechtEmail = .idle
     var service: RepositorySetPassword
-    
+
     init(fecht: FechtEmail = .idle, container: Container) {
         self.fecht = fecht
         self.service = container.setPasswordRepository()

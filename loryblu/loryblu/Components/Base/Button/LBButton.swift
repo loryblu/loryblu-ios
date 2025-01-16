@@ -24,7 +24,7 @@ struct LBButton: View {
                 .textCase(.uppercase)
                 .font(LBFont.button)
                 .multilineTextAlignment(.center)
-                .foregroundColor(getForegroundColor(btnStyle:style))
+                .foregroundColor(getForegroundColor(btnStyle: style))
                 .frame(height: 44)
                 .frame(maxWidth: .infinity)
                 .background(getBackgroundColor(btnStyle: style))
@@ -32,7 +32,7 @@ struct LBButton: View {
                 .overlay(
                     RoundedRectangle(cornerRadius: 10)
                         .inset(by: -1)
-                        .stroke(getStrokeColor(btnStyle:style)))
+                        .stroke(getStrokeColor(btnStyle: style)))
         }
     }
 }
@@ -48,7 +48,7 @@ extension LBButton {
             LBColor.error
         }
     }
-    
+
     func getBackgroundColor(btnStyle: ButtonStyle) -> Color {
         switch btnStyle {
         case .primaryActivated:
@@ -59,7 +59,7 @@ extension LBButton {
             Color.clear
         }
     }
-    
+
     func getStrokeColor(btnStyle: ButtonStyle) -> Color {
         switch btnStyle {
         case .primaryActivated:

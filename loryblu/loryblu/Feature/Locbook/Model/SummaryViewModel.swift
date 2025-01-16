@@ -31,7 +31,7 @@ class SummaryViewModel: ObservableObject {
     }
 
     @MainActor
-    func saveEditedTask(task: LocbookTask, onDismiss:() -> Void) async {
+    func saveEditedTask(task: LocbookTask, onDismiss: () -> Void) async {
         stateTask = .loading
         let result = await repository.taskEdit(
             with: task,

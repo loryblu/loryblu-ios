@@ -60,6 +60,7 @@
 "setPassword_must_be_equal" = "As senhas devem ser idênticas";
 "success_change_password" = "Redefinição de senha concluída com sucesso";
 "failure_change_password" = "Token expirado ou inválido";
+"setPassword_alert_logout" = "Sua conta será desconectada e você \nprecisará entrar com sua nova senha.";
 
 // ====================  Login  =========================
 
@@ -174,7 +175,6 @@
 "summary_topbar" = "Confira seu resumo";
 "summary_submitTask" = "Cadastrar Tarefa";
 "summary_frequencyDescription" = "Você pode escolher mais de um dia.";
-
 "summary_finished_new_task_message" = "Nova tarefa criada com sucesso";
 "summary_finished_edit_task_message" = "Tarefa editada com sucesso";
 
@@ -210,6 +210,7 @@
 "dayOfWeek_saturday" = "sábado";
 
 // ==================== Menu ====================
+
 "profile" = "Perfil";
 "configuration" = "Configurações";
 "child_name" = "Nome da Criança";
@@ -225,5 +226,3 @@
 "suport_inf_part3" = " com o nosso suporte para mais informações" ;
 // ==================== Delete Option ====================
 "all_days" = "Todos os dias";
-
-

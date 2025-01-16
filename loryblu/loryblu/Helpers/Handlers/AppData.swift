@@ -6,7 +6,7 @@ class AppData: ObservableObject {
     }
 
     @Published var isTokenReceived: Bool = false
-    @Published var token: String = ""
+    @Published var token: String = String()
     @Published var childrenId: Int = 0
     @Published var userData: UserAuth?
 
