@@ -1,11 +1,10 @@
 import SwiftUI
 
 struct FrequencyButtonStyle: ButtonStyle {
-    
     let style: Style
     let image: String
     let selected: Bool
-    
+
     func makeBody(configuration: Configuration) -> some View {
         VStack {
             Spacer()
@@ -44,12 +43,12 @@ extension FrequencyButtonStyle {
         case light
         case medium
         case dark
-        
+
         func backgroundColor(selected: Bool) -> Color {
             guard selected else {
                 return LBColor.grayLight
             }
-            
+
             switch self {
             case .light:
                 return LBColor.buttonBackgroundLight
@@ -59,12 +58,12 @@ extension FrequencyButtonStyle {
                 return LBColor.buttonBackgroundDark
             }
         }
-        
+
         func backgroundLabel(selected: Bool) -> Color {
             if selected {
                 return LBColor.backgroundCardsLabel
             }
-            
+
             return LBColor.backgroundCardsLabelDisable
         }
     }
@@ -78,7 +77,6 @@ struct FrequencyButtonStyle_Previews: PreviewProvider {
 
         VStack {
             Spacer()
-            
             HStack {
                 Button("Button") {
                     selected.toggle()
@@ -93,7 +91,6 @@ struct FrequencyButtonStyle_Previews: PreviewProvider {
             }
             .frame(height: 280)
             .padding()
-            
             Spacer()
         }
     }

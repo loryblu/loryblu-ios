@@ -16,7 +16,10 @@ struct LoadingView: View {
                 .resizable()
                 .frame(width: 72, height: 72)
                 .rotationEffect(.degrees(rotationAngle))
-                .animation(Animation.linear(duration: 1).repeatForever(autoreverses: false))
+                .animation(
+                    Animation.linear(duration: 1).repeatForever(autoreverses: false),
+                    value: rotationAngle
+                )
         }
         .onAppear {
             self.rotationAngle = 360

@@ -133,6 +133,6 @@ struct MenuView: View {
                 gender: "male",
                 birthdate: "27/01/2020"
             )]
-        ), urlString: ""
+        ), urlString: String()
     )
 }

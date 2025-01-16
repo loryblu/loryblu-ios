@@ -4,6 +4,7 @@ struct LBTextField: View {
     enum TexfieldType {
         case common
         case password
+        case changePassword
     }
 
     enum TextFieldState: CGFloat, Equatable {
@@ -53,6 +54,21 @@ struct LBTextField: View {
                             .accentColor(LBColor.text)
                             .disabled(textFiledState == .disable ? true : false)
                     }
+                case .changePassword:
+                    if isHidden {
+                        SecureField(title, text: $text)
+                            .foregroundColor(LBColor.text)
+                            .disabled(textFiledState == .disable ? true : false)
+                        if textFiledState != .disable {
+                            changePasswordButton
+                        }
+
+                    } else {
+                        TextField(title, text: $text)
+                            .foregroundColor(LBColor.text)
+                        changePasswordButton
+                            .disabled(textFiledState == .disable ? true : false)
+                    }
                 }
 
                 if textFiledState == .disable {
@@ -68,7 +84,7 @@ struct LBTextField: View {
                 }
             }
         }
-        .background( textFiledState == .disable ? LBColor.grayLight : LBColor.textfield)
+        .background( textFiledState == .disable ? LBColor.grayLight.opacity(0.4) : LBColor.textfield)
         .frame(height: 48)
         .cornerRadius(8)
         .if(textFiledState != .disable, transform: { view in
@@ -79,6 +95,16 @@ struct LBTextField: View {
                 })
         })
 
+    }
+    var changePasswordButton: some View {
+        Button {
+            isHidden.toggle()
+        } label: {
+            Text(LBStrings.General.changePassword)
+                .font(LBFont.caption)
+                .underline()
+                .foregroundStyle(LBColor.buttonBackgroundDark)
+        }
     }
 
     var passwordButton: some View {
@@ -101,7 +127,7 @@ struct CustomTextField_Previews: PreviewProvider {
     static var previews: some View {
         @State var date: Date?
         @State var presented = true
-        @State var value = ""
+        @State var value = String()
 
         VStack {
             LBTextField(
@@ -130,6 +156,14 @@ struct CustomTextField_Previews: PreviewProvider {
 
             LBTextField(
                 style: .password,
+                icon: LBIcon.mailGray,
+                title: "User",
+                text: .constant("teste@gmail.com"),
+                textFiledState: .disable
+            )
+
+            LBTextField(
+                style: .changePassword,
                 icon: LBIcon.mailGray,
                 title: "User",
                 text: .constant("teste@gmail.com"),

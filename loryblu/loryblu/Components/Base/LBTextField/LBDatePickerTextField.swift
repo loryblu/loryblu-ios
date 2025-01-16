@@ -10,7 +10,7 @@ struct LBDatePickerTextField: View {
     let title: String
     @Binding var date: Date?
 
-    @State private var formatDate: String = ""
+    @State private var formatDate: String = String()
     let state: DatePickerState
 
     var body: some View {
@@ -44,7 +44,12 @@ struct LBDatePickerTextField: View {
 struct LBDatePickerTextField_Previews: PreviewProvider {
     static var previews: some View {
           ZStack {
-              LBDatePickerTextField(icon: .google, title: "Data de Aniversário", date: .constant(Date()), state: .active)
+              LBDatePickerTextField(
+                icon: .google,
+                title: "Data de Aniversário",
+                date: .constant(Date()),
+                state: .active
+              )
         }
     }
 }

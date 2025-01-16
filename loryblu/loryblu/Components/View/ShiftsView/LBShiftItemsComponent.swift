@@ -13,6 +13,7 @@ struct LBShiftItemsComponent: View {
     let shifts: [ShiftItem]
     var isClickable: Bool = true
     var onClick: (String) -> Void = { _ in }
+
     var body: some View {
         HStack {
             ForEach(shifts, id: \.name) { shift in
@@ -21,7 +22,8 @@ struct LBShiftItemsComponent: View {
                         shiftName: shift.name,
                         iconValue: shift.icon,
                         backgroundColor: shift.backgroundColor,
-                        letterColor: shift.letterColor).scaleEffect(isPressed ? 1.50 : 1.0)
+                        letterColor: shift.letterColor
+                    ).scaleEffect(isPressed ? 1.50 : 1.0)
                 } else {
                     Text(shift.name)
                         .font(LBFont.bodyLarge)
@@ -46,14 +48,34 @@ struct LBShiftItemsComponent: View {
         }
         .background(LBColor.textfield)
         .cornerRadius(8)
-        .frame(maxWidth:.infinity,alignment: .center)
+        .frame(maxWidth: .infinity, alignment: .center)
         .frame(maxWidth: .infinity)
     }
 }
 
 #Preview {
-    LBShiftItemsComponent(shifts: [
-        ShiftItem(name: LBStrings.FrequencyRotine.morning, icon: LBIcon.sunSmall.rawValue,backgroundColor: LBColor.buttonBackgroundLight, letterColor: .black,isSelected: true),
-        ShiftItem(name: LBStrings.FrequencyRotine.afternoon, icon: LBIcon.eviningSmall.rawValue, backgroundColor: LBColor.buttonBackgroundMedium,letterColor: .white, isSelected: false),
-        ShiftItem(name: LBStrings.FrequencyRotine.night, icon: LBIcon.moonSmall.rawValue,backgroundColor: LBColor.buttonBackgroundDark, letterColor: .white,isSelected: false)])
+    LBShiftItemsComponent(
+        shifts: [
+            ShiftItem(
+                name: LBStrings.FrequencyRotine.morning,
+                icon: LBIcon.sunSmall.rawValue,
+                backgroundColor: LBColor.buttonBackgroundLight,
+                letterColor: .black,
+                isSelected: true
+            ),
+            ShiftItem(
+                name: LBStrings.FrequencyRotine.afternoon,
+                icon: LBIcon.eviningSmall.rawValue,
+                backgroundColor: LBColor.buttonBackgroundMedium,
+                letterColor: .white,
+                isSelected: false
+            ),
+            ShiftItem(
+                name: LBStrings.FrequencyRotine.night,
+                icon: LBIcon.moonSmall.rawValue,
+                backgroundColor: LBColor.buttonBackgroundDark,
+                letterColor: .white,
+                isSelected: false
+            )]
+    )
 }

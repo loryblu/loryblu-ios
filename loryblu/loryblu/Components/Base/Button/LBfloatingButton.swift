@@ -14,13 +14,13 @@ struct LBfloatingButton: View {
                 Text(text)
                     .font(LBFont.button)
                     .frame(height: 48)
-                    .frame(minWidth: 155,alignment: .center)
+                    .frame(minWidth: 155, alignment: .center)
             }
-            .padding(.horizontal,12)
+            .padding(.horizontal, 12)
             .background(LBColor.backgroundImagetrails)
             .foregroundColor(LBColor.background)
             .cornerRadius(48)
-            .shadow(color: .black.opacity(0.3) ,radius: 7 ,x: 3, y: 10)
+            .shadow(color: .black.opacity(0.3), radius: 7, x: 3, y: 10)
         }
         .frame(height: 48)
     }
@@ -28,7 +28,7 @@ struct LBfloatingButton: View {
 
 #Preview {
     VStack {
-        LBfloatingButton(text:"NOVA TAREFA", icon: LBIcon.plus) {
+        LBfloatingButton(text: "NOVA TAREFA", icon: LBIcon.plus) {
             print("Ok")
         }
     }
