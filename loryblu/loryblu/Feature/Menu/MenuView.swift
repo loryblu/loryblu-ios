@@ -2,7 +2,7 @@ import SwiftUI
 
 struct MenuView: View {
     @Environment(\.dismiss) var dismiss
-    @State var user: User?
+    @EnvironmentObject var appData: AppData
     @StateObject var menuViewModel: MenuViewModel = MenuViewModel()
     @State private var showWebView = false
     @State var urlString = String()
@@ -10,6 +10,22 @@ struct MenuView: View {
     @State var urlTerms = Server.termsOfUse
     @State private var navigationTitle = String()
     @State var props: Props
+
+    var userName: String {
+        appData.userData?.data.user.parentName ?? String()
+    }
+
+    var childName: String {
+        appData.userData?.data.user.childrens.first?.fullname ?? String()
+    }
+
+    var userImage: Image {
+        LBIcon.parentsTree.image
+    }
+
+    var childImage: Image {
+        LBIcon.childTree.image
+    }
 
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -39,8 +55,8 @@ struct MenuView: View {
                         LBMenuCellPerson(
                             onClick: { },
                             description: LBStrings.Menu.childName,
-                            name: user?.childrens.first?.fullname ?? String(),
-                            image: LBIcon.childTree.image,
+                            name: childName,
+                            image: childImage,
                             style: .person
                         )
                         LBMenuCellPerson(
@@ -48,8 +64,8 @@ struct MenuView: View {
                                 props.showNextPage?()
                             },
                             description: LBStrings.Menu.parentsName,
-                            name: user?.parentName ?? String(),
-                            image: LBIcon.parentsTree.image,
+                            name: userName,
+                            image: userImage,
                             style: .person
                         )
 
@@ -111,7 +127,9 @@ struct MenuView: View {
                     .padding(20)
                 }
                 .frame(maxWidth: .infinity)
-                .padding(.init(top: 50, leading: 0, bottom: 0, trailing: 0))
+                .padding(
+                    .init(top: 50, leading: 0, bottom: 0, trailing: 0)
+                )
 
                 if menuViewModel.openExitConfirmationDialog {
                     LBExitAppConfirmation {
@@ -145,31 +163,12 @@ extension MenuView.Props: Hashable {
 extension MenuView {
     static func build(nextPage: ClosureType.VoidVoid?) -> Self {
         MenuView(
-            user: User.init(
-                parentName: "",
-                childrens: [Child(
-                    id: 01,
-                    fullname: "",
-                    gender: "",
-                    birthdate: "10/10/10"
-                )]
-            ),
-            urlString: "",
+            urlString: String(),
             props: .init(showNextPage: nextPage)
         )
     }
 }
 
 #Preview {
-    MenuView(
-        user: User(
-            parentName: "Rodrigo",
-            childrens: [Child(
-                id: 01,
-                fullname: "Zeider Silva",
-                gender: "male",
-                birthdate: "27/01/2020"
-            )]
-        ), urlString: String(), props: .init(showNextPage: nil)
-    )
+    MenuView(urlString: String(), props: .init(showNextPage: nil))
 }

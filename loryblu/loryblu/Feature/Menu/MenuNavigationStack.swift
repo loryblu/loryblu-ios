@@ -47,18 +47,16 @@ struct MenuNavigationStack: View {
     }
 
     private func pushResponsibleEdit(aappData: AppData) {
-        print("fdsafdsafds")
         coordinator.pushResponsibleEditView(
             props: MenuResponsibleEditView.Props(
-                user: appData.userData!.data.user,
-                image: LBIcon.parentsTree.image,
+                image: LBIcon.parentsTree2.image,
                 isAvaliable: true
             )
         )
     }
 
     private func pushChildEdit() {
-        print("----------")
+        print("%=== CHILD EDIT ===%")
     }
 
     private func pushFinishView(message: String) {

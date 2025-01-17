@@ -1,10 +1,10 @@
 import SwiftUI
 
 struct MenuResponsibleEditView: View {
+    @EnvironmentObject var appData: AppData
     @State var formConfig: FormConfig
 
     struct Props {
-        var user: User
         var image: Image
         var isAvaliable: Bool
         var onClose: ClosureType.VoidVoid?
@@ -14,9 +14,13 @@ struct MenuResponsibleEditView: View {
 
     init(props: Props) {
         self.props = props
-        let config = FormConfig(user: props.user, image: props.image)
+        let config = FormConfig(
+            image: props.image,
+            user: String(),
+            email: String(),
+            password: String()
+        )
         self._formConfig = State(initialValue: config)
-
     }
 
     var body: some View {
@@ -38,7 +42,7 @@ struct MenuResponsibleEditView: View {
                     style: .common,
                     icon: LBIcon.user,
                     title: String(),
-                    text: $formConfig.user.parentName,
+                    text: $formConfig.user,
                     textFiledState: props.isAvaliable ? .active : .disable
                 )
                 .padding(.bottom, 30)
@@ -50,7 +54,7 @@ struct MenuResponsibleEditView: View {
                     style: .common,
                     icon: LBIcon.mail,
                     title: String(),
-                    text: $formConfig.user.parentName,
+                    text: $formConfig.email,
                     textFiledState: .disable
                 )
 
@@ -76,7 +80,7 @@ struct MenuResponsibleEditView: View {
                     style: .changePassword,
                     icon: LBIcon.lock,
                     title: String(),
-                    text: $formConfig.user.parentName,
+                    text: $formConfig.password,
                     textFiledState: props.isAvaliable ? .active : .disable
                 )
 
@@ -87,6 +91,9 @@ struct MenuResponsibleEditView: View {
                 Spacer()
             }
             .padding()
+            .onAppear {
+                formConfig.user = appData.userData?.data.user.parentName ?? String()
+            }
         }
     }
 
@@ -117,8 +124,10 @@ struct MenuResponsibleEditView: View {
 
 extension MenuResponsibleEditView {
     struct FormConfig {
-        var user: User
         var image: Image
+        var user: String
+        var email: String
+        var password: String
     }
 }
 
@@ -136,7 +145,6 @@ extension MenuResponsibleEditView.Props: Hashable {
     let user = User(parentName: "", childrens: [])
     MenuResponsibleEditView(
         props: .init(
-            user: user,
             image: LBIcon.childTree.image,
             isAvaliable: false
         )
