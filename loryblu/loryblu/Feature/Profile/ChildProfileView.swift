@@ -64,7 +64,7 @@ struct ChildProfileView: View {
                     textFiledState: props.editionBlocked ? .disable : .active
                 )
             }
-            .padding([.trailing,.leading], 24)
+            .padding([.trailing,.leading,.top], 24)
             VStack(spacing: 8) {
                 Text(LBStrings.Profile.birthDay)
                     .font(LBFont.bodyMedium)
@@ -94,6 +94,21 @@ struct ChildProfileView: View {
                 }
                 .padding(.top, 2)
             }.padding([.trailing,.leading], 24)
+            
+            Spacer()
+                  .frame(maxHeight: .infinity)
+            if(!props.editionBlocked) {
+                HStack(spacing: 16) {
+                    LBButton(title: LBStrings.General.cancel, style: .primaryOff) {
+                        props.onClose?()
+                    }
+
+                    LBButton(title: LBStrings.General.save) {
+                        // MARK: - TODO fazer update na API
+                    }
+                }.padding([.trailing,.leading,.bottom], 24)
+                    .frame(alignment: .bottom)
+            }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .padding([.top],16)

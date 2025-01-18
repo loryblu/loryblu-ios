@@ -53,7 +53,7 @@ struct MenuView: View {
                         }
 
                         LBMenuCellPerson(
-                            onClick: { props.onChildProfile() },
+                            onClick: {  },
                             description: LBStrings.Menu.childName,
                             name: childName,
                             image: childImage,
