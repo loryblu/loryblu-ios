@@ -84,7 +84,7 @@ struct LBTextField: View {
                 }
             }
         }
-        .background( textFiledState == .disable ? LBColor.grayLight : LBColor.textfield)
+        .background(textFiledState == .disable ? LBColor.grayLight : LBColor.textfield)
         .frame(height: 48)
         .cornerRadius(8)
         .if(textFiledState != .disable, transform: { view in

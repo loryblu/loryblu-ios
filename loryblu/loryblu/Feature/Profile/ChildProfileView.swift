@@ -17,6 +17,12 @@ struct ChildProfileView: View {
     
     @StateObject var viewModel = ChildProfileViewModel()
     @FocusState private var focusedField: RegisterChildViewModel.FocusedField?
+    @State var childName: String
+    
+    init(props: ChildProfileView.Props, childName: String = "") {
+        self.props = props
+        self.childName = props.childName
+    }
     
     var body: some View {
         VStack(alignment: .leading, spacing: 40) {
@@ -51,13 +57,12 @@ struct ChildProfileView: View {
                     .bold()
                     .frame(maxWidth: .infinity, alignment: .leading)
                 LBTextField(
-                    style: .editionBlocked,
-                    icon: LBIcon.user,
-                    title: LBStrings.Profile.childName,
-                    text: $viewModel.childName,
-                    textFiledState: .active
+                    style: .common,
+                    icon: LBIcon.lock,
+                    title: "Nome da criança",
+                    text: $childName,
+                    textFiledState: props.editionBlocked ? .disable : .active
                 )
-                .textInputAutocapitalization(.never)
             }
             .padding([.trailing,.leading], 24)
             VStack(spacing: 8) {
@@ -69,7 +74,6 @@ struct ChildProfileView: View {
                     icon: .cake,
                     title: LBStrings.Register.birthDay,
                     date: $viewModel.childBirth,
-                    blockIcon: true,
                     state: .active
                 )
                 .textInputAutocapitalization(.never)
@@ -112,6 +116,6 @@ extension ChildProfileView.Props: Hashable {
 }
 
 #Preview {
-    ChildProfileView(props: ChildProfileView.Props(),viewModel: ChildProfileViewModel())
+    ChildProfileView(props: ChildProfileView.Props(), childName: "Nome da criança")
 }
 

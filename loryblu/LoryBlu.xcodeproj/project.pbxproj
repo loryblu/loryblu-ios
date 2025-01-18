@@ -113,8 +113,6 @@
 		93501B0E2CC0195200E6D81F /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93501B0D2CC0195200E6D81F /* MenuViewModel.swift */; };
 		93501B152CE8467400E6D81F /* ChildProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93501B142CE8467400E6D81F /* ChildProfileView.swift */; };
 		93501B172CE8EF0A00E6D81F /* ChildProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93501B162CE8EF0A00E6D81F /* ChildProfileViewModel.swift */; };
-		93501B212CEA593500E6D81F /* MenuNavigationStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93501B202CEA593500E6D81F /* MenuNavigationStack.swift */; };
-		93501B232CEA5B4F00E6D81F /* MenuNavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93501B222CEA59EE00E6D81F /* MenuNavigationCoordinator.swift */; };
 		93501B282CEE147E00E6D81F /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93501B272CEE147E00E6D81F /* ImageLoader.swift */; };
 		93501B2A2CEE14AC00E6D81F /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93501B292CEE14AC00E6D81F /* AsyncImage.swift */; };
 		9366FB182B6B063900A57F89 /* LBToolBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9366FB172B6B063900A57F89 /* LBToolBarModifier.swift */; };
@@ -236,8 +234,6 @@
 		93501B0D2CC0195200E6D81F /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
 		93501B142CE8467400E6D81F /* ChildProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildProfileView.swift; sourceTree = "<group>"; };
 		93501B162CE8EF0A00E6D81F /* ChildProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildProfileViewModel.swift; sourceTree = "<group>"; };
-		93501B202CEA593500E6D81F /* MenuNavigationStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuNavigationStack.swift; sourceTree = "<group>"; };
-		93501B222CEA59EE00E6D81F /* MenuNavigationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuNavigationCoordinator.swift; sourceTree = "<group>"; };
 		93501B272CEE147E00E6D81F /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		93501B292CEE14AC00E6D81F /* AsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
 		9366FB172B6B063900A57F89 /* LBToolBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBToolBarModifier.swift; sourceTree = "<group>"; };
@@ -475,7 +471,6 @@
 		8C9053052CC84BEA00E4485C /* Menu */ = {
 			isa = PBXGroup;
 			children = (
-				93501B1F2CEA592200E6D81F /* Navigation */,
 				336ECF872C9CFFD30062691E /* MenuView.swift */,
 				33B2F7A12CFE79E60014AA57 /* MenuResponsibleEditView.swift */,
 				93501B0D2CC0195200E6D81F /* MenuViewModel.swift */,
@@ -730,15 +725,6 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
-		93501B1F2CEA592200E6D81F /* Navigation */ = {
-			isa = PBXGroup;
-			children = (
-				93501B222CEA59EE00E6D81F /* MenuNavigationCoordinator.swift */,
-				93501B202CEA593500E6D81F /* MenuNavigationStack.swift */,
-			);
-			path = Navigation;
-			sourceTree = "<group>";
-		};
 		93501B242CEA8AED00E6D81F /* Menu */ = {
 			isa = PBXGroup;
 			children = (
@@ -949,7 +935,6 @@
 				91361A262ACEF06B00700E36 /* ResponseMessage.swift in Sources */,
 				334D0AB52A8AF93D003881ED /* ResetPasswordModel.swift in Sources */,
 				93501B282CEE147E00E6D81F /* ImageLoader.swift in Sources */,
-				93501B232CEA5B4F00E6D81F /* MenuNavigationCoordinator.swift in Sources */,
 				91B4AC252AD0F61B003A7FE5 /* JSONParse.swift in Sources */,
 				8C5734202A6B6F6B0052B955 /* LBTextField.swift in Sources */,
 				33DE3B212B75975400F45449 /* UserAuth.swift in Sources */,
@@ -972,7 +957,6 @@
 				335E21A72AFF132800700440 /* FrequencyRotineView.swift in Sources */,
 				91A7CC182ACF9F8500109300 /* LBDatePicker.swift in Sources */,
 				931D12DB2B82C25300589032 /* TasksViewModel.swift in Sources */,
-				93501B212CEA593500E6D81F /* MenuNavigationStack.swift in Sources */,
 				9370B52D2C06444E00C28B0D /* LBDeleteTaskDialog.swift in Sources */,
 				93B2DD6E2BD1EC6C009BEB16 /* LBCategoryButton.swift in Sources */,
 				8CE03E3C2A6363630024919C /* LBIcon.swift in Sources */,
