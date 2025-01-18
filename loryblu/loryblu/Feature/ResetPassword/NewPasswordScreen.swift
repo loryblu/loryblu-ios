@@ -4,7 +4,6 @@ struct NewPasswordScreen: View {
     @ObservedObject var model: NewPasswordModel
     @EnvironmentObject var appData: AppData
     @EnvironmentObject var coordinator: LoginNavigationStack.NavigationCoordinator
-
     @Environment(\.dismiss) var dismiss
 
     var body: some View {
@@ -29,7 +28,8 @@ struct NewPasswordScreen: View {
             HStack {
                 PasswordRulesView(password: model.password)
                 Spacer()
-            }.padding(.bottom, 16)
+            }
+            .padding(.bottom, 16)
 
             LBTextField(style: .password,
                         icon: .lock,
@@ -41,7 +41,7 @@ struct NewPasswordScreen: View {
             VStack(spacing: 5) {
 
                 if model.isEqual == true {
-                    Text("")
+                    Text(String())
                     .padding()
                 } else {
                     Text(LBStrings.SetPassword.passwordMustbeEqual)
@@ -92,7 +92,6 @@ extension NewPasswordScreen {
         NewPasswordScreen(model: NewPasswordModel())
     }
 }
-
 
 struct NewPasswordScreen_Previews: PreviewProvider {
     static var previews: some View {

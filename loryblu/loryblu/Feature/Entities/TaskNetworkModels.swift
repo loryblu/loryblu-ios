@@ -25,7 +25,7 @@ struct TasksNetworkModel: Decodable {
 extension [TasksNetworkModel] {
     func toTasksModel(category: String) -> [TaskModel] {
         let taskImages = category == LBStrings.Locbook.titleStudy ? ListTasks.study : ListTasks.rotine
-        
+
         return self.map { (task: TasksNetworkModel) -> TaskModel in
             let shift = getShift(shift: task.shift)
             let frequency = frequencyMapper(frequency: task.frequency)

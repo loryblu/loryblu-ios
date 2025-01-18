@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct LBRadioButton<Content> : View where Content : View  {
+struct LBRadioButton<Content>: View where Content: View {
     @Binding var isSelected: Bool
     let content: () -> Content
 

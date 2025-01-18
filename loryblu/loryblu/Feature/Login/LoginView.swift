@@ -132,13 +132,13 @@ struct LoginView: View {
 
 extension LoginView {
     struct FormConfig {
-        var email: String = ""
-        var password: String = ""
+        var email: String = String()
+        var password: String = String()
         var isEmailValid: Bool = true
         var isPasswordNotEmpty: Bool = true
         var rememberMe: Bool = false
         var isPasswordHidden: Bool = true
-        var textError = ""
+        var textError = String()
         var showResetPassword: Bool = false
         var showResponsibleRegister: Bool = false
         var showChildRegister: Bool = false
@@ -159,7 +159,7 @@ extension LoginView {
             }
 
             isEmailValid = true
-            textError = ""
+            textError = String()
             isPasswordNotEmpty = true
             return true
         }

@@ -5,44 +5,55 @@ class TaskFilter {
     var dayText: String?
     var shift: LocbookTask.Shift?
     var tasks: [TaskModel] = []
-    
-    init(day: LocbookTask.Frequency? = nil, dayText: String? = nil, shift: LocbookTask.Shift? = nil, tasks: [TaskModel] = []) {
+
+    init(
+        day: LocbookTask.Frequency? = nil,
+        dayText: String? = nil,
+        shift: LocbookTask.Shift? = nil,
+        tasks: [TaskModel] = []
+    ) {
         self.day = day
         self.dayText = dayText
         self.shift = shift
         self.tasks = tasks
     }
-    
+
     func filterByShift(shift: LocbookTask.Shift, allTasks: [Int: TaskModel]) -> TaskFilter {
-        tasks = allTasks.values.filter({ task in
-            Set([day]).intersection(Set(task.locbookTask.frequency ?? [])).isEmpty == false && task.locbookTask.shift == shift
-        })
+        tasks = allTasks.values.filter { task in
+            guard let day = day, let frequency = task.locbookTask.frequency else {
+                return false
+            }
+            return frequency.contains(day) && task.locbookTask.shift == shift
+        }
         self.shift = shift
         return getCurrentFilterState()
     }
-    
+
     func filterByWeekDay(weekDays: [LocbookTask.Frequency], allTasks: [Int: TaskModel]) -> TaskFilter {
         var taskFiltered: [TaskModel] = []
         day = weekDays.first ?? .sun
-        if weekDays == [] {
+
+        if weekDays.isEmpty {
             tasks = Array(allTasks.values)
         } else {
-            taskFiltered = allTasks.values.filter({ task in
-                Set(weekDays).intersection(Set(task.locbookTask.frequency ?? [])).isEmpty == false && task.locbookTask.shift == shift
-            })
+            taskFiltered = allTasks.values.filter { task in
+                guard let frequency = task.locbookTask.frequency else { return false }
+                return weekDays.contains(where: frequency.contains) && task.locbookTask.shift == shift
+            }
             tasks = taskFiltered
         }
-        dayText  = getDayOfWeekName(dayValue: self.day)
+
+        dayText = getDayOfWeekName(dayValue: self.day)
         return getCurrentFilterState()
     }
-    
+
     func removeById(taskId: Int?) -> TaskFilter {
         do {
             tasks.removeAll(where: { $0.locbookTask.id == taskId! })
         }
         return getCurrentFilterState()
     }
-    
+
     private func getCurrentFilterState() -> TaskFilter {
         return TaskFilter(
             day: day,
@@ -51,7 +62,7 @@ class TaskFilter {
             tasks: tasks
         )
     }
-    
+
     private func getDayOfWeekName(dayValue: LocbookTask.Frequency?) -> String {
         switch dayValue {
         case .sun:

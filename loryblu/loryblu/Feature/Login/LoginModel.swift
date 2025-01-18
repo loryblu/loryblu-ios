@@ -10,7 +10,7 @@ class LoginModel: ObservableObject {
     }
 
     @Published var loginStatus: LoginStatus = .none
-    @Published var networkError: String = ""
+    @Published var networkError: String = String()
 
     private var repository = Container.shared.autenticationRepository()
 

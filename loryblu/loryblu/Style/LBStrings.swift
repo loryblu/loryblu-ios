@@ -89,6 +89,7 @@ extension LBStrings {
         static let passwordMustbeEqual = String(localized: "setPassword_must_be_equal")
         static let successChangePassword = String(localized: "success_change_password")
         static let failureChangePassword = String(localized: "failure_change_password")
+        static let logoutNewPassword = String(localized: "setPassword_alert_logout")
     }
 }
 

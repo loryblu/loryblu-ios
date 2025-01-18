@@ -40,7 +40,7 @@ struct LocbookSummaryView: View {
         self.props = props
         var formConfig = FormConfig(task: props.task)
         formConfig.initProperties(frequency: props.task.frequency)
-        self._formConfig  = State(initialValue: formConfig)
+        self._formConfig = State(initialValue: formConfig)
     }
 
     var body: some View {
@@ -216,7 +216,7 @@ struct LocbookSummaryView: View {
                 guard let editedTask = formConfig.task else {
                     return
                 }
-                
+
                 Task {
                     await model.saveEditedTask(
                         task: editedTask,

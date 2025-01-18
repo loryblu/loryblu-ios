@@ -9,6 +9,7 @@ class RegisterRepository {
         self.network = network
     }
 
+    @discardableResult
     func register(user: UserRegister) async throws -> ResponseMessage {
         let request = RequestModel.Builder()
             .with(baseURL: "https://loryblu-homologation.onrender.com/")

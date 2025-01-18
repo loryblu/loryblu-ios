@@ -34,6 +34,8 @@ enum LBIcon: String {
     case google
     case headLori = "head_lori"
     case headMenu = "head_menu"
+    case info
+    case infoGray = "info_gray"
     case language
     case locbook
     case locbookShadow = "locbook_shadow"
