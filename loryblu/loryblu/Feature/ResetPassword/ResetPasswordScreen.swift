@@ -18,11 +18,14 @@ struct ResetPasswordScreen: View {
                 .font(LBFont.subtitle)
                 .padding(.bottom, 56)
 
-            LBTextField(style: .common,
-                        icon: LBIcon.mail,
-                        title: LBStrings.General.email,
-                        text: $userEmail,
-                        textFiledState: .active)
+            LBTextField(
+                style: .common,
+                icon: LBIcon.mail,
+                title: LBStrings.General.email,
+                text: $userEmail,
+                textFiledState: .active,
+                action: nil
+            )
             .padding(.bottom, 39)
             .textInputAutocapitalization(.never)
 

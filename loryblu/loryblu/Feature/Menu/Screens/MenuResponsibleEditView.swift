@@ -43,7 +43,8 @@ struct MenuResponsibleEditView: View {
                     icon: LBIcon.user,
                     title: String(),
                     text: $formConfig.user,
-                    textFiledState: props.isAvaliable ? .active : .disable
+                    textFiledState: props.isAvaliable ? .active : .disable,
+                    action: nil
                 )
                 .padding(.bottom, 30)
 
@@ -55,7 +56,8 @@ struct MenuResponsibleEditView: View {
                     icon: LBIcon.mail,
                     title: String(),
                     text: $formConfig.email,
-                    textFiledState: .disable
+                    textFiledState: .disable,
+                    action: nil
                 )
 
                 HStack {
@@ -81,8 +83,14 @@ struct MenuResponsibleEditView: View {
                     icon: LBIcon.lock,
                     title: String(),
                     text: $formConfig.password,
-                    textFiledState: props.isAvaliable ? .active : .disable
+                    textFiledState: props.isAvaliable ? .active : .disable,
+                    action: {
+                        print("Abrir tela de alterar senha")
+                        
+                    }
                 )
+//                .locbookToolbar(title: LBStrings.General.changePassword, showCloseButton: false)
+//                    .backgroundStyle(LBColor.background)
 
                 if props.isAvaliable {
                     bottomBody
@@ -95,7 +103,7 @@ struct MenuResponsibleEditView: View {
                 formConfig.user = appData.userData?.data.user.parentName ?? String()
             }
         }
-        .locbookToolbar(title: LBStrings.Menu.profileUser, showCloseButton: true)
+        .locbookToolbar(title: LBStrings.Menu.profileUser, showCloseButton: false)
         .backgroundStyle(LBColor.background)
     }
 

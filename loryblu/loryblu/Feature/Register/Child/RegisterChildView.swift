@@ -71,7 +71,8 @@ struct RegisterChildView: View {
                     icon: LBIcon.user,
                     title: LBStrings.Register.name,
                     text: $viewModel.nameChild,
-                    textFiledState: viewModel.errorField == .nameChild ? .alert : .active
+                    textFiledState: viewModel.errorField == .nameChild ? .alert : .active,
+                    action: nil
                 )
                 .focused($focusedField, equals: .nameChild)
                 .onChange(of: viewModel.nameChild) { _ in
