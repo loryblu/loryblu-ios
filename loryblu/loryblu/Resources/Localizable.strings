@@ -15,6 +15,7 @@
 "leave" = "Sair";
 "change_password" = "Alterar Senha";
 "save" = "Salvar";
+"old_password" = "Senha antiga";
 
 // ====================  Rules Password  =========================
 

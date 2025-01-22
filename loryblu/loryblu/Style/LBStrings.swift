@@ -21,6 +21,7 @@ extension LBStrings {
         static let allDays = String(localized: "all_days")
         static let changePassword = String(localized: "change_password")
         static let save = String(localized: "save")
+        static let oldPassword = String(localized: "old_password")
     }
 }
 extension LBStrings {

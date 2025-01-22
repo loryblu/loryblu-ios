@@ -71,6 +71,7 @@
 		8C9CBCFC2A7ACF46001DBD35 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9CBCFA2A7ACF46001DBD35 /* LoginView.swift */; };
 		8C9CBD0D2A7AE97B001DBD35 /* RegisterChildView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9CBD0C2A7AE97B001DBD35 /* RegisterChildView.swift */; };
 		8C9CBD102A7AEC24001DBD35 /* PasswordRulesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9CBD0F2A7AEC24001DBD35 /* PasswordRulesView.swift */; };
+		8CA35C422D40A5E000388F47 /* ChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA35C412D40A5E000388F47 /* ChangePasswordView.swift */; };
 		8CB8E02F2D07C4260013CDAB /* AlertSimpleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB8E02E2D07C4260013CDAB /* AlertSimpleView.swift */; };
 		8CCD707B2B7A637100AA60CF /* CardTaskRegistered.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCD707A2B7A637100AA60CF /* CardTaskRegistered.swift */; };
 		8CCD707D2B7A6CE600AA60CF /* EditTaskButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCD707C2B7A6CE500AA60CF /* EditTaskButton.swift */; };
@@ -191,6 +192,7 @@
 		8C9CBCFA2A7ACF46001DBD35 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		8C9CBD0C2A7AE97B001DBD35 /* RegisterChildView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterChildView.swift; sourceTree = "<group>"; };
 		8C9CBD0F2A7AEC24001DBD35 /* PasswordRulesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordRulesView.swift; sourceTree = "<group>"; };
+		8CA35C412D40A5E000388F47 /* ChangePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordView.swift; sourceTree = "<group>"; };
 		8CB8E02E2D07C4260013CDAB /* AlertSimpleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertSimpleView.swift; sourceTree = "<group>"; };
 		8CCD707A2B7A637100AA60CF /* CardTaskRegistered.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTaskRegistered.swift; sourceTree = "<group>"; };
 		8CCD707C2B7A6CE500AA60CF /* EditTaskButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskButton.swift; sourceTree = "<group>"; };
@@ -561,6 +563,7 @@
 			isa = PBXGroup;
 			children = (
 				33B2F7A12CFE79E60014AA57 /* MenuResponsibleEditView.swift */,
+				8CA35C412D40A5E000388F47 /* ChangePasswordView.swift */,
 				8C9053062CC84C5E00E4485C /* MenuWebView.swift */,
 			);
 			path = Screens;
@@ -913,6 +916,7 @@
 				33DE3B212B75975400F45449 /* UserAuth.swift in Sources */,
 				33212E392B0580720066BFBE /* LBfloatingButton.swift in Sources */,
 				334D0AB62A8AF93D003881ED /* ResetPasswordScreen.swift in Sources */,
+				8CA35C422D40A5E000388F47 /* ChangePasswordView.swift in Sources */,
 				33B2ABFC2ACE587A004CF7DF /* RepositorySetPassword.swift in Sources */,
 				8C3120F02ABB3D8B00D580BD /* Request.swift in Sources */,
 				9132A8932B083B8E00106524 /* LoginNavigationStack.swift in Sources */,
