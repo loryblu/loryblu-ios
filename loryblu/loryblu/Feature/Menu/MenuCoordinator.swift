@@ -14,6 +14,7 @@ class MenuCoordinator: ObservableObject {
         enum Navigation: Hashable {
             case menu(MenuView.Props)
             case responsible(MenuResponsibleEditView.Props)
+            case changePassword(ChangePasswordView.Props)
             case child
             case accessControl
             case finishView(DoneView.Props)
@@ -37,6 +38,10 @@ class MenuCoordinator: ObservableObject {
         navigate(to: .responsible(props))
     }
 
+    func pushChangePasswordView(props: ChangePasswordView.Props) {
+        navigate(to: .changePassword(props))
+    }
+
     func pushChildEditView() {}
 
     func pushAccessControlView() {}
@@ -52,6 +57,8 @@ class MenuCoordinator: ObservableObject {
             MenuView(props: props)
         case .responsible(let props):
             MenuResponsibleEditView(props: props)
+        case .changePassword(let props):
+            ChangePasswordView(props: props)
         case .child:
             EmptyView()
         case .accessControl:

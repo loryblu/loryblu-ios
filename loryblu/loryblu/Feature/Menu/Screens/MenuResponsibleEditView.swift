@@ -8,6 +8,7 @@ struct MenuResponsibleEditView: View {
         var image: Image
         var isAvaliable: Bool
         var onClose: ClosureType.VoidVoid?
+        var onNextView: ClosureType.VoidVoid?
     }
 
     let props: Props
@@ -85,12 +86,9 @@ struct MenuResponsibleEditView: View {
                     text: $formConfig.password,
                     textFiledState: props.isAvaliable ? .active : .disable,
                     action: {
-                        print("Abrir tela de alterar senha")
-                        
+                        props.onNextView?()
                     }
                 )
-//                .locbookToolbar(title: LBStrings.General.changePassword, showCloseButton: false)
-//                    .backgroundStyle(LBColor.background)
 
                 if props.isAvaliable {
                     bottomBody
@@ -156,7 +154,9 @@ extension MenuResponsibleEditView.Props: Hashable {
     MenuResponsibleEditView(
         props: .init(
             image: LBIcon.childTree.image,
-            isAvaliable: false
+            isAvaliable: false,
+            onClose: {},
+            onNextView: {}
         )
     )
 }
