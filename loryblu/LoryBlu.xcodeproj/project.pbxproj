@@ -370,8 +370,8 @@
 			children = (
 				91664AE32B0C029E005BF5CA /* HomeNavigationCoordinator.swift */,
 				91664AE12B0C003A005BF5CA /* HomeNavigationStack.swift */,
-				8C2A684C2AF54A9600B74295 /* HomeView.swift */,
 				33DE3B222B75993200F45449 /* HomeViewModel.swift */,
+				8C2A684C2AF54A9600B74295 /* HomeView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -473,9 +473,8 @@
 				8C5F08822D10CC180090FF9F /* MenuNavigationStack.swift */,
 				8C5F08802D109AA30090FF9F /* MenuCoordinator.swift */,
 				336ECF872C9CFFD30062691E /* MenuView.swift */,
-				33B2F7A12CFE79E60014AA57 /* MenuResponsibleEditView.swift */,
 				93501B0D2CC0195200E6D81F /* MenuViewModel.swift */,
-				8C9053062CC84C5E00E4485C /* MenuWebView.swift */,
+				8CE0BFD82D3C1B4500BBD544 /* Screens */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -556,6 +555,15 @@
 				339573E22B87E37600E38B80 /* LBDaysButtonStyle.swift */,
 			);
 			path = Style;
+			sourceTree = "<group>";
+		};
+		8CE0BFD82D3C1B4500BBD544 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				33B2F7A12CFE79E60014AA57 /* MenuResponsibleEditView.swift */,
+				8C9053062CC84C5E00E4485C /* MenuWebView.swift */,
+			);
+			path = Screens;
 			sourceTree = "<group>";
 		};
 		8CFB35912A6059BD008BF633 = {

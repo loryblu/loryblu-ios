@@ -90,11 +90,13 @@ struct LocbookTasksView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .padding(.bottom, 24)
 
-            LBButton(title: LBStrings.General.next, style: .primaryActivated) {
+            LBButton(
+                title: LBStrings.General.next,
+                style: .primaryActivated
+            ) {
                 if(formConfig.selectedCard) != nil {
                     props.onNext?(formConfig.task)
                 }
-                // ENVIAR O categoryID da task e nome. ( task.categoryID / task.name )
             }
         }
         .scrollContentBackground(.hidden)

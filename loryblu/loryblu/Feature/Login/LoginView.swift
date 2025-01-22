@@ -132,8 +132,8 @@ struct LoginView: View {
 
 extension LoginView {
     struct FormConfig {
-        var email: String = String()
-        var password: String = String()
+        var email: String = "sucris12@gmail.com"
+        var password: String = "100389Sc#"
         var isEmailValid: Bool = true
         var isPasswordNotEmpty: Bool = true
         var rememberMe: Bool = false

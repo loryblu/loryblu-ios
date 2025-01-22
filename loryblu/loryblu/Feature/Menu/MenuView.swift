@@ -59,6 +59,7 @@ struct MenuView: View {
                             image: childImage,
                             style: .person
                         )
+
                         LBMenuCellPerson(
                             onClick: {
                                 props.showNextPage?()
@@ -169,6 +170,9 @@ extension MenuView {
     }
 }
 
+@available(iOS 17.0, *)
 #Preview {
+    @Previewable @StateObject var appData: AppData = .init()
     MenuView(urlString: String(), props: .init(showNextPage: nil))
+        .environmentObject(appData)
 }

@@ -95,6 +95,8 @@ struct MenuResponsibleEditView: View {
                 formConfig.user = appData.userData?.data.user.parentName ?? String()
             }
         }
+        .locbookToolbar(title: LBStrings.Menu.profileUser, showCloseButton: true)
+        .backgroundStyle(LBColor.background)
     }
 
     var imageDefault: some View {
@@ -142,7 +144,7 @@ extension MenuResponsibleEditView.Props: Hashable {
 }
 
 #Preview {
-    let user = User(parentName: "", childrens: [])
+    let user = User(parentName: "Maria de Jesus Santos", childrens: [])
     MenuResponsibleEditView(
         props: .init(
             image: LBIcon.childTree.image,

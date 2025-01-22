@@ -50,7 +50,8 @@ struct MenuNavigationStack: View {
         coordinator.pushResponsibleEditView(
             props: MenuResponsibleEditView.Props(
                 image: LBIcon.parentsTree2.image,
-                isAvaliable: true
+                isAvaliable: true,
+                onClose: { dismiss() }
             )
         )
     }
