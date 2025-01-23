@@ -29,7 +29,7 @@
 		339573E32B87E37600E38B80 /* LBDaysButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339573E22B87E37600E38B80 /* LBDaysButtonStyle.swift */; };
 		33AAFCF22AC649C200039063 /* NewPasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AAFCF12AC649C200039063 /* NewPasswordModel.swift */; };
 		33B2ABFC2ACE587A004CF7DF /* RepositorySetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B2ABFB2ACE587A004CF7DF /* RepositorySetPassword.swift */; };
-		33B2F7A22CFE79E60014AA57 /* MenuResponsibleEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B2F7A12CFE79E60014AA57 /* MenuResponsibleEditView.swift */; };
+		33B2F7A22CFE79E60014AA57 /* ResponsibleEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B2F7A12CFE79E60014AA57 /* ResponsibleEditView.swift */; };
 		33BA2DE62AC9BE3D009704FD /* DeepLinkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA2DE52AC9BE3D009704FD /* DeepLinkHandler.swift */; };
 		33D0F90E2AD0EE3700EE54DF /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D0F90D2AD0EE3700EE54DF /* Endpoints.swift */; };
 		33D1AED22C756CE5002E630C /* LBMenuCellPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D1AED12C756CE5002E630C /* LBMenuCellPerson.swift */; };
@@ -150,7 +150,7 @@
 		339573E22B87E37600E38B80 /* LBDaysButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBDaysButtonStyle.swift; sourceTree = "<group>"; };
 		33AAFCF12AC649C200039063 /* NewPasswordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPasswordModel.swift; sourceTree = "<group>"; };
 		33B2ABFB2ACE587A004CF7DF /* RepositorySetPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositorySetPassword.swift; sourceTree = "<group>"; };
-		33B2F7A12CFE79E60014AA57 /* MenuResponsibleEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuResponsibleEditView.swift; sourceTree = "<group>"; };
+		33B2F7A12CFE79E60014AA57 /* ResponsibleEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponsibleEditView.swift; sourceTree = "<group>"; };
 		33BA2DE52AC9BE3D009704FD /* DeepLinkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkHandler.swift; sourceTree = "<group>"; };
 		33D0F90D2AD0EE3700EE54DF /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
 		33D1AED12C756CE5002E630C /* LBMenuCellPerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBMenuCellPerson.swift; sourceTree = "<group>"; };
@@ -562,7 +562,7 @@
 		8CE0BFD82D3C1B4500BBD544 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				33B2F7A12CFE79E60014AA57 /* MenuResponsibleEditView.swift */,
+				33B2F7A12CFE79E60014AA57 /* ResponsibleEditView.swift */,
 				8CA35C412D40A5E000388F47 /* ChangePasswordView.swift */,
 				8C9053062CC84C5E00E4485C /* MenuWebView.swift */,
 			);
@@ -946,7 +946,7 @@
 				337A39E92C0FD89900B89B3D /* LBDeleteConfirmation.swift in Sources */,
 				339573E32B87E37600E38B80 /* LBDaysButtonStyle.swift in Sources */,
 				9302EE942B71C0C0003D7C4F /* LBShiftItemsComponent.swift in Sources */,
-				33B2F7A22CFE79E60014AA57 /* MenuResponsibleEditView.swift in Sources */,
+				33B2F7A22CFE79E60014AA57 /* ResponsibleEditView.swift in Sources */,
 				8C27B8542A68C19400F72214 /* LBLabel.swift in Sources */,
 				8C5DFC8F2A85AE13002739D9 /* LBToggle.swift in Sources */,
 				8C57341B2A6B4F5F0052B955 /* LBStrings.swift in Sources */,
