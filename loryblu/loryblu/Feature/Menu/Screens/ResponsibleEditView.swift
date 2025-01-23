@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct MenuResponsibleEditView: View {
+struct ResponsibleEditView: View {
     @EnvironmentObject var appData: AppData
     @State var formConfig: FormConfig
 
@@ -130,7 +130,7 @@ struct MenuResponsibleEditView: View {
     }
 }
 
-extension MenuResponsibleEditView {
+extension ResponsibleEditView {
     struct FormConfig {
         var image: Image
         var user: String
@@ -139,7 +139,7 @@ extension MenuResponsibleEditView {
     }
 }
 
-extension MenuResponsibleEditView.Props: Hashable {
+extension ResponsibleEditView.Props: Hashable {
     static func == (lhs: Self, rhs: Self) -> Bool {
         return lhs.hashValue == rhs.hashValue
     }
@@ -151,7 +151,7 @@ extension MenuResponsibleEditView.Props: Hashable {
 
 #Preview {
     let user = User(parentName: "Maria de Jesus Santos", childrens: [])
-    MenuResponsibleEditView(
+    ResponsibleEditView(
         props: .init(
             image: LBIcon.childTree.image,
             isAvaliable: false,
