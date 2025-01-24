@@ -103,11 +103,11 @@ struct ChildEditView: View {
 
     var bottonsGender: some View {
         HStack(spacing: 16) {
-            LBGenderButton(gender: .male, isActive: formConfig.gender == "male") {
+            LBGenderButton(gender: .male, isActive: formConfig.gender == "male", isAvailable: props.isAvaliable) {
                 formConfig.gender = appData.userData?.data.user.childrens.first?.gender ?? ""
             }
 
-            LBGenderButton(gender: .female, isActive: formConfig.gender == "female" ) {
+            LBGenderButton(gender: .female, isActive: formConfig.gender == "female", isAvailable: props.isAvaliable) {
                 formConfig.gender = appData.userData?.data.user.childrens.first?.gender ?? ""
             }
         }
@@ -148,7 +148,7 @@ extension ChildEditView.Props: Hashable {
 @available(iOS 17.0, *)
 #Preview {
     @Previewable @StateObject var appData: AppData = .init()
-    let user = User(parentName: "Maria de Jesus Santos", childrens: [])
+    let user = User(parentName: "", childrens: [])
     ChildEditView(
         props: .init(
             image: LBIcon.parentsTree.image,

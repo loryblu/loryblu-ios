@@ -103,7 +103,7 @@ struct ResponsibleEditView: View {
                 formConfig.user = appData.userData?.data.user.parentName ?? String()
             }
         }
-        .locbookToolbar(title: LBStrings.Menu.profileChild, showCloseButton: true) {
+        .locbookToolbar(title: LBStrings.Menu.profileUser, showCloseButton: true) {
             props.onClose?()
         }
     }
