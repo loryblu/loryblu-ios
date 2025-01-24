@@ -27,8 +27,25 @@ struct ChildEditView: View {
     var body: some View {
         VStack {
             Spacer()
-            HStack {
+            ZStack(alignment: .bottomTrailing) {
                 imageDefault
+
+                if props.isAvaliable {
+                    Button {
+                        // TODO: Fluxo para tela de edicao de foto.
+                    } label: {
+                        Image(LBIcon.editWhite.rawValue)
+                            .resizable()
+                            .frame(width: 16, height: 16)
+                            .foregroundStyle(.white)
+
+                    }
+                    .frame(width: 32, height: 32)
+                    .background(Circle().fill(LBColor.buttonPrimary))
+                    .contentShape(Circle())
+                    .padding(.init(top: 0, leading: 0, bottom: 16, trailing: 16))
+                }
+
             }
             .frame(maxWidth: .infinity)
             .frame(height: 148)
