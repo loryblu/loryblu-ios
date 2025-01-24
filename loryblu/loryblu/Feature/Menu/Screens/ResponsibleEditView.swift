@@ -91,18 +91,21 @@ struct ResponsibleEditView: View {
                 )
 
                 if props.isAvaliable {
+                    Spacer()
                     bottomBody
-                        .padding(.top, 68)
+                        .padding(.bottom, 24)
+                } else {
+                    Spacer()
                 }
-                Spacer()
             }
             .padding()
             .onAppear {
                 formConfig.user = appData.userData?.data.user.parentName ?? String()
             }
         }
-        .locbookToolbar(title: LBStrings.Menu.profileUser, showCloseButton: false)
-        .backgroundStyle(LBColor.background)
+        .locbookToolbar(title: LBStrings.Menu.profileChild, showCloseButton: true) {
+            props.onClose?()
+        }
     }
 
     var imageDefault: some View {
@@ -149,14 +152,17 @@ extension ResponsibleEditView.Props: Hashable {
     }
 }
 
+@available(iOS 17.0, *)
 #Preview {
+    @Previewable @StateObject var appData: AppData = .init()
     let user = User(parentName: "Maria de Jesus Santos", childrens: [])
     ResponsibleEditView(
         props: .init(
-            image: LBIcon.childTree.image,
-            isAvaliable: false,
+            image: LBIcon.parentsTree.image,
+            isAvaliable: true,
             onClose: {},
             onNextView: {}
         )
     )
+    .environmentObject(appData)
 }
