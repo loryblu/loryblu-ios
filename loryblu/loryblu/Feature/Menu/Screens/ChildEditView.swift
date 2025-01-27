@@ -18,7 +18,7 @@ struct ChildEditView: View {
         let config = FormConfig(
             image: props.image,
             children: String(),
-            birthday: Date(),
+            birthday: String(),
             gender: String()
         )
         self._formConfig = State(initialValue: config)
@@ -32,7 +32,7 @@ struct ChildEditView: View {
 
                 if props.isAvaliable {
                     Button {
-                        // TODO: Fluxo para tela de edicao de foto.
+                        // MARK: TODO - Fluxo para tela de edicao de foto.
                     } label: {
                         Image(LBIcon.editWhite.rawValue)
                             .resizable()
@@ -75,7 +75,7 @@ struct ChildEditView: View {
                         style: .common,
                         icon: LBIcon.cake,
                         title: String(),
-                        text: $formConfig.children,
+                        text: $formConfig.birthday,
                         textFiledState: props.isAvaliable ? .active : .disable,
                         action: nil
                     )
@@ -101,7 +101,7 @@ struct ChildEditView: View {
                 formConfig.children = appData.userData?.data.user.childrens.first?.fullname ?? String()
             }
         }
-        .locbookToolbar(title: LBStrings.Menu.profileUser, showCloseButton: false) {
+        .locbookToolbar(title: LBStrings.Menu.profileChild, showCloseButton: false) {
             props.onClose?()
         }
     }
@@ -137,7 +137,7 @@ struct ChildEditView: View {
             }
 
             LBButton(title: LBStrings.General.save) {
-                // MARK: - TODO fazer update na API
+                // MARK: TODO - fazer update na API
             }
         }
     }
@@ -147,7 +147,7 @@ extension ChildEditView {
     struct FormConfig {
         var image: Image
         var children: String
-        var birthday: Date
+        var birthday: String = "12/12/2012"
         var gender: String
     }
 }
@@ -165,11 +165,11 @@ extension ChildEditView.Props: Hashable {
 @available(iOS 17.0, *)
 #Preview {
     @Previewable @StateObject var appData: AppData = .init()
-    let user = User(parentName: "", childrens: [])
+    let user = User(parentName: "", childrens: [.init(id: 1, fullname: "Julia Santos", gender: "female", birthdate: "12/12/2012")])
     ChildEditView(
         props: .init(
             image: LBIcon.parentsTree.image,
-            isAvaliable: true,
+            isAvaliable: false,
             onClose: {},
             onNextView: {}
         )

@@ -31,9 +31,12 @@ struct MenuNavigationStack: View {
         NavigationStack(path: $coordinator.path) {
             coordinator.buildView(
                 page: .menu(
-                    .init(
-                        showNextPage: {
-                            pushResponsibleEdit(aappData: appData)
+                    .init(showResponsibleEdit: {
+                        pushResponsibleEdit(appData: appData)
+                    }, showChildEdit: {
+                        pushChildEdit(appData: appData)
+                    }, showAccessControl: {
+                        //
                     })
                 )
             )
@@ -46,7 +49,7 @@ struct MenuNavigationStack: View {
         }
     }
 
-    private func pushResponsibleEdit(aappData: AppData) {
+    private func pushResponsibleEdit(appData: AppData) {
         coordinator.pushResponsibleEditView(
             props: ResponsibleEditView.Props(
                 image: LBIcon.parentsTree2.image,
@@ -64,8 +67,14 @@ struct MenuNavigationStack: View {
         )
     }
 
-    private func pushChildEdit() {
-        print("%=== CHILD EDIT ===%")
+    private func pushChildEdit(appData: AppData) {
+        coordinator.pushChildEditView(
+            props: ChildEditView.Props(
+                image: LBIcon.childTree.image,
+                isAvaliable: true,
+                onClose: { dismiss() }
+            )
+        )
     }
 
     private func pushFinishView(message: String) {

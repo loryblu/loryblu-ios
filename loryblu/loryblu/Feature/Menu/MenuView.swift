@@ -53,7 +53,9 @@ struct MenuView: View {
                         }
 
                         LBMenuCellPerson(
-                            onClick: { },
+                            onClick: {
+                                props.showChildEdit?()
+                            },
                             description: LBStrings.Menu.childName,
                             name: childName,
                             image: childImage,
@@ -62,7 +64,7 @@ struct MenuView: View {
 
                         LBMenuCellPerson(
                             onClick: {
-                                props.showNextPage?()
+                                props.showResponsibleEdit?()
                             },
                             description: LBStrings.Menu.parentsName,
                             name: userName,
@@ -147,7 +149,9 @@ struct MenuView: View {
 
 extension MenuView {
     struct Props {
-        let showNextPage: ClosureType.VoidVoid?
+        let showResponsibleEdit: ClosureType.VoidVoid?
+        let showChildEdit: ClosureType.VoidVoid?
+        let showAccessControl: ClosureType.VoidVoid?
     }
 }
 
@@ -161,18 +165,9 @@ extension MenuView.Props: Hashable {
     }
 }
 
-extension MenuView {
-    static func build(nextPage: ClosureType.VoidVoid?) -> Self {
-        MenuView(
-            urlString: String(),
-            props: .init(showNextPage: nextPage)
-        )
-    }
-}
-
 @available(iOS 17.0, *)
 #Preview {
     @Previewable @StateObject var appData: AppData = .init()
-    MenuView(urlString: String(), props: .init(showNextPage: nil))
+    MenuView(urlString: String(), props: .init(showResponsibleEdit: nil, showChildEdit: nil, showAccessControl: nil))
         .environmentObject(appData)
 }

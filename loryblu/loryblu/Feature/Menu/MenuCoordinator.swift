@@ -15,7 +15,7 @@ class MenuCoordinator: ObservableObject {
             case menu(MenuView.Props)
             case responsible(ResponsibleEditView.Props)
             case changePassword(ChangePasswordView.Props)
-            case child
+            case child(ChildEditView.Props)
             case accessControl
             case finishView(DoneView.Props)
         }
@@ -42,7 +42,9 @@ class MenuCoordinator: ObservableObject {
         navigate(to: .changePassword(props))
     }
 
-    func pushChildEditView() {}
+    func pushChildEditView(props: ChildEditView.Props) {
+        navigate(to: .child(props))
+    }
 
     func pushAccessControlView() {}
 
@@ -59,8 +61,8 @@ class MenuCoordinator: ObservableObject {
             ResponsibleEditView(props: props)
         case .changePassword(let props):
             ChangePasswordView(props: props)
-        case .child:
-            EmptyView()
+        case .child(let props):
+            ChildEditView(props: props)
         case .accessControl:
             EmptyView()
         case .finishView(let props):
