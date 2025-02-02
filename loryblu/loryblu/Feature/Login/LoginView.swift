@@ -35,7 +35,8 @@ struct LoginView: View {
                         icon: LBIcon.mail,
                         title: LBStrings.Login.email,
                         text: $form.email,
-                        textFiledState: form.isEmailValid ? .active : .alert)
+                        textFiledState: form.isEmailValid ? .active : .alert,
+                        action: nil)
                     .textInputAutocapitalization(.never)
 
                     LBTextField(
@@ -43,7 +44,8 @@ struct LoginView: View {
                         icon: LBIcon.lock,
                         title: LBStrings.Login.password,
                         text: $form.password,
-                        textFiledState: form.isPasswordNotEmpty ? .active : .alert)
+                        textFiledState: form.isPasswordNotEmpty ? .active : .alert,
+                        action: nil)
                     .textInputAutocapitalization(.never)
                 }
 

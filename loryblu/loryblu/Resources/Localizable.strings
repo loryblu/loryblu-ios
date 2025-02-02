@@ -16,6 +16,7 @@
 "change_password" = "Alterar Senha";
 "save" = "Salvar";
 "old_password" = "Senha antiga";
+"gender" = "Gênero";
 
 // ====================  Rules Password  =========================
 

@@ -20,6 +20,7 @@ enum LBIcon: String {
     case dinner
     case done
     case edit
+    case editWhite = "edit_white"
     case evining
     case eviningSmall = "evining_small"
     case eyeClose = "eye_close"

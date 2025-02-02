@@ -2,38 +2,60 @@ import SwiftUI
 import Foundation
 
 struct LBGenderButton: View {
-    init (gender: Gender, isActive: Bool = false, action: @escaping () -> Void ) {
+    init (gender: Gender, isActive: Bool = false, isAvailable: Bool = false, action: @escaping () -> Void ) {
         self.action = action
         self.gender = gender
         self.isActive = isActive
+        self.isAvailable = isAvailable
     }
 
     enum Gender {
         case male
         case female
     }
+
     var gender: Gender
     let action: () -> Void
     var isActive: Bool
+    var isAvailable: Bool
+
     var body: some View {
         Button(action: action) {
+
             HStack(alignment: .center) {
                 gender == .male ? (
                     isActive ? LBIcon.man.image : LBIcon.mangray.image
                 ) : (
                     isActive ? LBIcon.woman.image : LBIcon.womangray.image
                 )
+
                 Text(gender == .male ? LBStrings.GenderButton.boy : LBStrings.GenderButton.girl)
                     .font(LBFont.bodySmall)
                     .fontWeight(.bold)
+
+                if isActive && !isAvailable {
+                    Spacer()
+                    LBIcon.lock.image
+                        .padding(.trailing, 10)
+                }
             }
+            .padding(.leading, 12)
             .foregroundColor(isActive ? LBColor.background : LBColor.placeholder)
             .frame(maxWidth: .infinity, maxHeight: 44, alignment: .leading)
-            .background(isActive ? LBColor.buttonGenderEnable : LBColor.background)
+            .background(
+                isActive ? LBColor.buttonGenderEnable : LBColor.background
+            )
             .cornerRadius(10)
-            .overlay(RoundedRectangle(cornerRadius: 10)
-                .inset(by: -1)
-                .stroke( (isActive ? LBColor.buttonGenderEnable : LBColor.placeholder), lineWidth: 2))
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .inset(by: -1)
+                    .stroke(
+                        (
+                            isActive ? LBColor.buttonGenderEnable : LBColor.placeholder
+                        ),
+                        lineWidth: 2
+                    )
+            )
         }
     }
 }
@@ -47,6 +69,10 @@ struct LBGenderButton_Previews: PreviewProvider {
             }
             HStack {
                 LBGenderButton(gender: .female, isActive: true) {}
+                LBGenderButton(gender: .female) {}
+            }
+            HStack {
+                LBGenderButton(gender: .male, isActive: true, isAvailable: true) {}
                 LBGenderButton(gender: .female) {}
             }
         }
