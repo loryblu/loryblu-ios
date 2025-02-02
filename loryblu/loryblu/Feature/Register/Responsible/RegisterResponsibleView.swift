@@ -51,7 +51,8 @@ struct RegisterResponsibleView: View {
                 icon: LBIcon.user,
                 title: LBStrings.Register.name,
                 text: $viewModel.name,
-                textFiledState: viewModel.errorField == .name ? .alert : .active
+                textFiledState: viewModel.errorField == .name ? .alert : .active,
+                action: nil
             )
             .focused($focusedField, equals: .name)
             .onChange(of: viewModel.name) { _ in
@@ -63,7 +64,8 @@ struct RegisterResponsibleView: View {
                 icon: LBIcon.mail,
                 title: LBStrings.General.email,
                 text: $viewModel.email,
-                textFiledState: viewModel.errorField == .email ? .alert : .active
+                textFiledState: viewModel.errorField == .email ? .alert : .active,
+                action: nil
             )
             .focused($focusedField, equals: .email)
             .onChange(of: viewModel.email) { _ in
@@ -75,7 +77,8 @@ struct RegisterResponsibleView: View {
                 icon: LBIcon.lock,
                 title: LBStrings.General.password,
                 text: $viewModel.password,
-                textFiledState: viewModel.errorField == .password ? .alert : .active
+                textFiledState: viewModel.errorField == .password ? .alert : .active,
+                action: nil
             )
             .focused($focusedField, equals: .password)
             .onChange(of: viewModel.password) { _ in
@@ -94,7 +97,8 @@ struct RegisterResponsibleView: View {
                 icon: LBIcon.lock,
                 title: LBStrings.Register.confirmPassword,
                 text: $viewModel.confirmPassword,
-                textFiledState: viewModel.errorField == .confirmPassword ? .alert : .active
+                textFiledState: viewModel.errorField == .confirmPassword ? .alert : .active,
+                action: nil
             )
             .focused($focusedField, equals: .confirmPassword)
             .onChange(of: viewModel.confirmPassword) { _ in

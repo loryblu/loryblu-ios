@@ -18,11 +18,14 @@ struct NewPasswordScreen: View {
                 .font(LBFont.bodySmall)
                 .padding(.bottom, 56)
 
-            LBTextField(style: .password,
-                        icon: .lock,
-                        title: LBStrings.SetPassword.newPassword,
-                        text: $model.password,
-                        textFiledState: .active)
+            LBTextField(
+                style: .password,
+                icon: .lock,
+                title: LBStrings.SetPassword.newPassword,
+                text: $model.password,
+                textFiledState: .active,
+                action: nil
+            )
             .padding(.bottom, 12)
 
             HStack {
@@ -31,11 +34,14 @@ struct NewPasswordScreen: View {
             }
             .padding(.bottom, 16)
 
-            LBTextField(style: .password,
-                        icon: .lock,
-                        title: LBStrings.SetPassword.repeatPassword,
-                        text: $model.confirmPassword,
-                        textFiledState: .active)
+            LBTextField(
+                style: .password,
+                icon: .lock,
+                title: LBStrings.SetPassword.repeatPassword,
+                text: $model.confirmPassword,
+                textFiledState: .active,
+                action: nil
+            )
             .padding(.bottom, 10)
 
             VStack(spacing: 5) {

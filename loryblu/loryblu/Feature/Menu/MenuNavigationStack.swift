@@ -48,10 +48,19 @@ struct MenuNavigationStack: View {
 
     private func pushResponsibleEdit(aappData: AppData) {
         coordinator.pushResponsibleEditView(
-            props: MenuResponsibleEditView.Props(
+            props: ResponsibleEditView.Props(
                 image: LBIcon.parentsTree2.image,
-                isAvaliable: true
+                isAvaliable: true,
+                onClose: { dismiss() }, onNextView: {
+                    pushChangePassword(aappData: appData)
+                }
             )
+        )
+    }
+
+    private func pushChangePassword(aappData: AppData) {
+        coordinator.pushChangePasswordView(
+            props: ChangePasswordView.Props(onClose: { dismiss()})
         )
     }
 

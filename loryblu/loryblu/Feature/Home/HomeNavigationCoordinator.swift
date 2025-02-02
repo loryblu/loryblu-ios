@@ -72,7 +72,6 @@ class HomeNavigationCoordinator: ObservableObject {
                     onDismiss: { self.fullScreen = nil }
                 )
             )
-//            MenuView(user: userData, props: .init(onSelectCard: nil))
         }
     }
 }

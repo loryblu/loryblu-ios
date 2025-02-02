@@ -22,9 +22,9 @@ struct LBTextField: View {
     @State var presented: Bool = false
     @State var date: Date?
     let textFiledState: TextFieldState
+    let action: (() -> Void)?
 
     var body: some View {
-
         HStack {
             HStack {
                 if let icon = icon {
@@ -98,7 +98,7 @@ struct LBTextField: View {
     }
     var changePasswordButton: some View {
         Button {
-            isHidden.toggle()
+            action?()
         } label: {
             Text(LBStrings.General.changePassword)
                 .font(LBFont.caption)
@@ -135,7 +135,8 @@ struct CustomTextField_Previews: PreviewProvider {
                 icon: LBIcon.lock,
                 title: "User",
                 text: .constant("Email"),
-                textFiledState: .alert
+                textFiledState: .alert,
+                action: nil
             )
 
             LBTextField(
@@ -143,7 +144,8 @@ struct CustomTextField_Previews: PreviewProvider {
                 icon: LBIcon.lock,
                 title: "User",
                 text: .constant("12345"),
-                textFiledState: .active
+                textFiledState: .active,
+                action: nil
             )
 
             LBTextField(
@@ -151,7 +153,8 @@ struct CustomTextField_Previews: PreviewProvider {
                 icon: LBIcon.mailGray,
                 title: "User",
                 text: .constant("teste@gmail.com"),
-                textFiledState: .disable
+                textFiledState: .disable,
+                action: nil
             )
 
             LBTextField(
@@ -159,15 +162,17 @@ struct CustomTextField_Previews: PreviewProvider {
                 icon: LBIcon.mailGray,
                 title: "User",
                 text: .constant("teste@gmail.com"),
-                textFiledState: .disable
+                textFiledState: .disable,
+                action: nil
             )
 
             LBTextField(
                 style: .changePassword,
-                icon: LBIcon.mailGray,
+                icon: LBIcon.lock,
                 title: "User",
                 text: .constant("teste@gmail.com"),
-                textFiledState: .disable
+                textFiledState: .disable,
+                action: nil
             )
 
         }

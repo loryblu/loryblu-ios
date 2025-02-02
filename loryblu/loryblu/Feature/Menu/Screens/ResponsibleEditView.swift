@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct MenuResponsibleEditView: View {
+struct ResponsibleEditView: View {
     @EnvironmentObject var appData: AppData
     @State var formConfig: FormConfig
 
@@ -8,6 +8,7 @@ struct MenuResponsibleEditView: View {
         var image: Image
         var isAvaliable: Bool
         var onClose: ClosureType.VoidVoid?
+        var onNextView: ClosureType.VoidVoid?
     }
 
     let props: Props
@@ -43,7 +44,8 @@ struct MenuResponsibleEditView: View {
                     icon: LBIcon.user,
                     title: String(),
                     text: $formConfig.user,
-                    textFiledState: props.isAvaliable ? .active : .disable
+                    textFiledState: props.isAvaliable ? .active : .disable,
+                    action: nil
                 )
                 .padding(.bottom, 30)
 
@@ -55,7 +57,8 @@ struct MenuResponsibleEditView: View {
                     icon: LBIcon.mail,
                     title: String(),
                     text: $formConfig.email,
-                    textFiledState: .disable
+                    textFiledState: .disable,
+                    action: nil
                 )
 
                 HStack {
@@ -81,7 +84,10 @@ struct MenuResponsibleEditView: View {
                     icon: LBIcon.lock,
                     title: String(),
                     text: $formConfig.password,
-                    textFiledState: props.isAvaliable ? .active : .disable
+                    textFiledState: props.isAvaliable ? .active : .disable,
+                    action: {
+                        props.onNextView?()
+                    }
                 )
 
                 if props.isAvaliable {
@@ -95,6 +101,8 @@ struct MenuResponsibleEditView: View {
                 formConfig.user = appData.userData?.data.user.parentName ?? String()
             }
         }
+        .locbookToolbar(title: LBStrings.Menu.profileUser, showCloseButton: false)
+        .backgroundStyle(LBColor.background)
     }
 
     var imageDefault: some View {
@@ -122,7 +130,7 @@ struct MenuResponsibleEditView: View {
     }
 }
 
-extension MenuResponsibleEditView {
+extension ResponsibleEditView {
     struct FormConfig {
         var image: Image
         var user: String
@@ -131,7 +139,7 @@ extension MenuResponsibleEditView {
     }
 }
 
-extension MenuResponsibleEditView.Props: Hashable {
+extension ResponsibleEditView.Props: Hashable {
     static func == (lhs: Self, rhs: Self) -> Bool {
         return lhs.hashValue == rhs.hashValue
     }
@@ -142,11 +150,13 @@ extension MenuResponsibleEditView.Props: Hashable {
 }
 
 #Preview {
-    let user = User(parentName: "", childrens: [])
-    MenuResponsibleEditView(
+    let user = User(parentName: "Maria de Jesus Santos", childrens: [])
+    ResponsibleEditView(
         props: .init(
             image: LBIcon.childTree.image,
-            isAvaliable: false
+            isAvaliable: false,
+            onClose: {},
+            onNextView: {}
         )
     )
 }

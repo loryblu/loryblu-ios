@@ -48,6 +48,7 @@ struct HomeView: View {
                     .frame(width: 81, height: 78)
 
                 VStack(alignment: .leading) {
+                    // TODO: Componetizar.
                     Text("Olá, \(model.childName)")
                         .font(LBFont.body)
                         .foregroundStyle(.white)

@@ -2,13 +2,13 @@ import SwiftUI
 
 struct AlertSimpleView: View {
     let text: String
-    let icon: String
+    let icon: LBIcon
     let textColor: Color
     let borderColor: Color
 
     var body: some View {
         HStack(alignment: .top, spacing: 16) {
-            Image(icon)
+            Image(icon.rawValue)
                 .resizable()
                 .frame(width: 20, height: 20)
                 .padding(.top, 2)
@@ -32,7 +32,7 @@ struct AlertSimpleView: View {
 #Preview {
     AlertSimpleView(
         text: LBStrings.SetPassword.logoutNewPassword,
-        icon: LBIcon.check.rawValue,
+        icon: .check,
         textColor: LBColor.titlePrimary,
         borderColor: LBColor.titlePrimary
     )

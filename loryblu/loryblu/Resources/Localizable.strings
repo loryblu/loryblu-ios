@@ -15,6 +15,7 @@
 "leave" = "Sair";
 "change_password" = "Alterar Senha";
 "save" = "Salvar";
+"old_password" = "Senha antiga";
 
 // ====================  Rules Password  =========================
 
@@ -212,6 +213,8 @@
 // ==================== Menu ====================
 
 "profile" = "Perfil";
+"profile_user" = "Perfil do responsável";
+"profile_child" = "Perfil da criança";
 "configuration" = "Configurações";
 "child_name" = "Nome da Criança";
 "parents_name" = "Nome da pessoa responsável";
@@ -221,7 +224,7 @@
 "exit" = "Sair do App";
 "access_and_control" = "Controle os acessos e gerencie as funcionalidades do app";
 "menu" = "Menu";
-"suport_inf_part1" = "Náo é possivel editar o e-mail. ";
+"suport_inf_part1" = "Não é possivel editar o e-mail. ";
 "suport_inf_part2" = "Entre em Contato";
 "suport_inf_part3" = " com o nosso suporte para mais informações" ;
 

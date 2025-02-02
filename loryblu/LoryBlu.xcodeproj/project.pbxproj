@@ -29,7 +29,7 @@
 		339573E32B87E37600E38B80 /* LBDaysButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339573E22B87E37600E38B80 /* LBDaysButtonStyle.swift */; };
 		33AAFCF22AC649C200039063 /* NewPasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AAFCF12AC649C200039063 /* NewPasswordModel.swift */; };
 		33B2ABFC2ACE587A004CF7DF /* RepositorySetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B2ABFB2ACE587A004CF7DF /* RepositorySetPassword.swift */; };
-		33B2F7A22CFE79E60014AA57 /* MenuResponsibleEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B2F7A12CFE79E60014AA57 /* MenuResponsibleEditView.swift */; };
+		33B2F7A22CFE79E60014AA57 /* ResponsibleEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B2F7A12CFE79E60014AA57 /* ResponsibleEditView.swift */; };
 		33BA2DE62AC9BE3D009704FD /* DeepLinkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA2DE52AC9BE3D009704FD /* DeepLinkHandler.swift */; };
 		33D0F90E2AD0EE3700EE54DF /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D0F90D2AD0EE3700EE54DF /* Endpoints.swift */; };
 		33D1AED22C756CE5002E630C /* LBMenuCellPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D1AED12C756CE5002E630C /* LBMenuCellPerson.swift */; };
@@ -71,6 +71,7 @@
 		8C9CBCFC2A7ACF46001DBD35 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9CBCFA2A7ACF46001DBD35 /* LoginView.swift */; };
 		8C9CBD0D2A7AE97B001DBD35 /* RegisterChildView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9CBD0C2A7AE97B001DBD35 /* RegisterChildView.swift */; };
 		8C9CBD102A7AEC24001DBD35 /* PasswordRulesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9CBD0F2A7AEC24001DBD35 /* PasswordRulesView.swift */; };
+		8CA35C422D40A5E000388F47 /* ChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA35C412D40A5E000388F47 /* ChangePasswordView.swift */; };
 		8CB8E02F2D07C4260013CDAB /* AlertSimpleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB8E02E2D07C4260013CDAB /* AlertSimpleView.swift */; };
 		8CCD707B2B7A637100AA60CF /* CardTaskRegistered.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCD707A2B7A637100AA60CF /* CardTaskRegistered.swift */; };
 		8CCD707D2B7A6CE600AA60CF /* EditTaskButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCD707C2B7A6CE500AA60CF /* EditTaskButton.swift */; };
@@ -149,7 +150,7 @@
 		339573E22B87E37600E38B80 /* LBDaysButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBDaysButtonStyle.swift; sourceTree = "<group>"; };
 		33AAFCF12AC649C200039063 /* NewPasswordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPasswordModel.swift; sourceTree = "<group>"; };
 		33B2ABFB2ACE587A004CF7DF /* RepositorySetPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositorySetPassword.swift; sourceTree = "<group>"; };
-		33B2F7A12CFE79E60014AA57 /* MenuResponsibleEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuResponsibleEditView.swift; sourceTree = "<group>"; };
+		33B2F7A12CFE79E60014AA57 /* ResponsibleEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponsibleEditView.swift; sourceTree = "<group>"; };
 		33BA2DE52AC9BE3D009704FD /* DeepLinkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkHandler.swift; sourceTree = "<group>"; };
 		33D0F90D2AD0EE3700EE54DF /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
 		33D1AED12C756CE5002E630C /* LBMenuCellPerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBMenuCellPerson.swift; sourceTree = "<group>"; };
@@ -191,6 +192,7 @@
 		8C9CBCFA2A7ACF46001DBD35 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		8C9CBD0C2A7AE97B001DBD35 /* RegisterChildView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterChildView.swift; sourceTree = "<group>"; };
 		8C9CBD0F2A7AEC24001DBD35 /* PasswordRulesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordRulesView.swift; sourceTree = "<group>"; };
+		8CA35C412D40A5E000388F47 /* ChangePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordView.swift; sourceTree = "<group>"; };
 		8CB8E02E2D07C4260013CDAB /* AlertSimpleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertSimpleView.swift; sourceTree = "<group>"; };
 		8CCD707A2B7A637100AA60CF /* CardTaskRegistered.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTaskRegistered.swift; sourceTree = "<group>"; };
 		8CCD707C2B7A6CE500AA60CF /* EditTaskButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskButton.swift; sourceTree = "<group>"; };
@@ -370,8 +372,8 @@
 			children = (
 				91664AE32B0C029E005BF5CA /* HomeNavigationCoordinator.swift */,
 				91664AE12B0C003A005BF5CA /* HomeNavigationStack.swift */,
-				8C2A684C2AF54A9600B74295 /* HomeView.swift */,
 				33DE3B222B75993200F45449 /* HomeViewModel.swift */,
+				8C2A684C2AF54A9600B74295 /* HomeView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -473,9 +475,8 @@
 				8C5F08822D10CC180090FF9F /* MenuNavigationStack.swift */,
 				8C5F08802D109AA30090FF9F /* MenuCoordinator.swift */,
 				336ECF872C9CFFD30062691E /* MenuView.swift */,
-				33B2F7A12CFE79E60014AA57 /* MenuResponsibleEditView.swift */,
 				93501B0D2CC0195200E6D81F /* MenuViewModel.swift */,
-				8C9053062CC84C5E00E4485C /* MenuWebView.swift */,
+				8CE0BFD82D3C1B4500BBD544 /* Screens */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -556,6 +557,16 @@
 				339573E22B87E37600E38B80 /* LBDaysButtonStyle.swift */,
 			);
 			path = Style;
+			sourceTree = "<group>";
+		};
+		8CE0BFD82D3C1B4500BBD544 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				33B2F7A12CFE79E60014AA57 /* ResponsibleEditView.swift */,
+				8CA35C412D40A5E000388F47 /* ChangePasswordView.swift */,
+				8C9053062CC84C5E00E4485C /* MenuWebView.swift */,
+			);
+			path = Screens;
 			sourceTree = "<group>";
 		};
 		8CFB35912A6059BD008BF633 = {
@@ -905,6 +916,7 @@
 				33DE3B212B75975400F45449 /* UserAuth.swift in Sources */,
 				33212E392B0580720066BFBE /* LBfloatingButton.swift in Sources */,
 				334D0AB62A8AF93D003881ED /* ResetPasswordScreen.swift in Sources */,
+				8CA35C422D40A5E000388F47 /* ChangePasswordView.swift in Sources */,
 				33B2ABFC2ACE587A004CF7DF /* RepositorySetPassword.swift in Sources */,
 				8C3120F02ABB3D8B00D580BD /* Request.swift in Sources */,
 				9132A8932B083B8E00106524 /* LoginNavigationStack.swift in Sources */,
@@ -934,7 +946,7 @@
 				337A39E92C0FD89900B89B3D /* LBDeleteConfirmation.swift in Sources */,
 				339573E32B87E37600E38B80 /* LBDaysButtonStyle.swift in Sources */,
 				9302EE942B71C0C0003D7C4F /* LBShiftItemsComponent.swift in Sources */,
-				33B2F7A22CFE79E60014AA57 /* MenuResponsibleEditView.swift in Sources */,
+				33B2F7A22CFE79E60014AA57 /* ResponsibleEditView.swift in Sources */,
 				8C27B8542A68C19400F72214 /* LBLabel.swift in Sources */,
 				8C5DFC8F2A85AE13002739D9 /* LBToggle.swift in Sources */,
 				8C57341B2A6B4F5F0052B955 /* LBStrings.swift in Sources */,
