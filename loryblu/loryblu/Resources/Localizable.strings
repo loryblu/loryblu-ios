@@ -17,6 +17,7 @@
 "save" = "Salvar";
 "old_password" = "Senha antiga";
 "gender" = "Gênero";
+"all_days" = "Todos os dias";
 
 // ====================  Rules Password  =========================
 
@@ -228,6 +229,4 @@
 "suport_inf_part1" = "Não é possivel editar o e-mail. ";
 "suport_inf_part2" = "Entre em Contato";
 "suport_inf_part3" = " com o nosso suporte para mais informações" ;
-
-// ==================== Delete Option ====================
-"all_days" = "Todos os dias";
+"accessControl_textInfo" = "Aqui você pode permitir ou bloquear o acesso a edições e configurações do app.";

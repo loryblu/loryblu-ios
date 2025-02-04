@@ -263,5 +263,6 @@ extension LBStrings {
         static let suportInfPart1 = String(localized: "suport_inf_part1")
         static let suportInfPart2 = String(localized: "suport_inf_part2")
         static let suportInfPart3 = String(localized: "suport_inf_part3")
+        static let securityTextInfo = String(localized: "accessControl_textInfo")
     }
 }
