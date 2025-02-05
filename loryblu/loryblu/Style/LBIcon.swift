@@ -10,6 +10,7 @@ enum LBIcon: String {
     case childTree = "child_tree"
     case circle
     case circleFill = "circle_fill"
+    case clipboard
     case close
     case close2
     case close3

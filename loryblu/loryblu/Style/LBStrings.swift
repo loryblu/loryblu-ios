@@ -266,3 +266,13 @@ extension LBStrings {
         static let securityTextInfo = String(localized: "accessControl_textInfo")
     }
 }
+
+extension LBStrings {
+    enum AccessControl {
+        static let textInfo = String(localized: "accessControl_textInfo")
+        static let infoChild = String(localized: "accessControl_InfoChild")
+        static let infoResponsable = String(localized: "accessControl_InfoResponsable")
+        static let infoLocbook = String(localized: "accessControl_InfoLocbook" )
+        static let infoLogout = String(localized: "accessControl_InfoLogout")
+    }
+}
