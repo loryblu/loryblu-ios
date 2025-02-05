@@ -66,6 +66,7 @@
 		8C5F08812D109AA30090FF9F /* MenuCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C5F08802D109AA30090FF9F /* MenuCoordinator.swift */; };
 		8C5F08832D10CC180090FF9F /* MenuNavigationStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C5F08822D10CC180090FF9F /* MenuNavigationStack.swift */; };
 		8C669C412AA011480028B436 /* UserRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C669C402AA011480028B436 /* UserRegister.swift */; };
+		8C7744312D52D49E005010E1 /* AccessControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7744302D52D49D005010E1 /* AccessControlView.swift */; };
 		8C7C64B32A6F4CE1002361A9 /* ValidateRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7C64B22A6F4CE1002361A9 /* ValidateRules.swift */; };
 		8C9053072CC84C5E00E4485C /* MenuWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9053062CC84C5E00E4485C /* MenuWebView.swift */; };
 		8C9CBCFB2A7ACF46001DBD35 /* ExternalLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9CBCF92A7ACF46001DBD35 /* ExternalLogin.swift */; };
@@ -188,6 +189,7 @@
 		8C5F08802D109AA30090FF9F /* MenuCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCoordinator.swift; sourceTree = "<group>"; };
 		8C5F08822D10CC180090FF9F /* MenuNavigationStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuNavigationStack.swift; sourceTree = "<group>"; };
 		8C669C402AA011480028B436 /* UserRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRegister.swift; sourceTree = "<group>"; };
+		8C7744302D52D49D005010E1 /* AccessControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessControlView.swift; sourceTree = "<group>"; };
 		8C7C64B22A6F4CE1002361A9 /* ValidateRules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateRules.swift; sourceTree = "<group>"; };
 		8C9053062CC84C5E00E4485C /* MenuWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuWebView.swift; sourceTree = "<group>"; };
 		8C9CBCF92A7ACF46001DBD35 /* ExternalLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExternalLogin.swift; sourceTree = "<group>"; };
@@ -565,6 +567,7 @@
 			isa = PBXGroup;
 			children = (
 				8CA35C412D40A5E000388F47 /* ChangePasswordView.swift */,
+				8C7744302D52D49D005010E1 /* AccessControlView.swift */,
 				8C4358612D42C73C005DDABE /* ChildEditView.swift */,
 				8C9053062CC84C5E00E4485C /* MenuWebView.swift */,
 				33B2F7A12CFE79E60014AA57 /* ResponsibleEditView.swift */,
@@ -884,6 +887,7 @@
 				93B2DD6C2BD1B27F009BEB16 /* LBAnimatedButtonModifier.swift in Sources */,
 				8CCD707B2B7A637100AA60CF /* CardTaskRegistered.swift in Sources */,
 				8C2A68522AF959AB00B74295 /* LocbookActionsView.swift in Sources */,
+				8C7744312D52D49E005010E1 /* AccessControlView.swift in Sources */,
 				8C070DDF2B1803C9004AAF8A /* LocbookTask.swift in Sources */,
 				41931EBE2A6470B4008F13F8 /* LBButton.swift in Sources */,
 				8C4570972BDE7EAE00EE0699 /* LoadingView.swift in Sources */,

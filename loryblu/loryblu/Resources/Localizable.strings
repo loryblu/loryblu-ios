@@ -17,6 +17,7 @@
 "save" = "Salvar";
 "old_password" = "Senha antiga";
 "gender" = "Gênero";
+"all_days" = "Todos os dias";
 
 // ====================  Rules Password  =========================
 
@@ -229,5 +230,9 @@
 "suport_inf_part2" = "Entre em Contato";
 "suport_inf_part3" = " com o nosso suporte para mais informações" ;
 
-// ==================== Delete Option ====================
-"all_days" = "Todos os dias";
+// ==================== Access Control ====================
+"accessControl_textInfo" = "Aqui você pode permitir ou bloquear o acesso a edições e configurações do app.";
+"accessControl_InfoChild" = "Bloqueia o acesso para editar perfil da criança.";
+"accessControl_InfoResponsable" = "Bloqueia o acesso para editar perfil do responsável.";
+"accessControl_InfoLocbook" = "Bloqueia ações: criar, editar e excluir tarefas.";
+"accessControl_InfoLogout" = "Solicita a senha para sair do app.";
