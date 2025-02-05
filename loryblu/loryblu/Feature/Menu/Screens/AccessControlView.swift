@@ -9,10 +9,11 @@ import SwiftUI
 
 struct AccessControlView: View {
     @State var isAvailable: Bool
+    let localizable = LBStrings.AccessControl.self
 
     var body: some View {
         VStack(alignment: .leading) {
-            Text(LBStrings.Menu.securityTextInfo)
+            Text(localizable.textInfo)
                 .font(LBFont.bodySmall)
                 .padding(.bottom, 40)
 
@@ -20,28 +21,28 @@ struct AccessControlView: View {
                 LBAccessControlCell(
                     isLoccked: isAvailable,
                     title: LBStrings.Menu.profileChild,
-                    description: LBStrings.AccessControl.infoChild,
+                    description: localizable.infoChild,
                     image: LBIcon.childTree.image
                 )
 
                 LBAccessControlCell(
                     isLoccked: isAvailable,
                     title: LBStrings.Menu.profileUser,
-                    description: LBStrings.AccessControl.infoChild,
+                    description: localizable.infoChild,
                     image: LBIcon.childTree.image
                 )
 
                 LBAccessControlCell(
                     isLoccked: isAvailable,
                     title: LBStrings.Locbook.title,
-                    description: LBStrings.AccessControl.infoChild,
+                    description: localizable.infoChild,
                     image: LBIcon.clipboard.image
                 )
 
                 LBAccessControlCell(
                     isLoccked: isAvailable,
                     title: LBStrings.Menu.exit,
-                    description: LBStrings.AccessControl.infoChild,
+                    description: localizable.infoChild,
                     image: LBIcon.exit.image
                 )
             }
