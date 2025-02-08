@@ -165,7 +165,10 @@ extension ChildEditView.Props: Hashable {
 @available(iOS 17.0, *)
 #Preview {
     @Previewable @StateObject var appData: AppData = .init()
-    let user = User(parentName: "", childrens: [.init(id: 1, fullname: "Julia Santos", gender: "female", birthdate: "12/12/2012")])
+    let user = User(
+        parentName: "",
+        childrens: [.init(id: 1, fullname: "Julia Santos", gender: "female", birthdate: "12/12/2012")]
+    )
     ChildEditView(
         props: .init(
             image: LBIcon.parentsTree.image,

@@ -46,14 +46,18 @@ struct LBAccessControlCell: View {
 
 #Preview {
     VStack {
-        LBAccessControlCell(isLoccked: false ,
-                            title: "Perfil da Criança",
-                            description: "Bloqueia a edição do perfil da criança",
-                            image: LBIcon.childTree.image)
-        LBAccessControlCell(isLoccked: true ,
-                            title: "Perfil da Criança",
-                            description: "Bloqueia ações: criar , editar e excluir tarefas.",
-                            image: LBIcon.childTree.image)
+        LBAccessControlCell(
+            isLoccked: false,
+            title: "Perfil da Criança",
+            description: "Bloqueia a edição do perfil da criança",
+            image: LBIcon.childTree.image
+        )
+        LBAccessControlCell(
+            isLoccked: true,
+            title: "Perfil da Criança",
+            description: "Bloqueia ações: criar , editar e excluir tarefas.",
+            image: LBIcon.childTree.image
+        )
     }
     .padding(20)
 }

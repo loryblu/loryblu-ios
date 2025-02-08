@@ -36,7 +36,7 @@ struct MenuNavigationStack: View {
                     }, showChildEdit: {
                         pushChildEdit(appData: appData)
                     }, showAccessControl: {
-                        //
+                        pushAccessControl(appData: appData)
                     })
                 )
             )
@@ -71,6 +71,15 @@ struct MenuNavigationStack: View {
         coordinator.pushChildEditView(
             props: ChildEditView.Props(
                 image: LBIcon.childTree.image,
+                isAvaliable: true,
+                onClose: { dismiss() }
+            )
+        )
+    }
+
+    private func pushAccessControl(appData: AppData) {
+        coordinator.pushAccessControlView(
+            props: AccessControlView.Props(
                 isAvaliable: true,
                 onClose: { dismiss() }
             )
