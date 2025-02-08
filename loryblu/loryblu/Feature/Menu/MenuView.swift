@@ -80,7 +80,9 @@ struct MenuView: View {
                         }
 
                         LBMenuCellPerson(
-                            onClick: {},
+                            onClick: {
+                                props.showAccessControl?()
+                            },
                             description: LBStrings.Menu.accessControl,
                             name: LBStrings.Menu.security,
                             image: LBIcon.shield.image,

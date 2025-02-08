@@ -16,7 +16,7 @@ class MenuCoordinator: ObservableObject {
             case responsible(ResponsibleEditView.Props)
             case changePassword(ChangePasswordView.Props)
             case child(ChildEditView.Props)
-            case accessControl
+            case accessControl(AccessControlView.Props)
             case finishView(DoneView.Props)
         }
         enum FullScreen: Hashable {
@@ -46,7 +46,9 @@ class MenuCoordinator: ObservableObject {
         navigate(to: .child(props))
     }
 
-    func pushAccessControlView() {}
+    func pushAccessControlView(props: AccessControlView.Props) {
+        navigate(to: .accessControl(props))
+    }
 
     func pushFinishScreen(props: DoneView.Props) {
         navigate(to: .finishView(props))
@@ -63,8 +65,8 @@ class MenuCoordinator: ObservableObject {
             ChangePasswordView(props: props)
         case .child(let props):
             ChildEditView(props: props)
-        case .accessControl:
-            EmptyView()
+        case .accessControl(let props):
+            AccessControlView(props: props)
         case .finishView(let props):
             DoneView(props: props)
         }
