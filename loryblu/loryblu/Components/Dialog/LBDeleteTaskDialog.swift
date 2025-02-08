@@ -15,32 +15,36 @@ struct LBDeleteTaskDialog: View {
     var body: some View {
         LBCustomDialog(dismiss: onCancel) {
             Text(LBStrings.Dialog.deleteTaskTitle)
-                .font(.title2)
-                .bold()
+                .font(LBFont.button)
+
             HStack {
                 Text(taskName)
-                    .font(.title2)
-                    .bold()
+                    .font(LBFont.button)
                     .foregroundColor(LBColor.titlePrimary)
                     .multilineTextAlignment(.center)
                 Text(LBStrings.General.questionMark)
-                    .font(.title2)
-                    .bold()
+                    .font(LBFont.button)
                     .multilineTextAlignment(.center)
             }
+            
             Spacer(minLength: 16)
             Text(LBStrings.Dialog.warning)
-                .font(.system(size: 12, weight: .regular))
+                .font(LBFont.bodySmall)
                 .padding(24)
                 .multilineTextAlignment(.center)
+            
             Spacer(minLength: 16)
             VStack(alignment: .listRowSeparatorLeading) {
                 LBRadioButton(tag: .currentDay, selection: $selectedOption) {
                     Text(LBStrings.Dialog.deleteOnlyForOneday)
-                    Text(dayOfWeek).bold()
+                        .font(LBFont.bodySmall)
+                    Text(dayOfWeek)
+                        .font(LBFont.buttonSmall)
                 }
+
                 LBRadioButton(tag: .allDays, selection: $selectedOption) {
                     Text(LBStrings.Dialog.deleteForAllDays)
+                        .font(LBFont.bodySmall)
                 }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -52,13 +56,30 @@ struct LBDeleteTaskDialog: View {
                    onCancel()
                 } label: {
                     Text(LBStrings.General.cancel).foregroundColor(Color.black)
+                        .font(LBFont.body)
                 }
                 .contentShape(Rectangle())
-                Spacer().frame(maxWidth: .infinity)
-                LBButton(title: LBStrings.Dialog.deleteTitleBtn, style: .error) {
+
+                Spacer()
+
+                Button {
                     onDelete(selectedOption ?? .allDays)
+                } label: {
+                    Text(LBStrings.Dialog.deleteTitleBtn).foregroundColor(LBColor.error)
+                        .font(LBFont.button)
                 }
-            }.padding(16)
+                .frame(minWidth: 96, minHeight: 34)
+                .backgroundStyle(LBColor.background)
+                .overlay(RoundedRectangle(cornerRadius: 2).inset(by: -1)
+                    .stroke(
+                        (
+                            LBColor.error
+                        ),
+                        lineWidth: 1
+                    )
+                )
+            }
+            .padding(16)
         }
     }
 
@@ -68,7 +89,6 @@ struct LBDeleteTaskDialog: View {
     LBDeleteTaskDialog(
         dayOfWeek: LBStrings.DaysOfWeek.monday,
         taskName: LBStrings.NameImage.tvgame,
-        onDelete: {_ in
-        },
-        onCancel: { })
+        onDelete: {_ in },
+        onCancel: {})
 }
