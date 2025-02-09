@@ -12,6 +12,7 @@ struct LBButton: View {
         case primaryActivated
         case primaryOff
         case error
+        case cancel
     }
 
     var title: String
@@ -41,11 +42,13 @@ extension LBButton {
     func getForegroundColor(btnStyle: ButtonStyle) -> Color {
         switch btnStyle {
         case .primaryActivated:
-                .white
+            LBColor.background
         case .primaryOff:
             LBColor.buttonPrimary
         case .error:
             LBColor.error
+        case .cancel:
+            LBColor.text
         }
     }
 
@@ -53,21 +56,45 @@ extension LBButton {
         switch btnStyle {
         case .primaryActivated:
             LBColor.buttonPrimary
-        case .primaryOff:
-             .white
-        case .error:
-            Color.clear
+        default:
+            LBColor.background
         }
     }
 
     func getStrokeColor(btnStyle: ButtonStyle) -> Color {
         switch btnStyle {
         case .primaryActivated:
-                .white
+            LBColor.background
         case .primaryOff:
             LBColor.buttonPrimary
         case .error:
             LBColor.error
+        case .cancel:
+            .clear
         }
     }
+}
+
+#Preview {
+    VStack {
+        LBButton(title: "excluir", style: .error) {
+            print("Botao de Excluir clicado")
+        }
+        HStack {
+            LBButton(title: "Desabilitado", style: .primaryOff) {
+                print("Botao de PrimaryOff clicado")
+            }
+            LBButton(title: "Off", style: .primaryOff) {
+                print("Botao de PrimaryOff clicado")
+            }
+        }
+        LBButton(title: "Cancelar", style: .cancel) {
+            print("Botao de Cancel clicado")
+        }
+        LBButton(title: "Ativo", style: .primaryActivated) {
+            print("Botao de PrimaryActivated clicado")
+        }
+    }
+    .frame(height: 300)
+    .background(Color.purple.opacity(0.2))
 }
