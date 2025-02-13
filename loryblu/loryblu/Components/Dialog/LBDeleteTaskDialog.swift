@@ -26,13 +26,13 @@ struct LBDeleteTaskDialog: View {
                     .font(LBFont.button)
                     .multilineTextAlignment(.center)
             }
-            
+
             Spacer(minLength: 16)
             Text(LBStrings.Dialog.warning)
                 .font(LBFont.bodySmall)
                 .padding(24)
                 .multilineTextAlignment(.center)
-            
+
             Spacer(minLength: 16)
             VStack(alignment: .listRowSeparatorLeading) {
                 LBRadioButton(tag: .currentDay, selection: $selectedOption) {
@@ -50,34 +50,17 @@ struct LBDeleteTaskDialog: View {
             .frame(maxWidth: .infinity, alignment: .leading)
 
             Spacer(minLength: 24)
-
             HStack {
-                Button {
-                   onCancel()
-                } label: {
-                    Text(LBStrings.General.cancel).foregroundColor(Color.black)
-                        .font(LBFont.body)
+                LBButton(title: LBStrings.General.cancel, style: .cancel, isUppercased: false) {
+                    onCancel()
                 }
-                .contentShape(Rectangle())
 
                 Spacer()
-
-                Button {
-                    onDelete(selectedOption ?? .allDays)
-                } label: {
-                    Text(LBStrings.Dialog.deleteTitleBtn).foregroundColor(LBColor.error)
-                        .font(LBFont.button)
-                }
-                .frame(minWidth: 96, minHeight: 34)
-                .backgroundStyle(LBColor.background)
-                .overlay(RoundedRectangle(cornerRadius: 2).inset(by: -1)
-                    .stroke(
-                        (
-                            LBColor.error
-                        ),
-                        lineWidth: 1
-                    )
-                )
+                LBButton(
+                    title: LBStrings.Dialog.deleteTitleBtn,
+                    style: .error) {
+                        onDelete(selectedOption ?? .allDays)
+                    }
             }
             .padding(16)
         }

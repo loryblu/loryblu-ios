@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct LBExitAppConfirmation: View {
+struct LBAlertConfirmation: View {
     let onClosed: () -> Void
     let onCancel: () -> Void
     @State private var offset: CGFloat = 1000
@@ -73,5 +73,5 @@ struct LBExitAppConfirmation: View {
 }
 
 #Preview {
-    LBExitAppConfirmation(onClosed: { }, onCancel: {  })
+    LBAlertConfirmation(onClosed: { }, onCancel: {  })
 }

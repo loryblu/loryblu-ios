@@ -137,7 +137,7 @@ struct MenuView: View {
                 )
 
                 if menuViewModel.openExitConfirmationDialog {
-                    LBExitAppConfirmation {
+                    LBAlertConfirmation {
                         menuViewModel.logout()
                     } onCancel: {
                         menuViewModel.giveUpToLogout()
