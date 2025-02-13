@@ -55,6 +55,7 @@
 		8C3120F12ABB3D8B00D580BD /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3120EB2ABB3D8B00D580BD /* Network.swift */; };
 		8C3120F52ABD249600D580BD /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3120F42ABD249600D580BD /* WebView.swift */; };
 		8C35C05D2B980B5F00462340 /* SymbolToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35C05C2B980B5F00462340 /* SymbolToggleStyle.swift */; };
+		8C375FE02D5D7B4000F7ED9F /* AlertControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C375FDF2D5D7B4000F7ED9F /* AlertControlView.swift */; };
 		8C4358622D42C73C005DDABE /* ChildEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4358612D42C73C005DDABE /* ChildEditView.swift */; };
 		8C4570972BDE7EAE00EE0699 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4570962BDE7EAE00EE0699 /* LoadingView.swift */; };
 		8C57341B2A6B4F5F0052B955 /* LBStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C57341A2A6B4F5F0052B955 /* LBStrings.swift */; };
@@ -178,6 +179,7 @@
 		8C3120EB2ABB3D8B00D580BD /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		8C3120F42ABD249600D580BD /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		8C35C05C2B980B5F00462340 /* SymbolToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolToggleStyle.swift; sourceTree = "<group>"; };
+		8C375FDF2D5D7B4000F7ED9F /* AlertControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertControlView.swift; sourceTree = "<group>"; };
 		8C4358612D42C73C005DDABE /* ChildEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildEditView.swift; sourceTree = "<group>"; };
 		8C4570962BDE7EAE00EE0699 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		8C57341A2A6B4F5F0052B955 /* LBStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBStrings.swift; sourceTree = "<group>"; };
@@ -523,6 +525,7 @@
 				8C9CBD0F2A7AEC24001DBD35 /* PasswordRulesView.swift */,
 				8CCD707A2B7A637100AA60CF /* CardTaskRegistered.swift */,
 				8CB8E02E2D07C4260013CDAB /* AlertSimpleView.swift */,
+				8C375FDF2D5D7B4000F7ED9F /* AlertControlView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -961,6 +964,7 @@
 				9176073A2B27D8DE004F4200 /* Container+DI.swift in Sources */,
 				333B740F2AED9CBE003A5EBD /* LBWeekDaysButton.swift in Sources */,
 				91361A1D2ACCBE1900700E36 /* RegisterRepository.swift in Sources */,
+				8C375FE02D5D7B4000F7ED9F /* AlertControlView.swift in Sources */,
 				8CE33B262B7F1328005D1219 /* CardTasksModel.swift in Sources */,
 				93501B0E2CC0195200E6D81F /* MenuViewModel.swift in Sources */,
 				8CE03E392A6360BE0024919C /* LBColor.swift in Sources */,

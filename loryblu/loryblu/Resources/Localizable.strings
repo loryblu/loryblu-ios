@@ -236,3 +236,4 @@
 "accessControl_InfoResponsable" = "Bloqueia o acesso para editar perfil do responsável.";
 "accessControl_InfoLocbook" = "Bloqueia ações: criar, editar e excluir tarefas.";
 "accessControl_InfoLogout" = "Solicita a senha para sair do app.";
+"accessControl_modalInfo" = "Informe o resultado da multiplicação:";
