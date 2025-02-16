@@ -26,6 +26,7 @@ enum LBIcon: String {
     case eviningSmall = "evining_small"
     case eyeClose = "eye_close"
     case eyeOpen = "eye_open"
+    case error
     case exit
     case facebook
     case fairy

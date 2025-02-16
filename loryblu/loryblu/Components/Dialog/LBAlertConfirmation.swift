@@ -24,36 +24,27 @@ struct LBAlertConfirmation: View {
                             .bold()
                     }
                 }
-                .padding(.top, 24)
-                .padding(.bottom, 30)
-                .padding(.trailing, 24)
-                .padding(.leading, 24)
+                .padding(.init(top: 24, leading: 24, bottom: 30, trailing: 24))
 
                 HStack(spacing: 10) {
-                    Button(action: {
-                        onCancel()
-                    }, label: {
-                        Text(LBStrings.General.cancel)
-                            .foregroundStyle(.black)
-                })
-                    .padding()
-                    Button(action: {
-                        onClosed()
-                    }, label: {
-                        Text(LBStrings.General.leave)
-                            .foregroundStyle(.red)
-                            .bold()
-                    })
-                    .frame(height: 34)
-                    .frame(maxWidth: .infinity)
-                    .cornerRadius(8)
-                    .overlay(RoundedRectangle(cornerRadius: 8)
-                        .stroke(.red, lineWidth: 1)
+                    LBButton(
+                        title: LBStrings.General.cancel,
+                        style: .cancel,
+                        isUppercased: false,
+                        action: {
+                            onCancel()
+                        }
+                    )
+                    LBButton(
+                        title: LBStrings.General.leave,
+                        style: .error,
+                        isUppercased: false,
+                        action: {
+                            onClosed()
+                        }
                     )
                 }
-                .padding(.leading, 8)
-                .padding(.trailing, 20)
-                .padding(.bottom, 24)
+                .padding(.init(top: 0, leading: 8, bottom: 24, trailing: 20))
             }
             .background(LBColor.textfield)
             .clipShape(RoundedRectangle(cornerRadius: 24))

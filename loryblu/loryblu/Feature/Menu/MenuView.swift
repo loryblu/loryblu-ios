@@ -170,6 +170,9 @@ extension MenuView.Props: Hashable {
 @available(iOS 17.0, *)
 #Preview {
     @Previewable @StateObject var appData: AppData = .init()
-    MenuView(urlString: String(), props: .init(showResponsibleEdit: nil, showChildEdit: nil, showAccessControl: nil))
+    MenuView(
+        urlString: String(),
+        props: .init(showResponsibleEdit: nil, showChildEdit: nil, showAccessControl: nil)
+    )
         .environmentObject(appData)
 }
