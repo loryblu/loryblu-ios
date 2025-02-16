@@ -64,12 +64,11 @@ struct AlertControlView: View {@EnvironmentObject var coordinator: MenuNavigatio
                     }
 
                     LBButton(
-                        title: isWrongAnswer ? "Tente novamente" : "Verificar",
+                        title: isWrongAnswer ? LBStrings.General.tryAgain : LBStrings.General.verify,
                         style: .primaryActivated,
                         isUppercased: false
                     ) {
                         checkAnswer()
-                        print("=== RESPOSTA CORRETA 🎉 ===")
                     }
                 }.onAppear {
                     generateNumbers()
