@@ -33,6 +33,12 @@ class MenuCoordinator: ObservableObject {
     func popToRoot() {
         path.removeAll()
     }
+    
+    func popView(count: Int = 1) {
+        if path.isEmpty == false {
+            path.removeLast(count)
+        }
+    }
 
     func pushResponsibleEditView(props: ResponsibleEditView.Props) {
         navigate(to: .responsible(props))
@@ -65,8 +71,12 @@ class MenuCoordinator: ObservableObject {
             ChangePasswordView(props: props)
         case .child(let props):
             ChildEditView(props: props)
-        case .accessControl(let props):
-            AccessControlView(props: props)
+        case .accessControl:
+            AlertControlView {
+                DispatchQueue.main.async {
+                    self.popView()
+                }
+            }
         case .finishView(let props):
             DoneView(props: props)
         }

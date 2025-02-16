@@ -273,5 +273,7 @@ extension LBStrings {
         static let infoResponsable = String(localized: "accessControl_InfoResponsable")
         static let infoLocbook = String(localized: "accessControl_InfoLocbook" )
         static let infoLogout = String(localized: "accessControl_InfoLogout")
+        static let puzzleInfo = String(localized: "accessControl_puzzleInfo")
+        static let puzzleError = String(localized: "accessControl_puzzleError")
     }
 }

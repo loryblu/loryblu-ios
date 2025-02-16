@@ -2,8 +2,13 @@ import Foundation
 import SwiftUI
 
 struct LBButton: View {
-    init(title: String, style: ButtonStyle = .primaryActivated, action: @escaping () -> Void) {
-        self.title = title
+    init(
+        title: String,
+        style: ButtonStyle = .primaryActivated,
+        isUppercased: Bool = true,
+        action: @escaping () -> Void
+    ) {
+        self.title = LBButton.formatTitle(title, isUppercased: isUppercased)
         self.style = style
         self.action =  action
     }
@@ -12,17 +17,17 @@ struct LBButton: View {
         case primaryActivated
         case primaryOff
         case error
+        case cancel
     }
 
-    var title: String
+    let title: String
     var style: ButtonStyle
     let action: () -> Void
 
     var body: some View {
         Button(action: action) {
             Text(title)
-                .textCase(.uppercase)
-                .font(LBFont.button)
+                .font(getFont(btnStyle: style))
                 .multilineTextAlignment(.center)
                 .foregroundColor(getForegroundColor(btnStyle: style))
                 .frame(height: 44)
@@ -38,36 +43,65 @@ struct LBButton: View {
 }
 
 extension LBButton {
-    func getForegroundColor(btnStyle: ButtonStyle) -> Color {
+    private func getForegroundColor(btnStyle: ButtonStyle) -> Color {
         switch btnStyle {
         case .primaryActivated:
-                .white
+            LBColor.background
         case .primaryOff:
             LBColor.buttonPrimary
         case .error:
             LBColor.error
+        case .cancel:
+            LBColor.text
         }
     }
 
-    func getBackgroundColor(btnStyle: ButtonStyle) -> Color {
-        switch btnStyle {
-        case .primaryActivated:
-            LBColor.buttonPrimary
-        case .primaryOff:
-             .white
-        case .error:
-            Color.clear
-        }
+    private func getBackgroundColor(btnStyle: ButtonStyle) -> Color {
+        btnStyle == .primaryActivated ? LBColor.buttonPrimary : .clear
     }
 
-    func getStrokeColor(btnStyle: ButtonStyle) -> Color {
+    private func getStrokeColor(btnStyle: ButtonStyle) -> Color {
         switch btnStyle {
         case .primaryActivated:
-                .white
+            LBColor.background
         case .primaryOff:
             LBColor.buttonPrimary
         case .error:
             LBColor.error
+        case .cancel:
+            .clear
         }
     }
+
+    private func getFont(btnStyle: ButtonStyle) -> Font {
+        btnStyle == .cancel ? LBFont.body : LBFont.button
+    }
+
+    private static func formatTitle(_ text: String, isUppercased: Bool) -> String {
+        isUppercased ? text.uppercased() : text.prefix(1).uppercased() + text.dropFirst().lowercased()
+    }
+}
+
+#Preview {
+    VStack {
+        LBButton(title: "excluir", style: .error) {
+            print("Botao de Excluir clicado")
+        }
+        HStack {
+            LBButton(title: "Desabilitado", style: .primaryOff, isUppercased: false) {
+                print("Botao de PrimaryOff clicado")
+            }
+            LBButton(title: "Off", style: .primaryOff) {
+                print("Botao de PrimaryOff clicado")
+            }
+        }
+        LBButton(title: "CANCELAR", style: .cancel, isUppercased: false) {
+            print("Botao de Cancel clicado")
+        }
+        LBButton(title: "Ativo", style: .primaryActivated) {
+            print("Botao de PrimaryActivated clicado")
+        }
+    }
+    .frame(height: 300)
+    .background(Color.purple.opacity(0.2))
 }
