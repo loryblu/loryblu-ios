@@ -49,7 +49,7 @@ struct ChangePasswordView: View {
 
             Spacer()
             AlertSimpleView(
-                text: LBStrings.SetPassword.logoutNewPassword,
+                text: LBStrings.SetPassword.logoutNewPassword, subText: "",
                 icon: .info,
                 textColor: LBColor.titlePrimary,
                 borderColor: LBColor.titlePrimary

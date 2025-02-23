@@ -47,7 +47,7 @@ struct LocbookNavigationStack: View {
                                 task: task,
                                 addOrEdit: AddOrEditType.edit
                             )
-                        }
+                        }, isSecurity: true
                     )
                 )
             )

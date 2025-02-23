@@ -2,6 +2,7 @@ import SwiftUI
 
 struct AlertSimpleView: View {
     let text: String
+    let subText: String
     let icon: LBIcon
     let textColor: Color
     let borderColor: Color
@@ -13,9 +14,12 @@ struct AlertSimpleView: View {
                 .frame(width: 20, height: 20)
                 .padding(.top, 2)
             Text(text)
-                .foregroundStyle(textColor)
-                .font(LBFont.bodySmall)
-                .lineLimit(2)
+                .foregroundColor(textColor)
+                .font(LBFont.bodySmall) +
+            Text(subText)
+                .foregroundColor(LBColor.titlePrimary)
+                .font(LBFont.buttonSmall)
+                .underline()
             Spacer()
         }
         .frame(maxWidth: .infinity, minHeight: 40)
@@ -31,7 +35,8 @@ struct AlertSimpleView: View {
 
 #Preview {
     AlertSimpleView(
-        text: LBStrings.SetPassword.logoutNewPassword,
+        text: "Ações bloqueadas! Você pode alterar as permissões em ",
+        subText: "Controle de Acesso.",
         icon: .check,
         textColor: LBColor.titlePrimary,
         borderColor: LBColor.titlePrimary

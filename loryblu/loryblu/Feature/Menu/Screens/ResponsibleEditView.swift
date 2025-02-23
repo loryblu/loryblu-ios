@@ -27,8 +27,25 @@ struct ResponsibleEditView: View {
     var body: some View {
         VStack {
             Spacer()
-            HStack {
+            ZStack(alignment: .bottomTrailing) {
                 imageDefault
+
+                if props.isAvaliable {
+                    Button {
+                        // MARK: TODO - Fluxo para tela de edicao de foto.
+                    } label: {
+                        Image(LBIcon.editWhite.rawValue)
+                            .resizable()
+                            .frame(width: 16, height: 16)
+                            .foregroundStyle(.white)
+
+                    }
+                    .frame(width: 32, height: 32)
+                    .background(Circle().fill(LBColor.buttonPrimary))
+                    .contentShape(Circle())
+                    .padding(.init(top: 0, leading: 0, bottom: 16, trailing: 16))
+                }
+
             }
             .frame(maxWidth: .infinity)
             .frame(height: 148)
@@ -36,6 +53,16 @@ struct ResponsibleEditView: View {
             .padding(.bottom, 60)
 
             VStack(alignment: .leading) {
+                if !props.isAvaliable {
+                    AlertSimpleView(
+                        text: "Ações bloqueadas! Você pode alterar as permissões em ", subText: "Controle de Acesso.",
+                        icon: .infoBold,
+                        textColor: LBColor.loryGray,
+                        borderColor: .black
+                    )
+                    .padding(.bottom, 24)
+                }
+
                 Text(LBStrings.Menu.parentsName)
                     .font(LBFont.buttonSmall)
 
@@ -159,7 +186,7 @@ extension ResponsibleEditView.Props: Hashable {
     ResponsibleEditView(
         props: .init(
             image: LBIcon.parentsTree.image,
-            isAvaliable: true,
+            isAvaliable: false,
             onClose: {},
             onNextView: {}
         )

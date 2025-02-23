@@ -18,10 +18,8 @@ struct CardTaskRegistered: View {
                     .font(LBFont.head6)
 
                 Spacer()
-                if isSecurity {
-                    Image(LBIcon.reorg.rawValue)
-                        .frame(width: 10, height: 16)
-                }
+                Image(LBIcon.reorg.rawValue)
+                    .frame(width: 10, height: 16)
             }
             .padding(8)
             .background(LBColor.textfield)
