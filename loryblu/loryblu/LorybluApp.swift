@@ -5,8 +5,9 @@ struct LorybluApp: App {
     @StateObject private var appData: AppData = .init()
     var body: some Scene {
         WindowGroup {
-            AppEntryPoint()
-                .environmentObject(appData)
+            PuzzleView(onCancel: {}, props: .init(isAvaliable: true))
+//            AppEntryPoint()
+//                .environmentObject(appData)
         }
     }
 }

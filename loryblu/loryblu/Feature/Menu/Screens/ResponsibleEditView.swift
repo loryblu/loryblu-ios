@@ -186,7 +186,7 @@ extension ResponsibleEditView.Props: Hashable {
     ResponsibleEditView(
         props: .init(
             image: LBIcon.parentsTree.image,
-            isAvaliable: false,
+            isAvaliable: true,
             onClose: {},
             onNextView: {}
         )

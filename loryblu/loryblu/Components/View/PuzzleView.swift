@@ -1,5 +1,5 @@
 //
-//  AlertControlView.swift
+//  PuzzleView.swift
 //  LoryBlu
 //
 //  Created by Suh on 12/02/25.
@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-struct AlertControlView: View {@EnvironmentObject var coordinator: MenuNavigationStack.NavigationCoordinator
+struct PuzzleView: View {
+    @EnvironmentObject var coordinator: MenuNavigationStack.NavigationCoordinator
     @State private var number1: Int = 0
     @State private var number2: Int = 0
     @State private var userAnswer: String = ""
@@ -77,7 +78,7 @@ struct AlertControlView: View {@EnvironmentObject var coordinator: MenuNavigatio
         }.navigationDestination(isPresented: $navigateToSuccess) {
             DoneView(
                 props: .init(message: "PARABÉNS, VOCÊ ACERTOU!🎉 ", onClose: {
-                    coordinator.pushAccessControlView(props: .init(isAvaliable: true))
+                    coordinator.popView()
                 })
             )
         }
@@ -100,7 +101,7 @@ struct AlertControlView: View {@EnvironmentObject var coordinator: MenuNavigatio
             userAnswer = String()
             return
         }
-        
+
         if userInput == correctAnswer {
             isWrongAnswer = false
             navigateToSuccess = true
@@ -111,5 +112,5 @@ struct AlertControlView: View {@EnvironmentObject var coordinator: MenuNavigatio
 }
 
 #Preview {
-    AlertControlView(onCancel: {})
+    PuzzleView(onCancel: {})
 }
