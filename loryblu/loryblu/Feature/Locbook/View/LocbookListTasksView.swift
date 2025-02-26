@@ -1,16 +1,16 @@
 import SwiftUI
 
 struct LocbookListTasksView: View {
-    @State private var securityIsOn = true
+    @StateObject var viewmodel: TasksViewModel  = TasksViewModel()
+    @State var day: LBFrequencyFilter.Week = .none
 
     struct Props {
         let onNewTask: ClosureType.VoidVoid
         let onEditTask: ClosureType.LocbookTaskVoid
+        let isSecurity: Bool
     }
 
     var props: Props
-    @StateObject var viewmodel: TasksViewModel  = TasksViewModel()
-    @State var day: LBFrequencyFilter.Week = .none
 
     var body: some View {
         ZStack {
@@ -32,6 +32,7 @@ struct LocbookListTasksView: View {
                     nameTask: viewmodel.taskToDelete.taskTitle ?? String(),
                     taskDay: viewmodel.deleteOptionTitle ?? String())
             }
+
             VStack {
                 if viewmodel.taskFilter?.tasks != nil {
                     VStack(spacing: 16) {
@@ -45,20 +46,20 @@ struct LocbookListTasksView: View {
                     .padding(.init(top: 16, leading: 24, bottom: 0, trailing: 24))
                 }
 
-                if !(viewmodel.taskFilter?.tasks.isEmpty ?? true) {
-                    HStack(alignment: .center) {
-                        Toggle(isOn: $securityIsOn) {}
-                        .toggleStyle(SymbolToggleStyle())
-                        .padding(.trailing, 6)
-                    }
-                    .frame(maxWidth: .infinity, alignment: .trailing)
-                    .padding(.init(top: 8, leading: 0, bottom: 0, trailing: 32))
+                if props.isSecurity && !(viewmodel.taskFilter?.tasks.isEmpty ?? true) {
+                    AlertSimpleView(
+                        text: "Ações bloqueadas! Você pode alterar as permissões em ", subText: "Controle de Acesso.",
+                        icon: .infoBold,
+                        textColor: LBColor.loryGray,
+                        borderColor: .black
+                    )
+                    .padding(.init(top: 8, leading: 24, bottom: 0, trailing: 24))
                 }
 
                 ZStack {
                     ListTasksView(
                         viewmodel: viewmodel,
-                        securityIsOn: $securityIsOn,
+                        securityIsOn: props.isSecurity,
                         onEditTask: { task in
                         props.onEditTask(task)
                         },
@@ -94,9 +95,10 @@ struct LocbookListTasksView: View {
 
 struct ListTasksView: View {
     @ObservedObject var viewmodel: TasksViewModel
-    @Binding var securityIsOn: Bool
+    @State var securityIsOn: Bool
     let onEditTask: ClosureType.LocbookTaskVoid
     let openDeleteDialog: ClosureType.LocbookTaskVoid
+
     var body: some View {
         if viewmodel.taskFilter?.tasks.isEmpty ?? false {
             VStack(alignment: .center) {
@@ -121,7 +123,7 @@ struct ListTasksView: View {
                         backgroundCard: model.backgroundCard,
                         onEdit: { onEditTask(model.locbookTask) },
                         openDeleteDialog: { openDeleteDialog(model.locbookTask) },
-                        isSecurity: .constant(securityIsOn))
+                        isSecurity: .constant(!securityIsOn))
                     .padding(.bottom, 20)
                     .if(securityIsOn, transform: { view in
                         view
@@ -207,5 +209,5 @@ extension LocbookListTasksView.Props: Hashable {
 }
 
 #Preview {
-    LocbookListTasksView(props: .init(onNewTask: {}, onEditTask: {_ in }))
+    LocbookListTasksView(props: .init(onNewTask: {}, onEditTask: {_ in }, isSecurity: false))
 }

@@ -45,7 +45,6 @@ struct ChildEditView: View {
                     .contentShape(Circle())
                     .padding(.init(top: 0, leading: 0, bottom: 16, trailing: 16))
                 }
-
             }
             .frame(maxWidth: .infinity)
             .frame(height: 148)
@@ -53,6 +52,16 @@ struct ChildEditView: View {
             .padding(.bottom, 60)
 
             VStack(spacing: 32) {
+                if !props.isAvaliable {
+                    AlertSimpleView(
+                        text: "Ações bloqueadas! Você pode alterar as permissões em ", subText: "Controle de Acesso.",
+                        icon: .infoBold,
+                        textColor: LBColor.loryGray,
+                        borderColor: .black
+                    )
+                    .padding(.bottom, 24)
+                }
+
                 VStack(alignment: .leading) {
                     Text(LBStrings.Menu.childName)
                         .font(LBFont.buttonSmall)
@@ -172,7 +181,7 @@ extension ChildEditView.Props: Hashable {
     ChildEditView(
         props: .init(
             image: LBIcon.parentsTree.image,
-            isAvaliable: false,
+            isAvaliable: true,
             onClose: {},
             onNextView: {}
         )

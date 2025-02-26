@@ -18,6 +18,8 @@
 "old_password" = "Senha antiga";
 "gender" = "Gênero";
 "all_days" = "Todos os dias";
+"verify" = "Verificar";
+"try_again" = "Tentar novamente";
 
 // ====================  Rules Password  =========================
 

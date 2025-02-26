@@ -23,6 +23,8 @@ extension LBStrings {
         static let save = String(localized: "save")
         static let oldPassword = String(localized: "old_password")
         static let gender = String(localized: "gender")
+        static let verify = String(localized: "verify")
+        static let tryAgain = String(localized: "try_again")
     }
 }
 extension LBStrings {
