@@ -1,6 +1,10 @@
 import SwiftUI
 
 struct LBAlertConfirmation: View {
+    let textInfo: String
+    let highlightText: String
+    let textButtonOne: String
+    let textButtonTwo: String
     let onClosed: () -> Void
     let onCancel: () -> Void
     @State private var offset: CGFloat = 1000
@@ -11,11 +15,11 @@ struct LBAlertConfirmation: View {
                 .opacity(0.5)
             VStack {
                 VStack {
-                    Text(LBStrings.Dialog.areYousSure)
+                    Text(textInfo)
                         .font(LBFont.button)
                         .bold()
                     HStack {
-                        Text(LBStrings.Dialog.leaveApp)
+                        Text(highlightText)
                             .font(LBFont.button)
                             .bold()
                             .foregroundStyle(LBColor.titlePrimary)
@@ -28,7 +32,7 @@ struct LBAlertConfirmation: View {
 
                 HStack(spacing: 10) {
                     LBButton(
-                        title: LBStrings.General.cancel,
+                        title: textButtonOne,
                         style: .cancel,
                         isUppercased: false,
                         action: {
@@ -36,7 +40,7 @@ struct LBAlertConfirmation: View {
                         }
                     )
                     LBButton(
-                        title: LBStrings.General.leave,
+                        title: textButtonTwo,
                         style: .error,
                         isUppercased: false,
                         action: {
@@ -64,5 +68,12 @@ struct LBAlertConfirmation: View {
 }
 
 #Preview {
-    LBAlertConfirmation(onClosed: { }, onCancel: {  })
+    LBAlertConfirmation(
+        textInfo: LBStrings.Dialog.areYousSure,
+        highlightText: LBStrings.Dialog.leaveApp,
+        textButtonOne: "Cancelar",
+        textButtonTwo: "Sair",
+        onClosed: {
+        },
+        onCancel: {})
 }

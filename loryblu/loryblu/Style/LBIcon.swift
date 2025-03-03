@@ -1,11 +1,13 @@
 import SwiftUI
 
 enum LBIcon: String {
+    case album
     case arrowBack = "arrow_back"
     case arrowRight = "arrow_right"
     case bathTime = "bath_time"
     case brushTeeth = "brush_teeth"
     case cake
+    case camera
     case check
     case childTree = "child_tree"
     case circle
@@ -87,6 +89,7 @@ enum LBIcon: String {
     case sunSmall = "sun_small"
     case therapy
     case trash
+    case trashBlue = "trash_blue"
     case tvgame
     case unlock = "unlock_toggle"
     case user

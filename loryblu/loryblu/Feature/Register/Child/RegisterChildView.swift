@@ -87,8 +87,8 @@ struct RegisterChildView: View {
                 )
                 .focused($focusedField, equals: .birthDay)
                 .onChange(of: viewModel.birthDate) { _ in
-                                    viewModel.clearError()
-                                }
+                    viewModel.clearError()
+                }
 
                 HStack(spacing: 15) {
                     LBGenderButton(gender: .male, isActive: viewModel.gender == .male) {

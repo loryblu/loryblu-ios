@@ -6,21 +6,28 @@ struct AlertSimpleView: View {
     let icon: LBIcon
     let textColor: Color
     let borderColor: Color
+    @State private var isNavigation: Bool = false
+    @EnvironmentObject var coordinator: MenuNavigationStack.NavigationCoordinator
 
     var body: some View {
-        HStack(alignment: .top, spacing: 16) {
-            Image(icon.rawValue)
-                .resizable()
-                .frame(width: 20, height: 20)
-                .padding(.top, 2)
-            Text(text)
-                .foregroundColor(textColor)
-                .font(LBFont.bodySmall) +
-            Text(subText)
-                .foregroundColor(LBColor.titlePrimary)
-                .font(LBFont.buttonSmall)
-                .underline()
-            Spacer()
+        NavigationStack {
+            HStack(alignment: .top, spacing: 16) {
+                Image(icon.rawValue)
+                    .resizable()
+                    .frame(width: 20, height: 20)
+                    .padding(.top, 2)
+                    .onTapGesture {
+                        isNavigation = true
+                    }
+                Text(text)
+                    .foregroundColor(textColor)
+                    .font(LBFont.bodySmall) +
+                Text(subText)
+                    .foregroundColor(LBColor.titlePrimary)
+                    .font(LBFont.buttonSmall)
+                    .underline()
+                Spacer()
+            }
         }
         .frame(maxWidth: .infinity, minHeight: 40)
         .padding(.init(top: 8, leading: 12, bottom: 8, trailing: 0))
@@ -30,6 +37,11 @@ struct AlertSimpleView: View {
                 style: .continuous
             ).stroke(borderColor, lineWidth: 1)
         )
+        .navigationDestination(isPresented: $isNavigation) {
+            PuzzleView {
+                coordinator.pushAccessControlView(props: .init(isAvaliable: true))
+            }
+        }
     }
 }
 

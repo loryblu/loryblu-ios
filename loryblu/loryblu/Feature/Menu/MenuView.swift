@@ -20,11 +20,11 @@ struct MenuView: View {
     }
 
     var userImage: Image {
-        LBIcon.parentsTree.image
+        Image(appData.userData?.data.user.profileImageUrl ?? LBIcon.parentsTree.rawValue)
     }
 
     var childImage: Image {
-        LBIcon.childTree.image
+        Image(appData.userData?.data.user.childrens.first?.profileImageUrl ?? LBIcon.childTree.rawValue)
     }
 
     var body: some View {
@@ -137,7 +137,12 @@ struct MenuView: View {
                 )
 
                 if menuViewModel.openExitConfirmationDialog {
-                    LBAlertConfirmation {
+                    LBAlertConfirmation(
+                        textInfo: LBStrings.Dialog.areYousSure,
+                        highlightText: LBStrings.Dialog.leaveApp,
+                        textButtonOne: "Cancelar",
+                        textButtonTwo: "Sair"
+                    ) {
                         menuViewModel.logout()
                     } onCancel: {
                         menuViewModel.giveUpToLogout()

@@ -74,6 +74,7 @@
 		8C9CBCFC2A7ACF46001DBD35 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9CBCFA2A7ACF46001DBD35 /* LoginView.swift */; };
 		8C9CBD0D2A7AE97B001DBD35 /* RegisterChildView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9CBD0C2A7AE97B001DBD35 /* RegisterChildView.swift */; };
 		8C9CBD102A7AEC24001DBD35 /* PasswordRulesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9CBD0F2A7AEC24001DBD35 /* PasswordRulesView.swift */; };
+		8C9F36862D6F859400BF3D85 /* LBActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9F36852D6F859400BF3D85 /* LBActionSheet.swift */; };
 		8CA35C422D40A5E000388F47 /* ChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA35C412D40A5E000388F47 /* ChangePasswordView.swift */; };
 		8CB8E02F2D07C4260013CDAB /* AlertSimpleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB8E02E2D07C4260013CDAB /* AlertSimpleView.swift */; };
 		8CCD707B2B7A637100AA60CF /* CardTaskRegistered.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCD707A2B7A637100AA60CF /* CardTaskRegistered.swift */; };
@@ -198,6 +199,7 @@
 		8C9CBCFA2A7ACF46001DBD35 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		8C9CBD0C2A7AE97B001DBD35 /* RegisterChildView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterChildView.swift; sourceTree = "<group>"; };
 		8C9CBD0F2A7AEC24001DBD35 /* PasswordRulesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordRulesView.swift; sourceTree = "<group>"; };
+		8C9F36852D6F859400BF3D85 /* LBActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBActionSheet.swift; sourceTree = "<group>"; };
 		8CA35C412D40A5E000388F47 /* ChangePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordView.swift; sourceTree = "<group>"; };
 		8CB8E02E2D07C4260013CDAB /* AlertSimpleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertSimpleView.swift; sourceTree = "<group>"; };
 		8CCD707A2B7A637100AA60CF /* CardTaskRegistered.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTaskRegistered.swift; sourceTree = "<group>"; };
@@ -526,6 +528,7 @@
 				8CCD707A2B7A637100AA60CF /* CardTaskRegistered.swift */,
 				8CB8E02E2D07C4260013CDAB /* AlertSimpleView.swift */,
 				8C375FDF2D5D7B4000F7ED9F /* PuzzleView.swift */,
+				8C9F36852D6F859400BF3D85 /* LBActionSheet.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -970,6 +973,7 @@
 				8CE03E392A6360BE0024919C /* LBColor.swift in Sources */,
 				3376667D2ABFD115007010E1 /* URLDecoder.swift in Sources */,
 				8CB8E02F2D07C4260013CDAB /* AlertSimpleView.swift in Sources */,
+				8C9F36862D6F859400BF3D85 /* LBActionSheet.swift in Sources */,
 				911B843E2AD1C19D00F59DD2 /* Authentication.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

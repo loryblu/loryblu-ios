@@ -22,8 +22,9 @@ struct DoneView: View {
                             .resizable()
                             .frame(width: 22, height: 22)
                     }
-                    .padding(.bottom, 200)
+                    .padding(.top, 24)
                 }
+                Spacer()
 
                 Text(props.message)
                     .font(LBFont.titleTask)
@@ -34,6 +35,7 @@ struct DoneView: View {
                     .resizable(resizingMode: .stretch)
                     .frame(width: 118, height: 111)
                     .padding(.bottom, 170)
+                Spacer()
             }
         }
         .padding(24)

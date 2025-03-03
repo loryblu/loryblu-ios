@@ -176,7 +176,14 @@ extension ChildEditView.Props: Hashable {
     @Previewable @StateObject var appData: AppData = .init()
     let user = User(
         parentName: "",
-        childrens: [.init(id: 1, fullname: "Julia Santos", gender: "female", birthdate: "12/12/2012")]
+        childrens: [.init(
+            id: 1,
+            fullname: "Julia Santos",
+            gender: "female",
+            birthdate: "12/12/2012",
+            profileImageUrl: ""
+        )],
+        profileImageUrl: ""
     )
     ChildEditView(
         props: .init(

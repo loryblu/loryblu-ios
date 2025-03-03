@@ -20,4 +20,6 @@ enum LBColor {
     static let buttonBackgroundDark = Color("darkBlue")
     static let buttonBackgroundLightRed = Color("light_red")
     static let loryGray = Color("gray_400")
+    static let blue100 = Color("blue100")
+
 }

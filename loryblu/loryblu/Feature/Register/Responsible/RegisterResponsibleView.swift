@@ -70,7 +70,6 @@ struct RegisterResponsibleView: View {
             .focused($focusedField, equals: .email)
             .onChange(of: viewModel.email) { _ in
                 viewModel.clearError()
-                // TODO: - Adicionar verificação se o email já esta cadastrado
             }
 
             LBTextField(
