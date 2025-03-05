@@ -1,8 +1,12 @@
 import SwiftUI
+import PhotosUI
 
 struct ResponsibleEditView: View {
     @EnvironmentObject var appData: AppData
+    @Environment(\.dismiss) var dismiss
     @State var formConfig: FormConfig
+    @State private var showCustomActionSheet = false
+    @State private var showAlertDeletePhoto = false
 
     struct Props {
         var image: Image
@@ -32,7 +36,7 @@ struct ResponsibleEditView: View {
 
                 if props.isAvaliable {
                     Button {
-                        // MARK: TODO - Fluxo para tela de edicao de foto.
+                        showCustomActionSheet.toggle()
                     } label: {
                         Image(LBIcon.editWhite.rawValue)
                             .resizable()
@@ -55,7 +59,8 @@ struct ResponsibleEditView: View {
             VStack(alignment: .leading) {
                 if !props.isAvaliable {
                     AlertSimpleView(
-                        text: "Ações bloqueadas! Você pode alterar as permissões em ", subText: "Controle de Acesso.",
+                        text: "Ações bloqueadas! Você pode alterar as permissões em ",
+                        subText: "Controle de Acesso.",
                         icon: .infoBold,
                         textColor: LBColor.loryGray,
                         borderColor: .black
@@ -87,7 +92,7 @@ struct ResponsibleEditView: View {
                     textFiledState: .disable,
                     action: nil
                 )
-
+                
                 HStack {
                     Image(LBIcon.infoGray.rawValue)
                         .foregroundColor(.gray)
@@ -133,6 +138,42 @@ struct ResponsibleEditView: View {
         .locbookToolbar(title: LBStrings.Menu.profileUser, showCloseButton: true) {
             props.onClose?()
         }
+        .overlay {
+            if showCustomActionSheet {
+                GeometryReader { geometry in
+                    ZStack {
+                        Color.black.opacity(0.4)
+                            .edgesIgnoringSafeArea(.all)
+                            .transition(.opacity)
+                            .animation(.easeInOut, value: showCustomActionSheet)
+
+                        VStack {
+                            Spacer()
+                            LBActionSheet(
+                                isPresented: $showCustomActionSheet,
+                                deletePhoto: $showAlertDeletePhoto,
+                                image: LBIcon.parentsTree.rawValue
+                            )
+                            .frame(width: geometry.size.width)
+                            .frame(height: 280)
+                            .transition(.move(edge: .bottom))
+                            .animation(.easeInOut, value: showCustomActionSheet)
+                        }
+                        .zIndex(1)
+                    }
+                }
+            }
+        }
+        .fullScreenCover(isPresented: $showAlertDeletePhoto) {
+            LBAlertConfirmation(
+                textInfo: "Você quer excluir a",
+                highlightText: "Foto de Perfil",
+                textButtonOne: "Cancelar",
+                textButtonTwo: "Excluir",
+                onClosed: { showAlertDeletePhoto = false },
+                onCancel: { showAlertDeletePhoto = false }
+            )
+        }
     }
 
     var imageDefault: some View {
@@ -154,7 +195,7 @@ struct ResponsibleEditView: View {
             }
 
             LBButton(title: LBStrings.General.save) {
-                // MARK: - TODO fazer update na API
+                // fazer update na API
             }
         }
     }

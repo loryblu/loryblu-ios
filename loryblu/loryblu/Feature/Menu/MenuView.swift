@@ -20,11 +20,11 @@ struct MenuView: View {
     }
 
     var userImage: Image {
-        Image(appData.userData?.data.user.profileImageUrl ?? LBIcon.parentsTree.rawValue)
+        Image(LBIcon.parentsTree.rawValue)
     }
 
     var childImage: Image {
-        Image(appData.userData?.data.user.childrens.first?.profileImageUrl ?? LBIcon.childTree.rawValue)
+        Image(LBIcon.childTree.rawValue)
     }
 
     var body: some View {

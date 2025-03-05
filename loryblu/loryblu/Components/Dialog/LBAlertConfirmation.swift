@@ -13,7 +13,7 @@ struct LBAlertConfirmation: View {
         ZStack {
             Color(.black)
                 .opacity(0.5)
-            VStack {
+            VStack(alignment: .center) {
                 VStack {
                     Text(textInfo)
                         .font(LBFont.button)
@@ -48,11 +48,11 @@ struct LBAlertConfirmation: View {
                         }
                     )
                 }
-                .padding(.init(top: 0, leading: 8, bottom: 24, trailing: 20))
+                .padding(.init(top: 0, leading: 24, bottom: 24, trailing: 24))
             }
             .background(LBColor.textfield)
             .clipShape(RoundedRectangle(cornerRadius: 24))
-            .frame(width: 240, height: 182)
+            .frame(width: 280, height: 200)
             .padding(24)
             .offset(x: 0, y: offset)
             .onAppear(perform: {

@@ -180,10 +180,8 @@ extension ChildEditView.Props: Hashable {
             id: 1,
             fullname: "Julia Santos",
             gender: "female",
-            birthdate: "12/12/2012",
-            profileImageUrl: ""
-        )],
-        profileImageUrl: ""
+            birthdate: "12/12/2012"
+        )]
     )
     ChildEditView(
         props: .init(

@@ -6,10 +6,29 @@
 //
 
 import SwiftUI
+import PhotosUI
+
+struct CameraPickerView: View {
+    @Binding var selectedImageData: Data?
+    @Binding var isPresented: Bool
+
+    @State private var imagePickerController: UIImagePickerController?
+
+    var body: some View {
+        ImagePicker(selectedImageData: $selectedImageData, isPresented: $isPresented)
+    }
+}
 
 struct LBActionSheet: View {
-    let image: String
     @Binding var isPresented: Bool
+    @Binding var deletePhoto: Bool
+    @State private var showCustomActionSheet = false
+    @State private var selectedItem: PhotosPickerItem?
+    @State private var selectedImageData: Data?
+    @State private var isPhotoPickerPresented = false
+    @State private var isCameraPickerPresented = false
+    @State private var showActionSheet = false
+    let image: String
 
     var body: some View {
         VStack {
@@ -34,7 +53,7 @@ struct LBActionSheet: View {
                 VStack(spacing: 0) {
                     Button(action: {
                         print("Tira foto")
-                        isPresented = false
+                        isCameraPickerPresented.toggle()
                     }, label: {
                         HStack {
                             Text("Tirar foto")
@@ -51,7 +70,7 @@ struct LBActionSheet: View {
                     Divider()
                     Button(action: {
                         print("Escolher foto")
-                        isPresented = false
+                        isPhotoPickerPresented.toggle()
                     }, label: {
                         HStack {
                             Text("Escolher foto")
@@ -67,7 +86,7 @@ struct LBActionSheet: View {
 
                     Divider()
                     Button(action: {
-                        isPresented = false
+                        deletePhoto.toggle()
                     }, label: {
                         HStack {
                             Text("Excluir foto")
@@ -88,6 +107,32 @@ struct LBActionSheet: View {
                         style: .continuous
                     ).stroke(LBColor.titlePrimary, lineWidth: 1)
                 )
+
+                .sheet(isPresented: $isPhotoPickerPresented) {
+                    PhotosPicker(
+                        selection: $selectedItem,
+                        matching: .images,
+                        photoLibrary: .shared()) {
+                            Text("galeria")// Nenhum texto aqui, apenas abre o PhotoPicker
+                        }
+                        .onChange(of: selectedItem) { newItem in
+                            Task {
+                                if let selectedItem = newItem {
+                                    if let data = try? await selectedItem.loadTransferable(type: Data.self) {
+                                        selectedImageData = data
+                                    }
+                                }
+                            }
+                        }
+                        .frame(height: 0)
+                }
+
+                .sheet(isPresented: $isCameraPickerPresented) {
+                    CameraPickerView(
+                        selectedImageData: $selectedImageData,
+                        isPresented: $isCameraPickerPresented
+                    )
+                }
             }
             .background(LBColor.blue100)
             .padding()
@@ -95,7 +140,7 @@ struct LBActionSheet: View {
             .transition(.move(edge: .bottom))
 
         }
-        .padding(.bottom, 16)
+        .padding(.bottom, 0)
         .background(LBColor.blue100)
         .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
         .onTapGesture {
@@ -104,8 +149,46 @@ struct LBActionSheet: View {
     }
 }
 
-struct ContentView2: View {
+struct ImagePicker: UIViewControllerRepresentable {
+    @Binding var selectedImageData: Data?
+    @Binding var isPresented: Bool
+
+    class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+        var parent: ImagePicker
+
+        init(parent: ImagePicker) {
+            self.parent = parent
+        }
+
+        func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+            parent.isPresented = false
+        }
+
+        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+            if let image = info[.originalImage] as? UIImage {
+                parent.selectedImageData = image.jpegData(compressionQuality: 0.8)
+            }
+            parent.isPresented = false
+        }
+    }
+
+    func makeCoordinator() -> Coordinator {
+        return Coordinator(parent: self)
+    }
+
+    func makeUIViewController(context: Context) -> UIImagePickerController {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = context.coordinator
+        imagePicker.sourceType = .camera // Define como câmera
+        return imagePicker
+    }
+
+    func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {}
+}
+
+struct Exemple2: View {
     @State private var showCustomActionSheet = false
+    @State private var deleteImage = false
 
     var body: some View {
         VStack {
@@ -119,13 +202,26 @@ struct ContentView2: View {
         }
         .overlay(
             showCustomActionSheet ? AnyView(
-                LBActionSheet(image: LBIcon.parentsTree.rawValue, isPresented: $showCustomActionSheet)
+                LBActionSheet(
+                    isPresented: $showCustomActionSheet,
+                    deletePhoto: $deleteImage,
+                    image: LBIcon.parentsTree.rawValue
+                )
             ) : AnyView(EmptyView())
         )
-
+        .fullScreenCover(isPresented: $deleteImage) {
+            LBAlertConfirmation(
+                textInfo: "Você quer excluir a",
+                highlightText: "Foto de Perfil",
+                textButtonOne: "Cancelar",
+                textButtonTwo: "Excluir",
+                onClosed: { deleteImage = false },
+                onCancel: { deleteImage = false }
+            )
+        }
     }
 }
 
 #Preview {
-    ContentView2()
+    Exemple2()
 }

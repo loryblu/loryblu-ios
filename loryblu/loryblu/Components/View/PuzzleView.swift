@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import Factory
 
 struct PuzzleView: View {
     @EnvironmentObject var coordinator: MenuNavigationStack.NavigationCoordinator
+    @Environment(\.dismiss) var dismiss
     @State private var number1: Int = 0
     @State private var number2: Int = 0
     @State private var userAnswer: String = ""
@@ -19,6 +21,17 @@ struct PuzzleView: View {
     var correctAnswer: Int {
         return number1 * number2
     }
+
+//    struct Props {
+//        var isSecurity: Bool
+//        var onClose: ClosureType.VoidVoid?
+//    }
+//    
+//    let props: Props
+//
+//    init(props: Props) {
+//        self.props = props
+//    }
 
     var body: some View {
         NavigationStack {
@@ -77,9 +90,9 @@ struct PuzzleView: View {
             }
         }.navigationDestination(isPresented: $navigateToSuccess) {
             DoneView(
-                props: .init(message: "PARABÉNS, VOCÊ ACERTOU!🎉 ", onClose: {
-                    coordinator.popView()
-                })
+                props: .init(
+                    message: "PARABÉNS, VOCÊ ACERTOU!🎉 ",
+                    onClose: { dismiss() })
             )
         }
     }
@@ -112,5 +125,5 @@ struct PuzzleView: View {
 }
 
 #Preview {
-    PuzzleView(onCancel: {})
+    PuzzleView( onCancel: {})
 }
