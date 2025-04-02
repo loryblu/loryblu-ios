@@ -124,10 +124,10 @@ struct LBActionSheet: View {
                                 }
                             }
                         }
-                        .frame(height: 0)
+//                        .frame(height: 0)
                 }
 
-                .sheet(isPresented: $isCameraPickerPresented) {
+                .fullScreenCover(isPresented: $isCameraPickerPresented) {
                     CameraPickerView(
                         selectedImageData: $selectedImageData,
                         isPresented: $isCameraPickerPresented
@@ -164,7 +164,10 @@ struct ImagePicker: UIViewControllerRepresentable {
             parent.isPresented = false
         }
 
-        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        func imagePickerController(
+            _ picker: UIImagePickerController,
+            didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]
+        ) {
             if let image = info[.originalImage] as? UIImage {
                 parent.selectedImageData = image.jpegData(compressionQuality: 0.8)
             }
